@@ -1,5 +1,5 @@
 """
-Stage 1 - Auditor runner with multi-backend support.
+Stage 1 — Auditor runner with multi-backend support.
  
 Supports:
   - OpenAI (GPT-3.5, GPT-4, etc.)
@@ -31,22 +31,47 @@ Usage examples:
   export MOONSHOT_API_KEY=sk-...
   python main.py --model kimi/moonshot-v1-8k --split single_error --n 10
 """
-
+ 
 import json, os, re, time
 from typing import Dict, List, Optional, Any
 from tqdm import tqdm
 from auditor_prompt import SYSTEM, build_user_message
-from model_backends import get_model_client
-
+from model_backends import get_model_client, MODEL_CONFIGS
+ 
 RESULTS_DIR = os.path.join(os.path.dirname(__file__), "results")
 TEMPERATURE = 1.0
 MAX_RETRIES = 6
 INTER_CALL_SLEEP = 4.0     # API rate limiting spacing
 os.makedirs(RESULTS_DIR, exist_ok=True)
-
-
+ 
+# ── CHANGE 1: build the right client based on which key is set ────────────────
+def _make_client():
+    """
+    Returns an openai.OpenAI client pointed at either:
+      - Google Gemini  (if GEMINI_API_KEY is set)
+      - OpenAI         (if OPENAI_API_KEY is set)
+    Gemini exposes an OpenAI-compatible REST endpoint so the same
+    client.chat.completions.create() call works for both.
+    """
+    import openai
+    gemini_key = os.environ.get("GEMINI_API_KEY", "")
+    openai_key = os.environ.get("OPENAI_API_KEY", "")
+ 
+    if gemini_key:
+        return openai.OpenAI(
+            api_key=gemini_key,
+            base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+        )
+    elif openai_key:
+        return openai.OpenAI(api_key=openai_key)
+    else:
+        raise EnvironmentError(
+            "Set GEMINI_API_KEY (free) or OPENAI_API_KEY before running."
+        )
+ 
+ 
 def _extract_json(text: str) -> Optional[Dict]:
-    """Three-stage JSON extraction: direct -> fenced block -> first {...}."""
+    """Three-stage JSON extraction: direct → fenced block → first {...}."""
     if not text:
         return None
     try:
@@ -66,54 +91,54 @@ def _extract_json(text: str) -> Optional[Dict]:
         except json.JSONDecodeError:
             pass
     return None
-
-
+ 
+ 
+# ── CHANGE 2: call_model uses _make_client() instead of bare openai ───────────
 def call_model(model: str, table: str, transaction_data: str) -> Dict[str, Any]:
-    """Call the appropriate model backend and return results."""
-    try:
-        client = get_model_client(model)
-    except (EnvironmentError, ValueError) as e:
-        return {"raw_text": "", "parsed": None, "model_used": model, "error": str(e)}
-    
+    import openai
+    client = _make_client()
     user_msg = build_user_message(table, transaction_data)
-    messages = [
-        {"role": "system", "content": SYSTEM},
-        {"role": "user", "content": user_msg},
-    ]
-    
     for attempt in range(MAX_RETRIES):
         try:
-            result = client.generate(messages, temperature=TEMPERATURE)
-            raw = result["content"]
-            return {
-                "raw_text": raw, 
-                "parsed": _extract_json(raw),
-                "model_used": result["model"], 
-                "error": None
-            }
-        
-        except Exception as e:
-            error_msg = str(e).lower()
-            # Handle rate limiting
-            if "rate" in error_msg or "429" in error_msg or "quota" in error_msg:
+            resp = client.chat.completions.create(
+                model=model,
+                messages=[
+                    {"role": "system", "content": SYSTEM},
+                    {"role": "user",   "content": user_msg},
+                ],
+                temperature=TEMPERATURE,
+            )
+            raw = resp.choices[0].message.content
+            return {"raw_text": raw, "parsed": _extract_json(raw),
+                    "model_used": resp.model, "error": None}
+ 
+        # ── CHANGE 3: catch both OpenAI and generic HTTP 429s ─────────────────
+        except openai.RateLimitError:
+            wait = 30 * (2 ** attempt)
+            print(f"  [rate limit] waiting {wait}s (attempt {attempt+1}/{MAX_RETRIES}) …", flush=True)
+            time.sleep(wait)
+        except openai.APIStatusError as e:
+            if e.status_code == 429:
                 wait = 30 * (2 ** attempt)
-                print(f"  [rate limit] waiting {wait}s (attempt {attempt+1}/{MAX_RETRIES}) ...", flush=True)
+                print(f"  [rate limit 429] waiting {wait}s (attempt {attempt+1}/{MAX_RETRIES}) …", flush=True)
                 time.sleep(wait)
-            # Handle other API errors
             else:
-                print(f"  [error attempt {attempt+1}] {e}", flush=True)
+                print(f"  [API error attempt {attempt+1}] {e}", flush=True)
                 time.sleep(2)
-    
+        except openai.APIError as e:
+            print(f"  [API error attempt {attempt+1}] {e}", flush=True)
+            time.sleep(2)
+ 
     return {"raw_text": "", "parsed": None, "model_used": model, "error": "max_retries"}
-
-
+ 
+ 
 def _meta(item):
     return {"mode": item["mode"], "general_judgement": item["general_judgement"],
             "errors": item["errors"], "gt_table": item["gt_table"]}
-
-
+ 
+ 
 def _dryrun_record(idx, item, model):
-    """GT-as-prediction placeholder. Scores will be trivially 1.0 - plumbing test only."""
+    """GT-as-prediction placeholder. Scores will be trivially 1.0 — plumbing test only."""
     parsed = {"General Judgment": item["general_judgement"]}
     for i, e in enumerate(item["errors"], 1):
         parsed[f"Information for error {i}"] = {
@@ -126,8 +151,8 @@ def _dryrun_record(idx, item, model):
     return {"item_idx": idx, "model_used": model + "_dryrun",
             "raw_text": json.dumps(parsed), "parsed": parsed,
             "error": None, "item_meta": _meta(item)}
-
-
+ 
+ 
 def run_split(model, split_name, items, seed, dry_run=False, resume=True):
     out_path = os.path.join(RESULTS_DIR,
                             f"{model.replace('/','_')}_{split_name}_predictions.json")
@@ -137,7 +162,7 @@ def run_split(model, split_name, items, seed, dry_run=False, resume=True):
             for rec in json.load(f):
                 existing[rec["item_idx"]] = rec
         print(f"  Resuming: {len(existing)} already done.")
-
+ 
     records = []
     for idx, item in enumerate(tqdm(items, desc=f"{model}/{split_name}", unit="smpl")):
         if idx in existing:
@@ -153,5 +178,5 @@ def run_split(model, split_name, items, seed, dry_run=False, resume=True):
         records.append(rec)
         with open(out_path, "w") as f:
             json.dump(records, f, indent=2)
-    print(f"  Saved {len(records)} -> {out_path}")
+    print(f"  Saved {len(records)} → {out_path}")
     return records

@@ -1,6 +1,11 @@
+# Core dependencies
 openai>=1.0.0
 sacrebleu>=2.3.0
 bert-score>=0.3.13
 tqdm>=4.65.0
-torch
-transformers
+
+# For local inference with Hugging Face models (optional)
+# Uncomment if you want to use hf/* models
+# torch
+# transformers
+# accelerate
