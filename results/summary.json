@@ -1,0 +1,17 @@
+{
+  "seed": 42,
+  "n": 5,
+  "dry_run": false,
+  "results": {
+    "gemini-2.0-flash_single_error": {
+      "em_general_judgment": 0.0,
+      "em_error_type": 0.0,
+      "em_error_entry": 0.0,
+      "bertscore": 0.7993,
+      "standards_top1": 0.0,
+      "standards_top5": 0.0,
+      "bleu": 0.0,
+      "success_rate": 0.0
+    }
+  }
+}

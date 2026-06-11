@@ -1,45 +1,49 @@
-# AuditBench: A Benchmark for Large Language Models in Financial Statement Auditing
+# AuditBench Reproduction
 
-## Overview
+End-to-end reproduction of *Automating Financial Statement Audits with Large
+Language Models* (arXiv:2506.17282v1), built on the released dataset.
 
-Welcome to the repository for *AuditBench: A Benchmark for Large Language Models in Financial Statement Auditing*. This repository contains datasets and resources supporting our research on automated financial statement auditing using large language models (LLMs). The included files offer structured financial data, transaction records, and error-injected financial tables to facilitate research on LLM-based auditing capabilities.
+## Files
+- `parser.py` — table format parser + the three data loaders (fixed seed).
+- `auditor_prompt.py` — system + user prompt, **verbatim from the paper Appendix**.
+- `runner.py` — calls the model per sample, logs the exact model snapshot, crash-safe resume.
+- `metrics.py` — the five-stage metrics (calibration knobs at the top).
+- `evaluate.py` — scores predictions, prints your numbers next to the paper's.
+- `verify_data.py` — preflight check; run this first, it's free.
+- `main.py` — glue.
 
-The paper, *AuditBench: A Benchmark for Large Language Models in Financial Statement Auditing*, has been uploaded to this repository. You may refer to the paper to understand the research objectives, methodologies, and key findings.
+## Data (put these 3 files in one folder)
+- `wrong_table_data.json`              (1484 single-error tables → Table 2)
+- `wrong_table_data_multiple_errors.json` (372 multi-error tables → Table 3)
+- `output_transaction_table_pair.json` (371 correct tables → Table 1)
 
-## Repository Contents
+The raw `Raw_table_data/subset1,2` folders are NOT needed — the paired JSON is
+the processed input.
 
-This repository contains the following files and datasets:
+## Run
+```bash
+pip install -r requirements.txt
+export AUDITBENCH_DATA=/path/to/folder/with/the/3/jsons
 
-### 1. `Raw_table_data`
+python verify_data.py            # 1. free preflight
+python main.py --dry-run --n 8   # 2. free plumbing test (scores trivially 1.0)
 
-This file contains textual representations of financial tables extracted from 10,000 financial statements of various companies. The financial tables were originally stored as images and have been translated into structured text format. These tables provide the foundational financial data used in our analysis and experiments.
-
-### 2. `transaction_data`
-
-This file includes transaction data corresponding to the financial tables in `Raw_table_data`. Each financial table has been assigned synthetic transaction data that aligns with its reported financial figures, allowing for validation of financial statement accuracy.
-
-### 3. `Error_insertion`
-
-This directory contains datasets with manually injected errors in financial tables to simulate real-world auditing challenges. The directory consists of two files:
-
-- **`wrong_table_data.json`**: This file contains financial tables where a single error has been manually introduced per table. The dataset also includes corresponding transaction data and metadata indicating the type of error injected.
-- **`wrong_table_data_multiple_errors.json`**: This file extends the `wrong_table_data.json` dataset by injecting multiple errors into each financial table. It serves as a more challenging benchmark for evaluating the error detection capabilities of LLMs.
-
-## Citation
-
-If you use this dataset or refer to our research in your work, please cite our paper:
-
-```
-@inproceedings{wangauditbench,
-  title={AuditBench: A Benchmark for Large Language Models in Financial Statement Auditing},
-  author={Wang, Rushi and Liu, Jiateng and Zhao, Weijie and Li, Shenglan and Zhang, Denghui},
-  booktitle={2nd AI4Research Workshop: Towards a Knowledge-grounded Scientific Research Lifecycle}
-}
+export OPENAI_API_KEY=sk-...
+python main.py                   # 3. real run: 2 models x 3 splits x 150 samples
+# or remove sampling variance entirely:
+python main.py --split single_error --n 1484
+python main.py --split multi_error  --n 372
 ```
 
-Feel free to open an issue or contact us for any questions or clarifications.
+## What reproduces and what doesn't
+- **Reproduces:** General Judgment, Error Type/Entry EM, Error Resolution
+  (BERTScore), Table Revision (BLEU), Overall SR — and the qualitative story.
+- **Does NOT reproduce:** Standards Citation (paper's FASB DB + retriever were
+  not released; this repo uses a regex substitute, flagged with †).
+- **Exact decimals won't match anyone:** unknown 150-sample draw + retired
+  mid-2025 GPT-4 snapshot. Run the full set and calibrate the BERTScore knobs
+  in `metrics.py` (`BERTSCORE_RESCALE`) against the paper's numbers.
 
----
-
-**Contributors:** Rushi Wang, Jiateng Liu, Weijie Zhao, Shenglan Li, Denghui Zhang\
-University of Illinois Urbana-Champaign | Stevens Institute of Technology
+## Cost
+~$15–35 total for the full six runs, mostly GPT-4. Budget $50.
+```

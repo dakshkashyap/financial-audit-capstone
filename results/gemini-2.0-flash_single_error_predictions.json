@@ -1,0 +1,102 @@
+[
+  {
+    "item_idx": 0,
+    "model_used": "gemini-2.0-flash",
+    "raw_text": "",
+    "parsed": null,
+    "error": "max_retries",
+    "item_meta": {
+      "mode": "single_error",
+      "general_judgement": "Incorrect",
+      "errors": [
+        {
+          "error_type": "Numerical Error",
+          "problematic_entry": 5,
+          "error_resolution": "The 'Accounts receivable, net' was modified erroneously to RMB 70,655 and US$ 9,927. The correct values should be RMB 80,655 and US$ 11,316, as these represent the actual net collectible amounts after billing and write-offs throughout the year. This incorrect value leads to understatement of both accounts receivable and total current assets. To resolve this, update the 'Accounts receivable, net' to the original and correct amounts, and adjust the subtotal and total assets accordingly.",
+          "standards_citation": "According to FASB ASC 310-10, accounts receivable should be reported at their net realizable value. This includes assessing the potential for uncollectible accounts and presenting the net amount expected to be received."
+        }
+      ],
+      "gt_table": "[Time]: December 31, 2023 [SEP]\n[row 0]: ASSETS [SEP] \n[row 1]: Current assets [SEP] \n[row 2]: Cash and cash equivalents | RMB 2,925,709 | US$ 412,077 [SEP] \n[row 3]: Restricted cash | RMB 66,080 | US$ 9,307 [SEP] \n[row 4]: Short-term investments, net | RMB 100,000 | US$ 14,085 [SEP] \n[row 5]: Accounts receivable, net | RMB 80,655 | US$ 11,316 [SEP] \n[row 6]: Receivables from online payment platforms | RMB 214,163 | US$ 30,164 [SEP] \n[row 7]: Inventories | RMB 2,204,009 | US$ 404,195 [SEP] \n[row 8]: Prepaid expenses and other current assets, net | RMB 1,544,918 | US$ 217,597 [SEP] \n[row 9]: Term deposit-current | RMB 464,019 | US$ 65,356 [SEP] \n[row 10]: Total current assets | RMB 7,599,554 | US$ 1,070,374 [SEP] \n[row 11]: Non-current assets [SEP] \n[row 12]: Property and equipment, net | RMB 4,169,141 | US$ 587,211 [SEP] \n[row 13]: Restricted cash | RMB 46,854 | US$ 6,599 [SEP] \n[row 14]: Other non-current assets, net | RMB 789,492 | US$ 111,728 [SEP] \n[row 15]: Deferred tax assets, net | RMB 350,852 | US$ 50,014 [SEP] \n[row 16]: Operating lease right-of-use assets | RMB 5,186,855 | US$ 2730,533 [SEP] \n[row 17]: Term deposit-non current | RMB 150,000 | US$ 21,127 [SEP] \n[row 18]: Total non-current assets | RMB 10,692,244 | US$ 1,505,996 [SEP] \n[row 19]: Total assets | RMB 18,291,978 | US$ 2,576,370 [SEP] \n\n[row 20]: LIABILITIES AND SHAREHOLDERS' EQUITY [SEP] \n[row 21]: Current liabilities [SEP] \n[row 22]: Accounts payable | RMB 814,655 | US$ 114,742 [SEP] \n[row 23]: Accrued expenses and other current liabilities | RMB 2,556,977 | US$ 360,143 [SEP] \n[row 24]: Deferred revenues | RMB 123,422 | US$ 17,384 [SEP] \n[row 25]: Payable for equity litigation settlement | RMB 16,314 | US$ 2,331 [SEP] \n[row 26]: Operating lease liabilities | RMB 1,851,310 | US$ 260,752 [SEP] \n[row 27]: Total current liabilities | RMB 5,462,678 | US$ 769,403 [SEP] \n[row 28]: Non-current liabilities [SEP] \n[row 29]: Operating lease liabilities | RMB 3,114,855 | US$ 438,718 [SEP] \n[row 30]: Total non-current liabilities | RMB 3,114,855 | US$ 438,718 [SEP] \n[row 31]: Total liabilities | RMB 8,577,533 | US$ 1,208,121 [SEP] \n\n[row 32]: Commitments and contingencies | 20 [SEP]"
+    }
+  },
+  {
+    "item_idx": 1,
+    "model_used": "gemini-2.0-flash",
+    "raw_text": "",
+    "parsed": null,
+    "error": "max_retries",
+    "item_meta": {
+      "mode": "single_error",
+      "general_judgement": "Incorrect",
+      "errors": [
+        {
+          "error_type": "Missing Row",
+          "problematic_entry": 10,
+          "error_resolution": "The row for 'Business optimization and realignment costs' in the operating expenses has been intentionally removed, resulting in an inaccurate total for operating expenses and incorrect calculation of operating income and subsequent figures. The correct 'Business optimization and realignment costs' is $309 and should be reinstated in the operating expenses section, adjusting 'Total Operating Expenses' to $85,243, maintaining accuracy through subsequent calculations.",
+          "standards_citation": "According to the FASB Conceptual Framework, completeness is key for reliability; thus, exclusion of necessary costs like business optimization impairs the statement's integrity and must adhere to reporting parts of operating expenses for transparent financial reporting."
+        }
+      ],
+      "gt_table": "[Time]: May 31, 2023 [SEP]\n[row 0]: Revenue [SEP]\n[row 1]: Total Revenue | $90,155 [SEP]\n[row 2]: Operating Expenses [SEP]\n[row 3]: Salaries and employee benefits | $31,019 [SEP]\n[row 4]: Purchased transportation | $21,790 [SEP]\n[row 5]: Rentals and landing fees | $4,738 [SEP]\n[row 6]: Depreciation and amortization | $4,176 [SEP]\n[row 7]: Fuel | $5,909 [SEP]\n[row 8]: Maintenance and repairs | $3,357 [SEP]\n[row 9]: Goodwill and other asset impairment charges | $117 [SEP]\n[row 10]: Business optimization and realignment costs | $309 [SEP]\n[row 11]: Other | $13,828 [SEP]\n[row 12]: Total Operating Expenses | $85,243 [SEP]\n[row 13]: Operating Income | $4,912 [SEP]\n[row 14]: Other Income (Expense) [SEP]\n[row 15]: Interest expense | $(694) [SEP]\n[row 16]: Interest income | $198 [SEP]\n[row 17]: Other retirement plans income (expense) | $(1,054) [SEP]\n[row 18]: Loss on debt extinguishment | $0 [SEP]\n[row 19]: Other, net | $(107) [SEP]\n[row 20]: Total Other Income (Expense) | $451 [SEP]\n[row 21]: Income Before Income Taxes | $5,363 [SEP]\n[row 22]: Provision for Income Taxes | $1,391 [SEP]\n[row 23]: Net Income | $3,972 [SEP]\n[row 24]: Basic Earnings Per Common Share | $15.60 [SEP]\n[row 25]: Diluted Earnings Per Common Share | $15.48 [SEP]"
+    }
+  },
+  {
+    "item_idx": 2,
+    "model_used": "gemini-2.0-flash",
+    "raw_text": "",
+    "parsed": null,
+    "error": "max_retries",
+    "item_meta": {
+      "mode": "single_error",
+      "general_judgement": "Incorrect",
+      "errors": [
+        {
+          "error_type": "Misclassification",
+          "problematic_entry": 9,
+          "error_resolution": "The financial statement incorrectly classified 'Interest income and other, net' correctly within 'Interest and other (income) expense' but listed after 'Interest expense', which misclassifies the sequence of line items within this segment, thereby affecting readability and coherence as per financial reporting norms. 'Interest income and other, net' should be presented prior to 'Interest expense' as per typical financial reporting conventions to correctly sequence the components and reflect subtractions as expected in financial presentations.",
+          "standards_citation": "According to FASB Accounting Standards Codification (ASC) 220-10, the presentation of income items should follow a logical order that reflects typical financial operations, ensuring consistent and clear representation to avoid misinterpretation by users of financial statements."
+        }
+      ],
+      "gt_table": "[Time]: Fiscal 2021 [SEP]\n[row 0]: Net sales | $151,157 [SEP]\n[row 1]: Cost of sales | $100,325 [SEP]\n[row 2]: Gross profit | $50,832 [SEP]\n[row 3]: Operating expenses: [SEP]\n[row 4]: Selling, general and administrative | $25,406 [SEP]\n[row 5]: Depreciation and amortization | $2,386 [SEP]\n[row 6]: Total operating expenses | $27,792 [SEP]\n[row 7]: Operating income | $23,040 [SEP]\n[row 8]: Interest and other (income) expense: [SEP]\n[row 9]: Interest income and other, net | $(44) [SEP]\n[row 10]: Interest expense | $1,347 [SEP]\n[row 11]: Interest and other, net | $1,303 [SEP]\n[row 12]: Earnings before provision for income taxes | $21,737 [SEP]\n[row 13]: Provision for income taxes | $5,304 [SEP]\n[row 14]: Net earnings | $16,433 [SEP]\n[row 15]: Basic weighted average common shares | 1,054 [SEP]\n[row 16]: Basic earnings per share | $15.59 [SEP]\n[row 17]: Diluted weighted average common shares | 1,058 [SEP]\n[row 18]: Diluted earnings per share | $15.53 [SEP]"
+    }
+  },
+  {
+    "item_idx": 3,
+    "model_used": "gemini-2.0-flash",
+    "raw_text": "",
+    "parsed": null,
+    "error": "max_retries",
+    "item_meta": {
+      "mode": "single_error",
+      "general_judgement": "Incorrect",
+      "errors": [
+        {
+          "error_type": "Misclassification",
+          "problematic_entry": 9,
+          "error_resolution": "The \"Other intangible assets, net\" item was mistakenly placed under non-current assets before \"Operating lease right-of-use assets\". It should be repositioned after assets related classifications as it reflects future rights over periods longer than a year, impacting non-current asset calculations. To resolve this, swap the order of 'Other intangible assets, net' and 'Operating lease right-of-use assets' rows.",
+          "standards_citation": "According to the FASB, intangible assets are generally recognized under non-current assets as they often contain value that exceeds a single operating cycle but must be properly sequenced in financial statements (ASC 350, Intangibles \u2013 Goodwill and Other)."
+        }
+      ],
+      "gt_table": "[Time]: December 31, 2022 [SEP]\n[row 0]: Current assets [SEP]\n[row 1]: Cash and cash equivalents | $1,718 [SEP]\n[row 2]: Accounts receivable, net of allowance of $114 | $2,571 [SEP]\n[row 3]: Inventories | $2,679 [SEP]\n[row 4]: Prepaid expenses and other current assets | $857 [SEP]\n[row 5]: Current assets of discontinued operations | $186 [SEP]\n[row 6]: Total current assets | $8,011 [SEP]\n[row 7]: Property, plant and equipment, net | $4,695 [SEP]\n[row 8]: Goodwill | $6,452 [SEP]\n[row 9]: Other intangible assets, net | $6,793 [SEP]\n[row 10]: Operating lease right-of-use assets | $541 [SEP]\n[row 11]: Other non-current assets | $1,109 [SEP]\n[row 12]: Non-current assets of discontinued operations | $686 [SEP]\n[row 13]: Total assets | $28,287 [SEP]\n[row 14]: Current liabilities [SEP]\n[row 15]: Short-term debt | $299 [SEP]\n[row 16]: Current maturities of long-term debt and finance lease obligations | $1,105 [SEP]\n[row 17]: Accounts payable | $1,110 [SEP]\n[row 18]: Accrued expenses and other current liabilities | $2,170 [SEP]\n[row 19]: Current liabilities of discontinued operations | $61 [SEP]\n[row 20]: Total current liabilities | $4,745 [SEP]\n[row 21]: Long-term debt and finance lease obligations, less current portion | $15,232 [SEP]\n[row 22]: Operating lease liabilities | $447 [SEP]\n[row 23]: Other non-current liabilities | $1,848 [SEP]\n[row 24]: Non-current liabilities of discontinued operations | $120 [SEP]\n[row 25]: Total liabilities | $22,392 [SEP]\n[row 26]: Commitments and contingencies | [SEP]\n[row 27]: Equity | [SEP]\n[row 28]: Common stock, $1 par value, authorized 2,000,000,000 shares, issued 683,494,944 shares in 2023 and 2022 | $683 [SEP]\n[row 29]: Common stock in treasury, at cost, 175,861,893 shares in 2023 and 179,062,594 shares in 2022 | ($11,389) [SEP]\n[row 30]: Additional contributed capital | $6,322 [SEP]\n[row 31]: Retained earnings | $14,050 [SEP]\n[row 32]: Accumulated other comprehensive income (loss) | ($3,833) [SEP]\n[row 33]: Total Baxter stockholders\u2019 equity | $5,833 [SEP]\n[row 34]: Noncontrolling interests | $62 [SEP]\n[row 35]: Total equity | $5,895 [SEP]\n[row 36]: Total liabilities and equity | $28,287 [SEP]"
+    }
+  },
+  {
+    "item_idx": 4,
+    "model_used": "gemini-2.0-flash",
+    "raw_text": "",
+    "parsed": null,
+    "error": "max_retries",
+    "item_meta": {
+      "mode": "single_error",
+      "general_judgement": "Incorrect",
+      "errors": [
+        {
+          "error_type": "Numerical Error",
+          "problematic_entry": 6,
+          "error_resolution": "A Numerical Error was introduced in the 'General and administrative' expenses, where the amount was incorrectly recorded as $920 instead of the correct $620. Due to this error, the 'Total operating expenses' and 'Income from operations' are also incorrect. As such, 'Interest expense,' 'Interest and other income (expense), net,' 'Income before income taxes,' 'Net income,' and both 'Earnings per share' are incorrectly calculated as a consequence of this initial numerical error. The correct 'General and administrative' expense should be $620.",
+          "standards_citation": "According to FASB ASC 230-10-45, companies must ensure that expenses are correctly reported under their appropriate heads, and errors in financial reporting must be promptly identified and corrected to ensure financial statements are not misleading."
+        }
+      ],
+      "gt_table": "[Time]: 2021 [SEP]\n[row 0]: Net sales | $23,063 [SEP] \n[row 1]: Cost of products sold | $12,149 [SEP] \n[row 2]: Gross profit | $10,914 [SEP] \n[row 3]: Operating expenses: [SEP]\n[row 4]: Research, development and engineering | $2,485 [SEP] \n[row 5]: Marketing and selling | $609 [SEP] \n[row 6]: General and administrative | $620 [SEP] \n[row 7]: Severance and related charges | $157 [SEP]\n[row 8]: Deal termination fee | $154 [SEP]\n[row 9]: Total operating expenses | $4,025 [SEP] \n[row 10]: Income from operations | $6,889 [SEP] \n[row 11]: Interest expense | $236 [SEP] \n[row 12]: Interest and other income (expense), net | $118 [SEP] \n[row 13]: Income before income taxes | $6,771 [SEP] \n[row 14]: Provision for income taxes | $883 [SEP] \n[row 15]: Net income | $5,888 [SEP] \n[row 16]: Earnings per share: [SEP]\n[row 17]: Basic | $6.47 [SEP] \n[row 18]: Diluted | $6.40 [SEP] \n[row 19]: Weighted average number of shares: [SEP]\n[row 20]: Basic | 910 [SEP] \n[row 21]: Diluted | 919 [SEP]"
+    }
+  }
+]
