@@ -44,6 +44,4 @@ python main.py --split multi_error  --n 372
   mid-2025 GPT-4 snapshot. Run the full set and calibrate the BERTScore knobs
   in `metrics.py` (`BERTSCORE_RESCALE`) against the paper's numbers.
 
-## Cost
-~$15–35 total for the full six runs, mostly GPT-4. Budget $50.
 ```
