@@ -26,10 +26,10 @@ RESULTS_DIR = os.path.join(os.path.dirname(__file__), "results")
  
  
 def evaluate_file(pred_path: str) -> Dict[str, float]:
-    with open(pred_path) as f:
+    with open(pred_path, encoding="utf-8") as f:
         records = json.load(f)
     n = len(records)
-    print(f"\n  Evaluating {os.path.basename(pred_path)} ({n} samples) …")
+    print(f"\n  Evaluating {os.path.basename(pred_path)} ({n} samples) ...")
  
     em_gj, em_ty, em_en = [], [], []
     s1, s5, bleu = [], [], []
@@ -62,7 +62,7 @@ def evaluate_file(pred_path: str) -> Dict[str, float]:
         p_corr = extract_corrected_table(parsed)
         bleu.append(bleu_table_revision(p_corr, gt_table))
  
-    print("    Computing BERTScore (batched) …", flush=True)
+    print("    Computing BERTScore (batched) ...", flush=True)
     bert = bertscore_batch(bert_preds, bert_refs)
  
     all_scores = []
@@ -74,10 +74,12 @@ def evaluate_file(pred_path: str) -> Dict[str, float]:
         all_scores.append(s)
  
     avg = {k: round(sum(s[k] for s in all_scores)/n, 4) for k in all_scores[0]}
+    parse_ok = sum(1 for r in records if r.get("parsed"))
+    avg["parse_rate"] = round(parse_ok / n, 4)
     scored = pred_path.replace("_predictions.json", "_scores.json")
-    with open(scored, "w") as f:
+    with open(scored, "w", encoding="utf-8") as f:
         json.dump({"averages": avg, "per_sample": all_scores}, f, indent=2)
-    print(f"    Scores → {scored}")
+    print(f"    Scores -> {scored}")
     return avg
  
  
@@ -92,17 +94,26 @@ PAPER_RESULTS = {
 LABELS = [("em_general_judgment","Gen.Judg"),("em_error_type","ErrType"),
           ("em_error_entry","ErrEntry"),("bertscore","BERTScore"),
           ("standards_top1","Std T1†"),("standards_top5","Std T5†"),
-          ("bleu","BLEU"),("success_rate","SR")]
-NOTE = ("† Standards Citation uses regex FASB-ID extraction, NOT the paper's "
-        "private retriever+DB. Not comparable to the paper's Standards columns.")
- 
- 
+          ("bleu","BLEU"),("success_rate","SR"),("parse_rate","Parse%")]
+NOTE = ("[+] Standards Citation (Std T1/T5) uses regex FASB-ID extraction, NOT the "
+        "paper's private retriever+DB. Not comparable to the paper's Standards columns.")
+
+_SPLIT_SUFFIXES = ("_single_error", "_multi_error", "_correct")
+
+def _model_from_key(key: str) -> str:
+    """'claude-sonnet-4-6_single_error' → 'claude-sonnet-4-6' (model ids may
+    themselves contain underscores, so strip known split suffixes only)."""
+    for suf in _SPLIT_SUFFIXES:
+        if key.endswith(suf):
+            return key[: -len(suf)]
+    return key
+
+
 def print_comparison_table(all_avg):
     w = 11
     # Collect all unique model names from results + paper
     all_models = list(dict.fromkeys(
-        [k.rsplit("_", 2)[0] if k.count("_") >= 2 else k.rsplit("_", 1)[0]
-         for k in all_avg] +
+        [_model_from_key(k) for k in all_avg] +
         ["gpt-3.5-turbo-0125", "gpt-4-0613"]
     ))
     for split in ["correct", "single_error", "multi_error"]:
@@ -119,7 +130,8 @@ def print_comparison_table(all_avg):
                 print(f"{label:<26}{'[yours]':<9}" + "".join(f"{sc.get(c[0],float('nan')):>{w}.3f}" for c in LABELS))
             pr = PAPER_RESULTS.get((tag, split))
             if pr:
-                print(f"{'':<26}{'[paper]':<9}" + "".join(f"{v:>{w}.3f}" if v is not None else f"{'—':>{w}}" for v in pr))
+                row = list(pr) + [None] * (len(LABELS) - len(pr))   # pad new columns
+                print(f"{'':<26}{'[paper]':<9}" + "".join(f"{v:>{w}.3f}" if v is not None else f"{'—':>{w}}" for v in row))
     print("\n" + NOTE)
  
  
