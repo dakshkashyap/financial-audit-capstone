@@ -1,0 +1,40 @@
+{
+  "seed": 42,
+  "n": 150,
+  "dry_run": false,
+  "results": {
+    "claude-opus-4-6_correct": {
+      "em_general_judgment": 0.5,
+      "em_error_type": 1.0,
+      "em_error_entry": 1.0,
+      "bertscore": 0.8906,
+      "standards_top1": 0.0,
+      "standards_top5": 0.0,
+      "bleu": 0.4534,
+      "success_rate": 0.0,
+      "parse_rate": 1.0
+    },
+    "claude-opus-4-6_single_error": {
+      "em_general_judgment": 0.9733,
+      "em_error_type": 0.92,
+      "em_error_entry": 0.82,
+      "bertscore": 0.872,
+      "standards_top1": 0.3333,
+      "standards_top5": 0.4,
+      "bleu": 0.949,
+      "success_rate": 0.5,
+      "parse_rate": 1.0
+    },
+    "claude-opus-4-6_multi_error": {
+      "em_general_judgment": 0.9933,
+      "em_error_type": 0.6867,
+      "em_error_entry": 0.6767,
+      "bertscore": 0.8716,
+      "standards_top1": 0.5133,
+      "standards_top5": 0.6333,
+      "bleu": 0.8581,
+      "success_rate": 0.1533,
+      "parse_rate": 1.0
+    }
+  }
+}
