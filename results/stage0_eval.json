@@ -1,0 +1,175 @@
+{
+  "seed": 42,
+  "n": 400,
+  "splits": {
+    "single_error": {
+      "n": 400,
+      "coverage": 0.4,
+      "error_row_em": 0.3425,
+      "error_type_em": 0.3675,
+      "error_row_em_fired": 0.8562,
+      "error_type_em_fired": 0.9187,
+      "success_rate": 0.3375,
+      "correct_value_acc": 0.9892,
+      "correct_value_n": 93,
+      "per_type": {
+        "misclassification": {
+          "n": 93,
+          "coverage": 0.1613,
+          "type_em": 0.1183,
+          "row_em": 0.0968
+        },
+        "missing row": {
+          "n": 108,
+          "coverage": 0.3148,
+          "type_em": 0.2963,
+          "row_em": 0.2593
+        },
+        "numerical error": {
+          "n": 95,
+          "coverage": 0.7158,
+          "type_em": 0.7158,
+          "row_em": 0.6737
+        },
+        "redundant row": {
+          "n": 104,
+          "coverage": 0.4135,
+          "type_em": 0.3462,
+          "row_em": 0.3462
+        }
+      },
+      "confusion": {
+        "misclassification -> abstain": 78,
+        "misclassification -> misclassification": 11,
+        "misclassification -> missing row": 1,
+        "misclassification -> numerical error": 3,
+        "missing row -> abstain": 74,
+        "missing row -> missing row": 32,
+        "missing row -> numerical error": 2,
+        "numerical error -> abstain": 27,
+        "numerical error -> numerical error": 68,
+        "redundant row -> abstain": 61,
+        "redundant row -> missing row": 1,
+        "redundant row -> numerical error": 6,
+        "redundant row -> redundant row": 36
+      },
+      "samples": [
+        {
+          "gt_type": "numerical error",
+          "gt_row": 5,
+          "pred_type": null,
+          "pred_row": null,
+          "pred_correct_value": null,
+          "detail": "abstain"
+        },
+        {
+          "gt_type": "missing row",
+          "gt_row": 10,
+          "pred_type": "missing row",
+          "pred_row": 10,
+          "pred_correct_value": 309.0,
+          "detail": "'Business optimization and realignment costs' (value 309.0) is described by the transactions but absent from the statement."
+        },
+        {
+          "gt_type": "misclassification",
+          "gt_row": 9,
+          "pred_type": null,
+          "pred_row": null,
+          "pred_correct_value": null,
+          "detail": "abstain"
+        },
+        {
+          "gt_type": "misclassification",
+          "gt_row": 9,
+          "pred_type": null,
+          "pred_row": null,
+          "pred_correct_value": null,
+          "detail": "abstain"
+        },
+        {
+          "gt_type": "numerical error",
+          "gt_row": 6,
+          "pred_type": "numerical error",
+          "pred_row": 6,
+          "pred_correct_value": 620.0,
+          "detail": "'General and administrative' stated 920.0, transactions imply 620.0."
+        },
+        {
+          "gt_type": "numerical error",
+          "gt_row": 6,
+          "pred_type": "numerical error",
+          "pred_row": 6,
+          "pred_correct_value": 39937.0,
+          "detail": "Subtotal 'Total operating costs and expenses' stated 41937.0, its leaf rows sum to 39937.0."
+        },
+        {
+          "gt_type": "numerical error",
+          "gt_row": 3,
+          "pred_type": null,
+          "pred_row": null,
+          "pred_correct_value": null,
+          "detail": "abstain"
+        },
+        {
+          "gt_type": "numerical error",
+          "gt_row": 11,
+          "pred_type": null,
+          "pred_row": null,
+          "pred_correct_value": null,
+          "detail": "abstain"
+        }
+      ]
+    },
+    "multi_error": {
+      "n": 372,
+      "coverage": 0.3602,
+      "any_error_match": 0.2984,
+      "any_error_match_fired": 0.8284
+    },
+    "correct": {
+      "n": 371,
+      "false_positive_rate": 0.0189,
+      "fired": 7,
+      "false_positive_by_type": {
+        "numerical error": 7
+      },
+      "samples": [
+        {
+          "pred_type": "numerical error",
+          "pred_row": 44,
+          "detail": "'Beginning of period' stated 531822.0, transactions imply 391822.0."
+        },
+        {
+          "pred_type": "numerical error",
+          "pred_row": 4,
+          "detail": "'Inventories' stated 6059.0, transactions imply 8612.0."
+        },
+        {
+          "pred_type": "numerical error",
+          "pred_row": 19,
+          "detail": "Subtotal 'Total current liabilities' stated 1299216.0, its leaf rows sum to 718975.0."
+        },
+        {
+          "pred_type": "numerical error",
+          "pred_row": 12,
+          "detail": "'Research and development' stated 2987.0, transactions imply 2987000.0."
+        },
+        {
+          "pred_type": "numerical error",
+          "pred_row": 3,
+          "detail": "Subtotal 'Net cash used for investing activities' stated -1161.0, its leaf rows sum to -1883.0."
+        },
+        {
+          "pred_type": "numerical error",
+          "pred_row": 31,
+          "detail": "Subtotal 'Total ON Semiconductor Corporation stockholders\u2019 equity' stated 77826.0, its leaf rows sum to 7782.6."
+        },
+        {
+          "pred_type": "numerical error",
+          "pred_row": 30,
+          "detail": "'Proceeds from sale of investments' stated 505.0, transactions imply -420693.0."
+        }
+      ]
+    }
+  }
+}

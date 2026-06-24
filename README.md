@@ -14,6 +14,12 @@ Together / local Ollama).
 - `verify_data.py` — preflight check; run this first, it's free.
 - `main.py` — glue.
 
+**Stage 0 — deterministic pre-LLM gate (IntelliAudit Phase 2, no API key, $0):**
+- `stage0_common.py` — shared layer: typed table DataFrame + transaction "oracle" + subtotal alignment + the `Finding` schema and `combine_findings`.
+- `stage0a.py` — **Arithmetic Verifier** (SymPy): Numerical Error + Missing Row.
+- `stage0b.py` — **Equation Checker** (pure Python): Redundant Row + Misclassification.
+- `stage0_eval.py` — offline harness → `results/stage0_eval.json`.
+
 ## Data (already in this repo)
 - `Error_insertion/wrong_table_data.json` (1484 single-error tables → Table 2)
 - `Error_insertion/wrong_table_data_multiple_errors.json` (372 multi-error tables → Table 3)
@@ -80,3 +86,36 @@ Scores land in `..._scores.json` and `results/summary.json`.
 - The `Parse%` column shows the share of responses that produced valid JSON —
   if it is low, every EM metric is depressed mechanically; inspect `raw_text`
   in the predictions file before drawing conclusions about a model.
+
+## Stage 0 — deterministic pre-LLM gate (IntelliAudit Phase 2)
+
+Two **free, deterministic, no-LLM** stages that localize errors directly from the
+parsed table + transaction narrative. They run *before* the LLM and exist to fix
+the baseline's **over-auditing problem** (50% false alarms on clean tables): on
+clean statements the gate abstains ~98% of the time, and when it fires it is
+right ~92% of the time — so it can short-circuit the expensive LLM on the cases
+it covers and defer the rest. The existing LLM pipeline is **unchanged**.
+
+- **Stage 0A (`stage0a.py`, SymPy):** recomputes/cross-references values against
+  the transaction oracle → **Numerical Error** (with the corrected value) and
+  **Missing Row** (with the value + re-insertion position).
+- **Stage 0B (`stage0b.py`, pure Python):** accounting identities
+  (Assets = Liab + Equity, IS chain, cash-flow sums) + section-anomaly
+  localization → **Redundant Row** and **Misclassification**.
+
+```powershell
+python stage0_eval.py                         # single_error + correct, n=150 (no API key)
+python stage0_eval.py --split single_error --n 1484
+python stage0_eval.py --split all --n 400     # adds multi_error
+```
+
+Writes `results/stage0_eval.json` and prints coverage, Error Row/Type EM,
+correct-value accuracy, a per-error-type breakdown, and the **false-positive
+rate** on the clean split.
+
+**Headline (n=400, seed=42):** false-positive rate **0.019**, correct-value
+accuracy **0.99**, and among the cases it fires on, **Type EM 0.92 / Row EM
+0.86**. Coverage is intentionally partial (~40% of single-error items); the
+remainder is left for the later LLM stage. See `todo.md` → *Phase 2 Progress*
+for the full breakdown, design rationale, known limitations, and the handoff
+contract for downstream stages.

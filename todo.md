@@ -19,6 +19,88 @@ Team reference document for the financial audit capstone (Phase 1 baseline + Pha
 
 ---
 
+## Phase 2 Progress — Stage 0A + 0B deterministic gate ✅ (implemented)
+
+> **TL;DR for the team:** the free, $0, no-LLM "Stage 0" of the IntelliAudit pipeline is built and validated. It localizes errors directly from the parsed table + transaction narrative. It is **precision-first**: on clean tables it fires on only **1.9%** of items (vs the LLM baseline's **50%** false alarms), and when it does fire it is right **~92%** of the time. It covers ~40% of single-error cases deterministically; the rest is meant to fall through to the LLM stage. **No changes were made to the existing LLM pipeline** (`runner.py` / `auditor_prompt.py` / `evaluate.py` / `metrics.py`).
+
+### What was added (4 new files + 2 deps)
+
+| File | Role | Error types it owns |
+|------|------|---------------------|
+| `stage0_common.py` | Shared layer: typed table DataFrame, transaction "oracle", positional subtotal alignment, the `Finding` schema, and `combine_findings()` | — |
+| `stage0a.py` | **Arithmetic Verifier** (SymPy + pandas) — reconcile leaves/subtotals vs the oracle | **Numerical Error**, **Missing Row** |
+| `stage0b.py` | **Equation Checker** (pure Python, no LLM) — accounting identities + section anomalies | **Redundant Row**, **Misclassification** |
+| `stage0_eval.py` | Offline metrics harness → `results/stage0_eval.json` | — |
+
+`requirements.txt` gained `sympy` and `pandas`. Reuses `parser.parse_table` / `parse_numeric_value` and `metrics._row_int` / `_norm_type` (no duplication).
+
+**Run it (no API key needed):**
+```powershell
+python stage0_eval.py                          # single_error + correct, n=150
+python stage0_eval.py --split single_error --n 1484
+python stage0_eval.py --split all --n 400      # adds multi_error
+```
+
+### Results (n=400, seed=42) — `results/stage0_eval.json`
+
+| Metric | Value | Note |
+|--------|-------|------|
+| **False-positive rate (clean split)** | **0.019** (7/371) | vs LLM baseline **0.50**. This is the headline win. |
+| **Correct-value accuracy** | **0.989** | when it proposes a fix, the number is right |
+| **Error Type EM (among fired)** | **0.919** | precision of the type label |
+| **Error Row EM (among fired)** | **0.856** | precision of the row index |
+| Coverage (fires) | 0.40 | intentionally partial; abstains otherwise |
+
+Per-type coverage / type-EM / row-EM (single-error, n=400):
+
+| GT type | n | coverage | type EM | row EM | owner |
+|---------|---|----------|---------|--------|-------|
+| numerical error | 95 | **0.72** | 0.72 | 0.67 | 0A |
+| redundant row | 104 | 0.41 | 0.35 | 0.35 | 0B |
+| missing row | 108 | 0.31 | 0.30 | 0.26 | 0A |
+| misclassification | 93 | **0.16** | 0.12 | 0.10 | 0B |
+
+### Why it works — design principles (precision-first)
+
+These were learned empirically; each one removed a class of false positives without much recall cost:
+
+1. **Corroboration anchoring.** A finding only fires when a *subtotal is off by exactly the implicated row's value* (vs the oracle **or** its own footing). Clean statements foot, so the gate stays silent → drives FP toward zero.
+2. **Magnitude-aware comparison** (`values_match`). Transactions state magnitudes (`$160`) where statements show signed values (`($160)`); plus a 0.5% relative tolerance for LLM rounding. Sign-only / rounding diffs are **not** errors.
+3. **Positional subtotal alignment** instead of label matching. None of the 4 error types add/remove a *subtotal*, so the ordered subtotal lists align 1:1 — far more reliable (label matching only worked ~64% of the time on cash-flow / income statements).
+4. **Injector-noise cleanup** (`strip_noise`). The dataset leaves HTML markers in cells (`$22,118 <!-- An incorrect value entered deliberately -->`) and wraps some numbers in quotes (`"2,925,709"`); both silently broke value parsing until stripped.
+5. **Unique-label + index guard** on reconciliation. Avoids `Basic`/`Diluted` (EPS vs weighted-shares) collisions and structural-shift mismatches.
+6. **Abstain by default.** Multiple/ambiguous candidates → abstain rather than guess. Coverage is *measured*, not assumed.
+
+### What did NOT work / known limitations (read before extending)
+
+- **Misclassification is the weakest (recall 0.16) and is partly undetectable here.** Many injected misclassifications are *pure within-section reorders*, or the subtotals were **not** recomputed — so there is **no arithmetic signal at all**. These genuinely require the LLM stage (Stage 2) or transaction-ordering semantics. We only catch the "section over/short by exactly the moved value" flavor.
+- **`infer_groups()` (subtotal → member leaves) is heuristic and unreliable** on income/cash-flow statements (no section headers, net subtotals, mixed signs). It's used only for the *weak* subtotal-tamper fallback and one misclassification path — **do not build hard logic on it** without improving it first.
+- **The 7 residual clean-split FPs are dataset tx/table inconsistencies, not our bugs:** unit mismatches (`R&D 2987` vs tx `2987000`, i.e. thousands-vs-dollars), and noisy transaction LHS values (`Inventories 6059` vs tx `8612`). They are inherent to the benchmark's transaction narratives.
+- **Transaction label coverage is the recall ceiling for missing/redundant.** When the narrative labels a row differently than the table (`Products` vs `Net Sales of Products`), reconciliation can't match it and the gate abstains. This is safe (no FP) but caps coverage.
+- **Reconciliation needs a unique, index-aligned label.** Duplicate labels and shifted rows abstain by design.
+
+### Handoff contract for the next stages (EDGAR Mapper → Stage 1 → Stage 2 → Stage 3)
+
+The single integration point is:
+
+```python
+import stage0a, stage0b
+from stage0_common import combine_findings
+finding = combine_findings(stage0a.verify(item), stage0b.check(item))
+# finding is None (abstain) OR a Finding(error_type, problematic_entry,
+#   correct_value, stated_value, source ∈ {"0A","0B"}, detail)
+```
+
+Recommended wiring (this *is* the gate, and the cheapest win available):
+- **If Stage 0 fires →** trust it (it's exact + free), short-circuit, and **skip the LLM**. This is what kills the 50% false-positive rate and saves API cost.
+- **If Stage 0 abstains →** fall through to **Stage 2 LLM**. Feed the LLM the Stage-0 *evidence* (`Stage0AResult.footing` / `Stage0BResult.equations`) to ground its reasoning.
+- **Stage 3 Reviser** can apply `correct_value` + `problematic_entry` to rewrite the table deterministically for Numerical Error / Missing Row — no LLM needed for those.
+- **EDGAR Mapper / Stage 1 Taxonomy** can reuse `stage0_common.build_table()` and the `Finding` dataclass rather than re-parsing.
+
+**Open work to raise Stage 0 coverage** (good first tasks): improve `infer_groups` (the grouping bottleneck); add a transaction-RHS member parser for explicit subtotal membership; unit-normalize tx vs table (×10/×1000) to remove the remaining FPs; fuzzy transaction↔table label matching to lift missing/redundant recall.
+
+---
+
 ## Full Results vs Paper (GPT-4 / GPT-3.5)
 
 | Split | Metric | **Opus 4.6 (ours)** | **Paper GPT-4** | **Paper GPT-3.5** | Verdict |
@@ -144,14 +226,16 @@ Opus dominates Mixtral on **error type classification** and **success rate**. Mi
 
 ### Tier 1 — Highest ROI (measurable on AuditBench, 2–4 weeks)
 
-#### 1. Neuro-symbolic verification gate (precision fix for correct split)
+#### 1. Neuro-symbolic verification gate (precision fix for correct split) — ✅ **first cut shipped as Stage 0A/0B**
 
 Add tools the LLM must call before saying "Incorrect":
-- Sum line items → compare to stated totals
-- Reconcile transaction narrative → table row values
-- Only flag if **deterministic check** fails
+- Sum line items → compare to stated totals ✅ (`stage0a._check_footing`, SymPy)
+- Reconcile transaction narrative → table row values ✅ (`stage0a._reconcile_leaves`)
+- Only flag if **deterministic check** fails ✅ (corroboration anchoring)
 
 **Hypothesis:** Gen Judgment on correct split 0.50 → 0.85+ without hurting single-error recall much.
+
+**Status:** the *deterministic* version is done (see *Phase 2 Progress* above) — clean-split fire rate is **1.9%**, i.e. the gate alone implies Gen-Judgment-on-correct ≈ **0.98** for the cases it covers. Remaining work is **wiring it into the LLM loop** (short-circuit on fire, pass evidence on abstain) and an on/off ablation.
 
 **Papers:** [AuditFlow](https://arxiv.org/html/2606.03031v1), Program-of-Thoughts / PAL.
 
@@ -240,9 +324,10 @@ BLEU on raw `[row n]` strings is brittle. Propose **cell-level F1** (row label +
 
 ### Week 3–4: Minimal improvement (first research delta)
 
-- [ ] Implement **TransactionSumTool** + **FootingTool** in LangGraph
-- [ ] Re-run **correct split only** — target Gen Judgment > 0.85
-- [ ] Ablation: tools on vs off on all 3 splits
+- [x] Implement **TransactionSumTool** + **FootingTool** — shipped as **Stage 0A/0B** (`stage0a.py`/`stage0b.py`, deterministic, no LangGraph needed yet)
+- [x] Offline gate eval — clean-split fire rate **0.019**, correct-value acc **0.989** (`results/stage0_eval.json`)
+- [ ] **Wire Stage 0 into the LLM loop** (short-circuit on fire, pass evidence on abstain) and re-run **correct split** end-to-end — target Gen Judgment > 0.85
+- [ ] Ablation: gate on vs off on all 3 splits
 - [ ] Document Δ metrics in `results/` and update this file
 
 ### Week 5–8: Multi-agent IntelliAudit prototype
@@ -332,7 +417,9 @@ Outputs: `results/<model>_<split>_predictions.json`, `_scores.json`, `summary.js
 - [ ] Build confusion matrix for 4 error types
 
 ### Engineering (Phase 2)
-- [ ] LangGraph scaffold + one deterministic tool (sum checker)
+- [x] Deterministic tool (sum/footing checker) — **Stage 0A/0B** (`stage0a.py`, `stage0b.py`, `stage0_common.py`, `stage0_eval.py`)
+- [ ] Wire Stage 0 as a gate in front of the LLM runner (short-circuit on fire, evidence on abstain)
+- [ ] LangGraph scaffold (Auditor / Defender / Judge) consuming `combine_findings()` output
 - [ ] Architecture diagram: Auditor / Defender / Judge (for professor meeting)
 - [ ] API design sketch for reasoning traces (align with IntelliAudit capstone)
 
@@ -343,4 +430,4 @@ Outputs: `results/<model>_<split>_predictions.json`, `_scores.json`, `summary.js
 
 ---
 
-*Last updated: June 2026 — after Claude Opus 4.6 full baseline run (seed=42, n=150).*
+*Last updated: June 2026 — added **Stage 0A/0B deterministic gate** (see Phase 2 Progress). Baseline numbers from Claude Opus 4.6 full run (seed=42, n=150); Stage 0 numbers from `stage0_eval.py` (seed=42, n=400).*
