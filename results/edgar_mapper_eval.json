@@ -1039,22 +1039,28 @@
       },
       "by_statement_type": {
         "cash_flow": {
-          "n_items": 35,
-          "valued_rows": 862,
-          "mapped_rows": 709,
-          "coverage": 0.8225
-        },
-        "unknown": {
-          "n_items": 52,
-          "valued_rows": 867,
-          "mapped_rows": 666,
-          "coverage": 0.7682
+          "n_items": 39,
+          "valued_rows": 861,
+          "mapped_rows": 707,
+          "coverage": 0.8211
         },
         "income_statement": {
-          "n_items": 63,
-          "valued_rows": 1350,
-          "mapped_rows": 1022,
-          "coverage": 0.757
+          "n_items": 91,
+          "valued_rows": 1930,
+          "mapped_rows": 1450,
+          "coverage": 0.7513
+        },
+        "balance_sheet": {
+          "n_items": 15,
+          "valued_rows": 270,
+          "mapped_rows": 228,
+          "coverage": 0.8444
+        },
+        "unknown": {
+          "n_items": 5,
+          "valued_rows": 18,
+          "mapped_rows": 12,
+          "coverage": 0.6667
         }
       },
       "top_unmapped_labels": [
@@ -1181,7 +1187,7 @@
         {
           "company": "",
           "ticker": null,
-          "statement_type": "unknown",
+          "statement_type": "income_statement",
           "period": "2023-05-31",
           "coverage": 0.7273,
           "rows": [
@@ -2051,22 +2057,28 @@
       },
       "by_statement_type": {
         "income_statement": {
-          "n_items": 63,
-          "valued_rows": 1373,
-          "mapped_rows": 1016,
-          "coverage": 0.74
+          "n_items": 91,
+          "valued_rows": 1951,
+          "mapped_rows": 1438,
+          "coverage": 0.7371
         },
         "cash_flow": {
-          "n_items": 40,
-          "valued_rows": 1029,
-          "mapped_rows": 838,
-          "coverage": 0.8144
+          "n_items": 48,
+          "valued_rows": 1076,
+          "mapped_rows": 867,
+          "coverage": 0.8058
+        },
+        "balance_sheet": {
+          "n_items": 8,
+          "valued_rows": 128,
+          "mapped_rows": 88,
+          "coverage": 0.6875
         },
         "unknown": {
-          "n_items": 47,
-          "valued_rows": 759,
-          "mapped_rows": 540,
-          "coverage": 0.7115
+          "n_items": 3,
+          "valued_rows": 6,
+          "mapped_rows": 1,
+          "coverage": 0.1667
         }
       },
       "top_unmapped_labels": [
@@ -2571,7 +2583,7 @@
         {
           "company": "",
           "ticker": null,
-          "statement_type": "cash_flow",
+          "statement_type": "income_statement",
           "period": "2023-12-31",
           "coverage": 0.8571,
           "rows": [
@@ -2579,7 +2591,7 @@
               "row_idx": 1,
               "label": "Cash and cash equivalents",
               "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
-              "asc_primary": "230-10-45-28",
+              "asc_primary": "210-10-45-1",
               "strategy": "exact",
               "confidence": 1.0,
               "mapped": true
@@ -2587,8 +2599,8 @@
             {
               "row_idx": 2,
               "label": "Inventories",
-              "concept": "us-gaap:IncreaseDecreaseInInventories",
-              "asc_primary": "230-10-45",
+              "concept": "us-gaap:InventoryNet",
+              "asc_primary": "210-10-45-1",
               "strategy": "exact",
               "confidence": 1.0,
               "mapped": true
@@ -2632,8 +2644,8 @@
             {
               "row_idx": 7,
               "label": "Goodwill",
-              "concept": "us-gaap:GoodwillImpairmentLoss",
-              "asc_primary": "230-10-45",
+              "concept": "us-gaap:Goodwill",
+              "asc_primary": "350-20-35",
               "strategy": "exact",
               "confidence": 1.0,
               "mapped": true
@@ -2686,8 +2698,8 @@
             {
               "row_idx": 16,
               "label": "Accounts payable",
-              "concept": "us-gaap:IncreaseDecreaseInAccountsPayable",
-              "asc_primary": "230-10-45",
+              "concept": "us-gaap:AccountsPayableCurrent",
+              "asc_primary": "210-10-45",
               "strategy": "exact",
               "confidence": 1.0,
               "mapped": true

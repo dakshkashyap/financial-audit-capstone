@@ -83,16 +83,54 @@ _STMT_KEYWORDS = {
 
 
 def infer_statement_type(sheet_type: str, table: str = "") -> str:
-    """Infer statement type from Sheet_type string or table header fallback."""
-    combined = (sheet_type + " " + table[:200]).lower()
+    """Infer statement type from Sheet_type string, table header, or row content.
+
+    Three passes in priority order:
+      1. Sheet_type field (present on correct split)
+      2. [Tab] header line inside the table (present on correct split)
+      3. Content-based: look at first 10 row labels for strong signal words
+         (needed on error splits where Sheet_type is missing)
+    """
+    # Pass 1: Sheet_type field and table header combined
+    combined = (sheet_type + " " + table[:300]).lower()
     for stype, keywords in _STMT_KEYWORDS.items():
         if any(kw in combined for kw in keywords):
             return stype
-    # last resort: look for [Tab] line inside the table text
-    tab_m = re.search(r'\[Tab\]\s*(.*?)(?:\[SEP\]|$)', table[:300], re.IGNORECASE)
+
+    # Pass 2: [Tab] line
+    tab_m = re.search(r'\[Tab\]\s*(.*?)(?:\[SEP\]|$)', table[:400], re.IGNORECASE)
     if tab_m:
-        return infer_statement_type(tab_m.group(1))
-    return "unknown"
+        result = infer_statement_type(tab_m.group(1))
+        if result != "unknown":
+            return result
+
+    # Pass 3: Content-based inference from row labels (error splits)
+    # Extract the first 10 row labels and check for strong indicator words
+    row_labels = re.findall(r'\[row\s*\d+\]\s*:\s*([^|[]+?)(?:\s*\||\s*\[SEP\])', table)
+    row_text = " ".join(row_labels[:10]).lower()
+
+    bs_signals  = ["assets", "liabilities", "equity", "stockholders", "shareholders",
+                   "current assets", "current liabilities", "retained earnings",
+                   "accounts payable", "accounts receivable"]
+    cf_signals  = ["operating activities", "investing activities", "financing activities",
+                   "cash flows", "capital expenditures", "short-term borrowings",
+                   "long-term financing", "net short-term"]
+    is_signals  = ["revenue", "revenues", "net sales", "cost of", "gross profit",
+                   "gross margin", "operating income", "net income", "net loss",
+                   "operating expenses", "selling", "research and development"]
+
+    bs_score  = sum(1 for s in bs_signals if s in row_text)
+    cf_score  = sum(1 for s in cf_signals if s in row_text)
+    is_score  = sum(1 for s in is_signals if s in row_text)
+
+    best = max(bs_score, cf_score, is_score)
+    if best == 0:
+        return "unknown"
+    if bs_score == best:
+        return "balance_sheet"
+    if cf_score == best:
+        return "cash_flow"
+    return "income_statement"
 
 
 # ── period parsing ────────────────────────────────────────────────────────────
