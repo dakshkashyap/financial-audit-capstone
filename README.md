@@ -20,6 +20,13 @@ Together / local Ollama).
 - `stage0b.py` — **Equation Checker** (pure Python): Redundant Row + Misclassification.
 - `stage0_eval.py` — offline harness → `results/stage0_eval.json`.
 
+**Stage 1 — Arelle taxonomy citation enrichment (no API key, $0):**
+- `edgar_mapper.py` — EDGAR/XBRL row → concept → static ASC citation mapping.
+- `stage1_arelle.py` — taxonomy traversal + section-based parent fallback.
+- `taxonomy_graph.py` — cached FASB taxonomy graph.
+- `stage1_eval.py` / `stage1_citation_eval.py` — offline citation harnesses.
+- `model_backends.py` — optional local-model backends (Ollama, Hugging Face, etc.).
+
 ## Data (already in this repo)
 - `Error_insertion/wrong_table_data.json` (1484 single-error tables → Table 2)
 - `Error_insertion/wrong_table_data_multiple_errors.json` (372 multi-error tables → Table 3)
@@ -119,3 +126,24 @@ accuracy **0.99**, and among the cases it fires on, **Type EM 0.92 / Row EM
 remainder is left for the later LLM stage. See `todo.md` → *Phase 2 Progress*
 for the full breakdown, design rationale, known limitations, and the handoff
 contract for downstream stages.
+
+## Stage 1 — Arelle taxonomy citation enrichment (IntelliAudit Phase 2)
+
+Deterministic FASB/ASC citation enrichment on top of the EDGAR Mapper's static
+`xbrl_concept_map.json`. No LLM, no API key.
+
+- `edgar_mapper.py` — maps table rows to XBRL concepts and static ASC citations.
+- `stage1_arelle.py` — Arelle taxonomy traversal + section-based parent fallback.
+- `taxonomy_graph.py` — cached taxonomy graph for concept lookup.
+- `stage1_eval.py` — offline harness → `results/stage1_eval.json`.
+- `stage1_citation_eval.py` — citation-specific metrics → `results/stage1_citation_eval.json`.
+- `enhance_predictions.py` — post-process LLM predictions (error-type normalization).
+
+```powershell
+python stage1_eval.py                         # correct split, n=150 (no API key)
+python stage1_eval.py --split all --n 200
+python stage1_citation_eval.py
+```
+
+See `SETUP_FREE_MODELS.md` for optional local-model backends (`model_backends.py`,
+`main_original.py`).

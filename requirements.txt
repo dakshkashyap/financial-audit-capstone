@@ -2,6 +2,7 @@ openai>=1.40.0
 sacrebleu>=2.3.0
 bert-score>=0.3.13
 tqdm>=4.65.0
+anthropic>=0.18.0
 torch
 transformers
 # Stage 0A (deterministic arithmetic verifier) / Stage 0B (equation checker)
