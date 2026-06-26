@@ -168,6 +168,71 @@ class KimiBackend(ModelBackend):
         }
 
 
+class MistralBackend(ModelBackend):
+    """Mistral AI API backend."""
+    
+    def __init__(self, model_name: str, **kwargs):
+        super().__init__(model_name, **kwargs)
+        api_key = os.environ.get("MISTRAL_API_KEY")
+        if not api_key:
+            raise EnvironmentError("MISTRAL_API_KEY not set for Mistral models")
+        import openai
+        self.client = openai.OpenAI(
+            api_key=api_key,
+            base_url="https://api.mistral.ai/v1",
+        )
+    
+    def generate(self, messages: List[Dict[str, str]], temperature: float = 1.0) -> Dict[str, Any]:
+        resp = self.client.chat.completions.create(
+            model=self.model_name,
+            messages=messages,
+            temperature=temperature,
+        )
+        return {
+            "content": resp.choices[0].message.content,
+            "model": resp.model,
+        }
+
+
+class ClaudeBackend(ModelBackend):
+    """Anthropic Claude API backend."""
+    
+    def __init__(self, model_name: str, **kwargs):
+        super().__init__(model_name, **kwargs)
+        api_key = os.environ.get("ANTHROPIC_API_KEY")
+        if not api_key:
+            raise EnvironmentError("ANTHROPIC_API_KEY not set for Claude models")
+        try:
+            from anthropic import Anthropic
+        except ImportError:
+            raise ImportError("anthropic package required: pip install anthropic")
+        self.client = Anthropic(api_key=api_key)
+    
+    def generate(self, messages: List[Dict[str, str]], temperature: float = 1.0) -> Dict[str, Any]:
+        # Claude requires system message separate from conversation
+        system_msg = ""
+        conv_messages = []
+        
+        for msg in messages:
+            if msg["role"] == "system":
+                system_msg = msg["content"]
+            else:
+                conv_messages.append(msg)
+        
+        resp = self.client.messages.create(
+            model=self.model_name,
+            max_tokens=4096,
+            temperature=temperature,
+            system=system_msg,
+            messages=conv_messages,
+        )
+        
+        return {
+            "content": resp.content[0].text,
+            "model": self.model_name,
+        }
+
+
 class HuggingFaceBackend(ModelBackend):
     """Local inference via Hugging Face Transformers."""
     
@@ -267,6 +332,22 @@ MODEL_CONFIGS = {
     "kimi/moonshot-v1-8k": {"backend": KimiBackend, "model_name": "moonshot-v1-8k"},
     "kimi/moonshot-v1-32k": {"backend": KimiBackend, "model_name": "moonshot-v1-32k"},
     "kimi/moonshot-v1-128k": {"backend": KimiBackend, "model_name": "moonshot-v1-128k"},
+    
+    # Mistral AI models (API)
+    "mistral/mistral-tiny": {"backend": MistralBackend, "model_name": "mistral-tiny"},
+    "mistral/mistral-small": {"backend": MistralBackend, "model_name": "mistral-small-latest"},
+    "mistral/mistral-medium": {"backend": MistralBackend, "model_name": "mistral-medium-latest"},
+    "mistral/mistral-large": {"backend": MistralBackend, "model_name": "mistral-large-latest"},
+    "mistral/open-mistral-7b": {"backend": MistralBackend, "model_name": "open-mistral-7b"},
+    "mistral/open-mixtral-8x7b": {"backend": MistralBackend, "model_name": "open-mixtral-8x7b"},
+    "mistral/open-mixtral-8x22b": {"backend": MistralBackend, "model_name": "open-mixtral-8x22b"},
+    
+    # Claude models (Anthropic)
+    "claude/claude-3-5-sonnet": {"backend": ClaudeBackend, "model_name": "claude-3-5-sonnet-20241022"},
+    "claude/claude-3-5-haiku": {"backend": ClaudeBackend, "model_name": "claude-3-5-haiku-20241022"},
+    "claude/claude-3-opus": {"backend": ClaudeBackend, "model_name": "claude-3-opus-20240229"},
+    "claude/claude-3-sonnet": {"backend": ClaudeBackend, "model_name": "claude-3-sonnet-20240229"},
+    "claude/claude-3-haiku": {"backend": ClaudeBackend, "model_name": "claude-3-haiku-20240307"},
     
     # Hugging Face models (local inference)
     "hf/Qwen/Qwen2.5-7B-Instruct": {"backend": HuggingFaceBackend, "model_name": "Qwen/Qwen2.5-7B-Instruct"},

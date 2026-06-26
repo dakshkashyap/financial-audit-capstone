@@ -1,0 +1,804 @@
+{
+  "seed": 42,
+  "n": 150,
+  "taxonomy_available": true,
+  "splits": {
+    "single_error": {
+      "split": "single_error",
+      "n_items": 150,
+      "total_valued_rows": 3079,
+      "taxonomy_available": true,
+      "before_stage1": {
+        "cited_rows": 2397,
+        "coverage": 0.7785
+      },
+      "after_stage1": {
+        "cited_rows": 2397,
+        "coverage": 0.7785,
+        "upgraded_rows": 0,
+        "upgrade_rate": 0.0
+      },
+      "source_breakdown": {
+        "none": 682,
+        "taxonomy": 2214,
+        "parent_fallback": 72,
+        "static_map": 111
+      },
+      "unmapped_rows": 682,
+      "top_concepts_no_hit": [],
+      "samples": [
+        {
+          "company": "",
+          "statement_type": "cash_flow",
+          "period": "2023-12-31",
+          "rows": [
+            {
+              "row_idx": 32,
+              "label": "Commitments and contingencies",
+              "concept": null,
+              "asc_primary": null,
+              "source": "none",
+              "mapped": false
+            }
+          ]
+        },
+        {
+          "company": "",
+          "statement_type": "income_statement",
+          "period": "2023-05-31",
+          "rows": [
+            {
+              "row_idx": 1,
+              "label": "Total Revenue",
+              "concept": "us-gaap:Revenues",
+              "asc_primary": "470-10-S99-1A",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 3,
+              "label": "Salaries and employee benefits",
+              "concept": null,
+              "asc_primary": null,
+              "source": "none",
+              "mapped": false
+            },
+            {
+              "row_idx": 4,
+              "label": "Purchased transportation",
+              "concept": null,
+              "asc_primary": null,
+              "source": "none",
+              "mapped": false
+            },
+            {
+              "row_idx": 5,
+              "label": "Rentals and landing fees",
+              "concept": null,
+              "asc_primary": null,
+              "source": "none",
+              "mapped": false
+            },
+            {
+              "row_idx": 6,
+              "label": "Depreciation and amortization",
+              "concept": "us-gaap:DepreciationAndAmortization",
+              "asc_primary": "230-10-45-28",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 7,
+              "label": "Fuel",
+              "concept": null,
+              "asc_primary": null,
+              "source": "none",
+              "mapped": false
+            },
+            {
+              "row_idx": 8,
+              "label": "Maintenance and repairs",
+              "concept": null,
+              "asc_primary": null,
+              "source": "none",
+              "mapped": false
+            },
+            {
+              "row_idx": 9,
+              "label": "Goodwill and other asset impairment charges",
+              "concept": "us-gaap:GoodwillAndIntangibleAssetImpairment",
+              "asc_primary": "942-210-S99-1",
+              "source": "parent_fallback",
+              "mapped": true
+            },
+            {
+              "row_idx": 10,
+              "label": "Other",
+              "concept": "us-gaap:OtherOperatingIncomeExpenseNet",
+              "asc_primary": "220-10-S99-2",
+              "source": "parent_fallback",
+              "mapped": true
+            },
+            {
+              "row_idx": 11,
+              "label": "Total Operating Expenses",
+              "concept": "us-gaap:OperatingExpenses",
+              "asc_primary": "225-10-45",
+              "source": "static_map",
+              "mapped": true
+            },
+            {
+              "row_idx": 12,
+              "label": "Operating Income",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "asc_primary": "280-10-50-22",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 14,
+              "label": "Interest expense",
+              "concept": "us-gaap:InterestExpense",
+              "asc_primary": "946-830-55-10",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 15,
+              "label": "Interest income",
+              "concept": "us-gaap:InterestIncomeOperating",
+              "asc_primary": "946-320-S99-6",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 16,
+              "label": "Other retirement plans income (expense)",
+              "concept": null,
+              "asc_primary": null,
+              "source": "none",
+              "mapped": false
+            },
+            {
+              "row_idx": 17,
+              "label": "Loss on debt extinguishment",
+              "concept": "us-gaap:GainsLossesOnExtinguishmentOfDebt",
+              "asc_primary": "230-10-45-28",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 18,
+              "label": "Other, net",
+              "concept": "us-gaap:IncreaseDecreaseInOtherOperatingAssets",
+              "asc_primary": "230-10-45-28",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 19,
+              "label": "Total Other Income (Expense)",
+              "concept": "us-gaap:NonoperatingIncomeExpense",
+              "asc_primary": "220-10-S99-2",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 20,
+              "label": "Income Before Income Taxes",
+              "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+              "asc_primary": "944-220-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 21,
+              "label": "Provision for Income Taxes",
+              "concept": "us-gaap:IncomeTaxExpenseBenefit",
+              "asc_primary": "944-220-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 22,
+              "label": "Net Income",
+              "concept": "us-gaap:NetIncomeLoss",
+              "asc_primary": "946-830-55-10",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 23,
+              "label": "Basic Earnings Per Common Share",
+              "concept": "us-gaap:EarningsPerShareBasic",
+              "asc_primary": "260-10-45-60B",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 24,
+              "label": "Diluted Earnings Per Common Share",
+              "concept": "us-gaap:EarningsPerShareDiluted",
+              "asc_primary": "260-10-45-60B",
+              "source": "taxonomy",
+              "mapped": true
+            }
+          ]
+        },
+        {
+          "company": "",
+          "statement_type": "income_statement",
+          "period": "2021",
+          "rows": [
+            {
+              "row_idx": 0,
+              "label": "Net sales",
+              "concept": "us-gaap:SalesRevenueNet",
+              "asc_primary": "225-10-45",
+              "source": "static_map",
+              "mapped": true
+            },
+            {
+              "row_idx": 1,
+              "label": "Cost of sales",
+              "concept": "us-gaap:CostOfGoodsAndServicesSold",
+              "asc_primary": "924-10-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 2,
+              "label": "Gross profit",
+              "concept": "us-gaap:GrossProfit",
+              "asc_primary": "470-10-S99-1A",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 4,
+              "label": "Selling, general and administrative",
+              "concept": "us-gaap:SellingGeneralAndAdministrativeExpense",
+              "asc_primary": "220-10-S99-2",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 5,
+              "label": "Depreciation and amortization",
+              "concept": "us-gaap:DepreciationAndAmortization",
+              "asc_primary": "230-10-45-28",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 6,
+              "label": "Total operating expenses",
+              "concept": "us-gaap:OperatingExpenses",
+              "asc_primary": "225-10-45",
+              "source": "static_map",
+              "mapped": true
+            },
+            {
+              "row_idx": 7,
+              "label": "Operating income",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "asc_primary": "280-10-50-22",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 9,
+              "label": "Interest expense",
+              "concept": "us-gaap:InterestExpense",
+              "asc_primary": "946-830-55-10",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 10,
+              "label": "Interest income and other, net",
+              "concept": "us-gaap:InterestIncomeOperating",
+              "asc_primary": "946-320-S99-6",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 11,
+              "label": "Interest and other, net",
+              "concept": "us-gaap:NonoperatingIncomeExpense",
+              "asc_primary": "220-10-S99-2",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 12,
+              "label": "Earnings before provision for income taxes",
+              "concept": "us-gaap:IncomeTaxExpenseBenefit",
+              "asc_primary": "944-220-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 13,
+              "label": "Provision for income taxes",
+              "concept": "us-gaap:IncomeTaxExpenseBenefit",
+              "asc_primary": "944-220-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 14,
+              "label": "Net earnings",
+              "concept": "us-gaap:NetIncomeLoss",
+              "asc_primary": "946-830-55-10",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 15,
+              "label": "Basic weighted average common shares",
+              "concept": null,
+              "asc_primary": null,
+              "source": "none",
+              "mapped": false
+            },
+            {
+              "row_idx": 16,
+              "label": "Basic earnings per share",
+              "concept": "us-gaap:EarningsPerShareBasic",
+              "asc_primary": "260-10-45-60B",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 17,
+              "label": "Diluted weighted average common shares",
+              "concept": null,
+              "asc_primary": null,
+              "source": "none",
+              "mapped": false
+            },
+            {
+              "row_idx": 18,
+              "label": "Diluted earnings per share",
+              "concept": "us-gaap:EarningsPerShareDiluted",
+              "asc_primary": "260-10-45-60B",
+              "source": "taxonomy",
+              "mapped": true
+            }
+          ]
+        },
+        {
+          "company": "",
+          "statement_type": "cash_flow",
+          "period": "2022-12-31",
+          "rows": [
+            {
+              "row_idx": 1,
+              "label": "Cash and cash equivalents",
+              "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+              "asc_primary": "210-10-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 2,
+              "label": "Accounts receivable, net of allowance of $114",
+              "concept": null,
+              "asc_primary": null,
+              "source": "none",
+              "mapped": false
+            },
+            {
+              "row_idx": 3,
+              "label": "Inventories",
+              "concept": "us-gaap:IncreaseDecreaseInInventories",
+              "asc_primary": "230-10-45-28",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 4,
+              "label": "Prepaid expenses and other current assets",
+              "concept": "us-gaap:PrepaidExpenseAndOtherAssetsCurrent",
+              "asc_primary": "210-10-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 5,
+              "label": "Current assets of discontinued operations",
+              "concept": null,
+              "asc_primary": null,
+              "source": "none",
+              "mapped": false
+            },
+            {
+              "row_idx": 6,
+              "label": "Total current assets",
+              "concept": "us-gaap:AssetsCurrent",
+              "asc_primary": "470-10-S99-1A",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 7,
+              "label": "Property, plant and equipment, net",
+              "concept": "us-gaap:PropertyPlantAndEquipmentNet",
+              "asc_primary": "944-210-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 8,
+              "label": "Goodwill",
+              "concept": "us-gaap:GoodwillImpairmentLoss",
+              "asc_primary": "230-10-45-28",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 9,
+              "label": "Operating lease right-of-use assets",
+              "concept": "us-gaap:OperatingLeaseRightOfUseAsset",
+              "asc_primary": "842-20-45-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 10,
+              "label": "Other intangible assets, net",
+              "concept": "us-gaap:IntangibleAssetsNetExcludingGoodwill",
+              "asc_primary": "350-30-50-2",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 11,
+              "label": "Other non-current assets",
+              "concept": "us-gaap:OtherAssetsNoncurrent",
+              "asc_primary": "210-10-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 12,
+              "label": "Non-current assets of discontinued operations",
+              "concept": null,
+              "asc_primary": null,
+              "source": "none",
+              "mapped": false
+            },
+            {
+              "row_idx": 13,
+              "label": "Total assets",
+              "concept": "us-gaap:Assets",
+              "asc_primary": "946-830-55-12",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 15,
+              "label": "Short-term debt",
+              "concept": "us-gaap:ShortTermBorrowings",
+              "asc_primary": "944-210-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 16,
+              "label": "Current maturities of long-term debt and finance l",
+              "concept": "us-gaap:LongTermDebtCurrent",
+              "asc_primary": "210-10-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 17,
+              "label": "Accounts payable",
+              "concept": "us-gaap:IncreaseDecreaseInAccountsPayable",
+              "asc_primary": "230-10-45-28",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 18,
+              "label": "Accrued expenses and other current liabilities",
+              "concept": "us-gaap:AccruedLiabilitiesCurrent",
+              "asc_primary": "210-10-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 19,
+              "label": "Current liabilities of discontinued operations",
+              "concept": null,
+              "asc_primary": null,
+              "source": "none",
+              "mapped": false
+            },
+            {
+              "row_idx": 20,
+              "label": "Total current liabilities",
+              "concept": "us-gaap:LiabilitiesCurrent",
+              "asc_primary": "470-10-S99-1A",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 21,
+              "label": "Long-term debt and finance lease obligations, less",
+              "concept": "us-gaap:LongTermDebtNoncurrent",
+              "asc_primary": "210-10-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 22,
+              "label": "Operating lease liabilities",
+              "concept": "us-gaap:OperatingLeaseLiabilityCurrent",
+              "asc_primary": "842-20-45-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 23,
+              "label": "Other non-current liabilities",
+              "concept": "us-gaap:OtherLiabilitiesNoncurrent",
+              "asc_primary": "210-10-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 24,
+              "label": "Non-current liabilities of discontinued operations",
+              "concept": null,
+              "asc_primary": null,
+              "source": "none",
+              "mapped": false
+            },
+            {
+              "row_idx": 25,
+              "label": "Total liabilities",
+              "concept": "us-gaap:Liabilities",
+              "asc_primary": "946-830-55-12",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 28,
+              "label": "Common stock, $1 par value, authorized 2,000,000,0",
+              "concept": null,
+              "asc_primary": null,
+              "source": "none",
+              "mapped": false
+            },
+            {
+              "row_idx": 29,
+              "label": "Common stock in treasury, at cost, 175,861,893 sha",
+              "concept": null,
+              "asc_primary": null,
+              "source": "none",
+              "mapped": false
+            },
+            {
+              "row_idx": 30,
+              "label": "Additional contributed capital",
+              "concept": null,
+              "asc_primary": null,
+              "source": "none",
+              "mapped": false
+            },
+            {
+              "row_idx": 31,
+              "label": "Retained earnings",
+              "concept": "us-gaap:RetainedEarningsAccumulatedDeficit",
+              "asc_primary": "944-210-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 32,
+              "label": "Accumulated other comprehensive income (loss)",
+              "concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+              "asc_primary": "220-10-45-14A",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 33,
+              "label": "Total Baxter stockholders\u2019 equity",
+              "concept": "us-gaap:StockholdersEquity",
+              "asc_primary": "946-830-55-12",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 34,
+              "label": "Noncontrolling interests",
+              "concept": "us-gaap:MinorityInterest",
+              "asc_primary": "944-210-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 35,
+              "label": "Total equity",
+              "concept": "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+              "asc_primary": "946-830-55-11",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 36,
+              "label": "Total liabilities and equity",
+              "concept": "us-gaap:LiabilitiesAndStockholdersEquity",
+              "asc_primary": "944-210-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            }
+          ]
+        },
+        {
+          "company": "",
+          "statement_type": "income_statement",
+          "period": "2021",
+          "rows": [
+            {
+              "row_idx": 0,
+              "label": "Net sales",
+              "concept": "us-gaap:SalesRevenueNet",
+              "asc_primary": "225-10-45",
+              "source": "static_map",
+              "mapped": true
+            },
+            {
+              "row_idx": 1,
+              "label": "Cost of products sold",
+              "concept": "us-gaap:CostOfGoodsSold",
+              "asc_primary": "225-10-45",
+              "source": "static_map",
+              "mapped": true
+            },
+            {
+              "row_idx": 2,
+              "label": "Gross profit",
+              "concept": "us-gaap:GrossProfit",
+              "asc_primary": "470-10-S99-1A",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 4,
+              "label": "Research, development and engineering",
+              "concept": "us-gaap:ResearchAndDevelopmentExpense",
+              "asc_primary": "912-730-25-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 5,
+              "label": "Marketing and selling",
+              "concept": "us-gaap:SellingAndMarketingExpense",
+              "asc_primary": "225-10-45",
+              "source": "static_map",
+              "mapped": true
+            },
+            {
+              "row_idx": 6,
+              "label": "General and administrative",
+              "concept": "us-gaap:GeneralAndAdministrativeExpense",
+              "asc_primary": "946-220-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 7,
+              "label": "Severance and related charges",
+              "concept": "us-gaap:SeveranceCosts1",
+              "asc_primary": "230-10-45-28",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 8,
+              "label": "Deal termination fee",
+              "concept": null,
+              "asc_primary": null,
+              "source": "none",
+              "mapped": false
+            },
+            {
+              "row_idx": 9,
+              "label": "Total operating expenses",
+              "concept": "us-gaap:OperatingExpenses",
+              "asc_primary": "225-10-45",
+              "source": "static_map",
+              "mapped": true
+            },
+            {
+              "row_idx": 10,
+              "label": "Income from operations",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "asc_primary": "280-10-50-22",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 11,
+              "label": "Interest expense",
+              "concept": "us-gaap:InterestExpense",
+              "asc_primary": "946-830-55-10",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 12,
+              "label": "Interest and other income (expense), net",
+              "concept": "us-gaap:NonoperatingIncomeExpense",
+              "asc_primary": "220-10-S99-2",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 13,
+              "label": "Income before income taxes",
+              "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+              "asc_primary": "944-220-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 14,
+              "label": "Provision for income taxes",
+              "concept": "us-gaap:IncomeTaxExpenseBenefit",
+              "asc_primary": "944-220-S99-1",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 15,
+              "label": "Net income",
+              "concept": "us-gaap:NetIncomeLoss",
+              "asc_primary": "946-830-55-10",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 17,
+              "label": "Basic",
+              "concept": "us-gaap:EarningsPerShareBasic",
+              "asc_primary": "260-10-45-60B",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 18,
+              "label": "Diluted",
+              "concept": "us-gaap:EarningsPerShareDiluted",
+              "asc_primary": "260-10-45-60B",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 20,
+              "label": "Basic",
+              "concept": "us-gaap:EarningsPerShareBasic",
+              "asc_primary": "260-10-45-60B",
+              "source": "taxonomy",
+              "mapped": true
+            },
+            {
+              "row_idx": 21,
+              "label": "Diluted",
+              "concept": "us-gaap:EarningsPerShareDiluted",
+              "asc_primary": "260-10-45-60B",
+              "source": "taxonomy",
+              "mapped": true
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

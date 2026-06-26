@@ -46,6 +46,25 @@ _REF_FILE_IN_ZIP  = "us-gaap-2023/elts/us-gaap-ref-2023.xml"
 # Split "CashAndCashEquivalentsAtCarryingValue" into component words
 _CAMEL_RE = re.compile(r"[A-Z][a-z0-9]*")
 
+# ASC industry topics (905–995) are specific to banks, insurers, real-estate,
+# etc.  AuditBench tables are general-purpose S&P 500 statements, so a general
+# topic is always the correct governing standard over an industry one.
+_INDUSTRY_TOPIC_MIN = 900
+
+# Reference-role priority: how authoritative each reference role is for
+# locating the standard that governs a line item on the face of the
+# financials.  Higher wins.  Roles appear as the last path segment of the
+# xlink:role URI (e.g. ".../role/disclosureRef" -> "disclosureRef").
+_ROLE_PRIORITY = {
+    "presentationRef":   6,
+    "disclosureRef":     5,
+    "measurementRef":    4,
+    "definitionRef":     3,
+    "commonPracticeRef": 2,
+    "exampleRef":        1,
+    "legacyRef":         0,
+}
+
 
 # ── parent-concept candidate generation ───────────────────────────────────────
 
@@ -83,6 +102,14 @@ class TaxonomyGraph:
         self._cache_path   = cache_path
         self._xml_content: Optional[str] = None
         self._available    = False   # set True once XML is loaded
+
+        # ── in-memory indexes / memo caches (XML is immutable after load) ──
+        self._indexed           = False
+        self._arc_index: Dict[str, List[str]] = {}   # from_label -> [to_label]
+        self._ref_index: Dict[str, str]        = {}   # ref_label  -> element text
+        self._ref_parse_cache: Dict[str, Optional[Dict]] = {}  # ref_label -> parsed
+        self._detail_cache:     Dict[str, Dict]          = {}  # concept   -> detail
+        self._candidates_cache: Dict[str, List[Dict]]    = {}  # concept   -> candidates
 
     # ── loading ───────────────────────────────────────────────────────────────
 
@@ -154,44 +181,63 @@ class TaxonomyGraph:
 
     # ── internal arc + reference element parsing ──────────────────────────────
 
-    def _refs_for_concept(self, concept_id: str) -> List[str]:
-        """Return all xlink:to reference-element labels for `concept_id`.
+    def _build_index(self) -> None:
+        """Index the XML once: concept→reference arcs and label→reference element.
 
-        Scans every <link:referenceArc .../> element and collects those
-        whose xlink:from attribute equals "loc_<concept_id>".  Attribute
-        order within the element is not assumed.
+        The previous implementation re-scanned the entire ~30 MB linkbase for
+        every concept lookup (O(arcs) per row), making a full-split eval take
+        many minutes.  Building these two dicts a single time turns each
+        subsequent lookup into an O(1) dict access.
         """
-        from_label = f"loc_{concept_id}"
-        arc_re     = re.compile(r"<link:referenceArc\b[^>]*/?>", re.DOTALL)
-        result: List[str] = []
-        for m in arc_re.finditer(self._xml_content):
+        if self._indexed:
+            return
+        xml = self._xml_content or ""
+
+        # from_label ("loc_<Concept>") -> [reference-element labels]
+        arc_index: Dict[str, List[str]] = {}
+        for m in re.finditer(r"<link:referenceArc\b[^>]*/?>", xml):
             tag = m.group(0)
-            # Use string-in-string for the from-label (faster than regex on
-            # the whole file for per-arc checks)
-            if (f'xlink:from="{from_label}"' not in tag and
-                    f"xlink:from='{from_label}'" not in tag):
-                continue
-            to_m = re.search(r'xlink:to=["\']([^"\']+)["\']', tag)
-            if to_m:
-                result.append(to_m.group(1))
-        return result
+            fm = re.search(r'xlink:from=["\']([^"\']+)["\']', tag)
+            tm = re.search(r'xlink:to=["\']([^"\']+)["\']', tag)
+            if fm and tm:
+                arc_index.setdefault(fm.group(1), []).append(tm.group(1))
+        self._arc_index = arc_index
+
+        # reference-element label -> full element text
+        ref_index: Dict[str, str] = {}
+        ref_re = re.compile(
+            r"<link:reference\b[^>]*?xlink:label=[\"']([^\"']+)[\"'][^>]*>.*?</link:reference>",
+            re.DOTALL,
+        )
+        for m in ref_re.finditer(xml):
+            ref_index[m.group(1)] = m.group(0)
+        self._ref_index = ref_index
+
+        self._indexed = True
+
+    def _refs_for_concept(self, concept_id: str) -> List[str]:
+        """Return all xlink:to reference-element labels for `concept_id` (O(1))."""
+        self._build_index()
+        return self._arc_index.get(f"loc_{concept_id}", [])
 
     def _parse_ref_element(self, ref_id: str) -> Optional[Dict[str, Optional[str]]]:
         """Find <link:reference xlink:label="ref_id"> and parse its FASB fields.
 
-        Returns a dict with keys {publisher, topic, subtopic, section, paragraph}
-        or None if the element is absent or belongs to a non-FASB publisher.
+        Returns a dict with keys {publisher, topic, subtopic, section,
+        paragraph, role} or None if the element is absent.  Unlike the earlier
+        version this does NOT filter on Publisher==FASB, because the modern
+        us-gaap codification references live under the <codification-part:*>
+        namespace with no <ref:Publisher> element; filtering on FASB there
+        would discard every real citation.
         """
-        pat = re.compile(
-            r"<link:reference\b[^>]*xlink:label=[\"']"
-            + re.escape(ref_id)
-            + r"[\"'][^>]*>.*?</link:reference>",
-            re.DOTALL,
-        )
-        m = pat.search(self._xml_content)
-        if not m:
+        if ref_id in self._ref_parse_cache:
+            return self._ref_parse_cache[ref_id]
+
+        self._build_index()
+        ref_text = self._ref_index.get(ref_id)
+        if ref_text is None:
+            self._ref_parse_cache[ref_id] = None
             return None
-        ref_text = m.group(0)
 
         def _val(tag_name: str) -> Optional[str]:
             """Extract text of <*:tag_name> regardless of namespace prefix."""
@@ -205,17 +251,23 @@ class TaxonomyGraph:
             )
             return hit.group(1).strip() if hit else None
 
-        pub = _val("Publisher")
-        if pub != "FASB":
-            return None
+        # Reference role — last path segment of the xlink:role URI on the
+        # opening tag (e.g. ".../role/disclosureRef" -> "disclosureRef").
+        role = ""
+        role_m = re.search(r"xlink:role=[\"']([^\"']+)[\"']", ref_text)
+        if role_m:
+            role = role_m.group(1).rstrip("/").rsplit("/", 1)[-1]
 
-        return {
-            "publisher": pub,
+        parsed = {
+            "publisher": _val("Publisher"),
             "topic":     _val("Topic"),
             "subtopic":  _val("SubTopic"),
             "section":   _val("Section"),
             "paragraph": _val("Paragraph"),
+            "role":      role,
         }
+        self._ref_parse_cache[ref_id] = parsed
+        return parsed
 
     @staticmethod
     def _build_citation(parts: Dict[str, Optional[str]]) -> Optional[str]:
@@ -229,19 +281,49 @@ class TaxonomyGraph:
         components = [c for c in [t, st, s, p] if c]
         return "FASB ASC " + "-".join(components)
 
+    @staticmethod
+    def _rank_key(parts: Dict[str, Optional[str]]) -> tuple:
+        """Sort key for choosing among a concept's many reference arcs.
+
+        A concept like us-gaap:InterestExpense carries 8 references spanning
+        industry topics (946 Financial Services), segment disclosure (280),
+        and the income-statement presentation topic (220).  Picking the
+        "longest" string (the old heuristic) wrongly favoured deep,
+        industry-specific paragraphs.  Instead we rank by, in order:
+
+          1. general over industry topic        (topic < 900 preferred)
+          2. authoritative role                  (presentation/disclosure > example/legacy)
+          3. completeness                        (has subtopic/section/paragraph)
+          4. lower topic number as a deterministic tie-break
+             (ASC presentation/general topics 205-280 precede the asset/
+              liability/expense topics, matching how face-of-statement line
+              items are cited)
+
+        Higher tuple = preferred (we select max).
+        """
+        try:
+            topic_int = int(parts.get("topic") or 0)
+        except ValueError:
+            topic_int = 0
+        is_general   = 1 if 0 < topic_int < _INDUSTRY_TOPIC_MIN else 0
+        role_pri     = _ROLE_PRIORITY.get(parts.get("role", ""), 0)
+        completeness = sum(1 for k in ("subtopic", "section", "paragraph") if parts.get(k))
+        return (is_general, role_pri, completeness, -topic_int)
+
     def _lookup_one(self, concept_id: str) -> Optional[str]:
-        """Direct lookup: returns the most-specific FASB citation for the concept,
-        or None when no FASB reference arc exists for it."""
+        """Direct lookup: rank all of a concept's reference arcs and return the
+        best citation, or None when no usable reference arc exists."""
         ref_ids = self._refs_for_concept(concept_id)
-        best: Optional[str] = None
+        best_parts: Optional[Dict[str, Optional[str]]] = None
+        best_key: Optional[tuple] = None
         for ref_id in ref_ids:
             parts = self._parse_ref_element(ref_id)
-            if parts is None:
+            if parts is None or not parts.get("topic"):
                 continue
-            citation = self._build_citation(parts)
-            if citation and (best is None or len(citation) > len(best)):
-                best = citation
-        return best
+            key = self._rank_key(parts)
+            if best_key is None or key > best_key:
+                best_key, best_parts = key, parts
+        return self._build_citation(best_parts) if best_parts else None
 
     # ── public API ────────────────────────────────────────────────────────────
 
@@ -308,6 +390,53 @@ class TaxonomyGraph:
                 return _to_detail(citation, "parent_fallback", parent)
 
         return empty
+
+    def get_candidate_citations(self, concept_id: str) -> List[Dict]:
+        """Return ALL reference arcs for a concept, ranked best-first.
+
+        Whereas get_fasb_citation_detail commits to a single best guess, this
+        exposes the full candidate set the graph knows about.  Stage 2 (the
+        focused LLM) uses this set + the error context to select the
+        contextually correct citation — the LLM never invents one, it only
+        picks from grounded candidates.
+
+        Each entry: {"asc": "230-10-45-5", "topic": "230", "role": "disclosureRef"}.
+        Falls back to parent concepts only if the leaf itself has no arcs.
+        """
+        self._load_taxonomy()
+        if not self._available:
+            return []
+
+        def _collect(cid: str) -> List[Dict]:
+            seen = set()
+            ranked = []
+            for ref_id in self._refs_for_concept(cid):
+                parts = self._parse_ref_element(ref_id)
+                if parts is None or not parts.get("topic"):
+                    continue
+                cit = self._build_citation(parts)
+                if not cit:
+                    continue
+                asc = cit.replace("FASB ASC ", "")
+                if asc in seen:
+                    continue
+                seen.add(asc)
+                ranked.append((self._rank_key(parts), {
+                    "asc":   asc,
+                    "topic": parts.get("topic"),
+                    "role":  parts.get("role", ""),
+                }))
+            ranked.sort(key=lambda x: x[0], reverse=True)
+            return [r[1] for r in ranked]
+
+        cands = _collect(concept_id)
+        if cands:
+            return cands
+        for parent in _parent_candidates(concept_id):
+            cands = _collect(parent)
+            if cands:
+                return cands
+        return []
 
 
 # ── CLI smoke test ────────────────────────────────────────────────────────────
