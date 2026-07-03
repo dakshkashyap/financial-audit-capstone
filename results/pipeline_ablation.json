@@ -1,0 +1,55 @@
+{
+  "seed": 42,
+  "n": 150,
+  "splits": {
+    "correct": {
+      "split": "correct",
+      "n": 150,
+      "is_clean_split": true,
+      "have_llm": true,
+      "gate_fire_rate": 0.0,
+      "abstention_rate": 1.0,
+      "verified_consistent_rate": 0.42,
+      "config_B_gen_judgment_em": 1.0,
+      "llm_calls_saved": 0.0,
+      "config_A_gen_judgment_em": 0.5,
+      "config_Aveto_gen_judgment_em": 0.7133,
+      "vetoes_applied": 32,
+      "fp_rate_llm": 0.5,
+      "fp_rate_veto": 0.2867,
+      "fp_corrected": 32
+    },
+    "single_error": {
+      "split": "single_error",
+      "n": 150,
+      "is_clean_split": false,
+      "have_llm": true,
+      "gate_fire_rate": 0.38,
+      "abstention_rate": 0.62,
+      "verified_consistent_rate": 0.1267,
+      "config_B_gen_judgment_em": 0.38,
+      "llm_calls_saved": 0.38,
+      "config_A_gen_judgment_em": 0.9733,
+      "config_Aveto_gen_judgment_em": 0.8533,
+      "vetoes_applied": 18,
+      "gate_localization_type_em_among_fired": 0.9474,
+      "gate_localization_row_em_among_fired": 0.8947
+    },
+    "multi_error": {
+      "split": "multi_error",
+      "n": 150,
+      "is_clean_split": false,
+      "have_llm": true,
+      "gate_fire_rate": 0.36,
+      "abstention_rate": 0.64,
+      "verified_consistent_rate": 0.1267,
+      "config_B_gen_judgment_em": 0.36,
+      "llm_calls_saved": 0.36,
+      "config_A_gen_judgment_em": 0.9933,
+      "config_Aveto_gen_judgment_em": 0.8667,
+      "vetoes_applied": 19,
+      "gate_localization_type_em_among_fired": 0.7407,
+      "gate_localization_row_em_among_fired": 0.7037
+    }
+  }
+}

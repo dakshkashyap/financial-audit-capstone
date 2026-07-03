@@ -87,6 +87,21 @@ def approx_eq(a: Optional[float], b: Optional[float], tol: float = TOL) -> bool:
     return a is not None and b is not None and abs(a - b) <= tol
 
 
+def fuzzy_core_match(a: str, b: str, cutoff: float = 0.82) -> bool:
+    """Token-aware similarity of two core labels, for matching a transaction row
+    to a table row when the narrative phrases the label slightly differently
+    ('products' vs 'net sales of products'). Used ONLY as a guard on an already
+    index-aligned match, so it cannot by itself relocate a value to a wrong row.
+    True when one token set contains the other, or the character ratio ≥ cutoff."""
+    import difflib
+    if not a or not b:
+        return False
+    ta, tb = set(a.split()), set(b.split())
+    if ta and tb and (ta <= tb or tb <= ta):
+        return True
+    return difflib.SequenceMatcher(None, a, b).ratio() >= cutoff
+
+
 REL_TOL = 0.005  # 0.5% — absorbs rounding noise in LLM-written explanations
 
 

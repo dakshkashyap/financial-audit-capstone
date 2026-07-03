@@ -38,6 +38,7 @@ from edgar_mapper import map_statement
 from stage1_arelle import (
     Stage1Result, enrich_with_taxonomy,
     SOURCE_TAXONOMY, SOURCE_PARENT_FALLBACK, SOURCE_STATIC_MAP, SOURCE_NONE,
+    SOURCE_SUBJECT_MAP, SOURCE_SECTION_FALLBACK,
 )
 from taxonomy_graph import TaxonomyGraph
 
@@ -180,7 +181,8 @@ def print_results(all_results: dict) -> None:
 
         print(f"\n  Citation source breakdown:")
         total_s = sum(r["source_breakdown"].values()) or 1
-        order   = [SOURCE_TAXONOMY, SOURCE_PARENT_FALLBACK, SOURCE_STATIC_MAP, SOURCE_NONE]
+        order   = [SOURCE_SUBJECT_MAP, SOURCE_SECTION_FALLBACK, SOURCE_TAXONOMY,
+                   SOURCE_PARENT_FALLBACK, SOURCE_STATIC_MAP, SOURCE_NONE]
         for src in order:
             cnt = r["source_breakdown"].get(src, 0)
             pct = cnt / total_s

@@ -515,7 +515,7 @@
       "em_general_judgment": 0.0,
       "em_error_type": 1.0,
       "em_error_entry": 1.0,
-      "bertscore": 0.7867249250411987,
+      "bertscore": 0.7867249846458435,
       "standards_top1": 0.0,
       "standards_top5": 0.0,
       "bleu": 0.9903003029744889,

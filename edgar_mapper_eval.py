@@ -42,7 +42,7 @@ LOADERS = {
 
 
 # ── per-split evaluation ──────────────────────────────────────────────────────
-def eval_split(items: List[dict], split_name: str) -> dict:
+def eval_split(items: List[dict], split_name: str, use_edgar_xbrl: bool = False) -> dict:
     total_valued     = 0
     total_mapped     = 0
     strategy_counter = Counter()
@@ -54,7 +54,7 @@ def eval_split(items: List[dict], split_name: str) -> dict:
     samples          = []
 
     for item in items:
-        ms: MappedStatement = map_statement(item)
+        ms: MappedStatement = map_statement(item, use_edgar_xbrl=use_edgar_xbrl)
 
         total_valued += ms.n_valued_rows
         total_mapped += ms.n_mapped
@@ -190,18 +190,21 @@ def main() -> None:
     ap.add_argument("--n", type=int, default=150,
                     help="Samples per split (default: 150)")
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--edgar-xbrl", action="store_true",
+                    help="Enable the live SEC EDGAR XBRL filer-tag route (needs network/cache).")
     ap.add_argument("--out", default=None,
                     help="Output JSON path (default: results/edgar_mapper_eval.json)")
     args = ap.parse_args()
 
     splits_to_run = list(LOADERS) if args.split == "all" else [args.split]
-    print(f"Loading {splits_to_run} (seed={args.seed}, n={args.n}) …")
+    print(f"Loading {splits_to_run} (seed={args.seed}, n={args.n}) "
+          f"{'[+EDGAR-XBRL]' if args.edgar_xbrl else ''}…")
 
     all_results: dict = {}
     for split_name in splits_to_run:
         items = LOADERS[split_name](seed=args.seed, n=args.n)
         print(f"  {split_name}: {len(items)} items")
-        all_results[split_name] = eval_split(items, split_name)
+        all_results[split_name] = eval_split(items, split_name, use_edgar_xbrl=args.edgar_xbrl)
 
     print_results(all_results)
 

@@ -1,0 +1,295 @@
+{
+  "split": "multi_error",
+  "seed": 42,
+  "n": 150,
+  "level": "topic",
+  "taxonomy_available": true,
+  "records_with_gt_asc": 266,
+  "gt_without_asc": 32,
+  "broken_row_covered": 244,
+  "topic_hits": 65,
+  "row_not_in_table": 4,
+  "coverage": 0.9173,
+  "citation_topic_em": 0.2444,
+  "citation_topic_em_family": 0.2782,
+  "topic_em_among_covered": 0.2664,
+  "candidate_recall": 0.2331,
+  "candidate_recall_hits": 62,
+  "candidate_recall_union": 0.3421,
+  "candidate_recall_union_family": 0.3759,
+  "paper_baseline": 0.262,
+  "by_error_type_gt": {
+    "Misclassification": {
+      "total": 67,
+      "covered": 64,
+      "hit": 20,
+      "coverage": 0.9552,
+      "topic_em": 0.2985,
+      "topic_em_among_covered": 0.3125,
+      "candidate_recall": 0.3433
+    },
+    "Numerical Error": {
+      "total": 65,
+      "covered": 60,
+      "hit": 26,
+      "coverage": 0.9231,
+      "topic_em": 0.4,
+      "topic_em_among_covered": 0.4333,
+      "candidate_recall": 0.3538
+    },
+    "Missing Row": {
+      "total": 63,
+      "covered": 51,
+      "hit": 6,
+      "coverage": 0.8095,
+      "topic_em": 0.0952,
+      "topic_em_among_covered": 0.1176,
+      "candidate_recall": 0.1587
+    },
+    "Redundant Row": {
+      "total": 70,
+      "covered": 68,
+      "hit": 13,
+      "coverage": 0.9714,
+      "topic_em": 0.1857,
+      "topic_em_among_covered": 0.1912,
+      "candidate_recall": 0.0714
+    },
+    "Numeric Error": {
+      "total": 1,
+      "covered": 1,
+      "hit": 0,
+      "coverage": 1.0,
+      "topic_em": 0.0,
+      "topic_em_among_covered": 0.0,
+      "candidate_recall": 1.0
+    }
+  },
+  "sample_misses": [
+    {
+      "error_type": "Numerical Error",
+      "gt_row": 17,
+      "gt_topic": "205",
+      "pred_topic": "230",
+      "concept": "us-gaap:Assets",
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Missing Row",
+      "gt_row": 16,
+      "gt_topic": "350",
+      "pred_topic": "230",
+      "concept": "us-gaap:IncreaseDecreaseInOtherOperatingAssets",
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Missing Row",
+      "gt_row": 17,
+      "gt_topic": "225",
+      "pred_topic": null,
+      "concept": null,
+      "source": null,
+      "reason": "row_not_in_table"
+    },
+    {
+      "error_type": "Missing Row",
+      "gt_row": 2,
+      "gt_topic": "310",
+      "pred_topic": "330",
+      "concept": "us-gaap:InventoryNet",
+      "source": "subject_map",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Redundant Row",
+      "gt_row": 4,
+      "gt_topic": "205",
+      "pred_topic": "220",
+      "concept": null,
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Misclassification",
+      "gt_row": 7,
+      "gt_topic": "225",
+      "pred_topic": "220",
+      "concept": "us-gaap:SeveranceCosts1",
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Redundant Row",
+      "gt_row": 10,
+      "gt_topic": "605",
+      "pred_topic": "220",
+      "concept": null,
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Missing Row",
+      "gt_row": 19,
+      "gt_topic": "220",
+      "pred_topic": null,
+      "concept": null,
+      "source": null,
+      "reason": "no_citation_for_row"
+    },
+    {
+      "error_type": "Numerical Error",
+      "gt_row": 11,
+      "gt_topic": "220",
+      "pred_topic": null,
+      "concept": null,
+      "source": null,
+      "reason": "no_citation_for_row"
+    },
+    {
+      "error_type": "Misclassification",
+      "gt_row": 12,
+      "gt_topic": "450",
+      "pred_topic": "220",
+      "concept": null,
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Misclassification",
+      "gt_row": 4,
+      "gt_topic": "220",
+      "pred_topic": "210",
+      "concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Missing Row",
+      "gt_row": 19,
+      "gt_topic": "230",
+      "pred_topic": "320",
+      "concept": "us-gaap:PaymentsToAcquireMarketableSecurities",
+      "source": "subject_map",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Numerical Error",
+      "gt_row": 23,
+      "gt_topic": "230",
+      "pred_topic": "220",
+      "concept": "us-gaap:NetCashProvidedByUsedInInvestingActivities",
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Numerical Error",
+      "gt_row": 11,
+      "gt_topic": "740",
+      "pred_topic": "220",
+      "concept": null,
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Misclassification",
+      "gt_row": 11,
+      "gt_topic": "740",
+      "pred_topic": "220",
+      "concept": null,
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Redundant Row",
+      "gt_row": 35,
+      "gt_topic": "225",
+      "pred_topic": "220",
+      "concept": null,
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Redundant Row",
+      "gt_row": 12,
+      "gt_topic": "230",
+      "pred_topic": "220",
+      "concept": null,
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Misclassification",
+      "gt_row": 18,
+      "gt_topic": "230",
+      "pred_topic": "220",
+      "concept": null,
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Misclassification",
+      "gt_row": 3,
+      "gt_topic": "605",
+      "pred_topic": "220",
+      "concept": "us-gaap:NonoperatingIncomeExpense",
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Redundant Row",
+      "gt_row": 13,
+      "gt_topic": "225",
+      "pred_topic": "220",
+      "concept": null,
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Redundant Row",
+      "gt_row": 1,
+      "gt_topic": "230",
+      "pred_topic": "220",
+      "concept": "us-gaap:PaymentsOfDividends",
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Missing Row",
+      "gt_row": 3,
+      "gt_topic": "310",
+      "pred_topic": null,
+      "concept": null,
+      "source": null,
+      "reason": "row_not_in_table"
+    },
+    {
+      "error_type": "Missing Row",
+      "gt_row": 5,
+      "gt_topic": "740",
+      "pred_topic": "220",
+      "concept": "us-gaap:OtherOperatingIncomeExpenseNet",
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Numerical Error",
+      "gt_row": 7,
+      "gt_topic": "220",
+      "pred_topic": "740",
+      "concept": "us-gaap:IncomeTaxExpenseBenefit",
+      "source": "subject_map",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Missing Row",
+      "gt_row": 3,
+      "gt_topic": "310",
+      "pred_topic": "230",
+      "concept": "us-gaap:IncreaseDecreaseInInventories",
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    }
+  ]
+}

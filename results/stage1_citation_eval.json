@@ -11,18 +11,21 @@
   "row_not_in_table": 3,
   "coverage": 0.9291,
   "citation_topic_em": 0.2441,
+  "citation_topic_em_family": 0.315,
   "topic_em_among_covered": 0.2627,
   "candidate_recall": 0.2835,
   "candidate_recall_hits": 36,
+  "candidate_recall_union": 0.3307,
+  "candidate_recall_union_family": 0.4094,
   "paper_baseline": 0.262,
   "by_error_type_gt": {
     "Numerical Error": {
       "total": 41,
       "covered": 40,
-      "hit": 9,
+      "hit": 12,
       "coverage": 0.9756,
-      "topic_em": 0.2195,
-      "topic_em_among_covered": 0.225,
+      "topic_em": 0.2927,
+      "topic_em_among_covered": 0.3,
       "candidate_recall": 0.3171
     },
     "Misclassification": {
@@ -37,10 +40,10 @@
     "Missing Row": {
       "total": 29,
       "covered": 25,
-      "hit": 7,
+      "hit": 4,
       "coverage": 0.8621,
-      "topic_em": 0.2414,
-      "topic_em_among_covered": 0.28,
+      "topic_em": 0.1379,
+      "topic_em_among_covered": 0.16,
       "candidate_recall": 0.2759
     },
     "Redundant Row": {
@@ -60,7 +63,7 @@
       "gt_topic": "350",
       "pred_topic": "842",
       "concept": "us-gaap:OperatingLeaseRightOfUseAsset",
-      "source": "taxonomy",
+      "source": "subject_map",
       "reason": "topic_mismatch"
     },
     {
@@ -69,7 +72,7 @@
       "gt_topic": "230",
       "pred_topic": "220",
       "concept": "us-gaap:GeneralAndAdministrativeExpense",
-      "source": "taxonomy",
+      "source": "section_fallback",
       "reason": "topic_mismatch"
     },
     {
@@ -78,7 +81,7 @@
       "gt_topic": "605",
       "pred_topic": "220",
       "concept": "us-gaap:CostsAndExpenses",
-      "source": "taxonomy",
+      "source": "section_fallback",
       "reason": "topic_mismatch"
     },
     {
@@ -92,29 +95,29 @@
     },
     {
       "error_type": "Numerical Error",
-      "gt_row": 11,
-      "gt_topic": "330",
-      "pred_topic": "210",
-      "concept": "us-gaap:InventoryNet",
-      "source": "taxonomy",
-      "reason": "topic_mismatch"
-    },
-    {
-      "error_type": "Numerical Error",
       "gt_row": 5,
       "gt_topic": "235",
-      "pred_topic": "230",
+      "pred_topic": "505",
       "concept": "us-gaap:PaymentsOfDividendsCommonStock",
-      "source": "taxonomy",
+      "source": "subject_map",
       "reason": "topic_mismatch"
     },
     {
       "error_type": "Missing Row",
       "gt_row": 1,
       "gt_topic": "210",
-      "pred_topic": "235",
+      "pred_topic": "505",
       "concept": "us-gaap:LiabilitiesAndStockholdersEquity",
-      "source": "taxonomy",
+      "source": "subject_map",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Numerical Error",
+      "gt_row": 16,
+      "gt_topic": "230",
+      "pred_topic": "220",
+      "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+      "source": "section_fallback",
       "reason": "topic_mismatch"
     },
     {
@@ -123,16 +126,7 @@
       "gt_topic": "720",
       "pred_topic": "220",
       "concept": "us-gaap:GeneralAndAdministrativeExpense",
-      "source": "taxonomy",
-      "reason": "topic_mismatch"
-    },
-    {
-      "error_type": "Numerical Error",
-      "gt_row": 2,
-      "gt_topic": "360",
-      "pred_topic": "230",
-      "concept": "us-gaap:DepreciationAndAmortization",
-      "source": "taxonomy",
+      "source": "section_fallback",
       "reason": "topic_mismatch"
     },
     {
@@ -141,7 +135,7 @@
       "gt_topic": "210",
       "pred_topic": "310",
       "concept": "us-gaap:AccountsReceivableNetCurrent",
-      "source": "taxonomy",
+      "source": "subject_map",
       "reason": "topic_mismatch"
     },
     {
@@ -150,7 +144,7 @@
       "gt_topic": "705",
       "pred_topic": "220",
       "concept": "us-gaap:SellingGeneralAndAdministrativeExpense",
-      "source": "taxonomy",
+      "source": "section_fallback",
       "reason": "topic_mismatch"
     },
     {
@@ -166,9 +160,9 @@
       "error_type": "Missing Row",
       "gt_row": 7,
       "gt_topic": "230",
-      "pred_topic": "210",
+      "pred_topic": "330",
       "concept": "us-gaap:InventoryNet",
-      "source": "taxonomy",
+      "source": "subject_map",
       "reason": "topic_mismatch"
     },
     {
@@ -184,27 +178,18 @@
       "error_type": "Numerical Error",
       "gt_row": 1,
       "gt_topic": "205",
-      "pred_topic": "210",
+      "pred_topic": "230",
       "concept": "us-gaap:AssetsCurrent",
-      "source": "taxonomy",
-      "reason": "topic_mismatch"
-    },
-    {
-      "error_type": "Misclassification",
-      "gt_row": 4,
-      "gt_topic": "360",
-      "pred_topic": "852",
-      "concept": "us-gaap:PropertyPlantAndEquipmentNet",
-      "source": "taxonomy",
+      "source": "section_fallback",
       "reason": "topic_mismatch"
     },
     {
       "error_type": "Redundant Row",
       "gt_row": 8,
       "gt_topic": "225",
-      "pred_topic": "230",
+      "pred_topic": "360",
       "concept": "us-gaap:DepreciationAndAmortization",
-      "source": "taxonomy",
+      "source": "subject_map",
       "reason": "topic_mismatch"
     },
     {
@@ -214,6 +199,15 @@
       "pred_topic": "220",
       "concept": null,
       "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Missing Row",
+      "gt_row": 7,
+      "gt_topic": "230",
+      "pred_topic": "718",
+      "concept": "us-gaap:ShareBasedCompensation",
+      "source": "subject_map",
       "reason": "topic_mismatch"
     },
     {
@@ -231,34 +225,34 @@
       "gt_topic": "605",
       "pred_topic": "220",
       "concept": "us-gaap:CostOfGoodsAndServicesSold",
-      "source": "taxonomy",
+      "source": "section_fallback",
       "reason": "topic_mismatch"
     },
     {
       "error_type": "Numerical Error",
       "gt_row": 5,
       "gt_topic": "330",
-      "pred_topic": "225",
+      "pred_topic": "606",
       "concept": "us-gaap:SalesRevenueGoodsNet",
-      "source": "static_map",
+      "source": "subject_map",
       "reason": "topic_mismatch"
     },
     {
       "error_type": "Redundant Row",
       "gt_row": 11,
       "gt_topic": "350",
-      "pred_topic": "985",
+      "pred_topic": "230",
       "concept": "us-gaap:CapitalizedComputerSoftwareNet",
-      "source": "taxonomy",
+      "source": "section_fallback",
       "reason": "topic_mismatch"
     },
     {
       "error_type": "Numerical Error",
       "gt_row": 1,
       "gt_topic": "330",
-      "pred_topic": "225",
+      "pred_topic": "220",
       "concept": "us-gaap:CostOfGoodsSold",
-      "source": "static_map",
+      "source": "section_fallback",
       "reason": "topic_mismatch"
     },
     {
@@ -267,7 +261,7 @@
       "gt_topic": "605",
       "pred_topic": "220",
       "concept": "us-gaap:GeneralAndAdministrativeExpense",
-      "source": "taxonomy",
+      "source": "section_fallback",
       "reason": "topic_mismatch"
     },
     {
@@ -278,25 +272,34 @@
       "concept": null,
       "source": null,
       "reason": "row_not_in_table"
+    },
+    {
+      "error_type": "Redundant Row",
+      "gt_row": 34,
+      "gt_topic": "230",
+      "pred_topic": "220",
+      "concept": null,
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
     }
   ],
   "by_error_type_predicted": {
     "unfired": {
       "total": 77,
       "covered": 69,
-      "hit": 22,
+      "hit": 19,
       "coverage": 0.8961,
-      "topic_em": 0.2857,
-      "topic_em_among_covered": 0.3188,
+      "topic_em": 0.2468,
+      "topic_em_among_covered": 0.2754,
       "candidate_recall": 0.2987
     },
     "Numerical Error": {
       "total": 29,
       "covered": 29,
-      "hit": 6,
+      "hit": 10,
       "coverage": 1.0,
-      "topic_em": 0.2069,
-      "topic_em_among_covered": 0.2069,
+      "topic_em": 0.3448,
+      "topic_em_among_covered": 0.3448,
       "candidate_recall": 0.3793
     },
     "Misclassification": {
@@ -320,10 +323,10 @@
     "Missing Row": {
       "total": 6,
       "covered": 5,
-      "hit": 1,
+      "hit": 0,
       "coverage": 0.8333,
-      "topic_em": 0.1667,
-      "topic_em_among_covered": 0.2,
+      "topic_em": 0.0,
+      "topic_em_among_covered": 0.0,
       "candidate_recall": 0.1667
     }
   },

@@ -305,6 +305,7 @@ class MappedRow:
     concept: Optional[str]  = None   # us-gaap:ConceptName
     asc_primary: Optional[str] = None  # e.g. "210-10-45-1"
     asc_refs: List[str]     = field(default_factory=list)  # all relevant ASC sections
+    asc_candidates: List[str] = field(default_factory=list)  # union topic candidate set for Stage 2
     asc_title: Optional[str] = None  # human-readable topic title
     section: Optional[str]  = None   # e.g. "current_assets"
     strategy: str           = "none" # "exact" | "stem_exact" | "fuzzy" | "none"
@@ -324,6 +325,7 @@ class MappedRow:
             "concept": self.concept,
             "asc_primary": self.asc_primary,
             "asc_refs": self.asc_refs,
+            "asc_candidates": self.asc_candidates,
             "asc_title": self.asc_title,
             "section": self.section,
             "strategy": self.strategy,
@@ -359,8 +361,14 @@ class MappedStatement:
 
 
 # ── main entry point ──────────────────────────────────────────────────────────
-def map_statement(item: dict) -> MappedStatement:
+def map_statement(item: dict, use_edgar_xbrl: bool = False) -> MappedStatement:
     """Map an AuditBench item to a MappedStatement.
+
+    When ``use_edgar_xbrl`` is True, each row is first matched against the filer's
+    own us-gaap concept set recovered live from SEC EDGAR (edgar_xbrl.map_label) —
+    the authoritative, filer-tagged route. The static-map string match is the
+    fallback. Requires a resolvable company name + network/cache (off by default
+    so the deterministic offline evals are unaffected).
 
     item dict schema (AuditBench unified format from parser.py):
       table         : str   — [row n] formatted financial statement
@@ -401,6 +409,28 @@ def map_statement(item: dict) -> MappedStatement:
             value=row.value,
             kind=row.kind,
         )
+
+        # High-confidence filer-tagged route: if the static map missed (or even if
+        # it hit, the filer's own tag is authoritative), try live EDGAR XBRL.
+        if use_edgar_xbrl and row.value is not None and company_raw:
+            try:
+                import edgar_xbrl
+                xc, xstrat, xconf = edgar_xbrl.map_label(company_raw, row.norm)
+            except Exception:
+                xc, xstrat, xconf = None, "none", 0.0
+            if xc and (entry is None or strategy in ("fuzzy", "stem_exact")):
+                # adopt the filer's concept; keep static ASC if we had one
+                static_asc = entry.get("asc_primary") if entry else None
+                static_refs = entry.get("asc_refs", []) if entry else []
+                static_sec  = entry.get("section") if entry else None
+                mr.concept     = xc
+                mr.asc_primary = static_asc
+                mr.asc_refs    = static_refs
+                mr.section     = static_sec
+                mr.strategy    = xstrat
+                mr.confidence  = xconf
+                mapped_rows.append(mr)
+                continue
 
         if entry:
             asc_refs = entry.get("asc_refs", [])

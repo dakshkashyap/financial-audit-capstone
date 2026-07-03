@@ -65,6 +65,12 @@ def _reconcile_leaves(df, tx: Transactions) -> List[dict]:
         exp = tx.expected_for_index(r.idx)
         if exp is None or exp.value is None:
             continue
+        # Strict core-label guard: on error splits the row indices shift when a
+        # row is added/removed, so an exact label match is what proves this is the
+        # *same* row and not a fuzzily-similar neighbour. Relaxing it to a fuzzy
+        # match was measured to halve precision (Type-EM-among-fired 0.95→0.66,
+        # FP 0→0.7%) — Stage 0 keeps coverage low ON PURPOSE and defers the rest
+        # to the LLM, so this guard stays strict.
         if exp.core != r.core:        # position shifted → not the same row
             continue
         if values_match(r.value, exp.value):

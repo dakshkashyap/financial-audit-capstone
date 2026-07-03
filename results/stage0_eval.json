@@ -1,57 +1,53 @@
 {
   "seed": 42,
-  "n": 400,
+  "n": 150,
   "splits": {
     "single_error": {
-      "n": 400,
-      "coverage": 0.4,
-      "error_row_em": 0.3425,
-      "error_type_em": 0.3675,
-      "error_row_em_fired": 0.8562,
-      "error_type_em_fired": 0.9187,
-      "success_rate": 0.3375,
-      "correct_value_acc": 0.9892,
-      "correct_value_n": 93,
+      "n": 150,
+      "coverage": 0.38,
+      "error_row_em": 0.34,
+      "error_type_em": 0.36,
+      "error_row_em_fired": 0.8947,
+      "error_type_em_fired": 0.9474,
+      "success_rate": 0.34,
+      "correct_value_acc": 1.0,
+      "correct_value_n": 33,
       "per_type": {
         "misclassification": {
-          "n": 93,
-          "coverage": 0.1613,
-          "type_em": 0.1183,
-          "row_em": 0.0968
+          "n": 30,
+          "coverage": 0.0667,
+          "type_em": 0.0667,
+          "row_em": 0.0667
         },
         "missing row": {
-          "n": 108,
-          "coverage": 0.3148,
-          "type_em": 0.2963,
-          "row_em": 0.2593
+          "n": 33,
+          "coverage": 0.2121,
+          "type_em": 0.2121,
+          "row_em": 0.1515
         },
         "numerical error": {
-          "n": 95,
-          "coverage": 0.7158,
-          "type_em": 0.7158,
-          "row_em": 0.6737
+          "n": 44,
+          "coverage": 0.6591,
+          "type_em": 0.6591,
+          "row_em": 0.6364
         },
         "redundant row": {
-          "n": 104,
-          "coverage": 0.4135,
-          "type_em": 0.3462,
-          "row_em": 0.3462
+          "n": 43,
+          "coverage": 0.4419,
+          "type_em": 0.3721,
+          "row_em": 0.3721
         }
       },
       "confusion": {
-        "misclassification -> abstain": 78,
-        "misclassification -> misclassification": 11,
-        "misclassification -> missing row": 1,
-        "misclassification -> numerical error": 3,
-        "missing row -> abstain": 74,
-        "missing row -> missing row": 32,
-        "missing row -> numerical error": 2,
-        "numerical error -> abstain": 27,
-        "numerical error -> numerical error": 68,
-        "redundant row -> abstain": 61,
-        "redundant row -> missing row": 1,
-        "redundant row -> numerical error": 6,
-        "redundant row -> redundant row": 36
+        "misclassification -> abstain": 28,
+        "misclassification -> misclassification": 2,
+        "missing row -> abstain": 26,
+        "missing row -> missing row": 7,
+        "numerical error -> abstain": 15,
+        "numerical error -> numerical error": 29,
+        "redundant row -> abstain": 24,
+        "redundant row -> numerical error": 3,
+        "redundant row -> redundant row": 16
       },
       "samples": [
         {
@@ -120,56 +116,12 @@
         }
       ]
     },
-    "multi_error": {
-      "n": 372,
-      "coverage": 0.3602,
-      "any_error_match": 0.2984,
-      "any_error_match_fired": 0.8284
-    },
     "correct": {
-      "n": 371,
-      "false_positive_rate": 0.0189,
-      "fired": 7,
-      "false_positive_by_type": {
-        "numerical error": 7
-      },
-      "samples": [
-        {
-          "pred_type": "numerical error",
-          "pred_row": 44,
-          "detail": "'Beginning of period' stated 531822.0, transactions imply 391822.0."
-        },
-        {
-          "pred_type": "numerical error",
-          "pred_row": 4,
-          "detail": "'Inventories' stated 6059.0, transactions imply 8612.0."
-        },
-        {
-          "pred_type": "numerical error",
-          "pred_row": 19,
-          "detail": "Subtotal 'Total current liabilities' stated 1299216.0, its leaf rows sum to 718975.0."
-        },
-        {
-          "pred_type": "numerical error",
-          "pred_row": 12,
-          "detail": "'Research and development' stated 2987.0, transactions imply 2987000.0."
-        },
-        {
-          "pred_type": "numerical error",
-          "pred_row": 3,
-          "detail": "Subtotal 'Net cash used for investing activities' stated -1161.0, its leaf rows sum to -1883.0."
-        },
-        {
-          "pred_type": "numerical error",
-          "pred_row": 31,
-          "detail": "Subtotal 'Total ON Semiconductor Corporation stockholders\u2019 equity' stated 77826.0, its leaf rows sum to 7782.6."
-        },
-        {
-          "pred_type": "numerical error",
-          "pred_row": 30,
-          "detail": "'Proceeds from sale of investments' stated 505.0, transactions imply -420693.0."
-        }
-      ]
+      "n": 150,
+      "false_positive_rate": 0.0,
+      "fired": 0,
+      "false_positive_by_type": {},
+      "samples": []
     }
   }
 }

@@ -59,6 +59,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from parser import load_single_error, load_multi_error
 from stage1_arelle import run_stage1
 from taxonomy_graph import TaxonomyGraph
+import concept_citation as cc
 
 # Stage 0 (deterministic gate) — used only to obtain a PREDICTED error type
 # per record, so we can report citation accuracy bucketed by the error type
@@ -195,7 +196,8 @@ def eval_citations(items: List[dict], graph: TaxonomyGraph, level: str,
 
             rec = {"gt_topic": gt_topic, "gt_et": gt_et, "pred_et": pred_et,
                    "gt_row": gt_row, "covered": False, "hit": False,
-                   "recall": False, "row_found": False}
+                   "hit_family": False, "recall": False, "recall_union": False,
+                   "recall_union_family": False, "row_found": False}
 
             row = next((r for r in result.statement.rows if r.row_idx == gt_row), None)
             if row is None:
@@ -204,7 +206,7 @@ def eval_citations(items: List[dict], graph: TaxonomyGraph, level: str,
                 continue
             rec["row_found"] = True
 
-            # Candidate-set recall (the Stage-2 ceiling)
+            # Candidate-set recall (taxonomy arcs only — the OLD Stage-2 ceiling)
             concept_bare = (row.concept or "").replace("us-gaap:", "")
             cand_topics = set()
             if concept_bare:
@@ -216,6 +218,14 @@ def eval_citations(items: List[dict], graph: TaxonomyGraph, level: str,
             pred_topic = pred_extract(row.asc_primary)
             rec["covered"]    = bool(pred_topic)
             rec["hit"]        = bool(pred_topic) and pred_topic == gt_topic
+            # version-tolerant (family) single-pick hit (collapses 225→220, 605→606)
+            rec["hit_family"] = bool(pred_topic) and cc.family(pred_topic) == cc.family(gt_topic)
+            # UNION candidate recall (NEW Stage-2 ceiling): subject ∪ presentation
+            # ∪ taxonomy arcs, attached to the row by Stage 1. Topic-level (3-digit).
+            gt3   = gt_topic[:3]
+            union = set(row.asc_candidates or [])
+            rec["recall_union"]        = gt3 in union
+            rec["recall_union_family"] = any(cc.family(u) == cc.family(gt3) for u in union)
             rec["pred_topic"] = pred_topic
             rec["concept"]    = row.concept
             rec["label"]      = row.label[:50]
@@ -225,7 +235,10 @@ def eval_citations(items: List[dict], graph: TaxonomyGraph, level: str,
     total      = len(records)
     covered    = sum(r["covered"] for r in records)
     hit        = sum(r["hit"]     for r in records)
+    hit_fam    = sum(r["hit_family"] for r in records)
     recall_hit = sum(r["recall"]  for r in records)
+    recall_union     = sum(r["recall_union"] for r in records)
+    recall_union_fam = sum(r["recall_union_family"] for r in records)
 
     misses = []
     for r in records:
@@ -251,9 +264,12 @@ def eval_citations(items: List[dict], graph: TaxonomyGraph, level: str,
         "row_not_in_table":    row_missing,
         "coverage":            round(covered / total, 4) if total else 0.0,
         "citation_topic_em":   round(hit / total, 4) if total else 0.0,
+        "citation_topic_em_family": round(hit_fam / total, 4) if total else 0.0,
         "topic_em_among_covered": round(hit / covered, 4) if covered else 0.0,
         "candidate_recall":    round(recall_hit / total, 4) if total else 0.0,
         "candidate_recall_hits": recall_hit,
+        "candidate_recall_union":        round(recall_union / total, 4) if total else 0.0,
+        "candidate_recall_union_family": round(recall_union_fam / total, 4) if total else 0.0,
         "paper_baseline":      PAPER_BASELINE,
         "by_error_type_gt":    _aggregate_by(records, "gt_et"),
         "sample_misses":       misses,
@@ -285,12 +301,19 @@ def print_results(r: dict, split: str, n: int) -> None:
     em = r["citation_topic_em"]
     print(f"\n  CITATION TOPIC EM (single-pick) : {em:.1%}  {_bar(em)}  "
           f"({r['topic_hits']}/{r['records_with_gt_asc']})")
+    emf = r.get("citation_topic_em_family", em)
+    print(f"  CITATION TOPIC EM (version-fair): {emf:.1%}  {_bar(emf)}  "
+          f"(collapses 225→220, 605→606)")
     print(f"  Topic EM among covered rows     : {r['topic_em_among_covered']:.1%}")
     rec = r["candidate_recall"]
-    print(f"\n  CANDIDATE RECALL (Stage-2 ceiling): {rec:.1%}  {_bar(rec)}  "
+    print(f"\n  CANDIDATE RECALL — taxonomy only : {rec:.1%}  {_bar(rec)}  "
           f"({r['candidate_recall_hits']}/{r['records_with_gt_asc']})")
-    print(f"    → GT topic is present in the graph's candidate set this often;")
-    print(f"      a context-aware Stage-2 selector can reach up to this.")
+    ru  = r.get("candidate_recall_union", rec)
+    ruf = r.get("candidate_recall_union_family", ru)
+    print(f"  CANDIDATE RECALL — UNION set      : {ru:.1%}  {_bar(ru)}   ← NEW Stage-2 ceiling")
+    print(f"  CANDIDATE RECALL — UNION (fair)   : {ruf:.1%}  {_bar(ruf)}")
+    print(f"    → UNION = subject-map ∪ presentation ∪ taxonomy arcs (attached to")
+    print(f"      each row as asc_candidates); a Stage-2 selector can reach up to this.")
     print(f"\n  Paper GPT-4 baseline            : {r['paper_baseline']:.1%}")
     delta = em - r["paper_baseline"]
     sign  = "+" if delta >= 0 else ""

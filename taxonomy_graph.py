@@ -305,10 +305,18 @@ class TaxonomyGraph:
             topic_int = int(parts.get("topic") or 0)
         except ValueError:
             topic_int = 0
+        # Topics that almost never govern a face-of-statement line item but show
+        # up as reference arcs and used to win the pick: 852 Reorganizations,
+        # 235 Notes to Financial Statements, 280 Segment Reporting.
+        not_junk     = 0 if topic_int in (852, 235, 280) else 1
+        # SEC-staff content (sections S99/S25/Sxx) is interpretive guidance, not
+        # the authoritative ASC standard — demote below real codification refs.
+        section_val  = (parts.get("section") or "").upper()
+        not_sec      = 0 if section_val.startswith("S") else 1
         is_general   = 1 if 0 < topic_int < _INDUSTRY_TOPIC_MIN else 0
         role_pri     = _ROLE_PRIORITY.get(parts.get("role", ""), 0)
         completeness = sum(1 for k in ("subtopic", "section", "paragraph") if parts.get(k))
-        return (is_general, role_pri, completeness, -topic_int)
+        return (not_junk, not_sec, is_general, role_pri, completeness, -topic_int)
 
     def _lookup_one(self, concept_id: str) -> Optional[str]:
         """Direct lookup: rank all of a concept's reference arcs and return the
