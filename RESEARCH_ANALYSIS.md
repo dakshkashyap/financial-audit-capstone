@@ -564,17 +564,51 @@ We also tested whether a more conservative system prompt alone (without the dete
 
 ## 5.5 What Did NOT Work (Reported Honestly)
 
-Good research includes the failures:
+Good research includes the failures. Here is what we tried, why it seemed like a good idea, and why we reverted or fixed it.
 
-1. **Fuzzy label matching to raise Stage 0 coverage** — coverage went from 38% to 49% but false alarms came back (FP rate 0.000 → 0.007) and error-type accuracy dropped 0.947 → 0.662. Reverted. Precision matters more than coverage for Stage 0.
+---
 
-2. **Prompt-only conservatism** — asking the LLM "please don't over-audit" via system prompt raised false alarms to 61%. Only the deterministic veto worked.
+**1. Trying to make Stage 0 catch more errors using fuzzy matching**
 
-3. **Aggressive subtotal-tamper detection** — caused type mislabels, demoted to a weak signal only.
+Stage 0 catches about 38% of errors — deliberately, because it only fires when it is certain. We tried to push that higher by loosening the matching: instead of requiring the exact row label to match, we let it match rows with similar-sounding names.
 
-4. **Early missing-row detection without corroboration** — flooded false positives, now requires a subtotal anomaly of exactly the row's value.
+It worked — coverage went from 38% to 49%. But the false alarm rate came back (from 0% to 0.7%) and when it did fire on error statements, it got the error type wrong more often (accuracy dropped from 94.7% to 66.2%). The reason: when a row is deleted, the numbering of all rows below it shifts. A fuzzy match latches onto the nearest similar neighbor and misidentifies the wrong row as the broken one. We reverted it. For Stage 0, being right matters more than catching more cases.
 
-5. **The taxonomy graph's raw citation ranking** — initially let SEC-staff topics (210 Balance Sheet presentation labels) beat the correct subject-matter topics (330 Inventory, 350 Goodwill). Fixed in `concept_citation.py` which adds a subject-matter/presentation split.
+---
+
+**2. Trying to fix over-auditing with a polite prompt**
+
+The model was flagging 50% of clean statements as having errors. The obvious first fix was to tell it in the system prompt: "be conservative, don't over-flag clean statements."
+
+It made things worse — false alarms went from 50% to 61%. Telling an LLM to be careful does not override what it has learned to do. The only thing that worked was giving a deterministic rule hard authority: if Stage 0 has proven the math is clean, the LLM's verdict is overridden. You cannot ask the model to stop — you have to give code the power to say no.
+
+---
+
+**3. Being too aggressive about detecting tampered subtotals**
+
+Early on, we tried flagging cases where a subtotal looked like it had been manually altered. This caused the system to mislabel a lot of errors — it would call something a "Numerical Error" when it was actually a "Missing Row" or "Redundant Row." We demoted this to a weak backup signal that only fires when no other evidence exists.
+
+---
+
+**4. Claiming a row was missing before checking the math**
+
+We tried detecting missing rows early — if a row mentioned in the transaction record was absent from the table, flag it. But this flooded false positives. The reason: a row can be described in the transactions but legitimately absent from the table due to how it was consolidated or summarized.
+
+The fix: only claim a row is missing if a subtotal is also off by exactly that row's value. Both signals have to agree before we fire.
+
+---
+
+**5. The citation system returning the wrong type of rule**
+
+This one took the longest to diagnose. When Stage 1 looked up a concept in the FASB taxonomy and returned a citation, it was often returning the wrong *kind* of citation.
+
+Here is the distinction: FASB rules fall into two categories:
+- **Presentation rules** — rules about *where on the page* something goes. Example: ASC 210 says "current assets go at the top of the balance sheet."
+- **Subject-matter rules** — rules about *what the item actually is*. Example: ASC 330 governs what inventory is and how to value it.
+
+AuditBench mostly cites subject-matter rules (the ones about *what* something is). But the FASB taxonomy's linkbase — the file we were reading citations from — is structured around presentation (the ones about *where* something goes). So for a row like "Inventory," the taxonomy kept returning ASC 210 (Balance Sheet presentation) instead of ASC 330 (Inventory subject matter).
+
+The fix was `concept_citation.py`: instead of blindly using whatever the taxonomy returns first, we added a rule — if the concept name contains a known subject-matter keyword (Inventory → 330, Goodwill → 350, Revenue → 606), use that citation. Only fall back to the presentation citation if no subject-matter rule applies.
 
 ---
 
