@@ -121,46 +121,62 @@ JUDGE AGENT
 
 ---
 
-## Server Setup
+## How the MCP Server Is Set Up
 
+MCP (Model Context Protocol) is an open standard that lets AI agents call external tools over a local connection — the same way a browser calls an API. The server runs as a background process. Agents connect to it and call named tools. The server executes the tool, returns the result, and logs the call.
+
+**Three things you write to set one up:**
+
+**1. Install the library**
+```bash
+pip install mcp
+```
+
+**2. Write the server** — each `@server.tool` decorator registers a function as a callable tool
 ```python
 # taxonomy_mcp_server.py
-
 from mcp.server import MCPServer
 from taxonomy_graph import TaxonomyGraph
 from concept_citation import best_topic, candidate_topics, family
 
-# Load the graph once at startup (downloads + caches FASB linkbase XML)
-graph = TaxonomyGraph()
-
+graph = TaxonomyGraph()          # loads FASB linkbase once at startup
 server = MCPServer(name="taxonomy-knowledge-agent", port=8001)
 
 @server.tool("get_citation")
 def get_citation(concept_id: str, statement_type: str) -> dict:
-    primary   = best_topic(concept_id, statement_type, graph)
-    candidates = candidate_topics(concept_id, statement_type, graph)
     return {
-        "primary":     primary,
-        "candidates":  candidates,
-        "source":      "fasb_linkbase_2023",
-        "hallucinated": False,
+        "primary":    best_topic(concept_id, statement_type, graph),
+        "candidates": candidate_topics(concept_id, statement_type, graph),
+        "source":     "fasb_linkbase_2023",
     }
 
-@server.tool("get_concept_info")
-def get_concept_info(concept_id: str) -> dict:
-    return graph.get_concept_info(concept_id)
-
-@server.tool("walk_to_rule")
-def walk_to_rule(concept_id: str, error_type: str) -> dict:
-    return graph.walk_to_violated_constraint(concept_id, error_type)
-
 @server.tool("validate_citation")
-def validate_citation(citation_string: str) -> dict:
-    normalized = family(citation_string)  # maps old → current standard name
-    exists = graph.citation_exists(normalized)
-    return {"valid": exists, "normalized": normalized, "exists_in": "fasb_linkbase_2023"}
+def validate_citation(citation: str) -> dict:
+    normalized = family(citation)
+    return {"valid": graph.citation_exists(normalized), "normalized": normalized}
 
 server.run()
+```
+
+**3. Call it from any agent** — agent code calls tools by name, gets back structured JSON
+```python
+from mcp.client import MCPClient
+
+tax = MCPClient("http://localhost:8001")
+
+# Auditor agent calls this — never generates a citation from memory
+result = tax.call("get_citation", concept_id="us-gaap:InventoryNet",
+                                  statement_type="balance_sheet")
+# → {"primary": "ASC 330-10-35-1", "candidates": [...], "source": "fasb_linkbase_2023"}
+
+# Judge calls this before finalizing output
+check = tax.call("validate_citation", citation="ASC 330-10-35-1")
+# → {"valid": true, "normalized": "ASC 330-10-35-1"}
+```
+
+**Start the server before running any agents:**
+```bash
+python taxonomy_mcp_server.py   # runs in background, agents connect on port 8001
 ```
 
 ---

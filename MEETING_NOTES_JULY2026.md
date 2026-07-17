@@ -69,6 +69,10 @@ The MCP server wraps the taxonomy graph — a structured map of accounting conce
 Both datasets are publicly available, no API key required.
 
 **FinMR (use this first):**
+- HuggingFace: https://huggingface.co/datasets/TheFinAI/FinMR
+- Competition subset: https://huggingface.co/datasets/TheFinAI/FinMR_Sub
+- GitHub (eval code + all subsets): https://github.com/The-FinAI/FinAuditing
+
 ```python
 from datasets import load_dataset
 ds = load_dataset("TheFinAI/FinMR")   # 332 rows, 4.8MB, free
@@ -76,6 +80,9 @@ ds = load_dataset("TheFinAI/FinMR")   # 332 rows, 4.8MB, free
 
 **AuditFlow's 67 cases:**  
 Not a separate download. AuditFlow used FinMR metadata (ticker, concept, period) and re-fetched the raw XBRL filing from SEC EDGAR for each row. We do the same:
+- SEC EDGAR companyfacts API: https://data.sec.gov/api/xbrl/companyfacts/CIK{number}.json
+- SEC company ticker index: https://data.sec.gov/files/company_tickers.json
+
 ```python
 # For each FinMR row → GET https://data.sec.gov/api/xbrl/companyfacts/CIK{number}.json
 # Free, public, no key needed
