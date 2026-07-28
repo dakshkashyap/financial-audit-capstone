@@ -17,10 +17,15 @@ from typing import Dict, List, Optional, Any
 # Project root (directory containing this file).
 PROJECT_ROOT = os.environ.get("AUDITBENCH_DATA", os.path.dirname(__file__))
 
+# AuditBench data was archived (2026-07) in favour of FinMR/FinAuditing as the
+# primary benchmark; it remains fully usable as the baseline via these paths.
+_ARCHIVE = os.path.join(PROJECT_ROOT, "archive_auditbench_data")
+_DATA_ROOT = _ARCHIVE if os.path.isdir(_ARCHIVE) else PROJECT_ROOT
+
 DATA = {
-    "single_error": os.path.join(PROJECT_ROOT, "Error_insertion", "wrong_table_data.json"),
-    "multi_error":  os.path.join(PROJECT_ROOT, "Error_insertion", "wrong_table_data_multiple_errors.json"),
-    "correct":      os.path.join(PROJECT_ROOT, "transaction_data", "output_transaction_table_pair.json"),
+    "single_error": os.path.join(_DATA_ROOT, "Error_insertion", "wrong_table_data.json"),
+    "multi_error":  os.path.join(_DATA_ROOT, "Error_insertion", "wrong_table_data_multiple_errors.json"),
+    "correct":      os.path.join(_DATA_ROOT, "transaction_data", "output_transaction_table_pair.json"),
 }
 
 

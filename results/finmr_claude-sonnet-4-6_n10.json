@@ -1,0 +1,246 @@
+{
+  "summary": {
+    "model": "claude-sonnet-4-6",
+    "n": 10,
+    "dqc": "DQC_US_0015",
+    "seed": 42,
+    "parse_rate": 1.0,
+    "extracted_acc": 0.5,
+    "calculated_acc": 0.0,
+    "joint_acc": 0.0,
+    "auditflow_paper_joint_acc_reference": 0.8209,
+    "auditflow_llm_only_ablation_reference": 0.1791
+  },
+  "records": [
+    {
+      "id": 3,
+      "dqc_id": "DQC_US_0015",
+      "gt": {
+        "extracted_value": "-157,000,000",
+        "calculated_value": "157,000,000"
+      },
+      "pred": {
+        "extracted_value": "-157000000",
+        "calculated_value": "-157000000"
+      },
+      "score": {
+        "extracted_ok": true,
+        "calculated_ok": false,
+        "joint_ok": false
+      },
+      "usage": {
+        "input": 53036,
+        "output": 458
+      },
+      "error": null,
+      "raw_text_head": "Looking at the instance document for the period 2021-01-01 to 2021-12-31:\n\n**Extracted value** (reported for `us-gaap:CostsIncurredAcquisitionOfOilAndGasPropertiesWithProvedReserves` with no segment/consolidated context `ib84f4cfaefca41bab0e368dbd8108f05`):\n= -157000000\n\n**Calculated value** based on calculation relationships:\n`CostsIncurredAcquisitionOfOilAndGasProperties` = `CostsIncurredAcquisi"
+    },
+    {
+      "id": 13,
+      "dqc_id": "DQC_US_0015",
+      "gt": {
+        "extracted_value": "-17,777",
+        "calculated_value": "17,777"
+      },
+      "pred": {
+        "extracted_value": "0",
+        "calculated_value": "0"
+      },
+      "score": {
+        "extracted_ok": false,
+        "calculated_ok": false,
+        "joint_ok": false
+      },
+      "usage": {
+        "input": 30109,
+        "output": 19
+      },
+      "error": null,
+      "raw_text_head": "{\"extracted_value\": \"0\", \"calculated_value\": \"0\"}"
+    },
+    {
+      "id": 14,
+      "dqc_id": "DQC_US_0015",
+      "gt": {
+        "extracted_value": "-182000",
+        "calculated_value": "182000"
+      },
+      "pred": {
+        "extracted_value": "6995000",
+        "calculated_value": "6995000"
+      },
+      "score": {
+        "extracted_ok": false,
+        "calculated_ok": false,
+        "joint_ok": false
+      },
+      "usage": {
+        "input": 27517,
+        "output": 338
+      },
+      "error": null,
+      "raw_text_head": "Looking at the instance document for the period 2022-07-01 to 2022-09-30:\n\n**Question 1 - Reported value:**\nThe total `us-gaap:DepreciationDepletionAndAmortization` for context `icf8e6213b3df490490e2c33b61db40a4_D20220701-20220930` (no segment dimension, i.e., the total) is reported with decimals=\"-3\" as **6995000**.\n\n(Note: there's also a decimals=\"-5\" entry of 7000000.0 for the same context, but"
+    },
+    {
+      "id": 17,
+      "dqc_id": "DQC_US_0015",
+      "gt": {
+        "extracted_value": "-46600000",
+        "calculated_value": "46600000"
+      },
+      "pred": {
+        "extracted_value": "-46600000",
+        "calculated_value": "0"
+      },
+      "score": {
+        "extracted_ok": true,
+        "calculated_ok": false,
+        "joint_ok": false
+      },
+      "usage": {
+        "input": 34100,
+        "output": 21
+      },
+      "error": null,
+      "raw_text_head": "{\"extracted_value\": \"-46600000\", \"calculated_value\": \"0\"}"
+    },
+    {
+      "id": 28,
+      "dqc_id": "DQC_US_0015",
+      "gt": {
+        "extracted_value": "-4,200,000",
+        "calculated_value": "4,200,000"
+      },
+      "pred": {
+        "extracted_value": "201700000",
+        "calculated_value": "201700000"
+      },
+      "score": {
+        "extracted_ok": false,
+        "calculated_ok": false,
+        "joint_ok": false
+      },
+      "usage": {
+        "input": 45320,
+        "output": 222
+      },
+      "error": null,
+      "raw_text_head": "Looking at the instance document for `us-gaap:OtherReceivables` for the period 2022-11-30:\n\nThe instance document contains:\n```\n<us-gaap:OtherReceivables contextRef=\"ic404d2bccd2342568fef11fcedc6d7e7_I20221130\" ... unitRef=\"usd\">201700000</us-gaap:OtherReceivables>\n```\n\nThe context `ic404d2bccd2342568fef11fcedc6d7e7_I20221130` corresponds to the period ending 2022-11-30 with dimension `kmx:OtherRe"
+    },
+    {
+      "id": 31,
+      "dqc_id": "DQC_US_0015",
+      "gt": {
+        "extracted_value": "-58,000",
+        "calculated_value": "58,000"
+      },
+      "pred": {
+        "extracted_value": "-58000",
+        "calculated_value": "0"
+      },
+      "score": {
+        "extracted_ok": true,
+        "calculated_ok": false,
+        "joint_ok": false
+      },
+      "usage": {
+        "input": 51998,
+        "output": 20
+      },
+      "error": null,
+      "raw_text_head": "{\"extracted_value\": \"-58000\", \"calculated_value\": \"0\"}"
+    },
+    {
+      "id": 35,
+      "dqc_id": "DQC_US_0015",
+      "gt": {
+        "extracted_value": "-226,000",
+        "calculated_value": "226,000"
+      },
+      "pred": {
+        "extracted_value": "-226000",
+        "calculated_value": "-226000"
+      },
+      "score": {
+        "extracted_ok": true,
+        "calculated_ok": false,
+        "joint_ok": false
+      },
+      "usage": {
+        "input": 51786,
+        "output": 21
+      },
+      "error": null,
+      "raw_text_head": "{\"extracted_value\": \"-226000\", \"calculated_value\": \"-226000\"}"
+    },
+    {
+      "id": 81,
+      "dqc_id": "DQC_US_0015",
+      "gt": {
+        "extracted_value": "-451,000",
+        "calculated_value": "451,000"
+      },
+      "pred": {
+        "extracted_value": "-451000",
+        "calculated_value": "-451000"
+      },
+      "score": {
+        "extracted_ok": true,
+        "calculated_ok": false,
+        "joint_ok": false
+      },
+      "usage": {
+        "input": 52494,
+        "output": 344
+      },
+      "error": null,
+      "raw_text_head": "Looking at the instance document for `us-gaap:UnrecognizedTaxBenefitsDecreasesResultingFromPriorPeriodTaxPositions` for the period 2022-01-01 to 2022-12-31 (context c-26):\n\n**Extracted value:** The instance document reports `-451000` for context c-26.\n\n**Calculated value:** Based on the US GAAP taxonomy calculation relationship, `UnrecognizedTaxBenefitsDecreasesResultingFromPriorPeriodTaxPositions"
+    },
+    {
+      "id": 86,
+      "dqc_id": "DQC_US_0015",
+      "gt": {
+        "extracted_value": "-149,000",
+        "calculated_value": "149,000"
+      },
+      "pred": {
+        "extracted_value": "0",
+        "calculated_value": "0"
+      },
+      "score": {
+        "extracted_ok": false,
+        "calculated_ok": false,
+        "joint_ok": false
+      },
+      "usage": {
+        "input": 47936,
+        "output": 197
+      },
+      "error": null,
+      "raw_text_head": "Looking at the instance document for `us-gaap:DividendsCash` for the period 2021-01-01 to 2021-12-31:\n\nThe instance document provided does not contain an explicit fact for `us-gaap:DividendsCash` for the period 2021-01-01 to 2021-12-31.\n\nThe calculation linkbase is empty (no calculation relationships defined in this filing's calculation linkbase). The US GAAP taxonomy shows `DividendsCash` as a pa"
+    },
+    {
+      "id": 94,
+      "dqc_id": "DQC_US_0015",
+      "gt": {
+        "extracted_value": "-189,767",
+        "calculated_value": "189,767"
+      },
+      "pred": {
+        "extracted_value": "0",
+        "calculated_value": "0"
+      },
+      "score": {
+        "extracted_ok": false,
+        "calculated_ok": false,
+        "joint_ok": false
+      },
+      "usage": {
+        "input": 46671,
+        "output": 431
+      },
+      "error": null,
+      "raw_text_head": "I need to find the reported value of `us-gaap:PaymentsToAcquireOtherProductiveAssets` for the period 2023-01-01 to 2023-09-30 in the instance document, and then calculate what it should be based on calculation relationships.\n\n**Step 1: Find the reported value**\n\nLooking through the instance document for `us-gaap:PaymentsToAcquireOtherProductiveAssets` with context `From2023-01-012023-09-30`. The i"
+    }
+  ]
+}

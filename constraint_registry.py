@@ -3,8 +3,10 @@ import os
 import re
 from collections import Counter
 
-DATA_DIR = os.environ.get("AUDITBENCH_DATA", os.path.dirname(__file__) + "/Error_insertion")
-FILE_PATH = os.path.join(DATA_DIR, "wrong_table_data.json")
+from parser import DATA as _PARSER_DATA
+
+FILE_PATH = os.environ.get(
+    "AUDITBENCH_SINGLE_ERROR_PATH", _PARSER_DATA["single_error"])
 
 def extract_fasb_id(citation_text):
     # Extracts FASB ASC xxx-xx-xx from the text

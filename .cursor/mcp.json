@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "intelliaudit-taxonomy": {
+      "command": "python",
+      "args": [
+        "c:/Users/daksh/Desktop/Capstone/financial-audit-capstone/taxonomy_mcp_server.py"
+      ]
+    }
+  }
+}

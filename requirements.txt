@@ -8,3 +8,7 @@ transformers
 # Stage 0A (deterministic arithmetic verifier) / Stage 0B (equation checker)
 sympy>=1.12
 pandas>=2.0.0
+# FinMR / FinAuditing (HuggingFace) + taxonomy MCP server
+datasets>=2.19.0
+pyarrow>=14.0.0
+mcp>=1.0.0
