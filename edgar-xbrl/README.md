@@ -128,10 +128,18 @@ And saves:
 ```bash
 cd edgar-xbrl
 source venv/bin/activate          # macOS/Linux (already set up)
+
+# Demo: one concept (Revenue), annual 10-K only
 python edgar_api.py
+
+# Full dump: EVERY us-gaap fact Apple filed — no filters
+python edgar_api.py --all --ticker AAPL
+# → aapl_all_companyfacts.csv  (~500 concepts, ~25k rows)
 ```
 
-Optional: change `ticker` and `concept_name` inside `main()` in `edgar_api.py`.
+**Important:** `--all` is **not** a pretty balance sheet / income statement page.  
+SEC companyfacts is a **flat database** of every tagged number across all filings and periods.  
+A formatted “financial statement” is a *view* of a subset of those facts for one period.
 
 ---
 

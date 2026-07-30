@@ -128,10 +128,55 @@ def fetch_annual_concept(
     return annual, company, facts
 
 
-def main() -> None:
-    ticker = "AAPL"
-    concept_name = "RevenueFromContractWithCustomerExcludingAssessedTax"
+def dump_all_facts(
+    company_facts: dict[str, Any],
+    taxonomy: str = "us-gaap",
+) -> pd.DataFrame:
+    """Flatten EVERY concept/unit/period into one DataFrame — no filters.
 
+    This is not a formatted balance sheet / income statement page.
+    It is the company's full XBRL fact database: every tagged number
+    across all forms (10-K, 10-Q, …), periods, and units.
+    """
+    taxonomy_facts = company_facts["facts"].get(taxonomy, {})
+    rows: list[dict[str, Any]] = []
+
+    for concept_name, concept in taxonomy_facts.items():
+        label = concept.get("label")
+        description = concept.get("description")
+        for unit, unit_rows in concept.get("units", {}).items():
+            for fact in unit_rows:
+                rows.append({
+                    "concept": concept_name,
+                    "label": label,
+                    "description": description,
+                    "unit": unit,
+                    **fact,
+                })
+
+    return pd.DataFrame(rows)
+
+
+def main() -> None:
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description="SEC EDGAR companyfacts client (no API key)",
+    )
+    parser.add_argument("--ticker", default="AAPL", help="Stock ticker")
+    parser.add_argument(
+        "--all",
+        action="store_true",
+        help="Dump ALL us-gaap facts to CSV (no annual/10-K filter)",
+    )
+    parser.add_argument(
+        "--concept",
+        default="RevenueFromContractWithCustomerExcludingAssessedTax",
+        help="Single concept to extract when not using --all",
+    )
+    args = parser.parse_args()
+
+    ticker = args.ticker.strip().upper()
     print(f"Looking up ticker {ticker}…")
     company = find_company(ticker)
     print(f"Found: {company['title']}  CIK={company['cik_str']}")
@@ -140,7 +185,22 @@ def main() -> None:
     company_facts = get_company_facts(company["cik_str"])
     print(f"Entity: {company_facts.get('entityName')}")
 
-    # Show a few revenue-related concepts
+    if args.all:
+        print("\nDumping ALL us-gaap facts (no filters)…")
+        df = dump_all_facts(company_facts)
+        n_concepts = df["concept"].nunique() if not df.empty else 0
+        print(f"Concepts: {n_concepts}")
+        print(f"Fact rows: {len(df)}")
+        output_file = f"{ticker.lower()}_all_companyfacts.csv"
+        df.to_csv(output_file, index=False)
+        print(f"\nSaved: {output_file}")
+        print(
+            "Note: this is a flat XBRL fact table, not a pretty "
+            "balance-sheet layout. Filter by concept / form / end as needed."
+        )
+        return
+
+    concept_name = args.concept
     revenue_concepts = list_concepts(company_facts, search="Revenue")
     print(f"\nRevenue-related concepts ({len(revenue_concepts)}):")
     for name in revenue_concepts[:15]:
