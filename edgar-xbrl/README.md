@@ -170,12 +170,4 @@ Stage 2 (LLM)       → explain using pre-verified facts
 
 ---
 
-## Professor talking points (30 seconds)
-
-1. “No API key — public SEC data with a name/email User-Agent only.”  
-2. “We recover the tags companies already filed, instead of asking an LLM to remember them.”  
-3. “That concept string is the input to our taxonomy graph for a grounded FASB citation.”
-
----
-
 *edgar-xbrl/README.md · IntelliAudit · SFU CS Capstone*
