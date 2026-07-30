@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# FASB taxonomy cache (auto-downloaded on first run, ~11MB)
+.cache/
+
+# Raw data (already in repo, but large)
+# Uncomment if you want to exclude:
+# Raw_table_data/
+# Error_insertion/
+# transaction_data/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

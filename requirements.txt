@@ -7,6 +7,10 @@ tqdm>=4.65.0
 # API providers
 anthropic>=0.18.0
 
+# FinMR + TaxonomyGraph dependencies
+datasets>=2.14.0
+sympy>=1.12
+
 # For local inference with Hugging Face models (optional)
 # Uncomment if you want to use hf/* models
 # torch
