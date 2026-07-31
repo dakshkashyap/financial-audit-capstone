@@ -83,7 +83,7 @@ def _broken_row_context(item: dict, graph: TaxonomyGraph):
 def run_eval(
     items: List[dict],
     mode: str = "heuristic",
-    model: str = "claude/claude-3-5-haiku",
+    model: str = "claude/claude-haiku-4-5",
     max_iterations: int = 3,
 ) -> dict:
     graph = TaxonomyGraph()
@@ -247,7 +247,7 @@ def main() -> None:
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--split", default="single_error", choices=["single_error", "multi_error"])
     ap.add_argument("--mode", default="heuristic", choices=["heuristic", "llm", "oracle"])
-    ap.add_argument("--model", default="claude/claude-3-5-haiku")
+    ap.add_argument("--model", default="claude/claude-haiku-4-5")
     ap.add_argument("--max-iterations", type=int, default=3)
     ap.add_argument("--out", default=None, help="Write JSON to results/")
     args = ap.parse_args()

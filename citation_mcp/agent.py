@@ -69,7 +69,7 @@ class CitationAgent:
         tools: Optional[TaxonomyTools] = None,
         mode: str = "heuristic",
         max_iterations: int = 3,
-        model: str = "claude/claude-3-5-haiku",
+        model: str = "claude/claude-haiku-4-5",
     ) -> None:
         self.tools = tools or TaxonomyTools()
         self.mode = mode

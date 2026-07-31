@@ -343,11 +343,12 @@ MODEL_CONFIGS = {
     "mistral/open-mixtral-8x22b": {"backend": MistralBackend, "model_name": "open-mixtral-8x22b"},
     
     # Claude models (Anthropic)
+    "claude/claude-haiku-4-5": {"backend": ClaudeBackend, "model_name": "claude-haiku-4-5-20251001"},
     "claude/claude-3-5-sonnet": {"backend": ClaudeBackend, "model_name": "claude-3-5-sonnet-20241022"},
-    "claude/claude-3-5-haiku": {"backend": ClaudeBackend, "model_name": "claude-3-5-haiku-20241022"},
+    "claude/claude-3-5-haiku": {"backend": ClaudeBackend, "model_name": "claude-haiku-4-5-20251001"},
     "claude/claude-3-opus": {"backend": ClaudeBackend, "model_name": "claude-3-opus-20240229"},
     "claude/claude-3-sonnet": {"backend": ClaudeBackend, "model_name": "claude-3-sonnet-20240229"},
-    "claude/claude-3-haiku": {"backend": ClaudeBackend, "model_name": "claude-3-haiku-20240307"},
+    "claude/claude-3-haiku": {"backend": ClaudeBackend, "model_name": "claude-haiku-4-5-20251001"},
     
     # Hugging Face models (local inference)
     "hf/Qwen/Qwen2.5-7B-Instruct": {"backend": HuggingFaceBackend, "model_name": "Qwen/Qwen2.5-7B-Instruct"},

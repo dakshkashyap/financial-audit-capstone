@@ -54,7 +54,7 @@ EXAMPLES = [
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--mode", default="heuristic", choices=["heuristic", "llm", "oracle"])
-    ap.add_argument("--model", default="claude/claude-3-5-haiku")
+    ap.add_argument("--model", default="claude/claude-haiku-4-5")
     args = ap.parse_args()
 
     tools = TaxonomyTools()
