@@ -1,0 +1,46 @@
+{
+  "mode": "heuristic",
+  "model": null,
+  "n_records": 42,
+  "A_graph_single_pick": {
+    "topic_em": 0.1905,
+    "hits": 8
+  },
+  "C_citation_agent": {
+    "topic_em": 0.2143,
+    "hits": 9,
+    "n_with_citation": 28,
+    "grounded_accept_rate": 1.0,
+    "ungrounded_accepts": 0,
+    "hallucinated_attempts_total": 0,
+    "avg_iterations": 1.0,
+    "improved_vs_A": 2,
+    "regressed_vs_A": 1
+  },
+  "candidate_recall_ceiling": {
+    "topic_em": 0.2619,
+    "hits": 11
+  },
+  "paper_baseline_gpt4": 0.262,
+  "delta_C_minus_A": 0.0238,
+  "sample_improvements": [
+    {
+      "label": "Depreciation and amortization",
+      "concept": "DepreciationAndAmortization",
+      "gt_topic": "360",
+      "a_topic": "230",
+      "c_topic": "360",
+      "c_citation": "360-10-50-1",
+      "rationale": "heuristic_rank=1; role=legacyRef"
+    },
+    {
+      "label": "Property and equipment, net",
+      "concept": "PropertyPlantAndEquipmentNet",
+      "gt_topic": "360",
+      "a_topic": "852",
+      "c_topic": "360",
+      "c_citation": "360-10-50-1",
+      "rationale": "heuristic_rank=1; role=legacyRef"
+    }
+  ]
+}

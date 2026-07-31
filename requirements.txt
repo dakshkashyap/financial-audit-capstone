@@ -11,6 +11,9 @@ anthropic>=0.18.0
 datasets>=2.14.0
 sympy>=1.12
 
+# Citation MCP server (taxonomy tools over stdio)
+mcp>=1.0.0
+
 # For local inference with Hugging Face models (optional)
 # Uncomment if you want to use hf/* models
 # torch
