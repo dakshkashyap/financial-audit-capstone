@@ -1,0 +1,23 @@
+{
+  "summary": {
+    "source": "TheFinAI/FinMR",
+    "splits": {
+      "test": {
+        "n": 332,
+        "path": "data/finmr/test.jsonl",
+        "columns": [
+          "query",
+          "dqc_id",
+          "answer",
+          "id"
+        ]
+      }
+    }
+  },
+  "sample_row_preview": {
+    "query": "\"You are an auditor for XBRL filings. \\nGiven the question and the provided filing \\n(schema, presentation, calculation, definition, label, instance, and US GAAP taxonomy), \\nidentify the reported val\u2026",
+    "dqc_id": "\"DQC_US_0015\"",
+    "answer": "{\"extracted_value\": \"-1284\", \"calculated_value\": \"1284\"}",
+    "id": "0"
+  }
+}
