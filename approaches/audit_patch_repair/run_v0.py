@@ -20,7 +20,7 @@ if _ROOT not in sys.path:
 from core.parser import load_single_error
 from approaches.audit_patch_repair.pipeline import repair_item
 
-RESULTS = os.path.join(_ROOT, "results")
+from core.paths import RESULTS_DIR as RESULTS
 
 
 def main() -> None:

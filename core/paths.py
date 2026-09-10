@@ -10,7 +10,10 @@ import os
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DATA_DIR = os.path.join(REPO_ROOT, "data")
-RESULTS_DIR = os.path.join(REPO_ROOT, "results")
 CACHE_DIR = os.path.join(REPO_ROOT, ".cache")
+
+# Overridable so a scratch run (scripts/status.py) cannot overwrite the
+# committed full-run evidence in results/.
+RESULTS_DIR = os.environ.get("AUDIT_RESULTS_DIR", os.path.join(REPO_ROOT, "results"))
 
 __all__ = ["REPO_ROOT", "DATA_DIR", "RESULTS_DIR", "CACHE_DIR"]

@@ -31,7 +31,7 @@ from core.taxonomy_graph import TaxonomyGraph
 from approaches.citation_mcp_agent.tools import TaxonomyTools
 from approaches.citation_mcp_agent.agent import CitationAgent
 
-RESULTS_DIR = os.path.join(_ROOT, "results")
+from core.paths import RESULTS_DIR
 PAPER_BASELINE = 0.262
 
 _GT_ASC_RE = re.compile(r"ASC[^\d]{0,8}(\d{3})")

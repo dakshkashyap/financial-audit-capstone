@@ -28,7 +28,7 @@ from core.finmr_parser import parse_record
 from core.finmr_verifier import _to_float
 from approaches.audit_patch_repair.finmr_repair import repair_record
 
-RESULTS = os.path.join(_ROOT, "results")
+from core.paths import RESULTS_DIR as RESULTS
 
 
 def _eq(a, b) -> bool:
