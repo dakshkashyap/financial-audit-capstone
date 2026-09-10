@@ -1,1 +1,132 @@
-#
+# Financial Audit Capstone — IntelliAudit / AuditPatch
+
+SFU Computing Science capstone. We are building a system that finds errors in real
+financial filings, identifies the specific number that caused each error, proposes
+the smallest correct fix, proves the fix breaks nothing else, and attaches the
+governing accounting standard looked up from the official FASB taxonomy.
+
+The research question: **the weakest part of LLM financial auditing is not
+detection, it is explanation and citation.** Published baselines invent accounting
+rule numbers because they recall them from memory. We look them up instead, and
+restrict the LLM to the one job it is reliably good at — writing the explanation.
+
+---
+
+## Repository layout
+
+```
+core/                 Shared building blocks used by two or more approaches
+approaches/           One folder per distinct approach, in pipeline order
+docs/                 Research analysis, architecture, results, presentations, meetings
+data/                 Datasets (FinMR downloads; large files are gitignored)
+results/              Machine-readable output from every evaluation run
+scripts/              Repo utilities (weekly report generator, restructure record)
+Error_insertion/      AuditBench synthetic error splits
+Raw_table_data/       AuditBench source statements
+transaction_data/     AuditBench supporting transaction evidence
+```
+
+Everything is run as a module from the repository root, so imports resolve
+without any path juggling:
+
+```bash
+python -m approaches.<approach>.<entry_point>
+```
+
+---
+
+## The approaches
+
+Each folder is self-contained and has its own README explaining what the approach
+does, why it exists, how to run it, and what it scored. They are listed in
+pipeline order.
+
+| # | Approach | What it does | Owner |
+|---|---|---|---|
+| 0 | [`baseline_auditbench`](approaches/baseline_auditbench/) | Reproduces the AuditBench paper: one LLM, one prompt, whole audit | Team |
+| 1 | [`stage0_deterministic_gate`](approaches/stage0_deterministic_gate/) | Deterministic arithmetic and identity checks before any LLM runs | Daksh |
+| 2 | [`stage1_concept_mapping`](approaches/stage1_concept_mapping/) | Maps a statement line-item label to its official XBRL concept | Irvin |
+| 3 | [`stage1_taxonomy_citation`](approaches/stage1_taxonomy_citation/) | Turns an XBRL concept into a real FASB ASC citation | Manish |
+| 4 | [`stage2_llm_audit`](approaches/stage2_llm_audit/) | Focused LLM, called only when the gate abstains, handed the evidence | Daksh |
+| 5 | [`citation_mcp_agent`](approaches/citation_mcp_agent/) | MCP server exposing the taxonomy as tools; agent must pick from real candidates | Irvin |
+| 6 | [`audit_patch_repair`](approaches/audit_patch_repair/) | Detect → localize → minimal repair → revalidate → certify | Irvin |
+| 7 | [`finmr_benchmark`](approaches/finmr_benchmark/) | FinMR loading, verification and baseline evaluation | Daksh + Irvin |
+| 8 | [`full_pipeline`](approaches/full_pipeline/) | Stage 0 → 1 → 2 end to end, plus the ablation harness | Daksh |
+
+---
+
+## Headline results
+
+| Result | Number | Where |
+|---|---|---|
+| AuditPatch exact repair match on 332 real SEC filings | **81.5%** | [docs/results/FINMR_RESULTS.md](docs/results/FINMR_RESULTS.md) |
+| Repairs that broke something else | **0** | same |
+| Invented citations, tool-locked LLM (42 items) | **0** | [results/citation_mcp_llm_50.json](results/citation_mcp_llm_50.json) |
+| False alarms on clean statements, LLM alone → with deterministic veto | 50% → **28.7%** | [docs/results/pipeline_eval_n150.md](docs/results/pipeline_eval_n150.md) |
+| Stage 0 error-type localization when it fires | **94.7%** | same |
+
+---
+
+## Quick start
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+python -m core.verify_data          # confirm the datasets are intact
+```
+
+Then run any approach without an API key:
+
+```bash
+python -m approaches.stage0_deterministic_gate.stage0_eval --n 50
+python -m approaches.citation_mcp_agent.demo
+python -m approaches.audit_patch_repair.run_finmr --n 40
+python -m approaches.full_pipeline.pipeline_eval
+```
+
+Approaches that call an LLM read `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` from the
+environment. See [docs/setup/SETUP_FREE_MODELS.md](docs/setup/SETUP_FREE_MODELS.md)
+for running against free local models instead.
+
+---
+
+## Documentation
+
+Start with [docs/README.md](docs/README.md) for the full index. The most useful
+entry points:
+
+- **Understand the idea** — [docs/architecture/ARCHITECTURE_OVERVIEW.md](docs/architecture/ARCHITECTURE_OVERVIEW.md), the six-stage architecture and which parts are settled versus still moving
+- **Presentation** — [docs/presentations/PRESENTATION.md](docs/presentations/PRESENTATION.md), the full beginner-friendly walkthrough
+- **Related work** — [docs/research/RESEARCH_ANALYSIS.md](docs/research/RESEARCH_ANALYSIS.md), comparison against AuditBench, FinAuditing and AuditFlow
+- **Results** — [docs/results/](docs/results/)
+
+---
+
+## Datasets
+
+**AuditBench** (in-repo, `Error_insertion/` + `Raw_table_data/`) — synthetic errors
+injected into real company statements. Ground truth is perfect by construction but
+the errors are synthetic.
+
+**FinMR** (downloaded, `data/finmr/`) — 332 real SEC XBRL filings with violations
+labeled by official DQC rules. Ground truth is a reported value and a calculated
+value per violation, which is what makes root-cause scoring exact.
+
+The two cover each other's weakness. See
+[docs/research/FINMR_AUCKLAND_ANALYSIS.md](docs/research/FINMR_AUCKLAND_ANALYSIS.md).
+
+Large data blobs are gitignored; re-fetch with:
+
+```bash
+python -m approaches.finmr_benchmark.download_finmr
+```
+
+---
+
+## Papers this builds on
+
+- **AuditBench** — [arXiv:2506.17282](https://arxiv.org/abs/2506.17282), the benchmark we improve on
+- **FinAuditing / FinMR** — [arXiv:2510.08886](https://arxiv.org/abs/2510.08886), the real-filing dataset with rule-based labels
+- **AuditFlow** — [arXiv:2606.03031](https://arxiv.org/abs/2606.03031), source of the separate-search-from-verification principle

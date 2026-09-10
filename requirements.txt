@@ -10,9 +10,14 @@ anthropic>=0.18.0
 # FinMR + TaxonomyGraph dependencies
 datasets>=2.14.0
 sympy>=1.12
+pandas>=2.0.0
+requests>=2.31.0
 
 # Citation MCP server (taxonomy tools over stdio)
 mcp>=1.0.0
+
+# Weekly report generator (scripts/make_weekly_report_docx.py)
+python-docx>=1.1.0
 
 # For local inference with Hugging Face models (optional)
 # Uncomment if you want to use hf/* models

@@ -22,6 +22,9 @@ data/finmr/*.parquet
 .DS_Store
 Thumbs.db
 
+# Word/Office lock files
+~$*
+
 # IDE
 .vscode/
 .idea/
