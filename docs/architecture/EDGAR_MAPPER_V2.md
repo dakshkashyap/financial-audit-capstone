@@ -1,7 +1,7 @@
 # EDGAR Mapper v2
 
 **File:** `edgar_mapper_v2.py`  
-**Author:** Irvin  
+**Author:** Team  
 **Replaces:** `edgar_mapper.py` (v1)  
 **SFU Capstone — IntelliAudit, July 2026**
 

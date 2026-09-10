@@ -46,7 +46,7 @@ import time
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
 
-# ── reuse Daksh's shared layer ────────────────────────────────────────────────
+# ── shared Stage 0 helpers ────────────────────────────────────────────────────
 from core.stage0_common import build_table, norm_label, rows_of
 
 logger = logging.getLogger(__name__)

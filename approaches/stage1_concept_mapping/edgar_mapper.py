@@ -6,7 +6,7 @@ MappedStatement: each valued row is linked to its US-GAAP XBRL concept
 and the FASB ASC citation(s) that govern it.
 
 Architecture context (from design doc):
-  Stage 0 (Daksh)  → deterministic arithmetic gate
+  Stage 0  → deterministic arithmetic gate
   Stage 1 (irvin)  → THIS FILE — map rows to XBRL concepts + ASC citations
   Stage 2 (man-mad)→ Arelle taxonomy validation + focused LLM
 
@@ -43,7 +43,7 @@ import re
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
 
-# ── reuse Daksh's shared layer ────────────────────────────────────────────────
+# ── shared Stage 0 helpers ────────────────────────────────────────────────────
 from core.stage0_common import build_table, norm_label, rows_of
 
 # ── resource paths ────────────────────────────────────────────────────────────
@@ -388,7 +388,7 @@ def map_statement(item: dict, use_edgar_xbrl: bool = False) -> MappedStatement:
     stmt_type   = infer_statement_type(sheet_type, table_str)
     period      = parse_period(table_str)
 
-    # Parse table using Daksh's existing parser
+    # Parse table using the shared Stage 0 parser
     try:
         df = build_table(table_str)
     except Exception as exc:

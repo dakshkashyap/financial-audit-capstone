@@ -45,17 +45,17 @@ Each folder is self-contained and has its own README explaining what the approac
 does, why it exists, how to run it, and what it scored. They are listed in
 pipeline order.
 
-| # | Approach | What it does | Owner |
-|---|---|---|---|
-| 0 | [`baseline_auditbench`](approaches/baseline_auditbench/) | Reproduces the AuditBench paper: one LLM, one prompt, whole audit | Team |
-| 1 | [`stage0_deterministic_gate`](approaches/stage0_deterministic_gate/) | Deterministic arithmetic and identity checks before any LLM runs | Daksh |
-| 2 | [`stage1_concept_mapping`](approaches/stage1_concept_mapping/) | Maps a statement line-item label to its official XBRL concept | Irvin |
-| 3 | [`stage1_taxonomy_citation`](approaches/stage1_taxonomy_citation/) | Turns an XBRL concept into a real FASB ASC citation | Manish |
-| 4 | [`stage2_llm_audit`](approaches/stage2_llm_audit/) | Focused LLM, called only when the gate abstains, handed the evidence | Daksh |
-| 5 | [`citation_mcp_agent`](approaches/citation_mcp_agent/) | MCP server exposing the taxonomy as tools; agent must pick from real candidates | Irvin |
-| 6 | [`audit_patch_repair`](approaches/audit_patch_repair/) | Detect → localize → minimal repair → revalidate → certify | Irvin |
-| 7 | [`finmr_benchmark`](approaches/finmr_benchmark/) | FinMR loading, verification and baseline evaluation | Daksh + Irvin |
-| 8 | [`full_pipeline`](approaches/full_pipeline/) | Stage 0 → 1 → 2 end to end, plus the ablation harness | Daksh |
+| # | Approach | What it does |
+|---|---|---|
+| 0 | [`baseline_auditbench`](approaches/baseline_auditbench/) | Reproduces the AuditBench paper: one LLM, one prompt, whole audit |
+| 1 | [`stage0_deterministic_gate`](approaches/stage0_deterministic_gate/) | Deterministic arithmetic and identity checks before any LLM runs |
+| 2 | [`stage1_concept_mapping`](approaches/stage1_concept_mapping/) | Maps a statement line-item label to its official XBRL concept |
+| 3 | [`stage1_taxonomy_citation`](approaches/stage1_taxonomy_citation/) | Turns an XBRL concept into a real FASB ASC citation |
+| 4 | [`stage2_llm_audit`](approaches/stage2_llm_audit/) | Focused LLM, called only when the gate abstains, handed the evidence |
+| 5 | [`citation_mcp_agent`](approaches/citation_mcp_agent/) | MCP server exposing the taxonomy as tools; agent must pick from real candidates |
+| 6 | [`audit_patch_repair`](approaches/audit_patch_repair/) | Detect → localize → minimal repair → revalidate → certify |
+| 7 | [`finmr_benchmark`](approaches/finmr_benchmark/) | FinMR loading, verification and baseline evaluation |
+| 8 | [`full_pipeline`](approaches/full_pipeline/) | Stage 0 → 1 → 2 end to end, plus the ablation harness |
 
 ---
 

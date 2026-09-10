@@ -1,7 +1,7 @@
 # Citation MCP Agent Proposal
 
-**For:** Irvin — next demo / professor presentation  
-**Branch reviewed:** `stage1-citation-improvements` (Manish)  
+**For:** Team — next demo / professor presentation  
+**Branch reviewed:** `stage1-citation-improvements`  
 **Scope:** AI + MCP **only for citation** — not the whole audit pipeline
 
 ---

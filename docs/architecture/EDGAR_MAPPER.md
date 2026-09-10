@@ -1,7 +1,6 @@
 # EDGAR Mapper — Full Documentation
 
-**Author:** Irvin  
-**Branch:** `irvin/edgar-mapper`  
+**Author:** Team  
 **Date:** June 2026  
 **Part of:** IntelliAudit · SFU Computing Science Capstone  
 **Builds on:** [AuditBench (arXiv:2506.17282)](https://arxiv.org/abs/2506.17282)

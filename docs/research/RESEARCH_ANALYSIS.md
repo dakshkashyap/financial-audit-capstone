@@ -1,6 +1,6 @@
 # IntelliAudit — Research Analysis
 
-**Prepared by:** Irvin  
+**Prepared by:** Team  
 **Date:** July 2026  
 **For:** Professor presentation — SFU Computing Science Capstone
 

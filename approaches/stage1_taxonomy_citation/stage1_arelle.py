@@ -21,7 +21,7 @@ taxonomy XML (TaxonomyGraph) or from irvin's hand-curated static map.
 
 Architecture context
 --------------------
-  Stage 0A/0B (Daksh)  → deterministic arithmetic gate
+  Stage 0A/0B  → deterministic arithmetic gate
   EDGAR Mapper (irvin) → row label → us-gaap:ConceptName + static ASC
   Stage 1 (man-mad)    → THIS FILE — taxonomy graph traversal → authoritative ASC
   Stage 2 (man-mad)    → focused LLM with citations injected into prompt
