@@ -3,6 +3,19 @@
 **Expose the accounting rulebook as tools, so an AI agent can only pick citations
 that actually exist.**
 
+```mermaid
+flowchart LR
+    C["concept"] --> T1["get_candidates"]
+    T1 --> AG(["agent picks one"])
+    AG --> T2{"validate_citation"}
+    T2 -- invalid --> AG
+    T2 -- valid --> T3["store_pick<br/>+ written rationale"]
+
+    style AG fill:#fef3c7,stroke:#d97706
+    style T2 fill:#dbeafe,stroke:#2563eb
+    style T3 fill:#dcfce7,stroke:#16a34a
+```
+
 This is the same job as [`stage1_taxonomy_citation`](../stage1_taxonomy_citation/),
 approached differently. Instead of a single deterministic pick from the taxonomy,
 the whole candidate set is exposed over the **Model Context Protocol** and an agent

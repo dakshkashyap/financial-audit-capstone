@@ -33,6 +33,10 @@ without any path juggling:
 python -m approaches.<approach>.<entry_point>
 ```
 
+**[STRUCTURE.md](STRUCTURE.md) explains the layout with diagrams** — the three
+layers, how the approaches connect, how data flows through a run, and a decision
+chart for where a new file belongs. Every folder also has its own README.
+
 ---
 
 ## The approaches

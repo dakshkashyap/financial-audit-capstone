@@ -2,6 +2,18 @@
 
 **Turn a human-written statement label into its official XBRL concept.**
 
+```mermaid
+flowchart LR
+    IN["#quot;Property and equipment, net#quot;<br/><i>human-written label</i>"] --> M["exact → fuzzy → stem<br/><i>xbrl_concept_map.json</i>"]
+    IN -.->|"optional, off by default"| E["live SEC EDGAR<br/><i>the filer's own tag</i>"]
+    M --> OUT["us-gaap:PropertyPlantAndEquipmentNet"]
+    E --> OUT
+    OUT --> NEXT["→ stage1_taxonomy_citation"]
+
+    style E fill:#fef3c7,stroke:#d97706
+    style OUT fill:#dcfce7,stroke:#16a34a
+```
+
 A filing says `"Property and equipment, net"`. The accounting rulebook is indexed
 by machine-readable concepts like `us-gaap:PropertyPlantAndEquipmentNet`. Nothing
 downstream — no citation lookup, no rule check — can happen until that bridge is

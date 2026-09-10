@@ -2,6 +2,19 @@
 
 **The current research direction, and where the headline result comes from.**
 
+```mermaid
+flowchart LR
+    D["DETECT<br/><i>which rule</i>"] --> L["LOCALIZE<br/><i>which fact</i>"]
+    L --> R["REPAIR<br/><i>one value</i>"]
+    R --> V{"REVALIDATE<br/><i>anything else break?</i>"}
+    V -- yes --> REJ["reject the patch"]
+    V -- no --> C["CITE<br/><i>grounded ASC</i>"]
+    C --> CERT["CERTIFICATE<br/><i>machine-checkable</i>"]
+
+    style CERT fill:#dcfce7,stroke:#16a34a,stroke-width:2px
+    style REJ fill:#fee2e2,stroke:#dc2626
+```
+
 Existing work asks *is this filing wrong?* AuditPatch asks the next question:
 *which number caused it, what is the smallest correct fix, and can we prove the
 fix broke nothing else?*

@@ -3,6 +3,21 @@
 **Stage 0 → Stage 1 → Stage 2 wired together, plus the ablation that measures what
 the deterministic architecture actually buys you.**
 
+```mermaid
+flowchart LR
+    IN["AuditBench item"] --> S0["Stage 0<br/><i>gate</i>"]
+    S0 --> S1["Stage 1<br/><i>concept + citation</i>"]
+    S1 --> REC["AuditRecord"]
+    REC --> Q{"gate fired?"}
+    Q -- yes --> DET["verdict from proof<br/><i>no LLM</i>"]
+    Q -- no --> S2["Stage 2<br/><i>focused LLM</i>"]
+    DET --> PRED["AuditBench-format<br/>predictions"]
+    S2 --> PRED
+
+    style DET fill:#dcfce7,stroke:#16a34a
+    style S2 fill:#fef3c7,stroke:#d97706
+```
+
 ## The integration
 
 For one AuditBench item:

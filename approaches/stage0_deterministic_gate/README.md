@@ -2,6 +2,19 @@
 
 **Catch everything arithmetic alone can prove, before any LLM runs.**
 
+```mermaid
+flowchart LR
+    IN["statement table"] --> A["Stage 0A<br/><i>arithmetic (SymPy)</i>"]
+    IN --> B["Stage 0B<br/><i>accounting identities</i>"]
+    A --> C{"proof<br/>found?"}
+    B --> C
+    C -- yes --> FIRE["FIRE<br/>row + type + corrected value"]
+    C -- no  --> ABS["ABSTAIN<br/>+ verified-consistent flag<br/>→ Stage 2"]
+
+    style FIRE fill:#dcfce7,stroke:#16a34a
+    style ABS fill:#f3f4f6,stroke:#6b7280
+```
+
 Two independent verifiers run over a statement with no model involved:
 
 - **Stage 0A** — arithmetic verification with exact symbolic maths (SymPy). Does

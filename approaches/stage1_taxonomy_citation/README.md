@@ -2,6 +2,19 @@
 
 **Look the accounting standard up instead of recalling it.**
 
+```mermaid
+flowchart LR
+    IN["us-gaap:Goodwill<br/><i>XBRL concept</i>"] --> TG["core/taxonomy_graph.py<br/><i>FASB reference linkbase</i>"]
+    TG --> CAND["candidates<br/>210 · 350 · 852 · 942"]
+    CAND --> SPLIT["subject-matter vs<br/>presentation topics"]
+    SPLIT --> OUT["ASC 350-20-45-1"]
+
+    CAND -.->|"correct topic present<br/>only ~28% of the time"| CAP["hard ceiling"]
+
+    style OUT fill:#dcfce7,stroke:#16a34a
+    style CAP fill:#fee2e2,stroke:#dc2626
+```
+
 Given an XBRL concept from [`stage1_concept_mapping`](../stage1_concept_mapping/),
 produce the FASB ASC citation that governs it — by reading the official FASB
 US-GAAP reference linkbase, not by asking a model what it remembers.

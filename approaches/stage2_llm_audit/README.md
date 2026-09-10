@@ -3,6 +3,17 @@
 **Call the model only when the deterministic gate cannot decide, and hand it the
 evidence rather than a blank page.**
 
+```mermaid
+flowchart LR
+    G{"Stage 0 gate"} -- fires --> DONE["verdict from proof<br/><i>no LLM called</i>"]
+    G -- abstains --> EV["evidence packet:<br/>verified-consistent flag<br/>footing mismatches<br/>candidate citations"]
+    EV --> LLM(["focused LLM"])
+    LLM --> OUT["verdict + selected citation"]
+
+    style DONE fill:#dcfce7,stroke:#16a34a
+    style LLM fill:#fef3c7,stroke:#d97706
+```
+
 The AuditBench baseline gives one prompt six jobs at once. Stage 2 is the opposite:
 it runs only on items where [`stage0_deterministic_gate`](../stage0_deterministic_gate/)
 abstained, and it arrives pre-loaded with what the deterministic stages already

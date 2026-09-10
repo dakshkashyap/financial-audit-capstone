@@ -2,6 +2,17 @@
 
 **Stage 0 of the story: the thing we are trying to beat.**
 
+```mermaid
+flowchart LR
+    IN["financial statement<br/>+ transaction data"] --> P["one prompt,<br/>six jobs at once"]
+    P --> LLM(["LLM"])
+    LLM --> OUT["verdict · error type · row<br/>corrected value · citation · reason"]
+    OUT --> BAD["50% false alarms<br/>on clean statements"]
+
+    style LLM fill:#fee2e2,stroke:#dc2626
+    style BAD fill:#fee2e2,stroke:#dc2626
+```
+
 Reproduces the setup from *Automating Financial Statement Audits with Large
 Language Models* ([arXiv:2506.17282](https://arxiv.org/abs/2506.17282)): hand an
 LLM a financial statement, its supporting transaction data, and one prompt asking

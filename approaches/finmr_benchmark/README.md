@@ -3,6 +3,17 @@
 **Dataset plumbing and baselines for the real-filing benchmark everything else is
 evaluated on.**
 
+```mermaid
+flowchart LR
+    HF["HuggingFace<br/>TheFinAI/FinMR"] --> DL["download_finmr"]
+    DL --> D["data/finmr/<br/><i>332 real filings</i>"]
+    D --> P["core/finmr_parser.py"]
+    P --> V["core/finmr_verifier.py<br/><i>DQC 0015 · 0117 · 0126</i>"]
+    V --> OUT["extracted_value<br/>+ calculated_value"]
+
+    style OUT fill:#dcfce7,stroke:#16a34a
+```
+
 FinMR is the mathematical-reasoning task of FinAuditing
 ([arXiv:2510.08886](https://arxiv.org/abs/2510.08886)): 332 test items built from
 real SEC XBRL filings, with violations labeled by official **DQC** (Data Quality
