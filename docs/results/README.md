@@ -17,6 +17,7 @@ flowchart LR
 | Document | Covers | Headline |
 |---|---|---|
 | [FINMR_RESULTS.md](FINMR_RESULTS.md) | AuditPatch on 332 real SEC filings | **81.5% exact repair, 0 regressions** |
+| [FINMR_ALL_STAGES.md](FINMR_ALL_STAGES.md) | FinMR through every applicable stage | What applies, pass rates, per-approach metrics |
 | [pipeline_eval_n150.md](pipeline_eval_n150.md) | What the deterministic gate adds at a fixed model | **False alarms 50% → 28.7%** |
 | [stage2_comparison.md](stage2_comparison.md) | Focused Stage 2 LLM against the baseline prompt | |
 | [priorities_2-4_results.md](priorities_2-4_results.md) | Results across the mid-project priorities | |

@@ -1,0 +1,126 @@
+{
+  "seed": 42,
+  "n": 20,
+  "splits": {
+    "single_error": {
+      "n": 20,
+      "coverage": 0.4,
+      "error_row_em": 0.35,
+      "error_type_em": 0.4,
+      "error_row_em_fired": 0.875,
+      "error_type_em_fired": 1.0,
+      "success_rate": 0.35,
+      "correct_value_acc": 1.0,
+      "correct_value_n": 3,
+      "per_type": {
+        "misclassification": {
+          "n": 5,
+          "coverage": 0.4,
+          "type_em": 0.4,
+          "row_em": 0.2
+        },
+        "missing row": {
+          "n": 5,
+          "coverage": 0.2,
+          "type_em": 0.2,
+          "row_em": 0.2
+        },
+        "numerical error": {
+          "n": 5,
+          "coverage": 0.4,
+          "type_em": 0.4,
+          "row_em": 0.4
+        },
+        "redundant row": {
+          "n": 5,
+          "coverage": 0.6,
+          "type_em": 0.6,
+          "row_em": 0.6
+        }
+      },
+      "confusion": {
+        "misclassification -> abstain": 3,
+        "misclassification -> misclassification": 2,
+        "missing row -> abstain": 4,
+        "missing row -> missing row": 1,
+        "numerical error -> abstain": 3,
+        "numerical error -> numerical error": 2,
+        "redundant row -> abstain": 2,
+        "redundant row -> redundant row": 3
+      },
+      "samples": [
+        {
+          "gt_type": "misclassification",
+          "gt_row": 8,
+          "pred_type": "misclassification",
+          "pred_row": 8,
+          "pred_correct_value": null,
+          "detail": "'Accounts receivable, net' is reported under 'Total non-current assets' but its value is not part of that section per the transactions."
+        },
+        {
+          "gt_type": "missing row",
+          "gt_row": 6,
+          "pred_type": null,
+          "pred_row": null,
+          "pred_correct_value": null,
+          "detail": "abstain"
+        },
+        {
+          "gt_type": "missing row",
+          "gt_row": 8,
+          "pred_type": null,
+          "pred_row": null,
+          "pred_correct_value": null,
+          "detail": "abstain"
+        },
+        {
+          "gt_type": "misclassification",
+          "gt_row": 1,
+          "pred_type": null,
+          "pred_row": null,
+          "pred_correct_value": null,
+          "detail": "abstain"
+        },
+        {
+          "gt_type": "missing row",
+          "gt_row": 8,
+          "pred_type": null,
+          "pred_row": null,
+          "pred_correct_value": null,
+          "detail": "abstain"
+        },
+        {
+          "gt_type": "redundant row",
+          "gt_row": 12,
+          "pred_type": "redundant row",
+          "pred_row": 12,
+          "pred_correct_value": null,
+          "detail": "'Deferred tax assets' (25000.0) is not supported by any transaction and inflates 'Total non-current assets'."
+        },
+        {
+          "gt_type": "misclassification",
+          "gt_row": 5,
+          "pred_type": null,
+          "pred_row": null,
+          "pred_correct_value": null,
+          "detail": "abstain"
+        },
+        {
+          "gt_type": "numerical error",
+          "gt_row": 3,
+          "pred_type": "numerical error",
+          "pred_row": 3,
+          "pred_correct_value": 29508.0,
+          "detail": "'Accounts receivable, net' stated 35000.0, transactions imply 29508.0."
+        }
+      ]
+    },
+    "correct": {
+      "n": 8,
+      "false_positive_rate": 0.0,
+      "fired": 0,
+      "false_positive_by_type": {},
+      "samples": []
+    }
+  }
+}

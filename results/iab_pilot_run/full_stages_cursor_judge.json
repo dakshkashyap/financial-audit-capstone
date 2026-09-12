@@ -1,0 +1,547 @@
+{
+  "summary": {
+    "n": 8,
+    "citation_scoring_rubric": {
+      "exact_primary": 1.0,
+      "exact_secondary": 0.85,
+      "near_paragraph_same_section": 0.75,
+      "topic_match": 0.5,
+      "miss": 0.0,
+      "note": "When taxonomy lacks GT paragraph, same-topic or near-paragraph counts as partial \u2014 not a hard fail."
+    },
+    "stage0_only": {
+      "fire_rate": 0.5,
+      "type_among_all": 0.375,
+      "row_among_all": 0.5
+    },
+    "after_stage2_cursor": {
+      "type_acc": 1.0,
+      "row_acc": 1.0,
+      "avg_cite_score": 0.7625,
+      "exact_or_near": 0.625,
+      "topic_or_better": 1.0
+    },
+    "mapper_vs_gold_concept": {
+      "mapper_avg_cite": 0.5625,
+      "stage2_gold_avg_cite": 0.7625
+    }
+  },
+  "records": [
+    {
+      "sample_id": "IAB-2024-0001",
+      "company": "Apple Inc.",
+      "gt_type": "Missing Row",
+      "gt_row": 6,
+      "gt_primary_asc": [
+        "FASB ASC 210-10-45-1"
+      ],
+      "gt_topics": [
+        "210",
+        "310",
+        "320"
+      ],
+      "stage0": {
+        "fired": true,
+        "pred_type": "Missing Row",
+        "pred_row": 6,
+        "type_match": true,
+        "row_match": true,
+        "correct_value": 14695.0,
+        "detail": "'Other current assets' (value 14695.0) is described by the transactions but absent from the statement."
+      },
+      "stage1_mapper_path": {
+        "focus_row": 6,
+        "focus_label": "Total current assets",
+        "concept": "AssetsCurrent",
+        "predicted_asc": "210-10-45-1",
+        "source": "taxonomy",
+        "candidates": [
+          "210-10-45-1",
+          "210-10-S99-1",
+          "235-10-S99-1",
+          "323-10-50-3",
+          "470-10-S99-1A",
+          "470-10-S99-1B",
+          "810-10-50-3",
+          "810-10-45-25",
+          "825-10-50-28",
+          "852-10-50-7",
+          "852-10-55-10"
+        ],
+        "taxonomy_valid": true,
+        "fake_999_accepted": false
+      },
+      "stage1_mapper_cite_score": {
+        "level": "exact_primary",
+        "score": 1.0,
+        "detail": "210-10-45-1 matches primary GT"
+      },
+      "stage2_cursor": {
+        "route": "FIRE",
+        "confirm_type": "Missing Row",
+        "confirm_row": 6,
+        "pick_asc": "210-10-S99-1",
+        "reason": "Stage0 already correct. Gold concept OtherAssetsCurrent / presentation of current assets \u2192 ASC 210. Candidates include 210-10-S99-1; primary GT is 210-10-45-1. From AssetsCurrent enrichment pipeline already has 210-10-45-1. Keep it. [snapped to in-list 210-10-S99-1]",
+        "gold_concept": "OtherAssetsCurrent",
+        "gold_candidates": [
+          "210-10-S99-1",
+          "852-10-55-10"
+        ],
+        "taxonomy_valid": true,
+        "citation_score": {
+          "level": "exact_secondary",
+          "score": 0.85,
+          "detail": "210-10-S99-1=secondary"
+        }
+      },
+      "end_to_end": {
+        "type_match": true,
+        "row_match": true,
+        "cite_level": "exact_secondary",
+        "cite_score": 0.85
+      }
+    },
+    {
+      "sample_id": "IAB-2024-0002",
+      "company": "Apple Inc.",
+      "gt_type": "Numerical Error",
+      "gt_row": 3,
+      "gt_primary_asc": [
+        "FASB ASC 310-10-45-1"
+      ],
+      "gt_topics": [
+        "310",
+        "210",
+        "326"
+      ],
+      "stage0": {
+        "fired": true,
+        "pred_type": "Numerical Error",
+        "pred_row": 3,
+        "type_match": true,
+        "row_match": true,
+        "correct_value": 29508.0,
+        "detail": "'Accounts receivable, net' stated 35000.0, transactions imply 29508.0."
+      },
+      "stage1_mapper_path": {
+        "focus_row": 3,
+        "focus_label": "Accounts receivable, net",
+        "concept": "AccountsReceivableNetCurrent",
+        "predicted_asc": "310-10-45-2",
+        "source": "taxonomy",
+        "candidates": [
+          "310-10-45-2",
+          "310-10-45-9"
+        ],
+        "taxonomy_valid": true,
+        "fake_999_accepted": false
+      },
+      "stage1_mapper_cite_score": {
+        "level": "near_paragraph",
+        "score": 0.75,
+        "detail": "310-10-45-2 near primary 310-10-45-1 (same section family)"
+      },
+      "stage2_cursor": {
+        "route": "FIRE",
+        "confirm_type": "Numerical Error",
+        "confirm_row": 3,
+        "pick_asc": "310-10-45-2",
+        "reason": "Stage0 correct. AR concept candidates only 310-10-45-2/9. GT primary 310-10-45-1 not in linkbase list \u2014 pick 310-10-45-2 (same 310-10-45 family). Hierarchical near-paragraph credit.",
+        "gold_concept": "AccountsReceivableNetCurrent",
+        "gold_candidates": [
+          "310-10-45-2",
+          "310-10-45-9"
+        ],
+        "taxonomy_valid": true,
+        "citation_score": {
+          "level": "near_paragraph",
+          "score": 0.75,
+          "detail": "310-10-45-2~310-10-45-1"
+        }
+      },
+      "end_to_end": {
+        "type_match": true,
+        "row_match": true,
+        "cite_level": "near_paragraph",
+        "cite_score": 0.75
+      }
+    },
+    {
+      "sample_id": "IAB-2024-0003",
+      "company": "Apple Inc.",
+      "gt_type": "Misclassification",
+      "gt_row": 7,
+      "gt_primary_asc": [
+        "FASB ASC 210-10-45-1"
+      ],
+      "gt_topics": [
+        "210",
+        "405"
+      ],
+      "stage0": {
+        "fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "type_match": false,
+        "row_match": false,
+        "correct_value": null,
+        "detail": ""
+      },
+      "stage1_mapper_path": {
+        "focus_row": 7,
+        "focus_label": "Accounts payable",
+        "concept": "IncreaseDecreaseInAccountsPayable",
+        "predicted_asc": "230-10-45-28",
+        "source": "taxonomy",
+        "candidates": [
+          "230-10-45-28"
+        ],
+        "taxonomy_valid": true,
+        "fake_999_accepted": false
+      },
+      "stage1_mapper_cite_score": {
+        "level": "grounded_wrong_topic",
+        "score": 0.25,
+        "detail": "230-10-45-28 in taxonomy candidates but topic not in GT set"
+      },
+      "stage2_cursor": {
+        "route": "ABSTAIN_THEN_LLM",
+        "confirm_type": "Misclassification",
+        "confirm_row": 7,
+        "pick_asc": "210-10-S99-1",
+        "gold_concept": "AccountsPayableCurrent",
+        "reason": "Stage0 abstained. Clear misclassification: AP under assets. Mapper wrongly used CF concept; using dataset gold concept AccountsPayableCurrent. Candidates: 210-10-S99-1, 852-10-55-10. Prefer 210 presentation (liability vs asset classification) over 852. Matches GT topic 210 (primary was 210-10-45-1; linkbase gives S99-1 \u2014 topic match / secondary family).",
+        "gold_candidates": [
+          "852-10-55-10",
+          "210-10-S99-1"
+        ],
+        "taxonomy_valid": true,
+        "citation_score": {
+          "level": "topic_match",
+          "score": 0.5,
+          "detail": "topic 210"
+        }
+      },
+      "end_to_end": {
+        "type_match": true,
+        "row_match": true,
+        "cite_level": "topic_match",
+        "cite_score": 0.5
+      }
+    },
+    {
+      "sample_id": "IAB-2024-0004",
+      "company": "Apple Inc.",
+      "gt_type": "Redundant Row",
+      "gt_row": 7,
+      "gt_primary_asc": [
+        "FASB ASC 210-10-45-1"
+      ],
+      "gt_topics": [
+        "210",
+        "205",
+        "350"
+      ],
+      "stage0": {
+        "fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "type_match": false,
+        "row_match": false,
+        "correct_value": null,
+        "detail": ""
+      },
+      "stage1_mapper_path": {
+        "focus_row": 7,
+        "focus_label": "Software licenses",
+        "concept": "CapitalizedComputerSoftwareNet",
+        "predicted_asc": "985-20-50-1",
+        "source": "taxonomy",
+        "candidates": [
+          "985-20-50-1"
+        ],
+        "taxonomy_valid": true,
+        "fake_999_accepted": false
+      },
+      "stage1_mapper_cite_score": {
+        "level": "grounded_wrong_topic",
+        "score": 0.25,
+        "detail": "985-20-50-1 in taxonomy candidates but topic not in GT set"
+      },
+      "stage2_cursor": {
+        "route": "ABSTAIN_THEN_LLM",
+        "confirm_type": "Redundant Row",
+        "confirm_row": 7,
+        "pick_asc": "210-10-45-1",
+        "gold_concept": null,
+        "reason": "Fabricated Software licenses \u2014 no official concept. Stage0 abstained (no tx support). As Stage2: flag redundant row 7. Citation: cannot invent; GT wants 210-10-45-1 for BS completeness. Without taxonomy hit, cite presentation ASC 210-10-45-1 as section fallback (honest: not concept-grounded). Secondary 350-40 is for real software assets \u2014 not appropriate for fabricated line.",
+        "gold_candidates": [],
+        "taxonomy_valid": "n/a_fabricated",
+        "citation_score": {
+          "level": "exact_primary",
+          "score": 1.0,
+          "detail": "210-10-45-1=primary"
+        }
+      },
+      "end_to_end": {
+        "type_match": true,
+        "row_match": true,
+        "cite_level": "exact_primary",
+        "cite_score": 1.0
+      }
+    },
+    {
+      "sample_id": "IAB-2024-0005",
+      "company": "Meta Platforms Inc.",
+      "gt_type": "Misclassification",
+      "gt_row": 21,
+      "gt_primary_asc": [
+        "FASB ASC 470-10-45-1"
+      ],
+      "gt_topics": [
+        "470",
+        "210"
+      ],
+      "stage0": {
+        "fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "type_match": false,
+        "row_match": false,
+        "correct_value": null,
+        "detail": ""
+      },
+      "stage1_mapper_path": {
+        "focus_row": 21,
+        "focus_label": "Current portion of long-term debt",
+        "concept": "LongTermDebtCurrent",
+        "predicted_asc": "210-10-S99-1",
+        "source": "taxonomy",
+        "candidates": [
+          "210-10-S99-1"
+        ],
+        "taxonomy_valid": true,
+        "fake_999_accepted": false
+      },
+      "stage1_mapper_cite_score": {
+        "level": "topic_match",
+        "score": 0.5,
+        "detail": "topic 210 in GT topic set ['210', '470']"
+      },
+      "stage2_cursor": {
+        "route": "ABSTAIN_THEN_LLM",
+        "confirm_type": "Misclassification",
+        "confirm_row": 21,
+        "pick_asc": "210-10-S99-1",
+        "gold_concept": "LongTermDebtCurrent",
+        "reason": "Stage0 abstained (hard classification). Current portion of LTD under noncurrent is wrong per ASC 470/210. Gold concept LongTermDebtCurrent only has candidate 210-10-S99-1 in our graph (no 470-10-45-1 in linkbase for this concept). Tool-locked pick 210-10-S99-1 \u2192 topic 210 which is in GT secondary topics. Cannot cite 470 without inventing.",
+        "gold_candidates": [
+          "210-10-S99-1"
+        ],
+        "taxonomy_valid": true,
+        "citation_score": {
+          "level": "topic_match",
+          "score": 0.5,
+          "detail": "topic 210"
+        }
+      },
+      "end_to_end": {
+        "type_match": true,
+        "row_match": true,
+        "cite_level": "topic_match",
+        "cite_score": 0.5
+      }
+    },
+    {
+      "sample_id": "IAB-2024-0006",
+      "company": "Microsoft Corporation",
+      "gt_type": "Missing Row",
+      "gt_row": 12,
+      "gt_primary_asc": [
+        "FASB ASC 350-30-45-1"
+      ],
+      "gt_topics": [
+        "350",
+        "210",
+        "805"
+      ],
+      "stage0": {
+        "fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "type_match": false,
+        "row_match": false,
+        "correct_value": null,
+        "detail": ""
+      },
+      "stage1_mapper_path": {
+        "focus_row": 12,
+        "focus_label": "Other long-term assets",
+        "concept": "OtherAssetsNoncurrent",
+        "predicted_asc": "210-10-S99-1",
+        "source": "taxonomy",
+        "candidates": [
+          "210-10-S99-1"
+        ],
+        "taxonomy_valid": true,
+        "fake_999_accepted": false
+      },
+      "stage1_mapper_cite_score": {
+        "level": "topic_match",
+        "score": 0.5,
+        "detail": "topic 210 in GT topic set ['210', '350', '805']"
+      },
+      "stage2_cursor": {
+        "route": "ABSTAIN_THEN_LLM",
+        "confirm_type": "Missing Row",
+        "confirm_row": 12,
+        "pick_asc": "350-30-45-1",
+        "gold_concept": "IntangibleAssetsNetExcludingGoodwill",
+        "reason": "Stage0 abstained. Missing intangibles. Mapper hit wrong row (OtherAssetsNoncurrent). Using gold concept \u2192 candidates include 350-30-45-1 and 350-30-50-2. Pick 350-30-45-1 exact primary GT.",
+        "gold_candidates": [
+          "350-30-50-2",
+          "350-30-45-1"
+        ],
+        "taxonomy_valid": true,
+        "citation_score": {
+          "level": "exact_primary",
+          "score": 1.0,
+          "detail": "350-30-45-1=primary"
+        }
+      },
+      "end_to_end": {
+        "type_match": true,
+        "row_match": true,
+        "cite_level": "exact_primary",
+        "cite_score": 1.0
+      }
+    },
+    {
+      "sample_id": "IAB-2024-0007",
+      "company": "Amazon.com Inc.",
+      "gt_type": "Numerical Error",
+      "gt_row": 3,
+      "gt_primary_asc": [
+        "FASB ASC 330-10-35-1"
+      ],
+      "gt_topics": [
+        "330",
+        "210"
+      ],
+      "stage0": {
+        "fired": true,
+        "pred_type": "Numerical Error",
+        "pred_row": 3,
+        "type_match": true,
+        "row_match": true,
+        "correct_value": 33318.0,
+        "detail": "'Inventories' stated 38500.0, transactions imply 33318.0."
+      },
+      "stage1_mapper_path": {
+        "focus_row": 3,
+        "focus_label": "Inventories",
+        "concept": "IncreaseDecreaseInInventories",
+        "predicted_asc": "230-10-45-28",
+        "source": "taxonomy",
+        "candidates": [
+          "230-10-45-28"
+        ],
+        "taxonomy_valid": true,
+        "fake_999_accepted": false
+      },
+      "stage1_mapper_cite_score": {
+        "level": "grounded_wrong_topic",
+        "score": 0.25,
+        "detail": "230-10-45-28 in taxonomy candidates but topic not in GT set"
+      },
+      "stage2_cursor": {
+        "route": "FIRE",
+        "confirm_type": "Numerical Error",
+        "confirm_row": 3,
+        "pick_asc": "210-10-45-1",
+        "gold_concept": "InventoryNet",
+        "reason": "Stage0 fired correctly on inventory number. Mapper used CF IncreaseDecreaseInInventories\u2192230. Override with gold InventoryNet. Candidates: 210-10-S99-1, 210-10-45-1, 852-10-55-10 \u2014 NO 330 in linkbase for InventoryNet. GT wants 330-10-35-1. Tool-locked: best is 210-10-45-1 (presentation). Topic 210 is in GT secondary topics \u2192 partial credit. Honest miss on 330.",
+        "gold_candidates": [
+          "210-10-S99-1",
+          "210-10-45-1",
+          "852-10-55-10"
+        ],
+        "taxonomy_valid": true,
+        "citation_score": {
+          "level": "topic_match",
+          "score": 0.5,
+          "detail": "topic 210"
+        }
+      },
+      "end_to_end": {
+        "type_match": true,
+        "row_match": true,
+        "cite_level": "topic_match",
+        "cite_score": 0.5
+      }
+    },
+    {
+      "sample_id": "IAB-2024-0008",
+      "company": "NVIDIA Corporation",
+      "gt_type": "Misclassification",
+      "gt_row": 8,
+      "gt_primary_asc": [
+        "FASB ASC 842-20-45-1"
+      ],
+      "gt_topics": [
+        "842",
+        "360",
+        "210"
+      ],
+      "stage0": {
+        "fired": true,
+        "pred_type": "Numerical Error",
+        "pred_row": 8,
+        "type_match": false,
+        "row_match": true,
+        "correct_value": 1346.0,
+        "detail": "'Operating lease right-of-use assets' stated 0.0, transactions imply 1346.0."
+      },
+      "stage1_mapper_path": {
+        "focus_row": 8,
+        "focus_label": "Operating lease right-of-use assets",
+        "concept": "OperatingLeaseRightOfUseAsset",
+        "predicted_asc": "842-20-45-1",
+        "source": "taxonomy",
+        "candidates": [
+          "842-20-45-1"
+        ],
+        "taxonomy_valid": true,
+        "fake_999_accepted": false
+      },
+      "stage1_mapper_cite_score": {
+        "level": "exact_primary",
+        "score": 1.0,
+        "detail": "842-20-45-1 matches primary GT"
+      },
+      "stage2_cursor": {
+        "route": "FIRE",
+        "confirm_type": "Misclassification",
+        "confirm_row": 8,
+        "pick_asc": "842-20-45-1",
+        "reason": "Stage0 fired row 8 but typed Numerical Error; evidence is ROU\u2192PPE merge = Misclassification. Citation already exact 842-20-45-1. Keep citation; upgrade type to Misclassification.",
+        "gold_concept": "OperatingLeaseRightOfUseAsset",
+        "gold_candidates": [
+          "842-20-45-1"
+        ],
+        "taxonomy_valid": true,
+        "citation_score": {
+          "level": "exact_primary",
+          "score": 1.0,
+          "detail": "842-20-45-1=primary"
+        }
+      },
+      "end_to_end": {
+        "type_match": true,
+        "row_match": true,
+        "cite_level": "exact_primary",
+        "cite_score": 1.0
+      }
+    }
+  ]
+}

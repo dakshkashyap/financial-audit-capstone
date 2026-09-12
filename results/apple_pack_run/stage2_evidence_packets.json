@@ -1,0 +1,4173 @@
+{
+  "n": 20,
+  "packets": [
+    {
+      "index": 0,
+      "route": "FIRE",
+      "stage0": {
+        "fired": true,
+        "error_type": "Misclassification",
+        "row": 8,
+        "correct_value": null,
+        "detail": "'Accounts receivable, net' is reported under 'Total non-current assets' but its value is not part of that section per the transactions."
+      },
+      "ground_truth": {
+        "error_type": "Misclassification",
+        "row": 8,
+        "citation_topic": "210",
+        "citation_text": "According to FASB ASC 210-10, current assets include items that are expected to be converted into cash or consumed within one year."
+      },
+      "stage0_vs_gt": {
+        "type_match": true,
+        "row_match": true
+      },
+      "focus": {
+        "row": 8,
+        "concept": "AccountsReceivableNetCurrent",
+        "label": "Accounts receivable, net",
+        "n_candidates": 2,
+        "candidates": [
+          {
+            "asc": "310-10-45-2",
+            "topic": "310",
+            "role": "disclosureRef"
+          },
+          {
+            "asc": "310-10-45-9",
+            "topic": "310",
+            "role": "disclosureRef"
+          }
+        ],
+        "heuristic_pick": "310-10-45-2",
+        "validate_pick": {
+          "valid": true,
+          "reason": "in_candidate_set",
+          "concept": "AccountsReceivableNetCurrent",
+          "asc": "310-10-45-2",
+          "topic": "310"
+        },
+        "fake_asc_999_rejected": true,
+        "pick_topic": "310",
+        "topic_match_gt": false
+      },
+      "verified_consistent_hint": false,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Current assets:",
+          "concept": "IncreaseDecreaseInOtherCurrentAssets",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "label": "Cash and cash equivalents",
+          "concept": "CashAndCashEquivalentsAtCarryingValue",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            },
+            {
+              "asc": "210-10-45-1",
+              "topic": "210"
+            },
+            {
+              "asc": "230-10-45-4",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "label": "Marketable securities",
+          "concept": "MarketableSecuritiesCurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "label": "Inventories",
+          "concept": "IncreaseDecreaseInInventories",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Other current assets",
+          "concept": "IncreaseDecreaseInOtherCurrentAssets",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "label": "Total current assets",
+          "concept": "AssetsCurrent",
+          "n_candidates": 11,
+          "top_candidates": [
+            {
+              "asc": "210-10-45-1",
+              "topic": "210"
+            },
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            },
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            },
+            {
+              "asc": "470-10-S99-1A",
+              "topic": "470"
+            }
+          ]
+        },
+        {
+          "row": 7,
+          "label": "Non-current assets:",
+          "concept": "OtherAssetsNoncurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "label": "Accounts receivable, net",
+          "concept": "AccountsReceivableNetCurrent",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "310-10-45-2",
+              "topic": "310"
+            },
+            {
+              "asc": "310-10-45-9",
+              "topic": "310"
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "label": "Marketable securities",
+          "concept": "MarketableSecuritiesCurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 10,
+          "label": "Property, plant and equipment, net",
+          "concept": "PropertyPlantAndEquipmentNet",
+          "n_candidates": 4,
+          "top_candidates": [
+            {
+              "asc": "852-10-55-10",
+              "topic": "852"
+            },
+            {
+              "asc": "360-10-50-1",
+              "topic": "360"
+            },
+            {
+              "asc": "942-360-50-1",
+              "topic": "942"
+            },
+            {
+              "asc": "944-210-S99-1",
+              "topic": "944"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Other non-current assets",
+          "concept": "OtherAssetsNoncurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 12,
+          "label": "Total non-current assets",
+          "concept": "AssetsCurrent",
+          "n_candidates": 11,
+          "top_candidates": [
+            {
+              "asc": "210-10-45-1",
+              "topic": "210"
+            },
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            },
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            },
+            {
+              "asc": "470-10-S99-1A",
+              "topic": "470"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "route": "ABSTAIN",
+      "stage0": {
+        "fired": false,
+        "error_type": null,
+        "row": null,
+        "correct_value": null,
+        "detail": null
+      },
+      "ground_truth": {
+        "error_type": "Missing Row",
+        "row": 6,
+        "citation_topic": "210",
+        "citation_text": "According to the FASB ASC 210-10-45, current assets must be sequenced prominently and completely to provide a clear representation of a company's liquidity and "
+      },
+      "stage0_vs_gt": {
+        "type_match": false,
+        "row_match": false
+      },
+      "focus": {
+        "row": 6,
+        "concept": "AssetsCurrent",
+        "label": "Total current assets",
+        "n_candidates": 11,
+        "candidates": [
+          {
+            "asc": "210-10-45-1",
+            "topic": "210",
+            "role": "disclosureRef"
+          },
+          {
+            "asc": "210-10-S99-1",
+            "topic": "210",
+            "role": "disclosureRef"
+          },
+          {
+            "asc": "235-10-S99-1",
+            "topic": "235",
+            "role": "disclosureRef"
+          },
+          {
+            "asc": "323-10-50-3",
+            "topic": "323",
+            "role": "disclosureRef"
+          },
+          {
+            "asc": "470-10-S99-1A",
+            "topic": "470",
+            "role": "disclosureRef"
+          },
+          {
+            "asc": "470-10-S99-1B",
+            "topic": "470",
+            "role": "disclosureRef"
+          },
+          {
+            "asc": "810-10-50-3",
+            "topic": "810",
+            "role": "disclosureRef"
+          },
+          {
+            "asc": "810-10-45-25",
+            "topic": "810",
+            "role": "disclosureRef"
+          }
+        ],
+        "heuristic_pick": "323-10-50-3",
+        "validate_pick": {
+          "valid": true,
+          "reason": "in_candidate_set",
+          "concept": "AssetsCurrent",
+          "asc": "323-10-50-3",
+          "topic": "323"
+        },
+        "fake_asc_999_rejected": true,
+        "pick_topic": "323",
+        "topic_match_gt": false
+      },
+      "verified_consistent_hint": true,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Current assets:",
+          "concept": "IncreaseDecreaseInOtherCurrentAssets",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "label": "Cash and cash equivalents",
+          "concept": "CashAndCashEquivalentsAtCarryingValue",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            },
+            {
+              "asc": "210-10-45-1",
+              "topic": "210"
+            },
+            {
+              "asc": "230-10-45-4",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "label": "Marketable securities",
+          "concept": "MarketableSecuritiesCurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "label": "Accounts receivable, net",
+          "concept": "AccountsReceivableNetCurrent",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "310-10-45-2",
+              "topic": "310"
+            },
+            {
+              "asc": "310-10-45-9",
+              "topic": "310"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Inventories",
+          "concept": "IncreaseDecreaseInInventories",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "label": "Total current assets",
+          "concept": "AssetsCurrent",
+          "n_candidates": 11,
+          "top_candidates": [
+            {
+              "asc": "210-10-45-1",
+              "topic": "210"
+            },
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            },
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            },
+            {
+              "asc": "470-10-S99-1A",
+              "topic": "470"
+            }
+          ]
+        },
+        {
+          "row": 7,
+          "label": "Non-current assets:",
+          "concept": "OtherAssetsNoncurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "label": "Marketable securities",
+          "concept": "MarketableSecuritiesCurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "label": "Property, plant and equipment, net",
+          "concept": "PropertyPlantAndEquipmentNet",
+          "n_candidates": 4,
+          "top_candidates": [
+            {
+              "asc": "852-10-55-10",
+              "topic": "852"
+            },
+            {
+              "asc": "360-10-50-1",
+              "topic": "360"
+            },
+            {
+              "asc": "942-360-50-1",
+              "topic": "942"
+            },
+            {
+              "asc": "944-210-S99-1",
+              "topic": "944"
+            }
+          ]
+        },
+        {
+          "row": 10,
+          "label": "Other non-current assets",
+          "concept": "OtherAssetsNoncurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Total non-current assets",
+          "concept": "AssetsCurrent",
+          "n_candidates": 11,
+          "top_candidates": [
+            {
+              "asc": "210-10-45-1",
+              "topic": "210"
+            },
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            },
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            },
+            {
+              "asc": "470-10-S99-1A",
+              "topic": "470"
+            }
+          ]
+        },
+        {
+          "row": 12,
+          "label": "Total assets",
+          "concept": "Assets",
+          "n_candidates": 17,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            },
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "280-10-50-22",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-30",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-32",
+              "topic": "280"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "route": "ABSTAIN",
+      "stage0": {
+        "fired": false,
+        "error_type": null,
+        "row": null,
+        "correct_value": null,
+        "detail": null
+      },
+      "ground_truth": {
+        "error_type": "Missing Row",
+        "row": 8,
+        "citation_topic": null,
+        "citation_text": "According to the FASB Concepts Statement No. 8, the income statement should report financial performance using terms like 'gross margin' to provide clarity on h"
+      },
+      "stage0_vs_gt": {
+        "type_match": false,
+        "row_match": false
+      },
+      "focus": {
+        "row": 8,
+        "concept": "OperatingExpenses",
+        "label": "Operating expenses:",
+        "n_candidates": 0,
+        "candidates": [],
+        "heuristic_pick": null,
+        "validate_pick": null,
+        "fake_asc_999_rejected": false,
+        "pick_topic": null,
+        "topic_match_gt": null
+      },
+      "verified_consistent_hint": true,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 1,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 2,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 3,
+          "label": "Total net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 4,
+          "label": "Cost of sales:",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 6,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 7,
+          "label": "Total cost of sales",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "label": "Operating expenses:",
+          "concept": "OperatingExpenses",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 9,
+          "label": "Research and development",
+          "concept": "ResearchAndDevelopmentExpense",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "730-10-50-1",
+              "topic": "730"
+            },
+            {
+              "asc": "912-730-25-1",
+              "topic": "912"
+            },
+            {
+              "asc": "985-20-50-1",
+              "topic": "985"
+            }
+          ]
+        },
+        {
+          "row": 10,
+          "label": "Selling, general and administrative",
+          "concept": "SellingGeneralAndAdministrativeExpense",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Total operating expenses",
+          "concept": "OperatingExpenses",
+          "n_candidates": 0,
+          "top_candidates": []
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "route": "ABSTAIN",
+      "stage0": {
+        "fired": false,
+        "error_type": null,
+        "row": null,
+        "correct_value": null,
+        "detail": null
+      },
+      "ground_truth": {
+        "error_type": "Misclassification",
+        "row": 1,
+        "citation_topic": "205",
+        "citation_text": "According to the FASB Codification, financial statements should follow a systemic organization and presentation of line items. ASC 205-10-45-2 (Comprehensive In"
+      },
+      "stage0_vs_gt": {
+        "type_match": false,
+        "row_match": false
+      },
+      "focus": {
+        "row": 1,
+        "concept": "SalesRevenueServicesNet",
+        "label": "Services",
+        "n_candidates": 0,
+        "candidates": [],
+        "heuristic_pick": null,
+        "validate_pick": null,
+        "fake_asc_999_rejected": false,
+        "pick_topic": null,
+        "topic_match_gt": null
+      },
+      "verified_consistent_hint": true,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 1,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 2,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 3,
+          "label": "Total net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 4,
+          "label": "Cost of sales:",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 6,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 7,
+          "label": "Total cost of sales",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "label": "Gross margin",
+          "concept": "GrossProfit",
+          "n_candidates": 10,
+          "top_candidates": [
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "280-10-50-22",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-30",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-32",
+              "topic": "280"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "label": "Operating expenses:",
+          "concept": "OperatingExpenses",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 10,
+          "label": "Research and development",
+          "concept": "ResearchAndDevelopmentExpense",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "730-10-50-1",
+              "topic": "730"
+            },
+            {
+              "asc": "912-730-25-1",
+              "topic": "912"
+            },
+            {
+              "asc": "985-20-50-1",
+              "topic": "985"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Selling, general and administrative",
+          "concept": "SellingGeneralAndAdministrativeExpense",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "route": "ABSTAIN",
+      "stage0": {
+        "fired": false,
+        "error_type": null,
+        "row": null,
+        "correct_value": null,
+        "detail": null
+      },
+      "ground_truth": {
+        "error_type": "Missing Row",
+        "row": 8,
+        "citation_topic": "230",
+        "citation_text": "According to FASB ASC 230-10-45, all significant items that are an integral part of operating activities must be reported as either cash inflows or outflows fro"
+      },
+      "stage0_vs_gt": {
+        "type_match": false,
+        "row_match": false
+      },
+      "focus": {
+        "row": 8,
+        "concept": null,
+        "label": null,
+        "n_candidates": 0,
+        "candidates": [],
+        "heuristic_pick": null,
+        "validate_pick": null,
+        "fake_asc_999_rejected": false,
+        "pick_topic": null,
+        "topic_match_gt": null
+      },
+      "verified_consistent_hint": true,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Operating activities:",
+          "concept": "PaymentsForProceedsFromOtherInvestingActivities",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-13",
+              "topic": "230"
+            },
+            {
+              "asc": "230-10-45-12",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "label": "Net income",
+          "concept": "NetIncomeLoss",
+          "n_candidates": 29,
+          "top_candidates": [
+            {
+              "asc": "205-20-50-7",
+              "topic": "205"
+            },
+            {
+              "asc": "220-10-50-6",
+              "topic": "220"
+            },
+            {
+              "asc": "220-10-45-1A",
+              "topic": "220"
+            },
+            {
+              "asc": "220-10-45-1B",
+              "topic": "220"
+            },
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "label": "Depreciation and amortization",
+          "concept": "DepreciationAndAmortization",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            },
+            {
+              "asc": "360-10-50-1",
+              "topic": "360"
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "label": "Share-based compensation expense",
+          "concept": "ShareBasedCompensation",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Other",
+          "concept": "OtherOperatingIncomeExpenseNet",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            }
+          ]
+        },
+        {
+          "row": 7,
+          "label": "Accounts receivable, net",
+          "concept": "AccountsReceivableNetCurrent",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "310-10-45-2",
+              "topic": "310"
+            },
+            {
+              "asc": "310-10-45-9",
+              "topic": "310"
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "label": "Inventories",
+          "concept": "InventoryNet",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            },
+            {
+              "asc": "210-10-45-1",
+              "topic": "210"
+            },
+            {
+              "asc": "852-10-55-10",
+              "topic": "852"
+            }
+          ]
+        },
+        {
+          "row": 10,
+          "label": "Other current and non-current assets",
+          "concept": "OtherAssetsNoncurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Accounts payable",
+          "concept": "AccountsPayableCurrent",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "852-10-55-10",
+              "topic": "852"
+            },
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 12,
+          "label": "Other current and non-current liabilities",
+          "concept": "OtherLiabilitiesNoncurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 13,
+          "label": "Cash generated by operating activities",
+          "concept": "NetCashProvidedByUsedInOperatingActivities",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            },
+            {
+              "asc": "230-10-45-24",
+              "topic": "230"
+            },
+            {
+              "asc": "230-10-45-25",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 14,
+          "label": "Investing activities:",
+          "concept": "PaymentsForProceedsFromOtherInvestingActivities",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-13",
+              "topic": "230"
+            },
+            {
+              "asc": "230-10-45-12",
+              "topic": "230"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "route": "FIRE",
+      "stage0": {
+        "fired": true,
+        "error_type": "Redundant Row",
+        "row": 12,
+        "correct_value": null,
+        "detail": "'Deferred tax assets' (25000.0) is not supported by any transaction and inflates 'Total non-current assets'."
+      },
+      "ground_truth": {
+        "error_type": "Redundant Row",
+        "row": 12,
+        "citation_topic": null,
+        "citation_text": "According to FASB Accounting Standards Codification (ASC) Section 210-10-50-1, entities should disclose only the assets that they have actually recognized, and "
+      },
+      "stage0_vs_gt": {
+        "type_match": true,
+        "row_match": true
+      },
+      "focus": {
+        "row": 12,
+        "concept": null,
+        "label": "Deferred tax assets",
+        "n_candidates": 0,
+        "candidates": [],
+        "heuristic_pick": null,
+        "validate_pick": null,
+        "fake_asc_999_rejected": false,
+        "pick_topic": null,
+        "topic_match_gt": null
+      },
+      "verified_consistent_hint": false,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Current assets:",
+          "concept": "IncreaseDecreaseInOtherCurrentAssets",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "label": "Cash and cash equivalents",
+          "concept": "CashAndCashEquivalentsAtCarryingValue",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            },
+            {
+              "asc": "210-10-45-1",
+              "topic": "210"
+            },
+            {
+              "asc": "230-10-45-4",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "label": "Marketable securities",
+          "concept": "MarketableSecuritiesCurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "label": "Accounts receivable, net",
+          "concept": "AccountsReceivableNetCurrent",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "310-10-45-2",
+              "topic": "310"
+            },
+            {
+              "asc": "310-10-45-9",
+              "topic": "310"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Inventories",
+          "concept": "IncreaseDecreaseInInventories",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "label": "Other current assets",
+          "concept": "IncreaseDecreaseInOtherCurrentAssets",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 7,
+          "label": "Total current assets",
+          "concept": "AssetsCurrent",
+          "n_candidates": 11,
+          "top_candidates": [
+            {
+              "asc": "210-10-45-1",
+              "topic": "210"
+            },
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            },
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            },
+            {
+              "asc": "470-10-S99-1A",
+              "topic": "470"
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "label": "Non-current assets:",
+          "concept": "OtherAssetsNoncurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "label": "Marketable securities",
+          "concept": "MarketableSecuritiesCurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 10,
+          "label": "Property, plant and equipment, net",
+          "concept": "PropertyPlantAndEquipmentNet",
+          "n_candidates": 4,
+          "top_candidates": [
+            {
+              "asc": "852-10-55-10",
+              "topic": "852"
+            },
+            {
+              "asc": "360-10-50-1",
+              "topic": "360"
+            },
+            {
+              "asc": "942-360-50-1",
+              "topic": "942"
+            },
+            {
+              "asc": "944-210-S99-1",
+              "topic": "944"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Other non-current assets",
+          "concept": "OtherAssetsNoncurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 13,
+          "label": "Total non-current assets",
+          "concept": "AssetsCurrent",
+          "n_candidates": 11,
+          "top_candidates": [
+            {
+              "asc": "210-10-45-1",
+              "topic": "210"
+            },
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            },
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            },
+            {
+              "asc": "470-10-S99-1A",
+              "topic": "470"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "route": "ABSTAIN",
+      "stage0": {
+        "fired": false,
+        "error_type": null,
+        "row": null,
+        "correct_value": null,
+        "detail": null
+      },
+      "ground_truth": {
+        "error_type": "Misclassification",
+        "row": 5,
+        "citation_topic": "605",
+        "citation_text": "Refer to FASB ASC 605-10-25, which addresses the classification of revenue and costs related to sales, requiring logical order and consistent presentation that "
+      },
+      "stage0_vs_gt": {
+        "type_match": false,
+        "row_match": false
+      },
+      "focus": {
+        "row": 5,
+        "concept": "SalesRevenueServicesNet",
+        "label": "Services",
+        "n_candidates": 0,
+        "candidates": [],
+        "heuristic_pick": null,
+        "validate_pick": null,
+        "fake_asc_999_rejected": false,
+        "pick_topic": null,
+        "topic_match_gt": null
+      },
+      "verified_consistent_hint": true,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 1,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 2,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 3,
+          "label": "Total net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 4,
+          "label": "Cost of sales:",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 6,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 7,
+          "label": "Total cost of sales",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "label": "Gross margin",
+          "concept": "GrossProfit",
+          "n_candidates": 10,
+          "top_candidates": [
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "280-10-50-22",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-30",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-32",
+              "topic": "280"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "label": "Operating expenses:",
+          "concept": "OperatingExpenses",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 10,
+          "label": "Research and development",
+          "concept": "ResearchAndDevelopmentExpense",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "730-10-50-1",
+              "topic": "730"
+            },
+            {
+              "asc": "912-730-25-1",
+              "topic": "912"
+            },
+            {
+              "asc": "985-20-50-1",
+              "topic": "985"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Selling, general and administrative",
+          "concept": "SellingGeneralAndAdministrativeExpense",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "route": "FIRE",
+      "stage0": {
+        "fired": true,
+        "error_type": "Numerical Error",
+        "row": 3,
+        "correct_value": 29508.0,
+        "detail": "'Accounts receivable, net' stated 35000.0, transactions imply 29508.0."
+      },
+      "ground_truth": {
+        "error_type": "Numerical Error",
+        "row": 3,
+        "citation_topic": "310",
+        "citation_text": "According to FASB ASC 310-10-35, entities should recognize accounts receivable correctly, taking into account their receivables and impairments. The appropriate"
+      },
+      "stage0_vs_gt": {
+        "type_match": true,
+        "row_match": true
+      },
+      "focus": {
+        "row": 3,
+        "concept": "AccountsReceivableNetCurrent",
+        "label": "Accounts receivable, net",
+        "n_candidates": 2,
+        "candidates": [
+          {
+            "asc": "310-10-45-2",
+            "topic": "310",
+            "role": "disclosureRef"
+          },
+          {
+            "asc": "310-10-45-9",
+            "topic": "310",
+            "role": "disclosureRef"
+          }
+        ],
+        "heuristic_pick": "310-10-45-2",
+        "validate_pick": {
+          "valid": true,
+          "reason": "in_candidate_set",
+          "concept": "AccountsReceivableNetCurrent",
+          "asc": "310-10-45-2",
+          "topic": "310"
+        },
+        "fake_asc_999_rejected": true,
+        "pick_topic": "310",
+        "topic_match_gt": true
+      },
+      "verified_consistent_hint": false,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Current assets:",
+          "concept": "IncreaseDecreaseInOtherCurrentAssets",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "label": "Cash and cash equivalents",
+          "concept": "CashAndCashEquivalentsAtCarryingValue",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            },
+            {
+              "asc": "210-10-45-1",
+              "topic": "210"
+            },
+            {
+              "asc": "230-10-45-4",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "label": "Marketable securities",
+          "concept": "MarketableSecuritiesCurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "label": "Accounts receivable, net",
+          "concept": "AccountsReceivableNetCurrent",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "310-10-45-2",
+              "topic": "310"
+            },
+            {
+              "asc": "310-10-45-9",
+              "topic": "310"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Inventories",
+          "concept": "IncreaseDecreaseInInventories",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "label": "Other current assets",
+          "concept": "IncreaseDecreaseInOtherCurrentAssets",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 7,
+          "label": "Total current assets",
+          "concept": "AssetsCurrent",
+          "n_candidates": 11,
+          "top_candidates": [
+            {
+              "asc": "210-10-45-1",
+              "topic": "210"
+            },
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            },
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            },
+            {
+              "asc": "470-10-S99-1A",
+              "topic": "470"
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "label": "Non-current assets:",
+          "concept": "OtherAssetsNoncurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "label": "Marketable securities",
+          "concept": "MarketableSecuritiesCurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 10,
+          "label": "Property, plant and equipment, net",
+          "concept": "PropertyPlantAndEquipmentNet",
+          "n_candidates": 4,
+          "top_candidates": [
+            {
+              "asc": "852-10-55-10",
+              "topic": "852"
+            },
+            {
+              "asc": "360-10-50-1",
+              "topic": "360"
+            },
+            {
+              "asc": "942-360-50-1",
+              "topic": "942"
+            },
+            {
+              "asc": "944-210-S99-1",
+              "topic": "944"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Other non-current assets",
+          "concept": "OtherAssetsNoncurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 12,
+          "label": "Total non-current assets",
+          "concept": "AssetsCurrent",
+          "n_candidates": 11,
+          "top_candidates": [
+            {
+              "asc": "210-10-45-1",
+              "topic": "210"
+            },
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            },
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            },
+            {
+              "asc": "470-10-S99-1A",
+              "topic": "470"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "route": "FIRE",
+      "stage0": {
+        "fired": true,
+        "error_type": "Redundant Row",
+        "row": 12,
+        "correct_value": null,
+        "detail": "'Environmental compliance costs' (1500.0) is not supported by any transaction and inflates 'Total operating expenses'."
+      },
+      "ground_truth": {
+        "error_type": "Redundant Row",
+        "row": 12,
+        "citation_topic": "225",
+        "citation_text": "According to FASB ASC 225-10-45-3, a detailed breakdown of operating expenses should not include fabricated or redundant cost entries that misrepresent accounti"
+      },
+      "stage0_vs_gt": {
+        "type_match": true,
+        "row_match": true
+      },
+      "focus": {
+        "row": 12,
+        "concept": null,
+        "label": "Environmental compliance costs",
+        "n_candidates": 0,
+        "candidates": [],
+        "heuristic_pick": null,
+        "validate_pick": null,
+        "fake_asc_999_rejected": false,
+        "pick_topic": null,
+        "topic_match_gt": null
+      },
+      "verified_consistent_hint": false,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 1,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 2,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 3,
+          "label": "Total net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 4,
+          "label": "Cost of sales:",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 6,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 7,
+          "label": "Total cost of sales",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "label": "Gross margin",
+          "concept": "GrossProfit",
+          "n_candidates": 10,
+          "top_candidates": [
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "280-10-50-22",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-30",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-32",
+              "topic": "280"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "label": "Operating expenses:",
+          "concept": "OperatingExpenses",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 10,
+          "label": "Research and development",
+          "concept": "ResearchAndDevelopmentExpense",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "730-10-50-1",
+              "topic": "730"
+            },
+            {
+              "asc": "912-730-25-1",
+              "topic": "912"
+            },
+            {
+              "asc": "985-20-50-1",
+              "topic": "985"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Selling, general and administrative",
+          "concept": "SellingGeneralAndAdministrativeExpense",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "route": "FIRE",
+      "stage0": {
+        "fired": true,
+        "error_type": "Numerical Error",
+        "row": 12,
+        "correct_value": 6110.0,
+        "detail": "'Other current and non-current liabilities' stated 15000.0, transactions imply 6110.0."
+      },
+      "ground_truth": {
+        "error_type": "Numerical Error",
+        "row": 12,
+        "citation_topic": "210",
+        "citation_text": "According to FASB ASC 210-10-20, liabilities should be accurately classified and reported in financial statements to reflect true financial positions and result"
+      },
+      "stage0_vs_gt": {
+        "type_match": true,
+        "row_match": true
+      },
+      "focus": {
+        "row": 12,
+        "concept": "OtherLiabilitiesNoncurrent",
+        "label": "Other current and non-current liabilities",
+        "n_candidates": 1,
+        "candidates": [
+          {
+            "asc": "210-10-S99-1",
+            "topic": "210",
+            "role": "legacyRef"
+          }
+        ],
+        "heuristic_pick": "210-10-S99-1",
+        "validate_pick": {
+          "valid": true,
+          "reason": "in_candidate_set",
+          "concept": "OtherLiabilitiesNoncurrent",
+          "asc": "210-10-S99-1",
+          "topic": "210"
+        },
+        "fake_asc_999_rejected": true,
+        "pick_topic": "210",
+        "topic_match_gt": true
+      },
+      "verified_consistent_hint": false,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Operating activities:",
+          "concept": "PaymentsForProceedsFromOtherInvestingActivities",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-13",
+              "topic": "230"
+            },
+            {
+              "asc": "230-10-45-12",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "label": "Net income",
+          "concept": "NetIncomeLoss",
+          "n_candidates": 29,
+          "top_candidates": [
+            {
+              "asc": "205-20-50-7",
+              "topic": "205"
+            },
+            {
+              "asc": "220-10-50-6",
+              "topic": "220"
+            },
+            {
+              "asc": "220-10-45-1A",
+              "topic": "220"
+            },
+            {
+              "asc": "220-10-45-1B",
+              "topic": "220"
+            },
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "label": "Depreciation and amortization",
+          "concept": "DepreciationAndAmortization",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            },
+            {
+              "asc": "360-10-50-1",
+              "topic": "360"
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "label": "Share-based compensation expense",
+          "concept": "ShareBasedCompensation",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Other",
+          "concept": "OtherOperatingIncomeExpenseNet",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            }
+          ]
+        },
+        {
+          "row": 7,
+          "label": "Accounts receivable, net",
+          "concept": "AccountsReceivableNetCurrent",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "310-10-45-2",
+              "topic": "310"
+            },
+            {
+              "asc": "310-10-45-9",
+              "topic": "310"
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "label": "Inventories",
+          "concept": "InventoryNet",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            },
+            {
+              "asc": "210-10-45-1",
+              "topic": "210"
+            },
+            {
+              "asc": "852-10-55-10",
+              "topic": "852"
+            }
+          ]
+        },
+        {
+          "row": 10,
+          "label": "Other current and non-current assets",
+          "concept": "OtherAssetsNoncurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Accounts payable",
+          "concept": "AccountsPayableCurrent",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "852-10-55-10",
+              "topic": "852"
+            },
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 12,
+          "label": "Other current and non-current liabilities",
+          "concept": "OtherLiabilitiesNoncurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 13,
+          "label": "Cash generated by operating activities",
+          "concept": "NetCashProvidedByUsedInOperatingActivities",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            },
+            {
+              "asc": "230-10-45-24",
+              "topic": "230"
+            },
+            {
+              "asc": "230-10-45-25",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 14,
+          "label": "Investing activities:",
+          "concept": "PaymentsForProceedsFromOtherInvestingActivities",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-13",
+              "topic": "230"
+            },
+            {
+              "asc": "230-10-45-12",
+              "topic": "230"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "route": "FIRE",
+      "stage0": {
+        "fired": true,
+        "error_type": "Missing Row",
+        "row": 6,
+        "correct_value": 20715.0,
+        "detail": "'Cost of sales: Services' (value 20715.0) is described by the transactions but absent from the statement."
+      },
+      "ground_truth": {
+        "error_type": "Missing Row",
+        "row": 6,
+        "citation_topic": "605",
+        "citation_text": "According to FASB ASC 605-10-05-1, revenue should be recognized as gross of all expenses directly associated with the cost of the sales, including service costs"
+      },
+      "stage0_vs_gt": {
+        "type_match": true,
+        "row_match": true
+      },
+      "focus": {
+        "row": 6,
+        "concept": "CostOfGoodsAndServicesSold",
+        "label": "Total cost of sales",
+        "n_candidates": 2,
+        "candidates": [
+          {
+            "asc": "220-10-S99-2",
+            "topic": "220",
+            "role": "legacyRef"
+          },
+          {
+            "asc": "924-10-S99-1",
+            "topic": "924",
+            "role": "disclosureRef"
+          }
+        ],
+        "heuristic_pick": "220-10-S99-2",
+        "validate_pick": {
+          "valid": true,
+          "reason": "in_candidate_set",
+          "concept": "CostOfGoodsAndServicesSold",
+          "asc": "220-10-S99-2",
+          "topic": "220"
+        },
+        "fake_asc_999_rejected": true,
+        "pick_topic": "220",
+        "topic_match_gt": false
+      },
+      "verified_consistent_hint": false,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 1,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 2,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 3,
+          "label": "Total net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 4,
+          "label": "Cost of sales:",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 6,
+          "label": "Total cost of sales",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 7,
+          "label": "Gross margin",
+          "concept": "GrossProfit",
+          "n_candidates": 10,
+          "top_candidates": [
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "280-10-50-22",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-30",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-32",
+              "topic": "280"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "label": "Operating expenses:",
+          "concept": "OperatingExpenses",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 9,
+          "label": "Research and development",
+          "concept": "ResearchAndDevelopmentExpense",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "730-10-50-1",
+              "topic": "730"
+            },
+            {
+              "asc": "912-730-25-1",
+              "topic": "912"
+            },
+            {
+              "asc": "985-20-50-1",
+              "topic": "985"
+            }
+          ]
+        },
+        {
+          "row": 10,
+          "label": "Selling, general and administrative",
+          "concept": "SellingGeneralAndAdministrativeExpense",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Total operating expenses",
+          "concept": "OperatingExpenses",
+          "n_candidates": 0,
+          "top_candidates": []
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "route": "ABSTAIN",
+      "stage0": {
+        "fired": false,
+        "error_type": null,
+        "row": null,
+        "correct_value": null,
+        "detail": null
+      },
+      "ground_truth": {
+        "error_type": "Redundant Row",
+        "row": 13,
+        "citation_topic": "250",
+        "citation_text": "FASB ASC 250-10, Accounting Changes and Error Corrections, outlines requirements for removing prior period errors, including material misstatements or omissions"
+      },
+      "stage0_vs_gt": {
+        "type_match": false,
+        "row_match": false
+      },
+      "focus": {
+        "row": 13,
+        "concept": "DepreciationAndAmortization",
+        "label": "Depreciation",
+        "n_candidates": 2,
+        "candidates": [
+          {
+            "asc": "230-10-45-28",
+            "topic": "230",
+            "role": "legacyRef"
+          },
+          {
+            "asc": "360-10-50-1",
+            "topic": "360",
+            "role": "legacyRef"
+          }
+        ],
+        "heuristic_pick": "360-10-50-1",
+        "validate_pick": {
+          "valid": true,
+          "reason": "in_candidate_set",
+          "concept": "DepreciationAndAmortization",
+          "asc": "360-10-50-1",
+          "topic": "360"
+        },
+        "fake_asc_999_rejected": true,
+        "pick_topic": "360",
+        "topic_match_gt": false
+      },
+      "verified_consistent_hint": true,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 1,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 2,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 3,
+          "label": "Total net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 4,
+          "label": "Cost of sales:",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 6,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 7,
+          "label": "Total cost of sales",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "label": "Gross margin",
+          "concept": "GrossProfit",
+          "n_candidates": 10,
+          "top_candidates": [
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "280-10-50-22",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-30",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-32",
+              "topic": "280"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "label": "Operating expenses:",
+          "concept": "OperatingExpenses",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 10,
+          "label": "Research and development",
+          "concept": "ResearchAndDevelopmentExpense",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "730-10-50-1",
+              "topic": "730"
+            },
+            {
+              "asc": "912-730-25-1",
+              "topic": "912"
+            },
+            {
+              "asc": "985-20-50-1",
+              "topic": "985"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Selling, general and administrative",
+          "concept": "SellingGeneralAndAdministrativeExpense",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "route": "ABSTAIN",
+      "stage0": {
+        "fired": false,
+        "error_type": null,
+        "row": null,
+        "correct_value": null,
+        "detail": null
+      },
+      "ground_truth": {
+        "error_type": "Redundant Row",
+        "row": 13,
+        "citation_topic": null,
+        "citation_text": "FASB Conceptual Framework mentions the need for the financial information to be complete, neutral, and free from error to provide accurate representation. Redun"
+      },
+      "stage0_vs_gt": {
+        "type_match": false,
+        "row_match": false
+      },
+      "focus": {
+        "row": 13,
+        "concept": null,
+        "label": "Redundant Adjustment",
+        "n_candidates": 0,
+        "candidates": [],
+        "heuristic_pick": null,
+        "validate_pick": null,
+        "fake_asc_999_rejected": false,
+        "pick_topic": null,
+        "topic_match_gt": null
+      },
+      "verified_consistent_hint": true,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Operating activities:",
+          "concept": "PaymentsForProceedsFromOtherInvestingActivities",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-13",
+              "topic": "230"
+            },
+            {
+              "asc": "230-10-45-12",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "label": "Net income",
+          "concept": "NetIncomeLoss",
+          "n_candidates": 29,
+          "top_candidates": [
+            {
+              "asc": "205-20-50-7",
+              "topic": "205"
+            },
+            {
+              "asc": "220-10-50-6",
+              "topic": "220"
+            },
+            {
+              "asc": "220-10-45-1A",
+              "topic": "220"
+            },
+            {
+              "asc": "220-10-45-1B",
+              "topic": "220"
+            },
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "label": "Depreciation and amortization",
+          "concept": "DepreciationAndAmortization",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            },
+            {
+              "asc": "360-10-50-1",
+              "topic": "360"
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "label": "Share-based compensation expense",
+          "concept": "ShareBasedCompensation",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Other",
+          "concept": "OtherOperatingIncomeExpenseNet",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            }
+          ]
+        },
+        {
+          "row": 7,
+          "label": "Accounts receivable, net",
+          "concept": "AccountsReceivableNetCurrent",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "310-10-45-2",
+              "topic": "310"
+            },
+            {
+              "asc": "310-10-45-9",
+              "topic": "310"
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "label": "Inventories",
+          "concept": "InventoryNet",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            },
+            {
+              "asc": "210-10-45-1",
+              "topic": "210"
+            },
+            {
+              "asc": "852-10-55-10",
+              "topic": "852"
+            }
+          ]
+        },
+        {
+          "row": 10,
+          "label": "Other current and non-current assets",
+          "concept": "OtherAssetsNoncurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Accounts payable",
+          "concept": "AccountsPayableCurrent",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "852-10-55-10",
+              "topic": "852"
+            },
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 12,
+          "label": "Other current and non-current liabilities",
+          "concept": "OtherLiabilitiesNoncurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 14,
+          "label": "Cash generated by operating activities",
+          "concept": "NetCashProvidedByUsedInOperatingActivities",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            },
+            {
+              "asc": "230-10-45-24",
+              "topic": "230"
+            },
+            {
+              "asc": "230-10-45-25",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 15,
+          "label": "Investing activities:",
+          "concept": "PaymentsForProceedsFromOtherInvestingActivities",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-13",
+              "topic": "230"
+            },
+            {
+              "asc": "230-10-45-12",
+              "topic": "230"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "route": "FIRE",
+      "stage0": {
+        "fired": true,
+        "error_type": "Misclassification",
+        "row": 3,
+        "correct_value": null,
+        "detail": "'Selling, general and administrative' is reported under 'Gross margin' but its value is not part of that section per the transactions."
+      },
+      "ground_truth": {
+        "error_type": "Misclassification",
+        "row": 10,
+        "citation_topic": "720",
+        "citation_text": "According to FASB, operating expenses include costs incurred as part of a company\u2019s primary business activities, which includes SG&A. These should not be confus"
+      },
+      "stage0_vs_gt": {
+        "type_match": true,
+        "row_match": false
+      },
+      "focus": {
+        "row": 3,
+        "concept": "SellingGeneralAndAdministrativeExpense",
+        "label": "Selling, general and administrative",
+        "n_candidates": 1,
+        "candidates": [
+          {
+            "asc": "220-10-S99-2",
+            "topic": "220",
+            "role": "legacyRef"
+          }
+        ],
+        "heuristic_pick": "220-10-S99-2",
+        "validate_pick": {
+          "valid": true,
+          "reason": "in_candidate_set",
+          "concept": "SellingGeneralAndAdministrativeExpense",
+          "asc": "220-10-S99-2",
+          "topic": "220"
+        },
+        "fake_asc_999_rejected": true,
+        "pick_topic": "220",
+        "topic_match_gt": false
+      },
+      "verified_consistent_hint": false,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 1,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 2,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 3,
+          "label": "Selling, general and administrative",
+          "concept": "SellingGeneralAndAdministrativeExpense",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "label": "Total net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 5,
+          "label": "Cost of sales:",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 7,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 8,
+          "label": "Total cost of sales",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "label": "Gross margin",
+          "concept": "GrossProfit",
+          "n_candidates": 10,
+          "top_candidates": [
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "280-10-50-22",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-30",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-32",
+              "topic": "280"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            }
+          ]
+        },
+        {
+          "row": 10,
+          "label": "Operating expenses:",
+          "concept": "OperatingExpenses",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 11,
+          "label": "Research and development",
+          "concept": "ResearchAndDevelopmentExpense",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "730-10-50-1",
+              "topic": "730"
+            },
+            {
+              "asc": "912-730-25-1",
+              "topic": "912"
+            },
+            {
+              "asc": "985-20-50-1",
+              "topic": "985"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "route": "ABSTAIN",
+      "stage0": {
+        "fired": false,
+        "error_type": null,
+        "row": null,
+        "correct_value": null,
+        "detail": null
+      },
+      "ground_truth": {
+        "error_type": "Numerical Error",
+        "row": 5,
+        "citation_topic": "606",
+        "citation_text": "According to ASC 606-10-32-2, revenue recognized is reported net of estimated returns and allowances, which aligns proper costing against actual sales and requi"
+      },
+      "stage0_vs_gt": {
+        "type_match": false,
+        "row_match": false
+      },
+      "focus": {
+        "row": 5,
+        "concept": "SalesRevenueGoodsNet",
+        "label": "Products",
+        "n_candidates": 0,
+        "candidates": [],
+        "heuristic_pick": null,
+        "validate_pick": null,
+        "fake_asc_999_rejected": false,
+        "pick_topic": null,
+        "topic_match_gt": null
+      },
+      "verified_consistent_hint": true,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 1,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 2,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 3,
+          "label": "Total net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 4,
+          "label": "Cost of sales:",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 6,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 7,
+          "label": "Total cost of sales",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "label": "Gross margin",
+          "concept": "GrossProfit",
+          "n_candidates": 10,
+          "top_candidates": [
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "280-10-50-22",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-30",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-32",
+              "topic": "280"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "label": "Operating expenses:",
+          "concept": "OperatingExpenses",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 10,
+          "label": "Research and development",
+          "concept": "ResearchAndDevelopmentExpense",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "730-10-50-1",
+              "topic": "730"
+            },
+            {
+              "asc": "912-730-25-1",
+              "topic": "912"
+            },
+            {
+              "asc": "985-20-50-1",
+              "topic": "985"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Selling, general and administrative",
+          "concept": "SellingGeneralAndAdministrativeExpense",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "route": "ABSTAIN",
+      "stage0": {
+        "fired": false,
+        "error_type": null,
+        "row": null,
+        "correct_value": null,
+        "detail": null
+      },
+      "ground_truth": {
+        "error_type": "Numerical Error",
+        "row": 5,
+        "citation_topic": "330",
+        "citation_text": "According to FASB ASC 330-10-35, Inventory (including the cost of goods sold) must be accurately reflected in financial statements to ensure financial accuracy "
+      },
+      "stage0_vs_gt": {
+        "type_match": false,
+        "row_match": false
+      },
+      "focus": {
+        "row": 5,
+        "concept": "SalesRevenueGoodsNet",
+        "label": "Products",
+        "n_candidates": 0,
+        "candidates": [],
+        "heuristic_pick": null,
+        "validate_pick": null,
+        "fake_asc_999_rejected": false,
+        "pick_topic": null,
+        "topic_match_gt": null
+      },
+      "verified_consistent_hint": true,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 1,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 2,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 3,
+          "label": "Total net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 4,
+          "label": "Cost of sales:",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 6,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 7,
+          "label": "Total cost of sales",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "label": "Gross margin",
+          "concept": "GrossProfit",
+          "n_candidates": 10,
+          "top_candidates": [
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "280-10-50-22",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-30",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-32",
+              "topic": "280"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "label": "Operating expenses:",
+          "concept": "OperatingExpenses",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 10,
+          "label": "Research and development",
+          "concept": "ResearchAndDevelopmentExpense",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "730-10-50-1",
+              "topic": "730"
+            },
+            {
+              "asc": "912-730-25-1",
+              "topic": "912"
+            },
+            {
+              "asc": "985-20-50-1",
+              "topic": "985"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Selling, general and administrative",
+          "concept": "SellingGeneralAndAdministrativeExpense",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "route": "ABSTAIN",
+      "stage0": {
+        "fired": false,
+        "error_type": null,
+        "row": null,
+        "correct_value": null,
+        "detail": null
+      },
+      "ground_truth": {
+        "error_type": "Missing Row",
+        "row": 7,
+        "citation_topic": "205",
+        "citation_text": "As per FASB ASC 205-10-45, financial statements should provide complete and accurate depiction of all necessary performance figures, including critical componen"
+      },
+      "stage0_vs_gt": {
+        "type_match": false,
+        "row_match": false
+      },
+      "focus": {
+        "row": 7,
+        "concept": "GrossProfit",
+        "label": "Gross margin",
+        "n_candidates": 10,
+        "candidates": [
+          {
+            "asc": "235-10-S99-1",
+            "topic": "235",
+            "role": "disclosureRef"
+          },
+          {
+            "asc": "280-10-50-22",
+            "topic": "280",
+            "role": "disclosureRef"
+          },
+          {
+            "asc": "280-10-50-30",
+            "topic": "280",
+            "role": "disclosureRef"
+          },
+          {
+            "asc": "280-10-50-32",
+            "topic": "280",
+            "role": "disclosureRef"
+          },
+          {
+            "asc": "323-10-50-3",
+            "topic": "323",
+            "role": "disclosureRef"
+          },
+          {
+            "asc": "470-10-S99-1A",
+            "topic": "470",
+            "role": "disclosureRef"
+          },
+          {
+            "asc": "470-10-S99-1B",
+            "topic": "470",
+            "role": "disclosureRef"
+          },
+          {
+            "asc": "825-10-50-28",
+            "topic": "825",
+            "role": "disclosureRef"
+          }
+        ],
+        "heuristic_pick": "323-10-50-3",
+        "validate_pick": {
+          "valid": true,
+          "reason": "in_candidate_set",
+          "concept": "GrossProfit",
+          "asc": "323-10-50-3",
+          "topic": "323"
+        },
+        "fake_asc_999_rejected": true,
+        "pick_topic": "323",
+        "topic_match_gt": false
+      },
+      "verified_consistent_hint": true,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 1,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 2,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 3,
+          "label": "Total net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 4,
+          "label": "Cost of sales:",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 6,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 7,
+          "label": "Gross margin",
+          "concept": "GrossProfit",
+          "n_candidates": 10,
+          "top_candidates": [
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "280-10-50-22",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-30",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-32",
+              "topic": "280"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "label": "Operating expenses:",
+          "concept": "OperatingExpenses",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 9,
+          "label": "Research and development",
+          "concept": "ResearchAndDevelopmentExpense",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "730-10-50-1",
+              "topic": "730"
+            },
+            {
+              "asc": "912-730-25-1",
+              "topic": "912"
+            },
+            {
+              "asc": "985-20-50-1",
+              "topic": "985"
+            }
+          ]
+        },
+        {
+          "row": 10,
+          "label": "Selling, general and administrative",
+          "concept": "SellingGeneralAndAdministrativeExpense",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Total operating expenses",
+          "concept": "OperatingExpenses",
+          "n_candidates": 0,
+          "top_candidates": []
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "route": "FIRE",
+      "stage0": {
+        "fired": true,
+        "error_type": "Redundant Row",
+        "row": 12,
+        "correct_value": null,
+        "detail": "'Advertising and Promotions' (5000.0) is not supported by any transaction and inflates 'Total operating expenses'."
+      },
+      "ground_truth": {
+        "error_type": "Redundant Row",
+        "row": 12,
+        "citation_topic": "220",
+        "citation_text": "According to FASB ASC 220, financial statement presentation requires faithful representation of expenses, which includes avoiding duplication or addition of exp"
+      },
+      "stage0_vs_gt": {
+        "type_match": true,
+        "row_match": true
+      },
+      "focus": {
+        "row": 12,
+        "concept": "AccruedMarketingCostsCurrent",
+        "label": "Advertising and Promotions",
+        "n_candidates": 0,
+        "candidates": [],
+        "heuristic_pick": null,
+        "validate_pick": null,
+        "fake_asc_999_rejected": false,
+        "pick_topic": null,
+        "topic_match_gt": null
+      },
+      "verified_consistent_hint": false,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 1,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 2,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 3,
+          "label": "Total net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 4,
+          "label": "Cost of sales:",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 6,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 7,
+          "label": "Total cost of sales",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "label": "Gross margin",
+          "concept": "GrossProfit",
+          "n_candidates": 10,
+          "top_candidates": [
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "280-10-50-22",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-30",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-32",
+              "topic": "280"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "label": "Operating expenses:",
+          "concept": "OperatingExpenses",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 10,
+          "label": "Research and development",
+          "concept": "ResearchAndDevelopmentExpense",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "730-10-50-1",
+              "topic": "730"
+            },
+            {
+              "asc": "912-730-25-1",
+              "topic": "912"
+            },
+            {
+              "asc": "985-20-50-1",
+              "topic": "985"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Selling, general and administrative",
+          "concept": "SellingGeneralAndAdministrativeExpense",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "route": "ABSTAIN",
+      "stage0": {
+        "fired": false,
+        "error_type": null,
+        "row": null,
+        "correct_value": null,
+        "detail": null
+      },
+      "ground_truth": {
+        "error_type": "Numerical Error",
+        "row": 5,
+        "citation_topic": null,
+        "citation_text": "According to FASB guidance under the Accounting Standards Codification (ASC) 330-10-30, Inventory should be measured correctly at the cost that reflects incurre"
+      },
+      "stage0_vs_gt": {
+        "type_match": false,
+        "row_match": false
+      },
+      "focus": {
+        "row": 5,
+        "concept": "SalesRevenueGoodsNet",
+        "label": "Products",
+        "n_candidates": 0,
+        "candidates": [],
+        "heuristic_pick": null,
+        "validate_pick": null,
+        "fake_asc_999_rejected": false,
+        "pick_topic": null,
+        "topic_match_gt": null
+      },
+      "verified_consistent_hint": true,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 1,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 2,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 3,
+          "label": "Total net sales",
+          "concept": "SalesRevenueNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 4,
+          "label": "Cost of sales:",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Products",
+          "concept": "SalesRevenueGoodsNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 6,
+          "label": "Services",
+          "concept": "SalesRevenueServicesNet",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 7,
+          "label": "Total cost of sales",
+          "concept": "CostOfGoodsAndServicesSold",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            },
+            {
+              "asc": "924-10-S99-1",
+              "topic": "924"
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "label": "Gross margin",
+          "concept": "GrossProfit",
+          "n_candidates": 10,
+          "top_candidates": [
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            },
+            {
+              "asc": "280-10-50-22",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-30",
+              "topic": "280"
+            },
+            {
+              "asc": "280-10-50-32",
+              "topic": "280"
+            },
+            {
+              "asc": "323-10-50-3",
+              "topic": "323"
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "label": "Operating expenses:",
+          "concept": "OperatingExpenses",
+          "n_candidates": 0,
+          "top_candidates": []
+        },
+        {
+          "row": 10,
+          "label": "Research and development",
+          "concept": "ResearchAndDevelopmentExpense",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "730-10-50-1",
+              "topic": "730"
+            },
+            {
+              "asc": "912-730-25-1",
+              "topic": "912"
+            },
+            {
+              "asc": "985-20-50-1",
+              "topic": "985"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Selling, general and administrative",
+          "concept": "SellingGeneralAndAdministrativeExpense",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "route": "ABSTAIN",
+      "stage0": {
+        "fired": false,
+        "error_type": null,
+        "row": null,
+        "correct_value": null,
+        "detail": null
+      },
+      "ground_truth": {
+        "error_type": "Misclassification",
+        "row": 7,
+        "citation_topic": "230",
+        "citation_text": "According to ASC 230-10-45-16 of the FASB Accounting Standards Codification, operating activities generally involve producing and delivering goods and providing"
+      },
+      "stage0_vs_gt": {
+        "type_match": false,
+        "row_match": false
+      },
+      "focus": {
+        "row": 7,
+        "concept": null,
+        "label": "Vendor non-trade receivables",
+        "n_candidates": 0,
+        "candidates": [],
+        "heuristic_pick": null,
+        "validate_pick": null,
+        "fake_asc_999_rejected": false,
+        "pick_topic": null,
+        "topic_match_gt": null
+      },
+      "verified_consistent_hint": true,
+      "mapped_rows_with_candidates": [
+        {
+          "row": 0,
+          "label": "Operating activities:",
+          "concept": "PaymentsForProceedsFromOtherInvestingActivities",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-13",
+              "topic": "230"
+            },
+            {
+              "asc": "230-10-45-12",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "label": "Net income",
+          "concept": "NetIncomeLoss",
+          "n_candidates": 29,
+          "top_candidates": [
+            {
+              "asc": "205-20-50-7",
+              "topic": "205"
+            },
+            {
+              "asc": "220-10-50-6",
+              "topic": "220"
+            },
+            {
+              "asc": "220-10-45-1A",
+              "topic": "220"
+            },
+            {
+              "asc": "220-10-45-1B",
+              "topic": "220"
+            },
+            {
+              "asc": "235-10-S99-1",
+              "topic": "235"
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "label": "Depreciation and amortization",
+          "concept": "DepreciationAndAmortization",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            },
+            {
+              "asc": "360-10-50-1",
+              "topic": "360"
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "label": "Share-based compensation expense",
+          "concept": "ShareBasedCompensation",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Other",
+          "concept": "OtherOperatingIncomeExpenseNet",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "220-10-S99-2",
+              "topic": "220"
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "label": "Inventories",
+          "concept": "InventoryNet",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            },
+            {
+              "asc": "210-10-45-1",
+              "topic": "210"
+            },
+            {
+              "asc": "852-10-55-10",
+              "topic": "852"
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "label": "Other current and non-current assets",
+          "concept": "OtherAssetsNoncurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 10,
+          "label": "Accounts payable",
+          "concept": "AccountsPayableCurrent",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "852-10-55-10",
+              "topic": "852"
+            },
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "label": "Other current and non-current liabilities",
+          "concept": "OtherLiabilitiesNoncurrent",
+          "n_candidates": 1,
+          "top_candidates": [
+            {
+              "asc": "210-10-S99-1",
+              "topic": "210"
+            }
+          ]
+        },
+        {
+          "row": 12,
+          "label": "Cash generated by operating activities",
+          "concept": "NetCashProvidedByUsedInOperatingActivities",
+          "n_candidates": 3,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-28",
+              "topic": "230"
+            },
+            {
+              "asc": "230-10-45-24",
+              "topic": "230"
+            },
+            {
+              "asc": "230-10-45-25",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 13,
+          "label": "Investing activities:",
+          "concept": "PaymentsForProceedsFromOtherInvestingActivities",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "230-10-45-13",
+              "topic": "230"
+            },
+            {
+              "asc": "230-10-45-12",
+              "topic": "230"
+            }
+          ]
+        },
+        {
+          "row": 14,
+          "label": "Accounts receivable, net",
+          "concept": "AccountsReceivableNetCurrent",
+          "n_candidates": 2,
+          "top_candidates": [
+            {
+              "asc": "310-10-45-2",
+              "topic": "310"
+            },
+            {
+              "asc": "310-10-45-9",
+              "topic": "310"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

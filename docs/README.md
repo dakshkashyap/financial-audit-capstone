@@ -54,6 +54,7 @@ it.
 | Document | Contents |
 |---|---|
 | [results/FINMR_RESULTS.md](results/FINMR_RESULTS.md) | **AuditPatch on 332 real filings: 81.5% exact repair, 0 regressions** |
+| [results/FINMR_ALL_STAGES.md](results/FINMR_ALL_STAGES.md) | FinMR walked through every applicable stage — what applies, what passes, metrics |
 | [results/pipeline_eval_n150.md](results/pipeline_eval_n150.md) | Ablation: what the deterministic gate adds at a fixed model |
 | [results/stage2_comparison.md](results/stage2_comparison.md) | Focused Stage 2 LLM vs the baseline prompt |
 | [results/priorities_2-4_results.md](results/priorities_2-4_results.md) | Results across the mid-project priorities |

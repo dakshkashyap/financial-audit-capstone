@@ -15,6 +15,22 @@ flowchart LR
 
 ---
 
+## `eval_finmr_all_stages.py` — FinMR through every applicable stage
+
+Walks FinMR records through parse → detect → cite → repair → revalidate, scores
+each approach that can consume FinMR, and clearly marks which approaches cannot
+(AuditBench-only).
+
+```bash
+python scripts/eval_finmr_all_stages.py --n 40          # quick
+python scripts/eval_finmr_all_stages.py --n 332 --write # full + markdown report
+```
+
+Writes `results/finmr_all_stages.json` and optionally
+`docs/results/FINMR_ALL_STAGES.md`.
+
+---
+
 ## `status.py` — which approaches actually work
 
 Runs a smoke check on every approach and reports pass/fail, timing, and the
