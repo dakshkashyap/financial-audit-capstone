@@ -23,26 +23,93 @@ from typing import Optional
 
 from approaches.full_pipeline.intelliaudit_runner import (
     _make_client, _extract_json, TEMPERATURE, PROVIDERS)
+from core.metrics import _norm_type, extract_pred_errors
 
-SYSTEM = (
+# Arithmetic claims are the only ones a verified-consistent table can refute.
+# Redundant / Misclassification can be real even when every subtotal foots.
+_ARITHMETIC_TYPES = {"numerical error", "missing row"}
+_STRUCTURAL_TYPES = {"redundant row", "misclassification"}
+
+_ROLE = (
     "You are a careful financial-statement auditor verifying whether a statement is "
     "faithfully prepared from its supporting transactions.\n\n"
-    "DEFAULT TO 'Correct'. A large share of the statements you review are completely "
-    "correct. Return 'Incorrect' ONLY when you can point to specific, concrete "
-    "evidence of exactly one injected error of these four kinds:\n"
+    "The four error kinds are:\n"
     "  - Numerical Error  : a single reported value was changed.\n"
     "  - Missing Row      : a row that belongs was deleted.\n"
     "  - Redundant Row    : an extra, unsupported row was inserted.\n"
     "  - Misclassification: a real row was placed in the wrong section.\n\n"
-    "A deterministic arithmetic engine (SymPy) has ALREADY recomputed the totals and "
-    "checked the accounting identities — TRUST it, never re-derive the math. If it "
-    "reports the statement ARITHMETICALLY CONSISTENT, then no Numerical Error and no "
-    "value-level Missing Row exists; do not invent one, and only return 'Incorrect' "
-    "if you can identify a clearly Redundant or Misclassified row.\n\n"
-    "Over-flagging a correct statement is the single most common and most penalized "
-    "mistake — do NOT manufacture an error to look thorough. When you do flag a row, "
-    "cite its standard ONLY from the candidate ASC topics given for that row."
+    "A deterministic arithmetic engine has ALREADY recomputed the totals and checked "
+    "the accounting identities. TRUST that evidence. Do not re-derive the math. "
+    "When you flag a row, cite its standard ONLY from the candidate ASC topics "
+    "given for that row."
 )
+
+_WHEN_CONSISTENT = (
+    "\n\nThis statement is ARITHMETICALLY CONSISTENT. No Numerical Error and no "
+    "value-level Missing Row exists. DEFAULT TO 'Correct'. Return 'Incorrect' only "
+    "for a clearly Redundant or Misclassified row that the supporting transactions "
+    "cannot justify. Do not manufacture an error to look thorough."
+)
+
+_WHEN_ANOMALY = (
+    "\n\nThe engine found real footing or identity mismatches, listed below. Do NOT "
+    "default to 'Correct'. Investigate those rows first: a Numerical Error or a "
+    "Missing Row is likely. Flag the row the evidence points to. Do not invent a "
+    "second error on a row the engine did not flag."
+)
+
+_WHEN_UNVERIFIED = (
+    "\n\nThe engine could not fully verify this statement. Audit it from the "
+    "supporting transactions. Do not assume an error is present, and do not ignore "
+    "a row the transactions cannot support."
+)
+
+
+def system_for(record) -> str:
+    """Conservative only when the arithmetic is verified clean.
+
+    A globally conservative prompt suppressed real errors on tables the gate
+    could not certify. Calibration follows the evidence block, not a default.
+    """
+    if getattr(record, "verified_consistent", False):
+        policy = _WHEN_CONSISTENT
+    elif getattr(record, "footing", None) or getattr(record, "equations", None):
+        policy = _WHEN_ANOMALY
+    else:
+        policy = _WHEN_UNVERIFIED
+    return _ROLE + policy
+
+
+def claimed_error_types(parsed: dict | None) -> list[str]:
+    if not parsed:
+        return []
+    return [_norm_type(e.get("Error Type", "")) for e in extract_pred_errors(parsed)]
+
+
+def apply_consistency_veto(parsed: dict | None, *, verified_consistent: bool,
+                           original_table: str) -> tuple[dict | None, bool]:
+    """Override Incorrect → Correct only for arithmetic claims on a clean table.
+
+    Returns ``(parsed, vetoed)``. A Redundant or Misclassification claim is left
+    in place: those defects leave the subtotals footing, so the arithmetic
+    certificate does not refute them. An Incorrect verdict with no named type
+    is treated as an unsupported arithmetic flag and is vetoed.
+    """
+    if not parsed or not verified_consistent:
+        return parsed, False
+    judgment = str(parsed.get("General Judgment",
+                              parsed.get("General Judgement", ""))).strip().lower()
+    if judgment != "incorrect":
+        return parsed, False
+    types = [t for t in claimed_error_types(parsed) if t]
+    if any(t in _STRUCTURAL_TYPES for t in types):
+        return parsed, False
+    if types and any(t not in _ARITHMETIC_TYPES for t in types):
+        return parsed, False
+    return {
+        "General Judgment": "Correct",
+        "Corrected Statements": original_table,
+    }, True
 
 _OUTPUT_SPEC = (
     'Respond with ONLY a JSON object in EXACTLY this schema:\n'
@@ -118,7 +185,7 @@ def audit_item(item: dict, record, statement, model: str = "claude-opus-4-6",
     client = _make_client(provider)
     kwargs = dict(
         model=model,
-        messages=[{"role": "system", "content": SYSTEM},
+        messages=[{"role": "system", "content": system_for(record)},
                   {"role": "user", "content": build_user(item, record, statement)}],
         temperature=TEMPERATURE,
     )

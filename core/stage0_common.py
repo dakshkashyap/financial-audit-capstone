@@ -268,6 +268,15 @@ class Transactions:
 _CONTRIB_RE = re.compile(r"\[contributing to row\s+([^\]]+)\]\s*:?\s*", re.IGNORECASE)
 _EXPL_LHS_RE = re.compile(r"\[Explanation:\s*([^=\]]+?)\s*=", re.IGNORECASE)
 _FIRST_INT_RE = re.compile(r"\d+")
+# IntelliAudit-Bench v0.2+: one line per covered row, component movements only.
+# The line total is never printed (it leaked the answer). The checker sums the
+# signed components. The generator's minus sign is U+2212, not ASCII hyphen.
+_IAB_MARK_RE = re.compile(r"\[row\s+\d+\]", re.IGNORECASE)
+_IAB_ROW_RE = re.compile(r"^\[row\s+(\d+)\]\s+(.*)$", re.IGNORECASE)
+_IAB_MOVE_RE = re.compile(
+    "([^:;]+):\\s*([+\\-\u2212\u2013])\\s*([\\d,]+(?:\\.\\d+)?)\\s*\\((increase|decrease)\\)",
+    re.IGNORECASE,
+)
 
 
 def _first_index(token: str) -> Optional[int]:
@@ -275,10 +284,46 @@ def _first_index(token: str) -> Optional[int]:
     return int(m.group()) if m else None
 
 
+def _iab_component_entries(tx_str: str) -> List[TxEntry]:
+    """Parse IntelliAudit `[row n] label: event: +amt (increase); ...` lines.
+
+    Each row's value is the signed sum of its component movements. A row with
+    no movements is skipped. Absence of a row is not evidence: their generator
+    covers a random subset on purpose.
+    """
+    entries: List[TxEntry] = []
+    for order, line in enumerate(tx_str.splitlines()):
+        m = _IAB_ROW_RE.match(line.strip())
+        if not m:
+            continue
+        orig_index = int(m.group(1))
+        body = m.group(2)
+        moves = list(_IAB_MOVE_RE.finditer(body))
+        if not moves:
+            continue
+        total = 0.0
+        for mv in moves:
+            amt = float(mv.group(3).replace(",", ""))
+            total += amt if mv.group(4).lower() == "increase" else -amt
+        label = body[:moves[0].start()].strip().rstrip(":").strip()
+        nlab = norm_label(label)
+        entries.append(TxEntry(
+            order, orig_index, label, nlab, core_label(nlab),
+            total, _is_subtotal_label(nlab),
+        ))
+    return entries
+
+
 def build_transactions(tx_str: str) -> Transactions:
-    """Split the narrative into `[contributing to row ...]` blocks and read each
-    block's row label, inline value, and (preferred) Explanation LHS value."""
+    """Read either AuditBench or IntelliAudit-Bench transaction evidence.
+
+    AuditBench blocks start with `[contributing to row N]` and may print the
+    line total. IntelliAudit-Bench v0.2+ prints only signed component
+    movements; those are summed here.
+    """
     tx_str = tx_str or ""
+    if _IAB_MARK_RE.search(tx_str) and not _CONTRIB_RE.search(tx_str):
+        return Transactions(_iab_component_entries(tx_str))
     marks = list(_CONTRIB_RE.finditer(tx_str))
     entries: List[TxEntry] = []
     for order, m in enumerate(marks):

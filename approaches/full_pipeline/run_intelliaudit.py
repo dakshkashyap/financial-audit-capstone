@@ -113,15 +113,16 @@ def run_split(split: str, graph: TaxonomyGraph, n: int, seed: int) -> dict:
             n_llm += 1
             if err:
                 n_err += 1
-            # Deterministic veto: when the engine has VERIFIED the table consistent,
-            # the arithmetic is provably clean — override an LLM "Incorrect" that
-            # rests on a (non-existent) numerical/missing error. Sound on truly
-            # clean tables; documented to cost a little recall on the ~13% of error
-            # tables whose error leaves no arithmetic trace.
-            if (parsed and record.verified_consistent and
-                    str(parsed.get("General Judgment", "")).strip().lower() == "incorrect"):
-                parsed = {"General Judgment": "Correct",
-                          "Corrected Statements": item["table"]}
+            # Type-aware veto. A verified-consistent table refutes Numerical and
+            # Missing claims. It does not refute Redundant or Misclassification,
+            # which leave the arithmetic intact. The old blanket veto flipped 14
+            # of 15 real structural errors to Correct on the single-error split.
+            parsed, vetoed = stage2_llm.apply_consistency_veto(
+                parsed,
+                verified_consistent=record.verified_consistent,
+                original_table=item["table"],
+            )
+            if vetoed:
                 route = "llm+veto"
 
         records.append({"item_idx": idx, "table_hash": _table_hash(item),
