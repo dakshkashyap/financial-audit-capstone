@@ -1,9 +1,14 @@
 """
-TaxonomyGraph — Stage 1 · Arelle component.
+TaxonomyGraph — Stage 1 · Arelle component (US GAAP).
 
 Downloads (once) the FASB US-GAAP 2023 reference linkbase ZIP, extracts
 the concept-reference linkbase XML, and traverses concept→reference arcs
 to produce deterministic FASB ASC citations.
+
+IFRS filings do not use this graph. The IFRS Accounting Taxonomy labels
+locators by href fragment, not ``loc_<Concept>``, and its references are
+IAS/IFRS paragraphs. That reader is ``core.ifrs_taxonomy.IfrsTaxonomyGraph``.
+Pass ``framework="ifrs"`` to ``run_stage1`` / ``run_pipeline``.
 
 Cannot hallucinate: every citation is read verbatim from FASB's own
 published taxonomy metadata.

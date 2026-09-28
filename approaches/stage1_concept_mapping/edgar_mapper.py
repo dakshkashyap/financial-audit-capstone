@@ -2,8 +2,9 @@
 EDGAR Mapper — Stage 1 of the IntelliAudit pipeline.
 
 Converts an AuditBench item (table + transactions) into a structured
-MappedStatement: each valued row is linked to its US-GAAP XBRL concept
-and the FASB ASC citation(s) that govern it.
+MappedStatement: each valued row is linked to its XBRL concept and the
+citation that governs it. US GAAP (``us-gaap:``, ASC) is the default.
+``framework="ifrs"`` uses ``ifrs_concept_map.json`` (``ifrs-full:``, IAS/IFRS).
 
 Architecture context (from design doc):
   Stage 0  → deterministic arithmetic gate
@@ -49,6 +50,7 @@ from core.stage0_common import build_table, norm_label, rows_of
 # ── resource paths ────────────────────────────────────────────────────────────
 _HERE = os.path.dirname(__file__)
 _CONCEPT_MAP_PATH  = os.path.join(_HERE, "xbrl_concept_map.json")
+_IFRS_MAP_PATH     = os.path.join(_HERE, "ifrs_concept_map.json")
 _TICKERS_PATH      = os.path.join(_HERE, "company_tickers.json")
 
 # ── load resources once at import time ───────────────────────────────────────
@@ -68,6 +70,15 @@ _STMT_MAPS: Dict[str, Dict] = {
 _ERROR_ASC: Dict[str, dict] = _RAW_MAP.get("_error_type_asc", {})
 # ASC topic titles for human-readable output
 _ASC_TITLES: Dict[str, str] = _RAW_MAP.get("_asc_titles", {})
+
+with open(_IFRS_MAP_PATH, encoding="utf-8") as _f:
+    _IFRS_RAW = json.load(_f)
+
+_IFRS_STMT_MAPS: Dict[str, Dict] = {
+    k: v for k, v in _IFRS_RAW.items()
+    if not k.startswith("_") and isinstance(v, dict)
+}
+_IFRS_TITLES: Dict[str, str] = _IFRS_RAW.get("_standard_titles", {})
 
 # Fuzzy match cutoff — 0.75 is conservative enough to avoid false positives
 # on short labels; lower to ~0.65 to trade precision for recall.
@@ -176,29 +187,37 @@ def parse_period(table_str: str) -> Optional[str]:
 
 
 # ── concept lookup ────────────────────────────────────────────────────────────
-def _exact_lookup(norm: str, stype: str) -> Optional[dict]:
+def _maps_for(framework: str) -> Dict[str, Dict]:
+    return _IFRS_STMT_MAPS if framework == "ifrs" else _STMT_MAPS
+
+
+def _exact_lookup(norm: str, stype: str,
+                  maps: Optional[Dict[str, Dict]] = None) -> Optional[dict]:
     """Exact match: check statement-specific map first, then other maps."""
-    if stype in _STMT_MAPS and norm in _STMT_MAPS[stype]:
-        return _STMT_MAPS[stype][norm]
-    for other_stype, cmap in _STMT_MAPS.items():
+    maps = _STMT_MAPS if maps is None else maps
+    if stype in maps and norm in maps[stype]:
+        return maps[stype][norm]
+    for other_stype, cmap in maps.items():
         if other_stype != stype and norm in cmap:
             return cmap[norm]
     return None
 
 
-def _fuzzy_lookup(norm: str, stype: str, cutoff: float = FUZZY_CUTOFF
+def _fuzzy_lookup(norm: str, stype: str, cutoff: float = FUZZY_CUTOFF,
+                  maps: Optional[Dict[str, Dict]] = None
                   ) -> Tuple[Optional[dict], float]:
     """Best fuzzy match across all statement-type maps.
 
     Returns (entry, score) or (None, 0.0).
     Uses difflib.SequenceMatcher for token-aware similarity.
     """
+    maps = _STMT_MAPS if maps is None else maps
     # Prefer the statement-specific map for the first pass
     candidates: List[Tuple[str, dict]] = []
-    priority = [stype] + [s for s in _STMT_MAPS if s != stype]
+    priority = [stype] + [s for s in maps if s != stype]
     for st in priority:
-        if st in _STMT_MAPS:
-            candidates.extend(_STMT_MAPS[st].items())
+        if st in maps:
+            candidates.extend(maps[st].items())
 
     best_key: Optional[str] = None
     best_score = 0.0
@@ -211,8 +230,8 @@ def _fuzzy_lookup(norm: str, stype: str, cutoff: float = FUZZY_CUTOFF
     if best_score >= cutoff and best_key is not None:
         # Determine which map it came from
         for st in priority:
-            if st in _STMT_MAPS and best_key in _STMT_MAPS[st]:
-                return _STMT_MAPS[st][best_key], best_score
+            if st in maps and best_key in maps[st]:
+                return maps[st][best_key], best_score
     return None, best_score
 
 
@@ -244,25 +263,29 @@ def _stem_variants(norm: str) -> List[str]:
     return variants
 
 
-def match_concept(norm: str, stype: str) -> Tuple[Optional[dict], str, float]:
+def match_concept(norm: str, stype: str,
+                  framework: str = "us-gaap") -> Tuple[Optional[dict], str, float]:
     """Return (concept_entry, strategy, confidence).
 
     strategy ∈ {"exact", "stem_exact", "fuzzy", "none"}
     confidence ∈ [0, 1]
+    ``framework="ifrs"`` searches ifrs_concept_map.json instead of the
+    US-GAAP map. The default path is unchanged.
     """
+    maps = _maps_for(framework)
     # 1. Exact
-    entry = _exact_lookup(norm, stype)
+    entry = _exact_lookup(norm, stype, maps)
     if entry:
         return entry, "exact", 1.0
 
     # 2. Stem variants → exact retry
     for variant in _stem_variants(norm):
-        entry = _exact_lookup(variant, stype)
+        entry = _exact_lookup(variant, stype, maps)
         if entry:
             return entry, "stem_exact", 0.90
 
     # 3. Fuzzy
-    entry, score = _fuzzy_lookup(norm, stype)
+    entry, score = _fuzzy_lookup(norm, stype, maps=maps)
     if entry:
         return entry, "fuzzy", round(score, 3)
 
@@ -341,6 +364,7 @@ class MappedStatement:
     statement_type: str         # "balance_sheet" | "income_statement" | "cash_flow" | "unknown"
     period: Optional[str]       # "YYYY-MM-DD" or "YYYY" or None
     rows: List[MappedRow]       = field(default_factory=list)
+    framework: str              = "us-gaap"
 
     # aggregate stats (computed in map_statement)
     n_valued_rows: int          = 0
@@ -353,6 +377,7 @@ class MappedStatement:
             "ticker": self.ticker,
             "statement_type": self.statement_type,
             "period": self.period,
+            "framework": self.framework,
             "n_valued_rows": self.n_valued_rows,
             "n_mapped": self.n_mapped,
             "coverage": round(self.coverage, 4),
@@ -361,28 +386,33 @@ class MappedStatement:
 
 
 # ── main entry point ──────────────────────────────────────────────────────────
-def map_statement(item: dict, use_edgar_xbrl: bool = False) -> MappedStatement:
+def map_statement(item: dict, use_edgar_xbrl: bool = False,
+                  framework: Optional[str] = None) -> MappedStatement:
     """Map an AuditBench item to a MappedStatement.
 
     When ``use_edgar_xbrl`` is True, each row is first matched against the filer's
     own us-gaap concept set recovered live from SEC EDGAR (edgar_xbrl.map_label) —
     the authoritative, filer-tagged route. The static-map string match is the
     fallback. Requires a resolvable company name + network/cache (off by default
-    so the deterministic offline evals are unaffected).
+    so the deterministic offline evals are unaffected). IFRS items do not use
+    that US-GAAP EDGAR route; pass ``framework="ifrs"`` or set ``item["framework"]``.
 
     item dict schema (AuditBench unified format from parser.py):
       table         : str   — [row n] formatted financial statement
       company       : str   — company name (may be missing on error splits)
       sheet_type    : str   — e.g. "Consolidated statments of balance sheet"
       transaction_data: str — unused here; passed through for downstream stages
+      framework     : str   — "us-gaap" (default) or "ifrs"
 
     For single/multi error splits the company name is embedded in the table
     header ([Tab] line); we extract it as a best-effort fallback.
     """
+    from core.frameworks import resolve_framework
     table_str   = item.get("table", item.get("Table", ""))
     company_raw = (item.get("company") or item.get("Company") or
                    _extract_company_from_table(table_str) or "")
     sheet_type  = item.get("sheet_type", item.get("Sheet_type", ""))
+    framework   = resolve_framework(None, framework or item.get("framework"))
 
     ticker      = _TICKERS.get(company_raw)
     stmt_type   = infer_statement_type(sheet_type, table_str)
@@ -395,12 +425,13 @@ def map_statement(item: dict, use_edgar_xbrl: bool = False) -> MappedStatement:
         return MappedStatement(
             company=company_raw, ticker=ticker,
             statement_type=stmt_type, period=period,
+            framework=framework,
         )
 
     mapped_rows: List[MappedRow] = []
 
     for row in rows_of(df):
-        entry, strategy, conf = match_concept(row.norm, stmt_type)
+        entry, strategy, conf = match_concept(row.norm, stmt_type, framework=framework)
 
         mr = MappedRow(
             row_idx=row.idx,
@@ -412,7 +443,7 @@ def map_statement(item: dict, use_edgar_xbrl: bool = False) -> MappedStatement:
 
         # High-confidence filer-tagged route: if the static map missed (or even if
         # it hit, the filer's own tag is authoritative), try live EDGAR XBRL.
-        if use_edgar_xbrl and row.value is not None and company_raw:
+        if use_edgar_xbrl and framework != "ifrs" and row.value is not None and company_raw:
             try:
                 from approaches.stage1_concept_mapping import edgar_xbrl
                 xc, xstrat, xconf = edgar_xbrl.map_label(company_raw, row.norm)
@@ -434,11 +465,14 @@ def map_statement(item: dict, use_edgar_xbrl: bool = False) -> MappedStatement:
 
         if entry:
             asc_refs = entry.get("asc_refs", [])
-            topic = asc_refs[0].split("-")[0] if asc_refs else ""
+            if framework == "ifrs":
+                mr.asc_title = _IFRS_TITLES.get(entry.get("asc_primary") or "")
+            else:
+                topic = asc_refs[0].split("-")[0] if asc_refs else ""
+                mr.asc_title = _ASC_TITLES.get(topic)
             mr.concept     = entry["concept"]
             mr.asc_primary = entry.get("asc_primary")
             mr.asc_refs    = asc_refs
-            mr.asc_title   = _ASC_TITLES.get(topic)
             mr.section     = entry.get("section")
             mr.strategy    = strategy
             mr.confidence  = conf
@@ -460,6 +494,7 @@ def map_statement(item: dict, use_edgar_xbrl: bool = False) -> MappedStatement:
         n_valued_rows=n_valued,
         n_mapped=n_mapped,
         coverage=coverage,
+        framework=framework,
     )
 
 

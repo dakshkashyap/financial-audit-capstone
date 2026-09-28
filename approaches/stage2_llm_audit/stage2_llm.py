@@ -24,6 +24,7 @@ from typing import Optional
 from approaches.full_pipeline.intelliaudit_runner import (
     _make_client, _extract_json, TEMPERATURE, PROVIDERS)
 from core.metrics import _norm_type, extract_pred_errors
+from core.frameworks import resolve_framework
 
 # Arithmetic claims are the only ones a verified-consistent table can refute.
 # Redundant / Misclassification can be real even when every subtotal foots.
@@ -42,6 +43,20 @@ _ROLE = (
     "the accounting identities. TRUST that evidence. Do not re-derive the math. "
     "When you flag a row, cite its standard ONLY from the candidate ASC topics "
     "given for that row."
+)
+
+_ROLE_IFRS = (
+    "You are a careful financial-statement auditor verifying whether an IFRS statement is "
+    "faithfully prepared from its supporting transactions. Do not apply US GAAP.\n\n"
+    "The four error kinds are:\n"
+    "  - Numerical Error  : a single reported value was changed.\n"
+    "  - Missing Row      : a row that belongs was deleted.\n"
+    "  - Redundant Row    : an extra, unsupported row was inserted.\n"
+    "  - Misclassification: a real row was placed in the wrong section.\n\n"
+    "A deterministic arithmetic engine has ALREADY recomputed the totals and checked "
+    "the accounting identities. TRUST that evidence. Do not re-derive the math. "
+    "When you flag a row, cite its standard ONLY from the candidate IAS/IFRS standards "
+    "given for that row. Do not cite an ASC topic."
 )
 
 _WHEN_CONSISTENT = (
@@ -65,7 +80,7 @@ _WHEN_UNVERIFIED = (
 )
 
 
-def system_for(record) -> str:
+def system_for(record, framework: str = "us-gaap") -> str:
     """Conservative only when the arithmetic is verified clean.
 
     A globally conservative prompt suppressed real errors on tables the gate
@@ -77,7 +92,8 @@ def system_for(record) -> str:
         policy = _WHEN_ANOMALY
     else:
         policy = _WHEN_UNVERIFIED
-    return _ROLE + policy
+    role = _ROLE_IFRS if framework == "ifrs" else _ROLE
+    return role + policy
 
 
 def claimed_error_types(parsed: dict | None) -> list[str]:
@@ -110,6 +126,24 @@ def apply_consistency_veto(parsed: dict | None, *, verified_consistent: bool,
         "General Judgment": "Correct",
         "Corrected Statements": original_table,
     }, True
+
+_OUTPUT_SPEC_IFRS = (
+    'Respond with ONLY a JSON object in EXACTLY this schema:\n'
+    '{\n'
+    '  "General Judgment": "Correct" | "Incorrect",\n'
+    '  "Information for error 1": {\n'
+    '    "Error Identification": {"Error Type": "<one of the four types>", '
+    '"Problematic Entry": "Row <n>"},\n'
+    '    "Error Resolution": "<one or two sentences>",\n'
+    '    "Standards Citation": "IAS <n> or IFRS <n> from the candidates for that row"\n'
+    '  },\n'
+    '  "Corrected Statements": "<the full corrected table, or the original if Correct>"\n'
+    '}\n'
+    'If "General Judgment" is "Correct", omit the "Information for error" blocks. '
+    'For multiple errors add "Information for error 2", etc. '
+    'Whenever you flag an error you MUST fill "Standards Citation" with an IAS or IFRS '
+    'standard chosen from that row\'s candidate list above (pick the best-fitting one; never leave it blank).'
+)
 
 _OUTPUT_SPEC = (
     'Respond with ONLY a JSON object in EXACTLY this schema:\n'
@@ -156,10 +190,28 @@ def _evidence_block(record, statement) -> str:
     return "\n".join(lines)
 
 
-def _citation_block(statement) -> str:
+def _framework_of(statement, item: Optional[dict] = None) -> str:
+    if item and item.get("framework"):
+        return resolve_framework(None, item.get("framework"))
+    fw = getattr(statement, "framework", None)
+    if fw:
+        return resolve_framework(None, fw)
+    for row in getattr(statement, "rows", []) or []:
+        if (getattr(row, "concept", None) or "").startswith("ifrs-full:"):
+            return "ifrs"
+    return "us-gaap"
+
+
+def _citation_block(statement, framework: str = "us-gaap") -> str:
     rows = [r for r in statement.rows if r.value is not None and r.asc_candidates]
     if not rows:
         return "GROUNDED CITATIONS: none available."
+    if framework == "ifrs":
+        lines = ["GROUNDED CITATIONS — if you flag a row, cite ONLY from its IAS/IFRS candidates:"]
+        for r in rows[:40]:
+            lines.append(f"  Row {r.row_idx} ({r.label[:38]}): "
+                         f"{', '.join(r.asc_candidates)}")
+        return "\n".join(lines)
     lines = ["GROUNDED CITATIONS — if you flag a row, cite ONLY from its candidates:"]
     for r in rows[:40]:
         lines.append(f"  Row {r.row_idx} ({r.label[:38]}): "
@@ -168,13 +220,15 @@ def _citation_block(statement) -> str:
 
 
 def build_user(item: dict, record, statement) -> str:
+    framework = _framework_of(statement, item)
+    spec = _OUTPUT_SPEC_IFRS if framework == "ifrs" else _OUTPUT_SPEC
     return (
         f"FINANCIAL STATEMENT (rows may contain one injected error):\n{item['table']}\n\n"
         f"SUPPORTING TRANSACTIONS (the ground-truth source of each value):\n"
         f"{item.get('transaction_data','')}\n\n"
         f"{_evidence_block(record, statement)}\n\n"
-        f"{_citation_block(statement)}\n\n"
-        f"{_OUTPUT_SPEC}"
+        f"{_citation_block(statement, framework)}\n\n"
+        f"{spec}"
     )
 
 
@@ -185,7 +239,7 @@ def audit_item(item: dict, record, statement, model: str = "claude-opus-4-6",
     client = _make_client(provider)
     kwargs = dict(
         model=model,
-        messages=[{"role": "system", "content": system_for(record)},
+        messages=[{"role": "system", "content": system_for(record, _framework_of(statement, item))},
                   {"role": "user", "content": build_user(item, record, statement)}],
         temperature=TEMPERATURE,
     )

@@ -136,10 +136,16 @@ def _identities_checkable(df) -> int:
     return checked
 
 
-def run_pipeline(item: dict, graph: Optional[TaxonomyGraph] = None) -> AuditRecord:
-    """Full deterministic pipeline for one AuditBench item."""
-    if graph is None:
-        graph = TaxonomyGraph()
+def run_pipeline(item: dict, graph: Optional[TaxonomyGraph] = None,
+                 framework: Optional[str] = None) -> AuditRecord:
+    """Full deterministic pipeline for one AuditBench item.
+
+    ``framework="ifrs"`` (or ``item["framework"]``) maps rows with the IFRS
+    concept map and cites IAS/IFRS standards. Stage 0 arithmetic is the same
+    for both frameworks. The default remains US GAAP.
+    """
+    from core.frameworks import resolve_framework
+    framework = resolve_framework(None, framework or item.get("framework"))
 
     # ── Stage 0 ──
     a = stage0a.verify(item)
@@ -160,7 +166,13 @@ def run_pipeline(item: dict, graph: Optional[TaxonomyGraph] = None) -> AuditReco
     )
 
     # ── Stage 1 citation (always available; used for the flagged row) ──
-    s1 = run_stage1(item, graph)
+    if framework == "ifrs":
+        from core.ifrs_taxonomy import default_ifrs_graph
+        s1 = run_stage1(item, default_ifrs_graph(), framework="ifrs")
+    else:
+        if graph is None:
+            graph = TaxonomyGraph()
+        s1 = run_stage1(item, graph)
 
     def _cite_for(idx):
         row = next((r for r in s1.statement.rows if r.row_idx == idx), None)

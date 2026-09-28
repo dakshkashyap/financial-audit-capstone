@@ -36,6 +36,7 @@ from core.parser import load_correct, load_single_error, load_multi_error
 from approaches.full_pipeline.pipeline import run_pipeline
 from approaches.stage1_taxonomy_citation.stage1_arelle import run_stage1
 from core.taxonomy_graph import TaxonomyGraph
+from core.frameworks import format_citation
 from approaches.full_pipeline.intelliaudit_runner import _meta, _table_hash, _safe_name
 from approaches.stage2_llm_audit import stage2_llm
 from tqdm import tqdm
@@ -71,8 +72,7 @@ def _deterministic_parsed(item: dict, record) -> dict:
                       "Error Type": record.error_type,
                       "Problematic Entry": f"Row {record.problematic_entry}"},
                   "Error Resolution": record.detail or "",
-                  "Standards Citation": f"ASC {record.citation_primary}"
-                                        if record.citation_primary else ""},
+                  "Standards Citation": format_citation(record.citation_primary)},
               "Corrected Statements": _revise(item["table"], record)}
     return parsed
 

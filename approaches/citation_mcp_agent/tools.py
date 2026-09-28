@@ -31,8 +31,17 @@ class TaxonomyTools:
 
     # ── tools ─────────────────────────────────────────────────────────────────
 
-    def get_candidates(self, concept: str) -> Dict[str, Any]:
-        """Return all grounded ASC candidates for a us-gaap concept (bare name)."""
+    def get_candidates(self, concept: str, framework: str = "") -> Dict[str, Any]:
+        """Return grounded citation candidates for a concept.
+
+        US GAAP returns FASB ASC arcs. ``framework="ifrs"`` or an
+        ``ifrs-full:`` concept returns IAS/IFRS standards from the subject
+        rules plus any loaded IFRS reference linkbase.
+        """
+        from core.frameworks import resolve_framework
+        fw = resolve_framework(concept, framework or None)
+        if fw == "ifrs":
+            return _ifrs_candidates(concept)
         concept = _bare(concept)
         cands = self.graph.get_candidate_citations(concept)
         return {
@@ -46,8 +55,12 @@ class TaxonomyTools:
             ),
         }
 
-    def validate_citation(self, concept: str, asc: str) -> Dict[str, Any]:
+    def validate_citation(self, concept: str, asc: str, framework: str = "") -> Dict[str, Any]:
         """True only if `asc` appears in the grounded candidate set for `concept`."""
+        from core.frameworks import ifrs_paragraph_of, ifrs_standard_of, resolve_framework
+        fw = resolve_framework(concept, framework or None)
+        if fw == "ifrs" or ifrs_standard_of(asc):
+            return _validate_ifrs(concept, asc)
         concept = _bare(concept)
         asc_norm = _normalize_asc(asc)
         if not asc_norm:
@@ -92,8 +105,21 @@ class TaxonomyTools:
             "hint": "Choose a different asc from get_candidates.",
         }
 
-    def get_concept_info(self, concept: str) -> Dict[str, Any]:
+    def get_concept_info(self, concept: str, framework: str = "") -> Dict[str, Any]:
         """Concept metadata: single-pick baseline, parents, candidate count."""
+        from core.frameworks import resolve_framework
+        if resolve_framework(concept, framework or None) == "ifrs":
+            payload = _ifrs_candidates(concept)
+            standards = [c["standard"] for c in payload["candidates"] if c.get("standard")]
+            return {
+                "concept": payload["concept"],
+                "framework": "ifrs",
+                "subject_topic": payload.get("subject"),
+                "n_candidates": payload["n"],
+                "candidate_topics": sorted(set(standards)),
+                "graph_single_pick": payload.get("subject") or (standards[0] if standards else None),
+                "graph_source": "ifrs_rules",
+            }
         concept = _bare(concept)
         detail = self.graph.get_fasb_citation_detail(concept)
         cands = self.graph.get_candidate_citations(concept)
@@ -124,15 +150,19 @@ class TaxonomyTools:
         rationale: str = "",
     ) -> Dict[str, Any]:
         """Persist the agent's final pick for a demo / eval item."""
-        asc = _normalize_asc(citation)
+        from core.frameworks import ifrs_paragraph_of, ifrs_standard_of
+        if ifrs_standard_of(citation):
+            stored = ifrs_paragraph_of(citation) or ifrs_standard_of(citation)
+        else:
+            stored = _normalize_asc(citation)
         self._store[item_id] = {
-            "citation": asc,
+            "citation": stored,
             "rationale": rationale,
         }
         return {
             "stored": True,
             "item_id": item_id,
-            "citation": asc,
+            "citation": stored,
             "rationale": rationale,
         }
 
@@ -252,3 +282,90 @@ def _topic_int(topic: str) -> int:
         return int(topic)
     except (TypeError, ValueError):
         return 0
+
+
+def _ifrs_candidates(concept: str) -> Dict[str, Any]:
+    """Subject-rule standards plus any paragraphs on a loaded IFRS linkbase."""
+    from approaches.stage1_taxonomy_citation.concept_citation import (
+        candidate_topics, subject_topic,
+    )
+    from core.frameworks import bare_concept, ifrs_standard_of
+    from core.ifrs_taxonomy import default_ifrs_graph
+
+    bare = bare_concept(concept)
+    tagged = concept if (concept or "").startswith("ifrs-full:") else f"ifrs-full:{bare}"
+    graph = default_ifrs_graph()
+    tax = graph.citations(bare) if graph.available else []
+    standards = candidate_topics(
+        tagged, None,
+        taxonomy_topics=[ifrs_standard_of(c) for c in tax],
+        framework="ifrs",
+    )
+    cands: List[Dict[str, Any]] = []
+    seen = set()
+    for code in tax:
+        if code in seen:
+            continue
+        seen.add(code)
+        cands.append({"citation": code, "standard": ifrs_standard_of(code), "role": "taxonomy"})
+    for std in standards:
+        if std in seen:
+            continue
+        seen.add(std)
+        cands.append({"citation": std, "standard": std, "role": "rule"})
+    return {
+        "framework": "ifrs",
+        "concept": tagged,
+        "n": len(cands),
+        "candidates": cands,
+        "subject": subject_topic(tagged, framework="ifrs"),
+        "note": (
+            "Pick ONE IAS/IFRS standard from this list. Do not invent a code "
+            "and do not cite an ASC topic."
+        ),
+    }
+
+
+def _validate_ifrs(concept: str, code: str) -> Dict[str, Any]:
+    from core.frameworks import bare_concept, ifrs_paragraph_of, ifrs_standard_of
+
+    payload = _ifrs_candidates(concept)
+    want_paragraph = ifrs_paragraph_of(code)
+    want_standard = ifrs_standard_of(code)
+    if not want_standard:
+        return {
+            "valid": False,
+            "reason": "could_not_parse_ifrs",
+            "framework": "ifrs",
+            "concept": bare_concept(concept),
+            "asc": code,
+        }
+    for cand in payload["candidates"]:
+        cited = cand.get("citation") or ""
+        if want_paragraph and ifrs_paragraph_of(cited) == want_paragraph:
+            return {
+                "valid": True,
+                "reason": "in_candidate_set",
+                "framework": "ifrs",
+                "concept": payload["concept"],
+                "asc": want_paragraph,
+                "topic": want_standard,
+            }
+        if cand.get("standard") == want_standard:
+            return {
+                "valid": True,
+                "reason": "in_candidate_set",
+                "framework": "ifrs",
+                "concept": payload["concept"],
+                "asc": want_standard,
+                "topic": want_standard,
+            }
+    return {
+        "valid": False,
+        "reason": "not_in_candidate_set",
+        "framework": "ifrs",
+        "concept": payload["concept"],
+        "asc": code,
+        "allowed_topics": sorted({c["standard"] for c in payload["candidates"] if c.get("standard")}),
+        "hint": "Choose a different standard from get_candidates.",
+    }

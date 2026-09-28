@@ -77,18 +77,37 @@ def _bare(concept_id: str) -> str:
 
 # ── Tool 1: get_citation ──────────────────────────────────────────────────────
 @mcp.tool()
-def get_citation(concept_id: str, statement_type: str = "") -> dict:
-    """Grounded FASB ASC citation for a us-gaap concept.
+def get_citation(concept_id: str, statement_type: str = "", framework: str = "") -> dict:
+    """Grounded citation for a us-gaap or ifrs-full concept.
 
     Args:
-        concept_id: e.g. "us-gaap:InventoryNet" (prefix optional).
+        concept_id: e.g. "us-gaap:InventoryNet" or "ifrs-full:Inventories".
         statement_type: "balance_sheet" | "income_statement" | "cash_flow" | "".
+        framework: "us-gaap" (default) or "ifrs". An ifrs-full concept selects IFRS.
 
-    Returns primary pick (subject-matter rule > presentation > taxonomy arc),
-    the full UNION candidate set an agent may select from, and the source.
-    Never invents a citation: every candidate traces to the FASB linkbase,
-    the curated concept map, or the statement-presentation table.
+    US GAAP: primary pick is subject-matter rule > presentation > taxonomy arc.
+    IFRS: primary pick is the IAS/IFRS subject or presentation standard. The
+    model still only chooses from the returned candidates.
     """
+    from core.frameworks import resolve_framework
+    fw = resolve_framework(concept_id, framework or None)
+    if fw == "ifrs":
+        from approaches.citation_mcp_agent.tools import _ifrs_candidates
+        payload = _ifrs_candidates(concept_id)
+        tax_standards = [c.get("standard") for c in payload["candidates"] if c.get("standard")]
+        primary = best_topic(concept_id, statement_type or None, framework="ifrs",
+                             taxonomy_best=None)
+        cands = candidate_topics(concept_id, statement_type or None,
+                                 taxonomy_topics=tax_standards, framework="ifrs")
+        return {
+            "framework": "ifrs",
+            "primary": primary,
+            "candidates": cands,
+            "taxonomy_citations": [c["citation"] for c in payload["candidates"]
+                                   if c.get("role") == "taxonomy"],
+            "source": "ifrs_rules+linkbase",
+            "hallucinated": False,
+        }
     bare = _bare(concept_id)
     detail = _graph.get_fasb_citation_detail(bare)
     tax_topics = [c.get("topic") for c in _graph.get_candidate_citations(bare)
@@ -127,25 +146,27 @@ def get_concept_info(concept_id: str) -> dict:
 
 # ── Tool 3: get_concepts (EDGAR mapper) ──────────────────────────────────────
 @mcp.tool()
-def get_concepts(row_label: str, statement_type: str = "balance_sheet") -> dict:
-    """Map a financial-statement row label to its us-gaap concept.
+def get_concepts(row_label: str, statement_type: str = "balance_sheet",
+                 framework: str = "") -> dict:
+    """Map a financial-statement row label to its XBRL concept.
 
     Args:
-        row_label: e.g. "Accounts receivable, net".
+        row_label: e.g. "Accounts receivable, net" or "Inventories".
         statement_type: "balance_sheet" | "income_statement" | "cash_flow".
+        framework: "us-gaap" (default) or "ifrs".
 
-    Uses the deterministic 3-strategy cascade (exact / stem / fuzzy) against
-    the curated 216-entry concept map. Returns the match, the strategy that
-    produced it, and a confidence score. FinSM-style task, no LLM involved.
+    Uses the deterministic 3-strategy cascade (exact / stem / fuzzy).
     """
     from core.stage0_common import norm_label
+    fw = "ifrs" if (framework or "").lower() in ("ifrs", "ifrs-full") else "us-gaap"
     norm = norm_label(row_label)
-    entry, strategy, confidence = edgar_mapper.match_concept(norm, statement_type)
+    entry, strategy, confidence = edgar_mapper.match_concept(norm, statement_type, framework=fw)
     if entry is None:
         return {"mapped": False, "row_label": row_label, "strategy": "none",
-                "confidence": 0.0, "concept": None}
+                "confidence": 0.0, "concept": None, "framework": fw}
     return {
         "mapped": True,
+        "framework": fw,
         "row_label": row_label,
         "concept": entry.get("concept"),
         "asc_primary": entry.get("asc_primary"),
@@ -159,16 +180,30 @@ def get_concepts(row_label: str, statement_type: str = "balance_sheet") -> dict:
 # ── Tool 4: validate_citation ────────────────────────────────────────────────
 @mcp.tool()
 def validate_citation(citation: str) -> dict:
-    """Validate a proposed ASC citation before it reaches any output.
+    """Validate a proposed citation before it reaches any output.
 
-    Args:
-        citation: e.g. "ASC 330-10-35-1" or "330".
-
-    Normalizes superseded topics to their successor (225→220, 605→606) and
-    checks the topic appears in the FASB linkbase / known-topic tables.
-    A Judge agent should reject any citation where valid is false.
+    ASC citations are checked against the FASB topic list. IAS/IFRS citations
+    are checked against the standards the IFRS rulebook uses. A code from the
+    other framework is not valid for this check's grammar: an ASC string is
+    not an IFRS standard, and the reverse.
     """
     import re
+    from core.frameworks import ifrs_standard_of
+    standard = ifrs_standard_of(citation)
+    if standard:
+        known = {
+            "IAS 1", "IAS 2", "IAS 7", "IAS 12", "IAS 16", "IAS 36", "IAS 38",
+            "IFRS 9", "IFRS 15", "IFRS 16",
+        }
+        return {
+            "input": citation,
+            "framework": "ifrs",
+            "topic": standard,
+            "normalized_topic": standard,
+            "valid": standard in known,
+            "superseded": False,
+            "grounding": "IFRS standards cited by rulebook_ifrs.json",
+        }
     cleaned = re.sub(r"(?i)^\s*(fasb\s+)?asc\s*", "", citation.strip())
     topic = topic_of(cleaned) or cleaned
     normalized = family(topic)

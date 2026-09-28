@@ -159,13 +159,16 @@ class Stage1Result:
     n_upgraded:        int = 0   # rows with concept but no prior ASC → got one from taxonomy
     n_no_citation:     int = 0   # rows with concept but no citation from any source
     n_unmapped:        int = 0   # rows without a concept and no fallback citation
+    n_subject_rules:   int = 0   # IFRS/US subject-rule citations (IFRS path)
+    framework:         str = "us-gaap"
     taxonomy_available: bool = False
 
     def summary(self) -> dict:
         total = (self.n_taxonomy_hits + self.n_parent_hits + self.n_static_kept +
-                 self.n_section_fallback + self.n_no_citation + self.n_unmapped)
+                 self.n_section_fallback + self.n_no_citation + self.n_unmapped +
+                 self.n_subject_rules)
         cited = (self.n_taxonomy_hits + self.n_parent_hits +
-                 self.n_static_kept + self.n_section_fallback)
+                 self.n_static_kept + self.n_section_fallback + self.n_subject_rules)
         return {
             "taxonomy_available":  self.taxonomy_available,
             "total_valued_rows":   total,
@@ -175,6 +178,8 @@ class Stage1Result:
             "section_fallback":    self.n_section_fallback,
             "no_citation":         self.n_no_citation,
             "unmapped_rows":       self.n_unmapped,
+            "subject_rules":       self.n_subject_rules,
+            "framework":           self.framework,
             "upgraded":            self.n_upgraded,
             "citation_coverage":   round(cited / total, 4) if total else 0.0,
         }
@@ -185,16 +190,27 @@ class Stage1Result:
 def enrich_with_taxonomy(
     mapped_stmt: MappedStatement,
     graph: TaxonomyGraph,
+    framework: str = "us-gaap",
 ) -> Stage1Result:
     """Enrich every MappedRow that has a concept with a taxonomy citation.
 
     Taxonomy citations (direct or parent-fallback) override the static
     xbrl_concept_map.json citations because they are more specific.
     Rows already having a static citation but no taxonomy match are kept.
+
+    ``framework="ifrs"`` does not query the FASB linkbase. It uses the IFRS
+    subject and presentation rules, plus an ``IfrsTaxonomyGraph`` when one
+    is loaded. US GAAP behavior is the ``framework="us-gaap"`` path.
     """
+    if framework == "ifrs":
+        return _enrich_ifrs(mapped_stmt, graph)
+
+    from core.frameworks import bare_concept
+
     result = Stage1Result(
         statement=mapped_stmt,
         taxonomy_available=graph.available,
+        framework="us-gaap",
     )
 
     def _try_section_fallback(row: MappedRow) -> bool:
@@ -227,8 +243,8 @@ def enrich_with_taxonomy(
         # was the cause of broken-row citations silently falling back to the
         # static map.
 
-        # Strip the "us-gaap:" prefix so TaxonomyGraph receives the bare name
-        concept_bare = row.concept.replace("us-gaap:", "") if row.concept else ""
+        # Strip a namespace prefix so TaxonomyGraph receives the bare name.
+        concept_bare = bare_concept(row.concept) if row.concept else ""
 
         had_citation = bool(row.asc_primary)
 
@@ -268,19 +284,87 @@ def enrich_with_taxonomy(
     return result
 
 
+def _enrich_ifrs(mapped_stmt: MappedStatement, graph) -> Stage1Result:
+    """IFRS citation enrichment. Does not call the FASB US-GAAP graph."""
+    from approaches.stage1_taxonomy_citation.concept_citation import (
+        best_topic, candidate_topics, subject_topic,
+    )
+    from core.frameworks import bare_concept, ifrs_standard_of
+
+    available = bool(graph is not None and getattr(graph, "available", False)
+                     and hasattr(graph, "citations"))
+    result = Stage1Result(
+        statement=mapped_stmt,
+        taxonomy_available=available,
+        framework="ifrs",
+    )
+    for row in mapped_stmt.rows:
+        if row.value is None and not row.concept:
+            continue
+        tax_codes: List[str] = []
+        if available and row.concept:
+            tax_codes = list(graph.citations(bare_concept(row.concept)) or [])
+        tax_standards = [s for s in (ifrs_standard_of(c) for c in tax_codes) if s]
+        primary = best_topic(
+            row.concept, mapped_stmt.statement_type, row.section,
+            taxonomy_best=(tax_codes[0] if tax_codes else None),
+            framework="ifrs",
+        )
+        if primary:
+            row.asc_primary = primary
+            row.asc_refs = list(dict.fromkeys([primary, *tax_standards]))
+        row.asc_candidates = candidate_topics(
+            row.concept, mapped_stmt.statement_type, row.section,
+            taxonomy_topics=tax_standards, framework="ifrs",
+        )
+        subj = subject_topic(row.concept, framework="ifrs") if row.concept else None
+        if not row.concept:
+            if primary:
+                result.n_section_fallback += 1
+                result.citation_sources[row.row_idx] = SOURCE_SECTION_FALLBACK
+            else:
+                result.n_unmapped += 1
+                result.citation_sources[row.row_idx] = SOURCE_NONE
+        elif subj:
+            result.n_subject_rules += 1
+            result.citation_sources[row.row_idx] = "subject_rule"
+        elif tax_codes:
+            result.n_taxonomy_hits += 1
+            result.citation_sources[row.row_idx] = SOURCE_TAXONOMY
+        elif primary:
+            result.n_section_fallback += 1
+            result.citation_sources[row.row_idx] = SOURCE_SECTION_FALLBACK
+        else:
+            result.n_no_citation += 1
+            result.citation_sources[row.row_idx] = SOURCE_NONE
+    return result
+
+
 # ── top-level entry point (called by Stage 2 and eval harness) ────────────────
 
 def run_stage1(
     item: dict,
     graph: Optional[TaxonomyGraph] = None,
+    framework: Optional[str] = None,
 ) -> Stage1Result:
     """Full Stage 1 pipeline for one AuditBench item.
 
-    1. EDGAR Mapper: table rows → XBRL concepts + static ASC citations
-    2. Taxonomy enrichment: XBRL concepts → authoritative FASB ASC citations
+    1. EDGAR Mapper: table rows → XBRL concepts + static citations
+    2. Taxonomy enrichment: concepts → authoritative citations
 
-    Returns a Stage1Result whose .statement has the enriched MappedRow objects.
+    ``framework`` defaults to ``item["framework"]`` or ``"us-gaap"``.
+    IFRS items are mapped with the IFRS concept map and are not sent
+    through the FASB US-GAAP linkbase.
     """
+    from core.frameworks import resolve_framework
+    framework = resolve_framework(None, framework or item.get("framework"))
+    if framework == "ifrs":
+        mapped_stmt = map_statement(item, framework="ifrs")
+        if graph is None or not hasattr(graph, "citations"):
+            from core.ifrs_taxonomy import default_ifrs_graph
+            graph = default_ifrs_graph()
+        return enrich_with_taxonomy(mapped_stmt, graph, framework="ifrs")
+
     if graph is None:
         graph = _get_default_graph()
 

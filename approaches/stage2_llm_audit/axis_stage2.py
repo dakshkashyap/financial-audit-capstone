@@ -52,8 +52,9 @@ if _ROOT not in sys.path:
     sys.path.insert(0, _ROOT)
 
 from approaches.stage1_taxonomy_citation.concept_citation import (  # noqa: E402
-    presentation_citation, subject_topic, topic_of,
+    IFRS_LEASE, IFRS_MEASUREMENT, governing_id, presentation_citation, subject_topic, topic_of,
 )
+from core.frameworks import bare_concept, ifrs_standard_of, resolve_framework  # noqa: E402
 
 DATA_DIR = os.path.join(_ROOT, "data", "intelliaudit")
 OUT_DIR = os.path.join(_ROOT, "results", "stage2_axis")
@@ -83,14 +84,25 @@ _ASC_RE = re.compile(
 )
 
 
+def _framework(rec: Optional[dict] = None, concept: Optional[str] = None) -> str:
+    if rec and rec.get("framework"):
+        return resolve_framework(concept or rec.get("concept"), rec.get("framework"))
+    return resolve_framework(concept or (rec or {}).get("concept"))
+
+
 def axis_decision(error_type: Optional[str], concept: Optional[str],
-                  statement_type: Optional[str]) -> Tuple[str, Optional[str]]:
-    """Return (axis, topic). Topic is a 3-digit string, or None when the axis is none.
+                  statement_type: Optional[str],
+                  framework: Optional[str] = None) -> Tuple[str, Optional[str]]:
+    """Return (axis, standard). Standard is '330' or 'IAS 2', or None when the axis is none.
 
     Locked rule, applied the same way to every record. Does not read rule_id.
+    An ``ifrs-full:`` concept uses the IFRS rule. Pass ``framework`` to force one.
     """
-    subj = subject_topic(concept)
-    pres = topic_of(presentation_citation(statement_type))
+    fw = resolve_framework(concept, framework)
+    subj = subject_topic(concept, framework=fw)
+    pres = governing_id(presentation_citation(statement_type, framework=fw), fw)
+    if fw == "ifrs":
+        return _ifrs_axis(error_type, concept, subj, pres)
     if error_type == "Misclassification":
         if subj == LEASE_TOPIC:
             return "subject", LEASE_TOPIC
@@ -98,6 +110,28 @@ def axis_decision(error_type: Optional[str], concept: Optional[str],
             return "presentation", DEBT_TOPIC
         return "presentation", pres
     if error_type == "Numerical Error" and subj in MEASUREMENT_TOPICS:
+        return "subject", subj
+    return "none", None
+
+
+def _ifrs_axis(error_type: Optional[str], concept: Optional[str],
+               subj: Optional[str], pres: Optional[str]) -> Tuple[str, Optional[str]]:
+    """IFRS counterpart of the US-GAAP axis.
+
+    Dividends paid may sit in operating or financing cash flows (IAS 7.34),
+    so moving that line is not a violation. A missing lessee right-of-use
+    asset or lease liability is IFRS 16, not an ungoverned missing row.
+    """
+    bare = bare_concept(concept)
+    if error_type == "Misclassification" and bare and re.search(r"DividendsPaid", bare):
+        return "none", None
+    if error_type == "Misclassification":
+        if subj == IFRS_LEASE:
+            return "subject", IFRS_LEASE
+        return "presentation", pres
+    if error_type == "Missing Row" and subj == IFRS_LEASE:
+        return "subject", IFRS_LEASE
+    if error_type == "Numerical Error" and subj in IFRS_MEASUREMENT:
         return "subject", subj
     return "none", None
 
@@ -115,24 +149,62 @@ def _self_check() -> None:
         "Misclassification", "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment", "cash_flow"
     ) == ("presentation", "230")
     assert axis_decision("Numerical Error", "us-gaap:DeferredTaxAssetsNet", "balance_sheet") == ("none", None)
+    assert axis_decision("Misclassification", "ifrs-full:Inventories", "balance_sheet") == ("presentation", "IAS 1")
+    assert axis_decision("Numerical Error", "ifrs-full:Inventories", "balance_sheet") == ("subject", "IAS 2")
+    assert axis_decision("Numerical Error", "ifrs-full:Goodwill", "balance_sheet") == ("subject", "IAS 36")
+    assert axis_decision("Numerical Error", "ifrs-full:Revenue", "income_statement") == ("subject", "IFRS 15")
+    assert axis_decision("Numerical Error", "ifrs-full:TradeAndOtherCurrentReceivables", "balance_sheet") == ("subject", "IFRS 9")
+    assert axis_decision("Numerical Error", "ifrs-full:DeferredTaxAssets", "balance_sheet") == ("subject", "IAS 12")
+    assert axis_decision("Numerical Error", "ifrs-full:PropertyPlantAndEquipment", "balance_sheet") == ("subject", "IAS 36")
+    assert axis_decision("Numerical Error", "ifrs-full:CashAndCashEquivalents", "balance_sheet") == ("none", None)
+    assert axis_decision("Misclassification", "ifrs-full:RightofuseAssets", "balance_sheet") == ("subject", "IFRS 16")
+    assert axis_decision("Missing Row", "ifrs-full:LeaseLiabilities", "balance_sheet") == ("subject", "IFRS 16")
+    assert axis_decision("Missing Row", "ifrs-full:Inventories", "balance_sheet") == ("none", None)
+    assert axis_decision("Misclassification", "ifrs-full:LongtermBorrowings", "balance_sheet") == ("presentation", "IAS 1")
+    assert axis_decision(
+        "Misclassification",
+        "ifrs-full:PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "cash_flow",
+    ) == ("presentation", "IAS 7")
+    assert axis_decision(
+        "Misclassification",
+        "ifrs-full:DividendsPaidClassifiedAsFinancingActivities",
+        "cash_flow",
+    ) == ("none", None)
 
 
-def load_joined() -> List[dict]:
+def load_joined(data_dir: Optional[str] = None,
+                framework: str = "us-gaap") -> List[dict]:
+    framework = resolve_framework(None, framework)
+    if data_dir is None:
+        data_dir = (os.path.join(_ROOT, "data", "ifrs", "benchmark")
+                    if framework == "ifrs" else DATA_DIR)
+    exam_path = os.path.join(data_dir, "exam.jsonl")
+    key_path = os.path.join(data_dir, "answer_key.jsonl")
+    if not os.path.isfile(exam_path) or not os.path.isfile(key_path):
+        raise FileNotFoundError(
+            f"No exam at {data_dir}. US-GAAP exams live in data/intelliaudit. "
+            "An IFRS exam is built by the IntelliAudit generator "
+            "(see data/ifrs/IFRS_BUILD.md) and placed in data/ifrs/benchmark."
+        )
     exam = {}
-    with open(os.path.join(DATA_DIR, "exam.jsonl"), encoding="utf-8") as f:
+    with open(exam_path, encoding="utf-8") as f:
         for line in f:
             e = json.loads(line)
             exam[e["sample_id"]] = e
     rows = []
-    with open(os.path.join(DATA_DIR, "answer_key.jsonl"), encoding="utf-8") as f:
+    with open(key_path, encoding="utf-8") as f:
         for line in f:
             k = json.loads(line)
             e = exam[k["sample_id"]]
             gt = k["ground_truth_citations"]
             meta = e["metadata"]
-            topic = topic_of((gt.get("asc_topic") or "").replace("ASC", "").strip()) if gt.get("citable") else None
-            if gt.get("citable") and gt.get("asc_full"):
-                topic = topic_of(str(gt["asc_full"]).replace("ASC", " "))
+            if framework == "ifrs":
+                topic = ifrs_standard_of(gt.get("asc_full") or "") if gt.get("citable") else None
+            else:
+                topic = topic_of((gt.get("asc_topic") or "").replace("ASC", "").strip()) if gt.get("citable") else None
+                if gt.get("citable") and gt.get("asc_full"):
+                    topic = topic_of(str(gt["asc_full"]).replace("ASC", " "))
             rows.append({
                 "sample_id": k["sample_id"],
                 "company": meta["company"],
@@ -157,18 +229,22 @@ def load_joined() -> List[dict]:
                 "asc_full": gt.get("asc_full"),
                 "topic": topic,
                 "tier": gt.get("citation_tier"),
+                "framework": framework,
+                "data_dir": data_dir,
             })
     return rows
 
 
-def load_clean(joined: List[dict]) -> List[dict]:
+def load_clean(joined: List[dict], data_dir: Optional[str] = None) -> List[dict]:
     """Clean statements. Transactions are taken from one sibling exam of the same filing."""
+    if data_dir is None:
+        data_dir = joined[0].get("data_dir") if joined else DATA_DIR
     sib = {}
     for r in joined:
         sid = f"{r['cik']}_{r['fiscal_year']}_{r['statement']}"
         sib.setdefault(sid, r["transaction_data"])
     out = []
-    with open(os.path.join(DATA_DIR, "statements_clean.jsonl"), encoding="utf-8") as f:
+    with open(os.path.join(data_dir, "statements_clean.jsonl"), encoding="utf-8") as f:
         for line in f:
             c = json.loads(line)
             m = c["metadata"]
@@ -189,6 +265,7 @@ def load_clean(joined: List[dict]) -> List[dict]:
                 "topic": None,
                 "rows_ok": set(),
                 "is_clean": True,
+                "framework": (joined[0].get("framework") if joined else "us-gaap"),
             })
     return out
 
@@ -294,14 +371,18 @@ def score_predictor(rows: List[dict], predict) -> dict:
 
 def subject_first_topic(rec: dict) -> Optional[str]:
     """Current Stage-1 selector: subject topic if the account has one, else presentation."""
-    subj = subject_topic(rec.get("concept"))
+    fw = _framework(rec)
+    subj = subject_topic(rec.get("concept"), framework=fw)
     if subj:
         return subj
-    return topic_of(presentation_citation(rec.get("pipe_stmt")))
+    return governing_id(presentation_citation(rec.get("pipe_stmt"), framework=fw), fw)
 
 
 def principle_topic(rec: dict) -> Optional[str]:
-    _axis, topic = axis_decision(rec.get("error_type"), rec.get("concept"), rec.get("pipe_stmt"))
+    _axis, topic = axis_decision(
+        rec.get("error_type"), rec.get("concept"), rec.get("pipe_stmt"),
+        framework=rec.get("framework"),
+    )
     return topic
 
 
@@ -340,9 +421,13 @@ def analyze_full(rows: List[dict]) -> dict:
     # Coverage: is the gold topic in {subject(account), presentation(statement)}?
     cover = 0
     for r in citable:
-        cands = {subject_topic(r["concept"]), topic_of(presentation_citation(r["pipe_stmt"]))} - {None}
-        # debt and lease are the subject topic; presentation is also in the set
-        if r["topic"] in cands or r["topic"] in {LEASE_TOPIC, DEBT_TOPIC}:
+        fw = _framework(r)
+        cands = {
+            subject_topic(r["concept"], framework=fw),
+            governing_id(presentation_citation(r["pipe_stmt"], framework=fw), fw),
+        } - {None}
+        extras = {IFRS_LEASE} if fw == "ifrs" else {LEASE_TOPIC, DEBT_TOPIC}
+        if r["topic"] in cands or r["topic"] in extras:
             cover += 1
     return {
         "n_records": len(rows),
@@ -438,12 +523,14 @@ def stage0_on(rec: dict) -> dict:
 
 def mapped_concept_at(rec: dict, row_idx: Optional[int]) -> Optional[str]:
     from approaches.stage1_concept_mapping.edgar_mapper import map_statement
+    fw = _framework(rec)
     item = {
         "table": rec["statement_text"],
         "sheet_type": SHEET_LABEL.get(rec["statement"], ""),
         "company": "",  # withheld: mega-cap names are memorizable
+        "framework": fw,
     }
-    ms = map_statement(item)
+    ms = map_statement(item, framework=fw)
     if row_idx is None:
         return None
     for row in ms.rows:
@@ -454,13 +541,37 @@ def mapped_concept_at(rec: dict, row_idx: Optional[int]) -> Optional[str]:
 
 def candidate_block(rec: dict) -> str:
     from approaches.stage1_concept_mapping.edgar_mapper import map_statement
+    fw = _framework(rec)
     item = {
         "table": rec["statement_text"],
         "sheet_type": SHEET_LABEL.get(rec["statement"], ""),
         "company": "",
+        "framework": fw,
     }
-    ms = map_statement(item)
-    pres = presentation_citation(rec["pipe_stmt"]) or "none"
+    ms = map_statement(item, framework=fw)
+    pres = presentation_citation(rec["pipe_stmt"], framework=fw) or "none"
+    if fw == "ifrs":
+        lines = [f"Statement form: {rec['statement']}. Presentation standard for this form: {pres}."]
+        lines.append("Closed candidate list. Cite only from the row you flag, or cite nothing.")
+        n = 0
+        for row in ms.rows:
+            if row.value is None:
+                continue
+            subj = subject_topic(row.concept, framework="ifrs") if row.concept else None
+            bits = [f"Row {row.row_idx} | {row.label[:48]}"]
+            if row.concept:
+                bits.append(f"account {bare_concept(row.concept)}")
+            bits.append(f"presentation {pres}")
+            if subj:
+                bits.append(f"subject {subj}")
+            lines.append("  " + " | ".join(bits))
+            n += 1
+            if n >= 28:
+                lines.append("  … remaining rows omitted")
+                break
+        if n == 0:
+            lines.append("  (no valued row mapped)")
+        return "\n".join(lines)
     lines = [f"Statement form: {rec['statement']}. Presentation standard for this form: ASC {pres}."]
     lines.append("Closed candidate list. Cite only from the row you flag, or cite nothing.")
     n = 0
@@ -518,6 +629,40 @@ Respond with only this JSON object:
   "evidence": "one sentence"
 }"""
 
+SYSTEM_STAGE2_IFRS = """You are Stage 2 of an audit pipeline. A symbolic checker may already have flagged arithmetic. A concept map has listed the standards that could apply to each line. You are not told which error was injected. You do not invent a standard that is not in the candidate list. This statement is prepared under IFRS, not US GAAP.
+
+Every defect is governed along exactly one axis:
+
+- presentation: the amount may be fine, but the line sits in the wrong section of the statement. Cite IAS 1 for a balance sheet or income statement, or IAS 7 for a cash-flow statement. Borrowings in the wrong current or non-current section are still IAS 1.
+- subject: the line is inventory (IAS 2), goodwill or impaired property, plant and equipment (IAS 36), a financial asset or receivable (IFRS 9), revenue (IFRS 15), deferred tax (IAS 12), research and development (IAS 38), or a lease (IFRS 16), AND what went wrong is how that item is measured or recognised, or a lessee lease that was left off the statement. Cite that line's subject standard.
+- none: the defect is a wrong number on an ordinary line, an extra row, a deleted row that is not a lessee right-of-use asset or lease liability, a negative balance, or a total that does not foot, and the two cases above do not apply. Cite nothing. Do not use IAS 1 as a default. Dividends paid may be classified in operating or financing cash flows; that choice is not a violation.
+
+Changing a number is not automatically a measurement error. Cite a subject standard only when the line is one of those accounts.
+
+Respond with only this JSON object:
+{
+  "general_judgment": "Correct" or "Incorrect",
+  "error_type": "Numerical Error" or "Missing Row" or "Redundant Row" or "Misclassification" or null,
+  "problematic_entry": "Row <n>" or null,
+  "governing_axis": "presentation" or "subject" or "none",
+  "standards_citation": "IAS <n> or IFRS <n> from that row's candidates" or null,
+  "evidence": "one sentence naming the row and the fact that supports the axis"
+}"""
+
+SYSTEM_BLIND_IFRS = """You are an independent auditor. One IFRS financial statement is below. It may be correct, or it may contain a single error. Supporting transactions are the evidence for the amounts. Do not apply US GAAP.
+
+Identify whether the statement is correct. If it is not, name the error type (Numerical Error, Missing Row, Redundant Row, or Misclassification), the row, and the single IAS or IFRS standard that governs the error. If no paragraph governs the error, set the citation to null. Do not use IAS 1 as a default for a wrong number or a broken total. Dividends paid may be shown in operating or financing cash flows.
+
+Respond with only this JSON object:
+{
+  "general_judgment": "Correct" or "Incorrect",
+  "error_type": "Numerical Error" or "Missing Row" or "Redundant Row" or "Misclassification" or null,
+  "problematic_entry": "Row <n>" or null,
+  "governing_axis": "presentation" or "subject" or "none",
+  "standards_citation": "IAS ..." or "IFRS ..." or null,
+  "evidence": "one sentence"
+}"""
+
 
 def build_user(rec: dict, gate: Optional[dict], with_candidates: bool) -> str:
     parts = []
@@ -563,7 +708,7 @@ def extract_json(text: str) -> Optional[dict]:
         return None
 
 
-def pred_topic_from_obj(obj: Optional[dict]) -> Optional[str]:
+def pred_topic_from_obj(obj: Optional[dict], framework: str = "us-gaap") -> Optional[str]:
     if not obj:
         return None
     axis = str(obj.get("governing_axis") or "").strip().lower()
@@ -572,6 +717,8 @@ def pred_topic_from_obj(obj: Optional[dict]) -> Optional[str]:
         return None
     if axis == "none":
         return None
+    if framework == "ifrs":
+        return ifrs_standard_of(str(cit))
     m = _ASC_RE.search(str(cit))
     if not m:
         # bare topic
@@ -581,7 +728,7 @@ def pred_topic_from_obj(obj: Optional[dict]) -> Optional[str]:
 
 
 def score_llm_obj(obj: Optional[dict], rec: dict) -> dict:
-    topic = pred_topic_from_obj(obj)
+    topic = pred_topic_from_obj(obj, rec.get("framework") or "us-gaap")
     judg = ""
     etype = ""
     row_ok = 0
@@ -921,7 +1068,8 @@ def write_report(report: dict) -> str:
 
 
 def run_models(sample: List[dict], pop_counts: Dict[str, int], conditions: List[str],
-               model_ids: Optional[List[str]] = None) -> dict:
+               model_ids: Optional[List[str]] = None,
+               framework: str = "us-gaap") -> dict:
     import openai
     key = load_openrouter_key()
     catalog = list_models(key)
@@ -955,7 +1103,10 @@ def run_models(sample: List[dict], pop_counts: Dict[str, int], conditions: List[
         for condition in conditions:
             if condition == "blind" and mid != frontier_id:
                 continue
-            system = SYSTEM_STAGE2 if condition == "stage2" else SYSTEM_BLIND
+            if framework == "ifrs":
+                system = SYSTEM_STAGE2_IFRS if condition == "stage2" else SYSTEM_BLIND_IFRS
+            else:
+                system = SYSTEM_STAGE2 if condition == "stage2" else SYSTEM_BLIND
             by_id = {}
             # A 402 on the free tier is not a result. Retry those. Keep the
             # last successful row if the file has both.
@@ -1036,7 +1187,10 @@ def stage0_principle_full(rows: List[dict], limit: Optional[int] = None) -> dict
             fired += 1
             type_ok.append(int(gate.get("error_type") == rec.get("error_type")))
             concept = mapped_concept_at(rec, gate.get("row"))
-            _axis, topic = axis_decision(gate.get("error_type"), concept, rec.get("pipe_stmt"))
+            _axis, topic = axis_decision(
+                gate.get("error_type"), concept, rec.get("pipe_stmt"),
+                framework=rec.get("framework"),
+            )
         else:
             topic = None
         th = topic_hit(topic, rec)
@@ -1083,9 +1237,14 @@ def main():
                     help="comma list: stage2, blind")
     ap.add_argument("--models", default="",
                     help="comma-separated OpenRouter model ids")
+    ap.add_argument("--framework", choices=["us-gaap", "ifrs"], default="us-gaap",
+                    help="us-gaap reads data/intelliaudit; ifrs reads data/ifrs/benchmark")
+    ap.add_argument("--data-dir", default="",
+                    help="exam directory (exam.jsonl + answer_key.jsonl). "
+                         "Default follows --framework.")
     args = ap.parse_args()
 
-    rows = load_joined()
+    rows = load_joined(args.data_dir or None, framework=args.framework)
     print(f"loaded {len(rows)} records", flush=True)
     full = analyze_full(rows)
     print("\n=== full benchmark, no model ===", flush=True)
@@ -1127,7 +1286,8 @@ def main():
     print(report["stage0_principle"]["narrative"], flush=True)
     conditions = [c.strip() for c in args.conditions.split(",") if c.strip()]
     wanted = [m.strip() for m in args.models.split(",") if m.strip()]
-    models = run_models(sample, pop_counts, conditions, wanted or None)
+    models = run_models(sample, pop_counts, conditions, wanted or None,
+                        framework=args.framework)
     report["models"] = models
     html = write_report(report)
     print("\nwrote", html, flush=True)

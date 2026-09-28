@@ -1,0 +1,360 @@
+{
+ "framework": "ifrs",
+ "_note": "PROPOSED IFRS edition \u2014 a SEPARATE dataset (output data/ifrs/). SEC foreign private issuers filing 20-F/40-F with ifrs-full XBRL facts. SEC required IFRS XBRL from fiscal periods ending after 15 Dec 2017, so SEC gives about FY2018 onward, not ten years; EU ESEF filings (filings.xbrl.org) start with FY2020. CIKs are from memory and are checked against EDGAR entityName at build time. Set taxonomy_zip to a local copy of the IFRS Accounting Taxonomy before building.",
+ "companies": [
+  {
+   "name": "SAP SE",
+   "ticker": "SAP",
+   "cik": "1000184",
+   "sector": "Information Technology",
+   "why": "software; deferred revenue; capitalized development",
+   "phase": 1
+  },
+  {
+   "name": "Novartis AG",
+   "ticker": "NVS",
+   "cik": "1114448",
+   "sector": "Health Care",
+   "why": "goodwill/intangibles; IAS 36",
+   "phase": 1
+  },
+  {
+   "name": "AstraZeneca PLC",
+   "ticker": "AZN",
+   "cik": "901832",
+   "sector": "Health Care",
+   "why": "intangibles; impairments",
+   "phase": 1
+  },
+  {
+   "name": "GSK plc",
+   "ticker": "GSK",
+   "cik": "1131399",
+   "sector": "Health Care",
+   "why": "consumer spin-off (Haleon) 2022",
+   "phase": 1
+  },
+  {
+   "name": "Sanofi",
+   "ticker": "SNY",
+   "cik": "1121404",
+   "sector": "Health Care",
+   "why": "impairments; R&D",
+   "phase": 1
+  },
+  {
+   "name": "Novo Nordisk A/S",
+   "ticker": "NVO",
+   "cik": "353278",
+   "sector": "Health Care",
+   "why": "rebates/revenue provisions",
+   "phase": 1
+  },
+  {
+   "name": "Unilever PLC",
+   "ticker": "UL",
+   "cik": "217410",
+   "sector": "Consumer Staples",
+   "why": "inventory, brands, goodwill",
+   "phase": 1
+  },
+  {
+   "name": "Diageo plc",
+   "ticker": "DEO",
+   "cik": "835403",
+   "sector": "Consumer Staples",
+   "why": "maturing inventory (whisky), brands; June FYE",
+   "phase": 1,
+   "fiscal_year_end": "Jun"
+  },
+  {
+   "name": "Anheuser-Busch InBev SA/NV",
+   "ticker": "BUD",
+   "cik": "1668717",
+   "sector": "Consumer Staples",
+   "why": "very large goodwill; debt",
+   "phase": 1
+  },
+  {
+   "name": "Ambev S.A.",
+   "ticker": "ABEV",
+   "cik": "1565025",
+   "sector": "Consumer Staples",
+   "why": "Latin America; hyperinflation accounting (IAS 29)",
+   "phase": 1
+  },
+  {
+   "name": "BP p.l.c.",
+   "ticker": "BP",
+   "cik": "313807",
+   "sector": "Energy",
+   "why": "impairments 2020; IAS 36 reversals",
+   "phase": 1
+  },
+  {
+   "name": "Shell plc",
+   "ticker": "SHEL",
+   "cik": "1306965",
+   "sector": "Energy",
+   "why": "impairments and reversals",
+   "phase": 1
+  },
+  {
+   "name": "TotalEnergies SE",
+   "ticker": "TTE",
+   "cik": "879764",
+   "sector": "Energy",
+   "why": "impairments (Russia 2022)",
+   "phase": 1
+  },
+  {
+   "name": "Equinor ASA",
+   "ticker": "EQNR",
+   "cik": "1140625",
+   "sector": "Energy",
+   "why": "impairments and reversals",
+   "phase": 1
+  },
+  {
+   "name": "Petr\u00f3leo Brasileiro S.A. - Petrobras",
+   "ticker": "PBR",
+   "cik": "1119639",
+   "sector": "Energy",
+   "why": "impairments; FX",
+   "phase": 1
+  },
+  {
+   "name": "BHP Group Ltd",
+   "ticker": "BHP",
+   "cik": "811809",
+   "sector": "Materials",
+   "why": "June FYE; mining; reversals",
+   "phase": 1,
+   "fiscal_year_end": "Jun"
+  },
+  {
+   "name": "Rio Tinto plc",
+   "ticker": "RIO",
+   "cik": "863064",
+   "sector": "Materials",
+   "why": "impairments",
+   "phase": 1
+  },
+  {
+   "name": "Vale S.A.",
+   "ticker": "VALE",
+   "cik": "917851",
+   "sector": "Materials",
+   "why": "provisions (Brumadinho)",
+   "phase": 1
+  },
+  {
+   "name": "ArcelorMittal S.A.",
+   "ticker": "MT",
+   "cik": "1243429",
+   "sector": "Materials",
+   "why": "inventory write-down reversals (IAS 2.33)",
+   "phase": 1
+  },
+  {
+   "name": "Stellantis N.V.",
+   "ticker": "STLA",
+   "cik": "1605484",
+   "sector": "Consumer Discretionary",
+   "why": "capitalised development costs (IAS 38.57)",
+   "phase": 1
+  },
+  {
+   "name": "Toyota Motor Corp.",
+   "ticker": "TM",
+   "cik": "1094517",
+   "sector": "Consumer Discretionary",
+   "why": "IFRS since the FY ending March 2021; March FYE",
+   "phase": 1,
+   "fiscal_year_end": "Mar"
+  },
+  {
+   "name": "Sony Group Corp.",
+   "ticker": "SONY",
+   "cik": "313838",
+   "sector": "Consumer Discretionary",
+   "why": "IFRS from FY2021; March FYE",
+   "phase": 1,
+   "fiscal_year_end": "Mar"
+  },
+  {
+   "name": "Ryanair Holdings plc",
+   "ticker": "RYAAY",
+   "cik": "1038683",
+   "sector": "Industrials",
+   "why": "IFRS 16 aircraft leases; March FYE",
+   "phase": 1,
+   "fiscal_year_end": "Mar"
+  },
+  {
+   "name": "Infosys Ltd",
+   "ticker": "INFY",
+   "cik": "1067491",
+   "sector": "Information Technology",
+   "why": "March FYE; services revenue",
+   "phase": 1,
+   "fiscal_year_end": "Mar"
+  },
+  {
+   "name": "Wipro Ltd",
+   "ticker": "WIT",
+   "cik": "1123799",
+   "sector": "Information Technology",
+   "why": "March FYE",
+   "phase": 1,
+   "fiscal_year_end": "Mar"
+  },
+  {
+   "name": "Taiwan Semiconductor Manufacturing Co.",
+   "ticker": "TSM",
+   "cik": "1046179",
+   "sector": "Information Technology",
+   "why": "PP&E-heavy",
+   "phase": 1
+  },
+  {
+   "name": "Nokia Oyj",
+   "ticker": "NOK",
+   "cik": "924613",
+   "sector": "Information Technology",
+   "why": "goodwill impairments",
+   "phase": 1
+  },
+  {
+   "name": "Telefonaktiebolaget LM Ericsson",
+   "ticker": "ERIC",
+   "cik": "717826",
+   "sector": "Information Technology",
+   "why": "goodwill impairment (Vonage 2023)",
+   "phase": 1
+  },
+  {
+   "name": "Koninklijke Philips N.V.",
+   "ticker": "PHG",
+   "cik": "313216",
+   "sector": "Health Care",
+   "why": "provisions (Respironics recall)",
+   "phase": 1
+  },
+  {
+   "name": "Canadian Natural Resources Ltd",
+   "ticker": "CNQ",
+   "cik": "1017413",
+   "sector": "Energy",
+   "why": "40-F filer; oil and gas PP&E",
+   "phase": 1
+  },
+  {
+   "name": "Banco Santander S.A.",
+   "ticker": "SAN",
+   "cik": "891478",
+   "sector": "Financials",
+   "why": "bank: IFRS 9 ECL stages",
+   "phase": 2
+  },
+  {
+   "name": "HSBC Holdings plc",
+   "ticker": "HSBC",
+   "cik": "1089113",
+   "sector": "Financials",
+   "why": "bank: IFRS 9 ECL",
+   "phase": 2
+  },
+  {
+   "name": "Barclays PLC",
+   "ticker": "BCS",
+   "cik": "312069",
+   "sector": "Financials",
+   "why": "bank",
+   "phase": 2
+  },
+  {
+   "name": "UBS Group AG",
+   "ticker": "UBS",
+   "cik": "1610520",
+   "sector": "Financials",
+   "why": "bank; Credit Suisse acquisition",
+   "phase": 2
+  },
+  {
+   "name": "ING Groep N.V.",
+   "ticker": "ING",
+   "cik": "1039765",
+   "sector": "Financials",
+   "why": "bank",
+   "phase": 2
+  },
+  {
+   "name": "Royal Bank of Canada",
+   "ticker": "RY",
+   "cik": "1000275",
+   "sector": "Financials",
+   "why": "40-F bank; Oct FYE",
+   "phase": 2
+  },
+  {
+   "name": "BCE Inc.",
+   "ticker": "BCE",
+   "cik": "718940",
+   "sector": "Communication Services",
+   "why": "40-F IFRS; IFRS 16 right-of-use assets, spectrum licences",
+   "phase": 1
+  },
+  {
+   "name": "Suncor Energy Inc.",
+   "ticker": "SU",
+   "cik": "311337",
+   "sector": "Energy",
+   "why": "40-F IFRS; decommissioning provisions (IAS 37), IFRS 16",
+   "phase": 1
+  },
+  {
+   "name": "Vodafone Group Plc",
+   "ticker": "VOD",
+   "cik": "839923",
+   "sector": "Communication Services",
+   "why": "20-F IFRS; March FYE; spectrum, leases, goodwill impairments",
+   "fiscal_year_end": "Mar",
+   "phase": 1
+  }
+ ],
+ "fiscal_years": [
+  2018,
+  2019,
+  2020,
+  2021,
+  2022,
+  2023,
+  2024
+ ],
+ "n_per_rule_per_statement": 1,
+ "seed": 13,
+ "controls_per_statement": 1,
+ "taxonomy_zip": null,
+ "esef_candidates": [
+  "Siemens AG",
+  "LVMH",
+  "Airbus SE",
+  "Volkswagen AG",
+  "Inditex",
+  "Carrefour SA",
+  "Heineken N.V.",
+  "adidas AG",
+  "Danone S.A.",
+  "Puma SE",
+  "Hugo Boss AG",
+  "Kering SA"
+ ],
+ "rejected_candidates": {
+  "Shopify (SHOP)": "reports under US GAAP, not IFRS",
+  "Alimentation Couche-Tard (ATD), Canadian Tire (CTC.A)": "not SEC registrants and SEDAR+ has no mandatory XBRL: statements exist only as PDFs, so 'every value is a tagged fact' would not hold",
+  "Novartis on ESEF": "Switzerland is not in the EU; use its SEC 20-F (already listed), not ESEF",
+  "ASML": "ESEF (filings.xbrl.org) IFRS filing is usable; its SEC 20-F has historically been US GAAP, so do not pull it from SEC",
+  "JPM-style banks": "phase 2 in both editions (unclassified balance sheets)"
+ }
+}

@@ -108,12 +108,16 @@ def em_standards_topk(pred_text: str, gt_text: str, k: int = 1) -> float:
     - The model's generated Standards Citation text is compared against the
       'Standards Citation' field in the JSON ground truth directly.
     - Evaluation is Top-K retrieval-based EM on extracted FASB IDs.
- 
+      IFRS citations (IAS / IFRS / IFRIC / SIC) are scored the same way:
+      a paragraph match or a shared standard counts, parallel to an ASC
+      topic prefix match.
+
     Strategy (two-stage):
-    1. Extract FASB ASC IDs from both sides and do string overlap (Top-K).
+    1. Extract FASB and IFRS IDs from both sides and do string overlap (Top-K).
     2. Fall back to substring match on the full text if no IDs are found.
     """
-    pred_ids, gt_ids = _fasb_ids(pred_text), _fasb_ids(gt_text)
+    from core.frameworks import citation_ids
+    pred_ids, gt_ids = citation_ids(pred_text), citation_ids(gt_text)
     if gt_ids:
         for gid in gt_ids:
             if any(gid in p or p in gid for p in pred_ids[:k]):
