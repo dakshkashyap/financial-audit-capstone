@@ -4,6 +4,7 @@ __pycache__/
 *.pyo
 .venv/
 venv/
+.env
 
 # FASB taxonomy cache (auto-downloaded on first run, ~11MB)
 .cache/

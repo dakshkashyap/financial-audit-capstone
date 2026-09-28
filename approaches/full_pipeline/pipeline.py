@@ -36,6 +36,7 @@ from core.stage0_common import (
     rows_of, subtotal_expected_map,
 )
 from approaches.stage1_taxonomy_citation.stage1_arelle import run_stage1
+from approaches.stage1_taxonomy_citation.citation_select import pick_primary, uniq_full
 from core.taxonomy_graph import TaxonomyGraph
 
 
@@ -162,11 +163,13 @@ def run_pipeline(item: dict, graph: Optional[TaxonomyGraph] = None) -> AuditReco
     # ── Stage 1 citation (always available; used for the flagged row) ──
     s1 = run_stage1(item, graph)
 
-    def _cite_for(idx):
+    def _cite_for(idx, error_type=None):
         row = next((r for r in s1.statement.rows if r.row_idx == idx), None)
         if row is None:
             return None, [], None
-        return row.asc_primary, row.asc_candidates, s1.citation_sources.get(idx)
+        cands = uniq_full([row.asc_primary, *(row.asc_candidates or [])], limit=8)
+        primary = pick_primary(cands, error_type) or (cands[0] if cands else row.asc_primary)
+        return primary, cands, s1.citation_sources.get(idx)
 
     if finding is not None:
         rec.judgment          = "Incorrect"
@@ -177,7 +180,7 @@ def run_pipeline(item: dict, graph: Optional[TaxonomyGraph] = None) -> AuditReco
         rec.stated_value      = finding.stated_value
         rec.source            = finding.source
         rec.detail            = finding.detail
-        cp, cc, cs = _cite_for(finding.problematic_entry)
+        cp, cc, cs = _cite_for(finding.problematic_entry, finding.error_type)
         rec.citation_primary, rec.citation_candidates, rec.citation_source = cp, cc, cs
 
     return rec
