@@ -28,6 +28,29 @@ chapter or page.
    It decides whether the statement is wrong, which row, what kind of error, and
    which rule applies.
 
+## The new pipeline at a glance
+
+Boxes marked **NEW** or **CHANGED** are what this branch adds. Everything else
+is Daksh's pipeline as it was.
+
+```mermaid
+flowchart TD
+    IN["Financial statement + supporting transactions"] --> S0["Stage 0: calculator rechecks the numbers"]
+    IN --> MAP["Stage 1: match each row to its official US-GAAP name"]
+    MAP --> LIST["NEW: build each row's list of possible rules<br/>from the US-GAAP rulebook file<br/>(most complete addresses first, top 8)"]
+
+    S0 -->|"Found the error"| PICK["CHANGED: pick one rule from that row's list<br/>based on the error type"]
+    S0 -->|"Could not find it"| AI["Stage 2: Daksh's AI decides<br/>wrong or not, which row, what kind of error"]
+    LIST -.-> PICK
+    LIST -.-> AI
+
+    AI --> ASK["CHANGED: AI must copy one full rule<br/>from the list of the row it flagged"]
+    ASK --> SNAP["NEW: check the AI's rule against that list<br/>e.g. 'ASC 606' becomes '606-10-50-7'"]
+
+    PICK --> OUT["Final answer:<br/>error type, row, full rule address"]
+    SNAP --> OUT
+```
+
 ## What we changed
 
 **1. We added a list of possible rules to every row (Stage 1).**
