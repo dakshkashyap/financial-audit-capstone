@@ -30,13 +30,26 @@ chapter or page.
 
 ## What we changed
 
-**1. Each row now has a real list of possible rules (Stage 1).**
-Every row of the statement had a box meant to hold the rules that could apply
-to it. That box was never filled, so it was always empty. We now fill it with
-up to 8 full rule addresses from the official rulebook file.
+**1. We added a list of possible rules to every row (Stage 1).**
+Each line of the statement now carries a short list of the accounting rules
+that could apply to it. The list is filled like this:
 
-> Before: `Purchases of equipment → [ ]`
-> After: `Purchases of equipment → [230-10-45-13, 230-10-45]`
+1. The existing mapper matches the row's label (for example "Purchases of
+   property, plant and equipment") to its official US-GAAP name
+   (`PaymentsToAcquirePropertyPlantAndEquipment`).
+2. We look that name up in the official US-GAAP 2025 rulebook file and collect
+   every rule linked to it. If the name itself has no rules, we use its closest
+   parent name.
+3. We add the rule the lookup already picked for that row.
+4. We remove duplicates and put the most complete addresses first (a full page
+   like `230-10-45-13` before a chapter like `230-10-45`). SEC staff notes
+   (`S99`) go below real paragraphs of the same length.
+5. We keep the top 8.
+
+If the row's label isn't recognised, the list gets the general layout rule for
+that statement instead (balance sheet 210, income statement 220, cash flow 230).
+
+> Example: `Purchases of property, plant and equipment → [230-10-45-13, 230-10-45]`
 
 **2. When the calculator finds the error, the rule is chosen by error type (Stage 1).**
 Before, we took the lookup's first guess, which was often the wrong book. Now we
