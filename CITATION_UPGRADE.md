@@ -1,6 +1,6 @@
-# Citation upgrade on top of Daksh's Stage 2 LLM
+# Citation upgrade
 
-This branch builds on `daksh/stage2-iab-v03`. It does **not** change how errors
+Improved on top of Daksh's Stage 2 AI (branch `daksh/stage2-iab-v03`). It does **not** change how errors
 are found, or when the AI is called. It changes **how the pipeline names the
 accounting rule** that was broken.
 
@@ -24,14 +24,14 @@ chapter or page.
    wrong, it says which row and what kind of error. No AI.
 2. **Stage 1, the rule lookup.** For each row, looks up the matching rules in the
    official US-GAAP rulebook file. No AI.
-3. **Stage 2, Daksh's AI.** Runs only when the calculator can't find the error.
+3. **Stage 2, the AI.** Runs only when the calculator can't find the error.
    It decides whether the statement is wrong, which row, what kind of error, and
    which rule applies.
 
 ## The new pipeline at a glance
 
 Boxes marked **NEW** or **CHANGED** are what this branch adds. Everything else
-is Daksh's pipeline as it was.
+is the existing pipeline as it was.
 
 ```mermaid
 flowchart TD
@@ -40,7 +40,7 @@ flowchart TD
     MAP --> LIST["NEW: build each row's list of possible rules<br/>from the US-GAAP rulebook file<br/>(most complete addresses first, top 8)"]
 
     S0 -->|"Found the error"| PICK["CHANGED: pick one rule from that row's list<br/>based on the error type"]
-    S0 -->|"Could not find it"| AI["Stage 2: Daksh's AI decides<br/>wrong or not, which row, what kind of error"]
+    S0 -->|"Could not find it"| AI["Stage 2: the AI decides<br/>wrong or not, which row, what kind of error"]
     LIST -.-> PICK
     LIST -.-> AI
 
