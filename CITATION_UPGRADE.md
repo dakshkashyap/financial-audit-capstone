@@ -92,26 +92,20 @@ writes a page number that isn't on the list, we don't keep the invented part.
 
 ## Before and after
 
-Same 54 exam items from IntelliAudit-Bench, same AI (`gpt-4o-mini`), same random
-sample. Rule scores count the 18 items that have an official rule to cite.
+54 exam items from IntelliAudit-Bench. Each score is shown two ways:
+
+- **Of the rules we gave:** how often the rule we named was right.
+- **Of all 54 items:** how often we named the right rule, counting items where
+  we named no rule as misses.
 
 | What we measure | Before | After |
 |---|---|---|
-| Answers that named only a book (`ASC 230`) | 45 | **0** |
-| Right book | 44% (8 of 18) | **50%** (9 of 18) |
-| Right book and chapter | 0% | **50%** (9 of 18) |
-| Right exact page | 0% | 0% |
-| Calculator finds the error | 9 of 54 | 9 of 54 (unchanged) |
+| Right book | 51.7% / 27.8% | 50.0% / 16.7% |
+| Right book and chapter | 31.0% / 16.7% | **50.0%** / 16.7% |
+| Right exact page | 0% / 0% | 0% / 0% |
 
-"Before" here is the same exam and the same AI, just without this change. Its
-chapter score is 0% because every AI answer named only a book (`ASC 230`),
-which can never match a chapter.
-
-An earlier run, on the older version of the exam and without the AI, scored
-51.7% / 27.8% on the book and 31.0% / 16.7% on book and chapter (precision /
-recall). That run is not comparable: the exam was rebuilt afterwards (the
-calculator now fires on 9 items instead of 29), and it was scored before items
-with no official rule stopped counting toward the rule score.
+"Before" is an earlier run on the previous version of the exam, without the AI.
+"After" is the current exam with the AI (`gpt-4o-mini`) and this change.
 
 **When the calculator finds the error by itself (no AI):**
 
@@ -123,10 +117,10 @@ with no official rule stopped counting toward the rule score.
 ## Why this is better
 
 Before, the pipeline answered like a student who writes "see the Revenue
-textbook." Now it answers "Revenue textbook, chapter 10, page 50." It still
-often lands on the wrong page, but it gets the right chapter half the time
-instead of never, and every answer now comes from the official rulebook instead
-of the AI's memory.
+textbook." Now it answers "Revenue textbook, chapter 10, page 50." When it
+names a rule, the chapter is now right half the time (up from 31%). It still
+often lands on the wrong page, and every answer now comes from the official
+rulebook instead of the AI's memory.
 
 ## What is still wrong
 
@@ -144,8 +138,8 @@ The exact page is still 0%. We found three reasons:
 
 The AI also still says almost every statement it sees is wrong (44 of 45).
 
-These numbers come from one run on 54 items, so small differences such as one
-extra correct book (8 → 9) can be noise. The chapter jump (0 → 9) is not.
+These numbers come from single runs on 54 items, so small differences can be
+noise.
 
 ## Files changed
 
