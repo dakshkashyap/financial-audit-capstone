@@ -92,20 +92,23 @@ writes a page number that isn't on the list, we don't keep the invented part.
 
 ## Before and after
 
-54 exam items from IntelliAudit-Bench. Each score is shown two ways:
+Same 54 items from the first version of the IntelliAudit-Bench exam, where every
+item has an official rule. Same scoring, same AI (`gpt-4o-mini`). Each score is
+out of all 54 items.
 
-- **Of the rules we gave:** how often the rule we named was right.
-- **Of all 54 items:** how often we named the right rule, counting items where
-  we named no rule as misses.
+| Setup | Right book | Right book and chapter | Right exact page |
+|---|---|---|---|
+| Before, no AI | 27.8% | 16.7% | 0% |
+| Before, with AI | 57.4% | 18.5% | 0% |
+| **After, with AI** | **66.7%** | **55.6%** | **7.4%** |
 
-| What we measure | Before | After |
-|---|---|---|
-| Right book | 51.7% / 27.8% | 50.0% / 16.7% |
-| Right book and chapter | 31.0% / 16.7% | **50.0%** / 16.7% |
-| Right exact page | 0% / 0% | 0% / 0% |
+The chapter jump comes from ending the book-only answers: before, the AI
+answered with just a book (`ASC 230`) 23 times; after, never. When only the
+calculator names a rule (no AI), the chapter is right 45% of the time, up
+from 31%.
 
-"Before" is an earlier run on the previous version of the exam, without the AI.
-"After" is the current exam with the AI (`gpt-4o-mini`) and this change.
+On the current exam, where only 18 of the 54 items have an official rule, right
+book and chapter went from 1 of 18 to 8 of 18 with the AI.
 
 **When the calculator finds the error by itself (no AI):**
 
@@ -117,14 +120,15 @@ writes a page number that isn't on the list, we don't keep the invented part.
 ## Why this is better
 
 Before, the pipeline answered like a student who writes "see the Revenue
-textbook." Now it answers "Revenue textbook, chapter 10, page 50." When it
-names a rule, the chapter is now right half the time (up from 31%). It still
-often lands on the wrong page, and every answer now comes from the official
+textbook." Now it answers "Revenue textbook, chapter 10, page 50." The right
+chapter went from 17% to 56% of items, and it now sometimes hits the exact page.
+It still often lands on the wrong page, and every answer now comes from the official
 rulebook instead of the AI's memory.
 
 ## What is still wrong
 
-The exact page is still 0%. We found three reasons:
+The exact page is still rare (7% on the first exam, 0% on the current one). We
+found three reasons:
 
 1. **The AI flags the wrong row, so it picks from the wrong list.** On the cash
    flow items, the correct rule (`230-10-45-13`) was in the right row's list,
