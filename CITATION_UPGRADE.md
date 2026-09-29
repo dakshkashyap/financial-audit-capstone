@@ -103,6 +103,16 @@ sample. Rule scores count the 18 items that have an official rule to cite.
 | Right exact page | 0% | 0% |
 | Calculator finds the error | 9 of 54 | 9 of 54 (unchanged) |
 
+"Before" here is the same exam and the same AI, just without this change. Its
+chapter score is 0% because every AI answer named only a book (`ASC 230`),
+which can never match a chapter.
+
+An earlier run, on the older version of the exam and without the AI, scored
+51.7% / 27.8% on the book and 31.0% / 16.7% on book and chapter (precision /
+recall). That run is not comparable: the exam was rebuilt afterwards (the
+calculator now fires on 9 items instead of 29), and it was scored before items
+with no official rule stopped counting toward the rule score.
+
 **When the calculator finds the error by itself (no AI):**
 
 | Correct rule | Before | After |
