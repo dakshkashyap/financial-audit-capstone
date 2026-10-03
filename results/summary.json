@@ -1,13 +1,33 @@
 {
   "seed": 42,
-  "n": 5,
+  "n": 1484,
   "dry_run": false,
   "results": {
-    "gemini-2.0-flash_single_error": {
+    "mistral/open-mixtral-8x22b_correct": {
+      "em_general_judgment": 0.0,
+      "em_error_type": 1.0,
+      "em_error_entry": 1.0,
+      "bertscore": 1.0,
+      "standards_top1": 0.0,
+      "standards_top5": 0.0,
+      "bleu": 0.0,
+      "success_rate": 0.0
+    },
+    "mistral/open-mixtral-8x22b_single_error": {
       "em_general_judgment": 0.0,
       "em_error_type": 0.0,
       "em_error_entry": 0.0,
-      "bertscore": 0.7993,
+      "bertscore": 0.8016,
+      "standards_top1": 0.0,
+      "standards_top5": 0.0,
+      "bleu": 0.0,
+      "success_rate": 0.0
+    },
+    "mistral/open-mixtral-8x22b_multi_error": {
+      "em_general_judgment": 0.0,
+      "em_error_type": 0.0,
+      "em_error_entry": 0.0,
+      "bertscore": 0.7944,
       "standards_top1": 0.0,
       "standards_top5": 0.0,
       "bleu": 0.0,

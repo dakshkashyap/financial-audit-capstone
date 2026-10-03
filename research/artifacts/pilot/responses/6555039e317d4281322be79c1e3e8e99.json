@@ -1,0 +1,19 @@
+{
+  "call_id": "6555039e317d4281322be79c1e3e8e99",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "5de1705d34222d1f3af8a4c612be6682d07799bfda8eb6e6ad0f6a20074dc0eb",
+  "reserved_usd": "0.053916",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"correct\",\"error_type\":null,\"row\":null,\"citation\":null,\"citation_abstain\":true,\"evidence\":[{\"source\":\"statement\",\"quote\":\"Total current assets | $911\",\"row\":9},{\"source\":\"statement\",\"quote\":\"Total liabilities and stockholders' equity | $4,644\",\"row\":40},{\"source\":\"transactions\",\"quote\":\"lenders waived the breach and their right to demand repayment for a period of more than twelve months from the balance-sheet date\",\"row\":null},{\"source\":\"transactions\",\"quote\":\"PV of payments / fair value: 65%\",\"row\":null}]}\n```\n\n{\"reason\":\"All subtotals and totals foot, and every line with movement data reconciles to its reported balance. The receivables allowance, inventory NRV, operating-lease tests and the debt waiver of more than twelve months all support the presentation. Not every row has transaction data, so some lines remain unverified.\"}",
+  "response_id": "gen-1791001146-IpbMuJu584IDzrpZXT8l",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 3114,
+    "completion_tokens": 865,
+    "total_tokens": 3979,
+    "cost": 0.029756
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 9.22
+}

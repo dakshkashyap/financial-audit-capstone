@@ -1,0 +1,21 @@
+{
+  "call_id": "018c9a4f8f1c42008c79219af58e4e15",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":\"ASC 470-10-45-11\",\"citation_abstain\":false,\"error_type\":\"Misclassification\",\"evidence\":[{\"quote\":\"Long-term debt | $17,296\",\"row\":33,\"source\":\"statement\"},{\"quote\":\"the lenders waived their right to demand repayment for six months from the balance-sheet date only\",\"row\":null,\"source\":\"transactions\"},{\"quote\":\"a covenant breach entitles the lenders to demand repayment\",\"row\":null,\"source\":\"transactions\"}],\"judgement\":\"incorrect\",\"reason\":\"The statement totals foot. However, at period-end a covenant breach made the debt callable, and the waiver covers only six months, not more than one year. The debt should therefore be classified as current, yet it is presented as non-current long-term debt. ASC 470-10-45-11 governs the classification of callable obligations.\",\"row\":33}",
+  "reserved_usd": "0.063504",
+  "request_sha256": "70b488f2a3c8ff93495863b8a11f3477403da9e75a21fd95cd9bcbb360019b22",
+  "prompt_sha256": "e4f642a86b6f34ecd93e5b1ff8111eab26e3e1b14d70249dcf3eafe5e4bf6f12",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002440-HENS9Lbf8A743rZHzaHc",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 3736,
+    "completion_tokens": 434,
+    "total_tokens": 4170,
+    "cost": 0.023624
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 6.57
+}

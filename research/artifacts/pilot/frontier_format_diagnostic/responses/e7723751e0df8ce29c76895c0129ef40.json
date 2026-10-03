@@ -1,0 +1,21 @@
+{
+  "call_id": "e7723751e0df8ce29c76895c0129ef40",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":\"Missing Row\",\"evidence\":[{\"quote\":\"[Repurchases of common stock] common stock repurchased: −746 (decrease); settlement / retire-share adjustment: +41 (increase)\",\"row\":null,\"source\":\"transactions\"},{\"quote\":\"[row 12]: Net cash from financing activities | ($4,625) [SEP]\",\"row\":12,\"source\":\"statement\"},{\"quote\":\"[row 11]: Other financing activities, net | ($747) [SEP]\",\"row\":11,\"source\":\"statement\"}],\"judgement\":\"incorrect\",\"reason\":\"The financing rows sum to -3,173 - 747 = -3,920, but the reported total is -4,625. The gap of -705 equals the repurchases evidence (-746 + 41). The repurchases line is therefore missing and belongs before the financing total, at row 11. The other sections reconcile: operating 6,379 + 107 + 1,893 = 8,379, investing totals -3,667, and the net change is 87. No specific ASC paragraph is confidently applicable.\",\"row\":11}",
+  "reserved_usd": "0.047288",
+  "request_sha256": "70510ff8f927749d9c08c4f08a8dd92ddbafcaaad0ed18eeb8689b8ca7d3217b",
+  "prompt_sha256": "078469f8a491bc91831256d614e15e7bd8cbc020a33a12f93e5e7faad9589c3c",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002254-bjE7AC6eBpHLunRwGQiR",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 2084,
+    "completion_tokens": 367,
+    "total_tokens": 2451,
+    "cost": 0.015676
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 6.353
+}

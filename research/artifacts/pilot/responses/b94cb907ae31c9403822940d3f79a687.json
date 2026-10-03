@@ -1,0 +1,19 @@
+{
+  "call_id": "b94cb907ae31c9403822940d3f79a687",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "768b07c084ad772780d80bfa94332fdbad2fedc4fb72a3fd33ab2c0e8c35a125",
+  "reserved_usd": "0.049728",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"incorrect\",\"error_type\":\"Missing Row\",\"row\":26,\"citation\":null,\"citation_abstain\":true,\"evidence\":[{\"source\":\"transactions\",\"quote\":\"[Other non-current liabilities] other credits posted to the account: +10 (increase); other charges posted to the account: −3 (decrease)\",\"row\":null},{\"source\":\"statement\",\"quote\":\"[row 24]: Operating lease liabilities | $36\",\"row\":24},{\"source\":\"statement\",\"quote\":\"[row 25]: Deferred income taxes | $86\",\"row\":25},{\"source\":\"statement\",\"quote\":\"[row 26]: Total non-current liabilities | $129\",\"row\":26}],\"reason\":\"Non-current liabilities shown are 36 + 86 = 122, but the reported subtotal is 129. The transactions support an Other non-current liabilities balance of 10 − 3 = 7, which closes the gap exactly. That row is omitted and belongs before the subtotal at index 26. All other subtotals and totals reconcile. This is an omission fault, not an ASC-governed violation, so no citation is given.\"}\n```",
+  "response_id": "gen-1791001374-MiekgSmrikNYVi60c4po",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 2701,
+    "completion_tokens": 774,
+    "total_tokens": 3475,
+    "cost": 0.026284
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 8.793
+}

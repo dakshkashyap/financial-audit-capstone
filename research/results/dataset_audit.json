@@ -1,0 +1,4660 @@
+{
+  "audit_schema": "intelliaudit-offline-v1",
+  "datasets": {
+    "asc_snapshot": {
+      "company_counts": {
+        "Alphabet Inc.": 172,
+        "Apple Inc.": 168,
+        "COCA COLA CO": 57,
+        "Johnson & Johnson": 172,
+        "MICROSOFT CORPORATION": 177,
+        "Meta Platforms, Inc.": 168,
+        "NVIDIA CORP": 165,
+        "WALMART INC.": 123
+      },
+      "control_evidence": {
+        "injected_n": 1202,
+        "injected_with_ledger_n": 1202,
+        "injected_with_supporting_facts_n": 0
+      },
+      "counts": {
+        "answer_key": 1202,
+        "clean_statements": 220,
+        "companies": 8,
+        "company_statement_year_groups": 220,
+        "controls": 0,
+        "duplicate_exam_ids": 0,
+        "duplicate_key_ids": 0,
+        "exam": 1202,
+        "exam_without_key": 0,
+        "joined": 1202
+      },
+      "directory": "/workspace/source-asc/data/intelliaudit",
+      "error_type_counts": {
+        "Misclassification": 271,
+        "Missing Row": 220,
+        "Numerical Error": 571,
+        "Redundant Row": 140
+      },
+      "file_sha256": {
+        "answer_key.jsonl": "6c08c836c901362e710c4dbf9ee7682962b472e49914791d3d00d02e3766caf2",
+        "exam.jsonl": "f436c683378e4fa08294f515ba502af455411466f4096024f2d5974b6781d27e",
+        "statements_clean.jsonl": "75d112b240f28d50b0d2c547b294bf1ff67c3b8f0d799e7191976b92b06cf88c"
+      },
+      "gold": {
+        "citable_n": 492,
+        "citable_nonparagraph_code_n": 112,
+        "citation_tiers": {
+          "expert-authored-UNVALIDATED": 479,
+          "linkbase-verified": 13,
+          "no-governing-paragraph": 710
+        },
+        "distinct_paragraphs": [
+          "ASC 210-10-45-1",
+          "ASC 210-10-45-5",
+          "ASC 230-10-45",
+          "ASC 320-10-35-1",
+          "ASC 330-10-35-1B",
+          "ASC 350-20-35-1",
+          "ASC 470-10-45",
+          "ASC 606-10-25-1",
+          "ASC 842-10-25-2"
+        ],
+        "human_review_fields_in_key_n": 0,
+        "interpretation": "exact paragraph membership in taxonomy references is mechanically checked; it does not prove paragraph governs the alleged violation or that human review happened",
+        "mismatch_examples": [],
+        "nonparagraph_codes": [
+          "ASC 230-10-45",
+          "ASC 470-10-45"
+        ],
+        "standard_version_fields_in_key_n": 0,
+        "strict_linkbase_flag_mismatch_n": 0
+      },
+      "leakage": {
+        "evidence_contains_clean_row_numbers": 13565,
+        "exam_citation_codes": 0,
+        "exam_rule_id_tokens": 1202,
+        "public_salt_hash_reversibility": "opaque hashes prevent direct semantic reading, not secrecy if generator salt and sample-id construction are public"
+      },
+      "metadata_citation_shortcuts": {
+        "denominator": "only cases whose key marks citable=true",
+        "features": {
+          "oracle_error_type_and_statement": {
+            "heldout_item": {
+              "accuracy": 0.5196078431372549,
+              "correct": 53,
+              "n": 102,
+              "unseen_feature_n": 0
+            },
+            "leave_one_company_out": {
+              "correct": 229,
+              "folds": {
+                "Alphabet Inc.": {
+                  "accuracy": 0.5416666666666666,
+                  "correct": 39,
+                  "n": 72,
+                  "unseen_feature_n": 0
+                },
+                "Apple Inc.": {
+                  "accuracy": 0.43661971830985913,
+                  "correct": 31,
+                  "n": 71,
+                  "unseen_feature_n": 0
+                },
+                "COCA COLA CO": {
+                  "accuracy": 1.0,
+                  "correct": 10,
+                  "n": 10,
+                  "unseen_feature_n": 0
+                },
+                "Johnson & Johnson": {
+                  "accuracy": 0.48717948717948717,
+                  "correct": 38,
+                  "n": 78,
+                  "unseen_feature_n": 0
+                },
+                "MICROSOFT CORPORATION": {
+                  "accuracy": 0.4125,
+                  "correct": 33,
+                  "n": 80,
+                  "unseen_feature_n": 0
+                },
+                "Meta Platforms, Inc.": {
+                  "accuracy": 0.4264705882352941,
+                  "correct": 29,
+                  "n": 68,
+                  "unseen_feature_n": 0
+                },
+                "NVIDIA CORP": {
+                  "accuracy": 0.4,
+                  "correct": 26,
+                  "n": 65,
+                  "unseen_feature_n": 0
+                },
+                "WALMART INC.": {
+                  "accuracy": 0.4791666666666667,
+                  "correct": 23,
+                  "n": 48,
+                  "unseen_feature_n": 0
+                }
+              },
+              "macro_accuracy": 0.5229503908822467,
+              "micro_accuracy": 0.4654471544715447,
+              "n": 492
+            },
+            "resubstitution_diagnostic": {
+              "accuracy": 0.508130081300813,
+              "correct": 250,
+              "n": 492,
+              "unseen_feature_n": 0
+            }
+          },
+          "oracle_rule_id_and_statement": {
+            "heldout_item": {
+              "accuracy": 1.0,
+              "correct": 102,
+              "n": 102,
+              "unseen_feature_n": 0
+            },
+            "leave_one_company_out": {
+              "correct": 492,
+              "folds": {
+                "Alphabet Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 72,
+                  "n": 72,
+                  "unseen_feature_n": 0
+                },
+                "Apple Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 71,
+                  "n": 71,
+                  "unseen_feature_n": 0
+                },
+                "COCA COLA CO": {
+                  "accuracy": 1.0,
+                  "correct": 10,
+                  "n": 10,
+                  "unseen_feature_n": 0
+                },
+                "Johnson & Johnson": {
+                  "accuracy": 1.0,
+                  "correct": 78,
+                  "n": 78,
+                  "unseen_feature_n": 0
+                },
+                "MICROSOFT CORPORATION": {
+                  "accuracy": 1.0,
+                  "correct": 80,
+                  "n": 80,
+                  "unseen_feature_n": 0
+                },
+                "Meta Platforms, Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 68,
+                  "n": 68,
+                  "unseen_feature_n": 0
+                },
+                "NVIDIA CORP": {
+                  "accuracy": 1.0,
+                  "correct": 65,
+                  "n": 65,
+                  "unseen_feature_n": 0
+                },
+                "WALMART INC.": {
+                  "accuracy": 1.0,
+                  "correct": 48,
+                  "n": 48,
+                  "unseen_feature_n": 0
+                }
+              },
+              "macro_accuracy": 1.0,
+              "micro_accuracy": 1.0,
+              "n": 492
+            },
+            "resubstitution_diagnostic": {
+              "accuracy": 1.0,
+              "correct": 492,
+              "n": 492,
+              "unseen_feature_n": 0
+            }
+          },
+          "statement_type": {
+            "heldout_item": {
+              "accuracy": 0.4117647058823529,
+              "correct": 42,
+              "n": 102,
+              "unseen_feature_n": 0
+            },
+            "leave_one_company_out": {
+              "correct": 192,
+              "folds": {
+                "Alphabet Inc.": {
+                  "accuracy": 0.4027777777777778,
+                  "correct": 29,
+                  "n": 72,
+                  "unseen_feature_n": 0
+                },
+                "Apple Inc.": {
+                  "accuracy": 0.39436619718309857,
+                  "correct": 28,
+                  "n": 71,
+                  "unseen_feature_n": 0
+                },
+                "COCA COLA CO": {
+                  "accuracy": 1.0,
+                  "correct": 10,
+                  "n": 10,
+                  "unseen_feature_n": 0
+                },
+                "Johnson & Johnson": {
+                  "accuracy": 0.358974358974359,
+                  "correct": 28,
+                  "n": 78,
+                  "unseen_feature_n": 0
+                },
+                "MICROSOFT CORPORATION": {
+                  "accuracy": 0.3625,
+                  "correct": 29,
+                  "n": 80,
+                  "unseen_feature_n": 0
+                },
+                "Meta Platforms, Inc.": {
+                  "accuracy": 0.4264705882352941,
+                  "correct": 29,
+                  "n": 68,
+                  "unseen_feature_n": 0
+                },
+                "NVIDIA CORP": {
+                  "accuracy": 0.24615384615384617,
+                  "correct": 16,
+                  "n": 65,
+                  "unseen_feature_n": 0
+                },
+                "WALMART INC.": {
+                  "accuracy": 0.4791666666666667,
+                  "correct": 23,
+                  "n": 48,
+                  "unseen_feature_n": 0
+                }
+              },
+              "macro_accuracy": 0.45880117937388026,
+              "micro_accuracy": 0.3902439024390244,
+              "n": 492
+            },
+            "resubstitution_diagnostic": {
+              "accuracy": 0.3902439024390244,
+              "correct": 192,
+              "n": 492,
+              "unseen_feature_n": 0
+            }
+          }
+        },
+        "n": 492,
+        "split": "sha256(exam_id or sample_id) modulo 5; bucket 0 test; others train",
+        "test_n": 102,
+        "train_n": 390
+      },
+      "name": "asc_snapshot",
+      "numeric_transaction_reconstruction": {
+        "by_rule": {
+          "R05_numerical_error_value": {
+            "absolute_component_sum_equals_original_magnitude": 143,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 64,
+            "numeric_cases": 220,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 148
+          },
+          "R07_balance_sheet_identity_break": {
+            "absolute_component_sum_equals_original_magnitude": 44,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 44,
+            "numeric_cases": 65,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 46
+          },
+          "R09_revenue_recognition_timing": {
+            "absolute_component_sum_equals_original_magnitude": 26,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 26,
+            "numeric_cases": 57,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 26
+          },
+          "R11_inventory_no_nrv_writedown": {
+            "absolute_component_sum_equals_original_magnitude": 27,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 27,
+            "numeric_cases": 52,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 27
+          },
+          "R12_negative_value_on_nonnegative_element": {
+            "absolute_component_sum_equals_original_magnitude": 27,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 27,
+            "numeric_cases": 65,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 27
+          },
+          "R14_goodwill_impairment_omitted": {
+            "absolute_component_sum_equals_original_magnitude": 38,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 38,
+            "numeric_cases": 58,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 38
+          },
+          "R15_afs_securities_measurement": {
+            "absolute_component_sum_equals_original_magnitude": 33,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 33,
+            "numeric_cases": 54,
+            "single_component_equals_original_magnitude": 1,
+            "target_has_component_evidence": 34
+          }
+        },
+        "definition": "signed component sums on target caption compared with key original_value; partial evidence coverage is preserved",
+        "examples": [
+          {
+            "id": "IA-AAPL-2015-BS-R05_numerical_error_value-00",
+            "label": "Deferred tax assets liabilities, net, current",
+            "original": 5546,
+            "parts": [
+              1965,
+              3581
+            ],
+            "rule_id": "R05_numerical_error_value",
+            "shown": 3581
+          },
+          {
+            "id": "IA-AAPL-2015-BS-R07_balance_sheet_identity_break-00",
+            "label": "Retained earnings accumulated deficit",
+            "original": 92284,
+            "parts": [
+              111636,
+              -19352
+            ],
+            "rule_id": "R07_balance_sheet_identity_break",
+            "shown": 89184
+          },
+          {
+            "id": "IA-AAPL-2015-BS-R12_negative_value_on_nonnegative_element-00",
+            "label": "Cash and cash equivalents at carrying value",
+            "original": 21120,
+            "parts": [
+              29092,
+              -7972
+            ],
+            "rule_id": "R12_negative_value_on_nonnegative_element",
+            "shown": -21120
+          },
+          {
+            "id": "IA-AAPL-2015-BS-R14_goodwill_impairment_omitted-00",
+            "label": "Goodwill",
+            "original": 5116,
+            "parts": [
+              2962,
+              2154
+            ],
+            "rule_id": "R14_goodwill_impairment_omitted",
+            "shown": 6742
+          },
+          {
+            "id": "IA-AAPL-2016-BS-R14_goodwill_impairment_omitted-00",
+            "label": "Goodwill",
+            "original": 5414,
+            "parts": [
+              2028,
+              3386
+            ],
+            "rule_id": "R14_goodwill_impairment_omitted",
+            "shown": 6298
+          },
+          {
+            "id": "IA-AAPL-2017-BS-R05_numerical_error_value-00",
+            "label": "Retained earnings accumulated deficit",
+            "original": 98330,
+            "parts": [
+              149590,
+              -51260
+            ],
+            "rule_id": "R05_numerical_error_value",
+            "shown": 111978
+          },
+          {
+            "id": "IA-AAPL-2017-BS-R07_balance_sheet_identity_break-00",
+            "label": "Retained earnings accumulated deficit",
+            "original": 98330,
+            "parts": [
+              149590,
+              -51260
+            ],
+            "rule_id": "R07_balance_sheet_identity_break",
+            "shown": 89240
+          },
+          {
+            "id": "IA-AAPL-2017-BS-R11_inventory_no_nrv_writedown-00",
+            "label": "Inventory, net",
+            "original": 4855,
+            "parts": [
+              6054,
+              -1199
+            ],
+            "rule_id": "R11_inventory_no_nrv_writedown",
+            "shown": 6042
+          }
+        ],
+        "totals": {
+          "absolute_component_sum_equals_original_magnitude": 338,
+          "components_sum_to_erroneous_as_booked": 0,
+          "components_sum_to_original": 259,
+          "numeric_cases": 571,
+          "single_component_equals_original_magnitude": 1,
+          "target_has_component_evidence": 346
+        }
+      },
+      "provenance": {
+        "clean_statements": 220,
+        "duration_statement_n": 155,
+        "duration_statements_with_only_instant_fact_periods": 155,
+        "facts_with_accession_or_filing_url": 0,
+        "interpretation": "decimals=-6 describes precision; it does not multiply an ISO4217 fact value by one million. Instant periods do not represent annual revenues/cash flows. These are scaled internal tables, not valid filing fact exports.",
+        "scaled_millions_statements": 220,
+        "scaled_statements_whose_numeric_table_values_equal_iso4217_fact_values": 220,
+        "serialized_facts": 3231,
+        "statement_source_descriptions": {
+          "SEC EDGAR companyfacts (real 10-K)": 156,
+          "SEC EDGAR companyfacts + filing calculation linkbase (real 10-K)": 64
+        },
+        "statements_with_accession_or_filing_url": 0
+      },
+      "repeated_statement_versions": {
+        "forms_present": [],
+        "groups_with_more_than_one_version": 220,
+        "same_statement_duplicates_within_form": 0,
+        "version_count_quantiles": {
+          "max": 12,
+          "median": 4,
+          "min": 2,
+          "p90": 11
+        },
+        "warning": "random item splits can share the same base statement across train/test; fit learned systems by company and keep case variants together"
+      },
+      "residuals": {
+        "note": "suffix absence alone does not prove residual elimination; upstream renames plug lines",
+        "residual_suffix_rows": 389,
+        "statements_with_residual_suffix": 188,
+        "structured_audit": "not available: clean JSON rows required to distinguish plugs from real other-assets captions"
+      },
+      "rule_counts": {
+        "R01_current_noncurrent_asset_misclass": 65,
+        "R02_current_noncurrent_liab_misclass": 65,
+        "R03_debt_current_refinance_misclass": 42,
+        "R04_missing_line_item": 220,
+        "R05_numerical_error_value": 220,
+        "R06_redundant_fabricated_row": 140,
+        "R07_balance_sheet_identity_break": 65,
+        "R08_cashflow_section_misclass": 70,
+        "R09_revenue_recognition_timing": 57,
+        "R10_lease_operating_finance_misclass": 29,
+        "R11_inventory_no_nrv_writedown": 52,
+        "R12_negative_value_on_nonnegative_element": 65,
+        "R14_goodwill_impairment_omitted": 58,
+        "R15_afs_securities_measurement": 54
+      },
+      "rule_year_counts": {
+        "R01_current_noncurrent_asset_misclass": {
+          "2015": 6,
+          "2016": 6,
+          "2017": 6,
+          "2018": 6,
+          "2019": 6,
+          "2020": 7,
+          "2021": 7,
+          "2022": 7,
+          "2023": 7,
+          "2024": 7
+        },
+        "R02_current_noncurrent_liab_misclass": {
+          "2015": 6,
+          "2016": 6,
+          "2017": 6,
+          "2018": 6,
+          "2019": 6,
+          "2020": 7,
+          "2021": 7,
+          "2022": 7,
+          "2023": 7,
+          "2024": 7
+        },
+        "R03_debt_current_refinance_misclass": {
+          "2015": 3,
+          "2016": 3,
+          "2017": 3,
+          "2018": 3,
+          "2019": 3,
+          "2020": 4,
+          "2021": 5,
+          "2022": 6,
+          "2023": 6,
+          "2024": 6
+        },
+        "R04_missing_line_item": {
+          "2015": 18,
+          "2016": 21,
+          "2017": 22,
+          "2018": 22,
+          "2019": 22,
+          "2020": 23,
+          "2021": 23,
+          "2022": 23,
+          "2023": 23,
+          "2024": 23
+        },
+        "R05_numerical_error_value": {
+          "2015": 18,
+          "2016": 21,
+          "2017": 22,
+          "2018": 22,
+          "2019": 22,
+          "2020": 23,
+          "2021": 23,
+          "2022": 23,
+          "2023": 23,
+          "2024": 23
+        },
+        "R06_redundant_fabricated_row": {
+          "2015": 10,
+          "2016": 13,
+          "2017": 14,
+          "2018": 14,
+          "2019": 14,
+          "2020": 15,
+          "2021": 15,
+          "2022": 15,
+          "2023": 15,
+          "2024": 15
+        },
+        "R07_balance_sheet_identity_break": {
+          "2015": 6,
+          "2016": 6,
+          "2017": 6,
+          "2018": 6,
+          "2019": 6,
+          "2020": 7,
+          "2021": 7,
+          "2022": 7,
+          "2023": 7,
+          "2024": 7
+        },
+        "R08_cashflow_section_misclass": {
+          "2015": 7,
+          "2016": 7,
+          "2017": 7,
+          "2018": 7,
+          "2019": 7,
+          "2020": 7,
+          "2021": 7,
+          "2022": 7,
+          "2023": 7,
+          "2024": 7
+        },
+        "R09_revenue_recognition_timing": {
+          "2016": 3,
+          "2017": 7,
+          "2018": 7,
+          "2019": 7,
+          "2020": 7,
+          "2021": 7,
+          "2022": 7,
+          "2023": 6,
+          "2024": 6
+        },
+        "R10_lease_operating_finance_misclass": {
+          "2018": 1,
+          "2019": 3,
+          "2020": 5,
+          "2021": 5,
+          "2022": 5,
+          "2023": 5,
+          "2024": 5
+        },
+        "R11_inventory_no_nrv_writedown": {
+          "2015": 4,
+          "2016": 5,
+          "2017": 5,
+          "2018": 5,
+          "2019": 5,
+          "2020": 6,
+          "2021": 6,
+          "2022": 6,
+          "2023": 5,
+          "2024": 5
+        },
+        "R12_negative_value_on_nonnegative_element": {
+          "2015": 6,
+          "2016": 6,
+          "2017": 6,
+          "2018": 6,
+          "2019": 6,
+          "2020": 7,
+          "2021": 7,
+          "2022": 7,
+          "2023": 7,
+          "2024": 7
+        },
+        "R14_goodwill_impairment_omitted": {
+          "2015": 6,
+          "2016": 6,
+          "2017": 6,
+          "2018": 5,
+          "2019": 5,
+          "2020": 6,
+          "2021": 6,
+          "2022": 6,
+          "2023": 6,
+          "2024": 6
+        },
+        "R15_afs_securities_measurement": {
+          "2015": 6,
+          "2016": 6,
+          "2017": 6,
+          "2018": 6,
+          "2019": 5,
+          "2020": 5,
+          "2021": 5,
+          "2022": 5,
+          "2023": 5,
+          "2024": 5
+        }
+      },
+      "statement_counts": {
+        "BalanceSheet": 690,
+        "CashFlow": 230,
+        "IncomeStatement": 282
+      },
+      "year_counts": {
+        "2015": 96,
+        "2016": 109,
+        "2017": 116,
+        "2018": 116,
+        "2019": 117,
+        "2020": 129,
+        "2021": 130,
+        "2022": 131,
+        "2023": 129,
+        "2024": 129
+      }
+    },
+    "ifrs_snapshot": {
+      "company_counts": {
+        "Alphabet Inc.": 172,
+        "Apple Inc.": 168,
+        "COCA COLA CO": 57,
+        "Johnson & Johnson": 172,
+        "MICROSOFT CORPORATION": 177,
+        "Meta Platforms, Inc.": 168,
+        "NVIDIA CORP": 165,
+        "WALMART INC.": 123
+      },
+      "control_evidence": {
+        "injected_n": 1202,
+        "injected_with_ledger_n": 1202,
+        "injected_with_supporting_facts_n": 0
+      },
+      "counts": {
+        "answer_key": 1202,
+        "clean_statements": 220,
+        "companies": 8,
+        "company_statement_year_groups": 220,
+        "controls": 0,
+        "duplicate_exam_ids": 0,
+        "duplicate_key_ids": 0,
+        "exam": 1202,
+        "exam_without_key": 0,
+        "joined": 1202
+      },
+      "directory": "/workspace/source-ifrs/data/intelliaudit",
+      "error_type_counts": {
+        "Misclassification": 271,
+        "Missing Row": 220,
+        "Numerical Error": 571,
+        "Redundant Row": 140
+      },
+      "file_sha256": {
+        "answer_key.jsonl": "6c08c836c901362e710c4dbf9ee7682962b472e49914791d3d00d02e3766caf2",
+        "exam.jsonl": "f436c683378e4fa08294f515ba502af455411466f4096024f2d5974b6781d27e",
+        "statements_clean.jsonl": "75d112b240f28d50b0d2c547b294bf1ff67c3b8f0d799e7191976b92b06cf88c"
+      },
+      "gold": {
+        "citable_n": 492,
+        "citable_nonparagraph_code_n": 112,
+        "citation_tiers": {
+          "expert-authored-UNVALIDATED": 479,
+          "linkbase-verified": 13,
+          "no-governing-paragraph": 710
+        },
+        "distinct_paragraphs": [
+          "ASC 210-10-45-1",
+          "ASC 210-10-45-5",
+          "ASC 230-10-45",
+          "ASC 320-10-35-1",
+          "ASC 330-10-35-1B",
+          "ASC 350-20-35-1",
+          "ASC 470-10-45",
+          "ASC 606-10-25-1",
+          "ASC 842-10-25-2"
+        ],
+        "human_review_fields_in_key_n": 0,
+        "interpretation": "exact paragraph membership in taxonomy references is mechanically checked; it does not prove paragraph governs the alleged violation or that human review happened",
+        "mismatch_examples": [],
+        "nonparagraph_codes": [
+          "ASC 230-10-45",
+          "ASC 470-10-45"
+        ],
+        "standard_version_fields_in_key_n": 0,
+        "strict_linkbase_flag_mismatch_n": 0
+      },
+      "leakage": {
+        "evidence_contains_clean_row_numbers": 13565,
+        "exam_citation_codes": 0,
+        "exam_rule_id_tokens": 1202,
+        "public_salt_hash_reversibility": "opaque hashes prevent direct semantic reading, not secrecy if generator salt and sample-id construction are public"
+      },
+      "metadata_citation_shortcuts": {
+        "denominator": "only cases whose key marks citable=true",
+        "features": {
+          "oracle_error_type_and_statement": {
+            "heldout_item": {
+              "accuracy": 0.5196078431372549,
+              "correct": 53,
+              "n": 102,
+              "unseen_feature_n": 0
+            },
+            "leave_one_company_out": {
+              "correct": 229,
+              "folds": {
+                "Alphabet Inc.": {
+                  "accuracy": 0.5416666666666666,
+                  "correct": 39,
+                  "n": 72,
+                  "unseen_feature_n": 0
+                },
+                "Apple Inc.": {
+                  "accuracy": 0.43661971830985913,
+                  "correct": 31,
+                  "n": 71,
+                  "unseen_feature_n": 0
+                },
+                "COCA COLA CO": {
+                  "accuracy": 1.0,
+                  "correct": 10,
+                  "n": 10,
+                  "unseen_feature_n": 0
+                },
+                "Johnson & Johnson": {
+                  "accuracy": 0.48717948717948717,
+                  "correct": 38,
+                  "n": 78,
+                  "unseen_feature_n": 0
+                },
+                "MICROSOFT CORPORATION": {
+                  "accuracy": 0.4125,
+                  "correct": 33,
+                  "n": 80,
+                  "unseen_feature_n": 0
+                },
+                "Meta Platforms, Inc.": {
+                  "accuracy": 0.4264705882352941,
+                  "correct": 29,
+                  "n": 68,
+                  "unseen_feature_n": 0
+                },
+                "NVIDIA CORP": {
+                  "accuracy": 0.4,
+                  "correct": 26,
+                  "n": 65,
+                  "unseen_feature_n": 0
+                },
+                "WALMART INC.": {
+                  "accuracy": 0.4791666666666667,
+                  "correct": 23,
+                  "n": 48,
+                  "unseen_feature_n": 0
+                }
+              },
+              "macro_accuracy": 0.5229503908822467,
+              "micro_accuracy": 0.4654471544715447,
+              "n": 492
+            },
+            "resubstitution_diagnostic": {
+              "accuracy": 0.508130081300813,
+              "correct": 250,
+              "n": 492,
+              "unseen_feature_n": 0
+            }
+          },
+          "oracle_rule_id_and_statement": {
+            "heldout_item": {
+              "accuracy": 1.0,
+              "correct": 102,
+              "n": 102,
+              "unseen_feature_n": 0
+            },
+            "leave_one_company_out": {
+              "correct": 492,
+              "folds": {
+                "Alphabet Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 72,
+                  "n": 72,
+                  "unseen_feature_n": 0
+                },
+                "Apple Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 71,
+                  "n": 71,
+                  "unseen_feature_n": 0
+                },
+                "COCA COLA CO": {
+                  "accuracy": 1.0,
+                  "correct": 10,
+                  "n": 10,
+                  "unseen_feature_n": 0
+                },
+                "Johnson & Johnson": {
+                  "accuracy": 1.0,
+                  "correct": 78,
+                  "n": 78,
+                  "unseen_feature_n": 0
+                },
+                "MICROSOFT CORPORATION": {
+                  "accuracy": 1.0,
+                  "correct": 80,
+                  "n": 80,
+                  "unseen_feature_n": 0
+                },
+                "Meta Platforms, Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 68,
+                  "n": 68,
+                  "unseen_feature_n": 0
+                },
+                "NVIDIA CORP": {
+                  "accuracy": 1.0,
+                  "correct": 65,
+                  "n": 65,
+                  "unseen_feature_n": 0
+                },
+                "WALMART INC.": {
+                  "accuracy": 1.0,
+                  "correct": 48,
+                  "n": 48,
+                  "unseen_feature_n": 0
+                }
+              },
+              "macro_accuracy": 1.0,
+              "micro_accuracy": 1.0,
+              "n": 492
+            },
+            "resubstitution_diagnostic": {
+              "accuracy": 1.0,
+              "correct": 492,
+              "n": 492,
+              "unseen_feature_n": 0
+            }
+          },
+          "statement_type": {
+            "heldout_item": {
+              "accuracy": 0.4117647058823529,
+              "correct": 42,
+              "n": 102,
+              "unseen_feature_n": 0
+            },
+            "leave_one_company_out": {
+              "correct": 192,
+              "folds": {
+                "Alphabet Inc.": {
+                  "accuracy": 0.4027777777777778,
+                  "correct": 29,
+                  "n": 72,
+                  "unseen_feature_n": 0
+                },
+                "Apple Inc.": {
+                  "accuracy": 0.39436619718309857,
+                  "correct": 28,
+                  "n": 71,
+                  "unseen_feature_n": 0
+                },
+                "COCA COLA CO": {
+                  "accuracy": 1.0,
+                  "correct": 10,
+                  "n": 10,
+                  "unseen_feature_n": 0
+                },
+                "Johnson & Johnson": {
+                  "accuracy": 0.358974358974359,
+                  "correct": 28,
+                  "n": 78,
+                  "unseen_feature_n": 0
+                },
+                "MICROSOFT CORPORATION": {
+                  "accuracy": 0.3625,
+                  "correct": 29,
+                  "n": 80,
+                  "unseen_feature_n": 0
+                },
+                "Meta Platforms, Inc.": {
+                  "accuracy": 0.4264705882352941,
+                  "correct": 29,
+                  "n": 68,
+                  "unseen_feature_n": 0
+                },
+                "NVIDIA CORP": {
+                  "accuracy": 0.24615384615384617,
+                  "correct": 16,
+                  "n": 65,
+                  "unseen_feature_n": 0
+                },
+                "WALMART INC.": {
+                  "accuracy": 0.4791666666666667,
+                  "correct": 23,
+                  "n": 48,
+                  "unseen_feature_n": 0
+                }
+              },
+              "macro_accuracy": 0.45880117937388026,
+              "micro_accuracy": 0.3902439024390244,
+              "n": 492
+            },
+            "resubstitution_diagnostic": {
+              "accuracy": 0.3902439024390244,
+              "correct": 192,
+              "n": 492,
+              "unseen_feature_n": 0
+            }
+          }
+        },
+        "n": 492,
+        "split": "sha256(exam_id or sample_id) modulo 5; bucket 0 test; others train",
+        "test_n": 102,
+        "train_n": 390
+      },
+      "name": "ifrs_snapshot",
+      "numeric_transaction_reconstruction": {
+        "by_rule": {
+          "R05_numerical_error_value": {
+            "absolute_component_sum_equals_original_magnitude": 143,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 64,
+            "numeric_cases": 220,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 148
+          },
+          "R07_balance_sheet_identity_break": {
+            "absolute_component_sum_equals_original_magnitude": 44,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 44,
+            "numeric_cases": 65,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 46
+          },
+          "R09_revenue_recognition_timing": {
+            "absolute_component_sum_equals_original_magnitude": 26,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 26,
+            "numeric_cases": 57,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 26
+          },
+          "R11_inventory_no_nrv_writedown": {
+            "absolute_component_sum_equals_original_magnitude": 27,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 27,
+            "numeric_cases": 52,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 27
+          },
+          "R12_negative_value_on_nonnegative_element": {
+            "absolute_component_sum_equals_original_magnitude": 27,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 27,
+            "numeric_cases": 65,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 27
+          },
+          "R14_goodwill_impairment_omitted": {
+            "absolute_component_sum_equals_original_magnitude": 38,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 38,
+            "numeric_cases": 58,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 38
+          },
+          "R15_afs_securities_measurement": {
+            "absolute_component_sum_equals_original_magnitude": 33,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 33,
+            "numeric_cases": 54,
+            "single_component_equals_original_magnitude": 1,
+            "target_has_component_evidence": 34
+          }
+        },
+        "definition": "signed component sums on target caption compared with key original_value; partial evidence coverage is preserved",
+        "examples": [
+          {
+            "id": "IA-AAPL-2015-BS-R05_numerical_error_value-00",
+            "label": "Deferred tax assets liabilities, net, current",
+            "original": 5546,
+            "parts": [
+              1965,
+              3581
+            ],
+            "rule_id": "R05_numerical_error_value",
+            "shown": 3581
+          },
+          {
+            "id": "IA-AAPL-2015-BS-R07_balance_sheet_identity_break-00",
+            "label": "Retained earnings accumulated deficit",
+            "original": 92284,
+            "parts": [
+              111636,
+              -19352
+            ],
+            "rule_id": "R07_balance_sheet_identity_break",
+            "shown": 89184
+          },
+          {
+            "id": "IA-AAPL-2015-BS-R12_negative_value_on_nonnegative_element-00",
+            "label": "Cash and cash equivalents at carrying value",
+            "original": 21120,
+            "parts": [
+              29092,
+              -7972
+            ],
+            "rule_id": "R12_negative_value_on_nonnegative_element",
+            "shown": -21120
+          },
+          {
+            "id": "IA-AAPL-2015-BS-R14_goodwill_impairment_omitted-00",
+            "label": "Goodwill",
+            "original": 5116,
+            "parts": [
+              2962,
+              2154
+            ],
+            "rule_id": "R14_goodwill_impairment_omitted",
+            "shown": 6742
+          },
+          {
+            "id": "IA-AAPL-2016-BS-R14_goodwill_impairment_omitted-00",
+            "label": "Goodwill",
+            "original": 5414,
+            "parts": [
+              2028,
+              3386
+            ],
+            "rule_id": "R14_goodwill_impairment_omitted",
+            "shown": 6298
+          },
+          {
+            "id": "IA-AAPL-2017-BS-R05_numerical_error_value-00",
+            "label": "Retained earnings accumulated deficit",
+            "original": 98330,
+            "parts": [
+              149590,
+              -51260
+            ],
+            "rule_id": "R05_numerical_error_value",
+            "shown": 111978
+          },
+          {
+            "id": "IA-AAPL-2017-BS-R07_balance_sheet_identity_break-00",
+            "label": "Retained earnings accumulated deficit",
+            "original": 98330,
+            "parts": [
+              149590,
+              -51260
+            ],
+            "rule_id": "R07_balance_sheet_identity_break",
+            "shown": 89240
+          },
+          {
+            "id": "IA-AAPL-2017-BS-R11_inventory_no_nrv_writedown-00",
+            "label": "Inventory, net",
+            "original": 4855,
+            "parts": [
+              6054,
+              -1199
+            ],
+            "rule_id": "R11_inventory_no_nrv_writedown",
+            "shown": 6042
+          }
+        ],
+        "totals": {
+          "absolute_component_sum_equals_original_magnitude": 338,
+          "components_sum_to_erroneous_as_booked": 0,
+          "components_sum_to_original": 259,
+          "numeric_cases": 571,
+          "single_component_equals_original_magnitude": 1,
+          "target_has_component_evidence": 346
+        }
+      },
+      "provenance": {
+        "clean_statements": 220,
+        "duration_statement_n": 155,
+        "duration_statements_with_only_instant_fact_periods": 155,
+        "facts_with_accession_or_filing_url": 0,
+        "interpretation": "decimals=-6 describes precision; it does not multiply an ISO4217 fact value by one million. Instant periods do not represent annual revenues/cash flows. These are scaled internal tables, not valid filing fact exports.",
+        "scaled_millions_statements": 220,
+        "scaled_statements_whose_numeric_table_values_equal_iso4217_fact_values": 220,
+        "serialized_facts": 3231,
+        "statement_source_descriptions": {
+          "SEC EDGAR companyfacts (real 10-K)": 156,
+          "SEC EDGAR companyfacts + filing calculation linkbase (real 10-K)": 64
+        },
+        "statements_with_accession_or_filing_url": 0
+      },
+      "repeated_statement_versions": {
+        "forms_present": [],
+        "groups_with_more_than_one_version": 220,
+        "same_statement_duplicates_within_form": 0,
+        "version_count_quantiles": {
+          "max": 12,
+          "median": 4,
+          "min": 2,
+          "p90": 11
+        },
+        "warning": "random item splits can share the same base statement across train/test; fit learned systems by company and keep case variants together"
+      },
+      "residuals": {
+        "note": "suffix absence alone does not prove residual elimination; upstream renames plug lines",
+        "residual_suffix_rows": 389,
+        "statements_with_residual_suffix": 188,
+        "structured_audit": "not available: clean JSON rows required to distinguish plugs from real other-assets captions"
+      },
+      "rule_counts": {
+        "R01_current_noncurrent_asset_misclass": 65,
+        "R02_current_noncurrent_liab_misclass": 65,
+        "R03_debt_current_refinance_misclass": 42,
+        "R04_missing_line_item": 220,
+        "R05_numerical_error_value": 220,
+        "R06_redundant_fabricated_row": 140,
+        "R07_balance_sheet_identity_break": 65,
+        "R08_cashflow_section_misclass": 70,
+        "R09_revenue_recognition_timing": 57,
+        "R10_lease_operating_finance_misclass": 29,
+        "R11_inventory_no_nrv_writedown": 52,
+        "R12_negative_value_on_nonnegative_element": 65,
+        "R14_goodwill_impairment_omitted": 58,
+        "R15_afs_securities_measurement": 54
+      },
+      "rule_year_counts": {
+        "R01_current_noncurrent_asset_misclass": {
+          "2015": 6,
+          "2016": 6,
+          "2017": 6,
+          "2018": 6,
+          "2019": 6,
+          "2020": 7,
+          "2021": 7,
+          "2022": 7,
+          "2023": 7,
+          "2024": 7
+        },
+        "R02_current_noncurrent_liab_misclass": {
+          "2015": 6,
+          "2016": 6,
+          "2017": 6,
+          "2018": 6,
+          "2019": 6,
+          "2020": 7,
+          "2021": 7,
+          "2022": 7,
+          "2023": 7,
+          "2024": 7
+        },
+        "R03_debt_current_refinance_misclass": {
+          "2015": 3,
+          "2016": 3,
+          "2017": 3,
+          "2018": 3,
+          "2019": 3,
+          "2020": 4,
+          "2021": 5,
+          "2022": 6,
+          "2023": 6,
+          "2024": 6
+        },
+        "R04_missing_line_item": {
+          "2015": 18,
+          "2016": 21,
+          "2017": 22,
+          "2018": 22,
+          "2019": 22,
+          "2020": 23,
+          "2021": 23,
+          "2022": 23,
+          "2023": 23,
+          "2024": 23
+        },
+        "R05_numerical_error_value": {
+          "2015": 18,
+          "2016": 21,
+          "2017": 22,
+          "2018": 22,
+          "2019": 22,
+          "2020": 23,
+          "2021": 23,
+          "2022": 23,
+          "2023": 23,
+          "2024": 23
+        },
+        "R06_redundant_fabricated_row": {
+          "2015": 10,
+          "2016": 13,
+          "2017": 14,
+          "2018": 14,
+          "2019": 14,
+          "2020": 15,
+          "2021": 15,
+          "2022": 15,
+          "2023": 15,
+          "2024": 15
+        },
+        "R07_balance_sheet_identity_break": {
+          "2015": 6,
+          "2016": 6,
+          "2017": 6,
+          "2018": 6,
+          "2019": 6,
+          "2020": 7,
+          "2021": 7,
+          "2022": 7,
+          "2023": 7,
+          "2024": 7
+        },
+        "R08_cashflow_section_misclass": {
+          "2015": 7,
+          "2016": 7,
+          "2017": 7,
+          "2018": 7,
+          "2019": 7,
+          "2020": 7,
+          "2021": 7,
+          "2022": 7,
+          "2023": 7,
+          "2024": 7
+        },
+        "R09_revenue_recognition_timing": {
+          "2016": 3,
+          "2017": 7,
+          "2018": 7,
+          "2019": 7,
+          "2020": 7,
+          "2021": 7,
+          "2022": 7,
+          "2023": 6,
+          "2024": 6
+        },
+        "R10_lease_operating_finance_misclass": {
+          "2018": 1,
+          "2019": 3,
+          "2020": 5,
+          "2021": 5,
+          "2022": 5,
+          "2023": 5,
+          "2024": 5
+        },
+        "R11_inventory_no_nrv_writedown": {
+          "2015": 4,
+          "2016": 5,
+          "2017": 5,
+          "2018": 5,
+          "2019": 5,
+          "2020": 6,
+          "2021": 6,
+          "2022": 6,
+          "2023": 5,
+          "2024": 5
+        },
+        "R12_negative_value_on_nonnegative_element": {
+          "2015": 6,
+          "2016": 6,
+          "2017": 6,
+          "2018": 6,
+          "2019": 6,
+          "2020": 7,
+          "2021": 7,
+          "2022": 7,
+          "2023": 7,
+          "2024": 7
+        },
+        "R14_goodwill_impairment_omitted": {
+          "2015": 6,
+          "2016": 6,
+          "2017": 6,
+          "2018": 5,
+          "2019": 5,
+          "2020": 6,
+          "2021": 6,
+          "2022": 6,
+          "2023": 6,
+          "2024": 6
+        },
+        "R15_afs_securities_measurement": {
+          "2015": 6,
+          "2016": 6,
+          "2017": 6,
+          "2018": 6,
+          "2019": 5,
+          "2020": 5,
+          "2021": 5,
+          "2022": 5,
+          "2023": 5,
+          "2024": 5
+        }
+      },
+      "statement_counts": {
+        "BalanceSheet": 690,
+        "CashFlow": 230,
+        "IncomeStatement": 282
+      },
+      "year_counts": {
+        "2015": 96,
+        "2016": 109,
+        "2017": 116,
+        "2018": 116,
+        "2019": 117,
+        "2020": 129,
+        "2021": 130,
+        "2022": 131,
+        "2023": 129,
+        "2024": 129
+      }
+    },
+    "upstream_ifrs": {
+      "company_counts": {
+        "AMBEV S.A.": 21,
+        "ASTRAZENECA PLC": 84,
+        "Anheuser-Busch InBev SA/NV": 11,
+        "ArcelorMittal": 71,
+        "BCE INC.": 82,
+        "BHP GROUP LIMITED": 20,
+        "BP PLC": 35,
+        "CANADIAN NATURAL RESOURCES LIMITED": 77,
+        "DIAGEO plc": 66,
+        "EQUINOR ASA": 36,
+        "ERICSSON LM TELEPHONE CO": 29,
+        "GSK plc": 36,
+        "INFOSYS LIMITED": 47,
+        "KONINKLIJKE PHILIPS NV": 49,
+        "NOVO NORDISK A/S": 49,
+        "Nokia Corporation": 55,
+        "Novartis AG": 31,
+        "PETROBRAS - PETROLEO BRASILEIRO SA": 42,
+        "RIO TINTO PLC": 60,
+        "Ryanair Holdings plc": 65,
+        "SAP SE": 68,
+        "SUNCOR ENERGY INC": 42,
+        "Sanofi": 6,
+        "Shell plc": 78,
+        "Stellantis N.V.": 40,
+        "Taiwan Semiconductor Manufacturing Company Limited": 6,
+        "TotalEnergies SE": 42,
+        "UNILEVER PLC": 35,
+        "VALE\u00a0S.A.": 29,
+        "VODAFONE GROUP PUBLIC LTD CO": 34,
+        "WIPRO LIMITED": 36
+      },
+      "control_evidence": {
+        "control_n": 161,
+        "control_with_ledger_n": 161,
+        "control_with_supporting_facts_n": 161,
+        "injected_n": 1221,
+        "injected_with_ledger_n": 1221,
+        "injected_with_supporting_facts_n": 1221
+      },
+      "counts": {
+        "answer_key": 1382,
+        "clean_statements": 161,
+        "companies": 31,
+        "company_statement_year_groups": 161,
+        "controls": 161,
+        "duplicate_exam_ids": 0,
+        "duplicate_key_ids": 0,
+        "exam": 1382,
+        "exam_without_key": 0,
+        "joined": 1382
+      },
+      "directory": "/workspace/IntelliAudit/data/ifrs/benchmark",
+      "error_type_counts": {
+        "CONTROL": 161,
+        "Misclassification": 357,
+        "Missing Row": 161,
+        "Numerical Error": 542,
+        "Redundant Row": 161
+      },
+      "file_sha256": {
+        "answer_key.jsonl": "4c3e2eb9b25614ba35d484c8ea532346a53e79acfb724e43f116a2fa424a1ee9",
+        "exam.jsonl": "890f578c39c2469bb2ec53af6bd012986ce8c03eebe330548cf4083a217e50dc",
+        "statements_clean.jsonl": "62e7a0a59bb7c1c91f55b6e563a95e51e1cb6d5a928c859a9fd954d5e6098390"
+      },
+      "gold": {
+        "citable_n": 648,
+        "citable_nonparagraph_code_n": 0,
+        "citation_tiers": {
+          "expert-authored-UNVALIDATED": 648,
+          "no-error": 161,
+          "no-governing-paragraph": 573
+        },
+        "distinct_paragraphs": [
+          "IAS 1.66",
+          "IAS 1.69",
+          "IAS 1.70",
+          "IAS 2.9",
+          "IAS 36.59",
+          "IAS 36.90",
+          "IFRS 9.4.1.2A",
+          "IFRS 9.5.5.15"
+        ],
+        "human_review_fields_in_key_n": 0,
+        "interpretation": "exact paragraph membership in taxonomy references is mechanically checked; it does not prove paragraph governs the alleged violation or that human review happened",
+        "mismatch_examples": [],
+        "nonparagraph_codes": [],
+        "standard_version_fields_in_key_n": 0,
+        "strict_linkbase_flag_mismatch_n": 0
+      },
+      "leakage": {
+        "evidence_contains_clean_row_numbers": 0,
+        "exam_citation_codes": 0,
+        "exam_rule_id_tokens": 0,
+        "public_salt_hash_reversibility": "opaque hashes prevent direct semantic reading, not secrecy if generator salt and sample-id construction are public"
+      },
+      "metadata_citation_shortcuts": {
+        "denominator": "only cases whose key marks citable=true",
+        "features": {
+          "oracle_error_type_and_statement": {
+            "heldout_item": {
+              "accuracy": 0.3333333333333333,
+              "correct": 44,
+              "n": 132,
+              "unseen_feature_n": 0
+            },
+            "leave_one_company_out": {
+              "correct": 226,
+              "folds": {
+                "AMBEV S.A.": {
+                  "accuracy": 0.3333333333333333,
+                  "correct": 3,
+                  "n": 9,
+                  "unseen_feature_n": 0
+                },
+                "ASTRAZENECA PLC": {
+                  "accuracy": 0.2857142857142857,
+                  "correct": 14,
+                  "n": 49,
+                  "unseen_feature_n": 0
+                },
+                "Anheuser-Busch InBev SA/NV": {
+                  "accuracy": 0.3333333333333333,
+                  "correct": 2,
+                  "n": 6,
+                  "unseen_feature_n": 0
+                },
+                "ArcelorMittal": {
+                  "accuracy": 0.3888888888888889,
+                  "correct": 14,
+                  "n": 36,
+                  "unseen_feature_n": 0
+                },
+                "BCE INC.": {
+                  "accuracy": 0.2978723404255319,
+                  "correct": 14,
+                  "n": 47,
+                  "unseen_feature_n": 0
+                },
+                "BHP GROUP LIMITED": {
+                  "accuracy": 0.4,
+                  "correct": 4,
+                  "n": 10,
+                  "unseen_feature_n": 0
+                },
+                "BP PLC": {
+                  "accuracy": 0.3333333333333333,
+                  "correct": 5,
+                  "n": 15,
+                  "unseen_feature_n": 0
+                },
+                "CANADIAN NATURAL RESOURCES LIMITED": {
+                  "accuracy": 0.3333333333333333,
+                  "correct": 14,
+                  "n": 42,
+                  "unseen_feature_n": 0
+                },
+                "DIAGEO plc": {
+                  "accuracy": 0.3333333333333333,
+                  "correct": 12,
+                  "n": 36,
+                  "unseen_feature_n": 0
+                },
+                "EQUINOR ASA": {
+                  "accuracy": 0.5,
+                  "correct": 6,
+                  "n": 12,
+                  "unseen_feature_n": 0
+                },
+                "ERICSSON LM TELEPHONE CO": {
+                  "accuracy": 0.3333333333333333,
+                  "correct": 5,
+                  "n": 15,
+                  "unseen_feature_n": 0
+                },
+                "GSK plc": {
+                  "accuracy": 0.2857142857142857,
+                  "correct": 6,
+                  "n": 21,
+                  "unseen_feature_n": 0
+                },
+                "INFOSYS LIMITED": {
+                  "accuracy": 0.2222222222222222,
+                  "correct": 4,
+                  "n": 18,
+                  "unseen_feature_n": 0
+                },
+                "KONINKLIJKE PHILIPS NV": {
+                  "accuracy": 0.3333333333333333,
+                  "correct": 7,
+                  "n": 21,
+                  "unseen_feature_n": 0
+                },
+                "NOVO NORDISK A/S": {
+                  "accuracy": 0.4166666666666667,
+                  "correct": 10,
+                  "n": 24,
+                  "unseen_feature_n": 0
+                },
+                "Nokia Corporation": {
+                  "accuracy": 0.3333333333333333,
+                  "correct": 10,
+                  "n": 30,
+                  "unseen_feature_n": 0
+                },
+                "Novartis AG": {
+                  "accuracy": 1.0,
+                  "correct": 3,
+                  "n": 3,
+                  "unseen_feature_n": 0
+                },
+                "PETROBRAS - PETROLEO BRASILEIRO SA": {
+                  "accuracy": 0.3333333333333333,
+                  "correct": 6,
+                  "n": 18,
+                  "unseen_feature_n": 0
+                },
+                "RIO TINTO PLC": {
+                  "accuracy": 0.5,
+                  "correct": 13,
+                  "n": 26,
+                  "unseen_feature_n": 0
+                },
+                "Ryanair Holdings plc": {
+                  "accuracy": 0.3225806451612903,
+                  "correct": 10,
+                  "n": 31,
+                  "unseen_feature_n": 0
+                },
+                "SAP SE": {
+                  "accuracy": 0.21212121212121213,
+                  "correct": 7,
+                  "n": 33,
+                  "unseen_feature_n": 0
+                },
+                "SUNCOR ENERGY INC": {
+                  "accuracy": 0.5,
+                  "correct": 7,
+                  "n": 14,
+                  "unseen_feature_n": 0
+                },
+                "Sanofi": {
+                  "accuracy": 0.5,
+                  "correct": 1,
+                  "n": 2,
+                  "unseen_feature_n": 0
+                },
+                "Shell plc": {
+                  "accuracy": 0.32558139534883723,
+                  "correct": 14,
+                  "n": 43,
+                  "unseen_feature_n": 0
+                },
+                "Stellantis N.V.": {
+                  "accuracy": 0.5833333333333334,
+                  "correct": 7,
+                  "n": 12,
+                  "unseen_feature_n": 0
+                },
+                "Taiwan Semiconductor Manufacturing Company Limited": {
+                  "accuracy": 0.5,
+                  "correct": 1,
+                  "n": 2,
+                  "unseen_feature_n": 0
+                },
+                "TotalEnergies SE": {
+                  "accuracy": 0.5,
+                  "correct": 7,
+                  "n": 14,
+                  "unseen_feature_n": 0
+                },
+                "UNILEVER PLC": {
+                  "accuracy": 0.42857142857142855,
+                  "correct": 6,
+                  "n": 14,
+                  "unseen_feature_n": 0
+                },
+                "VALE\u00a0S.A.": {
+                  "accuracy": 0.4,
+                  "correct": 2,
+                  "n": 5,
+                  "unseen_feature_n": 0
+                },
+                "VODAFONE GROUP PUBLIC LTD CO": {
+                  "accuracy": 0.3157894736842105,
+                  "correct": 6,
+                  "n": 19,
+                  "unseen_feature_n": 0
+                },
+                "WIPRO LIMITED": {
+                  "accuracy": 0.2857142857142857,
+                  "correct": 6,
+                  "n": 21,
+                  "unseen_feature_n": 0
+                }
+              },
+              "macro_accuracy": 0.3926054988247251,
+              "micro_accuracy": 0.3487654320987654,
+              "n": 648
+            },
+            "resubstitution_diagnostic": {
+              "accuracy": 0.3595679012345679,
+              "correct": 233,
+              "n": 648,
+              "unseen_feature_n": 0
+            }
+          },
+          "oracle_rule_id_and_statement": {
+            "heldout_item": {
+              "accuracy": 1.0,
+              "correct": 132,
+              "n": 132,
+              "unseen_feature_n": 0
+            },
+            "leave_one_company_out": {
+              "correct": 647,
+              "folds": {
+                "AMBEV S.A.": {
+                  "accuracy": 1.0,
+                  "correct": 9,
+                  "n": 9,
+                  "unseen_feature_n": 0
+                },
+                "ASTRAZENECA PLC": {
+                  "accuracy": 1.0,
+                  "correct": 49,
+                  "n": 49,
+                  "unseen_feature_n": 0
+                },
+                "Anheuser-Busch InBev SA/NV": {
+                  "accuracy": 1.0,
+                  "correct": 6,
+                  "n": 6,
+                  "unseen_feature_n": 0
+                },
+                "ArcelorMittal": {
+                  "accuracy": 1.0,
+                  "correct": 36,
+                  "n": 36,
+                  "unseen_feature_n": 0
+                },
+                "BCE INC.": {
+                  "accuracy": 1.0,
+                  "correct": 47,
+                  "n": 47,
+                  "unseen_feature_n": 0
+                },
+                "BHP GROUP LIMITED": {
+                  "accuracy": 1.0,
+                  "correct": 10,
+                  "n": 10,
+                  "unseen_feature_n": 0
+                },
+                "BP PLC": {
+                  "accuracy": 1.0,
+                  "correct": 15,
+                  "n": 15,
+                  "unseen_feature_n": 0
+                },
+                "CANADIAN NATURAL RESOURCES LIMITED": {
+                  "accuracy": 1.0,
+                  "correct": 42,
+                  "n": 42,
+                  "unseen_feature_n": 0
+                },
+                "DIAGEO plc": {
+                  "accuracy": 1.0,
+                  "correct": 36,
+                  "n": 36,
+                  "unseen_feature_n": 0
+                },
+                "EQUINOR ASA": {
+                  "accuracy": 1.0,
+                  "correct": 12,
+                  "n": 12,
+                  "unseen_feature_n": 0
+                },
+                "ERICSSON LM TELEPHONE CO": {
+                  "accuracy": 1.0,
+                  "correct": 15,
+                  "n": 15,
+                  "unseen_feature_n": 0
+                },
+                "GSK plc": {
+                  "accuracy": 1.0,
+                  "correct": 21,
+                  "n": 21,
+                  "unseen_feature_n": 0
+                },
+                "INFOSYS LIMITED": {
+                  "accuracy": 1.0,
+                  "correct": 18,
+                  "n": 18,
+                  "unseen_feature_n": 0
+                },
+                "KONINKLIJKE PHILIPS NV": {
+                  "accuracy": 1.0,
+                  "correct": 21,
+                  "n": 21,
+                  "unseen_feature_n": 0
+                },
+                "NOVO NORDISK A/S": {
+                  "accuracy": 1.0,
+                  "correct": 24,
+                  "n": 24,
+                  "unseen_feature_n": 0
+                },
+                "Nokia Corporation": {
+                  "accuracy": 1.0,
+                  "correct": 30,
+                  "n": 30,
+                  "unseen_feature_n": 0
+                },
+                "Novartis AG": {
+                  "accuracy": 1.0,
+                  "correct": 3,
+                  "n": 3,
+                  "unseen_feature_n": 0
+                },
+                "PETROBRAS - PETROLEO BRASILEIRO SA": {
+                  "accuracy": 1.0,
+                  "correct": 18,
+                  "n": 18,
+                  "unseen_feature_n": 0
+                },
+                "RIO TINTO PLC": {
+                  "accuracy": 1.0,
+                  "correct": 26,
+                  "n": 26,
+                  "unseen_feature_n": 0
+                },
+                "Ryanair Holdings plc": {
+                  "accuracy": 1.0,
+                  "correct": 31,
+                  "n": 31,
+                  "unseen_feature_n": 0
+                },
+                "SAP SE": {
+                  "accuracy": 1.0,
+                  "correct": 33,
+                  "n": 33,
+                  "unseen_feature_n": 0
+                },
+                "SUNCOR ENERGY INC": {
+                  "accuracy": 1.0,
+                  "correct": 14,
+                  "n": 14,
+                  "unseen_feature_n": 0
+                },
+                "Sanofi": {
+                  "accuracy": 1.0,
+                  "correct": 2,
+                  "n": 2,
+                  "unseen_feature_n": 0
+                },
+                "Shell plc": {
+                  "accuracy": 1.0,
+                  "correct": 43,
+                  "n": 43,
+                  "unseen_feature_n": 0
+                },
+                "Stellantis N.V.": {
+                  "accuracy": 1.0,
+                  "correct": 12,
+                  "n": 12,
+                  "unseen_feature_n": 0
+                },
+                "Taiwan Semiconductor Manufacturing Company Limited": {
+                  "accuracy": 0.5,
+                  "correct": 1,
+                  "n": 2,
+                  "unseen_feature_n": 1
+                },
+                "TotalEnergies SE": {
+                  "accuracy": 1.0,
+                  "correct": 14,
+                  "n": 14,
+                  "unseen_feature_n": 0
+                },
+                "UNILEVER PLC": {
+                  "accuracy": 1.0,
+                  "correct": 14,
+                  "n": 14,
+                  "unseen_feature_n": 0
+                },
+                "VALE\u00a0S.A.": {
+                  "accuracy": 1.0,
+                  "correct": 5,
+                  "n": 5,
+                  "unseen_feature_n": 0
+                },
+                "VODAFONE GROUP PUBLIC LTD CO": {
+                  "accuracy": 1.0,
+                  "correct": 19,
+                  "n": 19,
+                  "unseen_feature_n": 0
+                },
+                "WIPRO LIMITED": {
+                  "accuracy": 1.0,
+                  "correct": 21,
+                  "n": 21,
+                  "unseen_feature_n": 0
+                }
+              },
+              "macro_accuracy": 0.9838709677419355,
+              "micro_accuracy": 0.9984567901234568,
+              "n": 648
+            },
+            "resubstitution_diagnostic": {
+              "accuracy": 1.0,
+              "correct": 648,
+              "n": 648,
+              "unseen_feature_n": 0
+            }
+          },
+          "statement_type": {
+            "heldout_item": {
+              "accuracy": 0.22727272727272727,
+              "correct": 30,
+              "n": 132,
+              "unseen_feature_n": 0
+            },
+            "leave_one_company_out": {
+              "correct": 149,
+              "folds": {
+                "AMBEV S.A.": {
+                  "accuracy": 0.3333333333333333,
+                  "correct": 3,
+                  "n": 9,
+                  "unseen_feature_n": 0
+                },
+                "ASTRAZENECA PLC": {
+                  "accuracy": 0.14285714285714285,
+                  "correct": 7,
+                  "n": 49,
+                  "unseen_feature_n": 0
+                },
+                "Anheuser-Busch InBev SA/NV": {
+                  "accuracy": 0.16666666666666666,
+                  "correct": 1,
+                  "n": 6,
+                  "unseen_feature_n": 0
+                },
+                "ArcelorMittal": {
+                  "accuracy": 0.19444444444444445,
+                  "correct": 7,
+                  "n": 36,
+                  "unseen_feature_n": 0
+                },
+                "BCE INC.": {
+                  "accuracy": 0.14893617021276595,
+                  "correct": 7,
+                  "n": 47,
+                  "unseen_feature_n": 0
+                },
+                "BHP GROUP LIMITED": {
+                  "accuracy": 0.2,
+                  "correct": 2,
+                  "n": 10,
+                  "unseen_feature_n": 0
+                },
+                "BP PLC": {
+                  "accuracy": 0.3333333333333333,
+                  "correct": 5,
+                  "n": 15,
+                  "unseen_feature_n": 0
+                },
+                "CANADIAN NATURAL RESOURCES LIMITED": {
+                  "accuracy": 0.16666666666666666,
+                  "correct": 7,
+                  "n": 42,
+                  "unseen_feature_n": 0
+                },
+                "DIAGEO plc": {
+                  "accuracy": 0.16666666666666666,
+                  "correct": 6,
+                  "n": 36,
+                  "unseen_feature_n": 0
+                },
+                "EQUINOR ASA": {
+                  "accuracy": 0.5,
+                  "correct": 6,
+                  "n": 12,
+                  "unseen_feature_n": 0
+                },
+                "ERICSSON LM TELEPHONE CO": {
+                  "accuracy": 0.2,
+                  "correct": 3,
+                  "n": 15,
+                  "unseen_feature_n": 0
+                },
+                "GSK plc": {
+                  "accuracy": 0.14285714285714285,
+                  "correct": 3,
+                  "n": 21,
+                  "unseen_feature_n": 0
+                },
+                "INFOSYS LIMITED": {
+                  "accuracy": 0.1111111111111111,
+                  "correct": 2,
+                  "n": 18,
+                  "unseen_feature_n": 0
+                },
+                "KONINKLIJKE PHILIPS NV": {
+                  "accuracy": 0.3333333333333333,
+                  "correct": 7,
+                  "n": 21,
+                  "unseen_feature_n": 0
+                },
+                "NOVO NORDISK A/S": {
+                  "accuracy": 0.20833333333333334,
+                  "correct": 5,
+                  "n": 24,
+                  "unseen_feature_n": 0
+                },
+                "Nokia Corporation": {
+                  "accuracy": 0.16666666666666666,
+                  "correct": 5,
+                  "n": 30,
+                  "unseen_feature_n": 0
+                },
+                "Novartis AG": {
+                  "accuracy": 1.0,
+                  "correct": 3,
+                  "n": 3,
+                  "unseen_feature_n": 0
+                },
+                "PETROBRAS - PETROLEO BRASILEIRO SA": {
+                  "accuracy": 0.3333333333333333,
+                  "correct": 6,
+                  "n": 18,
+                  "unseen_feature_n": 0
+                },
+                "RIO TINTO PLC": {
+                  "accuracy": 0.2692307692307692,
+                  "correct": 7,
+                  "n": 26,
+                  "unseen_feature_n": 0
+                },
+                "Ryanair Holdings plc": {
+                  "accuracy": 0.22580645161290322,
+                  "correct": 7,
+                  "n": 31,
+                  "unseen_feature_n": 0
+                },
+                "SAP SE": {
+                  "accuracy": 0.21212121212121213,
+                  "correct": 7,
+                  "n": 33,
+                  "unseen_feature_n": 0
+                },
+                "SUNCOR ENERGY INC": {
+                  "accuracy": 0.5,
+                  "correct": 7,
+                  "n": 14,
+                  "unseen_feature_n": 0
+                },
+                "Sanofi": {
+                  "accuracy": 0.5,
+                  "correct": 1,
+                  "n": 2,
+                  "unseen_feature_n": 0
+                },
+                "Shell plc": {
+                  "accuracy": 0.16279069767441862,
+                  "correct": 7,
+                  "n": 43,
+                  "unseen_feature_n": 0
+                },
+                "Stellantis N.V.": {
+                  "accuracy": 0.5833333333333334,
+                  "correct": 7,
+                  "n": 12,
+                  "unseen_feature_n": 0
+                },
+                "Taiwan Semiconductor Manufacturing Company Limited": {
+                  "accuracy": 0.5,
+                  "correct": 1,
+                  "n": 2,
+                  "unseen_feature_n": 0
+                },
+                "TotalEnergies SE": {
+                  "accuracy": 0.5,
+                  "correct": 7,
+                  "n": 14,
+                  "unseen_feature_n": 0
+                },
+                "UNILEVER PLC": {
+                  "accuracy": 0.35714285714285715,
+                  "correct": 5,
+                  "n": 14,
+                  "unseen_feature_n": 0
+                },
+                "VALE\u00a0S.A.": {
+                  "accuracy": 0.4,
+                  "correct": 2,
+                  "n": 5,
+                  "unseen_feature_n": 0
+                },
+                "VODAFONE GROUP PUBLIC LTD CO": {
+                  "accuracy": 0.15789473684210525,
+                  "correct": 3,
+                  "n": 19,
+                  "unseen_feature_n": 0
+                },
+                "WIPRO LIMITED": {
+                  "accuracy": 0.14285714285714285,
+                  "correct": 3,
+                  "n": 21,
+                  "unseen_feature_n": 0
+                }
+              },
+              "macro_accuracy": 0.30192634018163494,
+              "micro_accuracy": 0.22993827160493827,
+              "n": 648
+            },
+            "resubstitution_diagnostic": {
+              "accuracy": 0.22993827160493827,
+              "correct": 149,
+              "n": 648,
+              "unseen_feature_n": 0
+            }
+          }
+        },
+        "n": 648,
+        "split": "sha256(exam_id or sample_id) modulo 5; bucket 0 test; others train",
+        "test_n": 132,
+        "train_n": 516
+      },
+      "name": "upstream_ifrs",
+      "numeric_transaction_reconstruction": {
+        "by_rule": {
+          "I05_numerical_error_value": {
+            "absolute_component_sum_equals_original_magnitude": 109,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 109,
+            "numeric_cases": 159,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 111
+          },
+          "I07_balance_identity_break": {
+            "absolute_component_sum_equals_original_magnitude": 52,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 52,
+            "numeric_cases": 92,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 52
+          },
+          "I11_inventory_above_nrv": {
+            "absolute_component_sum_equals_original_magnitude": 0,
+            "components_sum_to_erroneous_as_booked": 49,
+            "components_sum_to_original": 0,
+            "numeric_cases": 79,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 49
+          },
+          "I14_goodwill_impairment_omitted": {
+            "absolute_component_sum_equals_original_magnitude": 0,
+            "components_sum_to_erroneous_as_booked": 29,
+            "components_sum_to_original": 0,
+            "numeric_cases": 49,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 29
+          },
+          "I15_fvoci_debt_not_at_fair_value": {
+            "absolute_component_sum_equals_original_magnitude": 0,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 0,
+            "numeric_cases": 1,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 0
+          },
+          "I17_trade_receivable_ecl_understated": {
+            "absolute_component_sum_equals_original_magnitude": 0,
+            "components_sum_to_erroneous_as_booked": 47,
+            "components_sum_to_original": 0,
+            "numeric_cases": 84,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 47
+          },
+          "I18_ppe_impairment_omitted": {
+            "absolute_component_sum_equals_original_magnitude": 0,
+            "components_sum_to_erroneous_as_booked": 47,
+            "components_sum_to_original": 0,
+            "numeric_cases": 78,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 47
+          }
+        },
+        "definition": "signed component sums on target caption compared with key original_value; partial evidence coverage is preserved",
+        "examples": [
+          {
+            "id": "EX-01a9461b236e",
+            "label": "Deferred tax liabilities",
+            "original": 14037,
+            "parts": [
+              16803,
+              -2766
+            ],
+            "rule_id": "I05_numerical_error_value",
+            "shown": 11748
+          },
+          {
+            "id": "EX-01ff7961b133",
+            "label": "Retained earnings",
+            "original": -4681,
+            "parts": [
+              981,
+              -5662
+            ],
+            "rule_id": "I07_balance_identity_break",
+            "shown": -4164
+          },
+          {
+            "id": "EX-088dd4354964",
+            "label": "Retained earnings",
+            "original": 34511,
+            "parts": [
+              50640,
+              -16129
+            ],
+            "rule_id": "I07_balance_identity_break",
+            "shown": 37820
+          },
+          {
+            "id": "EX-0959728c92f4",
+            "label": "Retained earnings",
+            "original": 3886,
+            "parts": [
+              6019,
+              -2133
+            ],
+            "rule_id": "I07_balance_identity_break",
+            "shown": 3581
+          },
+          {
+            "id": "EX-0bdd1ba8f6d7",
+            "label": "Other longterm provisions",
+            "original": 1477,
+            "parts": [
+              2164,
+              -687
+            ],
+            "rule_id": "I05_numerical_error_value",
+            "shown": 1033
+          },
+          {
+            "id": "EX-0e57df26fc86",
+            "label": "Total current liabilities",
+            "original": 64857,
+            "parts": [
+              91903,
+              -27046
+            ],
+            "rule_id": "I05_numerical_error_value",
+            "shown": 60477
+          },
+          {
+            "id": "EX-0f5875625ca8",
+            "label": "Issued capital",
+            "original": 393,
+            "parts": [
+              493,
+              -100
+            ],
+            "rule_id": "I05_numerical_error_value",
+            "shown": 467
+          },
+          {
+            "id": "EX-1127a495b8f2",
+            "label": "Current accrued expenses and other liabilities",
+            "original": 1275,
+            "parts": [
+              1727,
+              -452
+            ],
+            "rule_id": "I05_numerical_error_value",
+            "shown": 950
+          }
+        ],
+        "totals": {
+          "absolute_component_sum_equals_original_magnitude": 161,
+          "components_sum_to_erroneous_as_booked": 172,
+          "components_sum_to_original": 161,
+          "numeric_cases": 542,
+          "single_component_equals_original_magnitude": 0,
+          "target_has_component_evidence": 335
+        }
+      },
+      "provenance": {
+        "clean_statements": 161,
+        "duration_statement_n": 0,
+        "duration_statements_with_only_instant_fact_periods": 0,
+        "facts_with_accession_or_filing_url": 0,
+        "interpretation": "decimals=-6 describes precision; it does not multiply an ISO4217 fact value by one million. Instant periods do not represent annual revenues/cash flows. These are scaled internal tables, not valid filing fact exports.",
+        "scaled_millions_statements": 161,
+        "scaled_statements_whose_numeric_table_values_equal_iso4217_fact_values": 161,
+        "serialized_facts": 6060,
+        "statement_source_descriptions": {
+          "SEC EDGAR companyfacts + filing calculation linkbase (real 20-F)": 139,
+          "SEC EDGAR companyfacts + filing calculation linkbase (real 20-F/A)": 1,
+          "SEC EDGAR companyfacts + filing calculation linkbase (real 40-F)": 21
+        },
+        "statements_with_accession_or_filing_url": 0,
+        "structured_clean_n": 161,
+        "structured_rows_with_accession_or_filing_url": 0
+      },
+      "repeated_statement_versions": {
+        "forms_present": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "groups_with_more_than_one_version": 161,
+        "same_statement_duplicates_within_form": 0,
+        "version_count_quantiles": {
+          "max": 12,
+          "median": 9,
+          "min": 4,
+          "p90": 12
+        },
+        "warning": "random item splits can share the same base statement across train/test; fit learned systems by company and keep case variants together"
+      },
+      "residuals": {
+        "examples_over_50pct": [
+          {
+            "absolute_residual_share": 0.5381856144765372,
+            "file": "/workspace/IntelliAudit/data/ifrs/clean/917851_2023_BS.json",
+            "residual_rows": [
+              {
+                "label": "Other current assets, net",
+                "value": 14767
+              },
+              {
+                "label": "Other non-current assets, net",
+                "value": 61983
+              },
+              {
+                "label": "Other current liabilities, net",
+                "value": 14094
+              },
+              {
+                "label": "Other non-current liabilities, net",
+                "value": 29786
+              }
+            ]
+          },
+          {
+            "absolute_residual_share": 0.520592061094327,
+            "file": "/workspace/IntelliAudit/data/ifrs/clean/917851_2024_BS.json",
+            "residual_rows": [
+              {
+                "label": "Other current assets, net",
+                "value": 9548
+              },
+              {
+                "label": "Other non-current assets, net",
+                "value": 51610
+              },
+              {
+                "label": "Other current liabilities, net",
+                "value": 12529
+              },
+              {
+                "label": "Other non-current liabilities, net",
+                "value": 25567
+              }
+            ]
+          }
+        ],
+        "mass_definition": "sum absolute values of kind=line only; excludes all totals/subtotals; descriptive, not total-assets percentage",
+        "note": "suffix absence alone does not prove residual elimination; upstream renames plug lines",
+        "residual_suffix_rows": 0,
+        "statements_with_residual_suffix": 0,
+        "structured_by_statement_type": {
+          "BalanceSheet": {
+            "absolute_line_mass": 53051940,
+            "absolute_residual_mass": 5207307,
+            "line_rows": 5099,
+            "mass_weighted_share": 0.09815488368568615,
+            "per_statement_absolute_share": {
+              "max": 0.5381856144765372,
+              "median": 0.025979867062184137,
+              "min": 0.0,
+              "p90": 0.24304192169996536
+            },
+            "residual_rows": 350,
+            "statements": 161,
+            "with_residual": 139
+          }
+        }
+      },
+      "rule_counts": {
+        "CONTROL": 161,
+        "I01_current_noncurrent_asset_misclass": 149,
+        "I02_operating_cycle_liability_misclass": 93,
+        "I03_noncurrent_debt_presented_current": 115,
+        "I04_missing_line_item": 161,
+        "I05_numerical_error_value": 159,
+        "I06_redundant_fabricated_row": 161,
+        "I07_balance_identity_break": 92,
+        "I11_inventory_above_nrv": 79,
+        "I14_goodwill_impairment_omitted": 49,
+        "I15_fvoci_debt_not_at_fair_value": 1,
+        "I17_trade_receivable_ecl_understated": 84,
+        "I18_ppe_impairment_omitted": 78
+      },
+      "rule_year_counts": {
+        "I01_current_noncurrent_asset_misclass": {
+          "2018": 25,
+          "2019": 19,
+          "2020": 22,
+          "2021": 20,
+          "2022": 21,
+          "2023": 23,
+          "2024": 19
+        },
+        "I02_operating_cycle_liability_misclass": {
+          "2018": 16,
+          "2019": 11,
+          "2020": 13,
+          "2021": 12,
+          "2022": 13,
+          "2023": 16,
+          "2024": 12
+        },
+        "I03_noncurrent_debt_presented_current": {
+          "2018": 18,
+          "2019": 15,
+          "2020": 17,
+          "2021": 15,
+          "2022": 15,
+          "2023": 19,
+          "2024": 16
+        },
+        "I04_missing_line_item": {
+          "2018": 26,
+          "2019": 20,
+          "2020": 23,
+          "2021": 23,
+          "2022": 23,
+          "2023": 25,
+          "2024": 21
+        },
+        "I05_numerical_error_value": {
+          "2018": 25,
+          "2019": 20,
+          "2020": 22,
+          "2021": 23,
+          "2022": 23,
+          "2023": 25,
+          "2024": 21
+        },
+        "I06_redundant_fabricated_row": {
+          "2018": 26,
+          "2019": 20,
+          "2020": 23,
+          "2021": 23,
+          "2022": 23,
+          "2023": 25,
+          "2024": 21
+        },
+        "I07_balance_identity_break": {
+          "2018": 16,
+          "2019": 13,
+          "2020": 14,
+          "2021": 13,
+          "2022": 12,
+          "2023": 14,
+          "2024": 10
+        },
+        "I11_inventory_above_nrv": {
+          "2018": 14,
+          "2019": 11,
+          "2020": 12,
+          "2021": 11,
+          "2022": 10,
+          "2023": 12,
+          "2024": 9
+        },
+        "I14_goodwill_impairment_omitted": {
+          "2018": 9,
+          "2019": 6,
+          "2020": 7,
+          "2021": 6,
+          "2022": 6,
+          "2023": 9,
+          "2024": 6
+        },
+        "I15_fvoci_debt_not_at_fair_value": {
+          "2018": 1
+        },
+        "I17_trade_receivable_ecl_understated": {
+          "2018": 14,
+          "2019": 11,
+          "2020": 12,
+          "2021": 11,
+          "2022": 12,
+          "2023": 14,
+          "2024": 10
+        },
+        "I18_ppe_impairment_omitted": {
+          "2018": 16,
+          "2019": 13,
+          "2020": 13,
+          "2021": 12,
+          "2022": 11,
+          "2023": 9,
+          "2024": 4
+        }
+      },
+      "statement_counts": {
+        "BalanceSheet": 1382
+      },
+      "year_counts": {
+        "2018": 232,
+        "2019": 179,
+        "2020": 201,
+        "2021": 192,
+        "2022": 192,
+        "2023": 216,
+        "2024": 170
+      }
+    },
+    "upstream_usgaap": {
+      "company_counts": {
+        "3M CO": 227,
+        "ABBOTT LABORATORIES": 223,
+        "ADOBE INC.": 218,
+        "AT&T INC.": 194,
+        "AbbVie Inc.": 202,
+        "Alphabet Inc.": 251,
+        "Apple Inc.": 247,
+        "BEYOND MEAT, INC.": 157,
+        "CATERPILLAR INC": 227,
+        "CISCO SYSTEMS, INC.": 262,
+        "COCA COLA CO": 234,
+        "COLGATE-PALMOLIVE COMPANY": 258,
+        "COMCAST\u00a0CORPORATION": 210,
+        "CROCS,\u00a0INC.": 246,
+        "Carnival Corporation Ltd.": 237,
+        "Chevron Corp": 190,
+        "DARDEN RESTAURANTS, INC.": 233,
+        "DELTA AIR LINES, INC.": 204,
+        "DOLLAR GENERAL CORP": 195,
+        "Exxon Mobil Corporation": 200,
+        "FEDEX CORP": 181,
+        "Freeport-McMoRan Inc.": 194,
+        "GENERAL DYNAMICS CORPORATION": 210,
+        "GENERAL MOTORS COMPANY": 222,
+        "HALLIBURTON COMPANY": 177,
+        "HCA Healthcare, Inc.": 174,
+        "HERSHEY CO": 205,
+        "HP INC.": 228,
+        "INTEL CORP": 252,
+        "INTERNATIONAL PAPER COMPANY": 203,
+        "Johnson & Johnson": 252,
+        "LOCKHEED MARTIN CORPORATION": 235,
+        "Lucid Group, Inc.": 113,
+        "MICROSOFT CORPORATION": 255,
+        "McDONALD\u2019S CORPORATION": 214,
+        "McKESSON CORPORATION": 219,
+        "Merck\u00a0& Co., Inc.": 238,
+        "Meta Platforms, Inc.": 235,
+        "Micron Technology, Inc.": 232,
+        "Molson Coors Beverage Company": 188,
+        "NETFLIX INC": 205,
+        "NIKE, Inc.": 208,
+        "NUCOR CORP": 194,
+        "NVIDIA CORP": 246,
+        "Oracle Corporation": 245,
+        "Owens Corning": 194,
+        "PFIZER INC": 231,
+        "Peloton Interactive, Inc.": 142,
+        "Polaris Inc.": 222,
+        "ROYAL CARIBBEAN CRUISES LTD": 218,
+        "SHAKE SHACK INC.": 193,
+        "Salesforce, Inc.": 229,
+        "Snap-on Inc": 248,
+        "Starbucks Corporation": 252,
+        "THE BOEING COMPANY": 228,
+        "THE BOSTON BEER COMPANY, INC.": 198,
+        "THE SHERWIN-WILLIAMS COMPANY": 231,
+        "TRACTOR SUPPLY CO /DE/": 213,
+        "Target Corporation": 167,
+        "Tesla, Inc.": 227,
+        "The Home Depot, Inc.": 203,
+        "The Procter & Gamble Company": 199,
+        "UNION PACIFIC CORP": 198,
+        "United Airlines Holdings, Inc.": 215,
+        "UnitedHealth Group Incorporated": 220,
+        "VALERO ENERGY CORP/TX": 140,
+        "VERIZON COMMUNICATIONS INC": 191,
+        "VISA INC.": 210,
+        "WALMART INC.": 240,
+        "lululemon athletica inc.": 214
+      },
+      "control_evidence": {
+        "control_n": 1989,
+        "control_with_ledger_n": 1989,
+        "control_with_supporting_facts_n": 1297,
+        "injected_n": 12974,
+        "injected_with_ledger_n": 12974,
+        "injected_with_supporting_facts_n": 10273
+      },
+      "counts": {
+        "answer_key": 14963,
+        "clean_statements": 1989,
+        "companies": 70,
+        "company_statement_year_groups": 1989,
+        "controls": 1989,
+        "duplicate_exam_ids": 0,
+        "duplicate_key_ids": 0,
+        "exam": 14963,
+        "exam_without_key": 0,
+        "joined": 14963
+      },
+      "directory": "/workspace/IntelliAudit/data/benchmark",
+      "error_type_counts": {
+        "CONTROL": 1989,
+        "Misclassification": 3191,
+        "Missing Row": 1989,
+        "Numerical Error": 6496,
+        "Redundant Row": 1298
+      },
+      "file_sha256": {
+        "answer_key.jsonl": "a00a4057184bda6a5c80d6091453b5ff586a956dec9b52871c3a91eafe9a3c23",
+        "exam.jsonl": "83f44363450ffa4b53ca7744e6728cd0d75bacb25a7032869b27f4011f2658ce",
+        "statements_clean.jsonl": "ada48f405ddc4e94414a4bf130b02159fc34bb33ead2d7f3126017115d2295c4"
+      },
+      "gold": {
+        "citable_n": 6388,
+        "citable_nonparagraph_code_n": 0,
+        "citation_tiers": {
+          "expert-authored-UNVALIDATED": 5025,
+          "linkbase-verified": 1363,
+          "no-error": 1989,
+          "no-governing-paragraph": 6586
+        },
+        "distinct_paragraphs": [
+          "ASC 210-10-45-1",
+          "ASC 210-10-45-12",
+          "ASC 210-10-45-8",
+          "ASC 230-10-45-13",
+          "ASC 230-10-45-15",
+          "ASC 320-10-35-1",
+          "ASC 326-20-30-1",
+          "ASC 330-10-35-1B",
+          "ASC 350-20-35-1",
+          "ASC 360-10-35-17",
+          "ASC 470-10-45-11",
+          "ASC 606-10-25-23",
+          "ASC 730-10-25-1",
+          "ASC 740-10-30-5",
+          "ASC 842-10-25-2"
+        ],
+        "human_review_fields_in_key_n": 0,
+        "interpretation": "exact paragraph membership in taxonomy references is mechanically checked; it does not prove paragraph governs the alleged violation or that human review happened",
+        "mismatch_examples": [],
+        "nonparagraph_codes": [],
+        "standard_version_fields_in_key_n": 0,
+        "strict_linkbase_flag_mismatch_n": 0
+      },
+      "leakage": {
+        "evidence_contains_clean_row_numbers": 0,
+        "exam_citation_codes": 0,
+        "exam_rule_id_tokens": 0,
+        "public_salt_hash_reversibility": "opaque hashes prevent direct semantic reading, not secrecy if generator salt and sample-id construction are public"
+      },
+      "metadata_citation_shortcuts": {
+        "denominator": "only cases whose key marks citable=true",
+        "features": {
+          "oracle_error_type_and_statement": {
+            "heldout_item": {
+              "accuracy": 0.3841982958946553,
+              "correct": 496,
+              "n": 1291,
+              "unseen_feature_n": 0
+            },
+            "leave_one_company_out": {
+              "correct": 2445,
+              "folds": {
+                "3M CO": {
+                  "accuracy": 0.3577981651376147,
+                  "correct": 39,
+                  "n": 109,
+                  "unseen_feature_n": 0
+                },
+                "ABBOTT LABORATORIES": {
+                  "accuracy": 0.4020618556701031,
+                  "correct": 39,
+                  "n": 97,
+                  "unseen_feature_n": 0
+                },
+                "ADOBE INC.": {
+                  "accuracy": 0.4444444444444444,
+                  "correct": 40,
+                  "n": 90,
+                  "unseen_feature_n": 0
+                },
+                "AT&T INC.": {
+                  "accuracy": 0.625,
+                  "correct": 40,
+                  "n": 64,
+                  "unseen_feature_n": 0
+                },
+                "AbbVie Inc.": {
+                  "accuracy": 0.47368421052631576,
+                  "correct": 36,
+                  "n": 76,
+                  "unseen_feature_n": 0
+                },
+                "Alphabet Inc.": {
+                  "accuracy": 0.3305785123966942,
+                  "correct": 40,
+                  "n": 121,
+                  "unseen_feature_n": 0
+                },
+                "Apple Inc.": {
+                  "accuracy": 0.32231404958677684,
+                  "correct": 39,
+                  "n": 121,
+                  "unseen_feature_n": 0
+                },
+                "BEYOND MEAT, INC.": {
+                  "accuracy": 0.36666666666666664,
+                  "correct": 22,
+                  "n": 60,
+                  "unseen_feature_n": 0
+                },
+                "CATERPILLAR INC": {
+                  "accuracy": 0.41237113402061853,
+                  "correct": 40,
+                  "n": 97,
+                  "unseen_feature_n": 0
+                },
+                "CISCO SYSTEMS, INC.": {
+                  "accuracy": 0.30303030303030304,
+                  "correct": 40,
+                  "n": 132,
+                  "unseen_feature_n": 0
+                },
+                "COCA COLA CO": {
+                  "accuracy": 0.3611111111111111,
+                  "correct": 39,
+                  "n": 108,
+                  "unseen_feature_n": 0
+                },
+                "COLGATE-PALMOLIVE COMPANY": {
+                  "accuracy": 0.3125,
+                  "correct": 40,
+                  "n": 128,
+                  "unseen_feature_n": 0
+                },
+                "COMCAST\u00a0CORPORATION": {
+                  "accuracy": 0.5,
+                  "correct": 40,
+                  "n": 80,
+                  "unseen_feature_n": 0
+                },
+                "CROCS,\u00a0INC.": {
+                  "accuracy": 0.30578512396694213,
+                  "correct": 37,
+                  "n": 121,
+                  "unseen_feature_n": 0
+                },
+                "Carnival Corporation Ltd.": {
+                  "accuracy": 0.32710280373831774,
+                  "correct": 35,
+                  "n": 107,
+                  "unseen_feature_n": 0
+                },
+                "Chevron Corp": {
+                  "accuracy": 0.3125,
+                  "correct": 20,
+                  "n": 64,
+                  "unseen_feature_n": 0
+                },
+                "DARDEN RESTAURANTS, INC.": {
+                  "accuracy": 0.3644859813084112,
+                  "correct": 39,
+                  "n": 107,
+                  "unseen_feature_n": 0
+                },
+                "DELTA AIR LINES, INC.": {
+                  "accuracy": 0.5135135135135135,
+                  "correct": 38,
+                  "n": 74,
+                  "unseen_feature_n": 0
+                },
+                "DOLLAR GENERAL CORP": {
+                  "accuracy": 0.3783783783783784,
+                  "correct": 28,
+                  "n": 74,
+                  "unseen_feature_n": 0
+                },
+                "Exxon Mobil Corporation": {
+                  "accuracy": 0.5714285714285714,
+                  "correct": 40,
+                  "n": 70,
+                  "unseen_feature_n": 0
+                },
+                "FEDEX CORP": {
+                  "accuracy": 0.6862745098039216,
+                  "correct": 35,
+                  "n": 51,
+                  "unseen_feature_n": 0
+                },
+                "Freeport-McMoRan Inc.": {
+                  "accuracy": 0.625,
+                  "correct": 40,
+                  "n": 64,
+                  "unseen_feature_n": 0
+                },
+                "GENERAL DYNAMICS CORPORATION": {
+                  "accuracy": 0.391304347826087,
+                  "correct": 36,
+                  "n": 92,
+                  "unseen_feature_n": 0
+                },
+                "GENERAL MOTORS COMPANY": {
+                  "accuracy": 0.3804347826086957,
+                  "correct": 35,
+                  "n": 92,
+                  "unseen_feature_n": 0
+                },
+                "HALLIBURTON COMPANY": {
+                  "accuracy": 0.3448275862068966,
+                  "correct": 30,
+                  "n": 87,
+                  "unseen_feature_n": 0
+                },
+                "HCA Healthcare, Inc.": {
+                  "accuracy": 0.38461538461538464,
+                  "correct": 30,
+                  "n": 78,
+                  "unseen_feature_n": 0
+                },
+                "HERSHEY CO": {
+                  "accuracy": 0.43037974683544306,
+                  "correct": 34,
+                  "n": 79,
+                  "unseen_feature_n": 0
+                },
+                "HP INC.": {
+                  "accuracy": 0.40816326530612246,
+                  "correct": 40,
+                  "n": 98,
+                  "unseen_feature_n": 0
+                },
+                "INTEL CORP": {
+                  "accuracy": 0.30952380952380953,
+                  "correct": 39,
+                  "n": 126,
+                  "unseen_feature_n": 0
+                },
+                "INTERNATIONAL PAPER COMPANY": {
+                  "accuracy": 0.3176470588235294,
+                  "correct": 27,
+                  "n": 85,
+                  "unseen_feature_n": 0
+                },
+                "Johnson & Johnson": {
+                  "accuracy": 0.2923076923076923,
+                  "correct": 38,
+                  "n": 130,
+                  "unseen_feature_n": 0
+                },
+                "LOCKHEED MARTIN CORPORATION": {
+                  "accuracy": 0.3577981651376147,
+                  "correct": 39,
+                  "n": 109,
+                  "unseen_feature_n": 0
+                },
+                "Lucid Group, Inc.": {
+                  "accuracy": 0.3111111111111111,
+                  "correct": 14,
+                  "n": 45,
+                  "unseen_feature_n": 0
+                },
+                "MICROSOFT CORPORATION": {
+                  "accuracy": 0.3023255813953488,
+                  "correct": 39,
+                  "n": 129,
+                  "unseen_feature_n": 0
+                },
+                "McDONALD\u2019S CORPORATION": {
+                  "accuracy": 0.35714285714285715,
+                  "correct": 30,
+                  "n": 84,
+                  "unseen_feature_n": 0
+                },
+                "McKESSON CORPORATION": {
+                  "accuracy": 0.3917525773195876,
+                  "correct": 38,
+                  "n": 97,
+                  "unseen_feature_n": 0
+                },
+                "Merck\u00a0& Co., Inc.": {
+                  "accuracy": 0.3482142857142857,
+                  "correct": 39,
+                  "n": 112,
+                  "unseen_feature_n": 0
+                },
+                "Meta Platforms, Inc.": {
+                  "accuracy": 0.3619047619047619,
+                  "correct": 38,
+                  "n": 105,
+                  "unseen_feature_n": 0
+                },
+                "Micron Technology, Inc.": {
+                  "accuracy": 0.36792452830188677,
+                  "correct": 39,
+                  "n": 106,
+                  "unseen_feature_n": 0
+                },
+                "Molson Coors Beverage Company": {
+                  "accuracy": 0.5483870967741935,
+                  "correct": 34,
+                  "n": 62,
+                  "unseen_feature_n": 0
+                },
+                "NETFLIX INC": {
+                  "accuracy": 0.17333333333333334,
+                  "correct": 13,
+                  "n": 75,
+                  "unseen_feature_n": 0
+                },
+                "NIKE, Inc.": {
+                  "accuracy": 0.37209302325581395,
+                  "correct": 32,
+                  "n": 86,
+                  "unseen_feature_n": 0
+                },
+                "NUCOR CORP": {
+                  "accuracy": 0.40476190476190477,
+                  "correct": 34,
+                  "n": 84,
+                  "unseen_feature_n": 0
+                },
+                "NVIDIA CORP": {
+                  "accuracy": 0.3448275862068966,
+                  "correct": 40,
+                  "n": 116,
+                  "unseen_feature_n": 0
+                },
+                "Oracle Corporation": {
+                  "accuracy": 0.34782608695652173,
+                  "correct": 40,
+                  "n": 115,
+                  "unseen_feature_n": 0
+                },
+                "Owens Corning": {
+                  "accuracy": 0.44155844155844154,
+                  "correct": 34,
+                  "n": 77,
+                  "unseen_feature_n": 0
+                },
+                "PFIZER INC": {
+                  "accuracy": 0.3333333333333333,
+                  "correct": 35,
+                  "n": 105,
+                  "unseen_feature_n": 0
+                },
+                "Peloton Interactive, Inc.": {
+                  "accuracy": 0.3333333333333333,
+                  "correct": 19,
+                  "n": 57,
+                  "unseen_feature_n": 0
+                },
+                "Polaris Inc.": {
+                  "accuracy": 0.40625,
+                  "correct": 39,
+                  "n": 96,
+                  "unseen_feature_n": 0
+                },
+                "ROYAL CARIBBEAN CRUISES LTD": {
+                  "accuracy": 0.4157303370786517,
+                  "correct": 37,
+                  "n": 89,
+                  "unseen_feature_n": 0
+                },
+                "SHAKE SHACK INC.": {
+                  "accuracy": 0.3287671232876712,
+                  "correct": 24,
+                  "n": 73,
+                  "unseen_feature_n": 0
+                },
+                "Salesforce, Inc.": {
+                  "accuracy": 0.32323232323232326,
+                  "correct": 32,
+                  "n": 99,
+                  "unseen_feature_n": 0
+                },
+                "Snap-on Inc": {
+                  "accuracy": 0.3389830508474576,
+                  "correct": 40,
+                  "n": 118,
+                  "unseen_feature_n": 0
+                },
+                "Starbucks Corporation": {
+                  "accuracy": 0.30708661417322836,
+                  "correct": 39,
+                  "n": 127,
+                  "unseen_feature_n": 0
+                },
+                "THE BOEING COMPANY": {
+                  "accuracy": 0.3877551020408163,
+                  "correct": 38,
+                  "n": 98,
+                  "unseen_feature_n": 0
+                },
+                "THE BOSTON BEER COMPANY, INC.": {
+                  "accuracy": 0.425,
+                  "correct": 34,
+                  "n": 80,
+                  "unseen_feature_n": 0
+                },
+                "THE SHERWIN-WILLIAMS COMPANY": {
+                  "accuracy": 0.39603960396039606,
+                  "correct": 40,
+                  "n": 101,
+                  "unseen_feature_n": 0
+                },
+                "TRACTOR SUPPLY CO /DE/": {
+                  "accuracy": 0.3010752688172043,
+                  "correct": 28,
+                  "n": 93,
+                  "unseen_feature_n": 0
+                },
+                "Target Corporation": {
+                  "accuracy": 0.39344262295081966,
+                  "correct": 24,
+                  "n": 61,
+                  "unseen_feature_n": 0
+                },
+                "Tesla, Inc.": {
+                  "accuracy": 0.30927835051546393,
+                  "correct": 30,
+                  "n": 97,
+                  "unseen_feature_n": 0
+                },
+                "The Home Depot, Inc.": {
+                  "accuracy": 0.4691358024691358,
+                  "correct": 38,
+                  "n": 81,
+                  "unseen_feature_n": 0
+                },
+                "The Procter & Gamble Company": {
+                  "accuracy": 0.36363636363636365,
+                  "correct": 32,
+                  "n": 88,
+                  "unseen_feature_n": 0
+                },
+                "UNION PACIFIC CORP": {
+                  "accuracy": 0.5882352941176471,
+                  "correct": 40,
+                  "n": 68,
+                  "unseen_feature_n": 0
+                },
+                "United Airlines Holdings, Inc.": {
+                  "accuracy": 0.43529411764705883,
+                  "correct": 37,
+                  "n": 85,
+                  "unseen_feature_n": 0
+                },
+                "UnitedHealth Group Incorporated": {
+                  "accuracy": 0.4444444444444444,
+                  "correct": 40,
+                  "n": 90,
+                  "unseen_feature_n": 0
+                },
+                "VALERO ENERGY CORP/TX": {
+                  "accuracy": 0.5686274509803921,
+                  "correct": 29,
+                  "n": 51,
+                  "unseen_feature_n": 0
+                },
+                "VERIZON COMMUNICATIONS INC": {
+                  "accuracy": 0.5737704918032787,
+                  "correct": 35,
+                  "n": 61,
+                  "unseen_feature_n": 0
+                },
+                "VISA INC.": {
+                  "accuracy": 0.5,
+                  "correct": 40,
+                  "n": 80,
+                  "unseen_feature_n": 0
+                },
+                "WALMART INC.": {
+                  "accuracy": 0.36363636363636365,
+                  "correct": 40,
+                  "n": 110,
+                  "unseen_feature_n": 0
+                },
+                "lululemon athletica inc.": {
+                  "accuracy": 0.3854166666666667,
+                  "correct": 37,
+                  "n": 96,
+                  "unseen_feature_n": 0
+                }
+              },
+              "macro_accuracy": 0.39539569155184245,
+              "micro_accuracy": 0.38274890419536634,
+              "n": 6388
+            },
+            "resubstitution_diagnostic": {
+              "accuracy": 0.38274890419536634,
+              "correct": 2445,
+              "n": 6388,
+              "unseen_feature_n": 0
+            }
+          },
+          "oracle_rule_id_and_statement": {
+            "heldout_item": {
+              "accuracy": 1.0,
+              "correct": 1291,
+              "n": 1291,
+              "unseen_feature_n": 0
+            },
+            "leave_one_company_out": {
+              "correct": 6388,
+              "folds": {
+                "3M CO": {
+                  "accuracy": 1.0,
+                  "correct": 109,
+                  "n": 109,
+                  "unseen_feature_n": 0
+                },
+                "ABBOTT LABORATORIES": {
+                  "accuracy": 1.0,
+                  "correct": 97,
+                  "n": 97,
+                  "unseen_feature_n": 0
+                },
+                "ADOBE INC.": {
+                  "accuracy": 1.0,
+                  "correct": 90,
+                  "n": 90,
+                  "unseen_feature_n": 0
+                },
+                "AT&T INC.": {
+                  "accuracy": 1.0,
+                  "correct": 64,
+                  "n": 64,
+                  "unseen_feature_n": 0
+                },
+                "AbbVie Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 76,
+                  "n": 76,
+                  "unseen_feature_n": 0
+                },
+                "Alphabet Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 121,
+                  "n": 121,
+                  "unseen_feature_n": 0
+                },
+                "Apple Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 121,
+                  "n": 121,
+                  "unseen_feature_n": 0
+                },
+                "BEYOND MEAT, INC.": {
+                  "accuracy": 1.0,
+                  "correct": 60,
+                  "n": 60,
+                  "unseen_feature_n": 0
+                },
+                "CATERPILLAR INC": {
+                  "accuracy": 1.0,
+                  "correct": 97,
+                  "n": 97,
+                  "unseen_feature_n": 0
+                },
+                "CISCO SYSTEMS, INC.": {
+                  "accuracy": 1.0,
+                  "correct": 132,
+                  "n": 132,
+                  "unseen_feature_n": 0
+                },
+                "COCA COLA CO": {
+                  "accuracy": 1.0,
+                  "correct": 108,
+                  "n": 108,
+                  "unseen_feature_n": 0
+                },
+                "COLGATE-PALMOLIVE COMPANY": {
+                  "accuracy": 1.0,
+                  "correct": 128,
+                  "n": 128,
+                  "unseen_feature_n": 0
+                },
+                "COMCAST\u00a0CORPORATION": {
+                  "accuracy": 1.0,
+                  "correct": 80,
+                  "n": 80,
+                  "unseen_feature_n": 0
+                },
+                "CROCS,\u00a0INC.": {
+                  "accuracy": 1.0,
+                  "correct": 121,
+                  "n": 121,
+                  "unseen_feature_n": 0
+                },
+                "Carnival Corporation Ltd.": {
+                  "accuracy": 1.0,
+                  "correct": 107,
+                  "n": 107,
+                  "unseen_feature_n": 0
+                },
+                "Chevron Corp": {
+                  "accuracy": 1.0,
+                  "correct": 64,
+                  "n": 64,
+                  "unseen_feature_n": 0
+                },
+                "DARDEN RESTAURANTS, INC.": {
+                  "accuracy": 1.0,
+                  "correct": 107,
+                  "n": 107,
+                  "unseen_feature_n": 0
+                },
+                "DELTA AIR LINES, INC.": {
+                  "accuracy": 1.0,
+                  "correct": 74,
+                  "n": 74,
+                  "unseen_feature_n": 0
+                },
+                "DOLLAR GENERAL CORP": {
+                  "accuracy": 1.0,
+                  "correct": 74,
+                  "n": 74,
+                  "unseen_feature_n": 0
+                },
+                "Exxon Mobil Corporation": {
+                  "accuracy": 1.0,
+                  "correct": 70,
+                  "n": 70,
+                  "unseen_feature_n": 0
+                },
+                "FEDEX CORP": {
+                  "accuracy": 1.0,
+                  "correct": 51,
+                  "n": 51,
+                  "unseen_feature_n": 0
+                },
+                "Freeport-McMoRan Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 64,
+                  "n": 64,
+                  "unseen_feature_n": 0
+                },
+                "GENERAL DYNAMICS CORPORATION": {
+                  "accuracy": 1.0,
+                  "correct": 92,
+                  "n": 92,
+                  "unseen_feature_n": 0
+                },
+                "GENERAL MOTORS COMPANY": {
+                  "accuracy": 1.0,
+                  "correct": 92,
+                  "n": 92,
+                  "unseen_feature_n": 0
+                },
+                "HALLIBURTON COMPANY": {
+                  "accuracy": 1.0,
+                  "correct": 87,
+                  "n": 87,
+                  "unseen_feature_n": 0
+                },
+                "HCA Healthcare, Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 78,
+                  "n": 78,
+                  "unseen_feature_n": 0
+                },
+                "HERSHEY CO": {
+                  "accuracy": 1.0,
+                  "correct": 79,
+                  "n": 79,
+                  "unseen_feature_n": 0
+                },
+                "HP INC.": {
+                  "accuracy": 1.0,
+                  "correct": 98,
+                  "n": 98,
+                  "unseen_feature_n": 0
+                },
+                "INTEL CORP": {
+                  "accuracy": 1.0,
+                  "correct": 126,
+                  "n": 126,
+                  "unseen_feature_n": 0
+                },
+                "INTERNATIONAL PAPER COMPANY": {
+                  "accuracy": 1.0,
+                  "correct": 85,
+                  "n": 85,
+                  "unseen_feature_n": 0
+                },
+                "Johnson & Johnson": {
+                  "accuracy": 1.0,
+                  "correct": 130,
+                  "n": 130,
+                  "unseen_feature_n": 0
+                },
+                "LOCKHEED MARTIN CORPORATION": {
+                  "accuracy": 1.0,
+                  "correct": 109,
+                  "n": 109,
+                  "unseen_feature_n": 0
+                },
+                "Lucid Group, Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 45,
+                  "n": 45,
+                  "unseen_feature_n": 0
+                },
+                "MICROSOFT CORPORATION": {
+                  "accuracy": 1.0,
+                  "correct": 129,
+                  "n": 129,
+                  "unseen_feature_n": 0
+                },
+                "McDONALD\u2019S CORPORATION": {
+                  "accuracy": 1.0,
+                  "correct": 84,
+                  "n": 84,
+                  "unseen_feature_n": 0
+                },
+                "McKESSON CORPORATION": {
+                  "accuracy": 1.0,
+                  "correct": 97,
+                  "n": 97,
+                  "unseen_feature_n": 0
+                },
+                "Merck\u00a0& Co., Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 112,
+                  "n": 112,
+                  "unseen_feature_n": 0
+                },
+                "Meta Platforms, Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 105,
+                  "n": 105,
+                  "unseen_feature_n": 0
+                },
+                "Micron Technology, Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 106,
+                  "n": 106,
+                  "unseen_feature_n": 0
+                },
+                "Molson Coors Beverage Company": {
+                  "accuracy": 1.0,
+                  "correct": 62,
+                  "n": 62,
+                  "unseen_feature_n": 0
+                },
+                "NETFLIX INC": {
+                  "accuracy": 1.0,
+                  "correct": 75,
+                  "n": 75,
+                  "unseen_feature_n": 0
+                },
+                "NIKE, Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 86,
+                  "n": 86,
+                  "unseen_feature_n": 0
+                },
+                "NUCOR CORP": {
+                  "accuracy": 1.0,
+                  "correct": 84,
+                  "n": 84,
+                  "unseen_feature_n": 0
+                },
+                "NVIDIA CORP": {
+                  "accuracy": 1.0,
+                  "correct": 116,
+                  "n": 116,
+                  "unseen_feature_n": 0
+                },
+                "Oracle Corporation": {
+                  "accuracy": 1.0,
+                  "correct": 115,
+                  "n": 115,
+                  "unseen_feature_n": 0
+                },
+                "Owens Corning": {
+                  "accuracy": 1.0,
+                  "correct": 77,
+                  "n": 77,
+                  "unseen_feature_n": 0
+                },
+                "PFIZER INC": {
+                  "accuracy": 1.0,
+                  "correct": 105,
+                  "n": 105,
+                  "unseen_feature_n": 0
+                },
+                "Peloton Interactive, Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 57,
+                  "n": 57,
+                  "unseen_feature_n": 0
+                },
+                "Polaris Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 96,
+                  "n": 96,
+                  "unseen_feature_n": 0
+                },
+                "ROYAL CARIBBEAN CRUISES LTD": {
+                  "accuracy": 1.0,
+                  "correct": 89,
+                  "n": 89,
+                  "unseen_feature_n": 0
+                },
+                "SHAKE SHACK INC.": {
+                  "accuracy": 1.0,
+                  "correct": 73,
+                  "n": 73,
+                  "unseen_feature_n": 0
+                },
+                "Salesforce, Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 99,
+                  "n": 99,
+                  "unseen_feature_n": 0
+                },
+                "Snap-on Inc": {
+                  "accuracy": 1.0,
+                  "correct": 118,
+                  "n": 118,
+                  "unseen_feature_n": 0
+                },
+                "Starbucks Corporation": {
+                  "accuracy": 1.0,
+                  "correct": 127,
+                  "n": 127,
+                  "unseen_feature_n": 0
+                },
+                "THE BOEING COMPANY": {
+                  "accuracy": 1.0,
+                  "correct": 98,
+                  "n": 98,
+                  "unseen_feature_n": 0
+                },
+                "THE BOSTON BEER COMPANY, INC.": {
+                  "accuracy": 1.0,
+                  "correct": 80,
+                  "n": 80,
+                  "unseen_feature_n": 0
+                },
+                "THE SHERWIN-WILLIAMS COMPANY": {
+                  "accuracy": 1.0,
+                  "correct": 101,
+                  "n": 101,
+                  "unseen_feature_n": 0
+                },
+                "TRACTOR SUPPLY CO /DE/": {
+                  "accuracy": 1.0,
+                  "correct": 93,
+                  "n": 93,
+                  "unseen_feature_n": 0
+                },
+                "Target Corporation": {
+                  "accuracy": 1.0,
+                  "correct": 61,
+                  "n": 61,
+                  "unseen_feature_n": 0
+                },
+                "Tesla, Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 97,
+                  "n": 97,
+                  "unseen_feature_n": 0
+                },
+                "The Home Depot, Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 81,
+                  "n": 81,
+                  "unseen_feature_n": 0
+                },
+                "The Procter & Gamble Company": {
+                  "accuracy": 1.0,
+                  "correct": 88,
+                  "n": 88,
+                  "unseen_feature_n": 0
+                },
+                "UNION PACIFIC CORP": {
+                  "accuracy": 1.0,
+                  "correct": 68,
+                  "n": 68,
+                  "unseen_feature_n": 0
+                },
+                "United Airlines Holdings, Inc.": {
+                  "accuracy": 1.0,
+                  "correct": 85,
+                  "n": 85,
+                  "unseen_feature_n": 0
+                },
+                "UnitedHealth Group Incorporated": {
+                  "accuracy": 1.0,
+                  "correct": 90,
+                  "n": 90,
+                  "unseen_feature_n": 0
+                },
+                "VALERO ENERGY CORP/TX": {
+                  "accuracy": 1.0,
+                  "correct": 51,
+                  "n": 51,
+                  "unseen_feature_n": 0
+                },
+                "VERIZON COMMUNICATIONS INC": {
+                  "accuracy": 1.0,
+                  "correct": 61,
+                  "n": 61,
+                  "unseen_feature_n": 0
+                },
+                "VISA INC.": {
+                  "accuracy": 1.0,
+                  "correct": 80,
+                  "n": 80,
+                  "unseen_feature_n": 0
+                },
+                "WALMART INC.": {
+                  "accuracy": 1.0,
+                  "correct": 110,
+                  "n": 110,
+                  "unseen_feature_n": 0
+                },
+                "lululemon athletica inc.": {
+                  "accuracy": 1.0,
+                  "correct": 96,
+                  "n": 96,
+                  "unseen_feature_n": 0
+                }
+              },
+              "macro_accuracy": 1.0,
+              "micro_accuracy": 1.0,
+              "n": 6388
+            },
+            "resubstitution_diagnostic": {
+              "accuracy": 1.0,
+              "correct": 6388,
+              "n": 6388,
+              "unseen_feature_n": 0
+            }
+          },
+          "statement_type": {
+            "heldout_item": {
+              "accuracy": 0.29899302865995353,
+              "correct": 386,
+              "n": 1291,
+              "unseen_feature_n": 0
+            },
+            "leave_one_company_out": {
+              "correct": 1889,
+              "folds": {
+                "3M CO": {
+                  "accuracy": 0.26605504587155965,
+                  "correct": 29,
+                  "n": 109,
+                  "unseen_feature_n": 0
+                },
+                "ABBOTT LABORATORIES": {
+                  "accuracy": 0.29896907216494845,
+                  "correct": 29,
+                  "n": 97,
+                  "unseen_feature_n": 0
+                },
+                "ADOBE INC.": {
+                  "accuracy": 0.3333333333333333,
+                  "correct": 30,
+                  "n": 90,
+                  "unseen_feature_n": 0
+                },
+                "AT&T INC.": {
+                  "accuracy": 0.46875,
+                  "correct": 30,
+                  "n": 64,
+                  "unseen_feature_n": 0
+                },
+                "AbbVie Inc.": {
+                  "accuracy": 0.3815789473684211,
+                  "correct": 29,
+                  "n": 76,
+                  "unseen_feature_n": 0
+                },
+                "Alphabet Inc.": {
+                  "accuracy": 0.24793388429752067,
+                  "correct": 30,
+                  "n": 121,
+                  "unseen_feature_n": 0
+                },
+                "Apple Inc.": {
+                  "accuracy": 0.2396694214876033,
+                  "correct": 29,
+                  "n": 121,
+                  "unseen_feature_n": 0
+                },
+                "BEYOND MEAT, INC.": {
+                  "accuracy": 0.26666666666666666,
+                  "correct": 16,
+                  "n": 60,
+                  "unseen_feature_n": 0
+                },
+                "CATERPILLAR INC": {
+                  "accuracy": 0.30927835051546393,
+                  "correct": 30,
+                  "n": 97,
+                  "unseen_feature_n": 0
+                },
+                "CISCO SYSTEMS, INC.": {
+                  "accuracy": 0.22727272727272727,
+                  "correct": 30,
+                  "n": 132,
+                  "unseen_feature_n": 0
+                },
+                "COCA COLA CO": {
+                  "accuracy": 0.26851851851851855,
+                  "correct": 29,
+                  "n": 108,
+                  "unseen_feature_n": 0
+                },
+                "COLGATE-PALMOLIVE COMPANY": {
+                  "accuracy": 0.234375,
+                  "correct": 30,
+                  "n": 128,
+                  "unseen_feature_n": 0
+                },
+                "COMCAST\u00a0CORPORATION": {
+                  "accuracy": 0.375,
+                  "correct": 30,
+                  "n": 80,
+                  "unseen_feature_n": 0
+                },
+                "CROCS,\u00a0INC.": {
+                  "accuracy": 0.2231404958677686,
+                  "correct": 27,
+                  "n": 121,
+                  "unseen_feature_n": 0
+                },
+                "Carnival Corporation Ltd.": {
+                  "accuracy": 0.24299065420560748,
+                  "correct": 26,
+                  "n": 107,
+                  "unseen_feature_n": 0
+                },
+                "Chevron Corp": {
+                  "accuracy": 0.3125,
+                  "correct": 20,
+                  "n": 64,
+                  "unseen_feature_n": 0
+                },
+                "DARDEN RESTAURANTS, INC.": {
+                  "accuracy": 0.27102803738317754,
+                  "correct": 29,
+                  "n": 107,
+                  "unseen_feature_n": 0
+                },
+                "DELTA AIR LINES, INC.": {
+                  "accuracy": 0.3783783783783784,
+                  "correct": 28,
+                  "n": 74,
+                  "unseen_feature_n": 0
+                },
+                "DOLLAR GENERAL CORP": {
+                  "accuracy": 0.3783783783783784,
+                  "correct": 28,
+                  "n": 74,
+                  "unseen_feature_n": 0
+                },
+                "Exxon Mobil Corporation": {
+                  "accuracy": 0.42857142857142855,
+                  "correct": 30,
+                  "n": 70,
+                  "unseen_feature_n": 0
+                },
+                "FEDEX CORP": {
+                  "accuracy": 0.5686274509803921,
+                  "correct": 29,
+                  "n": 51,
+                  "unseen_feature_n": 0
+                },
+                "Freeport-McMoRan Inc.": {
+                  "accuracy": 0.46875,
+                  "correct": 30,
+                  "n": 64,
+                  "unseen_feature_n": 0
+                },
+                "GENERAL DYNAMICS CORPORATION": {
+                  "accuracy": 0.30434782608695654,
+                  "correct": 28,
+                  "n": 92,
+                  "unseen_feature_n": 0
+                },
+                "GENERAL MOTORS COMPANY": {
+                  "accuracy": 0.32608695652173914,
+                  "correct": 30,
+                  "n": 92,
+                  "unseen_feature_n": 0
+                },
+                "HALLIBURTON COMPANY": {
+                  "accuracy": 0.22988505747126436,
+                  "correct": 20,
+                  "n": 87,
+                  "unseen_feature_n": 0
+                },
+                "HCA Healthcare, Inc.": {
+                  "accuracy": 0.2948717948717949,
+                  "correct": 23,
+                  "n": 78,
+                  "unseen_feature_n": 0
+                },
+                "HERSHEY CO": {
+                  "accuracy": 0.3670886075949367,
+                  "correct": 29,
+                  "n": 79,
+                  "unseen_feature_n": 0
+                },
+                "HP INC.": {
+                  "accuracy": 0.30612244897959184,
+                  "correct": 30,
+                  "n": 98,
+                  "unseen_feature_n": 0
+                },
+                "INTEL CORP": {
+                  "accuracy": 0.23015873015873015,
+                  "correct": 29,
+                  "n": 126,
+                  "unseen_feature_n": 0
+                },
+                "INTERNATIONAL PAPER COMPANY": {
+                  "accuracy": 0.3176470588235294,
+                  "correct": 27,
+                  "n": 85,
+                  "unseen_feature_n": 0
+                },
+                "Johnson & Johnson": {
+                  "accuracy": 0.2153846153846154,
+                  "correct": 28,
+                  "n": 130,
+                  "unseen_feature_n": 0
+                },
+                "LOCKHEED MARTIN CORPORATION": {
+                  "accuracy": 0.26605504587155965,
+                  "correct": 29,
+                  "n": 109,
+                  "unseen_feature_n": 0
+                },
+                "Lucid Group, Inc.": {
+                  "accuracy": 0.24444444444444444,
+                  "correct": 11,
+                  "n": 45,
+                  "unseen_feature_n": 0
+                },
+                "MICROSOFT CORPORATION": {
+                  "accuracy": 0.2248062015503876,
+                  "correct": 29,
+                  "n": 129,
+                  "unseen_feature_n": 0
+                },
+                "McDONALD\u2019S CORPORATION": {
+                  "accuracy": 0.35714285714285715,
+                  "correct": 30,
+                  "n": 84,
+                  "unseen_feature_n": 0
+                },
+                "McKESSON CORPORATION": {
+                  "accuracy": 0.28865979381443296,
+                  "correct": 28,
+                  "n": 97,
+                  "unseen_feature_n": 0
+                },
+                "Merck\u00a0& Co., Inc.": {
+                  "accuracy": 0.25892857142857145,
+                  "correct": 29,
+                  "n": 112,
+                  "unseen_feature_n": 0
+                },
+                "Meta Platforms, Inc.": {
+                  "accuracy": 0.26666666666666666,
+                  "correct": 28,
+                  "n": 105,
+                  "unseen_feature_n": 0
+                },
+                "Micron Technology, Inc.": {
+                  "accuracy": 0.27358490566037735,
+                  "correct": 29,
+                  "n": 106,
+                  "unseen_feature_n": 0
+                },
+                "Molson Coors Beverage Company": {
+                  "accuracy": 0.46774193548387094,
+                  "correct": 29,
+                  "n": 62,
+                  "unseen_feature_n": 0
+                },
+                "NETFLIX INC": {
+                  "accuracy": 0.17333333333333334,
+                  "correct": 13,
+                  "n": 75,
+                  "unseen_feature_n": 0
+                },
+                "NIKE, Inc.": {
+                  "accuracy": 0.32558139534883723,
+                  "correct": 28,
+                  "n": 86,
+                  "unseen_feature_n": 0
+                },
+                "NUCOR CORP": {
+                  "accuracy": 0.30952380952380953,
+                  "correct": 26,
+                  "n": 84,
+                  "unseen_feature_n": 0
+                },
+                "NVIDIA CORP": {
+                  "accuracy": 0.25862068965517243,
+                  "correct": 30,
+                  "n": 116,
+                  "unseen_feature_n": 0
+                },
+                "Oracle Corporation": {
+                  "accuracy": 0.2608695652173913,
+                  "correct": 30,
+                  "n": 115,
+                  "unseen_feature_n": 0
+                },
+                "Owens Corning": {
+                  "accuracy": 0.36363636363636365,
+                  "correct": 28,
+                  "n": 77,
+                  "unseen_feature_n": 0
+                },
+                "PFIZER INC": {
+                  "accuracy": 0.23809523809523808,
+                  "correct": 25,
+                  "n": 105,
+                  "unseen_feature_n": 0
+                },
+                "Peloton Interactive, Inc.": {
+                  "accuracy": 0.22807017543859648,
+                  "correct": 13,
+                  "n": 57,
+                  "unseen_feature_n": 0
+                },
+                "Polaris Inc.": {
+                  "accuracy": 0.3020833333333333,
+                  "correct": 29,
+                  "n": 96,
+                  "unseen_feature_n": 0
+                },
+                "ROYAL CARIBBEAN CRUISES LTD": {
+                  "accuracy": 0.30337078651685395,
+                  "correct": 27,
+                  "n": 89,
+                  "unseen_feature_n": 0
+                },
+                "SHAKE SHACK INC.": {
+                  "accuracy": 0.2602739726027397,
+                  "correct": 19,
+                  "n": 73,
+                  "unseen_feature_n": 0
+                },
+                "Salesforce, Inc.": {
+                  "accuracy": 0.2222222222222222,
+                  "correct": 22,
+                  "n": 99,
+                  "unseen_feature_n": 0
+                },
+                "Snap-on Inc": {
+                  "accuracy": 0.2542372881355932,
+                  "correct": 30,
+                  "n": 118,
+                  "unseen_feature_n": 0
+                },
+                "Starbucks Corporation": {
+                  "accuracy": 0.2283464566929134,
+                  "correct": 29,
+                  "n": 127,
+                  "unseen_feature_n": 0
+                },
+                "THE BOEING COMPANY": {
+                  "accuracy": 0.2857142857142857,
+                  "correct": 28,
+                  "n": 98,
+                  "unseen_feature_n": 0
+                },
+                "THE BOSTON BEER COMPANY, INC.": {
+                  "accuracy": 0.325,
+                  "correct": 26,
+                  "n": 80,
+                  "unseen_feature_n": 0
+                },
+                "THE SHERWIN-WILLIAMS COMPANY": {
+                  "accuracy": 0.297029702970297,
+                  "correct": 30,
+                  "n": 101,
+                  "unseen_feature_n": 0
+                },
+                "TRACTOR SUPPLY CO /DE/": {
+                  "accuracy": 0.3010752688172043,
+                  "correct": 28,
+                  "n": 93,
+                  "unseen_feature_n": 0
+                },
+                "Target Corporation": {
+                  "accuracy": 0.39344262295081966,
+                  "correct": 24,
+                  "n": 61,
+                  "unseen_feature_n": 0
+                },
+                "Tesla, Inc.": {
+                  "accuracy": 0.20618556701030927,
+                  "correct": 20,
+                  "n": 97,
+                  "unseen_feature_n": 0
+                },
+                "The Home Depot, Inc.": {
+                  "accuracy": 0.345679012345679,
+                  "correct": 28,
+                  "n": 81,
+                  "unseen_feature_n": 0
+                },
+                "The Procter & Gamble Company": {
+                  "accuracy": 0.3181818181818182,
+                  "correct": 28,
+                  "n": 88,
+                  "unseen_feature_n": 0
+                },
+                "UNION PACIFIC CORP": {
+                  "accuracy": 0.4411764705882353,
+                  "correct": 30,
+                  "n": 68,
+                  "unseen_feature_n": 0
+                },
+                "United Airlines Holdings, Inc.": {
+                  "accuracy": 0.3176470588235294,
+                  "correct": 27,
+                  "n": 85,
+                  "unseen_feature_n": 0
+                },
+                "UnitedHealth Group Incorporated": {
+                  "accuracy": 0.3333333333333333,
+                  "correct": 30,
+                  "n": 90,
+                  "unseen_feature_n": 0
+                },
+                "VALERO ENERGY CORP/TX": {
+                  "accuracy": 0.39215686274509803,
+                  "correct": 20,
+                  "n": 51,
+                  "unseen_feature_n": 0
+                },
+                "VERIZON COMMUNICATIONS INC": {
+                  "accuracy": 0.4918032786885246,
+                  "correct": 30,
+                  "n": 61,
+                  "unseen_feature_n": 0
+                },
+                "VISA INC.": {
+                  "accuracy": 0.375,
+                  "correct": 30,
+                  "n": 80,
+                  "unseen_feature_n": 0
+                },
+                "WALMART INC.": {
+                  "accuracy": 0.2727272727272727,
+                  "correct": 30,
+                  "n": 110,
+                  "unseen_feature_n": 0
+                },
+                "lululemon athletica inc.": {
+                  "accuracy": 0.28125,
+                  "correct": 27,
+                  "n": 96,
+                  "unseen_feature_n": 0
+                }
+              },
+              "macro_accuracy": 0.30764366419810035,
+              "micro_accuracy": 0.2957107075767063,
+              "n": 6388
+            },
+            "resubstitution_diagnostic": {
+              "accuracy": 0.2957107075767063,
+              "correct": 1889,
+              "n": 6388,
+              "unseen_feature_n": 0
+            }
+          }
+        },
+        "n": 6388,
+        "split": "sha256(exam_id or sample_id) modulo 5; bucket 0 test; others train",
+        "test_n": 1291,
+        "train_n": 5097
+      },
+      "name": "upstream_usgaap",
+      "numeric_transaction_reconstruction": {
+        "by_rule": {
+          "R05_numerical_error_value": {
+            "absolute_component_sum_equals_original_magnitude": 1296,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 1296,
+            "numeric_cases": 1976,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 1303
+          },
+          "R07_balance_sheet_identity_break": {
+            "absolute_component_sum_equals_original_magnitude": 418,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 418,
+            "numeric_cases": 666,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 418
+          },
+          "R09_revenue_recognition_timing": {
+            "absolute_component_sum_equals_original_magnitude": 0,
+            "components_sum_to_erroneous_as_booked": 398,
+            "components_sum_to_original": 0,
+            "numeric_cases": 621,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 398
+          },
+          "R11_inventory_no_nrv_writedown": {
+            "absolute_component_sum_equals_original_magnitude": 0,
+            "components_sum_to_erroneous_as_booked": 293,
+            "components_sum_to_original": 0,
+            "numeric_cases": 435,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 293
+          },
+          "R12_negative_value_on_nonnegative_element": {
+            "absolute_component_sum_equals_original_magnitude": 430,
+            "components_sum_to_erroneous_as_booked": 0,
+            "components_sum_to_original": 430,
+            "numeric_cases": 657,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 430
+          },
+          "R14_goodwill_impairment_omitted": {
+            "absolute_component_sum_equals_original_magnitude": 0,
+            "components_sum_to_erroneous_as_booked": 310,
+            "components_sum_to_original": 0,
+            "numeric_cases": 486,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 310
+          },
+          "R15_afs_securities_measurement": {
+            "absolute_component_sum_equals_original_magnitude": 0,
+            "components_sum_to_erroneous_as_booked": 110,
+            "components_sum_to_original": 0,
+            "numeric_cases": 164,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 119
+          },
+          "R17_receivable_credit_loss_understated": {
+            "absolute_component_sum_equals_original_magnitude": 0,
+            "components_sum_to_erroneous_as_booked": 362,
+            "components_sum_to_original": 0,
+            "numeric_cases": 556,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 362
+          },
+          "R18_ppe_impairment_omitted": {
+            "absolute_component_sum_equals_original_magnitude": 0,
+            "components_sum_to_erroneous_as_booked": 285,
+            "components_sum_to_original": 0,
+            "numeric_cases": 464,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 285
+          },
+          "R20_dta_valuation_allowance_understated": {
+            "absolute_component_sum_equals_original_magnitude": 0,
+            "components_sum_to_erroneous_as_booked": 118,
+            "components_sum_to_original": 0,
+            "numeric_cases": 174,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 130
+          },
+          "R21_rnd_costs_capitalized": {
+            "absolute_component_sum_equals_original_magnitude": 0,
+            "components_sum_to_erroneous_as_booked": 210,
+            "components_sum_to_original": 0,
+            "numeric_cases": 297,
+            "single_component_equals_original_magnitude": 0,
+            "target_has_component_evidence": 210
+          }
+        },
+        "definition": "signed component sums on target caption compared with key original_value; partial evidence coverage is preserved",
+        "examples": [
+          {
+            "id": "EX-000029717379",
+            "label": "Income tax (expense) benefit",
+            "original": -4781,
+            "parts": [
+              -5478,
+              697
+            ],
+            "rule_id": "R05_numerical_error_value",
+            "shown": -3640
+          },
+          {
+            "id": "EX-001adb74ca10",
+            "label": "Cash and cash equivalents",
+            "original": 6756,
+            "parts": [
+              7327,
+              -571
+            ],
+            "rule_id": "R12_negative_value_on_nonnegative_element",
+            "shown": -6756
+          },
+          {
+            "id": "EX-003229b7bb0f",
+            "label": "Retained earnings",
+            "original": 50500,
+            "parts": [
+              60140,
+              -9640
+            ],
+            "rule_id": "R07_balance_sheet_identity_break",
+            "shown": 46929
+          },
+          {
+            "id": "EX-005e4638cdfe",
+            "label": "Research and development",
+            "original": -58,
+            "parts": [
+              -64,
+              6
+            ],
+            "rule_id": "R05_numerical_error_value",
+            "shown": -38
+          },
+          {
+            "id": "EX-00605d59dc23",
+            "label": "Research and development",
+            "original": -13548,
+            "parts": [
+              -14833,
+              1285
+            ],
+            "rule_id": "R05_numerical_error_value",
+            "shown": -17601
+          },
+          {
+            "id": "EX-007708ae3e05",
+            "label": "Income tax (expense) benefit",
+            "original": -2924,
+            "parts": [
+              -3554,
+              630
+            ],
+            "rule_id": "R05_numerical_error_value",
+            "shown": -2680
+          },
+          {
+            "id": "EX-007fc863bd01",
+            "label": "Income tax (expense) benefit",
+            "original": -383,
+            "parts": [
+              -423,
+              40
+            ],
+            "rule_id": "R05_numerical_error_value",
+            "shown": -420
+          },
+          {
+            "id": "EX-0098302b7439",
+            "label": "Research and development",
+            "original": -60,
+            "parts": [
+              -75,
+              15
+            ],
+            "rule_id": "R05_numerical_error_value",
+            "shown": -65
+          }
+        ],
+        "totals": {
+          "absolute_component_sum_equals_original_magnitude": 2144,
+          "components_sum_to_erroneous_as_booked": 2086,
+          "components_sum_to_original": 2144,
+          "numeric_cases": 6496,
+          "single_component_equals_original_magnitude": 0,
+          "target_has_component_evidence": 4258
+        }
+      },
+      "provenance": {
+        "clean_statements": 1989,
+        "duration_statement_n": 1312,
+        "duration_statements_with_only_instant_fact_periods": 1312,
+        "facts_with_accession_or_filing_url": 0,
+        "interpretation": "decimals=-6 describes precision; it does not multiply an ISO4217 fact value by one million. Instant periods do not represent annual revenues/cash flows. These are scaled internal tables, not valid filing fact exports.",
+        "scaled_millions_statements": 1989,
+        "scaled_statements_whose_numeric_table_values_equal_iso4217_fact_values": 1989,
+        "serialized_facts": 31252,
+        "statement_source_descriptions": {
+          "SEC EDGAR companyfacts (real 10-K)": 1328,
+          "SEC EDGAR companyfacts + filing calculation linkbase (real 10-K)": 660,
+          "SEC EDGAR companyfacts + filing calculation linkbase (real 10-K/A)": 1
+        },
+        "statements_with_accession_or_filing_url": 0,
+        "structured_clean_n": 1989,
+        "structured_rows_with_accession_or_filing_url": 0
+      },
+      "repeated_statement_versions": {
+        "forms_present": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "groups_with_more_than_one_version": 1989,
+        "same_statement_duplicates_within_form": 0,
+        "version_count_quantiles": {
+          "max": 17,
+          "median": 5,
+          "min": 3,
+          "p90": 14
+        },
+        "warning": "random item splits can share the same base statement across train/test; fit learned systems by company and keep case variants together"
+      },
+      "residuals": {
+        "examples_over_50pct": [
+          {
+            "absolute_residual_share": 0.5933461185691653,
+            "file": "/workspace/IntelliAudit/data/clean/100517_2016_CF.json",
+            "residual_rows": [
+              {
+                "label": "Other operating activities, net",
+                "value": 3279
+              },
+              {
+                "label": "Other investing activities, net",
+                "value": -3238
+              },
+              {
+                "label": "Other financing activities, net",
+                "value": -599
+              }
+            ]
+          },
+          {
+            "absolute_residual_share": 0.6243621243621243,
+            "file": "/workspace/IntelliAudit/data/clean/100517_2017_CF.json",
+            "residual_rows": [
+              {
+                "label": "Other operating activities, net",
+                "value": 1343
+              },
+              {
+                "label": "Other investing activities, net",
+                "value": -3803
+              },
+              {
+                "label": "Other financing activities, net",
+                "value": 1461
+              }
+            ]
+          },
+          {
+            "absolute_residual_share": 0.5438118811881189,
+            "file": "/workspace/IntelliAudit/data/clean/100517_2018_CF.json",
+            "residual_rows": [
+              {
+                "label": "Other operating activities, net",
+                "value": 1870
+              },
+              {
+                "label": "Other investing activities, net",
+                "value": -4455
+              },
+              {
+                "label": "Other financing activities, net",
+                "value": -266
+              }
+            ]
+          },
+          {
+            "absolute_residual_share": 0.7318722943722944,
+            "file": "/workspace/IntelliAudit/data/clean/100517_2020_CF.json",
+            "residual_rows": [
+              {
+                "label": "Other operating activities, net",
+                "value": -13690
+              },
+              {
+                "label": "Other investing activities, net",
+                "value": 50
+              },
+              {
+                "label": "Other financing activities, net",
+                "value": 13310
+              }
+            ]
+          },
+          {
+            "absolute_residual_share": 0.6180482686253935,
+            "file": "/workspace/IntelliAudit/data/clean/100517_2020_IS.json",
+            "residual_rows": [
+              {
+                "label": "Other operating expenses, net",
+                "value": -21714
+              },
+              {
+                "label": "Other income (expense), net",
+                "value": -2463
+              },
+              {
+                "label": "Other items, net",
+                "value": 3506
+              }
+            ]
+          }
+        ],
+        "mass_definition": "sum absolute values of kind=line only; excludes all totals/subtotals; descriptive, not total-assets percentage",
+        "note": "suffix absence alone does not prove residual elimination; upstream renames plug lines",
+        "residual_suffix_rows": 0,
+        "statements_with_residual_suffix": 0,
+        "structured_by_statement_type": {
+          "BalanceSheet": {
+            "absolute_line_mass": 160971209,
+            "absolute_residual_mass": 6001376,
+            "line_rows": 17420,
+            "mass_weighted_share": 0.03728229437600857,
+            "per_statement_absolute_share": {
+              "max": 0.6427838075682019,
+              "median": 0.0010845986984815619,
+              "min": 0.0,
+              "p90": 0.1289714891798192
+            },
+            "residual_rows": 1179,
+            "statements": 677,
+            "with_residual": 452
+          },
+          "CashFlow": {
+            "absolute_line_mass": 22150474,
+            "absolute_residual_mass": 7403886,
+            "line_rows": 5944,
+            "mass_weighted_share": 0.33425406607551605,
+            "per_statement_absolute_share": {
+              "max": 0.9132593028386528,
+              "median": 0.32903225806451614,
+              "min": 0.03875297683481273,
+              "p90": 0.6550710436060755
+            },
+            "residual_rows": 2587,
+            "statements": 691,
+            "with_residual": 691
+          },
+          "IncomeStatement": {
+            "absolute_line_mass": 81354951,
+            "absolute_residual_mass": 12927578,
+            "line_rows": 4143,
+            "mass_weighted_share": 0.15890339605760442,
+            "per_statement_absolute_share": {
+              "max": 0.6582018422780931,
+              "median": 0.08092076438273062,
+              "min": 0.0002746812552933367,
+              "p90": 0.4440079187799473
+            },
+            "residual_rows": 1603,
+            "statements": 621,
+            "with_residual": 621
+          }
+        }
+      },
+      "rule_counts": {
+        "CONTROL": 1989,
+        "R01_current_noncurrent_asset_misclass": 655,
+        "R02_current_noncurrent_liab_misclass": 560,
+        "R03_debt_current_refinance_misclass": 325,
+        "R04_missing_line_item": 1989,
+        "R05_numerical_error_value": 1976,
+        "R06_redundant_fabricated_row": 1298,
+        "R07_balance_sheet_identity_break": 666,
+        "R08_cashflow_section_misclass": 482,
+        "R09_revenue_recognition_timing": 621,
+        "R10_lease_operating_finance_misclass": 228,
+        "R11_inventory_no_nrv_writedown": 435,
+        "R12_negative_value_on_nonnegative_element": 657,
+        "R14_goodwill_impairment_omitted": 486,
+        "R15_afs_securities_measurement": 164,
+        "R16_cashflow_financing_misclass": 613,
+        "R17_receivable_credit_loss_understated": 556,
+        "R18_ppe_impairment_omitted": 464,
+        "R19_debt_covenant_breach_not_current": 328,
+        "R20_dta_valuation_allowance_understated": 174,
+        "R21_rnd_costs_capitalized": 297
+      },
+      "rule_year_counts": {
+        "R01_current_noncurrent_asset_misclass": {
+          "2015": 65,
+          "2016": 64,
+          "2017": 63,
+          "2018": 64,
+          "2019": 65,
+          "2020": 66,
+          "2021": 67,
+          "2022": 68,
+          "2023": 67,
+          "2024": 66
+        },
+        "R02_current_noncurrent_liab_misclass": {
+          "2015": 55,
+          "2016": 55,
+          "2017": 53,
+          "2018": 54,
+          "2019": 55,
+          "2020": 56,
+          "2021": 58,
+          "2022": 59,
+          "2023": 58,
+          "2024": 57
+        },
+        "R03_debt_current_refinance_misclass": {
+          "2015": 31,
+          "2016": 32,
+          "2017": 31,
+          "2018": 32,
+          "2019": 30,
+          "2020": 30,
+          "2021": 35,
+          "2022": 36,
+          "2023": 35,
+          "2024": 33
+        },
+        "R04_missing_line_item": {
+          "2015": 169,
+          "2016": 186,
+          "2017": 195,
+          "2018": 200,
+          "2019": 204,
+          "2020": 206,
+          "2021": 207,
+          "2022": 208,
+          "2023": 207,
+          "2024": 207
+        },
+        "R05_numerical_error_value": {
+          "2015": 168,
+          "2016": 184,
+          "2017": 194,
+          "2018": 198,
+          "2019": 203,
+          "2020": 205,
+          "2021": 206,
+          "2022": 208,
+          "2023": 205,
+          "2024": 205
+        },
+        "R06_redundant_fabricated_row": {
+          "2015": 102,
+          "2016": 119,
+          "2017": 127,
+          "2018": 131,
+          "2019": 134,
+          "2020": 136,
+          "2021": 137,
+          "2022": 138,
+          "2023": 137,
+          "2024": 137
+        },
+        "R07_balance_sheet_identity_break": {
+          "2015": 65,
+          "2016": 65,
+          "2017": 64,
+          "2018": 65,
+          "2019": 65,
+          "2020": 66,
+          "2021": 68,
+          "2022": 70,
+          "2023": 69,
+          "2024": 69
+        },
+        "R08_cashflow_section_misclass": {
+          "2015": 47,
+          "2016": 47,
+          "2017": 48,
+          "2018": 48,
+          "2019": 48,
+          "2020": 49,
+          "2021": 50,
+          "2022": 49,
+          "2023": 48,
+          "2024": 48
+        },
+        "R09_revenue_recognition_timing": {
+          "2015": 35,
+          "2016": 53,
+          "2017": 62,
+          "2018": 65,
+          "2019": 67,
+          "2020": 67,
+          "2021": 68,
+          "2022": 68,
+          "2023": 68,
+          "2024": 68
+        },
+        "R10_lease_operating_finance_misclass": {
+          "2018": 3,
+          "2019": 25,
+          "2020": 38,
+          "2021": 40,
+          "2022": 41,
+          "2023": 40,
+          "2024": 41
+        },
+        "R11_inventory_no_nrv_writedown": {
+          "2015": 39,
+          "2016": 41,
+          "2017": 40,
+          "2018": 42,
+          "2019": 40,
+          "2020": 45,
+          "2021": 47,
+          "2022": 48,
+          "2023": 46,
+          "2024": 47
+        },
+        "R12_negative_value_on_nonnegative_element": {
+          "2015": 66,
+          "2016": 65,
+          "2017": 64,
+          "2018": 65,
+          "2019": 65,
+          "2020": 65,
+          "2021": 66,
+          "2022": 68,
+          "2023": 67,
+          "2024": 66
+        },
+        "R14_goodwill_impairment_omitted": {
+          "2015": 45,
+          "2016": 46,
+          "2017": 46,
+          "2018": 44,
+          "2019": 44,
+          "2020": 51,
+          "2021": 52,
+          "2022": 53,
+          "2023": 52,
+          "2024": 53
+        },
+        "R15_afs_securities_measurement": {
+          "2015": 18,
+          "2016": 19,
+          "2017": 18,
+          "2018": 19,
+          "2019": 17,
+          "2020": 16,
+          "2021": 17,
+          "2022": 15,
+          "2023": 13,
+          "2024": 12
+        },
+        "R16_cashflow_financing_misclass": {
+          "2015": 62,
+          "2016": 61,
+          "2017": 63,
+          "2018": 64,
+          "2019": 63,
+          "2020": 62,
+          "2021": 59,
+          "2022": 57,
+          "2023": 60,
+          "2024": 62
+        },
+        "R17_receivable_credit_loss_understated": {
+          "2015": 51,
+          "2016": 52,
+          "2017": 50,
+          "2018": 51,
+          "2019": 53,
+          "2020": 57,
+          "2021": 59,
+          "2022": 62,
+          "2023": 61,
+          "2024": 60
+        },
+        "R18_ppe_impairment_omitted": {
+          "2015": 44,
+          "2016": 45,
+          "2017": 46,
+          "2018": 47,
+          "2019": 47,
+          "2020": 49,
+          "2021": 48,
+          "2022": 47,
+          "2023": 45,
+          "2024": 46
+        },
+        "R19_debt_covenant_breach_not_current": {
+          "2015": 32,
+          "2016": 33,
+          "2017": 32,
+          "2018": 32,
+          "2019": 30,
+          "2020": 30,
+          "2021": 35,
+          "2022": 36,
+          "2023": 35,
+          "2024": 33
+        },
+        "R20_dta_valuation_allowance_understated": {
+          "2015": 9,
+          "2016": 10,
+          "2017": 14,
+          "2018": 16,
+          "2019": 14,
+          "2020": 21,
+          "2021": 22,
+          "2022": 23,
+          "2023": 22,
+          "2024": 23
+        },
+        "R21_rnd_costs_capitalized": {
+          "2015": 17,
+          "2016": 27,
+          "2017": 31,
+          "2018": 32,
+          "2019": 32,
+          "2020": 32,
+          "2021": 31,
+          "2022": 31,
+          "2023": 32,
+          "2024": 32
+        }
+      },
+      "statement_counts": {
+        "BalanceSheet": 8395,
+        "CashFlow": 3168,
+        "IncomeStatement": 3400
+      },
+      "year_counts": {
+        "2015": 1289,
+        "2016": 1390,
+        "2017": 1436,
+        "2018": 1472,
+        "2019": 1505,
+        "2020": 1553,
+        "2021": 1579,
+        "2022": 1593,
+        "2023": 1574,
+        "2024": 1572
+      }
+    }
+  },
+  "model_calls": 0
+}

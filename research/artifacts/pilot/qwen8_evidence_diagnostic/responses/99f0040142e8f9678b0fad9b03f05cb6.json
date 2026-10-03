@@ -1,0 +1,20 @@
+{
+  "call_id": "99f0040142e8f9678b0fad9b03f05cb6",
+  "model": "qwen/qwen3-8b",
+  "stage": "extract",
+  "prompt_sha256": "b8c7d91d41b0b482dced9a6083fa203c38622fa83cc6d483046614bea4624032",
+  "reserved_usd": "0.000899145",
+  "status": "ok",
+  "content": "{\n  \"evidence\": [\n    {\"source\": \"statement\", \"quote\": \"Net income | $17,285\", \"row\": 1},\n    {\"source\": \"statement\", \"quote\": \"Share-based compensation | $800\", \"row\": 2},\n    {\"source\": \"statement\", \"quote\": \"Purchases of property, plant and equipment | ($2,454)\", \"row\": 6},\n    {\"source\": \"statement\", \"quote\": \"Net increase (decrease) in cash | $4,454\", \"row\": 15}\n  ],\n  \"observations\": [\n    \"Net income is reported as $17,285 million.\",\n    \"Share-based compensation is added back as $800 million.\",\n    \"Purchases of property, plant, and equipment are recorded as a negative $2,454 million.\",\n    \"The net increase in cash is $4,454 million.\"\n  ],\n  \"possible_faults\": [\n    \"The share-based compensation may not fully align with the transaction data.\",\n    \"The purchases of property, plant, and equipment might include non-cash components.\",\n    \"The net cash from operating activities could be affected by non-operating items.\",\n    \"The net increase in cash may not reflect all relevant adjustments.\"\n  ],\n  \"uncertainty\": \"The exact nature of adjustments and their impact on cash flows is unclear without further details.\"\n}",
+  "response_id": "gen-1791048063-RPBM5LiPzE8wcR4WPj9X",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 854,
+    "completion_tokens": 305,
+    "total_tokens": 1159,
+    "cost": 0.000238693
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 5.028
+}

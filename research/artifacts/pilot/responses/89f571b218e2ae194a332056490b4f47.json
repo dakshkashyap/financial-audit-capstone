@@ -1,0 +1,19 @@
+{
+  "call_id": "89f571b218e2ae194a332056490b4f47",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "3a4dabbd8e3e161bef0c8234afa3ba10548ff5afa74286e7797358e8d22ca533",
+  "reserved_usd": "0.036224",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"incorrect\",\"error_type\":\"Numerical Error\",\"row\":0,\"citation\":\"ASC 606-10-25-23\",\"citation_abstain\":false,\"evidence\":[{\"source\":\"statement\",\"quote\":\"[row 0]: Revenue | $23,032\",\"row\":0},{\"source\":\"transactions\",\"quote\":\"consideration billed or received during the period for performance obligations not yet satisfied at period-end 2,579; of which recorded as contract liabilities (deferred revenue) 127\",\"row\":null}]}\n```\n\nEvery row foots, so the fault is not arithmetic. Revenue of 25,075 less 2,043 returns equals the reported 23,032, and all subtotals tie. However, the cut-off review shows 2,579 was billed for performance obligations still unsatisfied at period-end, and only 127 was deferred. That implies about 2,452 was recognised before the obligations were satisfied, so revenue is overstated. The figure rests on that supporting fact alone.",
+  "response_id": "gen-1791001122-Vjn2m2WO9cDzGzNZXO87",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 1347,
+    "completion_tokens": 803,
+    "total_tokens": 2150,
+    "cost": 0.021448
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 9.322
+}

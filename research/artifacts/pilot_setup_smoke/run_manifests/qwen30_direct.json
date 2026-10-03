@@ -1,0 +1,19 @@
+{
+  "condition": "qwen30_direct",
+  "condition_id": "da16853ef465cf60267f1339281778aa2c937d18f00bf80f69c5513f1f477426",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "canonical_slug": "qwen/qwen3-30b-a3b-instruct-2507",
+  "method": "direct",
+  "prompt_version": "diagnostic-evidence-v1",
+  "temperature": 0,
+  "max_completion_tokens": 900,
+  "catalog_sha256": "ccb48d7307b80bf65bf41b1239caf807c02c4cc502d589dae850664699dee4e4",
+  "catalog_prices_per_token": {
+    "prompt": "0.0000001",
+    "completion": "0.0000003"
+  },
+  "source_commit": "72da89a9e6400bfd1da9041a742f9cdeb00470bc",
+  "public_input_sha256": "4b6bad23e04829353c7b6204ea203649e9db4c034c838242a0f50649526828b8",
+  "ledger": "/workspace/financial-audit-capstone/research/artifacts/api_ledger.jsonl",
+  "budget_usd": "5.00"
+}

@@ -1,0 +1,20 @@
+{
+  "call_id": "b96794f188afb13390be081e152fe8c3",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "decision",
+  "prompt_sha256": "96a6866678f833d98f8b16edd0a3b87c24a1e1894b8d6ffa650da1e8db4a8a33",
+  "reserved_usd": "0.0012992",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Numerical Error\",\n  \"row\": 4,\n  \"citation\": \"ASC 340-40-25-1\",\n  \"citation_abstain\": false,\n  \"evidence\": [\n    {\n      \"source\": \"statement\",\n      \"quote\": \"Contract with customer asset gross | $433\",\n      \"row\": 4\n    },\n    {\n      \"source\": \"transactions\",\n      \"quote\": \"[Contract with customer asset gross] other credits posted to the account: +520 (increase); other charges posted to the account: −87 (decrease)\",\n      \"row\": null\n    },\n    {\n      \"source\": \"statement\",\n      \"quote\": \"Total current assets | $6,608\",\n      \"row\": 7\n    },\n    {\n      \"source\": \"transactions\",\n      \"quote\": \"[Other current assets] other credits posted to the account: +133 (increase); other charges posted to the account: −19 (decrease)\",\n      \"row\": null\n    }\n  ],\n  \"reason\": \"The contract with customer asset gross should be $433, but the transaction data shows a net increase of $433 (+520 − 87), which matches. However, the asset is incorrectly classified as current. ASC 340-40-25-1 requires that such assets be classified based on timing of revenue recognition. The $433 is likely not fully current, and its inclusion in current assets without proper disaggregation violates classification principles. The numerical total is correct, but the classification is erroneous.\"\n}",
+  "response_id": "gen-1791001898-FjYzFgeDzyGiitNCxPoo",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 2442,
+    "completion_tokens": 358,
+    "total_tokens": 2800,
+    "cost": 0.0001866942
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 2.062
+}

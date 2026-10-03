@@ -1,0 +1,21 @@
+{
+  "call_id": "8acd2b3a0975d5aeb4b351f66aaa353d",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":null,\"evidence\":[{\"quote\":\"revenue recognised on satisfied performance obligations: +2,333 (increase); returns and allowances: −275 (decrease)\",\"row\":0,\"source\":\"transactions\"},{\"quote\":\"of which recorded as contract liabilities (deferred revenue) 59\",\"row\":null,\"source\":\"transactions\"},{\"quote\":\"Net income (loss) | $15\",\"row\":9,\"source\":\"statement\"}],\"judgement\":\"correct\",\"reason\":\"Revenue (2,333−275=2,058), SG&A (−134), other (−1), tax (−8), and other items (+16) all reconcile to the transactions. The subtotals foot: 2,058−1,260−134−656=8; 8−1=7; 7−8+16=15. Unearned consideration was properly deferred, so no error is evident.\",\"row\":null}",
+  "reserved_usd": "0.047440",
+  "request_sha256": "b56b247dd81c22472a4c6f9a0060f0c5f6bf92a2d7edc684d95734203a8ddee1",
+  "prompt_sha256": "4171c6cfe3a5b8b72d7b0e5d6067155330f1e0083ba1fb32f2f1cae30172564a",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002394-bP2tkyZ2eQ7DaGfJd69e",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 2075,
+    "completion_tokens": 486,
+    "total_tokens": 2561,
+    "cost": 0.01802
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 7.148
+}

@@ -1,0 +1,37 @@
+{
+  "mode": "llm",
+  "model": "claude/claude-haiku-4-5",
+  "n_records": 42,
+  "A_graph_single_pick": {
+    "topic_em": 0.1905,
+    "hits": 8
+  },
+  "C_citation_agent": {
+    "topic_em": 0.1905,
+    "hits": 8,
+    "n_with_citation": 28,
+    "grounded_accept_rate": 1.0,
+    "ungrounded_accepts": 0,
+    "hallucinated_attempts_total": 0,
+    "avg_iterations": 0.933,
+    "improved_vs_A": 1,
+    "regressed_vs_A": 1
+  },
+  "candidate_recall_ceiling": {
+    "topic_em": 0.2619,
+    "hits": 11
+  },
+  "paper_baseline_gpt4": 0.262,
+  "delta_C_minus_A": 0.0,
+  "sample_improvements": [
+    {
+      "label": "Property and equipment, net",
+      "concept": "PropertyPlantAndEquipmentNet",
+      "gt_topic": "360",
+      "a_topic": "852",
+      "c_topic": "360",
+      "c_citation": "360-10-50-1",
+      "rationale": "ASC 360 (Property, Plant, and Equipment) is the subject-matter standard for PP&E accounting and measurement, making it the appropriate citation for the net carrying value of property and equipment regardless of statement presentation."
+    }
+  ]
+}

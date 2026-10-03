@@ -1,0 +1,19 @@
+{
+  "call_id": "ea1423dadf4ff4359d376d94c839802a",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "b0cd72bffb5c7a836fa0613084a0bc3b1f63ca9261274b5ac8cede930f904cad",
+  "reserved_usd": "0.046472",
+  "status": "ok",
+  "content": "{\"judgement\":\"incorrect\",\"error_type\":\"Misclassification\",\"row\":22,\"citation\":\"ASC 210-10-45-8\",\"citation_abstain\":false,\"evidence\":[{\"source\":\"statement\",\"quote\":\"[row 22]: Accounts payable | $55\",\"row\":22},{\"source\":\"statement\",\"quote\":\"[row 20]: Non-current liabilities:\",\"row\":20},{\"source\":\"statement\",\"quote\":\"[row 19]: Total current liabilities | $21\",\"row\":19}],\"reason\":\"All subtotals and totals add correctly. However, accounts payable of $55 appears under non-current liabilities. Trade payables are current obligations of the operating cycle. The supporting lease facts (27% of economic life, 75% PV) back operating-lease treatment, so they are not the fault. The citation reflects my recollection of the current-liability guidance; no standards corpus was provided to confirm it.\"}",
+  "response_id": "gen-1791001427-0C9OLdKsRPcWIxAr6Jvm",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 2397,
+    "completion_tokens": 698,
+    "total_tokens": 3095,
+    "cost": 0.023548
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 8.393
+}

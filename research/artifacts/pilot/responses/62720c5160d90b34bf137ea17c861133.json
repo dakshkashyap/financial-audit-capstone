@@ -1,0 +1,20 @@
+{
+  "call_id": "62720c5160d90b34bf137ea17c861133",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "decision",
+  "prompt_sha256": "b6afb5575f3657c8aac4eff148c6d5d4037d6b7a65d654dcebf8ceb179596c53",
+  "reserved_usd": "0.0007334",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Numerical Error\",\n  \"row\": 4,\n  \"citation\": \"ASC 230-10-45-1\",\n  \"citation_abstain\": false,\n  \"evidence\": [\n    {\n      \"source\": \"statement\",\n      \"quote\": \"Net cash from operating activities | $8,379\",\n      \"row\": 4\n    },\n    {\n      \"source\": \"transactions\",\n      \"quote\": \"[Net income] net income for the period: +6,857 (increase); loss components of the period: −478 (decrease)\",\n      \"row\": null\n    },\n    {\n      \"source\": \"transactions\",\n      \"quote\": \"[Share-based compensation] share-based compensation add-back: +118 (increase); forfeiture reversal: −11 (decrease)\",\n      \"row\": null\n    },\n    {\n      \"source\": \"transactions\",\n      \"quote\": \"[Other operating activities, net] other credits posted to the account: +21 (increase); other charges posted to the account: −82 (decrease)\",\n      \"row\": null\n    }\n  ],\n  \"reason\": \"The operating cash flow calculation is incorrect. Net income is $6,857 - $478 = $6,379. Add back share-based compensation: $118 - $11 = $107. Add other operating activities: $21 - $82 = -$61. Total: $6,379 + $107 - $61 = $6,425, not $8,379. The reported $8,379 exceeds the correct sum by $1,954. ASC 230-10-45-1 requires proper reconciliation of net income to net cash from operating activities.\"\n}",
+  "response_id": "gen-1791001786-D5kNqCpxcWGoEF69rtR3",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 952,
+    "completion_tokens": 409,
+    "total_tokens": 1361,
+    "cost": 0.00012479625
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 2.209
+}

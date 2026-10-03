@@ -1,0 +1,11 @@
+{
+  "call_id": "0f9738a827f8002d104807e62cdefa88",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "decision",
+  "prompt_sha256": "078469f8a491bc91831256d614e15e7bd8cbc020a33a12f93e5e7faad9589c3c",
+  "reserved_usd": "0.0007282",
+  "status": "api_error",
+  "content": null,
+  "error": "HTTP 429",
+  "elapsed_seconds": 0.475
+}

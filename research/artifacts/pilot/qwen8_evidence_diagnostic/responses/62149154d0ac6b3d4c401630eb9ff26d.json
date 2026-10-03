@@ -1,0 +1,20 @@
+{
+  "call_id": "62149154d0ac6b3d4c401630eb9ff26d",
+  "model": "qwen/qwen3-8b",
+  "stage": "extract",
+  "prompt_sha256": "145fa61bc9414668966882f59fc2ccb99bb8f15dd3f241b6f01ebe1baf22df0a",
+  "reserved_usd": "0.001434771",
+  "status": "ok",
+  "content": "{\n  \"evidence\": [\n    {\"source\": \"statement\", \"quote\": \"Current assets: [SEP]\", \"row\": 0},\n    {\"source\": \"statement\", \"quote\": \"Total current assets | $11,236 [SEP]\", \"row\": 8},\n    {\"source\": \"transaction_data\", \"quote\": \"Goodwill recognised on acquisition: +3,698 (increase); impairment / disposal of a reporting unit: −383 (decrease)\", \"row\": null},\n    {\"source\": \"transaction_data\", \"quote\": \"Operating lease right-of-use assets: right-of-use assets for new leases: +485 (increase); right-of-use asset amortization: −26 (decrease)\", \"row\": null}\n  ],\n  \"observations\": [\n    \"Total current assets are reported as $11,236 million.\",\n    \"Goodwill increased by $3,698 million due to acquisitions.\",\n    \"Operating lease right-of-use assets increased by $485 million from new leases.\",\n    \"Operating lease liabilities increased by $370 million from new leases.\"\n  ],\n  \"possible_faults\": [\n    \"Potential overstatement of goodwill if acquisitions were not properly accounted for.\",\n    \"Possible misclassification of operating lease assets or liabilities.\",\n    \"Uncertainty in the valuation of lease assets and liabilities based on provided ratios.\",\n    \"Inconsistencies in the treatment of other current assets and liabilities.\"\n  ],\n  \"uncertainty\": \"The classification of operating lease assets and liabilities is uncertain due to incomplete information on lease terms and fair value assessments. The accuracy of goodwill recognition and the valuation of other assets and liabilities may also be questionable without further evidence.\"\n}",
+  "response_id": "gen-1791048159-tnuKD0zNhmgyM9Uz4lW0",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 2154,
+    "completion_tokens": 359,
+    "total_tokens": 2513,
+    "cost": 0.000415363
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 6.386
+}

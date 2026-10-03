@@ -1,0 +1,21 @@
+{
+  "call_id": "4f2474c6d2e4f491bfc410321fbbe73c",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":\"Numerical Error\",\"evidence\":[{\"quote\":\"[row 0]: Revenue | $2,615\",\"row\":0,\"source\":\"statement\"},{\"quote\":\"[row 4]: Operating income (loss) | $100\",\"row\":4,\"source\":\"statement\"},{\"quote\":\"cost of goods sold (purchases and conversion): −1,207 (decrease); inventory returned to stock / overhead credit: +51 (increase)\",\"row\":null,\"source\":\"transactions\"},{\"quote\":\"other credits posted to the account: +185 (increase); other charges posted to the account: −763 (decrease)\",\"row\":null,\"source\":\"transactions\"}],\"judgement\":\"incorrect\",\"reason\":\"The expense lines agree with the evidence: COGS is −1,207+51 = −1,156, and other operating expenses are 185−763 = −578. Revenue of 2,615 does not foot: 2,615−1,156−175−578 = 706, not the reported operating income of 100. Working back, implied revenue is 2,009. This is an arithmetic misstatement, so no ASC paragraph is cited.\",\"row\":0}",
+  "reserved_usd": "0.046520",
+  "request_sha256": "8bde3dc13ff54031b811e92c35b243821aaa455160e0f7e5136de5a9b880ee33",
+  "prompt_sha256": "6749290cfccabc26678b3848ca06fa5577200839adfe65bb6866ff4b4fde4727",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002457-EClxs3itD2cGRcQIiUAd",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 2000,
+    "completion_tokens": 677,
+    "total_tokens": 2677,
+    "cost": 0.02154
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 8.732
+}

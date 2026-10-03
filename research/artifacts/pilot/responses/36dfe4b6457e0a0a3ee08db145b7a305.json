@@ -1,0 +1,19 @@
+{
+  "call_id": "36dfe4b6457e0a0a3ee08db145b7a305",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "d806902b5f6348cebd5c44cf93a04304f26f0829e7cfdf0a6a11f76907b2fb92",
+  "reserved_usd": "0.036632",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"correct\",\"error_type\":null,\"row\":null,\"citation\":null,\"citation_abstain\":true,\"evidence\":[{\"source\":\"transactions\",\"quote\":\"revenue recognised on satisfied performance obligations: +1,438 (increase); returns and allowances: −52 (decrease)\",\"row\":0},{\"source\":\"transactions\",\"quote\":\"selling, general and administrative spend: −615 (decrease); cost recovery / reclass out: +100 (increase)\",\"row\":3},{\"source\":\"transactions\",\"quote\":\"current and deferred tax expense: −121 (decrease); tax credits and benefits: +15 (increase)\",\"row\":8},{\"source\":\"transactions\",\"quote\":\"recorded as contract liabilities (deferred revenue) 48\",\"row\":null}]}\n```\n\nReason: The transaction-supported lines reconcile to the reported amounts: revenue 1,386, SG&A (515), other operating (11), other income (expense) (7) and tax (106). The subtotals 214, 207 and 313 are arithmetically consistent. The 48 of unearned consideration was properly deferred to contract liabilities. \"Other",
+  "response_id": "gen-1791001466-duWuhs4yGS4AMN5B5D1v",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 1357,
+    "completion_tokens": 900,
+    "total_tokens": 2257,
+    "cost": 0.023428
+  },
+  "finish_reason": "length",
+  "elapsed_seconds": 11.462
+}

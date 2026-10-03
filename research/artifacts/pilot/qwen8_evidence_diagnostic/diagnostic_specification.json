@@ -1,0 +1,383 @@
+{
+  "label": "Post-hoc Qwen8 evidence diagnostic; original fixed 48 cases and 900-token per-call cap",
+  "condition": "qwen8_evidence_diagnostic",
+  "condition_id": "0f347808f883d769ca88c0e660ff08200166b1b3f6cb24346a75a7728add6016",
+  "n_cases": 48,
+  "public_input_sha256": "5b07b65a8427ca4615339d1dfc240b02ad08ece654872c1c72ea94c8efaf71b9",
+  "case_ids": [
+    "case_aa3bbe2b8691f78383ee",
+    "case_f41742b3a4e2fb83f231",
+    "case_96f80313236e44ee8109",
+    "case_261ab15629baec708d83",
+    "case_960cfd9a4bba0b5c553a",
+    "case_fd2292c43951c99d1f6f",
+    "case_5c79057c6748c1d2e605",
+    "case_d60dcac90c192ebcd31c",
+    "case_41b26ea05925032aacc7",
+    "case_de455b4d36c07315719f",
+    "case_fa6f056afdf85662f601",
+    "case_e4307b9e73aca174e281",
+    "case_8e1b05d28ced388202e7",
+    "case_309148c5c9877a2e82da",
+    "case_2edbf676d94e573cdd4e",
+    "case_7dad7285f6966525d3b0",
+    "case_6c6c786e0d9a5a2bcff8",
+    "case_8494e9109ff8044d5892",
+    "case_064d3c06171fde95dda0",
+    "case_6673862ac8567253d89d",
+    "case_c73a5097fb378ca9cd5e",
+    "case_fbf75a377151757a382c",
+    "case_a1ab4bba46145526d2f3",
+    "case_384a04f2789ffeca1a92",
+    "case_bbeb1ea42c647058570f",
+    "case_1978e5c21aefe1e4b8a7",
+    "case_bfd3b5245a1bc700cbd6",
+    "case_b17319f49dec56baf12b",
+    "case_a5dff52701c61f618d5d",
+    "case_d1efe0af0cfd3eaa909d",
+    "case_33a5c50b437c422eb1e1",
+    "case_cc180e9e3a6186422bac",
+    "case_3a65c485abbe1984ae27",
+    "case_87c726f7a2504ed0d85a",
+    "case_616f2d2146f23bd81607",
+    "case_2dc2afcc1d91f372810e",
+    "case_dfe914ba62936e8a096f",
+    "case_72959fb5d53dade7a524",
+    "case_197844f25e4b4b75fbe9",
+    "case_b200b8872e8d3b0e2d0b",
+    "case_aa698b1e854dd37de14f",
+    "case_a2f22d9fc55ca36d8411",
+    "case_1bed53ac07435b3f7ade",
+    "case_2f3e27bae3c9eb501d70",
+    "case_87b8b6091e9cf2644c6e",
+    "case_273b51b8ce3b6bbf2ae3",
+    "case_75ac978357bec09b7be4",
+    "case_41544387f1642428ca32"
+  ],
+  "full_cohort_upper_bound_usd": "0.137983716",
+  "additional_upper_bound_usd": "0.137983716",
+  "global_reserved_usd": "4.209003034",
+  "reserve_other_conditions_usd": "0",
+  "projected_global_including_other_conditions_usd": "4.346986750",
+  "whole_cohort_fits_5_usd_cap": true,
+  "per_case_reservations": [
+    {
+      "case_id": "case_aa3bbe2b8691f78383ee",
+      "extract_token_upper_bound": 4185,
+      "decision_token_upper_bound": 10903,
+      "two_call_upper_bound_usd": "0.002584296"
+    },
+    {
+      "case_id": "case_f41742b3a4e2fb83f231",
+      "extract_token_upper_bound": 3916,
+      "decision_token_upper_bound": 10634,
+      "two_call_upper_bound_usd": "0.002521350"
+    },
+    {
+      "case_id": "case_96f80313236e44ee8109",
+      "extract_token_upper_bound": 8326,
+      "decision_token_upper_bound": 15044,
+      "two_call_upper_bound_usd": "0.003553290"
+    },
+    {
+      "case_id": "case_261ab15629baec708d83",
+      "extract_token_upper_bound": 6941,
+      "decision_token_upper_bound": 13659,
+      "two_call_upper_bound_usd": "0.003229200"
+    },
+    {
+      "case_id": "case_960cfd9a4bba0b5c553a",
+      "extract_token_upper_bound": 7267,
+      "decision_token_upper_bound": 13985,
+      "two_call_upper_bound_usd": "0.003305484"
+    },
+    {
+      "case_id": "case_fd2292c43951c99d1f6f",
+      "extract_token_upper_bound": 3838,
+      "decision_token_upper_bound": 10556,
+      "two_call_upper_bound_usd": "0.002503098"
+    },
+    {
+      "case_id": "case_5c79057c6748c1d2e605",
+      "extract_token_upper_bound": 3913,
+      "decision_token_upper_bound": 10631,
+      "two_call_upper_bound_usd": "0.002520648"
+    },
+    {
+      "case_id": "case_d60dcac90c192ebcd31c",
+      "extract_token_upper_bound": 3864,
+      "decision_token_upper_bound": 10582,
+      "two_call_upper_bound_usd": "0.002509182"
+    },
+    {
+      "case_id": "case_41b26ea05925032aacc7",
+      "extract_token_upper_bound": 8261,
+      "decision_token_upper_bound": 14979,
+      "two_call_upper_bound_usd": "0.003538080"
+    },
+    {
+      "case_id": "case_de455b4d36c07315719f",
+      "extract_token_upper_bound": 8763,
+      "decision_token_upper_bound": 15481,
+      "two_call_upper_bound_usd": "0.003655548"
+    },
+    {
+      "case_id": "case_fa6f056afdf85662f601",
+      "extract_token_upper_bound": 7388,
+      "decision_token_upper_bound": 14106,
+      "two_call_upper_bound_usd": "0.003333798"
+    },
+    {
+      "case_id": "case_e4307b9e73aca174e281",
+      "extract_token_upper_bound": 3912,
+      "decision_token_upper_bound": 10630,
+      "two_call_upper_bound_usd": "0.002520414"
+    },
+    {
+      "case_id": "case_8e1b05d28ced388202e7",
+      "extract_token_upper_bound": 5435,
+      "decision_token_upper_bound": 12153,
+      "two_call_upper_bound_usd": "0.002876796"
+    },
+    {
+      "case_id": "case_309148c5c9877a2e82da",
+      "extract_token_upper_bound": 4135,
+      "decision_token_upper_bound": 10853,
+      "two_call_upper_bound_usd": "0.002572596"
+    },
+    {
+      "case_id": "case_2edbf676d94e573cdd4e",
+      "extract_token_upper_bound": 4065,
+      "decision_token_upper_bound": 10783,
+      "two_call_upper_bound_usd": "0.002556216"
+    },
+    {
+      "case_id": "case_7dad7285f6966525d3b0",
+      "extract_token_upper_bound": 6718,
+      "decision_token_upper_bound": 13436,
+      "two_call_upper_bound_usd": "0.003177018"
+    },
+    {
+      "case_id": "case_6c6c786e0d9a5a2bcff8",
+      "extract_token_upper_bound": 4076,
+      "decision_token_upper_bound": 10794,
+      "two_call_upper_bound_usd": "0.002558790"
+    },
+    {
+      "case_id": "case_8494e9109ff8044d5892",
+      "extract_token_upper_bound": 4181,
+      "decision_token_upper_bound": 10899,
+      "two_call_upper_bound_usd": "0.002583360"
+    },
+    {
+      "case_id": "case_064d3c06171fde95dda0",
+      "extract_token_upper_bound": 3911,
+      "decision_token_upper_bound": 10629,
+      "two_call_upper_bound_usd": "0.002520180"
+    },
+    {
+      "case_id": "case_6673862ac8567253d89d",
+      "extract_token_upper_bound": 7913,
+      "decision_token_upper_bound": 14631,
+      "two_call_upper_bound_usd": "0.003456648"
+    },
+    {
+      "case_id": "case_c73a5097fb378ca9cd5e",
+      "extract_token_upper_bound": 7005,
+      "decision_token_upper_bound": 13723,
+      "two_call_upper_bound_usd": "0.003244176"
+    },
+    {
+      "case_id": "case_fbf75a377151757a382c",
+      "extract_token_upper_bound": 4002,
+      "decision_token_upper_bound": 10720,
+      "two_call_upper_bound_usd": "0.002541474"
+    },
+    {
+      "case_id": "case_a1ab4bba46145526d2f3",
+      "extract_token_upper_bound": 3897,
+      "decision_token_upper_bound": 10615,
+      "two_call_upper_bound_usd": "0.002516904"
+    },
+    {
+      "case_id": "case_384a04f2789ffeca1a92",
+      "extract_token_upper_bound": 3949,
+      "decision_token_upper_bound": 10667,
+      "two_call_upper_bound_usd": "0.002529072"
+    },
+    {
+      "case_id": "case_bbeb1ea42c647058570f",
+      "extract_token_upper_bound": 3902,
+      "decision_token_upper_bound": 10620,
+      "two_call_upper_bound_usd": "0.002518074"
+    },
+    {
+      "case_id": "case_1978e5c21aefe1e4b8a7",
+      "extract_token_upper_bound": 3877,
+      "decision_token_upper_bound": 10595,
+      "two_call_upper_bound_usd": "0.002512224"
+    },
+    {
+      "case_id": "case_bfd3b5245a1bc700cbd6",
+      "extract_token_upper_bound": 3720,
+      "decision_token_upper_bound": 10438,
+      "two_call_upper_bound_usd": "0.002475486"
+    },
+    {
+      "case_id": "case_b17319f49dec56baf12b",
+      "extract_token_upper_bound": 8155,
+      "decision_token_upper_bound": 14873,
+      "two_call_upper_bound_usd": "0.003513276"
+    },
+    {
+      "case_id": "case_a5dff52701c61f618d5d",
+      "extract_token_upper_bound": 3979,
+      "decision_token_upper_bound": 10697,
+      "two_call_upper_bound_usd": "0.002536092"
+    },
+    {
+      "case_id": "case_d1efe0af0cfd3eaa909d",
+      "extract_token_upper_bound": 3756,
+      "decision_token_upper_bound": 10474,
+      "two_call_upper_bound_usd": "0.002483910"
+    },
+    {
+      "case_id": "case_33a5c50b437c422eb1e1",
+      "extract_token_upper_bound": 7918,
+      "decision_token_upper_bound": 14636,
+      "two_call_upper_bound_usd": "0.003457818"
+    },
+    {
+      "case_id": "case_cc180e9e3a6186422bac",
+      "extract_token_upper_bound": 7871,
+      "decision_token_upper_bound": 14589,
+      "two_call_upper_bound_usd": "0.003446820"
+    },
+    {
+      "case_id": "case_3a65c485abbe1984ae27",
+      "extract_token_upper_bound": 4201,
+      "decision_token_upper_bound": 10919,
+      "two_call_upper_bound_usd": "0.002588040"
+    },
+    {
+      "case_id": "case_87c726f7a2504ed0d85a",
+      "extract_token_upper_bound": 3672,
+      "decision_token_upper_bound": 10390,
+      "two_call_upper_bound_usd": "0.002464254"
+    },
+    {
+      "case_id": "case_616f2d2146f23bd81607",
+      "extract_token_upper_bound": 7630,
+      "decision_token_upper_bound": 14348,
+      "two_call_upper_bound_usd": "0.003390426"
+    },
+    {
+      "case_id": "case_2dc2afcc1d91f372810e",
+      "extract_token_upper_bound": 7214,
+      "decision_token_upper_bound": 13932,
+      "two_call_upper_bound_usd": "0.003293082"
+    },
+    {
+      "case_id": "case_dfe914ba62936e8a096f",
+      "extract_token_upper_bound": 6569,
+      "decision_token_upper_bound": 13287,
+      "two_call_upper_bound_usd": "0.003142152"
+    },
+    {
+      "case_id": "case_72959fb5d53dade7a524",
+      "extract_token_upper_bound": 3693,
+      "decision_token_upper_bound": 10411,
+      "two_call_upper_bound_usd": "0.002469168"
+    },
+    {
+      "case_id": "case_197844f25e4b4b75fbe9",
+      "extract_token_upper_bound": 4127,
+      "decision_token_upper_bound": 10845,
+      "two_call_upper_bound_usd": "0.002570724"
+    },
+    {
+      "case_id": "case_b200b8872e8d3b0e2d0b",
+      "extract_token_upper_bound": 3850,
+      "decision_token_upper_bound": 10568,
+      "two_call_upper_bound_usd": "0.002505906"
+    },
+    {
+      "case_id": "case_aa698b1e854dd37de14f",
+      "extract_token_upper_bound": 4141,
+      "decision_token_upper_bound": 10859,
+      "two_call_upper_bound_usd": "0.002574000"
+    },
+    {
+      "case_id": "case_a2f22d9fc55ca36d8411",
+      "extract_token_upper_bound": 7883,
+      "decision_token_upper_bound": 14601,
+      "two_call_upper_bound_usd": "0.003449628"
+    },
+    {
+      "case_id": "case_1bed53ac07435b3f7ade",
+      "extract_token_upper_bound": 6400,
+      "decision_token_upper_bound": 13118,
+      "two_call_upper_bound_usd": "0.003102606"
+    },
+    {
+      "case_id": "case_2f3e27bae3c9eb501d70",
+      "extract_token_upper_bound": 6123,
+      "decision_token_upper_bound": 12841,
+      "two_call_upper_bound_usd": "0.003037788"
+    },
+    {
+      "case_id": "case_87b8b6091e9cf2644c6e",
+      "extract_token_upper_bound": 3509,
+      "decision_token_upper_bound": 10227,
+      "two_call_upper_bound_usd": "0.002426112"
+    },
+    {
+      "case_id": "case_273b51b8ce3b6bbf2ae3",
+      "extract_token_upper_bound": 7983,
+      "decision_token_upper_bound": 14701,
+      "two_call_upper_bound_usd": "0.003473028"
+    },
+    {
+      "case_id": "case_75ac978357bec09b7be4",
+      "extract_token_upper_bound": 6468,
+      "decision_token_upper_bound": 13186,
+      "two_call_upper_bound_usd": "0.003118518"
+    },
+    {
+      "case_id": "case_41544387f1642428ca32",
+      "extract_token_upper_bound": 3940,
+      "decision_token_upper_bound": 10658,
+      "two_call_upper_bound_usd": "0.002526966"
+    }
+  ],
+  "settings": {
+    "schema_version": 1,
+    "selection": {
+      "seed": 20261002,
+      "n_companies": 8,
+      "min_fiscal_year": 2020,
+      "max_fiscal_year": 2024,
+      "per_company": {
+        "control": 2,
+        "detection_only": 2,
+        "citable": 2
+      }
+    },
+    "budget_usd": "5.00",
+    "max_completion_tokens": 900,
+    "temperature": 0,
+    "timeout_seconds": 90,
+    "conditions": {
+      "qwen8_evidence_diagnostic": {
+        "model": "qwen/qwen3-8b",
+        "method": "evidence_then_decision",
+        "reasoning_enabled": false,
+        "analysis_transport": "user_data",
+        "max_prior_analysis_extra_utf8_bytes": 6000,
+        "inter_call_delay_seconds": 1
+      }
+    }
+  },
+  "interpretation": "Two-call versus one-call comparison is a separate post-hoc pipeline condition. Same inputs/labels remain unvalidated and may contain synthetic shortcuts. Provider failures do not establish model capability.",
+  "wrapper_implementation_sha256": "1c79df23a7dd4b269d25265da44b262fb34206e78a4fa80a086534164b24b701"
+}

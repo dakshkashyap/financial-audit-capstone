@@ -1,0 +1,19 @@
+{
+  "call_id": "edaf244dab0d70f2ab441188e6e5dcf3",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "c30edfa41a4be97d40968e9408ec278642541af717890022f227e3a015bb60e4",
+  "reserved_usd": "0.050424",
+  "status": "empty_content",
+  "content": null,
+  "response_id": "gen-1791001166-4HJ4UsrVPnijzAHLXHYz",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 2814,
+    "completion_tokens": 900,
+    "total_tokens": 3714,
+    "cost": 0.029256
+  },
+  "finish_reason": "length",
+  "elapsed_seconds": 11.183
+}

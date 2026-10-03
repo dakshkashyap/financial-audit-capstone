@@ -1,0 +1,20 @@
+{
+  "call_id": "d61825e409c9e4d0b98ca229e5e78279",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "decision",
+  "prompt_sha256": "322cedb3def2d778c08916d6c2024b856ac7a6024df4975a723c692bd431369a",
+  "reserved_usd": "0.0006927",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Numerical Error\",\n  \"row\": 0,\n  \"citation\": \"ASC 606-10-25-23\",\n  \"citation_abstain\": false,\n  \"evidence\": [\n    {\n      \"source\": \"statement_text\",\n      \"quote\": \"Revenue | $28,211\",\n      \"row\": 0\n    },\n    {\n      \"source\": \"transaction_data\",\n      \"quote\": \"revenue recognised on satisfied performance obligations: +34,178 (increase); returns and allowances: −5,967 (decrease)\",\n      \"row\": null\n    },\n    {\n      \"source\": \"transaction_data\",\n      \"quote\": \"consideration billed or received during the period for performance obligations not yet satisfied at period-end 4,099\",\n      \"row\": null\n    },\n    {\n      \"source\": \"supporting facts\",\n      \"quote\": \"recorded as contract liabilities (deferred revenue) 138\",\n      \"row\": null\n    }\n  ],\n  \"reason\": \"Revenue should exclude unearned consideration. The statement reports $28,211, but recognized revenue is $34,178 (satisfied obligations) minus $5,967 (returns), totaling $28,211. However, $4,099 in consideration for unsatisfied obligations must be deferred, reducing revenue. The $138 recorded as contract liabilities implies only $138 of the $4,099 was deferred, leaving $3,961 unaccounted. This violates ASC 606-10-25-23, which requires deferral of consideration for unsatisfied performance obligations.\"\n}",
+  "response_id": "gen-1791001852-3kcx2ii78brJxnT6d9Sx",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 822,
+    "completion_tokens": 385,
+    "total_tokens": 1207,
+    "cost": 0.00011390355
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 2.09
+}

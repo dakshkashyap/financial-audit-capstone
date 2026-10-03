@@ -1,0 +1,19 @@
+{
+  "call_id": "b17de67826a8b7a91027a50e7ff61cfc",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "078469f8a491bc91831256d614e15e7bd8cbc020a33a12f93e5e7faad9589c3c",
+  "reserved_usd": "0.036328",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"incorrect\",\"error_type\":\"Missing Row\",\"row\":11,\"citation\":null,\"citation_abstain\":true,\"evidence\":[{\"source\":\"statement\",\"quote\":\"[row 12]: Net cash from financing activities | ($4,625)\",\"row\":12},{\"source\":\"statement\",\"quote\":\"[row 10]: Dividends paid | ($3,173)\",\"row\":10},{\"source\":\"statement\",\"quote\":\"[row 11]: Other financing activities, net | ($747)\",\"row\":11},{\"source\":\"transactions\",\"quote\":\"[Repurchases of common stock] common stock repurchased: −746 (decrease); settlement / retire-share adjustment: +41 (increase)\",\"row\":null}],\"reason\":\"The financing rows sum to -3,920 (-3,173 - 747), not the reported -4,625. The gap of -705 equals the evidenced repurchases (-746 + 41), and no repurchase row appears, so a row is missing. Inserting it at index 11 is inferred from row order. All other subtotals and evidenced lines reconcile. This is an omitted-row arithmetic fault, not a clear ASC paragraph violation, so no citation is given.\"}\n```",
+  "response_id": "gen-1791001138-1s0B4WG5bMhUhwZJz1Ft",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 1367,
+    "completion_tokens": 680,
+    "total_tokens": 2047,
+    "cost": 0.019068
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 7.498
+}

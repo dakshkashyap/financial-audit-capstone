@@ -1,0 +1,32 @@
+{
+  "checked_at_utc": "2026-10-03T17:26:54+00:00",
+  "browser": "system Chromium via Playwright; set_content offline rendering",
+  "viewport_sizes": [
+    {
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "checks": {
+    "desktop_layout_and_primary_condition_count": true,
+    "company_search_and_posthoc_filters": true,
+    "gold_hidden_until_explicit_review": true,
+    "mobile_390px_without_page_overflow": true,
+    "eight_slides_keyboard_navigation_and_primary_table": true,
+    "case_text_and_script_delimiters_inert": true,
+    "javascript_errors_zero": true,
+    "network_requests_zero": true
+  },
+  "javascript_errors": [],
+  "network_requests": [],
+  "scope": "Frontend rendering, interactions and source-text isolation only. This does not validate accounting labels or model conclusions.",
+  "artifact_sha256": {
+    "research/dashboard/dist/index.html": "1e0194380b2eb600e56b5d1c1c78cca345717b22280b9fa6be45ee7cbb4482e9",
+    "research/slides.html": "0e9f0c7e538a6ffde5757a924098e9ae812fd81016759d4e04eb0f7abc94e130"
+  },
+  "preview": "research/dashboard/preview.png"
+}

@@ -1,0 +1,20 @@
+{
+  "call_id": "b91b0680315cb033e7b216d8db39cfac",
+  "model": "qwen/qwen3-8b",
+  "stage": "decision",
+  "prompt_sha256": "078469f8a491bc91831256d614e15e7bd8cbc020a33a12f93e5e7faad9589c3c",
+  "reserved_usd": "0.000945594",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Numerical Error\",\n  \"row\": 13,\n  \"citation\": null,\n  \"citation_abstain\": true,\n  \"evidence\": [\n    {\"source\": \"statement\", \"quote\": \"Net increase (decrease) in cash | $87\", \"row\": 13},\n    {\"source\": \"transactions\", \"quote\": \"[Share-based compensation] share-based compensation add-back: +115 (increase); forfeiture reversal: −8 (decrease)\", \"row\": null},\n    {\"source\": \"transactions\", \"quote\": \"[Purchases of property, plant and equipment] purchases of productive assets: −4,318 (decrease); proceeds reclassed against capex: +712 (increase)\", \"row\": null},\n    {\"source\": \"transactions\", \"quote\": \"[Dividends paid] dividends paid to shareholders: −3,556 (decrease); dividend payable reversal: +383 (increase)\", \"row\": null}\n  ],\n  \"reason\": \"The net increase in cash is calculated as the sum of net cash from operating, investing, and financing activities. The reported net increase of $87 does not match the arithmetic sum of the line items.\"\n}",
+  "response_id": "gen-1791001590-EtiosPmZKkkrxy8mHvdp",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 930,
+    "completion_tokens": 271,
+    "total_tokens": 1201,
+    "cost": 0.000232115
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 4.26
+}

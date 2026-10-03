@@ -1,47 +1,93 @@
-# AuditBench Reproduction
+# Financial audit research: verified development branch
 
-End-to-end reproduction of *Automating Financial Statement Audits with Large
-Language Models* (arXiv:2506.17282v1), built on the released dataset.
+This branch integrates the IFRS and ASC pipelines and adds an independently
+audited, reproducible research workspace. **It is not a validated benchmark
+release, and it does not establish that a cheap model beats Opus.**
 
-## Files
-- `parser.py` — table format parser + the three data loaders (fixed seed).
-- `auditor_prompt.py` — system + user prompt, **verbatim from the paper Appendix**.
-- `runner.py` — calls the model per sample, logs the exact model snapshot, crash-safe resume.
-- `metrics.py` — the five-stage metrics (calibration knobs at the top).
-- `evaluate.py` — scores predictions, prints your numbers next to the paper's.
-- `verify_data.py` — preflight check; run this first, it's free.
-- `main.py` — glue.
+Start with `research/`: the source audits, isolated experiment harness, results
+dashboard, evidence-acquisition prototype, manuscript draft, and December plan.
+All measurements distinguish detection, strict paragraph label agreement,
+abstention, clean controls, API failures and cost. Current gold labels are not
+equivalent to accountant-verified applicability.
 
-## Data (put these 3 files in one folder)
-- `wrong_table_data.json`              (1484 single-error tables → Table 2)
-- `wrong_table_data_multiple_errors.json` (372 multi-error tables → Table 3)
-- `output_transaction_table_pair.json` (371 correct tables → Table 1)
+Review the [measured comparison table](research/results/comparison_table.md),
+[paper draft](research/paper/draft.md), and
+[changes from both source branches](research/CHANGES_FROM_SOURCE_BRANCHES.md).
+Download and open the self-contained [dashboard](research/dashboard/dist/index.html)
+or [eight-slide briefing](research/slides.html) in a browser; neither makes
+network requests or needs an API credential.
 
-The raw `Raw_table_data/subset1,2` folders are NOT needed — the paired JSON is
-the processed input.
+## Reproduce
 
-## Run
+The new research tools use Python 3.12+ and the standard library. The inherited
+pipeline uses the separate dependencies in `requirements.txt`.
+
 ```bash
-pip install -r requirements.txt
-export AUDITBENCH_DATA=/path/to/folder/with/the/3/jsons
-
-python verify_data.py            # 1. free preflight
-python main.py --dry-run --n 8   # 2. free plumbing test (scores trivially 1.0)
-
-export OPENAI_API_KEY=sk-...
-python main.py                   # 3. real run: 2 models x 3 splits x 150 samples
-# or remove sampling variance entirely:
-python main.py --split single_error --n 1484
-python main.py --split multi_error  --n 372
+git clone https://github.com/dakshkashyap/financial-audit-capstone.git
+cd financial-audit-capstone
+git switch research/evidence-audit-2026
+python -m unittest discover -s tests -v
+python -m research.harness score --prepared research/artifacts/pilot
+python -m research.run_frontier_format_diagnostic --prepared research/artifacts/pilot --score
+python -m research.run_qwen8_evidence_diagnostic --prepared research/artifacts/pilot --score
+python -m research.diagnose_raw_outputs --prepared research/artifacts/pilot
+python -m research.comparison_table
+python research/dashboard/build_dashboard.py
+python research/dashboard/build_comparison.py
 ```
 
-## What reproduces and what doesn't
-- **Reproduces:** General Judgment, Error Type/Entry EM, Error Resolution
-  (BERTScore), Table Revision (BLEU), Overall SR — and the qualitative story.
-- **Does NOT reproduce:** Standards Citation (paper's FASB DB + retriever were
-  not released; this repo uses a regex substitute, flagged with †).
-- **Exact decimals won't match anyone:** unknown 150-sample draw + retired
-  mid-2025 GPT-4 snapshot. Run the full set and calibrate the BERTScore knobs
-  in `metrics.py` (`BERTSCORE_RESCALE`) against the paper's numbers.
+Install inherited dependencies before running the full test suite; the new
+research tests run with the standard library alone. Scoring cached predictions
+requires no model calls. See `research/EXPERIMENT.md` for the exact recorded
+commands and model settings.
 
+To independently reproduce selection, clone the source and use a new output
+directory; preparation deliberately refuses to overwrite the recorded pilot:
+
+```bash
+git clone https://github.com/manmad-web/IntelliAudit.git ../IntelliAudit
+git -C ../IntelliAudit checkout 72da89a9e6400bfd1da9041a742f9cdeb00470bc
+python -m research.harness prepare --source ../IntelliAudit/data/benchmark --out /tmp/intelliaudit-selection-check
 ```
+
+Model runs require `OPENROUTER_API_KEY` in the environment or a temporary key file
+outside the repository. The new runner limits model IDs to one frontier model
+and two cheap Qwen models, records every request, reserves worst-case cost before
+each call, and stops at the global dollar cap. Never put credentials in a tracked
+file. No results dashboard requires or receives the model API key.
+
+## What was integrated and repaired
+
+`core/` and `approaches/` retain both requested source branches, with explicit
+framework handling. Repairs preserve IFRS paragraph candidates, prevent ASC
+normalization from erasing IFRS candidates, prevent silent citation guessing,
+target numerical repairs to the identified row, and correct citable-only metric
+denominators. Strict paragraph scoring is separate from historical topic-prefix
+scoring. Partial arithmetic consistency cannot certify error absence.
+
+`research/SOURCES.json` pins exact commits and input hashes. The current upstream
+exam differs substantially from the older embedded eight-company data. Do not
+compare scores across those versions or extrapolate this development pilot to
+financial auditing generally.
+
+## Historical material
+
+Pre-existing `docs/`, `results/`, and embedded `data/` are historical artifacts,
+retained for traceability. Their descriptions and outputs may use different
+datasets, models, oracle information or permissive metrics. They are not the
+results of this study. `research/reviews/` records independently recomputed
+findings and the limits of verification. Scripts under the inherited approaches
+remain experimental; oracle evaluation modes are not deployment performance.
+
+## Publication and release
+
+The proposal evaluates evidence acquisition under cost, sufficient supporting
+proof and citation applicability. Existing papers already cover synthetic audit
+engagements, evidence graphs and multi-agent tools, so those alone are not novel.
+The prototype is synthetic and has not been independently accountant-validated.
+
+Read `research/RELEASE_POLICY.md` and `research/DECEMBER_PLAN.md`. New research software is MIT-licensed with the scope in `research/LICENSING.md`.
+Source repositories had no declared licenses at inspection. Resolve inherited code/data licensing
+and standards-text rights before describing this as an openly licensed release.
+December is a target for validated artifacts and a submission-ready preprint;
+conference acceptance is external to this project.

@@ -1,0 +1,20 @@
+{
+  "call_id": "458521c6093978f13645045cbfef1efb",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "extract",
+  "prompt_sha256": "a94fcdb17a9c43b47b4fae7c4e48588e94f86639c0e60b1a2a669d15596ece7f",
+  "reserved_usd": "0.0006420",
+  "status": "ok",
+  "content": "{\"evidence\":[{\"source\":\"statement_text\",\"quote\":\"Revenue | $326\",\"row\":0},{\"source\":\"transaction_data\",\"quote\":\"revenue recognised on satisfied performance obligations: +389 (increase); returns and allowances: −63 (decrease)\",\"row\":null},{\"source\":\"statement_text\",\"quote\":\"Operating income (loss) | ($156)\",\"row\":5},{\"source\":\"transaction_data\",\"quote\":\"selling, general and administrative spend: −207 (decrease); cost recovery / reclass out: +37 (increase)\",\"row\":null}],\"observations\":[\"Revenue reported as $326 million.\",\"Revenue increased by $389 million from performance obligations but decreased by $63 million due to returns.\",\"Selling, general and administrative expenses were $207 million in spend, with $37 million recovered or reclassified.\",\"Operating loss is $156 million, consistent with reported expenses.\"],\"possible_faults\":[\"Revenue recognition may be overstated if returns and allowances are not properly estimated.\",\"SG&A expenses may be understated if cost recoveries are not properly classified.\",\"Unexplained $37 million reclass may affect expense accuracy.\",\"No evidence of revenue adjustments for contract modifications or variable consideration.\"],\"uncertainty\":\"No evidence of contract modifications, variable consideration, or revenue allocation. Unclear if returns and allowances are fully accrued. Missing details on reclass nature.\"}",
+  "response_id": "gen-1791001894-zAnXwWwDxD1KiveXVwrP",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 682,
+    "completion_tokens": 291,
+    "total_tokens": 973,
+    "cost": 8.901585e-05
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 1.965
+}

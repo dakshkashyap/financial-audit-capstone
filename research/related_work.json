@@ -1,0 +1,1056 @@
+{
+  "schema_version": "1.0",
+  "checked_at_utc": "2026-10-03T04:05:22Z",
+  "checked_on_client_date": "2026-10-02",
+  "scope": "Bibliographic and source-claim verification from primary publisher/arXiv/organizer/dataset/license pages; no cited experiment was reproduced.",
+  "papers": [
+    {
+      "id": "auditbench",
+      "title": "Automating Financial Statement Audits with Large Language Models",
+      "authors": [
+        "Wang, Rushi",
+        "Liu, Jiateng",
+        "Zhao, Weijie",
+        "Li, Shenglan",
+        "Zhang, Denghui"
+      ],
+      "year": 2025,
+      "date": "2025-06-14",
+      "status": "arXiv v1, 14 June 2025; no conference acceptance verified",
+      "primary_url": "https://arxiv.org/abs/2506.17282",
+      "pdf_url": "https://arxiv.org/pdf/2506.17282",
+      "source_claims": {
+        "scale": "371 source statements from 124 collected images; 1,484 single-error variants and 371 multiple-error variants (paper Dataset Statistics).",
+        "task": "General judgment, error identification, explanation/resolution, standards citation, and table revision.",
+        "evidence": "Public financial statement images converted to text; GPT-generated transaction evidence and error injections with reported human review.",
+        "evaluation": "150 sampled cases per evaluated split; exact matches for several tasks, BERTScore explanations, retriever-based Top-1/Top-3 citation scoring, BLEU table revision, and overall success."
+      },
+      "licenses": {
+        "paper": "arXiv perpetual non-exclusive license; not a data redistribution license",
+        "data": "Not verified; linked repository license endpoint returned HTTP 404",
+        "code": "Not verified"
+      },
+      "limitations": [
+        "Synthetic evidence and mutations can permit shortcuts; reported scores do not measure independent paragraph applicability.",
+        "Citation Top-1 retrieval matching is not the proposed full paragraph exact-match or entailment metric.",
+        "Do not repeat the local claim of 1,856 real source statements: the paper reports 371 source statements."
+      ],
+      "positioning": "Use as a legacy control, not as proof that the new benchmark is valid. The user's Automating Financial Statements and AuditBench references identify the same work.",
+      "paper_reported_metrics": [
+        {
+          "name": "Standards citation Top-1, single-error split",
+          "model": "GPT-4",
+          "value": 0.262,
+          "comparable_to_new_full_citation": false
+        },
+        {
+          "name": "Overall success, single-error split",
+          "model": "GPT-4",
+          "value": 0.041,
+          "comparable_to_new_full_citation": false
+        }
+      ],
+      "verification": "Primary-source claims checked; experiments and full dataset contents not independently reproduced in this review."
+    },
+    {
+      "id": "finauditing",
+      "title": "FinAuditing: A Financial Taxonomy-Structured Multi-Document Benchmark for Evaluating LLMs",
+      "authors": [
+        "Wang, Yan",
+        "Wang, Keyi",
+        "Yang, Shanshan",
+        "Patel, Jaisal",
+        "Zhao, Jeff",
+        "Mo, Fengran",
+        "Peng, Xueqing",
+        "Qian, Lingfei",
+        "Chen, Yankai",
+        "Gutiérrez-Basulto, Víctor",
+        "Huang, Jimin",
+        "Xiong, Guojun",
+        "Liu, Xiao-Yang",
+        "Liu, Xue",
+        "Nie, Jian-Yun"
+      ],
+      "year": 2025,
+      "date": "2025-10-10",
+      "status": "arXiv v3 revised 17 May 2026; authors state accepted SIGIR 2026 Resource Track; publisher acceptance record not separately verified",
+      "primary_url": "https://arxiv.org/abs/2510.08886",
+      "pdf_url": "https://arxiv.org/pdf/2510.08886",
+      "source_claims": {
+        "scale": "1,102 instances: FinSM 330, FinRE 440, FinMR 332; average 34,338.64 tokens (v3 Table 4).",
+        "task": "Financial semantic matching, relationship extraction, and mathematical reasoning over XBRL.",
+        "evidence": "Real filing sub-documents and US-GAAP taxonomy; labels deterministically derived from DQC messages; GPT-4o-mini assists parsing rather than deciding labels (v3 §3.3.1).",
+        "evaluation": "13 evaluated models; retrieval metrics for FinSM, relation classification metrics for FinRE; FinMR numerical accuracy using an LLM judge with structural/extraction/calculation error diagnostics."
+      },
+      "licenses": {
+        "paper": "CC-BY-4.0",
+        "data": "FinMR card: CC-BY-4.0",
+        "data_source": "https://huggingface.co/datasets/TheFinAI/FinMR/raw/main/README.md",
+        "code": "Not verified; repository license endpoint returned HTTP 404"
+      },
+      "limitations": [
+        "DQC consistency violations do not establish fraudulent intent or comprehensive accounting-standard compliance.",
+        "FinMR public cases are positive flagged cases; add independently reviewed clean controls for false-alarm measurement.",
+        "Dataset card author/title metadata lags v3; use the paper metadata for bibliography."
+      ],
+      "positioning": "Closest reusable structured-data control; use public FinMR for regression checks and fresh blinded cases for the principal result.",
+      "paper_reported_metrics": [],
+      "verification": "Primary-source claims checked; experiments and full dataset contents not independently reproduced in this review."
+    },
+    {
+      "id": "auditflow",
+      "title": "AUDITFLOW: Executable Symbolic Environments for Structured Financial Reporting Verification",
+      "authors": [
+        "Wang, Yan",
+        "Ai, Xuguang",
+        "Patel, Jaisal",
+        "Peng, Xueqing",
+        "Mo, Fengran",
+        "Cao, Yupeng",
+        "Li, Haohang",
+        "Cao, Mingyu",
+        "Qian, Lingfei",
+        "Gutiérrez-Basulto, Víctor"
+      ],
+      "year": 2026,
+      "date": "2026-06-02",
+      "status": "arXiv v1, 2 June 2026; no conference acceptance verified",
+      "primary_url": "https://arxiv.org/abs/2606.03031",
+      "pdf_url": "https://arxiv.org/pdf/2606.03031",
+      "source_claims": {
+        "scale": "67 FinMR-derived instances across 47 tickers; 22 DQC.US.0015, 24 DQC.US.0117, 21 DQC.US.0126; 29 10-K and 38 10-Q filings.",
+        "task": "Targeted structured reporting verification; output audit verdict, expected value, evidence trail and trustworthiness.",
+        "evidence": "Independently downloaded EDGAR XBRL packages and taxonomy releases; static taxonomy plus dynamic filing graph; typed deterministic tools; two junior agents and senior arbitration.",
+        "evaluation": "Joint numerical audit accuracy and error rates; six backbone models; 20 ReAct steps per junior and up to three refinement rounds; ablations remove deterministic checks."
+      },
+      "licenses": {
+        "paper": "CC-BY-4.0 (arXiv HTML license)",
+        "data": "Uses FinAuditing-derived data; verify provenance for any redistributed derivative",
+        "code": "Not verified from supplied source"
+      },
+      "limitations": [
+        "Already includes evidence graphs, tool trajectories, multi-agent search and step budgets: these are not novel individually.",
+        "Only 67 sampled cases and three DQC families; paper percentages cannot be compared to a new dataset directly.",
+        "Cap on tool steps differs from controlled evidence availability with heterogeneous acquisition costs."
+      ],
+      "positioning": "Required closest-method baseline. Proposed extension tests costed acquisition, sufficient evidence and standards applicability under matched inputs, rather than merely adding agents.",
+      "paper_reported_metrics": [
+        {
+          "name": "Joint audit accuracy",
+          "model": "GPT-5.5",
+          "value": 0.8209,
+          "comparable_to_new_full_citation": false
+        },
+        {
+          "name": "Joint audit accuracy",
+          "model": "Qwen3.6-27B",
+          "value": 0.7313,
+          "comparable_to_new_full_citation": false
+        },
+        {
+          "name": "Joint accuracy after removing deterministic checks",
+          "model": "GPT-5.5",
+          "value": 0.1791,
+          "comparable_to_new_full_citation": false
+        }
+      ],
+      "verification": "Primary-source claims checked; experiments and full dataset contents not independently reproduced in this review."
+    },
+    {
+      "id": "auditfraudbench",
+      "title": "AuditFraudBench: Benchmarking Audit Judgment in Detecting Fraudulent Misstatements",
+      "authors": [
+        "Liu, Zhiwei",
+        "He, Yueru",
+        "Ou, Qing",
+        "Zhu, Tianlei",
+        "Guo, Xiaorui",
+        "Peng, Xueqing",
+        "Ananiadou, Sophia"
+      ],
+      "year": 2026,
+      "date": "2026-06-06",
+      "status": "arXiv v1, 6 June 2026; comments explicitly Work in progress",
+      "primary_url": "https://arxiv.org/abs/2606.08345",
+      "pdf_url": "https://arxiv.org/pdf/2606.08345",
+      "source_claims": {
+        "scale": "84 companies and 84 AAER cases; 143 10-K, 136 10-Q, 16 20-F; task counts 34 / 294 / 295 (Table 1).",
+        "task": "Profit source attribution, misleading narrative detection, fraud-pattern classification.",
+        "evidence": "Original/restated filings, structured financials, MD&A and SEC AAER enforcement records aligned to misconduct mechanisms.",
+        "evaluation": "Accuracy, precision/recall/F1 and ROUGE conditional/gated explanation metrics; GPT, DeepSeek and Qwen variants up to 32B."
+      },
+      "licenses": {
+        "paper": "CC-BY-4.0",
+        "data": "No downloadable dataset license verified from supplied primary page",
+        "code": "Not verified"
+      },
+      "limitations": [
+        "The paper explicitly states all Task 1 instances are attribution errors and all Task 2 narratives misleading; constant positive labels must be reported.",
+        "Several Task 1 models obtain 1.000 classification accuracy; explanation overlap is not a sufficient-proof test.",
+        "Restatements and AAERs are outcome evidence; keep them evaluator-only when assessing contemporaneous fraud discovery."
+      ],
+      "positioning": "Supports enforcement-grounded case selection, while motivating balanced controls, investigation-time evidence cutoffs and process scoring.",
+      "paper_reported_metrics": [
+        {
+          "name": "Task 1 attribution classification accuracy (all positive instances)",
+          "model": "GPT-5.5 and several others",
+          "value": 1.0,
+          "comparable_to_new_full_citation": false
+        },
+        {
+          "name": "Task 3 fraud pattern accuracy",
+          "model": "GPT-5.5",
+          "value": 0.522,
+          "comparable_to_new_full_citation": false
+        }
+      ],
+      "verification": "Primary-source claims checked; experiments and full dataset contents not independently reproduced in this review."
+    },
+    {
+      "id": "financialauditbench",
+      "title": "FinancialAuditBench: Benchmark Construction under Differential Privacy Using Real-World Priors",
+      "authors": [
+        "Huang, Jerry",
+        "Babu, Sarvesh",
+        "Van Buren, Matt",
+        "Wang, Alexander",
+        "Pillai, Pranav",
+        "Jain, Arush",
+        "Burton, James P.",
+        "Hockenmaier, Julia"
+      ],
+      "year": 2026,
+      "date": "2026-09-26",
+      "status": "arXiv v1 submitted 26 September 2026; no conference acceptance verified",
+      "primary_url": "https://arxiv.org/abs/2609.32835",
+      "pdf_url": "https://arxiv.org/pdf/2609.32835",
+      "source_claims": {
+        "scale": "90 workpaper-completion/review tasks; six synthetic engagements, average 179 files; over 1,100 auditor development/review hours.",
+        "task": "Staff-level audit workpaper completion and review across manufacturing and staffing engagements.",
+        "evidence": "Computational graph (~250 nodes, ~1,000 edges) generates consistent binders; differentially private aggregate historical priors; CPA-authored/reviewed reference workpapers and rubrics.",
+        "evaluation": "Eleven frontier models; strict rubric pass, partial credit, cost/time and eight-attempt reliability; bounded rubric coverage is explicitly acknowledged."
+      },
+      "licenses": {
+        "paper": "CC-BY-4.0",
+        "data": "MIT according to dataset card",
+        "data_source": "https://huggingface.co/datasets/modusaudit/FinancialAuditBench/raw/main/README.md",
+        "code": "MIT verified via GitHub license API",
+        "code_source": "https://github.com/modus-audit/financial-audit-bench/blob/main/LICENSE"
+      },
+      "limitations": [
+        "Already supplies internally consistent multi-document evidence, a generation graph and auditor-designed rubrics; avoid claiming those features as firsts.",
+        "Narrower industry scope than comprehensive financial auditing; rubrics do not guarantee a workpaper has no other errors.",
+        "Published mean Opus cost is $3.30 per task; reproducing 90 tasks would exceed the user's entire pilot budget before cheaper baselines."
+      ],
+      "positioning": "Most important new comparison. Differentiate a modest openly reproducible acquisition-and-citation benchmark, not a larger synthetic binder generator or unsupported privacy claim.",
+      "paper_reported_metrics": [
+        {
+          "name": "Strict single-attempt task pass",
+          "model": "Claude Opus 5.5",
+          "value": 0.6917,
+          "comparable_to_new_full_citation": false
+        },
+        {
+          "name": "Pass all eight attempts (pass^8)",
+          "model": "Claude Opus 5.5",
+          "value": 0.4444,
+          "comparable_to_new_full_citation": false
+        },
+        {
+          "name": "Mean cost per task in USD",
+          "model": "Claude Opus 5.5",
+          "value": 3.3,
+          "comparable_to_new_full_citation": false
+        }
+      ],
+      "verification": "Primary-source claims checked; experiments and full dataset contents not independently reproduced in this review."
+    },
+    {
+      "id": "edinet_bench",
+      "title": "EDINET-Bench: Evaluating LLMs on Complex Financial Tasks using Japanese Financial Statements",
+      "authors": [
+        "Sugiura, Issa",
+        "Ishida, Takashi",
+        "Makino, Taro",
+        "Tazuke, Chieko",
+        "Nakagawa, Takanori",
+        "Nakago, Kosuke",
+        "Ha, David"
+      ],
+      "year": 2026,
+      "date": "2026-04-20",
+      "status": "Verified ICLR 2026 conference proceedings, 20 April 2026",
+      "primary_url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0e22eef358cd1d2bdb227e6b832cc775-Abstract-Conference.html",
+      "pdf_url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/0e22eef358cd1d2bdb227e6b832cc775-Paper-Conference.pdf",
+      "source_claims": {
+        "scale": "Ten years of Japanese annual reports; released fraud split 865 train / 224 test; earnings 549 train / 451 test; industry 496 examples (dataset card).",
+        "task": "Accounting fraud detection, earnings forecasting and industry classification from complete Japanese annual reports.",
+        "evidence": "EDINET annual/amended reports; fraud amendments identified with GPT-4o and manually reviewed; company-disjoint splits described in paper.",
+        "evaluation": "ROC-AUC, MCC and accuracy as appropriate; classical logistic/random-forest baselines alongside LLMs."
+      },
+      "licenses": {
+        "paper": "Check proceedings rights separately before redistributing PDF",
+        "data": "PDL-1.0 in dataset card, under EDINET terms",
+        "data_source": "https://huggingface.co/datasets/SakanaAI/EDINET-Bench/raw/main/README.md",
+        "code": "Apache-2.0 verified via GitHub license API",
+        "code_source": "https://github.com/SakanaAI/EDINET-Bench/blob/main/LICENSE"
+      },
+      "limitations": [
+        "Fraud labels rely on detected amendments; presumed non-fraud can contain undetected misconduct, as authors acknowledge.",
+        "Predictions on full reports do not evaluate hidden evidence acquisition or paragraph citation applicability.",
+        "The supplied ICLR link is EDINET-Bench, not AuditBench or FinancialAuditBench."
+      ],
+      "positioning": "Adopt classical baselines and company-disjoint splits; cite as verified top-conference evidence for realistic long-report evaluation.",
+      "paper_reported_metrics": [],
+      "verification": "Primary-source claims checked; experiments and full dataset contents not independently reproduced in this review."
+    },
+    {
+      "id": "multihiertt",
+      "title": "MultiHiertt: Numerical Reasoning over Multi Hierarchical Tabular and Textual Data",
+      "authors": [
+        "Yilun Zhao",
+        "Yunxiang Li",
+        "Chenying Li",
+        "Rui Zhang"
+      ],
+      "year": 2022,
+      "date": "2022-5",
+      "status": "Verified ACL 2022 long-paper proceedings",
+      "primary_url": "https://aclanthology.org/2022.acl-long.454/",
+      "pdf_url": "https://aclanthology.org/2022.acl-long.454.pdf",
+      "source_claims": {
+        "scale": "10,440 QA examples / 2,513 documents (paper Table 3).",
+        "task": "Numerical QA over multiple hierarchical tables and text; annotated supporting facts and reasoning.",
+        "evidence": "Financial reports containing multiple tables and unstructured text; human annotations of answers, support and programs.",
+        "evaluation": "Numerical answer EM/F1 and supporting fact retrieval; human quality/performance checks; retrieve then symbolic reason baseline MT2Net."
+      },
+      "licenses": {
+        "paper": "CC-BY-4.0 per ACL Anthology",
+        "data": "Repository MIT; source report rights remain separate",
+        "code": "MIT verified via GitHub API",
+        "code_source": "https://github.com/psunlpgroup/MultiHiertt/blob/main/LICENSE"
+      },
+      "limitations": [
+        "Answers to financial QA are not audit judgments, fraud labels or standards applicability.",
+        "Multi-table reasoning and annotated supporting facts predate the proposed contribution."
+      ],
+      "positioning": "Use supporting-fact annotation and executable reasoning practice; accurately name this URL MultiHiertt, not TAT-QA.",
+      "paper_reported_metrics": [],
+      "verification": "Primary-source claims checked; experiments and full dataset contents not independently reproduced in this review."
+    },
+    {
+      "id": "finqa",
+      "title": "FinQA: A Dataset of Numerical Reasoning over Financial Data",
+      "authors": [
+        "Zhiyu Chen",
+        "Wenhu Chen",
+        "Charese Smiley",
+        "Sameena Shah",
+        "Iana Borova",
+        "Dylan Langdon",
+        "Reema Moussa",
+        "Matt Beane",
+        "Ting-Hao Huang",
+        "Bryan R. Routledge",
+        "William Yang Wang"
+      ],
+      "year": 2021,
+      "date": "2021-11",
+      "status": "Verified EMNLP 2021 proceedings",
+      "primary_url": "https://aclanthology.org/2021.emnlp-main.300/",
+      "pdf_url": "https://aclanthology.org/2021.emnlp-main.300.pdf",
+      "source_claims": {
+        "scale": "8,281 expert-written questions / 2,789 report pages (not 2,789 complete reports).",
+        "task": "Financial numerical QA with executable reasoning programs and supporting facts.",
+        "evidence": "Public financial report pages with financial-expert question/program annotation.",
+        "evaluation": "Execution accuracy and program accuracy; expert human performance and retriever/program-generator comparisons."
+      },
+      "licenses": {
+        "paper": "CC-BY-4.0 per ACL Anthology",
+        "data": "Repository MIT; source report rights remain separate",
+        "code": "MIT verified via GitHub API",
+        "code_source": "https://github.com/czyssrs/FinQA/blob/main/LICENSE"
+      },
+      "limitations": [
+        "Report pages and complete reports are different sampling units.",
+        "Correct numerical QA does not validate an auditing or full-citation task."
+      ],
+      "positioning": "Follow executable-answer checking and expert annotations, including separate answer versus reasoning correctness.",
+      "paper_reported_metrics": [],
+      "verification": "Primary-source claims checked; experiments and full dataset contents not independently reproduced in this review."
+    },
+    {
+      "id": "convfinqa",
+      "title": "ConvFinQA: Exploring the Chain of Numerical Reasoning in Conversational Finance Question Answering",
+      "authors": [
+        "Zhiyu Chen",
+        "Shiyang Li",
+        "Charese Smiley",
+        "Zhiqiang Ma",
+        "Sameena Shah",
+        "William Yang Wang"
+      ],
+      "year": 2022,
+      "date": "2022-12",
+      "status": "Verified EMNLP 2022 proceedings",
+      "primary_url": "https://aclanthology.org/2022.emnlp-main.421/",
+      "pdf_url": "https://aclanthology.org/2022.emnlp-main.421.pdf",
+      "source_claims": {
+        "scale": "3,892 conversations / 14,115 questions.",
+        "task": "Conversational financial QA requiring multi-step numerical chains and prior-turn dependencies.",
+        "evidence": "FinQA-derived conversational questions, supporting financial text/tables and annotated programs.",
+        "evaluation": "Execution/program accuracy and turn/reasoning-length analyses; human expert/lay performance."
+      },
+      "licenses": {
+        "paper": "CC-BY-4.0 per ACL Anthology",
+        "data": "Repository MIT; source report rights remain separate",
+        "code": "MIT verified via GitHub API",
+        "code_source": "https://github.com/czyssrs/ConvFinQA/blob/main/LICENSE"
+      },
+      "limitations": [
+        "Dialogue chains do not by themselves establish evidence acquisition quality or standards applicability.",
+        "FinQA-derived examples require document/company grouping when mixing benchmarks to avoid duplicate evaluation."
+      ],
+      "positioning": "Evaluate multi-turn state and numerical proof separately from final answers; keep derived benchmark families out of different splits.",
+      "paper_reported_metrics": [],
+      "verification": "Primary-source claims checked; experiments and full dataset contents not independently reproduced in this review."
+    },
+    {
+      "id": "financebench",
+      "title": "FinanceBench: A New Benchmark for Financial Question Answering",
+      "authors": [
+        "Islam, Pranab",
+        "Kannappan, Anand",
+        "Kiela, Douwe",
+        "Qian, Rebecca",
+        "Scherrer, Nino",
+        "Vidgen, Bertie"
+      ],
+      "year": 2023,
+      "date": "2023-11-20",
+      "status": "arXiv v1, 20 November 2023; no conference acceptance verified",
+      "primary_url": "https://arxiv.org/abs/2311.11944",
+      "pdf_url": "https://arxiv.org/pdf/2311.11944",
+      "source_claims": {
+        "scale": "10,231 total questions claimed; original public evaluation sample 150 cases; 16 model configurations / 2,400 manually reviewed answers.",
+        "task": "Open-book company financial QA with reference answers and evidence strings.",
+        "evidence": "Actual public company filings; realistic but intentionally straightforward financial questions.",
+        "evaluation": "Manual answer review; retrieval and long-context model configurations; original public subset is only 150 cases."
+      },
+      "licenses": {
+        "paper": "Check arXiv source license separately",
+        "data": "CC-BY-NC-4.0 verified dataset card",
+        "data_source": "https://huggingface.co/datasets/PatronusAI/financebench/raw/main/README.md",
+        "code": "Not verified; repository license endpoint returned HTTP 404"
+      },
+      "limitations": [
+        "Do not describe the entire 10,231-question suite as openly downloadable merely because 150 cases are public.",
+        "Evidence strings support QA, not paragraph-level regulatory entailment or fraud adjudication."
+      ],
+      "positioning": "Use evidence-grounded answers, manual review and public-subset disclosure as evaluation practices.",
+      "paper_reported_metrics": [],
+      "verification": "Primary-source claims checked; experiments and full dataset contents not independently reproduced in this review."
+    },
+    {
+      "id": "finreflectkg",
+      "title": "FinReflectKG: Agentic Construction and Evaluation of Financial Knowledge Graphs",
+      "authors": [
+        "Arun, Abhinav",
+        "Dimino, Fabrizio",
+        "Agarwal, Tejas Prakash",
+        "Sarmah, Bhaskarjit",
+        "Pasquali, Stefano"
+      ],
+      "year": 2025,
+      "date": "2025-08-25",
+      "status": "arXiv v2 revised 7 October 2025; related ACM DOI 10.1145/3768292.3770363 listed, venue not independently verified",
+      "primary_url": "https://arxiv.org/abs/2508.17906",
+      "pdf_url": "https://arxiv.org/pdf/2508.17906",
+      "source_claims": {
+        "scale": "Expanded dataset card: 17,513,372 triples, 743 historical S&P500 companies, 2014–2024; paper abstract describes latest S&P100 filings, so distinguish release versions.",
+        "task": "Agentic knowledge-graph construction with schema-guided extraction and reflection.",
+        "evidence": "SEC 10-K text context, normalized extracted entities/relations; supplied thirumalamamu page is a mirror of domyn release.",
+        "evaluation": "Rule-based checks, statistical validation and LLM-as-judge precision/comprehensiveness/relevance; paper reports 64.8% CheckRules compliance for reflection mode."
+      },
+      "licenses": {
+        "paper": "Check arXiv/ACM rights separately",
+        "data": "CC-BY-NC-4.0 verified original and mirror cards",
+        "data_source": "https://huggingface.co/datasets/domyn/FinReflectKG/raw/main/README.md",
+        "code": "Not verified"
+      },
+      "limitations": [
+        "Model-extracted triples are retrieval aids, not accountant-adjudicated facts or authoritative citation ground truth.",
+        "Paper and expanded dataset card describe different coverage; record dataset revision before use.",
+        "CC-BY-NC-4.0 data requires separate attribution/terms from any permissively licensed code."
+      ],
+      "positioning": "Candidate optional retrieval resource; reverify all selected financial facts against original filing spans and independently review citation claims.",
+      "paper_reported_metrics": [],
+      "verification": "Primary-source claims checked; experiments and full dataset contents not independently reproduced in this review."
+    }
+  ],
+  "resources": [
+    {
+      "id": "finreason_task3",
+      "title": "FinReason Cup 2026 Task 3: Financial Audit Verification",
+      "primary_url": "https://the-finai.github.io/IEEE-bigdata-cup/task3/",
+      "scale": "332 public FinMR practice cases; 680 development and 680 hidden test questions.",
+      "task": "Report extracted and calculation-context implied values from organizer-packaged SEC XBRL.",
+      "verification": "Official hub and dataset card checked.",
+      "license": "CC-BY-4.0 on hidden-phase dataset card",
+      "caution": "All practice cases are DQC-flagged violations. Practice answers are public and cannot establish unseen performance. Hidden phases omit rule labels because one label reveals answer shape. Filing content corrected on 28 September 2026.",
+      "positioning": "External numeric verification target and concrete anti-leakage precedent; not a complete fraud audit or citation benchmark."
+    }
+  ],
+  "venues": [
+    {
+      "id": "finreason_cup_2026",
+      "name": "FinReason Cup, IEEE Big Data 2026",
+      "source_url": "https://the-finai.github.io/IEEE-bigdata-cup/",
+      "status": "Open as of 2 October 2026; publication is conditional on paper acceptance, camera-ready, registration and presentation.",
+      "deadlines": [
+        {
+          "type": "Final competition solutions",
+          "date": "2026-10-15",
+          "time": "23:59",
+          "timezone": "UTC-12 (AoE)"
+        },
+        {
+          "type": "Working Notes",
+          "date": "2026-10-23",
+          "time": "23:59",
+          "timezone": "UTC-12 (AoE)"
+        },
+        {
+          "type": "Feedback/acceptance",
+          "date": "2026-11-06",
+          "time": null,
+          "timezone": "Not specified"
+        },
+        {
+          "type": "Camera-ready",
+          "date": "2026-11-13",
+          "time": "23:59",
+          "timezone": "UTC-12 (AoE)"
+        },
+        {
+          "type": "Conference begins",
+          "date": "2026-12-14",
+          "end_date": "2026-12-17",
+          "time": null,
+          "timezone": "Phoenix, Arizona"
+        }
+      ],
+      "notes": "Working Notes up to 10 pages including references; single-blind. This is a challenge/proceedings route, not guaranteed top-conference acceptance. Provisional organizer bibliography has pending authors; do not cite as finalized papers."
+    },
+    {
+      "id": "finnlp_2026",
+      "name": "11th FinNLP Workshop @ EMNLP 2026",
+      "source_url": "https://sigfintech.github.io/finnlp2026/",
+      "status": "2026 submissions closed.",
+      "deadlines": [
+        {
+          "type": "Direct submission",
+          "date": "2026-08-11",
+          "time": "23:59",
+          "timezone": "UTC-12 (AoE)"
+        },
+        {
+          "type": "ARR commitment",
+          "date": "2026-08-27",
+          "time": "23:59",
+          "timezone": "UTC-12 (AoE)"
+        },
+        {
+          "type": "Workshop",
+          "date": "2026-10-28",
+          "time": null,
+          "timezone": "Budapest, Hungary"
+        }
+      ],
+      "notes": "Use as related community; do not plan a new October submission to this closed 2026 edition."
+    },
+    {
+      "id": "iclr_2027",
+      "name": "ICLR 2027 main conference",
+      "source_url": "https://iclr.cc/Conferences/2027/Dates",
+      "status": "2027 paper submission closed; review/decision later in 2026.",
+      "deadlines": [
+        {
+          "type": "Abstract",
+          "date": "2026-09-18",
+          "time": null,
+          "timezone": "AoE (time not printed on dates page)"
+        },
+        {
+          "type": "Paper",
+          "date": "2026-09-25",
+          "time": null,
+          "timezone": "AoE (time not printed on dates page)"
+        },
+        {
+          "type": "Final decisions",
+          "date": "2026-12-16",
+          "time": null,
+          "timezone": "Not specified"
+        },
+        {
+          "type": "Conference begins",
+          "date": "2027-04-26",
+          "end_date": "2027-04-28",
+          "time": null,
+          "timezone": "Location to be announced on source page"
+        }
+      ],
+      "notes": "A December decision date does not allow a new submission after the September deadline and is not December publication."
+    },
+    {
+      "id": "arr_october_2026",
+      "name": "ACL Rolling Review October 2026 cycle",
+      "source_url": "https://aclrollingreview.org/dates",
+      "status": "Upcoming review cycle; reviews are not conference acceptance.",
+      "deadlines": [
+        {
+          "type": "Paper submission",
+          "date": "2026-10-12",
+          "time": null,
+          "timezone": "Not specified on dates page"
+        },
+        {
+          "type": "Meta-reviews release",
+          "date": "2026-12-17",
+          "time": null,
+          "timezone": "Not specified on dates page"
+        },
+        {
+          "type": "NAACL/COLING 2027 commitment",
+          "date": "2026-12-23",
+          "time": null,
+          "timezone": "Not specified on dates page"
+        }
+      ],
+      "notes": "ACL 2027 final ARR submission is listed January 2027 (day not announced on checked page). A defensible full study may target that later cycle; confirm venue scope/CFP before selection."
+    }
+  ],
+  "unavailable_context": [
+    {
+      "url": "https://chatgpt.com/c/6aa75545-637c-83e8-bd0c-a2dd4f12d1d3",
+      "status": "HTTP 200 unauthenticated login shell; conversation contents unavailable, not reviewed."
+    },
+    {
+      "url": "https://chatgpt.com/c/6aa9e3ba-3ab0-83e8-b918-155a36b24dd4",
+      "status": "HTTP 200 unauthenticated login shell; conversation contents unavailable, not reviewed."
+    },
+    {
+      "url": "https://chatgpt.com/c/6abd9736-105c-83e8-a9f3-b95a154c5276",
+      "status": "HTTP 200 unauthenticated login shell; conversation contents unavailable, not reviewed."
+    }
+  ],
+  "positioning": {
+    "proposed_contribution": "A small, independently adjudicated benchmark of controlled incomplete audit evidence, heterogeneous acquisition costs, sufficient-proof recovery, and standards applicability, evaluated on a matched cheap-model cost/quality frontier.",
+    "novelty_status": "Hypothesis requiring a broader systematic literature review; do not claim first or novel based on this catalog alone.",
+    "not_novel_by_itself": [
+      "Evidence or taxonomy graphs",
+      "Multi-agent audit roles",
+      "Deterministic numerical verification",
+      "Synthetic multi-document audit data",
+      "Fixed tool-step budgets",
+      "Financial QA with supporting evidence"
+    ],
+    "comparison_requirements": [
+      "One common test split, evidence access, tools, token/tool budgets and scoring for every method.",
+      "Exactly one frontier family as primary comparator; other models must satisfy the cheap/open-weight constraint.",
+      "No frontier-produced labels or frontier-as-judge for the same frontier-comparator cases.",
+      "Report actual model version, API costs, latency and caching; literature metrics are context only.",
+      "Company/filing/event-disjoint splitting and grouped uncertainty; 5–10 companies remain a pilot, not broad population representation.",
+      "Separate annotation validity, detection, evidence sufficiency, citation retrieval, citation applicability, calibration and cost."
+    ],
+    "december_goal": "Validated release, expert-reviewed pilot, reproducible matched experiments, and preprint/submission by December; acceptance/publication timing is controlled by venues."
+  },
+  "source_manifest": [
+    {
+      "id": "finai_cup",
+      "url": "https://the-finai.github.io/IEEE-bigdata-cup/",
+      "http_status": 200,
+      "error": null,
+      "sha256": "cb552932b120e5455a8d44c0131e0eed2cb71bacd405a3d5bdd290d2d8d84e7d",
+      "retained_payload": false
+    },
+    {
+      "id": "finnlp",
+      "url": "https://www.aclweb.org/portal/content/finnlp-2026-11th-workshop-financial-technology-and-natural-language-processing",
+      "http_status": 200,
+      "error": null,
+      "sha256": "46d2f387128768afbc7b247264cb16a776220a8d266d6f9c9e28e233286b6db4",
+      "retained_payload": false
+    },
+    {
+      "id": "finreflectkg",
+      "url": "https://huggingface.co/datasets/thirumalamamu/FinReflectKG",
+      "http_status": 200,
+      "error": null,
+      "sha256": "59e34eb87d35ea5f45c3a94072c1e937e8ed9ae94041fa11860a350c9e21db55",
+      "retained_payload": false
+    },
+    {
+      "id": "tatqa",
+      "url": "https://aclanthology.org/2022.acl-long.454/",
+      "http_status": 200,
+      "error": null,
+      "sha256": "ccf8ebb3a318708f8ffeaca72c30226a833cd83a8cb9b67f10b6a294d22503cd",
+      "retained_payload": false
+    },
+    {
+      "id": "finqa",
+      "url": "https://aclanthology.org/2021.emnlp-main.300/",
+      "http_status": 200,
+      "error": null,
+      "sha256": "0cda18041b4509f15fa2dc2ad0f5151355d38e59425d8d0900efd4758a954523",
+      "retained_payload": false
+    },
+    {
+      "id": "financebench",
+      "url": "https://arxiv.org/abs/2311.11944",
+      "http_status": 200,
+      "error": null,
+      "sha256": "833e8a9a76b927508e16b8a2e8195e6b2c6eff7f69399d1d2c5dad8ec0b9c06c",
+      "retained_payload": false
+    },
+    {
+      "id": "convfinqa",
+      "url": "https://aclanthology.org/2022.emnlp-main.421/",
+      "http_status": 200,
+      "error": null,
+      "sha256": "eef7047326b7dd46620c3da7691c39c9e21dac54d9b7ded849225992472310e0",
+      "retained_payload": false
+    },
+    {
+      "id": "auditfraudbench",
+      "url": "https://arxiv.org/abs/2606.08345",
+      "http_status": 200,
+      "error": null,
+      "sha256": "def52c03ce5888f67d2da16f902485382ddc0341113e1189e3d0955e2a257857",
+      "retained_payload": false
+    },
+    {
+      "id": "iclr_audit",
+      "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0e22eef358cd1d2bdb227e6b832cc775-Abstract-Conference.html",
+      "http_status": 200,
+      "error": null,
+      "sha256": "948fed4fb91d1bdc756c5e2d0cf5e5afd630fe7e15a880fdf3da562f5684b1ed",
+      "retained_payload": false
+    },
+    {
+      "id": "financialauditbench_arxiv",
+      "url": "https://arxiv.org/abs/2609.32835",
+      "http_status": 200,
+      "error": null,
+      "sha256": "2401d287f842ad76b489019e576c513d3792c3093f4d03f1fabbbeee79dc97a5",
+      "retained_payload": false
+    },
+    {
+      "id": "financialauditbench_site",
+      "url": "https://financialauditbench.com/",
+      "http_status": 200,
+      "error": null,
+      "sha256": "ddcad540ef1747ec134aba576d7b2b0998c380a79a67fa58b2d682edaba5fbb7",
+      "retained_payload": false
+    },
+    {
+      "id": "prior_chat_1",
+      "url": "https://chatgpt.com/c/6aa75545-637c-83e8-bd0c-a2dd4f12d1d3",
+      "http_status": 200,
+      "error": null,
+      "sha256": "de583e7d5efd7b914ab35a23140806793ae1bad7774bc1067e24361bbb99c500",
+      "retained_payload": false
+    },
+    {
+      "id": "prior_chat_2",
+      "url": "https://chatgpt.com/c/6aa9e3ba-3ab0-83e8-b918-155a36b24dd4",
+      "http_status": 200,
+      "error": null,
+      "sha256": "9624e26687660a59d7615ef760d3af7303dc8b972ab2e61da463ac0d64763862",
+      "retained_payload": false
+    },
+    {
+      "id": "prior_chat_3",
+      "url": "https://chatgpt.com/c/6abd9736-105c-83e8-a9f3-b95a154c5276",
+      "http_status": 200,
+      "error": null,
+      "sha256": "9416279800c785d9eac940898c2249fd2d56ccbd805ebd07b61c84a58699a22d",
+      "retained_payload": false
+    },
+    {
+      "id": "auditfraudbench_full",
+      "url": "https://arxiv.org/html/2606.08345v1",
+      "http_status": 200,
+      "error": null,
+      "sha256": "fb4921d46381847df769e945fb014094aa06d58b7dc5530846f0a351d301cfa4",
+      "retained_payload": false
+    },
+    {
+      "id": "financialauditbench_full",
+      "url": "https://arxiv.org/html/2609.32835v1",
+      "http_status": 200,
+      "error": null,
+      "sha256": "4f009fc46ac45fe078af781d410e284a22751a89c71063a6f29a787754f55ebe",
+      "retained_payload": false
+    },
+    {
+      "id": "finreflectkg_original",
+      "url": "https://huggingface.co/datasets/domyn/FinReflectKG/raw/main/README.md",
+      "http_status": 200,
+      "error": null,
+      "sha256": "be24f596840b0594b5d506b2f85fb82167d8a5aa290d20f74fa86cec45d63368",
+      "retained_payload": false
+    },
+    {
+      "id": "finreflectkg_mirror",
+      "url": "https://huggingface.co/datasets/thirumalamamu/FinReflectKG/raw/main/README.md",
+      "http_status": 200,
+      "error": null,
+      "sha256": "be24f596840b0594b5d506b2f85fb82167d8a5aa290d20f74fa86cec45d63368",
+      "retained_payload": false
+    },
+    {
+      "id": "finreflectkg_paper",
+      "url": "https://arxiv.org/abs/2508.17906",
+      "http_status": 200,
+      "error": null,
+      "sha256": "be00dc1e9dab2f91b0093e39a585689a4d3da27fd2725de84fd1a6ed12b70d6f",
+      "retained_payload": false
+    },
+    {
+      "id": "finqa_license",
+      "url": "https://api.github.com/repos/czyssrs/FinQA/license",
+      "http_status": 200,
+      "error": null,
+      "sha256": "d4f23a027d14272fec29886370129082bd21e1b3a0b3800c06c4f5ffe5626551",
+      "retained_payload": false
+    },
+    {
+      "id": "convfinqa_license",
+      "url": "https://api.github.com/repos/czyssrs/ConvFinQA/license",
+      "http_status": 200,
+      "error": null,
+      "sha256": "9dca991fa13b2472c6889312011781007feeff3fad698318ce677558181d077b",
+      "retained_payload": false
+    },
+    {
+      "id": "multihiertt_license",
+      "url": "https://api.github.com/repos/psunlpgroup/MultiHiertt/license",
+      "http_status": 200,
+      "error": null,
+      "sha256": "72a163f573e9f56ab43654f94f840bb89e7c74f661cad0f4a209377868f6bd06",
+      "retained_payload": false
+    },
+    {
+      "id": "finai_task3",
+      "url": "https://the-finai.github.io/IEEE-bigdata-cup/task3/",
+      "http_status": 200,
+      "error": null,
+      "sha256": "4f75bbeb6e01985ca9095701a03911e20af3fe3648e5433d5e1f864f04e33736",
+      "retained_payload": false
+    },
+    {
+      "id": "finai_task3_license",
+      "url": "https://huggingface.co/datasets/YanAdjeNole/FinReason-Task3/raw/main/README.md",
+      "http_status": 200,
+      "error": null,
+      "sha256": "42c3c6d10299e3db66c3f167351eaf3343808b8b75d48a28a97472ad3fb54e30",
+      "retained_payload": false
+    },
+    {
+      "id": "finnlp_official",
+      "url": "https://sigfintech.github.io/finnlp2026/",
+      "http_status": 200,
+      "error": null,
+      "sha256": "6153aa289f4e598b4a49d6610120f4a3460893a09e9ffcf958c5de7b73c8023e",
+      "retained_payload": false
+    },
+    {
+      "id": "edinet_paper",
+      "url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/0e22eef358cd1d2bdb227e6b832cc775-Paper-Conference.pdf",
+      "http_status": 200,
+      "error": null,
+      "sha256": "6e38bf6d6195e74810fa58887264e0090b6d333cc954087bb3cb920fbbac4047",
+      "retained_payload": false
+    },
+    {
+      "id": "finqa_paper",
+      "url": "https://aclanthology.org/2021.emnlp-main.300.pdf",
+      "http_status": 200,
+      "error": null,
+      "sha256": "916b3fc7eb652311914784623b8be5879b50553efff727cede70db63060b0474",
+      "retained_payload": false
+    },
+    {
+      "id": "convfinqa_paper",
+      "url": "https://aclanthology.org/2022.emnlp-main.421.pdf",
+      "http_status": 200,
+      "error": null,
+      "sha256": "320d0a14470813bd28471a555bb9e42f8179cef472d49430649381e01e2bcc33",
+      "retained_payload": false
+    },
+    {
+      "id": "multihiertt_paper",
+      "url": "https://aclanthology.org/2022.acl-long.454.pdf",
+      "http_status": 200,
+      "error": null,
+      "sha256": "9707a6e02d101a4a4b0cd01c11d2f96ec3a4b97832b711837ff61d97fe2412d5",
+      "retained_payload": false
+    },
+    {
+      "id": "financebench_license",
+      "url": "https://api.github.com/repos/patronus-ai/financebench/license",
+      "http_status": null,
+      "error": "HTTP Error 404: Not Found",
+      "sha256": null,
+      "retained_payload": false
+    },
+    {
+      "id": "baseline_search",
+      "url": "https://www.google.com/search?q=FinAudit+AuditBench+AuditFlow+financial+LLM",
+      "http_status": 200,
+      "error": null,
+      "sha256": "33e5167c059a2c6db5af0f8634726bc228adc25846abddfb17cd42c7911c4cee",
+      "retained_payload": false
+    },
+    {
+      "id": "auditbench",
+      "url": "https://arxiv.org/abs/2506.17282",
+      "http_status": 200,
+      "error": null,
+      "sha256": "906a7569b41fb530424b46ee015cd48e212f92e414818b1a31a1c1b4c9e71e49",
+      "retained_payload": false
+    },
+    {
+      "id": "auditbench_full",
+      "url": "https://arxiv.org/html/2506.17282v1",
+      "http_status": 200,
+      "error": null,
+      "sha256": "b42bcc82fe85ef803be78f0f59d3482e9521ccd2181b1b6669f20360c290627a",
+      "retained_payload": false
+    },
+    {
+      "id": "finauditing",
+      "url": "https://arxiv.org/abs/2510.08886",
+      "http_status": 200,
+      "error": null,
+      "sha256": "55f0f95de12532d31fd94db2014719f152845d8aab608abbb69ddc9ac0cbd70b",
+      "retained_payload": false
+    },
+    {
+      "id": "finauditing_full",
+      "url": "https://arxiv.org/html/2510.08886v1",
+      "http_status": 200,
+      "error": null,
+      "sha256": "ec85858e2b4c9a6ad3a28dde2f140499d978592848f6d911e91adcd62e78cc6b",
+      "retained_payload": false
+    },
+    {
+      "id": "auditflow",
+      "url": "https://arxiv.org/abs/2606.03031",
+      "http_status": 200,
+      "error": null,
+      "sha256": "50b5daf7eef1fc6e2918a830d1e6e78273973be4327a0d75f8884800d5f0bcc5",
+      "retained_payload": false
+    },
+    {
+      "id": "auditflow_full",
+      "url": "https://arxiv.org/html/2606.03031v1",
+      "http_status": 200,
+      "error": null,
+      "sha256": "4b584b06df4b241f7fff8bb0082df84f88748517cfedba0d5cc67dc2556a113a",
+      "retained_payload": false
+    },
+    {
+      "id": "financebench_card",
+      "url": "https://huggingface.co/datasets/PatronusAI/financebench/raw/main/README.md",
+      "http_status": 200,
+      "error": null,
+      "sha256": "b344ca600c3a0788554bc24556a395e690260a801da1ee83e2ad1b26270f06b9",
+      "retained_payload": false
+    },
+    {
+      "id": "edinet_license",
+      "url": "https://api.github.com/repos/SakanaAI/EDINET-Bench/license",
+      "http_status": 200,
+      "error": null,
+      "sha256": "3b69723560716b7b3fc2128e3f61545e3d3f45aa74b561e79b4c33ec8f224052",
+      "retained_payload": false
+    },
+    {
+      "id": "financialauditbench_license",
+      "url": "https://api.github.com/repos/modus-audit/financial-audit-bench/license",
+      "http_status": 200,
+      "error": null,
+      "sha256": "5d27917499a31aecab4e3f5828180f13ef52741429600dc45e572e73ad172c60",
+      "retained_payload": false
+    },
+    {
+      "id": "financialauditbench_card",
+      "url": "https://huggingface.co/datasets/modusaudit/FinancialAuditBench/raw/main/README.md",
+      "http_status": 200,
+      "error": null,
+      "sha256": "5c15a6a419b500e81adbc46aaccf6bba4b1289c4414dd4f57b70db9227092e08",
+      "retained_payload": false
+    },
+    {
+      "id": "auditbench_license",
+      "url": "https://api.github.com/repos/Oppugno-Rushi/AuditBench-Benchmarking-LLMs-for-Financial-Auditing/license",
+      "http_status": null,
+      "error": "HTTP Error 404: Not Found",
+      "sha256": null,
+      "retained_payload": false
+    },
+    {
+      "id": "finauditing_latest",
+      "url": "https://arxiv.org/html/2510.08886v3",
+      "http_status": 200,
+      "error": null,
+      "sha256": "4728cb6e4932512725c7f813179853f590f13bb410f738680b7968dfdbca4ef9",
+      "retained_payload": false
+    },
+    {
+      "id": "finauditing_license",
+      "url": "https://api.github.com/repos/The-FinAI/FinAuditing/license",
+      "http_status": null,
+      "error": "HTTP Error 404: Not Found",
+      "sha256": null,
+      "retained_payload": false
+    },
+    {
+      "id": "edinet_card",
+      "url": "https://huggingface.co/datasets/SakanaAI/EDINET-Bench/raw/main/README.md",
+      "http_status": 200,
+      "error": null,
+      "sha256": "b8adef15dab88007ede07474398d81c2e1d7a1b0f619c044926400cde329514d",
+      "retained_payload": false
+    },
+    {
+      "id": "finauditing_finmr_card",
+      "url": "https://huggingface.co/datasets/TheFinAI/FinMR/raw/main/README.md",
+      "http_status": 200,
+      "error": null,
+      "sha256": "01bc85c8cdf75fef05cdd056816d3db0f3634029c80adcb56904d7fa689f97c2",
+      "retained_payload": false
+    },
+    {
+      "id": "iclr2027_dates",
+      "url": "https://iclr.cc/Conferences/2027/Dates",
+      "http_status": 200,
+      "error": null,
+      "sha256": "860c98edb2817e3610ee543f10213b587068612b2b84a0268ef02ea798cb5a46",
+      "retained_payload": false
+    },
+    {
+      "id": "arr_dates",
+      "url": "https://aclrollingreview.org/dates",
+      "http_status": 200,
+      "error": null,
+      "sha256": "1ed9332d400a518d42cf8de05ab0fe0097c67e7a3cd61213dc56f9751b33872f",
+      "retained_payload": false
+    }
+  ]
+}

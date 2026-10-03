@@ -1,0 +1,21 @@
+{
+  "call_id": "0e4e9a0523987e4a98d1b1b9a000bfa4",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":null,\"evidence\":[{\"quote\":\"Total assets | $4,644\",\"row\":18,\"source\":\"statement\"},{\"quote\":\"Total liabilities and stockholders' equity | $4,644\",\"row\":40,\"source\":\"statement\"},{\"quote\":\"lenders waived the breach and their right to demand repayment for a period of more than twelve months from the balance-sheet date\",\"row\":null,\"source\":\"transactions\"}],\"judgement\":\"correct\",\"reason\":\"Each line traced to transaction evidence matches its net movement, and all subtotals and totals foot. Current assets total 911, total liabilities 3,190 and equity 1,454, so the statement balances at 4,644. The covenant waiver extends beyond twelve months, which supports non-current classification of the debt. Lease worksheets support operating classification. No error was identified, though several lines lack transaction evidence and could not be traced.\",\"row\":null}",
+  "reserved_usd": "0.064876",
+  "request_sha256": "51c5ba1c6ad55c72a4c604618feabf4068fcfe6bce9312094c99ace6fa0a182f",
+  "prompt_sha256": "5de1705d34222d1f3af8a4c612be6682d07799bfda8eb6e6ad0f6a20074dc0eb",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002261-Z2IPennix4WxVLRxnWts",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 3831,
+    "completion_tokens": 726,
+    "total_tokens": 4557,
+    "cost": 0.029844
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 9.678
+}

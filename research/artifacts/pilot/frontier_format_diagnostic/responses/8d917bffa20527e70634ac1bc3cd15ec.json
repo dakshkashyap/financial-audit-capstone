@@ -1,0 +1,21 @@
+{
+  "call_id": "8d917bffa20527e70634ac1bc3cd15ec",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":\"ASC 230-10-45-15\",\"citation_abstain\":false,\"error_type\":\"Misclassification\",\"evidence\":[{\"quote\":\"[row 2]: Dividends paid | ($866) [SEP]\",\"row\":2,\"source\":\"statement\"},{\"quote\":\"[row 13]: Net cash from financing activities | ($757) [SEP]\",\"row\":13,\"source\":\"statement\"}],\"judgement\":\"incorrect\",\"reason\":\"Dividends paid to owners are a financing cash outflow, yet the statement presents them under operating activities. The operating subtotal is 4,479−866+2,019+95−1,454=4,273, so it includes dividends. The financing subtotal of (757) is 590−1,347 and omits them. Other line items reconcile to the transaction evidence. ASC 230-10-45-15 classifies payments of dividends as financing outflows.\",\"row\":2}",
+  "reserved_usd": "0.047476",
+  "request_sha256": "33ff54e22c62248fbee3e9dfe520739275a5a4556e623c54e037271ca026731f",
+  "prompt_sha256": "4de2a107ef24d0ed17338c413e7089190f10a4996884e9ec4631cc9d55918fb8",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002349-mcmRFE7E7BzUfkjV0Svo",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 2096,
+    "completion_tokens": 291,
+    "total_tokens": 2387,
+    "cost": 0.014204
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 4.909
+}

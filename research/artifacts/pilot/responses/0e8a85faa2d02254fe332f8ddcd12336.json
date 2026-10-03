@@ -1,0 +1,19 @@
+{
+  "call_id": "0e8a85faa2d02254fe332f8ddcd12336",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "5d279a8f4fea3cbe7c912e45226fc29bc68af5e19bb7d61ed5eb26546d04b86d",
+  "reserved_usd": "0.051392",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"incorrect\",\"error_type\":\"Numerical Error\",\"row\":10,\"citation\":\"ASC 360-10-35-17\",\"citation_abstain\":false,\"evidence\":[{\"source\":\"statement\",\"quote\":\"Property, plant and equipment, net | $705\",\"row\":10},{\"source\":\"transactions\",\"quote\":\"carrying amount of the asset group 169; sum of undiscounted future cash flows 119; fair value of the asset group 129. No impairment loss was recorded.\",\"row\":null}],\"reason\":\"The statement's arithmetic ties and all other lines reconcile. However, the asset group's carrying amount of 169 exceeds its undiscounted cash flows of 119, so it is not recoverable. An impairment of 40 (169 less fair value of 129) should have been recognized, yet none was recorded. PP&E is therefore overstated. Uncertainty: the statement's totals were not adjusted for this.\"}",
+  "response_id": "gen-1791001364-HcZjTYoBN4ydWJ8w0hgx",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 2845,
+    "completion_tokens": 900,
+    "total_tokens": 3745,
+    "cost": 0.02938
+  },
+  "finish_reason": "length",
+  "elapsed_seconds": 9.97
+}

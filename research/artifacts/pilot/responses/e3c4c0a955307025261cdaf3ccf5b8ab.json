@@ -1,0 +1,20 @@
+{
+  "call_id": "e3c4c0a955307025261cdaf3ccf5b8ab",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "extract",
+  "prompt_sha256": "fd851b81afb77703b31c9aafc54a53db0e4d628cec0f904c9425d33759d20810",
+  "reserved_usd": "0.0006602",
+  "status": "ok",
+  "content": "{\"evidence\":[{\"source\":\"statement_text\",\"quote\":\"Operating income (loss) | $8\",\"row\":4},{\"source\":\"statement_text\",\"quote\":\"Other items, net | $16\",\"row\":8},{\"source\":\"transaction_data\",\"quote\":\"Other items, net | other credits posted to the account: +23 (increase); other charges posted to the account: −7 (decrease)\",\"row\":null},{\"source\":\"transaction_data\",\"quote\":\"Revenue: cut-off review — consideration billed or received during the period for performance obligations not yet satisfied at period-end 59\",\"row\":null}],\"observations\":[\"Operating income is $8 million, slightly above zero.\",\"Other items, net contributes $16 million to net income.\",\"The $16 million in Other items, net includes $23 million in credits and $7 million in charges.\",\"$59 million in consideration was received for unsatisfied performance obligations at period-end.\"],\"possible_faults\":[\"Other items, net may include non-recurring or unusual items that distort operating performance.\",\"Revenue recognition may be overstated if $59 million in unsatisfied performance obligations were improperly recognized.\",\"Operating income appears unusually low given $2.3 billion in revenue.\",\"The $59 million in unearned revenue suggests potential revenue cut-off issues.\"],\"uncertainty\":\"The nature of 'Other items, net' and the classification of the $59 million in unearned revenue cannot be confirmed without additional context on their materiality and accounting treatment.\"}",
+  "response_id": "gen-1791001890-yddLpwsiyG15AudQ1I0F",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 729,
+    "completion_tokens": 305,
+    "total_tokens": 1034,
+    "cost": 9.39816e-05
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 1.783
+}

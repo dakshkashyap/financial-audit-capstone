@@ -1,0 +1,211 @@
+{
+  "_comment": "Normalized IFRS line labels (stage0_common.norm_label) to ifrs-full concepts. asc_primary is the subject standard when the line has one, otherwise the presentation standard (IAS 1 or IAS 7). Built from rulebook_ifrs.json concept names, not from exam labels.",
+
+  "_standard_titles": {
+    "IAS 1": "Presentation of Financial Statements",
+    "IAS 2": "Inventories",
+    "IAS 7": "Statement of Cash Flows",
+    "IAS 12": "Income Taxes",
+    "IAS 16": "Property, Plant and Equipment",
+    "IAS 36": "Impairment of Assets",
+    "IAS 38": "Intangible Assets",
+    "IFRS 9": "Financial Instruments",
+    "IFRS 15": "Revenue from Contracts with Customers",
+    "IFRS 16": "Leases"
+  },
+
+  "balance_sheet": {
+    "inventories": {
+      "concept": "ifrs-full:Inventories",
+      "asc_primary": "IAS 2",
+      "asc_refs": ["IAS 2", "IAS 1"],
+      "section": "current_assets"
+    },
+    "inventory": {
+      "concept": "ifrs-full:Inventories",
+      "asc_primary": "IAS 2",
+      "asc_refs": ["IAS 2", "IAS 1"],
+      "section": "current_assets"
+    },
+    "trade and other current receivables": {
+      "concept": "ifrs-full:TradeAndOtherCurrentReceivables",
+      "asc_primary": "IFRS 9",
+      "asc_refs": ["IFRS 9", "IAS 1"],
+      "section": "current_assets"
+    },
+    "trade and other receivables": {
+      "concept": "ifrs-full:TradeAndOtherCurrentReceivables",
+      "asc_primary": "IFRS 9",
+      "asc_refs": ["IFRS 9", "IAS 1"],
+      "section": "current_assets"
+    },
+    "trade receivables": {
+      "concept": "ifrs-full:CurrentTradeReceivables",
+      "asc_primary": "IFRS 9",
+      "asc_refs": ["IFRS 9", "IAS 1"],
+      "section": "current_assets"
+    },
+    "current trade receivables": {
+      "concept": "ifrs-full:CurrentTradeReceivables",
+      "asc_primary": "IFRS 9",
+      "asc_refs": ["IFRS 9", "IAS 1"],
+      "section": "current_assets"
+    },
+    "cash and cash equivalents": {
+      "concept": "ifrs-full:CashAndCashEquivalents",
+      "asc_primary": "IAS 1",
+      "asc_refs": ["IAS 1", "IAS 7"],
+      "section": "current_assets"
+    },
+    "property plant and equipment": {
+      "concept": "ifrs-full:PropertyPlantAndEquipment",
+      "asc_primary": "IAS 36",
+      "asc_refs": ["IAS 36", "IAS 16", "IAS 1"],
+      "section": "noncurrent_assets"
+    },
+    "goodwill": {
+      "concept": "ifrs-full:Goodwill",
+      "asc_primary": "IAS 36",
+      "asc_refs": ["IAS 36", "IAS 1"],
+      "section": "noncurrent_assets"
+    },
+    "right of use assets": {
+      "concept": "ifrs-full:RightofuseAssets",
+      "asc_primary": "IFRS 16",
+      "asc_refs": ["IFRS 16", "IAS 1"],
+      "section": "noncurrent_assets"
+    },
+    "rightofuse assets": {
+      "concept": "ifrs-full:RightofuseAssets",
+      "asc_primary": "IFRS 16",
+      "asc_refs": ["IFRS 16", "IAS 1"],
+      "section": "noncurrent_assets"
+    },
+    "deferred tax assets": {
+      "concept": "ifrs-full:DeferredTaxAssets",
+      "asc_primary": "IAS 12",
+      "asc_refs": ["IAS 12", "IAS 1"],
+      "section": "noncurrent_assets"
+    },
+    "financial assets at fair value through other comprehensive income": {
+      "concept": "ifrs-full:FinancialAssetsMeasuredAtFairValueThroughOtherComprehensiveIncome",
+      "asc_primary": "IFRS 9",
+      "asc_refs": ["IFRS 9", "IAS 1"],
+      "section": "current_assets"
+    },
+    "trade and other current payables": {
+      "concept": "ifrs-full:TradeAndOtherCurrentPayables",
+      "asc_primary": "IAS 1",
+      "asc_refs": ["IAS 1"],
+      "section": "current_liabilities"
+    },
+    "trade and other payables": {
+      "concept": "ifrs-full:TradeAndOtherCurrentPayables",
+      "asc_primary": "IAS 1",
+      "asc_refs": ["IAS 1"],
+      "section": "current_liabilities"
+    },
+    "accruals": {
+      "concept": "ifrs-full:AccrualsClassifiedAsCurrent",
+      "asc_primary": "IAS 1",
+      "asc_refs": ["IAS 1"],
+      "section": "current_liabilities"
+    },
+    "borrowings": {
+      "concept": "ifrs-full:LongtermBorrowings",
+      "asc_primary": "IAS 1",
+      "asc_refs": ["IAS 1"],
+      "section": "noncurrent_liabilities"
+    },
+    "long term borrowings": {
+      "concept": "ifrs-full:LongtermBorrowings",
+      "asc_primary": "IAS 1",
+      "asc_refs": ["IAS 1"],
+      "section": "noncurrent_liabilities"
+    },
+    "non current borrowings": {
+      "concept": "ifrs-full:NoncurrentPortionOfNoncurrentBorrowings",
+      "asc_primary": "IAS 1",
+      "asc_refs": ["IAS 1"],
+      "section": "noncurrent_liabilities"
+    },
+    "lease liabilities": {
+      "concept": "ifrs-full:LeaseLiabilities",
+      "asc_primary": "IFRS 16",
+      "asc_refs": ["IFRS 16", "IAS 1"],
+      "section": "noncurrent_liabilities"
+    },
+    "issued capital": {
+      "concept": "ifrs-full:IssuedCapital",
+      "asc_primary": "IAS 1",
+      "asc_refs": ["IAS 1"],
+      "section": "equity"
+    },
+    "share capital": {
+      "concept": "ifrs-full:IssuedCapital",
+      "asc_primary": "IAS 1",
+      "asc_refs": ["IAS 1"],
+      "section": "equity"
+    },
+    "retained earnings": {
+      "concept": "ifrs-full:RetainedEarnings",
+      "asc_primary": "IAS 1",
+      "asc_refs": ["IAS 1"],
+      "section": "equity"
+    },
+    "treasury shares": {
+      "concept": "ifrs-full:TreasuryShares",
+      "asc_primary": "IAS 1",
+      "asc_refs": ["IAS 1"],
+      "section": "equity"
+    }
+  },
+
+  "income_statement": {
+    "revenue": {
+      "concept": "ifrs-full:Revenue",
+      "asc_primary": "IFRS 15",
+      "asc_refs": ["IFRS 15", "IAS 1"],
+      "section": "revenue"
+    },
+    "revenue from contracts with customers": {
+      "concept": "ifrs-full:RevenueFromContractsWithCustomers",
+      "asc_primary": "IFRS 15",
+      "asc_refs": ["IFRS 15", "IAS 1"],
+      "section": "revenue"
+    },
+    "research and development": {
+      "concept": "ifrs-full:ResearchAndDevelopmentExpense",
+      "asc_primary": "IAS 38",
+      "asc_refs": ["IAS 38", "IAS 1"],
+      "section": "operating_expenses"
+    },
+    "research and development expense": {
+      "concept": "ifrs-full:ResearchAndDevelopmentExpense",
+      "asc_primary": "IAS 38",
+      "asc_refs": ["IAS 38", "IAS 1"],
+      "section": "operating_expenses"
+    }
+  },
+
+  "cash_flow": {
+    "purchase of property plant and equipment": {
+      "concept": "ifrs-full:PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+      "asc_primary": "IAS 7",
+      "asc_refs": ["IAS 7"],
+      "section": "investing"
+    },
+    "payments to acquire or redeem shares": {
+      "concept": "ifrs-full:PaymentsToAcquireOrRedeemEntitysShares",
+      "asc_primary": "IAS 7",
+      "asc_refs": ["IAS 7"],
+      "section": "financing"
+    },
+    "dividends paid": {
+      "concept": "ifrs-full:DividendsPaidClassifiedAsFinancingActivities",
+      "asc_primary": "IAS 7",
+      "asc_refs": ["IAS 7"],
+      "section": "financing"
+    }
+  }
+}

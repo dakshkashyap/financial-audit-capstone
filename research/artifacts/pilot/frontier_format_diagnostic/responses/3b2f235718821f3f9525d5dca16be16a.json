@@ -1,0 +1,21 @@
+{
+  "call_id": "3b2f235718821f3f9525d5dca16be16a",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":\"Missing Row\",\"evidence\":[{\"quote\":\"Total liabilities | $159,358\",\"row\":26,\"source\":\"statement\"},{\"quote\":\"Redeemable noncontrolling interest | $4,260\",\"row\":28,\"source\":\"statement\"},{\"quote\":\"Total equity | $81,450\",\"row\":35,\"source\":\"statement\"},{\"quote\":\"Total liabilities and stockholders' equity | $245,705\",\"row\":36,\"source\":\"statement\"}],\"judgement\":\"incorrect\",\"reason\":\"Liabilities 159,358 + redeemable NCI 4,260 + equity 81,450 = 245,068, not 245,705, a 637 gap. Every subtotal foots internally, and the transaction evidence supports each listed liability balance. That points to an omitted non-current liability of about 637, inserted before Total liabilities. The total liabilities subtotal would then",
+  "reserved_usd": "0.061384",
+  "request_sha256": "6ffde3523fb25334bb4207349651a6d63d17db93448a89f631942833a4f465e9",
+  "prompt_sha256": "c30edfa41a4be97d40968e9408ec278642541af717890022f227e3a015bb60e4",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002281-TvIfnpQePbFwVhthrQot",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 3531,
+    "completion_tokens": 1200,
+    "total_tokens": 4731,
+    "cost": 0.038124
+  },
+  "finish_reason": "length",
+  "elapsed_seconds": 14.493
+}

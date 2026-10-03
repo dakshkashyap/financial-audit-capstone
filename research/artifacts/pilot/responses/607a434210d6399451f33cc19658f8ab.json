@@ -1,0 +1,20 @@
+{
+  "call_id": "607a434210d6399451f33cc19658f8ab",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "decision",
+  "prompt_sha256": "d806902b5f6348cebd5c44cf93a04304f26f0829e7cfdf0a6a11f76907b2fb92",
+  "reserved_usd": "0.0007358",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Numerical Error\",\n  \"row\": 9,\n  \"citation\": \"ASC 280-10-45-1\",\n  \"citation_abstain\": false,\n  \"evidence\": [\n    {\n      \"source\": \"statement_text\",\n      \"quote\": \"Other items, net | $212\",\n      \"row\": 9\n    },\n    {\n      \"source\": \"transaction_data\",\n      \"quote\": \"revenue recognised on satisfied performance obligations: +1,438 (increase); returns and allowances: −52 (decrease)\",\n      \"row\": null\n    },\n    {\n      \"source\": \"transaction_data\",\n      \"quote\": \"Selling, general and administrative] selling, general and administrative spend: −615 (decrease); cost recovery / reclass out: +100 (increase)\",\n      \"row\": null\n    },\n    {\n      \"source\": \"transaction_data\",\n      \"quote\": \"Income tax (expense) benefit] current and deferred tax expense: −121 (decrease); tax credits and benefits: +15 (increase)\",\n      \"row\": null\n    }\n  ],\n  \"reason\": \"The 'Other items, net' line ($212) is numerically inconsistent with the transaction data. Revenue net of returns is $1,386 ($1,438 − $52), matching row 0. SG&A net is $515 ($615 − $100), matching row 3. Tax expense is $106 ($121 − $15), matching row 8. Operating income ($214) is correct. Net income should be $207 − $106 + $212 = $313, but $212 is unsupported and misrepresents a non-GAAP item. ASC 280-10-45-1 requires clear presentation of non-operating items; this line is incorrectly included as a standalone item without proper support.\"\n}",
+  "response_id": "gen-1791001863-DpafeYvnZa4oEkrwigAD",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 928,
+    "completion_tokens": 447,
+    "total_tokens": 1375,
+    "cost": 0.00013097655
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 3.151
+}

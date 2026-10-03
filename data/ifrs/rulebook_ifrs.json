@@ -1,0 +1,690 @@
+{
+  "_meta": {
+    "name": "IntelliAudit Citation Rulebook \u2014 IFRS edition (DRAFT)",
+    "framework": "ifrs",
+    "version": "0.1-draft",
+    "status": "DRAFT. Not wired into a build yet: needs IFRS data (SEC 20-F/40-F ifrs-full facts or ESEF), the IFRS Accounting Taxonomy reference linkbase for paragraph verification, IFRS fact templates for the 'ifrs_*' kinds, and accountant review.",
+    "citation_grammar": "'IAS 1.66', 'IFRS 15.31' (standard.paragraph). Subparagraphs may appear in rationales; the scored code stops at the paragraph. Scorer: em_topic=em_subtopic=standard, em_full=paragraph.",
+    "concept_names": "ifrs-full concept names are from memory of the IFRS Taxonomy and must be checked against the release used (e.g. RightofuseAssets, AccrualsClassifiedAsCurrent).",
+    "separation": "Separate dataset: own config (configs/ifrs.json), own output (data/ifrs/), own rulebook (this file). Only the generator code is shared.",
+    "framework_contrast": "Rules with framework_contrast have the SAME fact pattern as a US-GAAP rule but the opposite verdict or a different governing paragraph. They are the part of this edition no existing benchmark covers.",
+    "status_values": {
+      "ready": "injection op and fact template exist; runs once IFRS clean statements exist",
+      "needs-ifrs-facts": "fact template must be written in IFRS terms (recoverable amount, CGU, probable profit, IAS 1.74 waiver timing)",
+      "needs-new-op": "injection op not implemented yet",
+      "design": "specified, not implementable without new ops and facts"
+    }
+  },
+  "rules": [
+    {
+      "rule_id": "I01_current_noncurrent_asset_misclass",
+      "error_type": "Misclassification",
+      "statements": [
+        "BalanceSheet"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:Inventories",
+        "ifrs-full:TradeAndOtherCurrentReceivables",
+        "ifrs-full:CurrentTradeReceivables"
+      ],
+      "injection": {
+        "op": "move_row",
+        "from_section": "CurrentAssets",
+        "to_section": "NoncurrentAssets",
+        "recompute": true
+      },
+      "citation": {
+        "asc": "IAS 1.66",
+        "citable": true,
+        "policy_clause": "presentation",
+        "citation_tier": "expert-authored-UNVALIDATED",
+        "rationale": "IAS 1.66 lists when an asset is current, including assets realised or consumed in the normal operating cycle (inventories, trade receivables). Placing one in non-current assets violates it. IAS 2 and IFRS 9 measure the asset; they do not assign the section."
+      },
+      "us_gaap_counterpart": "R01",
+      "status": "ready",
+      "expected_judgement": "Incorrect"
+    },
+    {
+      "rule_id": "I02_operating_cycle_liability_misclass",
+      "error_type": "Misclassification",
+      "statements": [
+        "BalanceSheet"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:TradeAndOtherCurrentPayables",
+        "ifrs-full:AccrualsClassifiedAsCurrent"
+      ],
+      "injection": {
+        "op": "move_row",
+        "from_section": "CurrentLiabilities",
+        "to_section": "NoncurrentLiabilities",
+        "recompute": true
+      },
+      "citation": {
+        "asc": "IAS 1.70",
+        "citable": true,
+        "policy_clause": "presentation",
+        "citation_tier": "expert-authored-UNVALIDATED",
+        "rationale": "IAS 1.70: trade payables and accruals for employee and other operating costs are part of working capital used in the normal operating cycle and are current even if due after twelve months. Alternative a reviewer may prefer: IAS 1.69(a)."
+      },
+      "us_gaap_counterpart": "R02",
+      "status": "ready",
+      "expected_judgement": "Incorrect"
+    },
+    {
+      "rule_id": "I03_noncurrent_debt_presented_current",
+      "error_type": "Misclassification",
+      "statements": [
+        "BalanceSheet"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:NoncurrentPortionOfNoncurrentBorrowings",
+        "ifrs-full:LongtermBorrowings"
+      ],
+      "injection": {
+        "op": "move_row",
+        "from_section": "NoncurrentLiabilities",
+        "to_section": "CurrentLiabilities",
+        "recompute": true
+      },
+      "citation": {
+        "asc": "IAS 1.69",
+        "citable": true,
+        "policy_clause": "presentation",
+        "citation_tier": "expert-authored-UNVALIDATED",
+        "rationale": "With no breach, demand or maturity fact in the record, the entity has the right at the end of the reporting period to defer settlement for at least twelve months, so IAS 1.69(d) does not make the borrowing current (IAS 1.72A-72B detail the right). Presenting it all as current violates IAS 1.69."
+      },
+      "us_gaap_counterpart": "R03",
+      "status": "ready",
+      "expected_judgement": "Incorrect"
+    },
+    {
+      "rule_id": "I04_missing_line_item",
+      "error_type": "Missing Row",
+      "statements": [
+        "BalanceSheet",
+        "IncomeStatement",
+        "CashFlow"
+      ],
+      "eligible_concepts": [
+        "*non_subtotal_non_total"
+      ],
+      "injection": {
+        "op": "delete_row"
+      },
+      "citation": {
+        "asc": null,
+        "citable": false,
+        "policy_clause": "neither",
+        "citation_tier": "no-governing-paragraph",
+        "rationale": "Completeness fault; no single paragraph governs. Detection-only (as R04)."
+      },
+      "us_gaap_counterpart": "R04",
+      "status": "ready",
+      "expected_judgement": "Incorrect"
+    },
+    {
+      "rule_id": "I05_numerical_error_value",
+      "error_type": "Numerical Error",
+      "statements": [
+        "BalanceSheet",
+        "IncomeStatement",
+        "CashFlow"
+      ],
+      "eligible_concepts": [
+        "*non_subtotal_non_total"
+      ],
+      "injection": {
+        "op": "perturb_value",
+        "pct_range": [
+          0.05,
+          0.4
+        ],
+        "keep_totals": true
+      },
+      "citation": {
+        "asc": null,
+        "citable": false,
+        "policy_clause": "neither",
+        "citation_tier": "no-governing-paragraph",
+        "rationale": "Arithmetic fault. Detection-only (as R05)."
+      },
+      "us_gaap_counterpart": "R05",
+      "status": "ready",
+      "expected_judgement": "Incorrect"
+    },
+    {
+      "rule_id": "I06_redundant_fabricated_row",
+      "error_type": "Redundant Row",
+      "statements": [
+        "BalanceSheet",
+        "IncomeStatement"
+      ],
+      "eligible_concepts": [],
+      "injection": {
+        "op": "insert_row"
+      },
+      "citation": {
+        "asc": null,
+        "citable": false,
+        "policy_clause": "neither",
+        "citation_tier": "no-governing-paragraph",
+        "rationale": "Existence fault. Detection-only (as R06)."
+      },
+      "us_gaap_counterpart": "R06",
+      "status": "ready",
+      "expected_judgement": "Incorrect"
+    },
+    {
+      "rule_id": "I07_balance_identity_break",
+      "error_type": "Numerical Error",
+      "statements": [
+        "BalanceSheet"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:RetainedEarnings"
+      ],
+      "injection": {
+        "op": "perturb_value",
+        "pct_range": [
+          0.03,
+          0.15
+        ],
+        "keep_totals": false
+      },
+      "citation": {
+        "asc": null,
+        "citable": false,
+        "policy_clause": "neither",
+        "citation_tier": "no-governing-paragraph",
+        "rationale": "Assets = equity + liabilities is definitional. Detection-only (as R07)."
+      },
+      "us_gaap_counterpart": "R07",
+      "status": "ready",
+      "expected_judgement": "Incorrect"
+    },
+    {
+      "rule_id": "I08_capex_in_operating",
+      "error_type": "Misclassification",
+      "statements": [
+        "CashFlow"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities"
+      ],
+      "injection": {
+        "op": "move_row",
+        "from_section": "InvestingActivities",
+        "to_section": "OperatingActivities",
+        "recompute": true
+      },
+      "citation": {
+        "asc": "IAS 7.16",
+        "citable": true,
+        "policy_clause": "presentation",
+        "citation_tier": "expert-authored-UNVALIDATED",
+        "rationale": "IAS 7.16(a): cash payments to acquire property, plant and equipment are investing activities."
+      },
+      "us_gaap_counterpart": "R08",
+      "status": "ready",
+      "expected_judgement": "Incorrect"
+    },
+    {
+      "rule_id": "I16a_share_buyback_in_operating",
+      "error_type": "Misclassification",
+      "statements": [
+        "CashFlow"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:PaymentsToAcquireOrRedeemEntitysShares"
+      ],
+      "injection": {
+        "op": "move_row",
+        "from_section": "FinancingActivities",
+        "to_section": "OperatingActivities",
+        "recompute": true
+      },
+      "citation": {
+        "asc": "IAS 7.17",
+        "citable": true,
+        "policy_clause": "presentation",
+        "citation_tier": "expert-authored-UNVALIDATED",
+        "rationale": "IAS 7.17(b): cash payments to owners to acquire or redeem the entity's shares are financing activities."
+      },
+      "us_gaap_counterpart": "R16",
+      "status": "ready",
+      "expected_judgement": "Incorrect"
+    },
+    {
+      "rule_id": "I16b_dividends_paid_in_operating",
+      "error_type": "Misclassification",
+      "statements": [
+        "CashFlow"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:DividendsPaidClassifiedAsFinancingActivities"
+      ],
+      "injection": {
+        "op": "move_row",
+        "from_section": "FinancingActivities",
+        "to_section": "OperatingActivities",
+        "recompute": true,
+        "relabel_concept_to": "ifrs-full:DividendsPaidClassifiedAsOperatingActivities"
+      },
+      "citation": {
+        "asc": null,
+        "citable": false,
+        "policy_clause": "neither",
+        "citation_tier": "no-error",
+        "rationale": "NOT a violation: IAS 7.34 permits dividends paid to be classified as financing or operating (applied consistently). The item's expected judgement is Correct."
+      },
+      "us_gaap_counterpart": "R16",
+      "status": "needs-new-op",
+      "expected_judgement": "Correct",
+      "framework_contrast": "US GAAP: violation of ASC 230-10-45-15 (financing). IFRS: permitted by IAS 7.34. A model that audits an IFRS statement with US GAAP rules flags a clean statement."
+    },
+    {
+      "rule_id": "I09_revenue_before_control_transfers",
+      "error_type": "Numerical Error",
+      "statements": [
+        "IncomeStatement"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:Revenue",
+        "ifrs-full:RevenueFromContractsWithCustomers"
+      ],
+      "injection": {
+        "op": "perturb_value",
+        "direction": "overstate",
+        "pct_range": [
+          0.05,
+          0.2
+        ],
+        "recompute": true,
+        "keep_totals": false
+      },
+      "citation": {
+        "asc": "IFRS 15.31",
+        "citable": true,
+        "policy_clause": "subject",
+        "citation_tier": "expert-authored-UNVALIDATED",
+        "rationale": "IFRS 15.31: revenue is recognised when (or as) a performance obligation is satisfied by transferring control. Mirror of ASC 606-10-25-23 (converged standard)."
+      },
+      "us_gaap_counterpart": "R09",
+      "status": "ready",
+      "expected_judgement": "Incorrect",
+      "facts": "revenue",
+      "ledger": "as_booked"
+    },
+    {
+      "rule_id": "I10_lessee_lease_off_balance_sheet",
+      "error_type": "Missing Row",
+      "statements": [
+        "BalanceSheet"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:RightofuseAssets",
+        "ifrs-full:LeaseLiabilities"
+      ],
+      "injection": {
+        "op": "delete_pair",
+        "note": "needs a new op: remove the right-of-use asset and its lease liability together"
+      },
+      "citation": {
+        "asc": "IFRS 16.22",
+        "citable": true,
+        "policy_clause": "subject",
+        "citation_tier": "expert-authored-UNVALIDATED",
+        "rationale": "IFRS 16 has a single lessee model: at commencement a lessee recognises a right-of-use asset and a lease liability (IFRS 16.22). There is no operating/finance split for lessees, so the US rule R10 has no IFRS counterpart; this replaces it."
+      },
+      "us_gaap_counterpart": "R10",
+      "status": "design",
+      "expected_judgement": "Incorrect",
+      "framework_contrast": "US GAAP R10 (operating vs finance relabel, ASC 842-10-25-2) is undefined for an IFRS lessee.",
+      "facts": "ifrs_lease_contracts"
+    },
+    {
+      "rule_id": "I11_inventory_above_nrv",
+      "error_type": "Numerical Error",
+      "statements": [
+        "BalanceSheet"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:Inventories"
+      ],
+      "injection": {
+        "op": "perturb_value",
+        "direction": "overstate",
+        "pct_range": [
+          0.1,
+          0.3
+        ],
+        "balance_with": [
+          "ifrs-full:RetainedEarnings"
+        ],
+        "keep_totals": false
+      },
+      "citation": {
+        "asc": "IAS 2.9",
+        "citable": true,
+        "policy_clause": "subject",
+        "citation_tier": "expert-authored-UNVALIDATED",
+        "rationale": "IAS 2.9: inventories are measured at the lower of cost and net realisable value. No LIFO/retail carve-out to worry about (IAS 2.25 prohibits LIFO)."
+      },
+      "us_gaap_counterpart": "R11",
+      "status": "ready",
+      "expected_judgement": "Incorrect",
+      "facts": "inventory",
+      "ledger": "as_booked"
+    },
+    {
+      "rule_id": "I11b_inventory_writedown_reversed",
+      "error_type": "Numerical Error",
+      "statements": [
+        "BalanceSheet"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:Inventories"
+      ],
+      "injection": {
+        "op": "fact_only",
+        "note": "facts describe a prior-year write-down reversed after NRV recovered"
+      },
+      "citation": {
+        "asc": null,
+        "citable": false,
+        "policy_clause": "neither",
+        "citation_tier": "no-error",
+        "rationale": "NOT a violation: IAS 2.33 requires reversal of a previous write-down when NRV increases (limited to the original write-down). Expected judgement Correct."
+      },
+      "us_gaap_counterpart": "R11",
+      "status": "design",
+      "expected_judgement": "Correct",
+      "framework_contrast": "US GAAP prohibits restoring a written-down inventory cost (ASC 330-10-35-14); IFRS requires the reversal (IAS 2.33).",
+      "facts": "ifrs_inventory_reversal"
+    },
+    {
+      "rule_id": "I14_goodwill_impairment_omitted",
+      "error_type": "Numerical Error",
+      "statements": [
+        "BalanceSheet"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:Goodwill"
+      ],
+      "injection": {
+        "op": "perturb_value",
+        "direction": "overstate",
+        "pct_range": [
+          0.1,
+          0.35
+        ],
+        "balance_with": [
+          "ifrs-full:RetainedEarnings"
+        ],
+        "keep_totals": false
+      },
+      "citation": {
+        "asc": "IAS 36.90",
+        "citable": true,
+        "policy_clause": "subject",
+        "citation_tier": "expert-authored-UNVALIDATED",
+        "rationale": "IAS 36.90: a cash-generating unit to which goodwill is allocated is tested annually and impaired when its carrying amount exceeds its recoverable amount (higher of fair value less costs of disposal and value in use). Facts must be stated in recoverable-amount terms, not US 'reporting unit fair value'."
+      },
+      "us_gaap_counterpart": "R14",
+      "status": "needs-ifrs-facts",
+      "expected_judgement": "Incorrect",
+      "facts": "ifrs_cgu_recoverable_amount",
+      "ledger": "as_booked"
+    },
+    {
+      "rule_id": "I15_fvoci_debt_not_at_fair_value",
+      "error_type": "Numerical Error",
+      "statements": [
+        "BalanceSheet"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:FinancialAssetsMeasuredAtFairValueThroughOtherComprehensiveIncome"
+      ],
+      "injection": {
+        "op": "perturb_value",
+        "pct_range": [
+          0.02,
+          0.1
+        ],
+        "balance_with": [
+          "ifrs-full:OtherReserves"
+        ],
+        "keep_totals": false
+      },
+      "citation": {
+        "asc": "IFRS 9.4.1.2A",
+        "citable": true,
+        "policy_clause": "subject",
+        "citation_tier": "expert-authored-UNVALIDATED",
+        "rationale": "IFRS 9.4.1.2A defines the FVOCI category for debt instruments; such assets are carried at fair value with changes in OCI. A reviewer may prefer IFRS 9.5.2.1 (subsequent measurement)."
+      },
+      "us_gaap_counterpart": "R15",
+      "status": "ready",
+      "expected_judgement": "Incorrect",
+      "facts": "securities",
+      "ledger": "as_booked"
+    },
+    {
+      "rule_id": "I17_trade_receivable_ecl_understated",
+      "error_type": "Numerical Error",
+      "statements": [
+        "BalanceSheet"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:TradeAndOtherCurrentReceivables",
+        "ifrs-full:CurrentTradeReceivables"
+      ],
+      "injection": {
+        "op": "perturb_value",
+        "direction": "overstate",
+        "pct_range": [
+          0.02,
+          0.08
+        ],
+        "balance_with": [
+          "ifrs-full:RetainedEarnings"
+        ],
+        "keep_totals": false
+      },
+      "citation": {
+        "asc": "IFRS 9.5.5.15",
+        "citable": true,
+        "policy_clause": "subject",
+        "citation_tier": "expert-authored-UNVALIDATED",
+        "rationale": "IFRS 9.5.5.15 (simplified approach): the loss allowance on trade receivables is measured at lifetime expected credit losses."
+      },
+      "us_gaap_counterpart": "R17",
+      "status": "ready",
+      "expected_judgement": "Incorrect",
+      "facts": "receivable",
+      "ledger": "as_booked"
+    },
+    {
+      "rule_id": "I18_ppe_impairment_omitted",
+      "error_type": "Numerical Error",
+      "statements": [
+        "BalanceSheet"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:PropertyPlantAndEquipment"
+      ],
+      "injection": {
+        "op": "perturb_value",
+        "direction": "overstate",
+        "pct_range": [
+          0.02,
+          0.06
+        ],
+        "balance_with": [
+          "ifrs-full:RetainedEarnings"
+        ],
+        "keep_totals": false
+      },
+      "citation": {
+        "asc": "IAS 36.59",
+        "citable": true,
+        "policy_clause": "subject",
+        "citation_tier": "expert-authored-UNVALIDATED",
+        "rationale": "IAS 36.59: if the recoverable amount of an asset (or CGU) is less than its carrying amount, the carrying amount is reduced to recoverable amount. There is no undiscounted-cash-flow recoverability step."
+      },
+      "us_gaap_counterpart": "R18",
+      "status": "needs-ifrs-facts",
+      "expected_judgement": "Incorrect",
+      "framework_contrast": "US GAAP decoy 'undiscounted flows above carrying amount, fair value below' is NOT impaired under ASC 360-10-35-17 but IS impaired under IAS 36.59 when recoverable amount is below carrying amount.",
+      "facts": "ifrs_asset_recoverable_amount",
+      "ledger": "as_booked"
+    },
+    {
+      "rule_id": "I19_covenant_breach_not_current",
+      "error_type": "Misclassification",
+      "statements": [
+        "BalanceSheet"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:NoncurrentPortionOfNoncurrentBorrowings",
+        "ifrs-full:LongtermBorrowings"
+      ],
+      "injection": {
+        "op": "fact_only",
+        "corrected_section": "CurrentLiabilities"
+      },
+      "citation": {
+        "asc": "IAS 1.74",
+        "citable": true,
+        "policy_clause": "subject",
+        "citation_tier": "expert-authored-UNVALIDATED",
+        "rationale": "IAS 1.74: a breach on or before the end of the reporting period that makes the liability payable on demand requires current classification, even if the lender agrees after the reporting period, and before the statements are authorised, not to demand payment."
+      },
+      "us_gaap_counterpart": "R19",
+      "status": "needs-ifrs-facts",
+      "expected_judgement": "Incorrect",
+      "framework_contrast": "Waiver obtained after the balance-sheet date for more than twelve months: US GAAP non-current (ASC 470-10-45-11 exception); IFRS still current (IAS 1.74). The same fact flips the verdict.",
+      "facts": "debt"
+    },
+    {
+      "rule_id": "I20_dta_recognised_beyond_probable",
+      "error_type": "Numerical Error",
+      "statements": [
+        "BalanceSheet"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:DeferredTaxAssets"
+      ],
+      "injection": {
+        "op": "perturb_value",
+        "direction": "overstate",
+        "pct_range": [
+          0.1,
+          0.4
+        ],
+        "balance_with": [
+          "ifrs-full:RetainedEarnings"
+        ],
+        "keep_totals": false
+      },
+      "citation": {
+        "asc": "IAS 12.24",
+        "citable": true,
+        "policy_clause": "subject",
+        "citation_tier": "expert-authored-UNVALIDATED",
+        "rationale": "IAS 12.24: a deferred tax asset is recognised only to the extent it is probable that taxable profit will be available. IFRS has no valuation-allowance account; the asset itself is limited."
+      },
+      "us_gaap_counterpart": "R20",
+      "status": "needs-ifrs-facts",
+      "expected_judgement": "Incorrect",
+      "framework_contrast": "US GAAP: gross DTA less valuation allowance (ASC 740-10-30-5, more-likely-than-not). IFRS: recognition limited to the probable amount (IAS 12.24). Facts must be restated in IFRS terms.",
+      "facts": "ifrs_dta_probable",
+      "ledger": "as_booked"
+    },
+    {
+      "rule_id": "I21a_research_costs_capitalised",
+      "error_type": "Numerical Error",
+      "statements": [
+        "IncomeStatement"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:ResearchAndDevelopmentExpense"
+      ],
+      "injection": {
+        "op": "perturb_value",
+        "direction": "toward_zero",
+        "pct_range": [
+          0.05,
+          0.2
+        ],
+        "recompute": true,
+        "keep_totals": false
+      },
+      "citation": {
+        "asc": "IAS 38.54",
+        "citable": true,
+        "policy_clause": "subject",
+        "citation_tier": "expert-authored-UNVALIDATED",
+        "rationale": "IAS 38.54: expenditure on research (the research phase) is recognised as an expense when incurred."
+      },
+      "us_gaap_counterpart": "R21",
+      "status": "needs-ifrs-facts",
+      "expected_judgement": "Incorrect",
+      "facts": "ifrs_research_vs_development",
+      "ledger": "as_booked"
+    },
+    {
+      "rule_id": "I21b_development_costs_capitalised",
+      "error_type": "Numerical Error",
+      "statements": [
+        "IncomeStatement"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:ResearchAndDevelopmentExpense"
+      ],
+      "injection": {
+        "op": "fact_only",
+        "note": "facts show development-phase costs meeting all IAS 38.57 criteria capitalised"
+      },
+      "citation": {
+        "asc": null,
+        "citable": false,
+        "policy_clause": "neither",
+        "citation_tier": "no-error",
+        "rationale": "NOT a violation: IAS 38.57 requires development costs to be capitalised when all six criteria are met. Expected judgement Correct."
+      },
+      "us_gaap_counterpart": "R21",
+      "status": "design",
+      "expected_judgement": "Correct",
+      "framework_contrast": "US GAAP: capitalising these costs violates ASC 730-10-25-1. IFRS: capitalisation is required (IAS 38.57).",
+      "facts": "ifrs_research_vs_development"
+    },
+    {
+      "rule_id": "I22_lifo_cost_formula",
+      "error_type": "Numerical Error",
+      "statements": [
+        "BalanceSheet"
+      ],
+      "eligible_concepts": [
+        "ifrs-full:Inventories"
+      ],
+      "injection": {
+        "op": "fact_only",
+        "note": "facts state inventory is costed on LIFO"
+      },
+      "citation": {
+        "asc": "IAS 2.25",
+        "citable": true,
+        "policy_clause": "subject",
+        "citation_tier": "expert-authored-UNVALIDATED",
+        "rationale": "IAS 2.25 permits only FIFO or weighted-average cost formulas (specific identification aside, IAS 2.23); LIFO is not permitted."
+      },
+      "us_gaap_counterpart": null,
+      "status": "design",
+      "expected_judgement": "Incorrect",
+      "framework_contrast": "LIFO is permitted under US GAAP (ASC 330-10-30-9); IFRS-only violation.",
+      "facts": "ifrs_cost_formula"
+    }
+  ]
+}

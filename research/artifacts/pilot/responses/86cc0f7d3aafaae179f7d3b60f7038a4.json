@@ -1,0 +1,20 @@
+{
+  "call_id": "86cc0f7d3aafaae179f7d3b60f7038a4",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "decision",
+  "prompt_sha256": "89cf574ea3a5c4a4557112250964f0987fc4619d684f42d443379f6f24b97dc5",
+  "reserved_usd": "0.0012158",
+  "status": "ok",
+  "content": "{\"judgement\":\"correct\",\"error_type\":null,\"row\":null,\"citation\":null,\"citation_abstain\":true,\"evidence\":[{\"source\":\"statement\",\"quote\":\"Restricted cash | $39\",\"row\":2},{\"source\":\"transactions\",\"quote\":\"[Restricted cash] other credits posted to the account: +52\",\"row\":null},{\"source\":\"transactions\",\"quote\":\"other charges posted to the account: −13\",\"row\":null},{\"source\":\"statement\",\"quote\":\"Total current assets | $345\",\"row\":8}],\"reason\":\"The net change in restricted cash is +52 −13 = +39, matching the reported $39. Restricted cash is appropriately included in current assets. No evidence contradicts its classification or amount. The transaction data supports the ending balance. No ASC paragraph governs this specific classification or calculation, and no error is present.\"}",
+  "response_id": "gen-1791001918-OfLFXqLiufZnsjMjonDO",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 2153,
+    "completion_tokens": 184,
+    "total_tokens": 2337,
+    "cost": 0.00013918815
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 2.547
+}

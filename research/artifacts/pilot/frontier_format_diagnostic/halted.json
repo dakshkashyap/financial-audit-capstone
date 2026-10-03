@@ -1,0 +1,6 @@
+{
+  "call_id": "73ee214e3071ed2837c8e578b44628dd",
+  "status": "api_error",
+  "reason": "HTTP 503; diagnostic stops, no retry",
+  "remaining_cases_not_requested": true
+}

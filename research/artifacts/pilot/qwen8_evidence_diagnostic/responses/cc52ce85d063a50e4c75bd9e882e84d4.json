@@ -1,0 +1,20 @@
+{
+  "call_id": "cc52ce85d063a50e4c75bd9e882e84d4",
+  "model": "qwen/qwen3-8b",
+  "stage": "extract",
+  "prompt_sha256": "0b39541ff64c91421cb4ff61f8a94b864f9767dd00749f35ff8d75bf23151002",
+  "reserved_usd": "0.001376037",
+  "status": "ok",
+  "content": "{\n  \"evidence\": [\n    {\"source\": \"statement_text\", \"quote\": \"[row 1]: Cash and cash equivalents | $149\", \"row\": 1},\n    {\"source\": \"statement_text\", \"quote\": \"[row 2]: Accounts receivable, net | $306\", \"row\": 2},\n    {\"source\": \"statement_text\", \"quote\": \"[row 3]: Inventories | $385\", \"row\": 3},\n    {\"source\": \"statement_text\", \"quote\": \"[row 37]: Retained earnings | $2,612\", \"row\": 37}\n  ],\n  \"observations\": [\n    \"Cash and cash equivalents are reported at $149 million.\",\n    \"Accounts receivable, net is valued at $306 million.\",\n    \"Inventories are carried at $385 million.\",\n    \"Retained earnings amount to $2,612 million.\"\n  ],\n  \"possible_faults\": [\n    \"The allowance for credit losses may not be sufficient if actual defaults exceed estimates.\",\n    \"Inventories might be overstated if the net realizable value is lower than the carrying amount.\",\n    \"Retained earnings could be affected by potential adjustments in net income or dividends.\",\n    \"Long-term debt covenant compliance might affect the classification of liabilities.\"\n  ],\n  \"uncertainty\": \"The adequacy of the allowance for credit losses and the accuracy of inventory valuation remain uncertain without further evidence.\"\n}",
+  "response_id": "gen-1791048152-uQ8AjaS2P4mXis76Frko",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 1937,
+    "completion_tokens": 313,
+    "total_tokens": 2250,
+    "cost": 0.000369044
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 5.61
+}

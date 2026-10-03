@@ -1,0 +1,25 @@
+{
+  "condition": "qwen8_evidence_diagnostic",
+  "condition_id": "0f347808f883d769ca88c0e660ff08200166b1b3f6cb24346a75a7728add6016",
+  "model": "qwen/qwen3-8b",
+  "canonical_slug": "qwen/qwen3-8b-04-28",
+  "method": "evidence_then_decision",
+  "prompt_version": "diagnostic-evidence-v2",
+  "temperature": 0,
+  "max_completion_tokens": 900,
+  "catalog_sha256": "ccb48d7307b80bf65bf41b1239caf807c02c4cc502d589dae850664699dee4e4",
+  "catalog_prices_per_token": {
+    "prompt": "0.000000117",
+    "completion": "0.000000455"
+  },
+  "source_commit": "72da89a9e6400bfd1da9041a742f9cdeb00470bc",
+  "public_input_sha256": "5b07b65a8427ca4615339d1dfc240b02ad08ece654872c1c72ea94c8efaf71b9",
+  "ledger": "/workspace/financial-audit-capstone/research/artifacts/api_ledger.jsonl",
+  "budget_usd": "5.00",
+  "runtime_python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "implementation_files_sha256": {
+    "harness.py": "c42ba062a765304f106cebbeb4935cae51d69c27fcbe927049340327dbaee94f",
+    "select_pilot.py": "2b92522c5bc93b499c58d5b8c4d7ff9f747519c6b408b4c6d0b8b10bd6c37b80",
+    "metrics.py": "54530c083fad54d4a939419da738bc599c2ab6f11a0eb7f4020f0094d915a471"
+  }
+}

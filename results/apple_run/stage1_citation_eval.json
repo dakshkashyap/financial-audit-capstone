@@ -1,0 +1,233 @@
+{
+  "split": "single_error",
+  "seed": 42,
+  "n": 20,
+  "level": "topic",
+  "taxonomy_available": true,
+  "records_with_gt_asc": 17,
+  "gt_without_asc": 3,
+  "broken_row_covered": 16,
+  "topic_hits": 3,
+  "row_not_in_table": 1,
+  "coverage": 0.9412,
+  "citation_topic_em": 0.1765,
+  "topic_em_among_covered": 0.1875,
+  "candidate_recall": 0.1765,
+  "candidate_recall_hits": 3,
+  "paper_baseline": 0.262,
+  "by_error_type_gt": {
+    "Misclassification": {
+      "total": 5,
+      "covered": 5,
+      "hit": 0,
+      "coverage": 1.0,
+      "topic_em": 0.0,
+      "topic_em_among_covered": 0.0,
+      "candidate_recall": 0.0
+    },
+    "Missing Row": {
+      "total": 4,
+      "covered": 3,
+      "hit": 1,
+      "coverage": 0.75,
+      "topic_em": 0.25,
+      "topic_em_among_covered": 0.3333,
+      "candidate_recall": 0.25
+    },
+    "Numerical Error": {
+      "total": 5,
+      "covered": 5,
+      "hit": 2,
+      "coverage": 1.0,
+      "topic_em": 0.4,
+      "topic_em_among_covered": 0.4,
+      "candidate_recall": 0.4
+    },
+    "Redundant Row": {
+      "total": 3,
+      "covered": 3,
+      "hit": 0,
+      "coverage": 1.0,
+      "topic_em": 0.0,
+      "topic_em_among_covered": 0.0,
+      "candidate_recall": 0.0
+    }
+  },
+  "sample_misses": [
+    {
+      "error_type": "Misclassification",
+      "gt_row": 8,
+      "gt_topic": "210",
+      "pred_topic": "310",
+      "concept": "us-gaap:AccountsReceivableNetCurrent",
+      "source": "taxonomy",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Misclassification",
+      "gt_row": 1,
+      "gt_topic": "205",
+      "pred_topic": "225",
+      "concept": "us-gaap:SalesRevenueServicesNet",
+      "source": "static_map",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Missing Row",
+      "gt_row": 8,
+      "gt_topic": "230",
+      "pred_topic": null,
+      "concept": null,
+      "source": null,
+      "reason": "row_not_in_table"
+    },
+    {
+      "error_type": "Misclassification",
+      "gt_row": 5,
+      "gt_topic": "605",
+      "pred_topic": "225",
+      "concept": "us-gaap:SalesRevenueServicesNet",
+      "source": "static_map",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Redundant Row",
+      "gt_row": 12,
+      "gt_topic": "225",
+      "pred_topic": "220",
+      "concept": null,
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Missing Row",
+      "gt_row": 6,
+      "gt_topic": "605",
+      "pred_topic": "220",
+      "concept": "us-gaap:CostOfGoodsAndServicesSold",
+      "source": "taxonomy",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Redundant Row",
+      "gt_row": 13,
+      "gt_topic": "250",
+      "pred_topic": "230",
+      "concept": "us-gaap:DepreciationAndAmortization",
+      "source": "taxonomy",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Misclassification",
+      "gt_row": 10,
+      "gt_topic": "720",
+      "pred_topic": "225",
+      "concept": "us-gaap:OperatingExpenses",
+      "source": "static_map",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Numerical Error",
+      "gt_row": 5,
+      "gt_topic": "606",
+      "pred_topic": "225",
+      "concept": "us-gaap:SalesRevenueGoodsNet",
+      "source": "static_map",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Numerical Error",
+      "gt_row": 5,
+      "gt_topic": "330",
+      "pred_topic": "225",
+      "concept": "us-gaap:SalesRevenueGoodsNet",
+      "source": "static_map",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Missing Row",
+      "gt_row": 7,
+      "gt_topic": "205",
+      "pred_topic": "235",
+      "concept": "us-gaap:GrossProfit",
+      "source": "taxonomy",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Redundant Row",
+      "gt_row": 12,
+      "gt_topic": "220",
+      "pred_topic": "210",
+      "concept": "us-gaap:AccruedMarketingCostsCurrent",
+      "source": "static_map",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Numerical Error",
+      "gt_row": 5,
+      "gt_topic": "330",
+      "pred_topic": "225",
+      "concept": "us-gaap:SalesRevenueGoodsNet",
+      "source": "static_map",
+      "reason": "topic_mismatch"
+    },
+    {
+      "error_type": "Misclassification",
+      "gt_row": 7,
+      "gt_topic": "230",
+      "pred_topic": "220",
+      "concept": null,
+      "source": "section_fallback",
+      "reason": "topic_mismatch"
+    }
+  ],
+  "by_error_type_predicted": {
+    "Misclassification": {
+      "total": 2,
+      "covered": 2,
+      "hit": 0,
+      "coverage": 1.0,
+      "topic_em": 0.0,
+      "topic_em_among_covered": 0.0,
+      "candidate_recall": 0.0
+    },
+    "unfired": {
+      "total": 10,
+      "covered": 9,
+      "hit": 1,
+      "coverage": 0.9,
+      "topic_em": 0.1,
+      "topic_em_among_covered": 0.1111,
+      "candidate_recall": 0.1
+    },
+    "Numerical Error": {
+      "total": 2,
+      "covered": 2,
+      "hit": 2,
+      "coverage": 1.0,
+      "topic_em": 1.0,
+      "topic_em_among_covered": 1.0,
+      "candidate_recall": 1.0
+    },
+    "Redundant Row": {
+      "total": 2,
+      "covered": 2,
+      "hit": 0,
+      "coverage": 1.0,
+      "topic_em": 0.0,
+      "topic_em_among_covered": 0.0,
+      "candidate_recall": 0.0
+    },
+    "Missing Row": {
+      "total": 1,
+      "covered": 1,
+      "hit": 0,
+      "coverage": 1.0,
+      "topic_em": 0.0,
+      "topic_em_among_covered": 0.0,
+      "candidate_recall": 0.0
+    }
+  },
+  "stage0_fire_rate": 0.4,
+  "stage0_type_acc": 0.4118
+}

@@ -1,0 +1,19 @@
+{
+  "call_id": "90bf5d1c64a6193c8498aea3a6767b8e",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "bf71037ae7b0582fd5098df839d2231ebdae8a7a7f9b31192dd2b89b4e6db367",
+  "reserved_usd": "0.048892",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"incorrect\",\"error_type\":\"Misclassification\",\"row\":9,\"citation\":\"ASC 210-10-45-1\",\"citation_abstain\":false,\"evidence\":[{\"source\":\"statement\",\"quote\":\"[row 9]: Accounts receivable, net | $1,168\",\"row\":9},{\"source\":\"statement\",\"quote\":\"[row 7]: Non-current assets:\",\"row\":7},{\"source\":\"transactions\",\"quote\":\"[Accounts receivable, net] invoiced customer sales on credit: +1,349 (increase); write-off of uncollectible accounts: −181 (decrease)\",\"row\":null}],\"reason\":\"Trade receivables from custom",
+  "response_id": "gen-1791001248-zslS8s2O2kEcFXUUcgP2",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 2667,
+    "completion_tokens": 900,
+    "total_tokens": 3567,
+    "cost": 0.028668
+  },
+  "finish_reason": "length",
+  "elapsed_seconds": 10.784
+}

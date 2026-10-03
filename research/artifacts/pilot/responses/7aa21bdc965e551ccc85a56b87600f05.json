@@ -1,0 +1,19 @@
+{
+  "call_id": "7aa21bdc965e551ccc85a56b87600f05",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "78e515f1a78b5e4f08611f5763da644cc78026965d53f57412393ad5caf2172c",
+  "reserved_usd": "0.046744",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"correct\",\"error_type\":null,\"row\":null,\"citation\":null,\"citation_abstain\":true,\"evidence\":[{\"source\":\"statement\",\"quote\":\"Total assets | $67,715\",\"row\":12},{\"source\":\"statement\",\"quote\":\"Total liabilities and stockholders' equity | $67,715\",\"row\":30},{\"source\":\"transactions\",\"quote\":\"lease liabilities for new leases: +1,052 (increase); reclassified to current portion: −127 (decrease)\",\"row\":null},{\"source\":\"transactions\",\"quote\":\"lease term as % of remaining economic life: 66%; present value of lease payments as % of fair value of the underlying assets: 63%\",\"row\":null}],\"reason\":\"All subtotals reconcile: current assets 4,021, total assets 67,715, current liabilities 5,254, total liabilities 50,825 and equity 16,890 sum to 67,715. Each line with movement evidence nets to its reported amount. The lease test results (66%, 63%, no ownership transfer, no purchase option, not specialized) do not meet finance-lease criteria,",
+  "response_id": "gen-1791001456-dDlTR7XerPt0sRBreT1v",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 2415,
+    "completion_tokens": 900,
+    "total_tokens": 3315,
+    "cost": 0.02766
+  },
+  "finish_reason": "length",
+  "elapsed_seconds": 9.232
+}

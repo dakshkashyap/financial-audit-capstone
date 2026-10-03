@@ -1,0 +1,20 @@
+{
+  "call_id": "3a8655529d3ee6d6a2a6239a3124b788",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "extract",
+  "prompt_sha256": "2b0e8c5b162ddef05a0faefa8c6eaf1682503f46c6bee07086c5eab240aa7a7f",
+  "reserved_usd": "0.0009269",
+  "status": "ok",
+  "content": "{\"evidence\":[{\"source\":\"statement_text\",\"quote\":\"Other current assets, net | $759\",\"row\":4},{\"source\":\"statement_text\",\"quote\":\"Other non-current assets, net | $2,605\",\"row\":10},{\"source\":\"transaction_data\",\"quote\":\"other credits posted to the account: +1,036 (increase); other charges posted to the account: −277 (decrease)\",\"row\":null},{\"source\":\"transaction_data\",\"quote\":\"other credits posted to the account: +1,981 (increase); other charges posted to the account: −643 (decrease)\",\"row\":null}],\"observations\":[\"Other current assets, net increased by $759 in 2023.\",\"Other non-current assets, net increased by $2,605 in 2023.\",\"Net increase in Other current assets, net was $759, matching transaction data.\",\"Net increase in Other non-current assets, net was $1,338, but transaction data shows $1,338 net change.\"],\"possible_faults\":[\"Discrepancy between reported net increase and transaction data for Other non-current assets, net.\"],\"uncertainty\":\"Transaction data shows $1,338 net change in Other non-current assets, net, but no reconciliation confirms this matches the $2,605 reported balance.\"}",
+  "response_id": "gen-1791001922-4AYbT4HI1ziwLySTeIUD",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 1604,
+    "completion_tokens": 291,
+    "total_tokens": 1895,
+    "cost": 0.00013341015
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 2.287
+}

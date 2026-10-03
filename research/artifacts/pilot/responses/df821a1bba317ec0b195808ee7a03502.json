@@ -1,0 +1,19 @@
+{
+  "call_id": "df821a1bba317ec0b195808ee7a03502",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "d6841ecc6e2644894e27c07df77c4f23b005456eeedcf55018970fe1fc011331",
+  "reserved_usd": "0.036520",
+  "status": "ok",
+  "content": "{\"judgement\":\"correct\",\"error_type\":null,\"row\":null,\"citation\":null,\"citation_abstain\":true,\"evidence\":[{\"source\":\"statement\",\"quote\":\"Net cash from operating activities | $1,678\",\"row\":4},{\"source\":\"statement\",\"quote\":\"Net cash from financing activities | ($775)\",\"row\":12},{\"source\":\"statement\",\"quote\":\"Net increase (decrease) in cash | $57\",\"row\":14},{\"source\":\"transactions\",\"quote\":\"dividends paid to shareholders: −780 (decrease); dividend payable reversal: +137 (increase)\",\"row\":null}],\"reason\":\"Each line backed by transaction components ties to its reported amount. Operating: 557+1,305−184=1,678. Financing: −643−23−109=−775. Net change: 1,678−808−775−38=57. Repurchases (row 10) and other investing (row 6) have no component evidence, but every subtotal and the net change reconcile. No error is supported.\"}",
+  "response_id": "gen-1791001177-1SZ6q2jpBkXcCPfclry0",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 1376,
+    "completion_tokens": 562,
+    "total_tokens": 1938,
+    "cost": 0.016744
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 6.407
+}

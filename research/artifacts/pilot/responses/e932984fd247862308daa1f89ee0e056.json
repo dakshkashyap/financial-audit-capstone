@@ -1,0 +1,20 @@
+{
+  "call_id": "e932984fd247862308daa1f89ee0e056",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "extract",
+  "prompt_sha256": "faa41f9ba0260a97a0ddcf6b54abeaf9a99169b0809332c639356e3f752913a6",
+  "reserved_usd": "0.0010618",
+  "status": "ok",
+  "content": "{\"evidence\":[{\"source\":\"statement\",\"quote\":\"Long-term debt | $17,296\",\"row\":33},{\"source\":\"statement\",\"quote\":\"Total liabilities and stockholders' equity | $75,196\",\"row\":44},{\"source\":\"transaction_data\",\"quote\":\"other credits posted to the account: +994 (increase); other charges: −163 (decrease)\",\"row\":null},{\"source\":\"supporting facts\",\"quote\":\"the entity breached the minimum interest-cover covenant; the lenders waived their right to demand repayment for six months\",\"row\":null}],\"observations\":[\"Long-term debt is reported at $17,296 million.\",\"The total liabilities and equity balance is $75,196 million, which matches total assets.\",\"Dividends payable increased by $831 million over the period.\",\"A covenant breach occurred, but a six-month waiver was granted for repayment demand.\"],\"possible_faults\":[\"Long-term debt may be misclassified as non-current due to covenant breach, despite waiver.\",\"The waiver duration may not be sufficient to support non-current classification.\",\"No evidence of reclassification of debt to current liabilities.\",\"Uncertainty remains about whether the waiver is enforceable beyond six months.\"],\"uncertainty\":\"The enforceability and duration of the waiver are unclear; it may not prevent reclassification of debt to current liabilities if the breach persists beyond the waiver period.\"}",
+  "response_id": "gen-1791001905-896YlA1UqLm6FnTf3Lde",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 2016,
+    "completion_tokens": 291,
+    "total_tokens": 2307,
+    "cost": 0.00015324795
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 1.742
+}

@@ -1,0 +1,20 @@
+{
+  "call_id": "9d68190c7ec34e32f8df0ac1f18150b5",
+  "model": "qwen/qwen3-8b",
+  "stage": "decision",
+  "prompt_sha256": "e7909207e92b9bb3e6c8fb93a52497f92c86dcdd7b7b4334ab8f51d1b26fa6b2",
+  "reserved_usd": "0.000949455",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Numerical Error\",\n  \"row\": 0,\n  \"citation\": null,\n  \"citation_abstain\": true,\n  \"evidence\": [\n    {\"source\": \"statement\", \"quote\": \"Revenue | $13,894\", \"row\": 0},\n    {\"source\": \"transactions\", \"quote\": \"revenue recognised on satisfied performance obligations: +15,136 (increase); returns and allowances: −1,242 (decrease)\", \"row\": null},\n    {\"source\": \"transactions\", \"quote\": \"period-end review of unsatisfied performance obligations — amounts invoiced for goods and services not yet transferred to customers 330; amount carried in contract liabilities 330.\", \"row\": null},\n    {\"source\": \"statement\", \"quote\": \"Other operating expenses, net | $568\", \"row\": 3}\n  ],\n  \"reason\": \"The revenue reported in the statement ($13,894) does not align with the transaction data showing revenue from satisfied performance obligations (+15,136) and unsatisfied obligations (330). This discrepancy suggests a numerical error in the revenue line.\"\n}",
+  "response_id": "gen-1791001657-KfkQNKee3lRBGQLkYLx0",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 930,
+    "completion_tokens": 265,
+    "total_tokens": 1195,
+    "cost": 0.000229385
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 4.546
+}

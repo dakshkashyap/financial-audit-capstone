@@ -1,0 +1,20 @@
+{
+  "call_id": "6c7fe9fcf200dca499f124312e70770e",
+  "model": "qwen/qwen3-8b",
+  "stage": "decision",
+  "prompt_sha256": "4171c6cfe3a5b8b72d7b0e5d6067155330f1e0083ba1fb32f2f1cae30172564a",
+  "reserved_usd": "0.000950040",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Numerical Error\",\n  \"row\": 0,\n  \"citation\": null,\n  \"citation_abstain\": true,\n  \"evidence\": [\n    {\"source\": \"statement\", \"quote\": \"Revenue | $2,058\", \"row\": 0},\n    {\"source\": \"transactions\", \"quote\": \"revenue recognised on satisfied performance obligations: +2,333 (increase); returns and allowances: −275 (decrease)\"},\n    {\"source\": \"transactions\", \"quote\": \"cut-off review — consideration billed or received during the period for performance obligations not yet satisfied at period-end 59; of which recorded as contract liabilities (deferred revenue) 59.\"},\n    {\"source\": \"transactions\", \"quote\": \"Other items, net | $16\"}\n  ],\n  \"reason\": \"The reported revenue of $2,058 million does not align with the transaction evidence showing revenue recognized on satisfied performance obligations of +2,333 million. This discrepancy suggests a numerical error in the statement.\"\n}",
+  "response_id": "gen-1791001666-Tq6OOSBluzqQE8DUqpry",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 909,
+    "completion_tokens": 235,
+    "total_tokens": 1144,
+    "cost": 0.000213278
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 4.126
+}

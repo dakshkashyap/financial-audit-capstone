@@ -1,0 +1,20 @@
+{
+  "call_id": "c540e9c853721cad9d3b814898777c7f",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "decision",
+  "prompt_sha256": "090b4c1e891e9545348ff48279fe1f99c8d0f3fe2ed704e962876599b92c8875",
+  "reserved_usd": "0.0007545",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Numerical Error\",\n  \"row\": 0,\n  \"citation\": \"ASC 606-10-25-23\",\n  \"citation_abstain\": false,\n  \"evidence\": [\n    {\n      \"source\": \"statement\",\n      \"quote\": \"Revenue | $47,090\",\n      \"row\": 0\n    },\n    {\n      \"source\": \"transactions\",\n      \"quote\": \"revenue recognised on satisfied performance obligations: +57,721 (increase); returns and allowances: −10,631 (decrease)\",\n      \"row\": null\n    },\n    {\n      \"source\": \"supporting facts\",\n      \"quote\": \"consideration billed or received during the period for performance obligations not yet satisfied at period-end 4,853; of which recorded as contract liabilities (deferred revenue) 838.\",\n      \"row\": null\n    },\n    {\n      \"source\": \"transactions\",\n      \"quote\": \"revenue recognised on satisfied performance obligations: +57,721 (increase); returns and allowances: −10,631 (decrease)\",\n      \"row\": null\n    }\n  ],\n  \"reason\": \"Revenue should be $47,090 = 57,721 − 10,631 − 4,853 + 838. The statement omits the $4,853 of consideration for unsatisfied performance obligations, which must be excluded from revenue. ASC 606-10-25-23 requires revenue recognition only when performance obligations are satisfied. The reported revenue is overstated by $4,853.\"\n}",
+  "response_id": "gen-1791001829-FiWdIu8b8r8P6aP217fT",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 1001,
+    "completion_tokens": 380,
+    "total_tokens": 1381,
+    "cost": 0.00012155715
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 2.926
+}

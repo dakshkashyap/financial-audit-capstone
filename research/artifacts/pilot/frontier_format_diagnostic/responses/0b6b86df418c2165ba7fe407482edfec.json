@@ -1,0 +1,21 @@
+{
+  "call_id": "0b6b86df418c2165ba7fe407482edfec",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":null,\"evidence\":[{\"quote\":\"net income for the period: +6,857 (increase); loss components of the period: −478 (decrease)\",\"row\":1,\"source\":\"transactions\"},{\"quote\":\"purchases of productive assets: −4,342 (decrease); proceeds reclassed against capex: +736 (increase)\",\"row\":6,\"source\":\"transactions\"},{\"quote\":\"Net cash from operating activities | $8,379\",\"row\":4,\"source\":\"statement\"},{\"quote\":\"Net increase (decrease) in cash | $87\",\"row\":14,\"source\":\"statement\"}],\"judgement\":\"correct\",\"reason\":\"The supplied components reconcile to each reported line: 6,857−478=6,379, 118−11=107, −4,342+736=−3,606, 21−82=−61 and −866+161=−705. The section subtotals (8,379, −3,667, −4,625) and the net change of 87 also foot. The capex line nets proceeds against purchases, but it matches the reported $3,606 figure, so no error is supported by the evidence.\",\"row\":null}",
+  "reserved_usd": "0.047496",
+  "request_sha256": "ce097b9274382c446b515c77323da757275583a5de73e100266bc5d8d989e7ee",
+  "prompt_sha256": "b6afb5575f3657c8aac4eff148c6d5d4037d6b7a65d654dcebf8ceb179596c53",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002206-IkZkBXIvptqYRWgdSQDv",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 2101,
+    "completion_tokens": 622,
+    "total_tokens": 2723,
+    "cost": 0.020844
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 9.122
+}

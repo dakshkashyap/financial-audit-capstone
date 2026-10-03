@@ -1,0 +1,20 @@
+{
+  "call_id": "2024bf087aeaf8276ce9c2cf79ad52e4",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "extract",
+  "prompt_sha256": "627e3254cb240fcc7837bed3b2723150887ada5f30879790ecdc9a836d4d3bec",
+  "reserved_usd": "0.0006679",
+  "status": "ok",
+  "content": "{\"evidence\":[{\"source\":\"statement_text\",\"quote\":\"Revenue | $23,271\",\"row\":0},{\"source\":\"statement_text\",\"quote\":\"Cost of revenue | ($15,089)\",\"row\":1},{\"source\":\"transaction_data\",\"quote\":\"cost of goods sold (purchases and conversion): −17,438 (decrease)\",\"row\":null},{\"source\":\"transaction_data\",\"quote\":\"inventory returned to stock / overhead credit: +2,349 (increase)\",\"row\":null}],\"observations\":[\"Revenue reported as $23,271 million.\",\"Cost of revenue reported as $15,089 million.\",\"Cost of revenue component includes $17,438 million in cost of goods sold.\",\"$2,349 million in inventory returns or overhead credits offset cost of revenue.\"],\"possible_faults\":[\"Cost of revenue may be understated if inventory returns were improperly recorded as increases to revenue.\",\"Revenue may include unearned amounts if performance obligations were not satisfied.\",\"Cost of revenue does not fully reconcile with transaction components.\",\"Transaction data suggests cost of revenue should be lower than reported.\"],\"uncertainty\":\"The reconciliation between reported cost of revenue and transaction components is inconsistent; no evidence confirms proper timing of inventory returns or performance obligation fulfillment.\"}",
+  "response_id": "gen-1791001900-ZziqTTSHPSabW0JIcEG3",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 783,
+    "completion_tokens": 265,
+    "total_tokens": 1048,
+    "cost": 8.88597e-05
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 2.515
+}

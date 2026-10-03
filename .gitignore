@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.env
+
+# FASB taxonomy cache (auto-downloaded on first run, ~11MB)
+.cache/
+
+# Raw data (already in repo, but large)
+# Uncomment if you want to exclude:
+# Raw_table_data/
+# Error_insertion/
+# transaction_data/
+
+# Downloaded FinMR blobs (re-fetch with datasets.load_dataset)
+data/finmr/*.jsonl
+data/finmr/*.parquet
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Word/Office lock files
+~$*
+
+# IDE
+.vscode/
+.idea/
+
+# Research private caches and local process files
+research/.cache/
+research/artifacts/*.lock
+research/artifacts/**/*.lock
+*.key
+*.pem

@@ -1,0 +1,20 @@
+{
+  "call_id": "dbc39591743886f3ba6db342c905ecc9",
+  "model": "qwen/qwen3-8b",
+  "stage": "decision",
+  "prompt_sha256": "bf71037ae7b0582fd5098df839d2231ebdae8a7a7f9b31192dd2b89b4e6db367",
+  "reserved_usd": "0.001313091",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Misclassification\",\n  \"row\": 9,\n  \"citation\": null,\n  \"citation_abstain\": true,\n  \"evidence\": [\n    {\"source\": \"statement\", \"quote\": \"Accounts receivable, net | $1,168\", \"row\": 9},\n    {\"source\": \"transactions\", \"quote\": \"[Accounts receivable, net] invoiced customer sales on credit: +1,349 (increase); write-off of uncollectible accounts: −181 (decrease)\", \"row\": null},\n    {\"source\": \"supporting facts\", \"quote\": \"Accounts receivable, net: credit-loss review — gross receivables 1,200; lifetime expected credit losses estimated at period-end 32; allowance for credit losses recorded 32.\", \"row\": null},\n    {\"source\": \"statement\", \"quote\": \"Inventory raw materials and supplies, net of reserves | $1,669\", \"row\": 3}\n  ],\n  \"reason\": \"The 'Accounts receivable, net' line is misclassified as a current asset, but the transaction evidence shows it should be classified under non-current assets. The supporting fact about credit loss review further supports this misclassification.\"\n}",
+  "response_id": "gen-1791001648-qBEEKKNrVh6V4kXLhtUK",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 1924,
+    "completion_tokens": 276,
+    "total_tokens": 2200,
+    "cost": 0.000350688
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 4.759
+}

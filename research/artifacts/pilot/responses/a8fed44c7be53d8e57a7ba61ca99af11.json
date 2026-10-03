@@ -1,0 +1,20 @@
+{
+  "call_id": "a8fed44c7be53d8e57a7ba61ca99af11",
+  "model": "qwen/qwen3-8b",
+  "stage": "decision",
+  "prompt_sha256": "60423f58d8f4e0f727f4b519cd052ff5288e569a6cdea792da0af742479643f6",
+  "reserved_usd": "0.001279512",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Redundant Row\",\n  \"row\": 22,\n  \"citation\": null,\n  \"citation_abstain\": true,\n  \"evidence\": [\n    {\"source\": \"statement\", \"quote\": \"Other non-current liabilities, net | $27,563\", \"row\": 22},\n    {\"source\": \"statement\", \"quote\": \"Total non-current liabilities | $43,620\", \"row\": 23},\n    {\"source\": \"statement\", \"quote\": \"Total liabilities | $49,364\", \"row\": 24},\n    {\"source\": \"statement\", \"quote\": \"Total liabilities and stockholders' equity | $63,525\", \"row\": 31}\n  ],\n  \"reason\": \"Row 22 'Other non-current liabilities, net' is redundant as it is already included in the total non-current liabilities (row 23) and total liabilities (row 24).\"\n}",
+  "response_id": "gen-1791001625-7ZPVi4TkYXcWctSz9NAn",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 1774,
+    "completion_tokens": 225,
+    "total_tokens": 1999,
+    "cost": 0.000309933
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 4.016
+}

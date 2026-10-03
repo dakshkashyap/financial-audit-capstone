@@ -1,0 +1,20 @@
+{
+  "call_id": "33ddaa473c12d5f8b8ffbad946f4b82e",
+  "model": "qwen/qwen3-8b",
+  "stage": "extract",
+  "prompt_sha256": "ccf0a6b3de1364b0bb1b68374b18aafe05cea165b4e03581b18b4d24d24b6ca7",
+  "reserved_usd": "0.001259739",
+  "status": "ok",
+  "content": "{\n  \"evidence\": [\n    {\"source\": \"statement\", \"quote\": \"Cash and cash equivalents | $16,921\", \"row\": 1},\n    {\"source\": \"statement\", \"quote\": \"Total current assets | $53,718\", \"row\": 7},\n    {\"source\": \"transaction_data\", \"quote\": \"Accounts receivable, net: invoiced customer sales on credit: +13,517 (increase); write-off of uncollectible accounts: −647 (decrease)\"},\n    {\"source\": \"transaction_data\", \"quote\": \"Property, plant and equipment, net: capital expenditure on equipment: +11,015 (increase); depreciation expense: −2,179 (decrease)\"}\n  ],\n  \"observations\": [\n    \"Cash and cash equivalents are reported at $16,921 million.\",\n    \"Total current assets are reported at $53,718 million.\",\n    \"Accounts receivable increased by $13,517 million due to invoiced sales.\",\n    \"Depreciation expense reduced property, plant, and equipment by $2,179 million.\"\n  ],\n  \"possible_faults\": [\n    \"Uncertainty about the accuracy of the expected-credit-loss model for accounts receivable.\",\n    \"Potential impairment of property, plant, and equipment due to sustained operating losses.\",\n    \"Inconsistency between transaction data and reported line totals.\",\n    \"Unresolved discrepancies in the valuation of intangible assets.\"\n  ],\n  \"uncertainty\": \"The expected-credit-loss model and potential impairment of assets may affect the reliability of the reported figures. Transaction data does not fully align with the statement totals, creating uncertainty about the accuracy of the financial statements.\"\n}",
+  "response_id": "gen-1791048104-OriWBVJRo6L43WM5fCBu",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 1830,
+    "completion_tokens": 372,
+    "total_tokens": 2202,
+    "cost": 0.00038337
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 6.424
+}

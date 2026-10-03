@@ -1,0 +1,20 @@
+{
+  "call_id": "9349a8a3dd1b7c427364e660fe4eed3a",
+  "model": "qwen/qwen3-8b",
+  "stage": "extract",
+  "prompt_sha256": "6661cb8d8c81d35dd7fc4d4a8bbb0ad01204852f3057bdf234a8c06e3d4f49ab",
+  "reserved_usd": "0.001383642",
+  "status": "ok",
+  "content": "{\n  \"evidence\": [\n    {\"source\": \"statement_text\", \"quote\": \"[row 1]: Cash and cash equivalents | $192\", \"row\": 1},\n    {\"source\": \"statement_text\", \"quote\": \"[row 2]: Accounts receivable, net | $296\", \"row\": 2},\n    {\"source\": \"statement_text\", \"quote\": \"[row 3]: Inventories | $472\", \"row\": 3},\n    {\"source\": \"statement_text\", \"quote\": \"[row 4]: Income taxes receivable | $15\", \"row\": 4}\n  ],\n  \"observations\": [\n    \"Cash and cash equivalents are reported at $192 million.\",\n    \"Accounts receivable, net is valued at $296 million.\",\n    \"Inventories are listed at $472 million.\",\n    \"Income taxes receivable amount to $15 million.\"\n  ],\n  \"possible_faults\": [\n    \"The allowance for doubtful accounts may not be sufficient.\",\n    \"Inventory valuation could be affected by obsolescence or market value changes.\",\n    \"Tax receivables might be subject to uncertainty in collection.\",\n    \"Current assets may not fully reflect liquidity risks.\"\n  ],\n  \"uncertainty\": \"The accuracy of the allowance for doubtful accounts and inventory valuation cannot be confirmed without further evidence.\"\n}",
+  "response_id": "gen-1791048086-gufGkcYPRlV9OU9w0PLQ",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 1988,
+    "completion_tokens": 287,
+    "total_tokens": 2275,
+    "cost": 0.000363181
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 5.066
+}

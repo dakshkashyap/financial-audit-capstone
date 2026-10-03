@@ -1,0 +1,19 @@
+{
+  "call_id": "07292de0077094a04d7d0005f60f9a83",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "ebc05304bd8262ef14bd91c9ab8ab77d88a909cae6f62db68b2d328c8c8b3d08",
+  "reserved_usd": "0.036272",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"incorrect\",\"error_type\":\"Numerical Error\",\"row\":1,\"citation\":null,\"citation_abstain\":true,\"evidence\":[{\"source\":\"statement\",\"quote\":\"[row 1]: Net income | $182\",\"row\":1},{\"source\":\"transactions\",\"quote\":\"net income for the period: +188 (increase); loss components of the period: −28 (decrease)\",\"row\":null},{\"source\":\"statement\",\"quote\":\"[row 5]: Net cash from operating activities | ($99)\",\"row\":5}],\"reason\":\"The net income components net to 160 (188 − 28), not 182. Using 160, the operating rows sum to the reported (99): 160 + 23 + 24 − 306. Using 182, they give (77). All other rows match their components, and the cash subtotals reconcile to (59). This is an arithmetic misstatement, not a breach of a specific ASC paragraph, so no citation is given.\"}\n```",
+  "response_id": "gen-1791001405-DPwWl8Ohs29CwSQVkznl",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 1341,
+    "completion_tokens": 500,
+    "total_tokens": 1841,
+    "cost": 0.015364
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 6.722
+}
