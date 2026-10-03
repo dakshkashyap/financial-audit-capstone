@@ -1,0 +1,43 @@
+{
+  "seed": 42,
+  "n": 20,
+  "splits": {
+    "correct": {
+      "split": "correct",
+      "n": 8,
+      "is_clean_split": true,
+      "have_llm": false,
+      "gate_fire_rate": 0.0,
+      "abstention_rate": 1.0,
+      "verified_consistent_rate": 0.75,
+      "config_B_gen_judgment_em": 1.0,
+      "llm_calls_saved": 0.0
+    },
+    "single_error": {
+      "split": "single_error",
+      "n": 20,
+      "is_clean_split": false,
+      "have_llm": false,
+      "gate_fire_rate": 0.4,
+      "abstention_rate": 0.6,
+      "verified_consistent_rate": 0.4,
+      "config_B_gen_judgment_em": 0.4,
+      "llm_calls_saved": 0.4,
+      "gate_localization_type_em_among_fired": 1.0,
+      "gate_localization_row_em_among_fired": 0.875
+    },
+    "multi_error": {
+      "split": "multi_error",
+      "n": 6,
+      "is_clean_split": false,
+      "have_llm": false,
+      "gate_fire_rate": 0.5,
+      "abstention_rate": 0.5,
+      "verified_consistent_rate": 0.5,
+      "config_B_gen_judgment_em": 0.5,
+      "llm_calls_saved": 0.5,
+      "gate_localization_type_em_among_fired": 1.0,
+      "gate_localization_row_em_among_fired": 1.0
+    }
+  }
+}

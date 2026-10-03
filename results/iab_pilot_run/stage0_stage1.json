@@ -1,0 +1,417 @@
+{
+  "summary": {
+    "n": 8,
+    "stage0_fire": 4,
+    "stage0_type_ok": 3,
+    "stage0_row_ok": 4,
+    "avg_cite_score_heuristic": 0.5625,
+    "taxonomy_valid_count": 8,
+    "with_candidates": 8
+  },
+  "records": [
+    {
+      "sample_id": "IAB-2024-0001",
+      "company": "Apple Inc.",
+      "gt": {
+        "type": "Missing Row",
+        "row": 6,
+        "label": "Other current assets",
+        "concept": "OtherAssetsCurrent",
+        "primary_asc": [
+          "FASB ASC 210-10-45-1"
+        ],
+        "topics": [
+          "210",
+          "310",
+          "320"
+        ]
+      },
+      "stage0": {
+        "fired": true,
+        "pred_type": "Missing Row",
+        "pred_row": 6,
+        "type_match": true,
+        "row_match": true,
+        "correct_value": 14695.0,
+        "detail": "'Other current assets' (value 14695.0) is described by the transactions but absent from the statement."
+      },
+      "stage1": {
+        "focus_row": 6,
+        "focus_label": "Total current assets",
+        "concept": "AssetsCurrent",
+        "predicted_asc": "210-10-45-1",
+        "source": "taxonomy",
+        "candidates": [
+          "210-10-45-1",
+          "210-10-S99-1",
+          "235-10-S99-1",
+          "323-10-50-3",
+          "470-10-S99-1A",
+          "470-10-S99-1B",
+          "810-10-50-3",
+          "810-10-45-25",
+          "825-10-50-28",
+          "852-10-50-7",
+          "852-10-55-10"
+        ],
+        "taxonomy_valid": true,
+        "fake_999_accepted": false
+      },
+      "citation_score_heuristic": {
+        "level": "exact_primary",
+        "score": 1.0,
+        "detail": "210-10-45-1 matches primary GT"
+      },
+      "oracle_pick_from_candidates": "210-10-45-1",
+      "citation_score_oracle": {
+        "level": "exact_primary",
+        "score": 1.0,
+        "detail": "210-10-45-1 matches primary GT"
+      },
+      "stage2_pending": true
+    },
+    {
+      "sample_id": "IAB-2024-0002",
+      "company": "Apple Inc.",
+      "gt": {
+        "type": "Numerical Error",
+        "row": 3,
+        "label": "Accounts receivable, net",
+        "concept": "AccountsReceivableNetCurrent",
+        "primary_asc": [
+          "FASB ASC 310-10-45-1"
+        ],
+        "topics": [
+          "310",
+          "210",
+          "326"
+        ]
+      },
+      "stage0": {
+        "fired": true,
+        "pred_type": "Numerical Error",
+        "pred_row": 3,
+        "type_match": true,
+        "row_match": true,
+        "correct_value": 29508.0,
+        "detail": "'Accounts receivable, net' stated 35000.0, transactions imply 29508.0."
+      },
+      "stage1": {
+        "focus_row": 3,
+        "focus_label": "Accounts receivable, net",
+        "concept": "AccountsReceivableNetCurrent",
+        "predicted_asc": "310-10-45-2",
+        "source": "taxonomy",
+        "candidates": [
+          "310-10-45-2",
+          "310-10-45-9"
+        ],
+        "taxonomy_valid": true,
+        "fake_999_accepted": false
+      },
+      "citation_score_heuristic": {
+        "level": "near_paragraph",
+        "score": 0.75,
+        "detail": "310-10-45-2 near primary 310-10-45-1 (same section family)"
+      },
+      "oracle_pick_from_candidates": "310-10-45-2",
+      "citation_score_oracle": {
+        "level": "near_paragraph",
+        "score": 0.75,
+        "detail": "310-10-45-2 near primary 310-10-45-1 (same section family)"
+      },
+      "stage2_pending": true
+    },
+    {
+      "sample_id": "IAB-2024-0003",
+      "company": "Apple Inc.",
+      "gt": {
+        "type": "Misclassification",
+        "row": 7,
+        "label": "Accounts payable",
+        "concept": "AccountsPayableCurrent",
+        "primary_asc": [
+          "FASB ASC 210-10-45-1"
+        ],
+        "topics": [
+          "210",
+          "405"
+        ]
+      },
+      "stage0": {
+        "fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "type_match": false,
+        "row_match": false,
+        "correct_value": null,
+        "detail": ""
+      },
+      "stage1": {
+        "focus_row": 7,
+        "focus_label": "Accounts payable",
+        "concept": "IncreaseDecreaseInAccountsPayable",
+        "predicted_asc": "230-10-45-28",
+        "source": "taxonomy",
+        "candidates": [
+          "230-10-45-28"
+        ],
+        "taxonomy_valid": true,
+        "fake_999_accepted": false
+      },
+      "citation_score_heuristic": {
+        "level": "grounded_wrong_topic",
+        "score": 0.25,
+        "detail": "230-10-45-28 in taxonomy candidates but topic not in GT set"
+      },
+      "oracle_pick_from_candidates": null,
+      "citation_score_oracle": null,
+      "stage2_pending": true
+    },
+    {
+      "sample_id": "IAB-2024-0004",
+      "company": "Apple Inc.",
+      "gt": {
+        "type": "Redundant Row",
+        "row": 7,
+        "label": "Software licenses",
+        "concept": null,
+        "primary_asc": [
+          "FASB ASC 210-10-45-1"
+        ],
+        "topics": [
+          "210",
+          "205",
+          "350"
+        ]
+      },
+      "stage0": {
+        "fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "type_match": false,
+        "row_match": false,
+        "correct_value": null,
+        "detail": ""
+      },
+      "stage1": {
+        "focus_row": 7,
+        "focus_label": "Software licenses",
+        "concept": "CapitalizedComputerSoftwareNet",
+        "predicted_asc": "985-20-50-1",
+        "source": "taxonomy",
+        "candidates": [
+          "985-20-50-1"
+        ],
+        "taxonomy_valid": true,
+        "fake_999_accepted": false
+      },
+      "citation_score_heuristic": {
+        "level": "grounded_wrong_topic",
+        "score": 0.25,
+        "detail": "985-20-50-1 in taxonomy candidates but topic not in GT set"
+      },
+      "oracle_pick_from_candidates": null,
+      "citation_score_oracle": null,
+      "stage2_pending": true
+    },
+    {
+      "sample_id": "IAB-2024-0005",
+      "company": "Meta Platforms Inc.",
+      "gt": {
+        "type": "Misclassification",
+        "row": 21,
+        "label": "Current portion of long-term debt",
+        "concept": "LongTermDebtCurrent",
+        "primary_asc": [
+          "FASB ASC 470-10-45-1"
+        ],
+        "topics": [
+          "470",
+          "210"
+        ]
+      },
+      "stage0": {
+        "fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "type_match": false,
+        "row_match": false,
+        "correct_value": null,
+        "detail": ""
+      },
+      "stage1": {
+        "focus_row": 21,
+        "focus_label": "Current portion of long-term debt",
+        "concept": "LongTermDebtCurrent",
+        "predicted_asc": "210-10-S99-1",
+        "source": "taxonomy",
+        "candidates": [
+          "210-10-S99-1"
+        ],
+        "taxonomy_valid": true,
+        "fake_999_accepted": false
+      },
+      "citation_score_heuristic": {
+        "level": "topic_match",
+        "score": 0.5,
+        "detail": "topic 210 in GT topic set ['210', '470']"
+      },
+      "oracle_pick_from_candidates": "210-10-S99-1",
+      "citation_score_oracle": {
+        "level": "topic_match",
+        "score": 0.5,
+        "detail": "topic 210 in GT topic set ['210', '470']"
+      },
+      "stage2_pending": true
+    },
+    {
+      "sample_id": "IAB-2024-0006",
+      "company": "Microsoft Corporation",
+      "gt": {
+        "type": "Missing Row",
+        "row": 12,
+        "label": "Intangible assets, net",
+        "concept": "IntangibleAssetsNetExcludingGoodwill",
+        "primary_asc": [
+          "FASB ASC 350-30-45-1"
+        ],
+        "topics": [
+          "350",
+          "210",
+          "805"
+        ]
+      },
+      "stage0": {
+        "fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "type_match": false,
+        "row_match": false,
+        "correct_value": null,
+        "detail": ""
+      },
+      "stage1": {
+        "focus_row": 12,
+        "focus_label": "Other long-term assets",
+        "concept": "OtherAssetsNoncurrent",
+        "predicted_asc": "210-10-S99-1",
+        "source": "taxonomy",
+        "candidates": [
+          "210-10-S99-1"
+        ],
+        "taxonomy_valid": true,
+        "fake_999_accepted": false
+      },
+      "citation_score_heuristic": {
+        "level": "topic_match",
+        "score": 0.5,
+        "detail": "topic 210 in GT topic set ['210', '350', '805']"
+      },
+      "oracle_pick_from_candidates": "210-10-S99-1",
+      "citation_score_oracle": {
+        "level": "topic_match",
+        "score": 0.5,
+        "detail": "topic 210 in GT topic set ['210', '350', '805']"
+      },
+      "stage2_pending": true
+    },
+    {
+      "sample_id": "IAB-2024-0007",
+      "company": "Amazon.com Inc.",
+      "gt": {
+        "type": "Numerical Error",
+        "row": 3,
+        "label": "Inventories",
+        "concept": "InventoryNet",
+        "primary_asc": [
+          "FASB ASC 330-10-35-1"
+        ],
+        "topics": [
+          "330",
+          "210"
+        ]
+      },
+      "stage0": {
+        "fired": true,
+        "pred_type": "Numerical Error",
+        "pred_row": 3,
+        "type_match": true,
+        "row_match": true,
+        "correct_value": 33318.0,
+        "detail": "'Inventories' stated 38500.0, transactions imply 33318.0."
+      },
+      "stage1": {
+        "focus_row": 3,
+        "focus_label": "Inventories",
+        "concept": "IncreaseDecreaseInInventories",
+        "predicted_asc": "230-10-45-28",
+        "source": "taxonomy",
+        "candidates": [
+          "230-10-45-28"
+        ],
+        "taxonomy_valid": true,
+        "fake_999_accepted": false
+      },
+      "citation_score_heuristic": {
+        "level": "grounded_wrong_topic",
+        "score": 0.25,
+        "detail": "230-10-45-28 in taxonomy candidates but topic not in GT set"
+      },
+      "oracle_pick_from_candidates": null,
+      "citation_score_oracle": null,
+      "stage2_pending": true
+    },
+    {
+      "sample_id": "IAB-2024-0008",
+      "company": "NVIDIA Corporation",
+      "gt": {
+        "type": "Misclassification",
+        "row": 8,
+        "label": "Operating lease right-of-use assets",
+        "concept": "OperatingLeaseRightOfUseAsset",
+        "primary_asc": [
+          "FASB ASC 842-20-45-1"
+        ],
+        "topics": [
+          "842",
+          "360",
+          "210"
+        ]
+      },
+      "stage0": {
+        "fired": true,
+        "pred_type": "Numerical Error",
+        "pred_row": 8,
+        "type_match": false,
+        "row_match": true,
+        "correct_value": 1346.0,
+        "detail": "'Operating lease right-of-use assets' stated 0.0, transactions imply 1346.0."
+      },
+      "stage1": {
+        "focus_row": 8,
+        "focus_label": "Operating lease right-of-use assets",
+        "concept": "OperatingLeaseRightOfUseAsset",
+        "predicted_asc": "842-20-45-1",
+        "source": "taxonomy",
+        "candidates": [
+          "842-20-45-1"
+        ],
+        "taxonomy_valid": true,
+        "fake_999_accepted": false
+      },
+      "citation_score_heuristic": {
+        "level": "exact_primary",
+        "score": 1.0,
+        "detail": "842-20-45-1 matches primary GT"
+      },
+      "oracle_pick_from_candidates": "842-20-45-1",
+      "citation_score_oracle": {
+        "level": "exact_primary",
+        "score": 1.0,
+        "detail": "842-20-45-1 matches primary GT"
+      },
+      "stage2_pending": true
+    }
+  ]
+}

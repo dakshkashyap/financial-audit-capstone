@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>IntelliAudit — SFU Capstone Presentation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+:root{
+  --bg:#0b1220; --bg2:#0f1830; --panel:#121c38; --panel2:#16223f;
+  --ink:#eef2fb; --ink-dim:#a9b6d6; --line:#233256;
+  --teal:#28d9c6; --gold:#f2b94b; --red:#ef6f6f; --green:#59d18f; --violet:#a78bfa;
+  --shadow: 0 20px 60px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{
+  margin:0; background:radial-gradient(1200px 800px at 80% -10%, #142449 0%, var(--bg) 55%) fixed;
+  color:var(--ink); font-family:"Segoe UI", Calibri, Helvetica, Arial, sans-serif;
+  overflow:hidden;
+}
+.deck{ position:relative; width:100vw; height:100vh; }
+.slide{
+  position:absolute; inset:0; display:none; flex-direction:column;
+  padding:64px 88px 56px; overflow-y:auto;
+}
+.slide:not(.active){ display:none !important; }
+.slide.active{ display:flex; animation:fadeIn .28s ease; }
+@keyframes fadeIn{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+
+.kicker{ color:var(--teal); letter-spacing:.16em; text-transform:uppercase; font-size:13px; font-weight:700; margin:0 0 10px; }
+h1{ font-size:44px; line-height:1.15; margin:0 0 18px; font-weight:800; letter-spacing:-.01em; }
+h2{ font-size:32px; margin:0 0 22px; font-weight:800; letter-spacing:-.01em; }
+h3{ font-size:20px; margin:18px 0 8px; color:var(--teal); font-weight:700; }
+p.lead{ font-size:19px; color:var(--ink-dim); max-width:920px; line-height:1.55; }
+.subtitle{ font-size:20px; color:var(--ink-dim); margin-top:2px; }
+
+.grid2{ display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start; flex:1; }
+.grid3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; align-items:start; }
+
+.card{
+  background:linear-gradient(180deg, var(--panel), var(--panel2));
+  border:1px solid var(--line); border-radius:16px; padding:22px 24px;
+  box-shadow: var(--shadow);
+}
+.card h3{ margin-top:0; }
+.card ul{ margin:6px 0 0; padding-left:20px; }
+.card li{ margin-bottom:8px; line-height:1.5; color:var(--ink-dim); font-size:15.5px; }
+.card li b, .card li strong{ color:var(--ink); }
+
+table{ border-collapse:collapse; width:100%; font-size:15px; }
+table.tight{ font-size:14px; }
+th,td{ padding:9px 12px; border-bottom:1px solid var(--line); text-align:left; }
+th{ color:var(--teal); font-size:12.5px; text-transform:uppercase; letter-spacing:.04em; font-weight:700; }
+td{ color:var(--ink-dim); }
+td b, td strong{ color:var(--ink); }
+tr:last-child td{ border-bottom:none; }
+.tbl-wrap{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:6px 18px; box-shadow:var(--shadow); }
+
+.pill{ display:inline-block; padding:3px 12px; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.03em; }
+.pill.red{ background:rgba(239,111,111,.14); color:var(--red); border:1px solid rgba(239,111,111,.35);}
+.pill.green{ background:rgba(89,209,143,.14); color:var(--green); border:1px solid rgba(89,209,143,.35);}
+.pill.teal{ background:rgba(40,217,198,.14); color:var(--teal); border:1px solid rgba(40,217,198,.35);}
+.pill.gold{ background:rgba(242,185,75,.14); color:var(--gold); border:1px solid rgba(242,185,75,.35);}
+.pill.violet{ background:rgba(167,139,250,.14); color:var(--violet); border:1px solid rgba(167,139,250,.35);}
+
+.stat{ display:flex; flex-direction:column; gap:2px; }
+.stat .n{ font-size:46px; font-weight:800; line-height:1; }
+.stat .l{ font-size:13px; color:var(--ink-dim); text-transform:uppercase; letter-spacing:.05em; margin-top:8px; }
+.stat-row{ display:flex; gap:34px; flex-wrap:wrap; margin-top:8px; }
+
+.arrowbox{ text-align:center; color:var(--ink-dim); font-size:22px; margin:2px 0; }
+
+.barchart{ display:flex; flex-direction:column; gap:14px; margin-top:6px; }
+.bar-row{ display:grid; grid-template-columns:190px 1fr 70px; align-items:center; gap:14px; }
+.bar-label{ font-size:14px; color:var(--ink-dim); }
+.bar-track{ background:#0c1630; border:1px solid var(--line); border-radius:8px; height:26px; overflow:hidden; position:relative; }
+.bar-fill{ height:100%; border-radius:8px 0 0 8px; display:flex; align-items:center; }
+.bar-fill.red{ background:linear-gradient(90deg,#8c2f2f,var(--red)); }
+.bar-fill.teal{ background:linear-gradient(90deg,#0e6f65,var(--teal)); }
+.bar-fill.gold{ background:linear-gradient(90deg,#8a640f,var(--gold)); }
+.bar-fill.green{ background:linear-gradient(90deg,#1f7a4d,var(--green)); }
+.bar-fill.violet{ background:linear-gradient(90deg,#5c46a8,var(--violet)); }
+.bar-value{ font-weight:700; font-size:15px; text-align:right; }
+
+.pipeline{ display:flex; flex-direction:column; gap:8px; flex:1; justify-content:center; }
+.pstep{ border:1px solid var(--line); border-radius:12px; padding:12px 18px; display:flex; align-items:center; justify-content:space-between; box-shadow:var(--shadow); }
+.pstep .name{ font-weight:800; font-size:16px; }
+.pstep .desc{ color:var(--ink-dim); font-size:13.5px; margin-top:2px; }
+.pstep .tag{ font-size:11px; }
+.pstep.free{ background:linear-gradient(90deg, rgba(40,217,198,.08), var(--panel)); border-color:rgba(40,217,198,.3); }
+.pstep.llm{ background:linear-gradient(90deg, rgba(242,185,75,.10), var(--panel)); border-color:rgba(242,185,75,.35); }
+.pconnector{ align-self:center; color:var(--ink-dim); font-size:16px; }
+
+.footer-brand{ position:fixed; left:88px; bottom:20px; font-size:12px; color:var(--ink-dim); opacity:.75; letter-spacing:.03em; }
+.progress{ position:fixed; top:0; left:0; height:4px; background:linear-gradient(90deg,var(--teal),var(--gold)); transition:width .25s ease; z-index:50;}
+.counter{ position:fixed; right:32px; bottom:20px; font-size:13px; color:var(--ink-dim); letter-spacing:.03em; }
+.navhint{ position:fixed; right:32px; top:20px; font-size:11px; color:var(--ink-dim); opacity:.6; }
+
+.nav-zone{ position:fixed; top:0; bottom:0; width:9%; z-index:40; cursor:pointer; }
+.nav-zone.left{ left:0; } .nav-zone.right{ right:0; }
+
+.hl{ color:var(--teal); font-weight:700; }
+.hl-gold{ color:var(--gold); font-weight:700; }
+.hl-red{ color:var(--red); font-weight:700; }
+.hl-green{ color:var(--green); font-weight:700; }
+.small{ font-size:13px; color:var(--ink-dim); }
+.mono{ font-family:Consolas, "Courier New", monospace; font-size:13.5px; background:#0b1530; border:1px solid var(--line); border-radius:10px; padding:14px 16px; color:#cfe3ff; overflow-x:auto; white-space:pre; }
+.center{ display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; height:100%; }
+.divider{ height:1px; background:var(--line); margin:14px 0; border:none; }
+.quote{ font-size:22px; font-style:italic; color:var(--ink); border-left:3px solid var(--teal); padding:6px 0 6px 20px; margin:14px 0; }
+.two-col-list{ columns:2; column-gap:34px; }
+.badge-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+
+/* Title slide */
+.title-slide{ justify-content:center; }
+.title-slide h1{ font-size:64px; }
+.title-team{ margin-top:30px; font-size:16px; color:var(--ink-dim); }
+.title-team b{ color:var(--ink); }
+.logo-row{ display:flex; gap:14px; margin-bottom:26px; }
+.logo-row span{ width:10px; height:10px; border-radius:50%; display:inline-block; }
+
+@media print{
+  body{ overflow:visible; background:#0b1220; }
+  .nav-zone, .progress, .counter, .navhint{ display:none !important; }
+  .slide{ display:flex !important; position:relative; page-break-after:always; height:100vh; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="navhint">← → / Space to navigate · P to print</div>
+<div class="nav-zone left" onclick="go(-1)"></div>
+<div class="nav-zone right" onclick="go(1)"></div>
+<div class="counter" id="counter"></div>
+<div class="footer-brand">IntelliAudit — SFU Capstone · Prof. Mohammad Tayebi</div>
+
+<div class="deck" id="deck">
+
+<!-- 1: TITLE -->
+<section class="slide title-slide center">
+  <div class="logo-row"><span style="background:var(--teal)"></span><span style="background:var(--gold)"></span><span style="background:var(--red)"></span></div>
+  <p class="kicker">SFU Capstone · June–July 2026</p>
+  <h1>IntelliAudit</h1>
+  <p class="subtitle">A neuro-symbolic architecture for automated financial-statement auditing</p>
+  <p class="title-team">
+    <b>Team:</b> Manish Madishetty · Allison Wilson · Mohsen Iranmanesh · Irvin Cardoza · Verrill Angelo · Daksh Kashyap<br>
+    <b>Supervisor:</b> Prof. Mohammad Tayebi
+  </p>
+</section>
+
+<!-- 2: AGENDA -->
+<section class="slide">
+  <p class="kicker">Agenda</p>
+  <h2>What we'll cover</h2>
+  <div class="grid2" style="flex:1;">
+    <div class="card">
+      <h3>The problem</h3>
+      <ul>
+        <li>AuditBench: the benchmark and its 4.1% success rate</li>
+        <li>FinAuditing &amp; AuditFlow: what they reveal about <i>why</i></li>
+        <li>Our own reproduction — and the hidden failure mode it exposes</li>
+      </ul>
+      <h3>The architecture</h3>
+      <ul>
+        <li>Six stages: arithmetic → citation → focused LLM → revision</li>
+        <li>Exactly what goes in, what comes out, at every stage</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>The evidence</h3>
+      <ul>
+        <li>Measured results at every stage — including the ones that <i>didn't</i> work</li>
+        <li>A controlled ablation that isolates architecture from model</li>
+        <li>A live, full head-to-head vs. the baseline</li>
+      </ul>
+      <h3>The honest conclusion</h3>
+      <ul>
+        <li>What gap is closed, what trade-off remains, what's next</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 3: AuditBench overview -->
+<section class="slide">
+  <p class="kicker">Problem Statement · Paper 1 of 3</p>
+  <h2>AuditBench — the benchmark we improve on</h2>
+  <p class="lead"><i>Automating Financial Statement Audits with Large Language Models</i> — arXiv:2506.17282, UIUC + Stevens Institute, AAAI Workshop 2025.</p>
+  <div class="grid2">
+    <div class="card">
+      <h3>Setup</h3>
+      <ul>
+        <li><b>1,856</b> real S&amp;P 500 financial statements</li>
+        <li>Exactly <b>one injected error</b> per table (or several, in the multi-error split)</li>
+        <li>Each table paired with a <b>transaction narrative</b> — the ground-truth of what actually happened</li>
+        <li>GPT-4 / GPT-3.5 must judge, classify, localize, explain, cite, and rewrite — <b>in one prompt</b></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Four error types (the whole task)</h3>
+      <ul>
+        <li><b>Numerical Error</b> — a value was changed</li>
+        <li><b>Missing Row</b> — a row was deleted</li>
+        <li><b>Redundant Row</b> — an extra unsupported row was added</li>
+        <li><b>Misclassification</b> — a real row placed in the wrong section</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 4: AuditBench 6 metrics + success rate collapse -->
+<section class="slide">
+  <p class="kicker">Problem Statement</p>
+  <h2>Six metrics, one AND-gate — and it collapses</h2>
+  <div class="tbl-wrap">
+  <table>
+    <tr><th>Metric</th><th>GPT-4</th><th>GPT-3.5</th></tr>
+    <tr><td>General Judgment</td><td>1.000</td><td>1.000</td></tr>
+    <tr><td>Error Type EM</td><td>0.899</td><td>0.764</td></tr>
+    <tr><td>Error Row EM</td><td>0.737</td><td>0.418</td></tr>
+    <tr><td>Resolution BERTScore</td><td>0.878</td><td>0.869</td></tr>
+    <tr><td><b>Standards Citation</b></td><td><b class="hl-red">0.262</b></td><td><b class="hl-red">0.137</b></td></tr>
+    <tr><td>Table Revision BLEU</td><td>0.783</td><td>0.707</td></tr>
+    <tr><td><b>Overall Success Rate</b></td><td><b class="hl-red">0.041</b></td><td><b class="hl-red">0.025</b></td></tr>
+  </table>
+  </div>
+  <p class="lead" style="margin-top:18px;">Success requires <span class="hl">all six</span> to pass at once. Citation at 26.2% alone fails ~74% of audits — <span class="hl-gold">fix citation, fix Success Rate.</span> This single observation seeded the whole project.</p>
+</section>
+
+<!-- 5: FinAuditing -->
+<section class="slide">
+  <p class="kicker">Problem Statement · Paper 2 of 3</p>
+  <h2>FinAuditing — why citation can't be learned end-to-end</h2>
+  <p class="lead">arXiv:2510.08886 · The Fin AI · Columbia · McGill · Cardiff · SIGIR 2026</p>
+  <div class="grid2">
+    <div class="card">
+      <h3>What it is</h3>
+      <ul>
+        <li>Benchmark built from <b>real XBRL filings</b> — 4,545 official DQC error messages, 372 companies</li>
+        <li>Defines <b>FinSM</b>: map a line-item label → its correct <span class="mono" style="display:inline;padding:2px 6px;">us-gaap:</span> taxonomy concept, over an <b>18,000-concept space</b></li>
+      </ul>
+    </div>
+    <div class="card center" style="padding:34px;">
+      <div class="stat">
+        <div class="n hl-red">9–13%</div>
+        <div class="l">FinSM Hit Rate@20 — best models, incl. GPT-4o</div>
+      </div>
+      <p class="small" style="margin-top:18px;">This is <i>exactly</i> the row→concept mapping our citation pipeline needs. A 9–13%-accurate mapper would collapse everything built on top of it — this is why mapping in IntelliAudit is <b>deterministic</b>, not learned.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6: AuditFlow -->
+<section class="slide">
+  <p class="kicker">Problem Statement · Paper 3 of 3</p>
+  <h2>AuditFlow — the direct architectural blueprint</h2>
+  <p class="lead">arXiv:2606.03031 · The Fin AI · Stevens · Harvard · Montreal · Surrey · Cardiff · June 2026</p>
+  <div class="quote">"LLM agents decide where to look. A symbolic environment performs fact retrieval, taxonomy traversal, numerical checking, and rule evaluation."</div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Their ablation — same model, only the architecture changes</h3>
+      <div class="barchart">
+        <div class="bar-row"><span class="bar-label">Full system (symbolic + LLM)</span><div class="bar-track"><div class="bar-fill teal" style="width:82%"></div></div><span class="bar-value">82%</span></div>
+        <div class="bar-row"><span class="bar-label">LLM only, no symbolic env</span><div class="bar-track"><div class="bar-fill red" style="width:17.91%"></div></div><span class="bar-value">17.9%</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>What we adapt</h3>
+      <ul>
+        <li>Their symbolic environment → our <b>Stage 0 arithmetic gate</b> + <b>Stage 1 taxonomy graph</b></li>
+        <li>Their typed tools → our SymPy, graph traversal, Pydantic schema</li>
+        <li>Their junior/senior agent structure → simpler decomposed sub-prompts (AuditBench is a simpler benchmark)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 7: Supporting literature -->
+<section class="slide">
+  <p class="kicker">Related Work</p>
+  <h2>Five more papers, five design decisions</h2>
+  <div class="tbl-wrap">
+  <table class="tight">
+    <tr><th>Paper</th><th>Finding</th><th>What we took from it</th></tr>
+    <tr><td><b>LAVA</b> (FinNLP·EMNLP'25)</td><td>Arithmetic failure ≠ rule failure — keep them physically separate</td><td>Stage 0 (arithmetic) and Stage 1 (taxonomy) are separate stages, never one prompt</td></tr>
+    <tr><td><b>Structure-First</b> (2601.07754)</td><td>Build the graph <i>before</i> the model reasons, not on the fly</td><td>Taxonomy graph built once, offline, ahead of any audit run</td></tr>
+    <tr><td><b>AgentAuditor</b> (2602.09341)</td><td>Evidence-based adjudication &gt; majority voting</td><td>LLM confirms evidence, doesn't vote; ambiguous cases abstain to human review</td></tr>
+    <tr><td><b>VERAFI</b> (Amazon Science, 2512.14744)</td><td>Constrain outputs at the schema level, not by trusting the model</td><td>Pydantic/Instructor validation planned for Stage 3 — a citation that doesn't exist can't reach output</td></tr>
+    <tr><td><b>NTOL</b> (Frontiers in AI, 2026)</td><td>Same fix works for tax-statute citation as for FASB citation</td><td>Cross-industry evidence the graph-traversal approach generalizes</td></tr>
+  </table>
+  </div>
+</section>
+
+<!-- 8: Thesis -->
+<section class="slide center">
+  <p class="kicker">The Thesis</p>
+  <h1 style="max-width:1000px;">The 4.1% success rate is an <span class="hl-gold">architecture</span> problem, not a <span class="hl-red">model</span> problem.</h1>
+  <p class="lead" style="max-width:820px;">We hold the model fixed throughout this entire project — <span class="mono" style="display:inline;padding:2px 8px;">claude-opus-4-6</span> everywhere — and prove with a controlled ablation that separating arithmetic, citation, and explanation is what moves every headline number.</p>
+</section>
+
+<!-- 9: Four gaps -->
+<section class="slide">
+  <p class="kicker">Gap Analysis</p>
+  <h2>Four measurable gaps → four concrete fixes</h2>
+  <div class="tbl-wrap">
+  <table class="tight">
+    <tr><th>Gap</th><th>Evidence it's real</th><th>IntelliAudit's answer</th></tr>
+    <tr><td><b>G1</b> — Citation is a memory test</td><td>AuditBench Citation EM = 0.262 (GPT-4)</td><td><b>Stage 1</b>: taxonomy graph traversal — reads the citation, can't invent it</td></tr>
+    <tr><td><b>G2</b> — Concept mapping can't be learned either</td><td>FinAuditing FinSM Hit@20 = 9–13%</td><td><b>EDGAR Mapper</b>: deterministic match against real SEC filings</td></tr>
+    <tr><td><b>G3</b> — LLM auditors over-audit clean data</td><td>Our repro: Opus-4.6 flags <b class="hl-red">50%</b> of clean statements Incorrect</td><td><b>Stage 0A/0B</b>: $0 arithmetic + identity gate before any LLM call</td></tr>
+    <tr><td><b>G4</b> — One prompt, too many jobs</td><td>AuditFlow: 82% vs 17.9% (symbolic vs LLM-only, same model)</td><td><b>Stage 2</b>: focused LLM that only classifies &amp; explains pre-verified evidence</td></tr>
+  </table>
+  </div>
+</section>
+
+<!-- 10: Architecture diagram -->
+<section class="slide">
+  <p class="kicker">Architecture</p>
+  <h2>The full pipeline</h2>
+  <div class="pipeline">
+    <div class="pstep free"><div><div class="name">INPUT — Statement + Transaction narrative</div><div class="desc">S&amp;P 500 table + the transaction "oracle"</div></div></div>
+    <div class="pconnector">↓</div>
+    <div class="pstep free"><div><div class="name">Stage 0A · SymPy <span class="pill teal">$0</span></div><div class="desc">Arithmetic Verifier — recomputes subtotals, finds Numerical Error / Missing Row</div></div></div>
+    <div class="pconnector">↓</div>
+    <div class="pstep free"><div><div class="name">Stage 0B · pure Python <span class="pill teal">$0</span></div><div class="desc">Equation Checker — accounting identities → Redundant Row / Misclassification</div></div></div>
+    <div class="pconnector">↓ combine_findings() → verdict, or ABSTAIN</div>
+    <div class="pstep free"><div><div class="name">EDGAR Mapper <span class="pill teal">$0</span></div><div class="desc">Row label → us-gaap: concept, via SEC filings (deterministic, not learned)</div></div></div>
+    <div class="pconnector">↓</div>
+    <div class="pstep free"><div><div class="name">Stage 1 · Taxonomy Graph <span class="pill teal">$0</span></div><div class="desc">Concept → FASB ASC citation, read from the graph, never invented</div></div></div>
+    <div class="pconnector">↓ (only when Stage 0 abstains)</div>
+    <div class="pstep llm"><div><div class="name">Stage 2 · Focused LLM <span class="pill gold">~$0.005/audit</span></div><div class="desc">Classifies, confirms citation, explains — never re-derives math or invents a code</div></div></div>
+    <div class="pconnector">↓</div>
+    <div class="pstep free"><div><div class="name">Stage 3 · Deterministic Reviser <span class="pill teal">$0</span></div><div class="desc">Applies confirmed fix; SymPy recompute + schema validation (target)</div></div></div>
+    <div class="pconnector">↓</div>
+    <div class="pstep free"><div><div class="name">OUTPUT — AuditBench JSON</div><div class="desc">Judgment, error type/row, corrected value, citation + candidates, full evidence trail</div></div></div>
+  </div>
+</section>
+
+<!-- 11: Handoff contract -->
+<section class="slide">
+  <p class="kicker">Architecture</p>
+  <h2>One integration point per stage</h2>
+  <div class="mono">
+# Stage 0 — deterministic gate
+finding = combine_findings(stage0a.verify(item), stage0b.check(item))
+# → None (abstain)  OR  Finding(error_type, problematic_entry,
+#     correct_value, stated_value, source, detail)
+
+# Full deterministic pipeline (Stage 0 + EDGAR + Stage 1)
+record = run_pipeline(item, TaxonomyGraph())
+# record.abstained             -&gt; True: no proof yet, route to Stage 2 LLM
+# record.verified_consistent   -&gt; True: math checks out (anti-over-audit signal)
+# record.citation_primary / .citation_candidates -&gt; grounded citations for Stage 2
+  </div>
+  <p class="lead" style="margin-top:18px;">When candidates are ambiguous, the system <b>abstains to a human-review queue</b> rather than forcing a guess — following AgentAuditor's finding that a forced choice from weak evidence is worse than declining to choose.</p>
+</section>
+
+<!-- 12: Reproduction results -->
+<section class="slide">
+  <p class="kicker">Baseline Reproduction</p>
+  <h2>Claude Opus-4.6 vs. the paper's GPT-4</h2>
+  <p class="small">seed=42, n=150/split, temperature=1.0 — paper-faithful protocol, multi-provider runner</p>
+  <div class="tbl-wrap">
+  <table class="tight">
+    <tr><th>Split</th><th>Metric</th><th>Opus-4.6 (ours)</th><th>GPT-4</th><th>GPT-3.5</th><th></th></tr>
+    <tr><td>Correct</td><td>Gen Judgment</td><td><b class="hl-red">0.500</b></td><td>1.000</td><td>1.000</td><td><span class="pill red">weakness</span></td></tr>
+    <tr><td rowspan="4">Single err.</td><td>Error Type EM</td><td><b class="hl-green">0.920</b></td><td>0.899</td><td>0.764</td><td><span class="pill green">beats GPT-4</span></td></tr>
+    <tr><td>Error Row EM</td><td><b class="hl-green">0.820</b></td><td>0.737</td><td>0.418</td><td><span class="pill green">beats GPT-4</span></td></tr>
+    <tr><td>BLEU</td><td><b class="hl-green">0.949</b></td><td>0.783</td><td>0.707</td><td><span class="pill green">large win</span></td></tr>
+    <tr><td><b>Success Rate</b></td><td><b class="hl-green">0.500</b></td><td>0.041</td><td>0.025</td><td><span class="pill teal">~12×</span></td></tr>
+    <tr><td rowspan="2">Multi err.</td><td>BERTScore</td><td><b class="hl-green">0.872</b></td><td>0.792</td><td>0.637</td><td><span class="pill green">beats GPT-4</span></td></tr>
+    <tr><td><b>Success Rate</b></td><td><b class="hl-green">0.153</b></td><td>0.030</td><td>0.012</td><td><span class="pill teal">~5×</span></td></tr>
+  </table>
+  </div>
+</section>
+
+<!-- 13: Over-auditing headline -->
+<section class="slide">
+  <p class="kicker">The Real Finding</p>
+  <h2>A strong model, over-auditing clean statements</h2>
+  <div class="grid2">
+    <div class="card center" style="padding:30px;">
+      <div class="stat"><div class="n hl-red">50%</div><div class="l">clean statements flagged "Incorrect"</div></div>
+      <div class="stat" style="margin-top:22px;"><div class="n hl-red">0.000</div><div class="l">Success Rate on the clean split</div></div>
+    </div>
+    <div class="card">
+      <h3>Why this matters more than it looks</h3>
+      <ul>
+        <li>Not a parsing bug — the model performs real reasoning (footing checks, reconciliation) and finds numbers that <i>look</i> wrong</li>
+        <li>AuditBench's headline table never surfaces this — Success Rate is reported <i>only</i> on the error splits</li>
+        <li>A compliance system that cries wolf 50% of the time is unusable, no matter how good it is at catching real errors</li>
+        <li><b class="hl-gold">This finding redirected the entire project.</b></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 14: Stage 0A -->
+<section class="slide">
+  <p class="kicker">Stage 0A · SymPy · $0</p>
+  <h2>Arithmetic Verifier</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Input → Output</h3>
+      <ul>
+        <li><b>In:</b> parsed table (leaves + subtotals) + transaction "oracle"</li>
+        <li><b>Out:</b> <span class="mono" style="display:inline;padding:2px 6px;">Finding</span> or abstain</li>
+      </ul>
+      <h3>What it does</h3>
+      <ul>
+        <li>Recomputes every subtotal from its leaves (SymPy — symbolic, exact, cannot hallucinate)</li>
+        <li>Cross-references each stated value against the transaction oracle</li>
+        <li>Reports <b>Numerical Error</b> (broken leaf + correct value) and <b>Missing Row</b> (transaction-described row absent from the table + re-insertion position)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Why it matters for the paper's own bottleneck</h3>
+      <p class="lead" style="font-size:16px;">GPT-4's Error Row EM = 0.737 — it hunted across 30-row tables and found the right row ~74% of the time. After Stage 0, the model is <i>told</i> which row failed and by how much when the gate fires. It confirms, it doesn't search.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 15: Stage 0B -->
+<section class="slide">
+  <p class="kicker">Stage 0B · Pure Python · $0</p>
+  <h2>Equation Checker</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Structural identities checked</h3>
+      <ul>
+        <li>Assets = Liabilities + Equity</li>
+        <li>Sales − COGS = Gross Margin; Gross Margin − OpEx = Operating Income</li>
+        <li>Operating + Investing + Financing cash flow = Change in Cash</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Localizes</h3>
+      <ul>
+        <li><b>Redundant Row</b> — extra row inflates a subtotal, no transaction support</li>
+        <li><b>Misclassification</b> — a real row present, but a subtotal is over by exactly its value while another is short by the same amount</li>
+        <li>These are not probabilistic — a violation is <i>definitionally</i> a structural error</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 16: Design principles -->
+<section class="slide">
+  <p class="kicker">Stage 0 · Design</p>
+  <h2>Six principles that made it precision-first</h2>
+  <div class="card">
+    <ul class="two-col-list">
+      <li><b>Corroboration anchoring</b> — fire only when a subtotal is off by exactly the implicated row's value</li>
+      <li><b>Magnitude-aware comparison</b> — ignores sign + 0.5% rounding noise between narrative and table</li>
+      <li><b>Positional subtotal alignment</b> — order, not label text (label matching was only ~64% reliable)</li>
+      <li><b>Injector-noise cleanup</b> — strips HTML comment markers &amp; quote-wrapping the dataset leaves in cells</li>
+      <li><b>Unique-label + index guard</b> — avoids ambiguous-label collisions (e.g. Basic vs. Diluted EPS)</li>
+      <li><b>Abstain by default</b> — multiple/ambiguous candidates → <span class="mono" style="display:inline;padding:1px 6px;">None</span>, never a guess</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 17: Stage 0 results -->
+<section class="slide">
+  <p class="kicker">Stage 0 · Measured Results</p>
+  <h2>False-positive rate: the headline number</h2>
+  <div class="barchart">
+    <div class="bar-row"><span class="bar-label">LLM baseline (clean split)</span><div class="bar-track"><div class="bar-fill red" style="width:50%"></div></div><span class="bar-value">50.0%</span></div>
+    <div class="bar-row"><span class="bar-label">Stage 0 gate (n=400)</span><div class="bar-track"><div class="bar-fill teal" style="width:1.9%"></div></div><span class="bar-value">1.9%</span></div>
+    <div class="bar-row"><span class="bar-label">Stage 0 gate (n=150)</span><div class="bar-track"><div class="bar-fill green" style="width:0.3%"></div></div><span class="bar-value">0.0%</span></div>
+  </div>
+  <div class="stat-row" style="margin-top:30px;">
+    <div class="stat"><div class="n hl-green">0.989</div><div class="l">correct-value accuracy (n=400)</div></div>
+    <div class="stat"><div class="n hl-green">0.919</div><div class="l">Error Type EM, among fired</div></div>
+    <div class="stat"><div class="n hl-green">0.856</div><div class="l">Error Row EM, among fired</div></div>
+    <div class="stat"><div class="n hl-gold">~40%</div><div class="l">coverage — intentionally partial</div></div>
+  </div>
+</section>
+
+<!-- 18: EDGAR mapper -->
+<section class="slide">
+  <p class="kicker">EDGAR Mapper</p>
+  <h2>Row label → official XBRL concept</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Why this is the hardest step</h3>
+      <p class="lead" style="font-size:16px;">FinAuditing's FinSM task is this exact mapping over 18,000 concepts, and the best models score 9–13%. Building citation on a mapper that weak collapses everything downstream — so this stage is <b>deterministic</b>.</p>
+      <h3>Three strategies, all measured</h3>
+      <ul>
+        <li>Exact / fuzzy / stem string match vs. a curated concept map</li>
+        <li>Live SEC EDGAR XBRL filer-tag lookup (the company's <i>own</i> accountants' tags)</li>
+        <li>bge-large embedding retrieval (documented next step)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Measured coverage (n=150)</h3>
+      <div class="barchart">
+        <div class="bar-row"><span class="bar-label">String-match only</span><div class="bar-track"><div class="bar-fill teal" style="width:77.9%"></div></div><span class="bar-value">77.9%</span></div>
+        <div class="bar-row"><span class="bar-label">+ Live SEC XBRL lookup</span><div class="bar-track"><div class="bar-fill green" style="width:81.7%"></div></div><span class="bar-value">81.7%</span></div>
+      </div>
+      <p class="small" style="margin-top:14px;">367 rows (11.9%) resolved from the filer's <i>own</i> XBRL tags — publicly reproducible, not hand-labelled.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 19: Stage 1 taxonomy graph -->
+<section class="slide">
+  <p class="kicker">Stage 1 · Taxonomy Graph</p>
+  <h2>Citation by graph traversal, not recall</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>What it is</h3>
+      <ul>
+        <li>The FASB US-GAAP 2023 reference linkbase — every concept carries its governing ASC citation as metadata</li>
+        <li>Concept → citation is a <b>graph walk</b>, read verbatim from FASB's own published data</li>
+        <li><b>Parent fallback</b>: if a leaf has no citation, walk up the graph — no leaf ever returns blank</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Why this fixes a 26.2% memory test</h3>
+      <p class="lead" style="font-size:16px;">GPT-4 tries to <i>recall</i> "ASC 210-10-45-1" from training and fails 74% of the time. Here, the answer is attached to the node as data — the model never recalls anything.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 20: Stage 1 first result - honest negative finding -->
+<section class="slide">
+  <p class="kicker">Stage 1 · The Most Important Negative Result</p>
+  <h2>Coverage ≈ 100% hid an accuracy of 24%</h2>
+  <div class="grid2">
+    <div class="card center" style="padding:26px;">
+      <div class="stat"><div class="n hl-teal" style="color:var(--teal);">92.9%</div><div class="l">broken-row citation coverage</div></div>
+      <div class="stat" style="margin-top:20px;"><div class="n hl-red">24.4%</div><div class="l">citation EM (single pick) vs. GPT-4's 26.2%</div></div>
+      <div class="stat" style="margin-top:20px;"><div class="n hl-red">28.3%</div><div class="l">ceiling — even a <i>perfect</i> selector tops out here</div></div>
+    </div>
+    <div class="card">
+      <h3>What "ceiling" means and why it matters</h3>
+      <ul>
+        <li>Even a hypothetically perfect Stage-2 LLM, always picking the best candidate the graph offers, could only reach 28.3%</li>
+        <li>The correct topic simply wasn't <i>in</i> the candidate set 72% of the time</li>
+        <li><b class="hl-gold">Coverage is a vanity metric. We stopped reporting it alone.</b></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 21: Root cause + fix -->
+<section class="slide">
+  <p class="kicker">Stage 1 · Root Cause &amp; Fix</p>
+  <h2>Presentation topics vs. subject-matter topics</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>The diagnosis</h3>
+      <ul>
+        <li>The FASB linkbase attaches <i>presentation</i> topics (210 Balance Sheet, 852 Reorganizations, S99 SEC-staff) to face-of-statement concepts</li>
+        <li>AuditBench actually cites <i>subject-matter</i> topics (330 Inventory, 350 Goodwill, 606 Revenue…) ~43% of the time</li>
+        <li>AuditBench's own GT is also <b>version-inconsistent</b> — mixes superseded (225, 605) with current (220, 606) topics</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>The fix — <span class="mono" style="display:inline; padding:2px 6px;">concept_citation.py</span></h3>
+      <ul>
+        <li><b>Subject-matter rules</b> (regex over concept name) → <b>presentation fallback</b> → taxonomy graph pick, in priority order</li>
+        <li><b>UNION candidate set</b> {subject ∪ presentation ∪ taxonomy arcs} fed to Stage 2 — the LLM selects, never invents</li>
+        <li><b>Version-family normalization</b> (225→220, 605→606) — a fairer "is this citation right <i>today</i>" metric</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 22: Citation results after fix -->
+<section class="slide">
+  <p class="kicker">Stage 1 · After the Fix</p>
+  <h2>Ahead of GPT-4, and zero hallucination</h2>
+  <div class="barchart">
+    <div class="bar-row"><span class="bar-label">GPT-4 (paper)</span><div class="bar-track"><div class="bar-fill gold" style="width:26.2%"></div></div><span class="bar-value">26.2%</span></div>
+    <div class="bar-row"><span class="bar-label">Ours — strict single-pick</span><div class="bar-track"><div class="bar-fill red" style="width:24.4%"></div></div><span class="bar-value">24.4%</span></div>
+    <div class="bar-row"><span class="bar-label">Ours — version-fair single-pick</span><div class="bar-track"><div class="bar-fill teal" style="width:31.5%"></div></div><span class="bar-value">31.5%</span></div>
+    <div class="bar-row"><span class="bar-label">Ceiling — before fix</span><div class="bar-track"><div class="bar-fill gold" style="width:28.3%"></div></div><span class="bar-value">28.3%</span></div>
+    <div class="bar-row"><span class="bar-label">Ceiling — after fix (version-fair)</span><div class="bar-track"><div class="bar-fill green" style="width:40.9%"></div></div><span class="bar-value">40.9%</span></div>
+  </div>
+  <p class="lead" style="margin-top:20px;">Structural advantage that no free-text citation can match: <span class="hl-green">0% hallucination</span> — every citation traces to a real FASB linkbase node or a real filer XBRL tag.</p>
+</section>
+
+<!-- 23: Stage 2 -->
+<section class="slide">
+  <p class="kicker">Stage 2 · Focused LLM · ~$0.005/audit</p>
+  <h2>The only stage that touches a language model</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>What it's handed (never derives itself)</h3>
+      <ul>
+        <li>A <b>verified-consistent flag</b> — "the math already checks out; don't invent a numerical error"</li>
+        <li>Concrete <b>footing evidence</b>, if any subtotal mismatch was found</li>
+        <li>A per-row <b>grounded citation candidate list</b> — it selects, never recalls from memory</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>System prompt design</h3>
+      <ul>
+        <li>Defaults to "Correct"</li>
+        <li>States explicitly: over-flagging a clean statement is "the single most common and most penalized mistake"</li>
+        <li>Same model as the baseline (<span class="mono" style="display:inline;padding:1px 6px;">claude-opus-4-6</span>) — architecture is the only variable</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 24: Stage 3 -->
+<section class="slide">
+  <p class="kicker">Stage 3 · Deterministic Reviser</p>
+  <h2>Design target vs. what's built today</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Design target</h3>
+      <ul>
+        <li>SymPy recomputes <i>every</i> downstream subtotal/total after a correction — from the arithmetic definition, not the LLM's suggestion</li>
+        <li>Pydantic + Instructor enforce schema: valid error type, a citation that matches a real taxonomy reference, re-prompt until valid</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>What's implemented today <span class="pill gold">honest gap</span></h3>
+      <ul>
+        <li>A narrow stub: for Numerical Error findings, a direct string substitution of the value in the table text</li>
+        <li>Full cascade recompute for structural edits (missing/redundant/misclassified rows) — <b>not yet wired</b></li>
+        <li>Schema enforcement — <b>not yet wired</b></li>
+      </ul>
+      <p class="small">Called out explicitly in the roadmap, not glossed over.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 25: Ablation -->
+<section class="slide">
+  <p class="kicker">The Keystone Result</p>
+  <h2>Architecture ablation — zero new LLM calls</h2>
+  <div class="tbl-wrap">
+  <table class="tight">
+    <tr><th>Config</th><th>Clean Gen. Judgment</th><th>Single-error GJ</th><th>Multi-error GJ</th></tr>
+    <tr><td><b>A</b> — LLM alone (baseline)</td><td class="hl-red">50.0% (FP 50%)</td><td>97.3%</td><td>99.3%</td></tr>
+    <tr><td><b>B</b> — Stage 0 alone (no LLM)</td><td class="hl-green">100.0% (FP 0%)</td><td>38.0%</td><td>36.0%</td></tr>
+    <tr><td><b>A+veto</b> — LLM + deterministic veto</td><td class="hl-teal" style="color:var(--teal); font-weight:700;">71.3% (FP 28.7%)</td><td>85.3%</td><td>86.7%</td></tr>
+  </table>
+  </div>
+  <p class="lead" style="margin-top:20px;">A purely deterministic veto — <b>zero new tools, zero new LLM calls</b> — cuts the LLM's clean-table false-alarm rate <span class="hl-gold">in half</span> (50% → 28.7%; 32 of 75 false alarms removed).</p>
+  <p class="small">Honest cost, same breath: single-error recall drops 97.3% → 85.3% — ~13% of real errors leave no arithmetic trace and get a false all-clear. Arithmetic consistency is necessary but not sufficient for "correct."</p>
+</section>
+
+<!-- 26: Full head to head - clean split -->
+<section class="slide">
+  <p class="kicker">Live, Full Head-to-Head · Table 1</p>
+  <h2>Clean split — the project thesis, proven</h2>
+  <div class="barchart">
+    <div class="bar-row"><span class="bar-label">Success Rate — Baseline</span><div class="bar-track"><div class="bar-fill red" style="width:0.5%"></div></div><span class="bar-value">0.000</span></div>
+    <div class="bar-row"><span class="bar-label">Success Rate — IntelliAudit</span><div class="bar-track"><div class="bar-fill green" style="width:64%"></div></div><span class="bar-value">0.640</span></div>
+  </div>
+  <div class="stat-row" style="margin-top:26px;">
+    <div class="stat"><div class="n">0.500 → <span class="hl-green">0.747</span></div><div class="l">General Judgment EM</div></div>
+    <div class="stat"><div class="n">50% → <span class="hl-green">25.3%</span></div><div class="l">false-alarm rate</div></div>
+    <div class="stat"><div class="n">0.453 → <span class="hl-green">0.977</span></div><div class="l">Table Revision BLEU</div></div>
+  </div>
+  <p class="lead" style="margin-top:20px;">The baseline <b>never</b> fully succeeds on a clean statement. IntelliAudit succeeds <b class="hl-green">64%</b> of the time — live, not projected.</p>
+</section>
+
+<!-- 27: Full head to head - single error split (honest trade) -->
+<section class="slide">
+  <p class="kicker">Live, Full Head-to-Head · Table 2</p>
+  <h2>Single-error split — the honest trade-off</h2>
+  <div class="tbl-wrap">
+  <table class="tight">
+    <tr><th>Metric</th><th>Baseline (LLM alone)</th><th>IntelliAudit</th><th>Δ</th></tr>
+    <tr><td>General Judgment EM</td><td>0.973</td><td>0.847</td><td class="hl-red">−0.126</td></tr>
+    <tr><td>Error Type EM</td><td>0.920</td><td>0.780</td><td class="hl-red">−0.140</td></tr>
+    <tr><td>Error Entry (Row) EM</td><td>0.820</td><td>0.727</td><td class="hl-red">−0.093</td></tr>
+    <tr><td>Table Revision BLEU</td><td>0.949</td><td>0.964</td><td class="hl-green">+0.015</td></tr>
+    <tr><td><b>Success Rate</b></td><td><b>0.500</b></td><td><b>0.287</b></td><td class="hl-red">−0.213</td></tr>
+  </table>
+  </div>
+  <p class="lead" style="margin-top:18px;">IntelliAudit <b>underperforms</b> here — same cause as the ablation. We report this without hiding it: <span class="hl-gold">this is a precision/recall trade, not a uniform win.</span></p>
+</section>
+
+<!-- 28: Weighted success rate -->
+<section class="slide">
+  <p class="kicker">Reframing the Trade-off</p>
+  <h2>At a realistic clean:error ratio, it isn't close</h2>
+  <div class="tbl-wrap">
+  <table>
+    <tr><th>Mix (clean : error)</th><th>Baseline SR</th><th>IntelliAudit SR</th></tr>
+    <tr><td>50 : 50 (AuditBench's synthetic mix)</td><td>0.250</td><td><b class="hl-green">0.463</b></td></tr>
+    <tr><td>80 : 20</td><td>0.100</td><td><b class="hl-green">0.569</b></td></tr>
+    <tr><td><b>90 : 10 (realistic audit population)</b></td><td>0.050</td><td><b class="hl-green">0.605</b></td></tr>
+  </table>
+  </div>
+  <p class="lead" style="margin-top:20px;">Real financial statements are overwhelmingly clean, and the costlier failure is the false alarm. At a realistic 90% clean rate: <span class="hl-gold" style="font-size:24px;">~12× the baseline's success rate</span> — because it stops crying wolf.</p>
+</section>
+
+<!-- 29: Strongest finding: veto vs prompt -->
+<section class="slide">
+  <p class="kicker">The Strongest Scientific Finding</p>
+  <h2>You cannot <i>ask</i> an LLM to stop over-auditing</h2>
+  <div class="barchart">
+    <div class="bar-row"><span class="bar-label">Baseline (no mitigation)</span><div class="bar-track"><div class="bar-fill red" style="width:50%"></div></div><span class="bar-value">50%</span></div>
+    <div class="bar-row"><span class="bar-label">Conservative prompt <i>alone</i></span><div class="bar-track"><div class="bar-fill red" style="width:61%"></div></div><span class="bar-value">61%</span></div>
+    <div class="bar-row"><span class="bar-label">Deterministic veto (symbolic layer)</span><div class="bar-track"><div class="bar-fill green" style="width:28.7%"></div></div><span class="bar-value">28.7%</span></div>
+  </div>
+  <p class="lead" style="margin-top:24px;">A prompt that simply listed the error types conservatively <b class="hl-red">made false alarms worse</b>, not better. Only giving the symbolic layer <b>hard authority</b> to override the LLM worked. This is direct, controlled evidence for the neuro-symbolic thesis.</p>
+</section>
+
+<!-- 30: What did not work -->
+<section class="slide">
+  <p class="kicker">Scientific Honesty</p>
+  <h2>What we tried and reverted</h2>
+  <div class="card">
+    <ul class="two-col-list">
+      <li><b>Fuzzy label matching</b> to raise Stage 0 coverage — coverage 0.38→0.49, but Type-EM-among-fired collapsed 0.947→0.662. Reverted.</li>
+      <li><b>Aggressive subtotal-tamper detection</b> as a primary finding caused type mislabels — demoted to a weak fallback signal.</li>
+      <li><b>Early missing-row detection without corroboration</b> flooded false positives before we added the subtotal-anomaly requirement.</li>
+      <li><b>Label-based subtotal matching</b> (~64% reliable) replaced by positional alignment (near 100%).</li>
+      <li><b>Prompt-only conservatism</b> for over-auditing raised false alarms to 61% instead of lowering them.</li>
+      <li><b>Raw taxonomy ranking</b> let SEC-staff junk topics (S99, 852, 235) win over the correct subject topic — fixed by the subject/presentation split.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 31: Gaps addressed recap -->
+<section class="slide">
+  <p class="kicker">Recap</p>
+  <h2>Every gap, closed with evidence — not assertion</h2>
+  <div class="tbl-wrap">
+  <table class="tight">
+    <tr><th>Gap</th><th>Closed by</th><th>Evidence</th></tr>
+    <tr><td>G1 — Citation is memory-based</td><td>Stage 1 taxonomy graph</td><td>31.5% version-fair vs 26.2% GPT-4, 0% hallucination</td></tr>
+    <tr><td>G2 — Mapping can't be learned</td><td>EDGAR Mapper (deterministic)</td><td>81.7% concept coverage from real filings</td></tr>
+    <tr><td>G3 — Over-auditing</td><td>Stage 0 gate + deterministic veto</td><td>Clean-split FP 50%→0–28.7%, SR 0.000→0.640</td></tr>
+    <tr><td>G4 — One prompt, too many jobs</td><td>Stage 2 focused sub-prompts</td><td>BLEU 0.453→0.977 on clean split; grounded, not invented, citations</td></tr>
+  </table>
+  </div>
+</section>
+
+<!-- 32: Limitations and roadmap -->
+<section class="slide">
+  <p class="kicker">Limitations &amp; Roadmap</p>
+  <h2>What's next</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Known limitations</h3>
+      <ul>
+        <li>Stage 0 coverage intentionally partial (~38–40%) — by design, not accident</li>
+        <li>Live XBRL route only helps the clean split (error tables strip company identity)</li>
+        <li>Citation ceiling (33–41%) is capped partly by AuditBench's own GT ambiguity</li>
+        <li>Stage 3 is a partial stub — full cascade recompute not yet wired</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Roadmap, ranked by leverage</h3>
+      <ul>
+        <li>Tighten <span class="mono" style="display:inline;padding:0 5px;">verified_consistent</span> to cut the ~13% false all-clears</li>
+        <li>Make the veto <b>type-aware</b> — only override claims arithmetic can refute</li>
+        <li>bge-large embedding retrieval over the SEC-recovered concept set</li>
+        <li>Finish Stage 3's full SymPy cascade + schema validation</li>
+        <li>Multi-agent Auditor → Defender → Judge loop</li>
+        <li>Cross-benchmark validation on FinAuditing's real XBRL filings</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 33: Summary -->
+<section class="slide">
+  <p class="kicker">Summary</p>
+  <h2>The numbers to say out loud</h2>
+  <div class="tbl-wrap">
+  <table class="tight">
+    <tr><td>Reproduced AuditBench, beats GPT-4 on several axes</td><td class="hl-green">Type EM 0.92 · Row EM 0.82 · SR ~12×/~5×</td></tr>
+    <tr><td>Found the paper's real blind spot: over-auditing</td><td class="hl-red">Clean-split Gen Judgment 0.500, SR 0.000</td></tr>
+    <tr><td>$0 deterministic gate removes false alarms</td><td class="hl-green">FP rate 0.019 / 0.000, correct-value acc. 0.989–1.0</td></tr>
+    <tr><td>Deterministic veto alone halves live false alarms</td><td class="hl-green">50% → 28.7%, zero new LLM calls</td></tr>
+    <tr><td>Full pipeline: clean-split Success Rate</td><td class="hl-green">0 → 0.640, live end-to-end</td></tr>
+    <tr><td>At realistic 90% clean rate</td><td class="hl-gold">~12× the baseline's success rate</td></tr>
+    <tr><td>Citation: grounded, zero-hallucination</td><td class="hl-green">31.5% vs 26.2% (version-fair), ceiling 28%→41%</td></tr>
+    <tr><td>Honest trade reported, not hidden</td><td class="hl-red">Single-error SR 0.500 → 0.287</td></tr>
+  </table>
+  </div>
+</section>
+
+<!-- 34: Closing thesis -->
+<section class="slide center">
+  <p class="kicker">Conclusion</p>
+  <h1 style="max-width:980px;">Separate arithmetic, citation, and explanation — and the architecture, not the model, closes the gap.</h1>
+  <p class="lead" style="max-width:820px; margin-top:10px;">Every comparison in this deck held the model constant. Every improvement came from where the reasoning happened, not from a bigger model.</p>
+  <p class="subtitle" style="margin-top:40px;">Thank you — questions welcome.</p>
+</section>
+
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let idx = 0;
+function render(){
+  slides.forEach((s,i)=> s.classList.toggle('active', i===idx));
+  document.getElementById('progress').style.width = ((idx+1)/slides.length*100)+'%';
+  document.getElementById('counter').textContent = (idx+1)+' / '+slides.length;
+  location.hash = 's'+(idx+1);
+}
+function go(delta){
+  idx = Math.min(slides.length-1, Math.max(0, idx+delta));
+  render();
+}
+document.addEventListener('keydown', (e)=>{
+  if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){ e.preventDefault(); go(1); }
+  else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); go(-1); }
+  else if(e.key==='Home'){ idx=0; render(); }
+  else if(e.key==='End'){ idx=slides.length-1; render(); }
+  else if(e.key.toLowerCase()==='p' && !e.ctrlKey && !e.metaKey){ document.title='IntelliAudit Slides'; }
+});
+(function init(){
+  const h = location.hash.match(/^#s(\d+)$/);
+  if(h){ idx = Math.min(slides.length-1, Math.max(0, parseInt(h[1],10)-1)); }
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+{
+  "summary": {
+    "dataset": "AuditBench single_error",
+    "n": 20,
+    "stage0_fire_rate": 0.4,
+    "repairable_with_correct_value": 3,
+    "patches_accepted": 2,
+    "accept_rate_among_repairable": 0.6667,
+    "fully_cleared_after_patch": 2,
+    "gt_numerical_in_sample": 5,
+    "metric_primary": "share of repairable Stage-0 findings whose patch clears/reduces violations with patch_size=1",
+    "samples": [
+      {
+        "label": "Accounts receivable, net",
+        "old": 35000.0,
+        "new": 29508.0,
+        "cascade": "4\u21923",
+        "cleared": "still_flagged"
+      },
+      {
+        "label": "Other current and non-current liabilities",
+        "old": 15000.0,
+        "new": 6110.0,
+        "cascade": "1\u21920",
+        "cleared": "cleared"
+      }
+    ]
+  },
+  "records": [
+    {
+      "i": 0,
+      "gt_type": "Misclassification",
+      "gt_row": 8,
+      "repaired": false,
+      "status": "abstain",
+      "before": {
+        "error_type": "Misclassification",
+        "problematic_entry": 8,
+        "correct_value": null,
+        "stated_value": null,
+        "source": "0B",
+        "detail": "'Accounts receivable, net' is reported under 'Total non-current assets' but its value is not part of that section per the transactions."
+      },
+      "after": null,
+      "cascade_before": 3,
+      "cascade_after": 0,
+      "patch": null
+    },
+    {
+      "i": 1,
+      "gt_type": "Missing Row",
+      "gt_row": 6,
+      "repaired": false,
+      "status": "abstain",
+      "before": null,
+      "after": null,
+      "cascade_before": 2,
+      "cascade_after": 0,
+      "patch": null
+    },
+    {
+      "i": 2,
+      "gt_type": "Missing Row",
+      "gt_row": 8,
+      "repaired": false,
+      "status": "abstain",
+      "before": null,
+      "after": null,
+      "cascade_before": 0,
+      "cascade_after": 0,
+      "patch": null
+    },
+    {
+      "i": 3,
+      "gt_type": "Misclassification",
+      "gt_row": 1,
+      "repaired": false,
+      "status": "abstain",
+      "before": null,
+      "after": null,
+      "cascade_before": 0,
+      "cascade_after": 0,
+      "patch": null
+    },
+    {
+      "i": 4,
+      "gt_type": "Missing Row",
+      "gt_row": 8,
+      "repaired": false,
+      "status": "abstain",
+      "before": null,
+      "after": null,
+      "cascade_before": 0,
+      "cascade_after": 0,
+      "patch": null
+    },
+    {
+      "i": 5,
+      "gt_type": "Redundant Row",
+      "gt_row": 12,
+      "repaired": false,
+      "status": "abstain",
+      "before": {
+        "error_type": "Redundant Row",
+        "problematic_entry": 12,
+        "correct_value": null,
+        "stated_value": 25000.0,
+        "source": "0B",
+        "detail": "'Deferred tax assets' (25000.0) is not supported by any transaction and inflates 'Total non-current assets'."
+      },
+      "after": null,
+      "cascade_before": 1,
+      "cascade_after": 0,
+      "patch": null
+    },
+    {
+      "i": 6,
+      "gt_type": "Misclassification",
+      "gt_row": 5,
+      "repaired": false,
+      "status": "abstain",
+      "before": null,
+      "after": null,
+      "cascade_before": 0,
+      "cascade_after": 0,
+      "patch": null
+    },
+    {
+      "i": 7,
+      "gt_type": "Numerical Error",
+      "gt_row": 3,
+      "repaired": true,
+      "status": "accepted",
+      "before": {
+        "error_type": "Numerical Error",
+        "problematic_entry": 3,
+        "correct_value": 29508.0,
+        "stated_value": 35000.0,
+        "source": "0A",
+        "detail": "'Accounts receivable, net' stated 35000.0, transactions imply 29508.0."
+      },
+      "after": {
+        "error_type": "Numerical Error",
+        "problematic_entry": 7,
+        "correct_value": 143566.0,
+        "stated_value": 147058.0,
+        "source": "0A",
+        "detail": "Subtotal 'Total current assets' stated 147058.0, its leaf rows sum to 143566.0."
+      },
+      "cascade_before": 4,
+      "cascade_after": 3,
+      "patch": {
+        "operation": "replace_fact_value",
+        "row_idx": 3,
+        "label": "Accounts receivable, net",
+        "old_value": 35000.0,
+        "new_value": 29508.0,
+        "reason": "'Accounts receivable, net' stated 35000.0, transactions imply 29508.0.",
+        "patch_size": 1
+      }
+    },
+    {
+      "i": 8,
+      "gt_type": "Redundant Row",
+      "gt_row": 12,
+      "repaired": false,
+      "status": "abstain",
+      "before": {
+        "error_type": "Redundant Row",
+        "problematic_entry": 12,
+        "correct_value": null,
+        "stated_value": 1500.0,
+        "source": "0B",
+        "detail": "'Environmental compliance costs' (1500.0) is not supported by any transaction and inflates 'Total operating expenses'."
+      },
+      "after": null,
+      "cascade_before": 4,
+      "cascade_after": 0,
+      "patch": null
+    },
+    {
+      "i": 9,
+      "gt_type": "Numerical Error",
+      "gt_row": 12,
+      "repaired": true,
+      "status": "accepted",
+      "before": {
+        "error_type": "Numerical Error",
+        "problematic_entry": 12,
+        "correct_value": 6110.0,
+        "stated_value": 15000.0,
+        "source": "0A",
+        "detail": "'Other current and non-current liabilities' stated 15000.0, transactions imply 6110.0."
+      },
+      "after": null,
+      "cascade_before": 1,
+      "cascade_after": 0,
+      "patch": {
+        "operation": "replace_fact_value",
+        "row_idx": 12,
+        "label": "Other current and non-current liabilities",
+        "old_value": 15000.0,
+        "new_value": 6110.0,
+        "reason": "'Other current and non-current liabilities' stated 15000.0, transactions imply 6110.0.",
+        "patch_size": 1
+      }
+    },
+    {
+      "i": 10,
+      "gt_type": "Missing Row",
+      "gt_row": 6,
+      "repaired": false,
+      "status": "rejected",
+      "before": {
+        "error_type": "Missing Row",
+        "problematic_entry": 6,
+        "correct_value": 20715.0,
+        "stated_value": null,
+        "source": "0A",
+        "detail": "'Cost of sales: Services' (value 20715.0) is described by the transactions but absent from the statement."
+      },
+      "after": null,
+      "cascade_before": 5,
+      "cascade_after": 5,
+      "patch": {
+        "operation": "replace_fact_value",
+        "row_idx": 6,
+        "label": "Total cost of sales",
+        "old_value": null,
+        "new_value": 20715.0,
+        "reason": "'Cost of sales: Services' (value 20715.0) is described by the transactions but absent from the statement.",
+        "patch_size": 1
+      }
+    },
+    {
+      "i": 11,
+      "gt_type": "Redundant Row",
+      "gt_row": 13,
+      "repaired": false,
+      "status": "abstain",
+      "before": null,
+      "after": null,
+      "cascade_before": 0,
+      "cascade_after": 0,
+      "patch": null
+    },
+    {
+      "i": 12,
+      "gt_type": "Redundant Row",
+      "gt_row": 13,
+      "repaired": false,
+      "status": "abstain",
+      "before": null,
+      "after": null,
+      "cascade_before": 0,
+      "cascade_after": 0,
+      "patch": null
+    },
+    {
+      "i": 13,
+      "gt_type": "Misclassification",
+      "gt_row": 10,
+      "repaired": false,
+      "status": "abstain",
+      "before": {
+        "error_type": "Misclassification",
+        "problematic_entry": 3,
+        "correct_value": null,
+        "stated_value": null,
+        "source": "0B",
+        "detail": "'Selling, general and administrative' is reported under 'Gross margin' but its value is not part of that section per the transactions."
+      },
+      "after": null,
+      "cascade_before": 3,
+      "cascade_after": 0,
+      "patch": null
+    },
+    {
+      "i": 14,
+      "gt_type": "Numerical Error",
+      "gt_row": 5,
+      "repaired": false,
+      "status": "abstain",
+      "before": null,
+      "after": null,
+      "cascade_before": 5,
+      "cascade_after": 0,
+      "patch": null
+    },
+    {
+      "i": 15,
+      "gt_type": "Numerical Error",
+      "gt_row": 5,
+      "repaired": false,
+      "status": "abstain",
+      "before": null,
+      "after": null,
+      "cascade_before": 5,
+      "cascade_after": 0,
+      "patch": null
+    },
+    {
+      "i": 16,
+      "gt_type": "Missing Row",
+      "gt_row": 7,
+      "repaired": false,
+      "status": "abstain",
+      "before": null,
+      "after": null,
+      "cascade_before": 0,
+      "cascade_after": 0,
+      "patch": null
+    },
+    {
+      "i": 17,
+      "gt_type": "Redundant Row",
+      "gt_row": 12,
+      "repaired": false,
+      "status": "abstain",
+      "before": {
+        "error_type": "Redundant Row",
+        "problematic_entry": 12,
+        "correct_value": null,
+        "stated_value": 5000.0,
+        "source": "0B",
+        "detail": "'Advertising and Promotions' (5000.0) is not supported by any transaction and inflates 'Total operating expenses'."
+      },
+      "after": null,
+      "cascade_before": 4,
+      "cascade_after": 0,
+      "patch": null
+    },
+    {
+      "i": 18,
+      "gt_type": "Numerical Error",
+      "gt_row": 5,
+      "repaired": false,
+      "status": "abstain",
+      "before": null,
+      "after": null,
+      "cascade_before": 0,
+      "cascade_after": 0,
+      "patch": null
+    },
+    {
+      "i": 19,
+      "gt_type": "Misclassification",
+      "gt_row": 7,
+      "repaired": false,
+      "status": "abstain",
+      "before": null,
+      "after": null,
+      "cascade_before": 0,
+      "cascade_after": 0,
+      "patch": null
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "taxonomy-citation": {
+      "command": "/Users/admin/Desktop/financial-audit-capstone/.venv/bin/python",
+      "args": ["-m", "approaches.citation_mcp_agent.server"],
+      "cwd": "/Users/admin/Desktop/financial-audit-capstone"
+    }
+  }
+}

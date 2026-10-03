@@ -1,0 +1,681 @@
+{
+  "summary": {
+    "asc_hints_fed_to_pipeline": 0,
+    "n_apple_single_error": 20,
+    "detection_without_asc": {
+      "fire_rate": 0.4,
+      "type_acc_when_fired": 1.0,
+      "row_acc_when_fired": 0.875,
+      "false_alarms_need_clean_split": "see stage0 on correct split \u2014 still 0 historically"
+    },
+    "citation_without_asc_hints": {
+      "items_with_taxonomy_citation": 7,
+      "all_citations_proven_in_fasb_linkbase": true,
+      "invented_999_accepted": 0,
+      "topic_match_vs_hidden_gt": "2/7",
+      "when_gt_topic_exists_in_linkbase_candidates": "3 items \u2014 exact ASC options available from taxonomy",
+      "oracle_can_select_gt_topic_if_present": "0/0",
+      "examples_exact_codes": [
+        {
+          "concept": "AssetsCurrent",
+          "exact_asc_from_fasb": "323-10-50-3",
+          "hidden_gt_topic": "210",
+          "gt_topic_in_candidates": true
+        },
+        {
+          "concept": "AccountsReceivableNetCurrent",
+          "exact_asc_from_fasb": "310-10-45-2",
+          "hidden_gt_topic": "310",
+          "gt_topic_in_candidates": true
+        },
+        {
+          "concept": "AccountsReceivableNetCurrent",
+          "exact_asc_from_fasb": "310-10-45-2",
+          "hidden_gt_topic": "210",
+          "gt_topic_in_candidates": false
+        },
+        {
+          "concept": "GrossProfit",
+          "exact_asc_from_fasb": "323-10-50-3",
+          "hidden_gt_topic": "205",
+          "gt_topic_in_candidates": false
+        },
+        {
+          "concept": "DepreciationAndAmortization",
+          "exact_asc_from_fasb": "360-10-50-1",
+          "hidden_gt_topic": "250",
+          "gt_topic_in_candidates": false
+        },
+        {
+          "concept": "CostOfGoodsAndServicesSold",
+          "exact_asc_from_fasb": "220-10-S99-2",
+          "hidden_gt_topic": "605",
+          "gt_topic_in_candidates": false
+        },
+        {
+          "concept": "OtherLiabilitiesNoncurrent",
+          "exact_asc_from_fasb": "210-10-S99-1",
+          "hidden_gt_topic": "210",
+          "gt_topic_in_candidates": true
+        }
+      ]
+    },
+    "what_exact_rule_means": "predicted_asc_exact is an official FASB paragraph id attached to that us-gaap concept in the reference linkbase. That is the proof of 'this exact rule code'. Hidden AuditBench text often only names a topic (e.g. 310); topic_match checks that family."
+  },
+  "records": [
+    {
+      "index": 0,
+      "detection": {
+        "stage0_fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "gt_type": "Missing Row",
+        "gt_row": 6,
+        "type_match": false,
+        "row_match": false
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": "AssetsCurrent",
+        "label": "Total current assets",
+        "candidates_from_fasb_linkbase": [
+          "210-10-45-1",
+          "210-10-S99-1",
+          "235-10-S99-1",
+          "323-10-50-3",
+          "470-10-S99-1A",
+          "470-10-S99-1B",
+          "810-10-50-3",
+          "810-10-45-25",
+          "825-10-50-28",
+          "852-10-50-7",
+          "852-10-55-10"
+        ],
+        "predicted_asc_exact": "323-10-50-3",
+        "predicted_topic": "323",
+        "proven_in_official_taxonomy": true,
+        "fake_999_accepted": false,
+        "best_grounded_pick_matching_hidden_topic": "210-10-45-1",
+        "best_pick_still_from_taxonomy_only": true
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": "210",
+        "gt_citation_text": "According to the FASB ASC 210-10-45, current assets must be sequenced prominently and completely to provide a clear repr",
+        "gt_topic_in_our_candidates": true,
+        "topic_match": false,
+        "exact_asc_options_for_gt_topic": [
+          "210-10-45-1",
+          "210-10-S99-1"
+        ]
+      }
+    },
+    {
+      "index": 1,
+      "detection": {
+        "stage0_fired": true,
+        "pred_type": "Numerical Error",
+        "pred_row": 3,
+        "gt_type": "Numerical Error",
+        "gt_row": 3,
+        "type_match": true,
+        "row_match": true
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": "AccountsReceivableNetCurrent",
+        "label": "Accounts receivable, net",
+        "candidates_from_fasb_linkbase": [
+          "310-10-45-2",
+          "310-10-45-9"
+        ],
+        "predicted_asc_exact": "310-10-45-2",
+        "predicted_topic": "310",
+        "proven_in_official_taxonomy": true,
+        "fake_999_accepted": false,
+        "best_grounded_pick_matching_hidden_topic": "310-10-45-2",
+        "best_pick_still_from_taxonomy_only": true
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": "310",
+        "gt_citation_text": "According to FASB ASC 310-10-35, entities should recognize accounts receivable correctly, taking into account their rece",
+        "gt_topic_in_our_candidates": true,
+        "topic_match": true,
+        "exact_asc_options_for_gt_topic": [
+          "310-10-45-2",
+          "310-10-45-9"
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "detection": {
+        "stage0_fired": true,
+        "pred_type": "Redundant Row",
+        "pred_row": 12,
+        "gt_type": "Redundant Row",
+        "gt_row": 12,
+        "type_match": true,
+        "row_match": true
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": null,
+        "label": "Deferred tax assets",
+        "candidates_from_fasb_linkbase": [],
+        "predicted_asc_exact": null,
+        "predicted_topic": null,
+        "proven_in_official_taxonomy": false,
+        "fake_999_accepted": null
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": "210",
+        "gt_citation_text": "According to FASB Accounting Standards Codification (ASC) Section 210-10-50-1, entities should disclose only the assets ",
+        "gt_topic_in_our_candidates": false,
+        "topic_match": null
+      }
+    },
+    {
+      "index": 3,
+      "detection": {
+        "stage0_fired": true,
+        "pred_type": "Misclassification",
+        "pred_row": 8,
+        "gt_type": "Misclassification",
+        "gt_row": 8,
+        "type_match": true,
+        "row_match": true
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": "AccountsReceivableNetCurrent",
+        "label": "Accounts receivable, net",
+        "candidates_from_fasb_linkbase": [
+          "310-10-45-2",
+          "310-10-45-9"
+        ],
+        "predicted_asc_exact": "310-10-45-2",
+        "predicted_topic": "310",
+        "proven_in_official_taxonomy": true,
+        "fake_999_accepted": false
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": "210",
+        "gt_citation_text": "According to FASB ASC 210-10, current assets include items that are expected to be converted into cash or consumed withi",
+        "gt_topic_in_our_candidates": false,
+        "topic_match": false
+      }
+    },
+    {
+      "index": 4,
+      "detection": {
+        "stage0_fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "gt_type": "Missing Row",
+        "gt_row": 7,
+        "type_match": false,
+        "row_match": false
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": "GrossProfit",
+        "label": "Gross margin",
+        "candidates_from_fasb_linkbase": [
+          "235-10-S99-1",
+          "280-10-50-22",
+          "280-10-50-30",
+          "280-10-50-32",
+          "323-10-50-3",
+          "470-10-S99-1A",
+          "470-10-S99-1B",
+          "825-10-50-28",
+          "280-10-50-31",
+          "220-10-S99-2"
+        ],
+        "predicted_asc_exact": "323-10-50-3",
+        "predicted_topic": "323",
+        "proven_in_official_taxonomy": true,
+        "fake_999_accepted": false
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": "205",
+        "gt_citation_text": "As per FASB ASC 205-10-45, financial statements should provide complete and accurate depiction of all necessary performa",
+        "gt_topic_in_our_candidates": false,
+        "topic_match": false
+      }
+    },
+    {
+      "index": 5,
+      "detection": {
+        "stage0_fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "gt_type": "Numerical Error",
+        "gt_row": 5,
+        "type_match": false,
+        "row_match": false
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": "SalesRevenueGoodsNet",
+        "label": "Products",
+        "candidates_from_fasb_linkbase": [],
+        "predicted_asc_exact": null,
+        "predicted_topic": null,
+        "proven_in_official_taxonomy": false,
+        "fake_999_accepted": null
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": "330",
+        "gt_citation_text": "According to FASB guidance under the Accounting Standards Codification (ASC) 330-10-30, Inventory should be measured cor",
+        "gt_topic_in_our_candidates": false,
+        "topic_match": null
+      }
+    },
+    {
+      "index": 6,
+      "detection": {
+        "stage0_fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "gt_type": "Redundant Row",
+        "gt_row": 13,
+        "type_match": false,
+        "row_match": false
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": "DepreciationAndAmortization",
+        "label": "Depreciation",
+        "candidates_from_fasb_linkbase": [
+          "230-10-45-28",
+          "360-10-50-1"
+        ],
+        "predicted_asc_exact": "360-10-50-1",
+        "predicted_topic": "360",
+        "proven_in_official_taxonomy": true,
+        "fake_999_accepted": false
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": "250",
+        "gt_citation_text": "FASB ASC 250-10, Accounting Changes and Error Corrections, outlines requirements for removing prior period errors, inclu",
+        "gt_topic_in_our_candidates": false,
+        "topic_match": false
+      }
+    },
+    {
+      "index": 7,
+      "detection": {
+        "stage0_fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "gt_type": "Misclassification",
+        "gt_row": 1,
+        "type_match": false,
+        "row_match": false
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": "SalesRevenueServicesNet",
+        "label": "Services",
+        "candidates_from_fasb_linkbase": [],
+        "predicted_asc_exact": null,
+        "predicted_topic": null,
+        "proven_in_official_taxonomy": false,
+        "fake_999_accepted": null
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": "205",
+        "gt_citation_text": "According to the FASB Codification, financial statements should follow a systemic organization and presentation of line ",
+        "gt_topic_in_our_candidates": false,
+        "topic_match": null
+      }
+    },
+    {
+      "index": 8,
+      "detection": {
+        "stage0_fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "gt_type": "Missing Row",
+        "gt_row": 8,
+        "type_match": false,
+        "row_match": false
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": "OperatingExpenses",
+        "label": "Operating expenses:",
+        "candidates_from_fasb_linkbase": [],
+        "predicted_asc_exact": null,
+        "predicted_topic": null,
+        "proven_in_official_taxonomy": false,
+        "fake_999_accepted": null
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": null,
+        "gt_citation_text": "According to the FASB Concepts Statement No. 8, the income statement should report financial performance using terms lik",
+        "gt_topic_in_our_candidates": null,
+        "topic_match": null
+      }
+    },
+    {
+      "index": 9,
+      "detection": {
+        "stage0_fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "gt_type": "Numerical Error",
+        "gt_row": 5,
+        "type_match": false,
+        "row_match": false
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": "SalesRevenueGoodsNet",
+        "label": "Products",
+        "candidates_from_fasb_linkbase": [],
+        "predicted_asc_exact": null,
+        "predicted_topic": null,
+        "proven_in_official_taxonomy": false,
+        "fake_999_accepted": null
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": "330",
+        "gt_citation_text": "According to FASB ASC 330-10-35, Inventory (including the cost of goods sold) must be accurately reflected in financial ",
+        "gt_topic_in_our_candidates": false,
+        "topic_match": null
+      }
+    },
+    {
+      "index": 10,
+      "detection": {
+        "stage0_fired": true,
+        "pred_type": "Redundant Row",
+        "pred_row": 12,
+        "gt_type": "Redundant Row",
+        "gt_row": 12,
+        "type_match": true,
+        "row_match": true
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": null,
+        "label": "Environmental compliance costs",
+        "candidates_from_fasb_linkbase": [],
+        "predicted_asc_exact": null,
+        "predicted_topic": null,
+        "proven_in_official_taxonomy": false,
+        "fake_999_accepted": null
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": "225",
+        "gt_citation_text": "According to FASB ASC 225-10-45-3, a detailed breakdown of operating expenses should not include fabricated or redundant",
+        "gt_topic_in_our_candidates": false,
+        "topic_match": null
+      }
+    },
+    {
+      "index": 11,
+      "detection": {
+        "stage0_fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "gt_type": "Misclassification",
+        "gt_row": 5,
+        "type_match": false,
+        "row_match": false
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": "SalesRevenueServicesNet",
+        "label": "Services",
+        "candidates_from_fasb_linkbase": [],
+        "predicted_asc_exact": null,
+        "predicted_topic": null,
+        "proven_in_official_taxonomy": false,
+        "fake_999_accepted": null
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": "605",
+        "gt_citation_text": "Refer to FASB ASC 605-10-25, which addresses the classification of revenue and costs related to sales, requiring logical",
+        "gt_topic_in_our_candidates": false,
+        "topic_match": null
+      }
+    },
+    {
+      "index": 12,
+      "detection": {
+        "stage0_fired": true,
+        "pred_type": "Missing Row",
+        "pred_row": 6,
+        "gt_type": "Missing Row",
+        "gt_row": 6,
+        "type_match": true,
+        "row_match": true
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": "CostOfGoodsAndServicesSold",
+        "label": "Total cost of sales",
+        "candidates_from_fasb_linkbase": [
+          "220-10-S99-2",
+          "924-10-S99-1"
+        ],
+        "predicted_asc_exact": "220-10-S99-2",
+        "predicted_topic": "220",
+        "proven_in_official_taxonomy": true,
+        "fake_999_accepted": false
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": "605",
+        "gt_citation_text": "According to FASB ASC 605-10-05-1, revenue should be recognized as gross of all expenses directly associated with the co",
+        "gt_topic_in_our_candidates": false,
+        "topic_match": false
+      }
+    },
+    {
+      "index": 13,
+      "detection": {
+        "stage0_fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "gt_type": "Numerical Error",
+        "gt_row": 5,
+        "type_match": false,
+        "row_match": false
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": "SalesRevenueGoodsNet",
+        "label": "Products",
+        "candidates_from_fasb_linkbase": [],
+        "predicted_asc_exact": null,
+        "predicted_topic": null,
+        "proven_in_official_taxonomy": false,
+        "fake_999_accepted": null
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": "606",
+        "gt_citation_text": "According to ASC 606-10-32-2, revenue recognized is reported net of estimated returns and allowances, which aligns prope",
+        "gt_topic_in_our_candidates": false,
+        "topic_match": null
+      }
+    },
+    {
+      "index": 14,
+      "detection": {
+        "stage0_fired": true,
+        "pred_type": "Redundant Row",
+        "pred_row": 12,
+        "gt_type": "Redundant Row",
+        "gt_row": 12,
+        "type_match": true,
+        "row_match": true
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": "AccruedMarketingCostsCurrent",
+        "label": "Advertising and Promotions",
+        "candidates_from_fasb_linkbase": [],
+        "predicted_asc_exact": null,
+        "predicted_topic": null,
+        "proven_in_official_taxonomy": false,
+        "fake_999_accepted": null
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": "220",
+        "gt_citation_text": "According to FASB ASC 220, financial statement presentation requires faithful representation of expenses, which includes",
+        "gt_topic_in_our_candidates": false,
+        "topic_match": null
+      }
+    },
+    {
+      "index": 15,
+      "detection": {
+        "stage0_fired": true,
+        "pred_type": "Misclassification",
+        "pred_row": 3,
+        "gt_type": "Misclassification",
+        "gt_row": 10,
+        "type_match": true,
+        "row_match": false
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": "OperatingExpenses",
+        "label": "Operating expenses:",
+        "candidates_from_fasb_linkbase": [],
+        "predicted_asc_exact": null,
+        "predicted_topic": null,
+        "proven_in_official_taxonomy": false,
+        "fake_999_accepted": null
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": "720",
+        "gt_citation_text": "According to FASB, operating expenses include costs incurred as part of a company\u2019s primary business activities, which i",
+        "gt_topic_in_our_candidates": false,
+        "topic_match": null
+      }
+    },
+    {
+      "index": 16,
+      "detection": {
+        "stage0_fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "gt_type": "Missing Row",
+        "gt_row": 8,
+        "type_match": false,
+        "row_match": false
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": null,
+        "label": null,
+        "candidates_from_fasb_linkbase": [],
+        "predicted_asc_exact": null,
+        "predicted_topic": null,
+        "proven_in_official_taxonomy": false,
+        "fake_999_accepted": null
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": "230",
+        "gt_citation_text": "According to FASB ASC 230-10-45, all significant items that are an integral part of operating activities must be reporte",
+        "gt_topic_in_our_candidates": false,
+        "topic_match": null
+      }
+    },
+    {
+      "index": 17,
+      "detection": {
+        "stage0_fired": true,
+        "pred_type": "Numerical Error",
+        "pred_row": 12,
+        "gt_type": "Numerical Error",
+        "gt_row": 12,
+        "type_match": true,
+        "row_match": true
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": "OtherLiabilitiesNoncurrent",
+        "label": "Other current and non-current liabilities",
+        "candidates_from_fasb_linkbase": [
+          "210-10-S99-1"
+        ],
+        "predicted_asc_exact": "210-10-S99-1",
+        "predicted_topic": "210",
+        "proven_in_official_taxonomy": true,
+        "fake_999_accepted": false,
+        "best_grounded_pick_matching_hidden_topic": "210-10-S99-1",
+        "best_pick_still_from_taxonomy_only": true
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": "210",
+        "gt_citation_text": "According to FASB ASC 210-10-20, liabilities should be accurately classified and reported in financial statements to ref",
+        "gt_topic_in_our_candidates": true,
+        "topic_match": true,
+        "exact_asc_options_for_gt_topic": [
+          "210-10-S99-1"
+        ]
+      }
+    },
+    {
+      "index": 18,
+      "detection": {
+        "stage0_fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "gt_type": "Redundant Row",
+        "gt_row": 13,
+        "type_match": false,
+        "row_match": false
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": null,
+        "label": "Redundant Adjustment",
+        "candidates_from_fasb_linkbase": [],
+        "predicted_asc_exact": null,
+        "predicted_topic": null,
+        "proven_in_official_taxonomy": false,
+        "fake_999_accepted": null
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": null,
+        "gt_citation_text": "FASB Conceptual Framework mentions the need for the financial information to be complete, neutral, and free from error t",
+        "gt_topic_in_our_candidates": null,
+        "topic_match": null
+      }
+    },
+    {
+      "index": 19,
+      "detection": {
+        "stage0_fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "gt_type": "Misclassification",
+        "gt_row": 7,
+        "type_match": false,
+        "row_match": false
+      },
+      "citation": {
+        "input_asc_hint": null,
+        "concept": null,
+        "label": "Vendor non-trade receivables",
+        "candidates_from_fasb_linkbase": [],
+        "predicted_asc_exact": null,
+        "predicted_topic": null,
+        "proven_in_official_taxonomy": false,
+        "fake_999_accepted": null
+      },
+      "hidden_answer_key_only_for_scoring": {
+        "gt_topic": "230",
+        "gt_citation_text": "According to ASC 230-10-45-16 of the FASB Accounting Standards Codification, operating activities generally involve prod",
+        "gt_topic_in_our_candidates": false,
+        "topic_match": null
+      }
+    }
+  ]
+}

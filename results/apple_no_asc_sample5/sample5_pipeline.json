@@ -1,0 +1,207 @@
+{
+  "summary": {
+    "n": 5,
+    "clean_fp": "0/8",
+    "stage0_fired": 1,
+    "stage0_type_ok_fired": 1,
+    "stage0_row_ok_fired": 1,
+    "with_candidates": 2,
+    "taxonomy_valid": 2,
+    "fake_accepted": 0
+  },
+  "records": [
+    {
+      "index": 0,
+      "gt_type": "Misclassification",
+      "gt_row": 8,
+      "label": "Accounts receivable, net",
+      "error_resolution": "In the modified financial statement, 'Accounts receivable, net' was incorrectly classified under Non-current assets, whereas it should appear under Current assets since they are expected to be realized in cash within a year. To correct this error, move 'Accounts receivable, net' back to the Current assets category and remove it from Non-current assets. Recompute the 'Total current assets', which n",
+      "stage0": {
+        "fired": true,
+        "pred_type": "Misclassification",
+        "pred_row": 8,
+        "type_match": true,
+        "row_match": true,
+        "detail": "'Accounts receivable, net' is reported under 'Total non-current assets' but its value is not part of that section per the transactions."
+      },
+      "stage1": {
+        "concept": "AccountsReceivableNetCurrent",
+        "predicted_asc": "310-10-45-2",
+        "citation_source": "taxonomy",
+        "candidates": [
+          "310-10-45-2",
+          "310-10-45-9"
+        ],
+        "n_candidates": 2,
+        "taxonomy_valid": true,
+        "fake_999_accepted": false,
+        "candidate_topics": [
+          "310"
+        ]
+      },
+      "cursor_llm_judge": {
+        "grounded": true,
+        "appropriate": true,
+        "better_candidate": null,
+        "verdict": "PASS",
+        "reason": "Misclassification of AR: concept AccountsReceivableNetCurrent; taxonomy only offers 310-10-45-2/9 (receivables). Predicted 310-10-45-2 is in-list and the right subject-matter family for AR. Fake 999 rejected."
+      }
+    },
+    {
+      "index": 1,
+      "gt_type": "Missing Row",
+      "gt_row": 6,
+      "label": "Total current assets",
+      "error_resolution": "The 'Other current assets' row has been mistakenly omitted from the financial statement, resulting in incorrect totals for both current assets and total assets. 'Other current assets' should total $14,695 and originally contributes to the 'Total current assets' value of $143,566. To correct this error, the 'Other current assets' row should be reinstated under 'Current assets', and the calculations",
+      "stage0": {
+        "fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "type_match": false,
+        "row_match": false,
+        "detail": ""
+      },
+      "stage1": {
+        "concept": "AssetsCurrent",
+        "predicted_asc": "210-10-45-1",
+        "citation_source": "taxonomy",
+        "candidates": [
+          "210-10-45-1",
+          "210-10-S99-1",
+          "235-10-S99-1",
+          "323-10-50-3",
+          "470-10-S99-1A",
+          "470-10-S99-1B",
+          "810-10-50-3",
+          "810-10-45-25",
+          "825-10-50-28",
+          "852-10-50-7",
+          "852-10-55-10"
+        ],
+        "n_candidates": 11,
+        "taxonomy_valid": true,
+        "fake_999_accepted": false,
+        "candidate_topics": [
+          "210",
+          "235",
+          "323",
+          "470",
+          "810",
+          "825",
+          "852"
+        ]
+      },
+      "cursor_llm_judge": {
+        "grounded": true,
+        "appropriate": true,
+        "better_candidate": null,
+        "verdict": "PASS",
+        "reason": "Missing 'Other current assets' affecting Total current assets (AssetsCurrent). Candidates include presentation ASC 210-10-45-1. Pipeline cites 210-10-45-1 \u2014 in-list and appropriate for current-assets presentation/completeness. Better than unrelated 323/470/810 options."
+      }
+    },
+    {
+      "index": 2,
+      "gt_type": "Missing Row",
+      "gt_row": 8,
+      "label": "Operating expenses:",
+      "error_resolution": "The financial statement is missing the 'Gross margin' row, which is critical for showing the company\u2019s profitability after all costs of goods sold are subtracted from net sales. Gross margin should have been presented between the 'Total cost of sales' and 'Operating expenses'. To resolve this issue, reinsert the 'Gross margin' row with the value $170,782, calculated as Total Net Sales minus Total ",
+      "stage0": {
+        "fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "type_match": false,
+        "row_match": false,
+        "detail": ""
+      },
+      "stage1": {
+        "concept": "OperatingExpenses",
+        "predicted_asc": "225-10-45",
+        "citation_source": "static_map",
+        "candidates": [],
+        "n_candidates": 0,
+        "taxonomy_valid": false,
+        "fake_999_accepted": false,
+        "candidate_topics": []
+      },
+      "cursor_llm_judge": {
+        "grounded": false,
+        "appropriate": null,
+        "better_candidate": null,
+        "verdict": "FAIL_NOT_TAXONOMY",
+        "reason": "Focus row 'Operating expenses' maps to OperatingExpenses but taxonomy returned 0 candidates. Predicted 225-10-45 comes from static_map only \u2014 cannot verify against US-GAAP reference linkbase for this concept."
+      }
+    },
+    {
+      "index": 3,
+      "gt_type": "Misclassification",
+      "gt_row": 1,
+      "label": "Services",
+      "error_resolution": "The financial statement mistakenly categorized 'Services' revenue under 'Net sales' as the first item instead of 'Products'. The 'Products' revenue should be listed before 'Services' under 'Net sales' to maintain the correct order and classification. This is crucial for a clear and logical presentation of revenue streams in line with the standard financial reporting formats. Correcting this would ",
+      "stage0": {
+        "fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "type_match": false,
+        "row_match": false,
+        "detail": ""
+      },
+      "stage1": {
+        "concept": "SalesRevenueServicesNet",
+        "predicted_asc": "225-10-45",
+        "citation_source": "static_map",
+        "candidates": [],
+        "n_candidates": 0,
+        "taxonomy_valid": false,
+        "fake_999_accepted": false,
+        "candidate_topics": []
+      },
+      "cursor_llm_judge": {
+        "grounded": false,
+        "appropriate": null,
+        "better_candidate": null,
+        "verdict": "FAIL_NOT_TAXONOMY",
+        "reason": "Services revenue \u2192 SalesRevenueServicesNet; no taxonomy candidates. Predicted 225-10-45 is static_map fallback, not graph-proven for this concept."
+      }
+    },
+    {
+      "index": 4,
+      "gt_type": "Missing Row",
+      "gt_row": 8,
+      "label": null,
+      "error_resolution": "The row for 'Vendor non-trade receivables' was erroneously deleted from the 'Operating activities' section of the financial statement. This row represents a decrease of $7,520 in the vendor non-trade receivables, which is a significant component when calculating the changes in operating assets and liabilities. To correct this error, reinstate the row at index 8 with the value '($7,520)' to accurat",
+      "stage0": {
+        "fired": false,
+        "pred_type": null,
+        "pred_row": null,
+        "type_match": false,
+        "row_match": false,
+        "detail": ""
+      },
+      "stage1": {
+        "concept": null,
+        "predicted_asc": null,
+        "citation_source": null,
+        "candidates": [],
+        "n_candidates": 0,
+        "taxonomy_valid": false,
+        "fake_999_accepted": false,
+        "candidate_topics": []
+      },
+      "cursor_llm_judge": {
+        "grounded": false,
+        "appropriate": null,
+        "better_candidate": null,
+        "verdict": "SKIP_NO_ROW",
+        "reason": "Missing-row case: GT row 8 absent from table (label null, no concept). Stage 1 correctly has nothing to cite; Stage 0 abstained. Citation N/A until missing line is localized."
+      }
+    }
+  ],
+  "judge_summary": {
+    "judge": "Cursor agent (no Ollama); taxonomy-graph grounding only; AuditBench Standards Citation NOT used",
+    "n": 5,
+    "pass": 2,
+    "fail_not_taxonomy": 2,
+    "skip_no_row": 1,
+    "among_graph_citable": "2/2 PASS (both taxonomy-valid and appropriate)"
+  }
+}
