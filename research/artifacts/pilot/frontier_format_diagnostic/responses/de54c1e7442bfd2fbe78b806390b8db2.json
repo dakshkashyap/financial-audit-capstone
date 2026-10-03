@@ -1,0 +1,21 @@
+{
+  "call_id": "de54c1e7442bfd2fbe78b806390b8db2",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":\"ASC 606-10-25-23\",\"citation_abstain\":false,\"error_type\":\"Numerical Error\",\"evidence\":[{\"quote\":\"[row 0]: Revenue | $23,032\",\"row\":0,\"source\":\"statement\"},{\"quote\":\"consideration billed or received during the period for performance obligations not yet satisfied at period-end 2,579; of which recorded as contract liabilities\",\"row\":null,\"source\":\"transactions\"},{\"quote\":\"(deferred revenue) 127\",\"row\":null,\"source\":\"transactions\"}],\"judgement\":\"incorrect\",\"reason\":\"Revenue ties to the movements (25,075−2,043), and the downstream totals foot. However, the cut-off review shows 2,579 of consideration relates to performance obligations not yet satisfied at period-end, while only 127 was deferred. That implies about 2,452 was recognized before the obligations were satisfied, so revenue appears overstated. Revenue is recognized only when a performance obligation is satisfied. Subtotals would change accordingly.\",\"row\":0}",
+  "reserved_usd": "0.047184",
+  "request_sha256": "31f9653bc063f5a3e2775dc0029706eea047f8937c91bafba6caff0940c63085",
+  "prompt_sha256": "3a4dabbd8e3e161bef0c8234afa3ba10548ff5afa74286e7797358e8d22ca533",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002241-HNLqyBeGgNs3gsFlIyfG",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 2064,
+    "completion_tokens": 668,
+    "total_tokens": 2732,
+    "cost": 0.021616
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 8.526
+}

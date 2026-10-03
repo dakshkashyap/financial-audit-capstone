@@ -1,0 +1,21 @@
+{
+  "call_id": "83746e35a14cc8382af87fc41eb63196",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":null,\"evidence\":[{\"quote\":\"Net cash from operating activities | $1,678\",\"row\":4,\"source\":\"statement\"},{\"quote\":\"Net cash from financing activities | ($775)\",\"row\":12,\"source\":\"statement\"},{\"quote\":\"Net increase (decrease) in cash | $57\",\"row\":14,\"source\":\"statement\"},{\"quote\":\"dividends paid to shareholders: −780 (decrease); dividend payable reversal: +137 (increase)\",\"row\":null,\"source\":\"transactions\"}],\"judgement\":\"correct\",\"reason\":\"Every line backed by transaction evidence reconciles: 654−97=557, 1554−249=1305, 89−273=−184, 137−780=−643 and 31−140=−109. Subtotals and the net change also foot (1678−808−775−38=57). The repurchase and investing lines have no transaction evidence, but they are internally consistent with their subtotals. No error is identified.\",\"row\":null}",
+  "reserved_usd": "0.047480",
+  "request_sha256": "6321de918983d6b33e8462538dace3543a721ec5ff13f774ae28dee72a007067",
+  "prompt_sha256": "d6841ecc6e2644894e27c07df77c4f23b005456eeedcf55018970fe1fc011331",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002296-mTdq2sm8S4ogHyH2drj9",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 2093,
+    "completion_tokens": 481,
+    "total_tokens": 2574,
+    "cost": 0.017992
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 6.742
+}

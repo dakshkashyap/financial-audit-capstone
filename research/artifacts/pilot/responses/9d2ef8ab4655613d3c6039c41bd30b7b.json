@@ -1,0 +1,19 @@
+{
+  "call_id": "9d2ef8ab4655613d3c6039c41bd30b7b",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "3c65e03746fce300f85473aa212738402b5d868cd34b07f116435b0ce89387a1",
+  "reserved_usd": "0.037412",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"correct\",\"error_type\":null,\"row\":null,\"citation\":null,\"citation_abstain\":true,\"evidence\":[{\"source\":\"statement\",\"quote\":\"Net cash from operating activities | $10,533\",\"row\":4},{\"source\":\"statement\",\"quote\":\"Net cash from investing activities | ($2,008)\",\"row\":8},{\"source\":\"statement\",\"quote\":\"Net cash from financing activities | ($5,494)\",\"row\":13},{\"source\":\"statement\",\"quote\":\"Net increase (decrease) in cash | $2,961\",\"row\":15}]}\n```\n\n**Reason:** Every subtotal foots:\n- Operating: 7,071 + 640 + 2,822 = 10,533.\n- Investing: −1,885 − 123 = −2,008.\n- Financing: −3,202 − 2,299 + 7 = −5,494.\n- Net change: 10,533 − 2,008 − 5,494 − 70 = 2,961.\n\nEach line with transaction evidence nets to the amount reported on that line. No error is supported.",
+  "response_id": "gen-1791001191-QpMGp89l9dp2GnhVQaTs",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 1464,
+    "completion_tokens": 601,
+    "total_tokens": 2065,
+    "cost": 0.017876
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 6.836
+}

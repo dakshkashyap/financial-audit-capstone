@@ -55,10 +55,13 @@ class AuditRecord:
     stated_value: Optional[float] = None
     source: str = "none"                   # "0A" | "0B" | "none"
 
-    # ── grounded citation for the flagged row (for Stage 2 to confirm/select) ─
+    # ── reference candidates for Stage 2's independent applicability decision ─
     citation_primary: Optional[str] = None
     citation_candidates: List[str] = field(default_factory=list)
     citation_source: Optional[str] = None
+    # No current deterministic checker establishes paragraph applicability.
+    # Taxonomy membership, specificity and arithmetic proof never set this.
+    citation_applicability_verified: bool = False
 
     # ── evidence trail ───────────────────────────────────────────────────────
     n_subtotals_checked: int = 0
@@ -78,6 +81,7 @@ class AuditRecord:
             "citation_primary": self.citation_primary,
             "citation_candidates": self.citation_candidates,
             "citation_source": self.citation_source,
+            "citation_applicability_verified": self.citation_applicability_verified,
             "n_subtotals_checked": self.n_subtotals_checked,
             "n_identities_checked": self.n_identities_checked,
             "detail": self.detail,
@@ -111,7 +115,12 @@ def _consistency(a, b, df, tx) -> tuple:
     no_anomaly = not (a.reconciliation or a.footing or a.missing
                       or b.redundant or b.misclassification or b.equations
                       or a.primary or b.primary or a.weak)
-    verified = no_anomaly and (not unmatched_tx) and (n_sub + n_id) >= 2
+    # Component narratives intentionally cover only a subset and omit semantic
+    # review evidence. Even offsetting errors can leave identities unchanged.
+    # Keep check counts, but never issue the legacy clean certificate from this
+    # partial synthetic evidence format.
+    verified = (tx.evidence_format != "synthetic_signed_components"
+                and no_anomaly and (not unmatched_tx) and (n_sub + n_id) >= 2)
     return verified, n_sub, n_id
 
 
@@ -179,6 +188,11 @@ def run_pipeline(item: dict, graph: Optional[TaxonomyGraph] = None,
         row = next((r for r in s1.statement.rows if r.row_idx == idx), None)
         if row is None:
             return None, [], None
+        if framework == "ifrs":
+            cands = list(dict.fromkeys(
+                code for code in [row.asc_primary, *(row.asc_candidates or [])] if code
+            ))
+            return row.asc_primary, cands, s1.citation_sources.get(idx)
         cands = uniq_full([row.asc_primary, *(row.asc_candidates or [])], limit=8)
         primary = pick_primary(cands, error_type) or (cands[0] if cands else row.asc_primary)
         return primary, cands, s1.citation_sources.get(idx)
@@ -215,4 +229,4 @@ if __name__ == "__main__":
         print(f"[{i}] judgment={rec.judgment:10s} abstained={rec.abstained} "
               f"verified={rec.verified_consistent}  "
               f"{rec.error_type or '-'} row={rec.problematic_entry} "
-              f"cite={rec.citation_primary} cands={rec.citation_candidates}")
+              f"candidate={rec.citation_primary} cands={rec.citation_candidates}")

@@ -1,0 +1,20 @@
+{
+  "call_id": "5fa6a480977722b28ec0f6e26d5b45af",
+  "model": "qwen/qwen3-8b",
+  "stage": "decision",
+  "prompt_sha256": "768b07c084ad772780d80bfa94332fdbad2fedc4fb72a3fd33ab2c0e8c35a125",
+  "reserved_usd": "0.001337544",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Redundant Row\",\n  \"row\": 13,\n  \"citation\": null,\n  \"citation_abstain\": true,\n  \"evidence\": [\n    {\"source\": \"statement\", \"quote\": \"Other non-current assets | $43\", \"row\": 12},\n    {\"source\": \"statement\", \"quote\": \"Other non-current assets, net | $31\", \"row\": 13},\n    {\"source\": \"statement\", \"quote\": \"Total non-current assets | $926\", \"row\": 14},\n    {\"source\": \"statement\", \"quote\": \"Total liabilities and stockholders' equity | $1,430\", \"row\": 33}\n  ],\n  \"reason\": \"Row 13 contains 'Other non-current assets, net' which is redundant as 'Other non-current assets' (row 12) already exists. This duplication violates the principle of presenting non-redundant line items in a balance sheet.\"\n}",
+  "response_id": "gen-1791001726-TM4IHEV2Aej58oQ06W2V",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 1823,
+    "completion_tokens": 225,
+    "total_tokens": 2048,
+    "cost": 0.000315666
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 4.18
+}

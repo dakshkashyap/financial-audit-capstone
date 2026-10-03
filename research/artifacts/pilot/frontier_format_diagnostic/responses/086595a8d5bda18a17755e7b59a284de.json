@@ -1,0 +1,21 @@
+{
+  "call_id": "086595a8d5bda18a17755e7b59a284de",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":\"Missing Row\",\"evidence\":[{\"quote\":\"[Cash and cash equivalents] cash collected from customers: +3,784 (increase); operating cash disbursements: −127 (decrease)\",\"row\":null,\"source\":\"transactions\"},{\"quote\":\"Total current assets | $9,303\",\"row\":6,\"source\":\"statement\"},{\"quote\":\"Accounts receivable, net | $892\",\"row\":1,\"source\":\"statement\"}],\"judgement\":\"incorrect\",\"reason\":\"The transactions support a cash balance of 3,657 (3,784−127), but the statement has no cash line. The listed current assets sum to 5,646, and adding 3,657 gives exactly the reported 9,303. So a cash row is missing, likely at index 1. Other rows reconcile. No impairment applies, because undiscounted cash flows (2,578) exceed the carrying amount (2,439). This is an omission, so no specific paragraph is cited.\",\"row\":1}",
+  "reserved_usd": "0.053572",
+  "request_sha256": "c240cc36ca3f6229e0f134b54a3eda38a6bd9425192a16d80c8b8aa4d3056767",
+  "prompt_sha256": "99fdbd50b7b2fec6c29f73a14c3e1d256df87e4a9feb8ca4721a4e97c46f8342",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002302-Ojr2HVbIBfPo4EOLFsW9",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 2730,
+    "completion_tokens": 476,
+    "total_tokens": 3206,
+    "cost": 0.02044
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 6.609
+}

@@ -1,9 +1,9 @@
 """
 run_audit.py — Unified audit entry point.
 
-Takes ANY financial statement input (AuditBench item, FinMR record, or raw
-XBRL concept name), detects the error deterministically, and outputs the
-governing FASB ASC citation — all in one call.
+Takes a financial statement input or raw XBRL concept, detects supported
+arithmetic defects, and returns taxonomy reference candidates. The current
+deterministic checks do not verify governing-paragraph applicability.
 
     result = run_audit(input)
     # result = {
@@ -13,8 +13,10 @@ governing FASB ASC citation — all in one call.
     #     "correct_value":    450,
     #     "stated_value":     500,
     #     "concept":          "us-gaap:CashAndCashEquivalentsAtCarryingValue",
-    #     "citation":         "FASB ASC 230-10-45-5",
-    #     "citation_source":  "taxonomy" | "parent_fallback" | "static_map" | "none",
+    #     "citation":         None,
+    #     "citation_candidate": "FASB ASC 230-10-45-5",
+    #     "citation_candidate_source": "taxonomy" | "parent_fallback" | "static_map" | "none",
+    #     "citation_applicability_verified": False,
     #     "statement_type":   "balance_sheet" | "income_statement" | ...,
     # }
 
@@ -349,8 +351,9 @@ def run_audit(
             correct_value    : float | None
             stated_value     : float | None
             concept          : str | None   (e.g. "us-gaap:Cash...")
-            citation         : str | None   (e.g. "FASB ASC 230-10-45-5")
-            citation_source  : str          ("taxonomy" | "parent_fallback" | ...)
+            citation         : None         (applicability is not verified here)
+            citation_candidate: str | None  (retrieved reference hint)
+            citation_candidate_source: str   ("taxonomy" | "parent_fallback" | ...)
             statement_type   : str | None
     """
     # Auto-detect source
@@ -371,13 +374,21 @@ def run_audit(
             raise TypeError(f"Expected dict or str, got {type(data)}")
 
     if source == "auditbench":
-        return _audit_auditbench(data)
+        result = _audit_auditbench(data)
     elif source == "finmr":
-        return _audit_finmr(data)
+        result = _audit_finmr(data)
     elif source == "concept":
-        return _audit_concept(data)
+        result = _audit_concept(data)
     else:
         raise ValueError(f"Unknown source: {source}")
+    # These legacy adapters perform reference retrieval only. Preserve the hint
+    # and provenance, but never publish it as the defect's governing citation.
+    result["citation_candidate"] = result.get("citation")
+    result["citation_candidate_source"] = result.get("citation_source", "none")
+    result["citation_applicability_verified"] = False
+    result["citation"] = None
+    result["citation_source"] = "none"
+    return result
 
 
 # ── CLI ───────────────────────────────────────────────────────────────────────

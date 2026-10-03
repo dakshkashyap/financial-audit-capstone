@@ -1,0 +1,20 @@
+{
+  "call_id": "23b99a1e5abe44c13dad132999c1fe8c",
+  "model": "qwen/qwen3-8b",
+  "stage": "decision",
+  "prompt_sha256": "c0e86479be32843f327468aea36e727373b3a7061d19f43dc16923d4d8005d2a",
+  "reserved_usd": "0.000928746",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Numerical Error\",\n  \"row\": 0,\n  \"citation\": null,\n  \"citation_abstain\": true,\n  \"evidence\": [\n    {\"source\": \"statement\", \"quote\": \"Revenue | $326\", \"row\": 0},\n    {\"source\": \"transactions\", \"quote\": \"revenue recognised on satisfied performance obligations: +389 (increase); returns and allowances: −63 (decrease)\", \"row\": null},\n    {\"source\": \"statement\", \"quote\": \"Cost of revenue | ($285)\", \"row\": 1},\n    {\"source\": \"transactions\", \"quote\": \"selling, general and administrative spend: −207 (decrease); cost recovery / reclass out: +37 (increase)\", \"row\": null}\n  ],\n  \"reason\": \"The reported revenue of $326 million does not match the transaction evidence showing a net increase of $289 million. This discrepancy indicates a numerical error in the revenue line.\"\n}",
+  "response_id": "gen-1791001674-xr0fxqKgUZEDWQuV7Hb9",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 862,
+    "completion_tokens": 228,
+    "total_tokens": 1090,
+    "cost": 0.000204594
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 4.382
+}

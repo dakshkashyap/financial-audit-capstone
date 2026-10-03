@@ -1,0 +1,20 @@
+{
+  "call_id": "1187b782819c9fb774d57abdd0404be7",
+  "model": "qwen/qwen3-8b",
+  "stage": "decision",
+  "prompt_sha256": "99fdbd50b7b2fec6c29f73a14c3e1d256df87e4a9feb8ca4721a4e97c46f8342",
+  "reserved_usd": "0.001129401",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Redundant Row\",\n  \"row\": 5,\n  \"citation\": null,\n  \"citation_abstain\": true,\n  \"evidence\": [\n    {\"source\": \"statement\", \"quote\": \"Other current assets | $341\", \"row\": 4},\n    {\"source\": \"statement\", \"quote\": \"Other current assets, net | $2,299\", \"row\": 5},\n    {\"source\": \"statement\", \"quote\": \"Total current assets | $9,303\", \"row\": 6},\n    {\"source\": \"statement\", \"quote\": \"Inventory raw materials and supplies, net of reserves | $1,594\", \"row\": 3}\n  ],\n  \"reason\": \"The line 'Other current assets, net' appears redundant as 'Other current assets' is already listed with a value. This may indicate an error in the statement's structure.\"\n}",
+  "response_id": "gen-1791001613-vsv7gseUgXnhR4qCix2t",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 1430,
+    "completion_tokens": 209,
+    "total_tokens": 1639,
+    "cost": 0.000262405
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 3.659
+}

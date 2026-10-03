@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "selection": {
+    "seed": 20261002,
+    "n_companies": 8,
+    "min_fiscal_year": 2020,
+    "max_fiscal_year": 2024,
+    "per_company": {"control": 2, "detection_only": 2, "citable": 2}
+  },
+  "budget_usd": "5.00",
+  "max_completion_tokens": 900,
+  "temperature": 0,
+  "timeout_seconds": 90,
+  "conditions": {
+    "opus_direct": {"model": "anthropic/claude-opus-5.5", "method": "direct"},
+    "qwen8_direct": {"model": "qwen/qwen3-8b", "method": "direct", "reasoning_enabled": false},
+    "qwen30_direct": {"model": "qwen/qwen3-30b-a3b-instruct-2507", "method": "direct"},
+    "qwen30_evidence": {"model": "qwen/qwen3-30b-a3b-instruct-2507", "method": "evidence_then_decision", "analysis_transport": "user_data"}
+  }
+}

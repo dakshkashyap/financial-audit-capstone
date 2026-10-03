@@ -1,0 +1,21 @@
+{
+  "call_id": "5fbadea72b32430d12feb5acf5c4e5b3",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":\"ASC 842-10-25-2\",\"citation_abstain\":false,\"error_type\":\"Misclassification\",\"evidence\":[{\"quote\":\"Finance lease right-of-use assets | $1,787\",\"row\":8,\"source\":\"statement\"},{\"quote\":\"lease term as % of remaining economic life: 44%; present value of lease payments as % of fair value of the underlying assets: 49%; asset of a specialized nature: no\",\"row\":null,\"source\":\"transactions\"}],\"judgement\":\"incorrect\",\"reason\":\"Row 8 presents these right-of-use assets as finance-lease assets, but the leases meet none of the finance-lease criteria: no ownership transfer, no reasonably certain purchase option, term only 44% of economic life, PV only 49% of fair value, not specialized. They should be operating lease ROU assets. The subtotals foot correctly, so the fault is classification under the lease criteria, not arithmetic.\",\"row\":8}",
+  "reserved_usd": "0.058704",
+  "request_sha256": "a8429ab879fccd1fbf82dc77753716436bd33fb98e97d3b3422f68a3393dcd84",
+  "prompt_sha256": "60423f58d8f4e0f727f4b519cd052ff5288e569a6cdea792da0af742479643f6",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002328-ss6FuLo9vPkxarjfmqBp",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 3235,
+    "completion_tokens": 465,
+    "total_tokens": 3700,
+    "cost": 0.02224
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 6.305
+}

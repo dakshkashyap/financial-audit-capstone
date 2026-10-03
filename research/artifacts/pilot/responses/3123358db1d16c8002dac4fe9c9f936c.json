@@ -1,0 +1,20 @@
+{
+  "call_id": "3123358db1d16c8002dac4fe9c9f936c",
+  "model": "qwen/qwen3-8b",
+  "stage": "decision",
+  "prompt_sha256": "41430f21986b6d2a58aae03103f8619d25ebfe111ca6977e0e3cd4c173d0271d",
+  "reserved_usd": "0.001262079",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Redundant Row\",\n  \"row\": 30,\n  \"citation\": null,\n  \"citation_abstain\": true,\n  \"evidence\": [\n    {\"source\": \"statement\", \"quote\": \"Other non-current liabilities, net | $31,156\", \"row\": 23},\n    {\"source\": \"statement\", \"quote\": \"Total non-current liabilities | $47,238\", \"row\": 24},\n    {\"source\": \"statement\", \"quote\": \"Total liabilities | $52,344\", \"row\": 25},\n    {\"source\": \"statement\", \"quote\": \"Total liabilities and stockholders' equity | $67,132\", \"row\": 32}\n  ],\n  \"reason\": \"Row 30 contains 'Other equity, net | ($101,357)' which is redundant as the total stockholders' equity already includes all equity components. The line appears to be a duplicate or misclassified.\"\n}",
+  "response_id": "gen-1791001730-yjFUHz7Obg8tEZ3SgmJf",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 1784,
+    "completion_tokens": 231,
+    "total_tokens": 2015,
+    "cost": 0.000313833
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 4.175
+}

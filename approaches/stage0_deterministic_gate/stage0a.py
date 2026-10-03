@@ -37,6 +37,7 @@ from core.stage0_common import (
     rows_of,
     subtotal_expected_map,
     values_match,
+    entry_values_match,
 )
 
 
@@ -63,11 +64,13 @@ def _reconcile_leaves(df, tx: Transactions) -> List[dict]:
         if core_counts[r.core] != 1:  # ambiguous label → can't trust index match
             continue
         exp = tx.expected_for_index(r.idx)
+        if exp is None and tx.evidence_format == "synthetic_signed_components":
+            exp = tx.unique_by_core(r.core)
         if exp is None or exp.value is None:
             continue
         if exp.core != r.core:        # position shifted → not the same row
             continue
-        if values_match(r.value, exp.value):
+        if entry_values_match(exp, r.value):
             continue
         out.append({"idx": r.idx, "label": r.label,
                     "stated": r.value, "correct": exp.value})

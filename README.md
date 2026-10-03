@@ -1,159 +1,93 @@
-# Financial Audit Capstone — IntelliAudit / AuditPatch
+# Financial audit research: verified development branch
 
-SFU Computing Science capstone. We are building a system that finds errors in real
-financial filings, identifies the specific number that caused each error, proposes
-the smallest correct fix, proves the fix breaks nothing else, and attaches the
-governing accounting standard looked up from the official FASB taxonomy.
+This branch integrates the IFRS and ASC pipelines and adds an independently
+audited, reproducible research workspace. **It is not a validated benchmark
+release, and it does not establish that a cheap model beats Opus.**
 
-The research question: **the weakest part of LLM financial auditing is not
-detection, it is explanation and citation.** Published baselines invent accounting
-rule numbers because they recall them from memory. We look them up instead, and
-restrict the LLM to the one job it is reliably good at — writing the explanation.
+Start with `research/`: the source audits, isolated experiment harness, results
+dashboard, evidence-acquisition prototype, manuscript draft, and December plan.
+All measurements distinguish detection, strict paragraph label agreement,
+abstention, clean controls, API failures and cost. Current gold labels are not
+equivalent to accountant-verified applicability.
 
----
+Review the [measured comparison table](research/results/comparison_table.md),
+[paper draft](research/paper/draft.md), and
+[changes from both source branches](research/CHANGES_FROM_SOURCE_BRANCHES.md).
+Download and open the self-contained [dashboard](research/dashboard/dist/index.html)
+or [eight-slide briefing](research/slides.html) in a browser; neither makes
+network requests or needs an API credential.
 
-## Repository layout
+## Reproduce
 
-```
-core/                 Shared building blocks used by two or more approaches
-approaches/           One folder per distinct approach, in pipeline order
-docs/                 Research analysis, architecture, results, presentations, meetings
-data/                 Datasets (FinMR downloads; large files are gitignored)
-results/              Machine-readable output from every evaluation run
-scripts/              Repo utilities (weekly report generator, restructure record)
-Error_insertion/      AuditBench synthetic error splits
-Raw_table_data/       AuditBench source statements
-transaction_data/     AuditBench supporting transaction evidence
-```
-
-Everything is run as a module from the repository root, so imports resolve
-without any path juggling:
+The new research tools use Python 3.12+ and the standard library. The inherited
+pipeline uses the separate dependencies in `requirements.txt`.
 
 ```bash
-python -m approaches.<approach>.<entry_point>
+git clone https://github.com/dakshkashyap/financial-audit-capstone.git
+cd financial-audit-capstone
+git switch research/evidence-audit-2026
+python -m unittest discover -s tests -v
+python -m research.harness score --prepared research/artifacts/pilot
+python -m research.run_frontier_format_diagnostic --prepared research/artifacts/pilot --score
+python -m research.run_qwen8_evidence_diagnostic --prepared research/artifacts/pilot --score
+python -m research.diagnose_raw_outputs --prepared research/artifacts/pilot
+python -m research.comparison_table
+python research/dashboard/build_dashboard.py
+python research/dashboard/build_comparison.py
 ```
 
-**[STRUCTURE.md](STRUCTURE.md) explains the layout with diagrams** — the three
-layers, how the approaches connect, how data flows through a run, and a decision
-chart for where a new file belongs. Every folder also has its own README.
+Install inherited dependencies before running the full test suite; the new
+research tests run with the standard library alone. Scoring cached predictions
+requires no model calls. See `research/EXPERIMENT.md` for the exact recorded
+commands and model settings.
 
----
-
-## The approaches
-
-Each folder is self-contained and has its own README explaining what the approach
-does, why it exists, how to run it, and what it scored. They are listed in
-pipeline order.
-
-| # | Approach | What it does |
-|---|---|---|
-| 0 | [`baseline_auditbench`](approaches/baseline_auditbench/) | Reproduces the AuditBench paper: one LLM, one prompt, whole audit |
-| 1 | [`stage0_deterministic_gate`](approaches/stage0_deterministic_gate/) | Deterministic arithmetic and identity checks before any LLM runs |
-| 2 | [`stage1_concept_mapping`](approaches/stage1_concept_mapping/) | Maps a statement line-item label to its official XBRL concept |
-| 3 | [`stage1_taxonomy_citation`](approaches/stage1_taxonomy_citation/) | Turns an XBRL concept into a real FASB ASC citation |
-| 4 | [`stage2_llm_audit`](approaches/stage2_llm_audit/) | Focused LLM, called only when the gate abstains, handed the evidence |
-| 5 | [`citation_mcp_agent`](approaches/citation_mcp_agent/) | MCP server exposing the taxonomy as tools; agent must pick from real candidates |
-| 6 | [`audit_patch_repair`](approaches/audit_patch_repair/) | Detect → localize → minimal repair → revalidate → certify |
-| 7 | [`finmr_benchmark`](approaches/finmr_benchmark/) | FinMR loading, verification and baseline evaluation |
-| 8 | [`full_pipeline`](approaches/full_pipeline/) | Stage 0 → 1 → 2 end to end, plus the ablation harness |
-
----
-
-## Which approaches actually work
-
-Two files answer that, and they answer different questions:
-
-- **[STATUS.md](STATUS.md)** — *does it still run?* Auto-generated by actually
-  executing every approach. Never hand-edit it.
-- **[MATURITY.md](MATURITY.md)** — *should you believe it?* The judgement call a
-  script cannot make: what is solid, what is capped, what is a prototype, and
-  which experiment produced a useful negative result.
-
-Re-run the health check yourself:
+To independently reproduce selection, clone the source and use a new output
+directory; preparation deliberately refuses to overwrite the recorded pilot:
 
 ```bash
-python scripts/status.py            # ~25s, small samples, "does it run"
-python scripts/status.py --full     # the real numbers
-python scripts/status.py --write    # also refresh STATUS.md
+git clone https://github.com/manmad-web/IntelliAudit.git ../IntelliAudit
+git -C ../IntelliAudit checkout 72da89a9e6400bfd1da9041a742f9cdeb00470bc
+python -m research.harness prepare --source ../IntelliAudit/data/benchmark --out /tmp/intelliaudit-selection-check
 ```
 
-It writes to a scratch directory, so it can never overwrite the committed
-evidence in `results/`.
+Model runs require `OPENROUTER_API_KEY` in the environment or a temporary key file
+outside the repository. The new runner limits model IDs to one frontier model
+and two cheap Qwen models, records every request, reserves worst-case cost before
+each call, and stops at the global dollar cap. Never put credentials in a tracked
+file. No results dashboard requires or receives the model API key.
 
----
+## What was integrated and repaired
 
-## Headline results
+`core/` and `approaches/` retain both requested source branches, with explicit
+framework handling. Repairs preserve IFRS paragraph candidates, prevent ASC
+normalization from erasing IFRS candidates, prevent silent citation guessing,
+target numerical repairs to the identified row, and correct citable-only metric
+denominators. Strict paragraph scoring is separate from historical topic-prefix
+scoring. Partial arithmetic consistency cannot certify error absence.
 
-| Result | Number | Where |
-|---|---|---|
-| AuditPatch exact repair match on 332 real SEC filings | **81.5%** | [docs/results/FINMR_RESULTS.md](docs/results/FINMR_RESULTS.md) |
-| Repairs that broke something else | **0** | same |
-| Invented citations, tool-locked LLM (42 items) | **0** | [results/citation_mcp_llm_50.json](results/citation_mcp_llm_50.json) |
-| False alarms on clean statements, LLM alone → with deterministic veto | 50% → **28.7%** | [docs/results/pipeline_eval_n150.md](docs/results/pipeline_eval_n150.md) |
-| Stage 0 error-type localization when it fires | **94.7%** | same |
+`research/SOURCES.json` pins exact commits and input hashes. The current upstream
+exam differs substantially from the older embedded eight-company data. Do not
+compare scores across those versions or extrapolate this development pilot to
+financial auditing generally.
 
----
+## Historical material
 
-## Quick start
+Pre-existing `docs/`, `results/`, and embedded `data/` are historical artifacts,
+retained for traceability. Their descriptions and outputs may use different
+datasets, models, oracle information or permissive metrics. They are not the
+results of this study. `research/reviews/` records independently recomputed
+findings and the limits of verification. Scripts under the inherited approaches
+remain experimental; oracle evaluation modes are not deployment performance.
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+## Publication and release
 
-python -m core.verify_data          # confirm the datasets are intact
-```
+The proposal evaluates evidence acquisition under cost, sufficient supporting
+proof and citation applicability. Existing papers already cover synthetic audit
+engagements, evidence graphs and multi-agent tools, so those alone are not novel.
+The prototype is synthetic and has not been independently accountant-validated.
 
-Then run any approach without an API key:
-
-```bash
-python -m approaches.stage0_deterministic_gate.stage0_eval --n 50
-python -m approaches.citation_mcp_agent.demo
-python -m approaches.audit_patch_repair.run_finmr --n 40
-python -m approaches.full_pipeline.pipeline_eval
-```
-
-Approaches that call an LLM read `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` from the
-environment. See [docs/setup/SETUP_FREE_MODELS.md](docs/setup/SETUP_FREE_MODELS.md)
-for running against free local models instead.
-
----
-
-## Documentation
-
-Start with [docs/README.md](docs/README.md) for the full index. The most useful
-entry points:
-
-- **Understand the idea** — [docs/architecture/ARCHITECTURE_OVERVIEW.md](docs/architecture/ARCHITECTURE_OVERVIEW.md), the six-stage architecture and which parts are settled versus still moving
-- **Presentation** — [docs/presentations/PRESENTATION.md](docs/presentations/PRESENTATION.md), the full beginner-friendly walkthrough
-- **Related work** — [docs/research/RESEARCH_ANALYSIS.md](docs/research/RESEARCH_ANALYSIS.md), comparison against AuditBench, FinAuditing and AuditFlow
-- **Results** — [docs/results/](docs/results/)
-
----
-
-## Datasets
-
-**AuditBench** (in-repo, `Error_insertion/` + `Raw_table_data/`) — synthetic errors
-injected into real company statements. Ground truth is perfect by construction but
-the errors are synthetic.
-
-**FinMR** (downloaded, `data/finmr/`) — 332 real SEC XBRL filings with violations
-labeled by official DQC rules. Ground truth is a reported value and a calculated
-value per violation, which is what makes root-cause scoring exact.
-
-The two cover each other's weakness. See
-[docs/research/FINMR_AUCKLAND_ANALYSIS.md](docs/research/FINMR_AUCKLAND_ANALYSIS.md).
-
-Large data blobs are gitignored; re-fetch with:
-
-```bash
-python -m approaches.finmr_benchmark.download_finmr
-```
-
----
-
-## Papers this builds on
-
-- **AuditBench** — [arXiv:2506.17282](https://arxiv.org/abs/2506.17282), the benchmark we improve on
-- **FinAuditing / FinMR** — [arXiv:2510.08886](https://arxiv.org/abs/2510.08886), the real-filing dataset with rule-based labels
-- **AuditFlow** — [arXiv:2606.03031](https://arxiv.org/abs/2606.03031), source of the separate-search-from-verification principle
+Read `research/RELEASE_POLICY.md` and `research/DECEMBER_PLAN.md`. New research software is MIT-licensed with the scope in `research/LICENSING.md`.
+Source repositories had no declared licenses at inspection. Resolve inherited code/data licensing
+and standards-text rights before describing this as an openly licensed release.
+December is a target for validated artifacts and a submission-ready preprint;
+conference acceptance is external to this project.

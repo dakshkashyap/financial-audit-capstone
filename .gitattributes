@@ -1,0 +1,9 @@
+# Derived traces remain public and reproducible; keep source review readable.
+research/artifacts/** linguist-generated=true
+research/results/*.json linguist-generated=true
+research/results/comparison.html linguist-generated=true
+research/results/comparison.png linguist-generated=true
+research/results/comparison_table.md linguist-generated=true
+research/dashboard/dist/** linguist-generated=true
+research/dashboard/preview.png linguist-generated=true
+research/slides.html linguist-generated=true

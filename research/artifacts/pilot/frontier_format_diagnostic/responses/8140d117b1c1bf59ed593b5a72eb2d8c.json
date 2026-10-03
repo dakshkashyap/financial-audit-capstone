@@ -1,0 +1,21 @@
+{
+  "call_id": "8140d117b1c1bf59ed593b5a72eb2d8c",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":null,\"evidence\":[{\"quote\":\"revenue recognised on satisfied performance obligations: +441,256 (increase); returns and allowances: −69,634 (decrease)\",\"row\":0,\"source\":\"transactions\"},{\"quote\":\"of which recorded as contract liabilities (deferred revenue) 13,640\",\"row\":null,\"source\":\"transactions\"},{\"quote\":\"Operating income (loss) | $32,358\",\"row\":4,\"source\":\"statement\"},{\"quote\":\"Net income (loss) | $22,381\",\"row\":9,\"source\":\"statement\"}],\"judgement\":\"correct\",\"reason\":\"Every line backed by transaction evidence equals the sum of its components, and the subtotals and net income foot. The deferred revenue of 13,640 was fully recorded as contract liabilities, so it was correctly kept out of revenue. SG&A has no transaction support, but the operating income subtotal is consistent with it. No error was identified.\",\"row\":null}",
+  "reserved_usd": "0.047840",
+  "request_sha256": "88174a139c882d4917c2fa2854f7d33abdab5ff191f918cecb1e43ed1e4c4d40",
+  "prompt_sha256": "5b3a4ca3b13f7bf8ad288682404ce3dfd2c7ef8a70292659b2711a1e215ec796",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002373-czMFTn9ggtJs3NyNmlpu",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 2102,
+    "completion_tokens": 563,
+    "total_tokens": 2665,
+    "cost": 0.019668
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 7.389
+}

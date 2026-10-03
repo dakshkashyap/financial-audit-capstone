@@ -1,0 +1,20 @@
+{
+  "call_id": "9a022e63a664e3b1e2d04da73bfda4ca",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "extract",
+  "prompt_sha256": "7380a0108675bca588cef03d2c46e37d9aede94f39aefdcf4c9beedbc758edb0",
+  "reserved_usd": "0.0006649",
+  "status": "ok",
+  "content": "{\"evidence\":[{\"source\":\"statement_text\",\"quote\":\"Revenue | $3,962\",\"row\":0},{\"source\":\"transaction_data\",\"quote\":\"revenue recognised on satisfied performance obligations: +4,119 (increase)\",\"row\":null},{\"source\":\"transaction_data\",\"quote\":\"returns and allowances: −157 (decrease)\",\"row\":null},{\"source\":\"supporting facts\",\"quote\":\"consideration billed or received during the period for performance obligations not yet satisfied at period-end 98; of which recorded as contract liabilities (deferred revenue) 98.\",\"row\":null}],\"observations\":[\"Revenue recognized from satisfied performance obligations is $4,119 million.\",\"Returns and allowances reduced revenue by $157 million.\",\"$98 million of consideration was received but not yet recognized due to unsatisfied performance obligations.\",\"Reported revenue is $3,962 million, below the amount recognized from satisfied obligations.\"],\"possible_faults\":[\"Unrecognized revenue of $98 million may be improperly deferred or not properly disclosed.\",\"Revenue recognition may be understated if performance obligations were satisfied but not recorded.\",\"$157 million in returns and allowances may not be fully reflected in the reported revenue.\",\"Discrepancy between recognized revenue ($4,119M) and reported revenue ($3,962M) suggests possible misclassification or timing error.\"],\"uncertainty\":\"The $157M in returns and allowances may not be fully accounted for in the reported revenue. The $98M deferred revenue may not be properly disclosed or recognized in the correct period.\"}",
+  "response_id": "gen-1791001888-W0f5MUDaqF7nwl0Ee7aM",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 760,
+    "completion_tokens": 328,
+    "total_tokens": 1088,
+    "cost": 9.99144e-05
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 1.832
+}

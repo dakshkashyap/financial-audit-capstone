@@ -1,0 +1,21 @@
+{
+  "call_id": "00e0a5a38224b2676c7eedd4f9f279b7",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":null,\"evidence\":[{\"quote\":\"[row 5]: Operating income (loss) | ($335)\",\"row\":5,\"source\":\"statement\"},{\"quote\":\"[row 10]: Net income (loss) | ($331)\",\"row\":10,\"source\":\"statement\"},{\"quote\":\"research and development spend: −38 (decrease); grant / capitalisation credit: +5 (increase)\",\"row\":null,\"source\":\"transactions\"},{\"quote\":\"total costs incurred 40; charged to expense 33; deferred as capitalized development costs 7\",\"row\":null,\"source\":\"transactions\"}],\"judgement\":\"correct\",\"reason\":\"The subtotals foot: 343−426−33−220+1 = −335; −335+8 = −327; −327+0−4 = −331. Each row's transaction components net to the reported amount (e.g. R&D −38+5 = −33). The revenue contract-liability fact is consistent. The R&D capitalization fact (7 deferred) is the one possible concern, but the evidence does not clearly show it is improper, so no error is asserted.\",\"row\":null}",
+  "reserved_usd": "0.048092",
+  "request_sha256": "6029c1b520322a9e90d44dfcef9d9503a4a62fe26aa447053215ab5d68f7e6a8",
+  "prompt_sha256": "4f3a1a9cf7f9138061d32c251d63b7be962ca31a36e0a1ac549db06e4a57ecc0",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002316-71uFFd8nOS0BjT0poEjb",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 2115,
+    "completion_tokens": 913,
+    "total_tokens": 3028,
+    "cost": 0.02672
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 11.952
+}

@@ -1,0 +1,20 @@
+{
+  "call_id": "c173908e0efee806d2821d8c69ad1825",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "decision",
+  "prompt_sha256": "69ef1e1b7e2e6c16b52dca4ea0db82cf4dd95241cc03c2aa772e8be494283d7c",
+  "reserved_usd": "0.0011301",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Numerical Error\",\n  \"row\": 36,\n  \"citation\": \"ASC 505-10-45-1\",\n  \"citation_abstain\": false,\n  \"evidence\": [\n    {\n      \"source\": \"statement\",\n      \"quote\": \"Stockholders equity before treasury stock | $13,530\",\n      \"row\": 36\n    },\n    {\n      \"source\": \"transactions\",\n      \"quote\": \"[Retained earnings] other credits posted to the account: +1,292 (increase); other charges posted to the account: −1,076 (decrease)\",\n      \"row\": null\n    },\n    {\n      \"source\": \"transactions\",\n      \"quote\": \"[Common stock] other credits posted to the account: +566 (increase); other charges posted to the account: −117 (decrease)\",\n      \"row\": null\n    },\n    {\n      \"source\": \"transactions\",\n      \"quote\": \"[Additional paid in capital common stock] other credits posted to the account: +5,931 (increase); other charges posted to the account: −1,201 (decrease)\",\n      \"row\": null\n    }\n  ],\n  \"reason\": \"The reported 'Stockholders equity before treasury stock' of $13,530 is incorrect. Summing the net changes: Retained earnings ($1,292 - $1,076 = $216), Common stock ($566 - $117 = $449), and APIC ($5,931 - $1,201 = $4,730) gives $5,395. Adding to beginning equity components yields a total inconsistent with $13,530. ASC 505-10-45-1 governs equity presentation and requires accurate aggregation of equity components.\"\n}",
+  "response_id": "gen-1791001843-VLuqFqEH0PnhlOvCKVuv",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 2075,
+    "completion_tokens": 425,
+    "total_tokens": 2500,
+    "cost": 0.0001819575
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 4.567
+}

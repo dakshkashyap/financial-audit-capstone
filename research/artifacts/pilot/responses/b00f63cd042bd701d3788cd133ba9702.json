@@ -1,0 +1,19 @@
+{
+  "call_id": "b00f63cd042bd701d3788cd133ba9702",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "090b4c1e891e9545348ff48279fe1f99c8d0f3fe2ed704e962876599b92c8875",
+  "reserved_usd": "0.037380",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"incorrect\",\"error_type\":\"Numerical Error\",\"row\":0,\"citation\":\"ASC 606-10-25-23\",\"citation_abstain\":false,\"evidence\":[{\"source\":\"statement\",\"quote\":\"[row 0]: Revenue | $47,090\",\"row\":0},{\"source\":\"transactions\",\"quote\":\"consideration billed or received during the period for performance obligations not yet satisfied at period-end 4,853; of which recorded as contract liabilities (deferred revenue) 838\",\"row\":null},{\"source\":\"transactions\",\"quote\":\"revenue recognised on satisfied performance obligations: +57,721 (increase); returns and allowances: −10,631 (decrease)\",\"row\":null}]}\n```\n\n**Reason:** All rows foot to the supplied components. However, the cut-off review shows 4,853 was billed or received for obligations not yet satisfied, and only 838 was deferred. That leaves 4,015 recognised before the performance obligations were satisfied, which ASC 606-10-25-23 does not allow. Revenue therefore appears overstated, likely by 4,015, so it should be about 43,075. The subtotals below revenue carry the same overstatement.",
+  "response_id": "gen-1791001397-Xv1CJ94oGNCKzoxawG53",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 1427,
+    "completion_tokens": 736,
+    "total_tokens": 2163,
+    "cost": 0.020428
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 8.292
+}

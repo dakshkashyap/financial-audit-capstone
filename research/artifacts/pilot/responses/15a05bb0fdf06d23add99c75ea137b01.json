@@ -1,0 +1,19 @@
+{
+  "call_id": "15a05bb0fdf06d23add99c75ea137b01",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "99fdbd50b7b2fec6c29f73a14c3e1d256df87e4a9feb8ca4721a4e97c46f8342",
+  "reserved_usd": "0.042612",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"incorrect\",\"error_type\":\"Missing Row\",\"row\":1,\"citation\":null,\"citation_abstain\":true,\"evidence\":[{\"source\":\"transactions\",\"quote\":\"[Cash and cash equivalents] cash collected from customers: +3,784 (increase); operating cash disbursements: −127 (decrease)\",\"row\":null},{\"source\":\"statement\",\"quote\":\"Total current assets | $9,303\",\"row\":6},{\"source\":\"statement\",\"quote\":\"Accounts receivable, net | $892\",\"row\":1}],\"reason\":\"The transactions support cash of 3,657 (3,784 − 127), but the statement has no cash row. The listed current assets total 5,646, which is exactly 3,657 short of the 9,303 total. Cash would normally be the first current asset, so it belongs at row 1. All other totals foot, and the PP&E impairment test (undiscounted flows exceed carrying amount) is consistent. This is an omission, not a standards violation, so no citation is given.\"}\n```",
+  "response_id": "gen-1791001184-7dzPiXXhl5MkEqpm2kxE",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 2013,
+    "completion_tokens": 582,
+    "total_tokens": 2595,
+    "cost": 0.019692
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 6.833
+}

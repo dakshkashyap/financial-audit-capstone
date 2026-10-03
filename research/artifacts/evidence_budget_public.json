@@ -1,0 +1,3402 @@
+{
+  "cases": [
+    {
+      "allowed_conclusions": [
+        "insufficient_evidence",
+        "recognition_issue",
+        "supported_recognition",
+        "suspicious"
+      ],
+      "case_id": "case_e3a29b9f29b12e39",
+      "catalog": [
+        {
+          "cost": 2,
+          "document_id": "doc_7e69ee085d4f87f6",
+          "document_type": "shipment_receipt",
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_dbe60e0d395273f4",
+          "document_type": "payroll",
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_c126b14075a32e89",
+          "document_type": "cash",
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_e1bbe4cce2182902",
+          "document_type": "invoice_contract",
+          "title": "Invoice and contract packet"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_d7c120269d49f0fa",
+          "document_type": "depreciation",
+          "title": "Depreciation schedule"
+        }
+      ],
+      "company_alias": "Company_523b7e055b07056d",
+      "documents": [
+        {
+          "cost": 2,
+          "document_id": "doc_7e69ee085d4f87f6",
+          "document_type": "shipment_receipt",
+          "facts": [
+            {
+              "fact_id": "fact_6f8c33ebeb7bb16d",
+              "fields": {
+                "customer": "Customer_523b7e055b07056d",
+                "logistics_ref": "LOG_523b7e055b07056d",
+                "receipt_id": "RCPT_aae8e42f380dcfe8"
+              },
+              "kind": "shipment",
+              "text": "Shipment reconciliation LOG_523b7e055b07056d links customer Customer_523b7e055b07056d to event register RCPT_aae8e42f380dcfe8."
+            },
+            {
+              "fact_id": "fact_26f0db9ed4adc9a8",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_523b7e055b07056d",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2025-12-30",
+                "receipt_id": "RCPT_aae8e42f380dcfe8"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_aae8e42f380dcfe8: dispatch 2025-12-30; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_88c837d53f38dbcc",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_523b7e055b07056d",
+                "customer_acceptance": "2025-12-30",
+                "dispatch": "2025-12-28",
+                "receipt_id": "RCPT_c37c6c8f9e3fd952"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_c37c6c8f9e3fd952: dispatch 2025-12-28; customer acceptance 2025-12-30; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_c3ff89a2a3345acb",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_523b7e055b07056d",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2026-01-02",
+                "receipt_id": "RCPT_a15548d3b03bf28f"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_a15548d3b03bf28f: dispatch 2026-01-02; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            }
+          ],
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_dbe60e0d395273f4",
+          "document_type": "payroll",
+          "facts": [
+            {
+              "fact_id": "fact_dbe60e0d395273f4",
+              "fields": {
+                "amount": 105000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "payroll",
+              "text": "Routine payroll entry, USD 105,000, reviewed at year-end."
+            }
+          ],
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_c126b14075a32e89",
+          "document_type": "cash",
+          "facts": [
+            {
+              "fact_id": "fact_c126b14075a32e89",
+              "fields": {
+                "amount": 105000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "cash",
+              "text": "Routine cash entry, USD 105,000, reviewed at year-end."
+            }
+          ],
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_e1bbe4cce2182902",
+          "document_type": "invoice_contract",
+          "facts": [
+            {
+              "fact_id": "fact_8a3b359b71bdfc48",
+              "fields": {
+                "amount": 105000,
+                "contract_id": "CTR_523b7e055b07056d",
+                "customer": "Customer_523b7e055b07056d",
+                "invoice_id": "INV_523b7e055b07056d",
+                "logistics_ref": "LOG_523b7e055b07056d"
+              },
+              "kind": "invoice",
+              "text": "Invoice INV_523b7e055b07056d names contract CTR_523b7e055b07056d, shipment reference LOG_523b7e055b07056d, customer Customer_523b7e055b07056d, and amount USD 105,000."
+            },
+            {
+              "fact_id": "fact_56334aa564465126",
+              "fields": {
+                "contract_id": "CTR_523b7e055b07056d",
+                "customer": "Customer_523b7e055b07056d",
+                "transfer_basis": "dispatch"
+              },
+              "kind": "contract",
+              "text": "The synthetic experimental contract CTR_523b7e055b07056d transfers control on dispatch; other events are not its transfer trigger."
+            }
+          ],
+          "title": "Invoice and contract packet"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_d7c120269d49f0fa",
+          "document_type": "depreciation",
+          "facts": [
+            {
+              "fact_id": "fact_d7c120269d49f0fa",
+              "fields": {
+                "amount": 105000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "depreciation",
+              "text": "Routine depreciation entry, USD 105,000, reviewed at year-end."
+            }
+          ],
+          "title": "Depreciation schedule"
+        }
+      ],
+      "initial_facts": [
+        {
+          "fact_id": "fact_0d524ad21f5951d2",
+          "fields": {
+            "credit": 105000,
+            "credit_account": "Revenue",
+            "currency": "USD",
+            "customer": "Customer_523b7e055b07056d",
+            "debit": 105000,
+            "debit_account": "Accounts receivable",
+            "invoice_id": "INV_523b7e055b07056d",
+            "period_end": "2025-12-31",
+            "recognition_date": "2025-12-31"
+          },
+          "kind": "journal",
+          "text": "At year-end, debit accounts receivable and credit revenue USD 105,000 for INV_523b7e055b07056d. The entry balances. The customer is new in Q4; receivables grew and collection occurs after year-end."
+        }
+      ],
+      "status": "synthetic_unvalidated",
+      "task": "Assess this recorded year-end revenue entry under the stated synthetic contract: control passes on its specified event. The invoice, contract, and linked delivery record must all refer to this entry. This simplification is not ASC/IFRS gold and does not establish fraud or intent. Cite acquired fact IDs and the provenance links supporting your conclusion.",
+      "version": "synthetic-evidence-budget-v0.1"
+    },
+    {
+      "allowed_conclusions": [
+        "insufficient_evidence",
+        "recognition_issue",
+        "supported_recognition",
+        "suspicious"
+      ],
+      "case_id": "case_080f0f82a8d7a8a1",
+      "catalog": [
+        {
+          "cost": 1,
+          "document_id": "doc_4eb76a6e9136ffd3",
+          "document_type": "invoice",
+          "title": "Invoice register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_f7cb3576998d6224",
+          "document_type": "contract",
+          "title": "Contract extract"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_8022dd4795832183",
+          "document_type": "depreciation",
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_04ba52fe2ca16e4c",
+          "document_type": "payroll",
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_c633a9dc9f57ad87",
+          "document_type": "shipment_receipt",
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_bdeaadc8b5002cdf",
+          "document_type": "cash",
+          "title": "Office expenditure register"
+        }
+      ],
+      "company_alias": "Company_22a206777322b34a",
+      "documents": [
+        {
+          "cost": 1,
+          "document_id": "doc_4eb76a6e9136ffd3",
+          "document_type": "invoice",
+          "facts": [
+            {
+              "fact_id": "fact_4eb76a6e9136ffd3",
+              "fields": {
+                "amount": 136000,
+                "contract_id": "CTR_22a206777322b34a",
+                "customer": "Customer_22a206777322b34a",
+                "invoice_id": "INV_22a206777322b34a",
+                "logistics_ref": "LOG_22a206777322b34a"
+              },
+              "kind": "invoice",
+              "text": "Invoice INV_22a206777322b34a names contract CTR_22a206777322b34a, shipment reference LOG_22a206777322b34a, customer Customer_22a206777322b34a, and amount USD 136,000."
+            }
+          ],
+          "title": "Invoice register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_f7cb3576998d6224",
+          "document_type": "contract",
+          "facts": [
+            {
+              "fact_id": "fact_f7cb3576998d6224",
+              "fields": {
+                "contract_id": "CTR_22a206777322b34a",
+                "customer": "Customer_22a206777322b34a",
+                "transfer_basis": "dispatch"
+              },
+              "kind": "contract",
+              "text": "The synthetic experimental contract CTR_22a206777322b34a transfers control on dispatch; other events are not its transfer trigger."
+            }
+          ],
+          "title": "Contract extract"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_8022dd4795832183",
+          "document_type": "depreciation",
+          "facts": [
+            {
+              "fact_id": "fact_8022dd4795832183",
+              "fields": {
+                "amount": 136000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "depreciation",
+              "text": "Routine depreciation entry, USD 136,000, reviewed at year-end."
+            }
+          ],
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_04ba52fe2ca16e4c",
+          "document_type": "payroll",
+          "facts": [
+            {
+              "fact_id": "fact_04ba52fe2ca16e4c",
+              "fields": {
+                "amount": 136000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "payroll",
+              "text": "Routine payroll entry, USD 136,000, reviewed at year-end."
+            }
+          ],
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_c633a9dc9f57ad87",
+          "document_type": "shipment_receipt",
+          "facts": [
+            {
+              "fact_id": "fact_549d675e3ae0689d",
+              "fields": {
+                "customer": "Customer_22a206777322b34a",
+                "logistics_ref": "LOG_22a206777322b34a",
+                "receipt_id": "RCPT_8559db4056bb9f32"
+              },
+              "kind": "shipment",
+              "text": "Shipment reconciliation LOG_22a206777322b34a links customer Customer_22a206777322b34a to event register RCPT_8559db4056bb9f32."
+            },
+            {
+              "fact_id": "fact_67e81698a639d2be",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_22a206777322b34a",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2026-01-02",
+                "receipt_id": "RCPT_8559db4056bb9f32"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_8559db4056bb9f32: dispatch 2026-01-02; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_a811175752491de4",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_22a206777322b34a",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2025-12-30",
+                "receipt_id": "RCPT_60bc563e6b448662"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_60bc563e6b448662: dispatch 2025-12-30; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_fcdd555cecdc4966",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_22a206777322b34a",
+                "customer_acceptance": "2025-12-30",
+                "dispatch": "2025-12-28",
+                "receipt_id": "RCPT_19689c008dce8326"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_19689c008dce8326: dispatch 2025-12-28; customer acceptance 2025-12-30; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            }
+          ],
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_bdeaadc8b5002cdf",
+          "document_type": "cash",
+          "facts": [
+            {
+              "fact_id": "fact_bdeaadc8b5002cdf",
+              "fields": {
+                "amount": 136000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "cash",
+              "text": "Routine cash entry, USD 136,000, reviewed at year-end."
+            }
+          ],
+          "title": "Office expenditure register"
+        }
+      ],
+      "initial_facts": [
+        {
+          "fact_id": "fact_61583f1b65e25637",
+          "fields": {
+            "credit": 136000,
+            "credit_account": "Revenue",
+            "currency": "USD",
+            "customer": "Customer_22a206777322b34a",
+            "debit": 136000,
+            "debit_account": "Accounts receivable",
+            "invoice_id": "INV_22a206777322b34a",
+            "period_end": "2025-12-31",
+            "recognition_date": "2025-12-31"
+          },
+          "kind": "journal",
+          "text": "At year-end, debit accounts receivable and credit revenue USD 136,000 for INV_22a206777322b34a. The entry balances. The customer is new in Q4; receivables grew and collection occurs after year-end."
+        }
+      ],
+      "status": "synthetic_unvalidated",
+      "task": "Assess this recorded year-end revenue entry under the stated synthetic contract: control passes on its specified event. The invoice, contract, and linked delivery record must all refer to this entry. This simplification is not ASC/IFRS gold and does not establish fraud or intent. Cite acquired fact IDs and the provenance links supporting your conclusion.",
+      "version": "synthetic-evidence-budget-v0.1"
+    },
+    {
+      "allowed_conclusions": [
+        "insufficient_evidence",
+        "recognition_issue",
+        "supported_recognition",
+        "suspicious"
+      ],
+      "case_id": "case_34c59d34427b82c8",
+      "catalog": [
+        {
+          "cost": 1,
+          "document_id": "doc_8f73df250799ca6c",
+          "document_type": "cash",
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_a543fdc3ae8cb789",
+          "document_type": "payroll",
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_e62859a633f6e54d",
+          "document_type": "shipment_receipt",
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_64171e6be9dbcb56",
+          "document_type": "depreciation",
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_ed23c3b976a2489e",
+          "document_type": "invoice_contract",
+          "title": "Invoice and contract packet"
+        }
+      ],
+      "company_alias": "Company_217012dcbe33ec48",
+      "documents": [
+        {
+          "cost": 1,
+          "document_id": "doc_8f73df250799ca6c",
+          "document_type": "cash",
+          "facts": [
+            {
+              "fact_id": "fact_8f73df250799ca6c",
+              "fields": {
+                "amount": 170000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "cash",
+              "text": "Routine cash entry, USD 170,000, reviewed at year-end."
+            }
+          ],
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_a543fdc3ae8cb789",
+          "document_type": "payroll",
+          "facts": [
+            {
+              "fact_id": "fact_a543fdc3ae8cb789",
+              "fields": {
+                "amount": 170000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "payroll",
+              "text": "Routine payroll entry, USD 170,000, reviewed at year-end."
+            }
+          ],
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_e62859a633f6e54d",
+          "document_type": "shipment_receipt",
+          "facts": [
+            {
+              "fact_id": "fact_ce8266ba308b7806",
+              "fields": {
+                "customer": "Customer_217012dcbe33ec48",
+                "logistics_ref": "LOG_217012dcbe33ec48",
+                "receipt_id": "RCPT_513582990944d5f2"
+              },
+              "kind": "shipment",
+              "text": "Shipment reconciliation LOG_217012dcbe33ec48 links customer Customer_217012dcbe33ec48 to event register RCPT_513582990944d5f2."
+            },
+            {
+              "fact_id": "fact_13ea6ba6d13fd615",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_217012dcbe33ec48",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2026-01-02",
+                "receipt_id": "RCPT_85540dbc28b327b7"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_85540dbc28b327b7: dispatch 2026-01-02; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_30b1e2a2f243958d",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_217012dcbe33ec48",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2025-12-30",
+                "receipt_id": "RCPT_d30d4415e1bc45c8"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_d30d4415e1bc45c8: dispatch 2025-12-30; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_d97f226c9248809e",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_217012dcbe33ec48",
+                "customer_acceptance": "2025-12-30",
+                "dispatch": "2025-12-28",
+                "receipt_id": "RCPT_513582990944d5f2"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_513582990944d5f2: dispatch 2025-12-28; customer acceptance 2025-12-30; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            }
+          ],
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_64171e6be9dbcb56",
+          "document_type": "depreciation",
+          "facts": [
+            {
+              "fact_id": "fact_64171e6be9dbcb56",
+              "fields": {
+                "amount": 170000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "depreciation",
+              "text": "Routine depreciation entry, USD 170,000, reviewed at year-end."
+            }
+          ],
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_ed23c3b976a2489e",
+          "document_type": "invoice_contract",
+          "facts": [
+            {
+              "fact_id": "fact_af37d5d88dc92537",
+              "fields": {
+                "amount": 170000,
+                "contract_id": "CTR_217012dcbe33ec48",
+                "customer": "Customer_217012dcbe33ec48",
+                "invoice_id": "INV_217012dcbe33ec48",
+                "logistics_ref": "LOG_217012dcbe33ec48"
+              },
+              "kind": "invoice",
+              "text": "Invoice INV_217012dcbe33ec48 names contract CTR_217012dcbe33ec48, shipment reference LOG_217012dcbe33ec48, customer Customer_217012dcbe33ec48, and amount USD 170,000."
+            },
+            {
+              "fact_id": "fact_2ba0b304a2407092",
+              "fields": {
+                "contract_id": "CTR_217012dcbe33ec48",
+                "customer": "Customer_217012dcbe33ec48",
+                "transfer_basis": "customer_acceptance"
+              },
+              "kind": "contract",
+              "text": "The synthetic experimental contract CTR_217012dcbe33ec48 transfers control on customer_acceptance; other events are not its transfer trigger."
+            }
+          ],
+          "title": "Invoice and contract packet"
+        }
+      ],
+      "initial_facts": [
+        {
+          "fact_id": "fact_cdc998a2d9f52b30",
+          "fields": {
+            "credit": 170000,
+            "credit_account": "Revenue",
+            "currency": "USD",
+            "customer": "Customer_217012dcbe33ec48",
+            "debit": 170000,
+            "debit_account": "Accounts receivable",
+            "invoice_id": "INV_217012dcbe33ec48",
+            "period_end": "2025-12-31",
+            "recognition_date": "2025-12-31"
+          },
+          "kind": "journal",
+          "text": "At year-end, debit accounts receivable and credit revenue USD 170,000 for INV_217012dcbe33ec48. The entry balances. The customer is new in Q4; receivables grew and collection occurs after year-end."
+        }
+      ],
+      "status": "synthetic_unvalidated",
+      "task": "Assess this recorded year-end revenue entry under the stated synthetic contract: control passes on its specified event. The invoice, contract, and linked delivery record must all refer to this entry. This simplification is not ASC/IFRS gold and does not establish fraud or intent. Cite acquired fact IDs and the provenance links supporting your conclusion.",
+      "version": "synthetic-evidence-budget-v0.1"
+    },
+    {
+      "allowed_conclusions": [
+        "insufficient_evidence",
+        "recognition_issue",
+        "supported_recognition",
+        "suspicious"
+      ],
+      "case_id": "case_f577209b4362322e",
+      "catalog": [
+        {
+          "cost": 1,
+          "document_id": "doc_8daee210c390f4f5",
+          "document_type": "payroll",
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_ae51f8435fe2198f",
+          "document_type": "shipment_receipt",
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_fb213f08b2af2b11",
+          "document_type": "cash",
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_d86bf869615ff421",
+          "document_type": "depreciation",
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_3beb38c31cc38b3e",
+          "document_type": "invoice_contract",
+          "title": "Invoice and contract packet"
+        }
+      ],
+      "company_alias": "Company_f2188e88328f7ae8",
+      "documents": [
+        {
+          "cost": 1,
+          "document_id": "doc_8daee210c390f4f5",
+          "document_type": "payroll",
+          "facts": [
+            {
+              "fact_id": "fact_8daee210c390f4f5",
+              "fields": {
+                "amount": 115000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "payroll",
+              "text": "Routine payroll entry, USD 115,000, reviewed at year-end."
+            }
+          ],
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_ae51f8435fe2198f",
+          "document_type": "shipment_receipt",
+          "facts": [
+            {
+              "fact_id": "fact_042dd1889843f094",
+              "fields": {
+                "customer": "Customer_f2188e88328f7ae8",
+                "logistics_ref": "LOG_f2188e88328f7ae8",
+                "receipt_id": "RCPT_9b3c5a211fd02f33"
+              },
+              "kind": "shipment",
+              "text": "Shipment reconciliation LOG_f2188e88328f7ae8 links customer Customer_f2188e88328f7ae8 to event register RCPT_9b3c5a211fd02f33."
+            },
+            {
+              "fact_id": "fact_58e876f602a3b1e0",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_f2188e88328f7ae8",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2025-12-30",
+                "receipt_id": "RCPT_9b3c5a211fd02f33"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_9b3c5a211fd02f33: dispatch 2025-12-30; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_7a5c9d303c871ed9",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_f2188e88328f7ae8",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2026-01-02",
+                "receipt_id": "RCPT_2332810d8cf3f04d"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_2332810d8cf3f04d: dispatch 2026-01-02; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_84730669cf9859f0",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_f2188e88328f7ae8",
+                "customer_acceptance": "2025-12-30",
+                "dispatch": "2025-12-28",
+                "receipt_id": "RCPT_5cc076e7cf750567"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_5cc076e7cf750567: dispatch 2025-12-28; customer acceptance 2025-12-30; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            }
+          ],
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_fb213f08b2af2b11",
+          "document_type": "cash",
+          "facts": [
+            {
+              "fact_id": "fact_fb213f08b2af2b11",
+              "fields": {
+                "amount": 115000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "cash",
+              "text": "Routine cash entry, USD 115,000, reviewed at year-end."
+            }
+          ],
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_d86bf869615ff421",
+          "document_type": "depreciation",
+          "facts": [
+            {
+              "fact_id": "fact_d86bf869615ff421",
+              "fields": {
+                "amount": 115000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "depreciation",
+              "text": "Routine depreciation entry, USD 115,000, reviewed at year-end."
+            }
+          ],
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_3beb38c31cc38b3e",
+          "document_type": "invoice_contract",
+          "facts": [
+            {
+              "fact_id": "fact_089c1d95338b6fb5",
+              "fields": {
+                "amount": 115000,
+                "contract_id": "CTR_f2188e88328f7ae8",
+                "customer": "Customer_f2188e88328f7ae8",
+                "invoice_id": "INV_f2188e88328f7ae8",
+                "logistics_ref": "LOG_f2188e88328f7ae8"
+              },
+              "kind": "invoice",
+              "text": "Invoice INV_f2188e88328f7ae8 names contract CTR_f2188e88328f7ae8, shipment reference LOG_f2188e88328f7ae8, customer Customer_f2188e88328f7ae8, and amount USD 115,000."
+            },
+            {
+              "fact_id": "fact_1ebb0768344340ad",
+              "fields": {
+                "contract_id": "CTR_f2188e88328f7ae8",
+                "customer": "Customer_f2188e88328f7ae8",
+                "transfer_basis": "customer_acceptance"
+              },
+              "kind": "contract",
+              "text": "The synthetic experimental contract CTR_f2188e88328f7ae8 transfers control on customer_acceptance; other events are not its transfer trigger."
+            }
+          ],
+          "title": "Invoice and contract packet"
+        }
+      ],
+      "initial_facts": [
+        {
+          "fact_id": "fact_eeeb937644a56a01",
+          "fields": {
+            "credit": 115000,
+            "credit_account": "Revenue",
+            "currency": "USD",
+            "customer": "Customer_f2188e88328f7ae8",
+            "debit": 115000,
+            "debit_account": "Accounts receivable",
+            "invoice_id": "INV_f2188e88328f7ae8",
+            "period_end": "2025-12-31",
+            "recognition_date": "2025-12-31"
+          },
+          "kind": "journal",
+          "text": "At year-end, debit accounts receivable and credit revenue USD 115,000 for INV_f2188e88328f7ae8. The entry balances. The customer is new in Q4; receivables grew and collection occurs after year-end."
+        }
+      ],
+      "status": "synthetic_unvalidated",
+      "task": "Assess this recorded year-end revenue entry under the stated synthetic contract: control passes on its specified event. The invoice, contract, and linked delivery record must all refer to this entry. This simplification is not ASC/IFRS gold and does not establish fraud or intent. Cite acquired fact IDs and the provenance links supporting your conclusion.",
+      "version": "synthetic-evidence-budget-v0.1"
+    },
+    {
+      "allowed_conclusions": [
+        "insufficient_evidence",
+        "recognition_issue",
+        "supported_recognition",
+        "suspicious"
+      ],
+      "case_id": "case_d7733f4d0aa3730b",
+      "catalog": [
+        {
+          "cost": 1,
+          "document_id": "doc_fd96ffc32dc39e7a",
+          "document_type": "depreciation",
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_f1be5f439616caf2",
+          "document_type": "shipment_receipt",
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_d0483661ce720ae8",
+          "document_type": "invoice_contract",
+          "title": "Invoice and contract packet"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_fd0f9d8dfe1142a7",
+          "document_type": "payroll",
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_9cee24bbe82d82b2",
+          "document_type": "cash",
+          "title": "Office expenditure register"
+        }
+      ],
+      "company_alias": "Company_217012dcbe33ec48",
+      "documents": [
+        {
+          "cost": 1,
+          "document_id": "doc_fd96ffc32dc39e7a",
+          "document_type": "depreciation",
+          "facts": [
+            {
+              "fact_id": "fact_fd96ffc32dc39e7a",
+              "fields": {
+                "amount": 170000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "depreciation",
+              "text": "Routine depreciation entry, USD 170,000, reviewed at year-end."
+            }
+          ],
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_f1be5f439616caf2",
+          "document_type": "shipment_receipt",
+          "facts": [
+            {
+              "fact_id": "fact_aa0a44fba188fc57",
+              "fields": {
+                "customer": "Customer_217012dcbe33ec48",
+                "logistics_ref": "LOG_217012dcbe33ec48",
+                "receipt_id": "RCPT_d30d4415e1bc45c8"
+              },
+              "kind": "shipment",
+              "text": "Shipment reconciliation LOG_217012dcbe33ec48 links customer Customer_217012dcbe33ec48 to event register RCPT_d30d4415e1bc45c8."
+            },
+            {
+              "fact_id": "fact_5bdb8f8535622bcd",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_217012dcbe33ec48",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2025-12-30",
+                "receipt_id": "RCPT_d30d4415e1bc45c8"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_d30d4415e1bc45c8: dispatch 2025-12-30; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_66f0770b52a487b0",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_217012dcbe33ec48",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2026-01-02",
+                "receipt_id": "RCPT_85540dbc28b327b7"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_85540dbc28b327b7: dispatch 2026-01-02; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_ac82730699fcfe0d",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_217012dcbe33ec48",
+                "customer_acceptance": "2025-12-30",
+                "dispatch": "2025-12-28",
+                "receipt_id": "RCPT_513582990944d5f2"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_513582990944d5f2: dispatch 2025-12-28; customer acceptance 2025-12-30; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            }
+          ],
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_d0483661ce720ae8",
+          "document_type": "invoice_contract",
+          "facts": [
+            {
+              "fact_id": "fact_f2174d45c7daeb9c",
+              "fields": {
+                "amount": 170000,
+                "contract_id": "CTR_217012dcbe33ec48",
+                "customer": "Customer_217012dcbe33ec48",
+                "invoice_id": "INV_217012dcbe33ec48",
+                "logistics_ref": "LOG_217012dcbe33ec48"
+              },
+              "kind": "invoice",
+              "text": "Invoice INV_217012dcbe33ec48 names contract CTR_217012dcbe33ec48, shipment reference LOG_217012dcbe33ec48, customer Customer_217012dcbe33ec48, and amount USD 170,000."
+            },
+            {
+              "fact_id": "fact_e48f90e94fe2fdc0",
+              "fields": {
+                "contract_id": "CTR_217012dcbe33ec48",
+                "customer": "Customer_217012dcbe33ec48",
+                "transfer_basis": "customer_acceptance"
+              },
+              "kind": "contract",
+              "text": "The synthetic experimental contract CTR_217012dcbe33ec48 transfers control on customer_acceptance; other events are not its transfer trigger."
+            }
+          ],
+          "title": "Invoice and contract packet"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_fd0f9d8dfe1142a7",
+          "document_type": "payroll",
+          "facts": [
+            {
+              "fact_id": "fact_fd0f9d8dfe1142a7",
+              "fields": {
+                "amount": 170000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "payroll",
+              "text": "Routine payroll entry, USD 170,000, reviewed at year-end."
+            }
+          ],
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_9cee24bbe82d82b2",
+          "document_type": "cash",
+          "facts": [
+            {
+              "fact_id": "fact_9cee24bbe82d82b2",
+              "fields": {
+                "amount": 170000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "cash",
+              "text": "Routine cash entry, USD 170,000, reviewed at year-end."
+            }
+          ],
+          "title": "Office expenditure register"
+        }
+      ],
+      "initial_facts": [
+        {
+          "fact_id": "fact_fa2bfe8accdb7ab4",
+          "fields": {
+            "credit": 170000,
+            "credit_account": "Revenue",
+            "currency": "USD",
+            "customer": "Customer_217012dcbe33ec48",
+            "debit": 170000,
+            "debit_account": "Accounts receivable",
+            "invoice_id": "INV_217012dcbe33ec48",
+            "period_end": "2025-12-31",
+            "recognition_date": "2025-12-31"
+          },
+          "kind": "journal",
+          "text": "At year-end, debit accounts receivable and credit revenue USD 170,000 for INV_217012dcbe33ec48. The entry balances. The customer is new in Q4; receivables grew and collection occurs after year-end."
+        }
+      ],
+      "status": "synthetic_unvalidated",
+      "task": "Assess this recorded year-end revenue entry under the stated synthetic contract: control passes on its specified event. The invoice, contract, and linked delivery record must all refer to this entry. This simplification is not ASC/IFRS gold and does not establish fraud or intent. Cite acquired fact IDs and the provenance links supporting your conclusion.",
+      "version": "synthetic-evidence-budget-v0.1"
+    },
+    {
+      "allowed_conclusions": [
+        "insufficient_evidence",
+        "recognition_issue",
+        "supported_recognition",
+        "suspicious"
+      ],
+      "case_id": "case_1ae2e2a9cede9ce4",
+      "catalog": [
+        {
+          "cost": 2,
+          "document_id": "doc_2a9f8ce9727cd875",
+          "document_type": "shipment_receipt",
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_5408f4253fd6753d",
+          "document_type": "cash",
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_4326867115c7dbf5",
+          "document_type": "depreciation",
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_192e2ab1e18aedf0",
+          "document_type": "contract",
+          "title": "Contract extract"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_3659f9b7f7495d7b",
+          "document_type": "payroll",
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_77e033b758ac50d4",
+          "document_type": "invoice",
+          "title": "Invoice register"
+        }
+      ],
+      "company_alias": "Company_1fb0ddf71f7e1199",
+      "documents": [
+        {
+          "cost": 2,
+          "document_id": "doc_2a9f8ce9727cd875",
+          "document_type": "shipment_receipt",
+          "facts": [
+            {
+              "fact_id": "fact_8dee13bf2a89472a",
+              "fields": {
+                "customer": "Customer_1fb0ddf71f7e1199",
+                "logistics_ref": "LOG_1fb0ddf71f7e1199",
+                "receipt_id": "RCPT_5ccfaef6e59e8fd7"
+              },
+              "kind": "shipment",
+              "text": "Shipment reconciliation LOG_1fb0ddf71f7e1199 links customer Customer_1fb0ddf71f7e1199 to event register RCPT_5ccfaef6e59e8fd7."
+            },
+            {
+              "fact_id": "fact_09349a81159e7ce9",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_1fb0ddf71f7e1199",
+                "customer_acceptance": "2025-12-30",
+                "dispatch": "2025-12-28",
+                "receipt_id": "RCPT_a15a44ac7c5cd79b"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_a15a44ac7c5cd79b: dispatch 2025-12-28; customer acceptance 2025-12-30; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_6344a4ea8fc446e7",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_1fb0ddf71f7e1199",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2026-01-02",
+                "receipt_id": "RCPT_9830db442f17b24c"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_9830db442f17b24c: dispatch 2026-01-02; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_d796eb419ee81f26",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_1fb0ddf71f7e1199",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2025-12-30",
+                "receipt_id": "RCPT_5ccfaef6e59e8fd7"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_5ccfaef6e59e8fd7: dispatch 2025-12-30; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            }
+          ],
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_5408f4253fd6753d",
+          "document_type": "cash",
+          "facts": [
+            {
+              "fact_id": "fact_5408f4253fd6753d",
+              "fields": {
+                "amount": 169000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "cash",
+              "text": "Routine cash entry, USD 169,000, reviewed at year-end."
+            }
+          ],
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_4326867115c7dbf5",
+          "document_type": "depreciation",
+          "facts": [
+            {
+              "fact_id": "fact_4326867115c7dbf5",
+              "fields": {
+                "amount": 169000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "depreciation",
+              "text": "Routine depreciation entry, USD 169,000, reviewed at year-end."
+            }
+          ],
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_192e2ab1e18aedf0",
+          "document_type": "contract",
+          "facts": [
+            {
+              "fact_id": "fact_192e2ab1e18aedf0",
+              "fields": {
+                "contract_id": "CTR_1fb0ddf71f7e1199",
+                "customer": "Customer_1fb0ddf71f7e1199",
+                "transfer_basis": "customer_acceptance"
+              },
+              "kind": "contract",
+              "text": "The synthetic experimental contract CTR_1fb0ddf71f7e1199 transfers control on customer_acceptance; other events are not its transfer trigger."
+            }
+          ],
+          "title": "Contract extract"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_3659f9b7f7495d7b",
+          "document_type": "payroll",
+          "facts": [
+            {
+              "fact_id": "fact_3659f9b7f7495d7b",
+              "fields": {
+                "amount": 169000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "payroll",
+              "text": "Routine payroll entry, USD 169,000, reviewed at year-end."
+            }
+          ],
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_77e033b758ac50d4",
+          "document_type": "invoice",
+          "facts": [
+            {
+              "fact_id": "fact_77e033b758ac50d4",
+              "fields": {
+                "amount": 169000,
+                "contract_id": "CTR_1fb0ddf71f7e1199",
+                "customer": "Customer_1fb0ddf71f7e1199",
+                "invoice_id": "INV_1fb0ddf71f7e1199",
+                "logistics_ref": "LOG_1fb0ddf71f7e1199"
+              },
+              "kind": "invoice",
+              "text": "Invoice INV_1fb0ddf71f7e1199 names contract CTR_1fb0ddf71f7e1199, shipment reference LOG_1fb0ddf71f7e1199, customer Customer_1fb0ddf71f7e1199, and amount USD 169,000."
+            }
+          ],
+          "title": "Invoice register"
+        }
+      ],
+      "initial_facts": [
+        {
+          "fact_id": "fact_dd791a4a124e3c54",
+          "fields": {
+            "credit": 169000,
+            "credit_account": "Revenue",
+            "currency": "USD",
+            "customer": "Customer_1fb0ddf71f7e1199",
+            "debit": 169000,
+            "debit_account": "Accounts receivable",
+            "invoice_id": "INV_1fb0ddf71f7e1199",
+            "period_end": "2025-12-31",
+            "recognition_date": "2025-12-31"
+          },
+          "kind": "journal",
+          "text": "At year-end, debit accounts receivable and credit revenue USD 169,000 for INV_1fb0ddf71f7e1199. The entry balances. The customer is new in Q4; receivables grew and collection occurs after year-end."
+        }
+      ],
+      "status": "synthetic_unvalidated",
+      "task": "Assess this recorded year-end revenue entry under the stated synthetic contract: control passes on its specified event. The invoice, contract, and linked delivery record must all refer to this entry. This simplification is not ASC/IFRS gold and does not establish fraud or intent. Cite acquired fact IDs and the provenance links supporting your conclusion.",
+      "version": "synthetic-evidence-budget-v0.1"
+    },
+    {
+      "allowed_conclusions": [
+        "insufficient_evidence",
+        "recognition_issue",
+        "supported_recognition",
+        "suspicious"
+      ],
+      "case_id": "case_95fc1628c0854a16",
+      "catalog": [
+        {
+          "cost": 1,
+          "document_id": "doc_35cb49ae5ae9cf90",
+          "document_type": "invoice",
+          "title": "Invoice register"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_eff459198f92d9f6",
+          "document_type": "shipment_receipt",
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_eed89477c199829d",
+          "document_type": "cash",
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_8b04752968bb73de",
+          "document_type": "payroll",
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_0a6f853efdd7dd8a",
+          "document_type": "depreciation",
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_e7bd34ef599ade3a",
+          "document_type": "contract",
+          "title": "Contract extract"
+        }
+      ],
+      "company_alias": "Company_cde373202b1b9b3b",
+      "documents": [
+        {
+          "cost": 1,
+          "document_id": "doc_35cb49ae5ae9cf90",
+          "document_type": "invoice",
+          "facts": [
+            {
+              "fact_id": "fact_35cb49ae5ae9cf90",
+              "fields": {
+                "amount": 167000,
+                "contract_id": "CTR_cde373202b1b9b3b",
+                "customer": "Customer_cde373202b1b9b3b",
+                "invoice_id": "INV_cde373202b1b9b3b",
+                "logistics_ref": "LOG_cde373202b1b9b3b"
+              },
+              "kind": "invoice",
+              "text": "Invoice INV_cde373202b1b9b3b names contract CTR_cde373202b1b9b3b, shipment reference LOG_cde373202b1b9b3b, customer Customer_cde373202b1b9b3b, and amount USD 167,000."
+            }
+          ],
+          "title": "Invoice register"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_eff459198f92d9f6",
+          "document_type": "shipment_receipt",
+          "facts": [
+            {
+              "fact_id": "fact_fcf1b25ea9a2d8e2",
+              "fields": {
+                "customer": "Customer_cde373202b1b9b3b",
+                "logistics_ref": "LOG_cde373202b1b9b3b",
+                "receipt_id": "RCPT_8d86557c214aece8"
+              },
+              "kind": "shipment",
+              "text": "Shipment reconciliation LOG_cde373202b1b9b3b links customer Customer_cde373202b1b9b3b to event register RCPT_8d86557c214aece8."
+            },
+            {
+              "fact_id": "fact_1e62d61310bf94e4",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_cde373202b1b9b3b",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2025-12-30",
+                "receipt_id": "RCPT_8d86557c214aece8"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_8d86557c214aece8: dispatch 2025-12-30; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_4480691056174b40",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_cde373202b1b9b3b",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2026-01-02",
+                "receipt_id": "RCPT_1b57d3c78ba22f63"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_1b57d3c78ba22f63: dispatch 2026-01-02; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_dc5426b80441e33e",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_cde373202b1b9b3b",
+                "customer_acceptance": "2025-12-30",
+                "dispatch": "2025-12-28",
+                "receipt_id": "RCPT_14137d3a360bdeca"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_14137d3a360bdeca: dispatch 2025-12-28; customer acceptance 2025-12-30; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            }
+          ],
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_eed89477c199829d",
+          "document_type": "cash",
+          "facts": [
+            {
+              "fact_id": "fact_eed89477c199829d",
+              "fields": {
+                "amount": 167000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "cash",
+              "text": "Routine cash entry, USD 167,000, reviewed at year-end."
+            }
+          ],
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_8b04752968bb73de",
+          "document_type": "payroll",
+          "facts": [
+            {
+              "fact_id": "fact_8b04752968bb73de",
+              "fields": {
+                "amount": 167000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "payroll",
+              "text": "Routine payroll entry, USD 167,000, reviewed at year-end."
+            }
+          ],
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_0a6f853efdd7dd8a",
+          "document_type": "depreciation",
+          "facts": [
+            {
+              "fact_id": "fact_0a6f853efdd7dd8a",
+              "fields": {
+                "amount": 167000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "depreciation",
+              "text": "Routine depreciation entry, USD 167,000, reviewed at year-end."
+            }
+          ],
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_e7bd34ef599ade3a",
+          "document_type": "contract",
+          "facts": [
+            {
+              "fact_id": "fact_e7bd34ef599ade3a",
+              "fields": {
+                "contract_id": "CTR_cde373202b1b9b3b",
+                "customer": "Customer_cde373202b1b9b3b",
+                "transfer_basis": "dispatch"
+              },
+              "kind": "contract",
+              "text": "The synthetic experimental contract CTR_cde373202b1b9b3b transfers control on dispatch; other events are not its transfer trigger."
+            }
+          ],
+          "title": "Contract extract"
+        }
+      ],
+      "initial_facts": [
+        {
+          "fact_id": "fact_78bc9eccaf2f5ad5",
+          "fields": {
+            "credit": 167000,
+            "credit_account": "Revenue",
+            "currency": "USD",
+            "customer": "Customer_cde373202b1b9b3b",
+            "debit": 167000,
+            "debit_account": "Accounts receivable",
+            "invoice_id": "INV_cde373202b1b9b3b",
+            "period_end": "2025-12-31",
+            "recognition_date": "2025-12-31"
+          },
+          "kind": "journal",
+          "text": "At year-end, debit accounts receivable and credit revenue USD 167,000 for INV_cde373202b1b9b3b. The entry balances. The customer is new in Q4; receivables grew and collection occurs after year-end."
+        }
+      ],
+      "status": "synthetic_unvalidated",
+      "task": "Assess this recorded year-end revenue entry under the stated synthetic contract: control passes on its specified event. The invoice, contract, and linked delivery record must all refer to this entry. This simplification is not ASC/IFRS gold and does not establish fraud or intent. Cite acquired fact IDs and the provenance links supporting your conclusion.",
+      "version": "synthetic-evidence-budget-v0.1"
+    },
+    {
+      "allowed_conclusions": [
+        "insufficient_evidence",
+        "recognition_issue",
+        "supported_recognition",
+        "suspicious"
+      ],
+      "case_id": "case_8efce5d2af831ac4",
+      "catalog": [
+        {
+          "cost": 1,
+          "document_id": "doc_ac43068f5319368d",
+          "document_type": "cash",
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_3acb2cd704e4e7bf",
+          "document_type": "invoice_contract",
+          "title": "Invoice and contract packet"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_de8306aa8e591bbe",
+          "document_type": "shipment_receipt",
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_85f4a2e0e855fbd2",
+          "document_type": "depreciation",
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_bb834ec7ab5b7060",
+          "document_type": "payroll",
+          "title": "Payroll reconciliation"
+        }
+      ],
+      "company_alias": "Company_523b7e055b07056d",
+      "documents": [
+        {
+          "cost": 1,
+          "document_id": "doc_ac43068f5319368d",
+          "document_type": "cash",
+          "facts": [
+            {
+              "fact_id": "fact_ac43068f5319368d",
+              "fields": {
+                "amount": 105000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "cash",
+              "text": "Routine cash entry, USD 105,000, reviewed at year-end."
+            }
+          ],
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_3acb2cd704e4e7bf",
+          "document_type": "invoice_contract",
+          "facts": [
+            {
+              "fact_id": "fact_f8c771b755d94750",
+              "fields": {
+                "amount": 105000,
+                "contract_id": "CTR_523b7e055b07056d",
+                "customer": "Customer_523b7e055b07056d",
+                "invoice_id": "INV_523b7e055b07056d",
+                "logistics_ref": "LOG_523b7e055b07056d"
+              },
+              "kind": "invoice",
+              "text": "Invoice INV_523b7e055b07056d names contract CTR_523b7e055b07056d, shipment reference LOG_523b7e055b07056d, customer Customer_523b7e055b07056d, and amount USD 105,000."
+            },
+            {
+              "fact_id": "fact_5fbedffb1a84eb65",
+              "fields": {
+                "contract_id": "CTR_523b7e055b07056d",
+                "customer": "Customer_523b7e055b07056d",
+                "transfer_basis": "dispatch"
+              },
+              "kind": "contract",
+              "text": "The synthetic experimental contract CTR_523b7e055b07056d transfers control on dispatch; other events are not its transfer trigger."
+            }
+          ],
+          "title": "Invoice and contract packet"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_de8306aa8e591bbe",
+          "document_type": "shipment_receipt",
+          "facts": [
+            {
+              "fact_id": "fact_ca59a86cb5a69f83",
+              "fields": {
+                "customer": "Customer_523b7e055b07056d",
+                "logistics_ref": "LOG_523b7e055b07056d",
+                "receipt_id": "RCPT_a15548d3b03bf28f"
+              },
+              "kind": "shipment",
+              "text": "Shipment reconciliation LOG_523b7e055b07056d links customer Customer_523b7e055b07056d to event register RCPT_a15548d3b03bf28f."
+            },
+            {
+              "fact_id": "fact_8e43976695b3d6ca",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_523b7e055b07056d",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2026-01-02",
+                "receipt_id": "RCPT_a15548d3b03bf28f"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_a15548d3b03bf28f: dispatch 2026-01-02; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_a3ef8ca5f6160f28",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_523b7e055b07056d",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2025-12-30",
+                "receipt_id": "RCPT_aae8e42f380dcfe8"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_aae8e42f380dcfe8: dispatch 2025-12-30; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_d4f093e2b2863763",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_523b7e055b07056d",
+                "customer_acceptance": "2025-12-30",
+                "dispatch": "2025-12-28",
+                "receipt_id": "RCPT_c37c6c8f9e3fd952"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_c37c6c8f9e3fd952: dispatch 2025-12-28; customer acceptance 2025-12-30; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            }
+          ],
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_85f4a2e0e855fbd2",
+          "document_type": "depreciation",
+          "facts": [
+            {
+              "fact_id": "fact_85f4a2e0e855fbd2",
+              "fields": {
+                "amount": 105000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "depreciation",
+              "text": "Routine depreciation entry, USD 105,000, reviewed at year-end."
+            }
+          ],
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_bb834ec7ab5b7060",
+          "document_type": "payroll",
+          "facts": [
+            {
+              "fact_id": "fact_bb834ec7ab5b7060",
+              "fields": {
+                "amount": 105000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "payroll",
+              "text": "Routine payroll entry, USD 105,000, reviewed at year-end."
+            }
+          ],
+          "title": "Payroll reconciliation"
+        }
+      ],
+      "initial_facts": [
+        {
+          "fact_id": "fact_c3724517d455f73c",
+          "fields": {
+            "credit": 105000,
+            "credit_account": "Revenue",
+            "currency": "USD",
+            "customer": "Customer_523b7e055b07056d",
+            "debit": 105000,
+            "debit_account": "Accounts receivable",
+            "invoice_id": "INV_523b7e055b07056d",
+            "period_end": "2025-12-31",
+            "recognition_date": "2025-12-31"
+          },
+          "kind": "journal",
+          "text": "At year-end, debit accounts receivable and credit revenue USD 105,000 for INV_523b7e055b07056d. The entry balances. The customer is new in Q4; receivables grew and collection occurs after year-end."
+        }
+      ],
+      "status": "synthetic_unvalidated",
+      "task": "Assess this recorded year-end revenue entry under the stated synthetic contract: control passes on its specified event. The invoice, contract, and linked delivery record must all refer to this entry. This simplification is not ASC/IFRS gold and does not establish fraud or intent. Cite acquired fact IDs and the provenance links supporting your conclusion.",
+      "version": "synthetic-evidence-budget-v0.1"
+    },
+    {
+      "allowed_conclusions": [
+        "insufficient_evidence",
+        "recognition_issue",
+        "supported_recognition",
+        "suspicious"
+      ],
+      "case_id": "case_38547c166ee44d08",
+      "catalog": [
+        {
+          "cost": 1,
+          "document_id": "doc_51275bd4cca1106d",
+          "document_type": "payroll",
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_789eb0d6d9f97ab5",
+          "document_type": "depreciation",
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_40df54518bff9d95",
+          "document_type": "shipment",
+          "title": "Shipment reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_2f09e746b27d319c",
+          "document_type": "invoice",
+          "title": "Invoice register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_fb47155a7844c176",
+          "document_type": "cash",
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_b9162675fa6e0bba",
+          "document_type": "receipt",
+          "title": "Customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_6d2ea99da1be83d6",
+          "document_type": "contract",
+          "title": "Contract extract"
+        }
+      ],
+      "company_alias": "Company_845bada332522532",
+      "documents": [
+        {
+          "cost": 1,
+          "document_id": "doc_51275bd4cca1106d",
+          "document_type": "payroll",
+          "facts": [
+            {
+              "fact_id": "fact_51275bd4cca1106d",
+              "fields": {
+                "amount": 131000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "payroll",
+              "text": "Routine payroll entry, USD 131,000, reviewed at year-end."
+            }
+          ],
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_789eb0d6d9f97ab5",
+          "document_type": "depreciation",
+          "facts": [
+            {
+              "fact_id": "fact_789eb0d6d9f97ab5",
+              "fields": {
+                "amount": 131000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "depreciation",
+              "text": "Routine depreciation entry, USD 131,000, reviewed at year-end."
+            }
+          ],
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_40df54518bff9d95",
+          "document_type": "shipment",
+          "facts": [
+            {
+              "fact_id": "fact_40df54518bff9d95",
+              "fields": {
+                "customer": "Customer_845bada332522532",
+                "logistics_ref": "LOG_845bada332522532",
+                "receipt_id": "RCPT_9d427b9491db45c8"
+              },
+              "kind": "shipment",
+              "text": "Shipment reconciliation LOG_845bada332522532 links customer Customer_845bada332522532 to event register RCPT_9d427b9491db45c8."
+            }
+          ],
+          "title": "Shipment reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_2f09e746b27d319c",
+          "document_type": "invoice",
+          "facts": [
+            {
+              "fact_id": "fact_2f09e746b27d319c",
+              "fields": {
+                "amount": 131000,
+                "contract_id": "CTR_845bada332522532",
+                "customer": "Customer_845bada332522532",
+                "invoice_id": "INV_845bada332522532",
+                "logistics_ref": "LOG_845bada332522532"
+              },
+              "kind": "invoice",
+              "text": "Invoice INV_845bada332522532 names contract CTR_845bada332522532, shipment reference LOG_845bada332522532, customer Customer_845bada332522532, and amount USD 131,000."
+            }
+          ],
+          "title": "Invoice register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_fb47155a7844c176",
+          "document_type": "cash",
+          "facts": [
+            {
+              "fact_id": "fact_fb47155a7844c176",
+              "fields": {
+                "amount": 131000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "cash",
+              "text": "Routine cash entry, USD 131,000, reviewed at year-end."
+            }
+          ],
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_b9162675fa6e0bba",
+          "document_type": "receipt",
+          "facts": [
+            {
+              "fact_id": "fact_5d62e7e8b7c0007a",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_845bada332522532",
+                "customer_acceptance": "2025-12-30",
+                "dispatch": "2025-12-28",
+                "receipt_id": "RCPT_9d427b9491db45c8"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_9d427b9491db45c8: dispatch 2025-12-28; customer acceptance 2025-12-30; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_61f569fb50f23dce",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_845bada332522532",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2025-12-30",
+                "receipt_id": "RCPT_ef942263e38577ca"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_ef942263e38577ca: dispatch 2025-12-30; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_8d0a6be1788c4de8",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_845bada332522532",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2026-01-02",
+                "receipt_id": "RCPT_6036b7b530408e51"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_6036b7b530408e51: dispatch 2026-01-02; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            }
+          ],
+          "title": "Customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_6d2ea99da1be83d6",
+          "document_type": "contract",
+          "facts": [
+            {
+              "fact_id": "fact_6d2ea99da1be83d6",
+              "fields": {
+                "contract_id": "CTR_845bada332522532",
+                "customer": "Customer_845bada332522532",
+                "transfer_basis": "customer_acceptance"
+              },
+              "kind": "contract",
+              "text": "The synthetic experimental contract CTR_845bada332522532 transfers control on customer_acceptance; other events are not its transfer trigger."
+            }
+          ],
+          "title": "Contract extract"
+        }
+      ],
+      "initial_facts": [
+        {
+          "fact_id": "fact_be2b0972d5caa81e",
+          "fields": {
+            "credit": 131000,
+            "credit_account": "Revenue",
+            "currency": "USD",
+            "customer": "Customer_845bada332522532",
+            "debit": 131000,
+            "debit_account": "Accounts receivable",
+            "invoice_id": "INV_845bada332522532",
+            "period_end": "2025-12-31",
+            "recognition_date": "2025-12-31"
+          },
+          "kind": "journal",
+          "text": "At year-end, debit accounts receivable and credit revenue USD 131,000 for INV_845bada332522532. The entry balances. The customer is new in Q4; receivables grew and collection occurs after year-end."
+        }
+      ],
+      "status": "synthetic_unvalidated",
+      "task": "Assess this recorded year-end revenue entry under the stated synthetic contract: control passes on its specified event. The invoice, contract, and linked delivery record must all refer to this entry. This simplification is not ASC/IFRS gold and does not establish fraud or intent. Cite acquired fact IDs and the provenance links supporting your conclusion.",
+      "version": "synthetic-evidence-budget-v0.1"
+    },
+    {
+      "allowed_conclusions": [
+        "insufficient_evidence",
+        "recognition_issue",
+        "supported_recognition",
+        "suspicious"
+      ],
+      "case_id": "case_e756297848a11a32",
+      "catalog": [
+        {
+          "cost": 1,
+          "document_id": "doc_5f9f95e6bd8df7f4",
+          "document_type": "cash",
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_5058cb51042a4408",
+          "document_type": "depreciation",
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_1c53ac9fd321be81",
+          "document_type": "contract",
+          "title": "Contract extract"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_cc970a8d12ae7adb",
+          "document_type": "payroll",
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_5b2d1ea4a9cc102a",
+          "document_type": "invoice",
+          "title": "Invoice register"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_82b4cf7775b30861",
+          "document_type": "shipment_receipt",
+          "title": "Shipment and customer event register"
+        }
+      ],
+      "company_alias": "Company_1fb0ddf71f7e1199",
+      "documents": [
+        {
+          "cost": 1,
+          "document_id": "doc_5f9f95e6bd8df7f4",
+          "document_type": "cash",
+          "facts": [
+            {
+              "fact_id": "fact_5f9f95e6bd8df7f4",
+              "fields": {
+                "amount": 169000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "cash",
+              "text": "Routine cash entry, USD 169,000, reviewed at year-end."
+            }
+          ],
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_5058cb51042a4408",
+          "document_type": "depreciation",
+          "facts": [
+            {
+              "fact_id": "fact_5058cb51042a4408",
+              "fields": {
+                "amount": 169000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "depreciation",
+              "text": "Routine depreciation entry, USD 169,000, reviewed at year-end."
+            }
+          ],
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_1c53ac9fd321be81",
+          "document_type": "contract",
+          "facts": [
+            {
+              "fact_id": "fact_1c53ac9fd321be81",
+              "fields": {
+                "contract_id": "CTR_1fb0ddf71f7e1199",
+                "customer": "Customer_1fb0ddf71f7e1199",
+                "transfer_basis": "customer_acceptance"
+              },
+              "kind": "contract",
+              "text": "The synthetic experimental contract CTR_1fb0ddf71f7e1199 transfers control on customer_acceptance; other events are not its transfer trigger."
+            }
+          ],
+          "title": "Contract extract"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_cc970a8d12ae7adb",
+          "document_type": "payroll",
+          "facts": [
+            {
+              "fact_id": "fact_cc970a8d12ae7adb",
+              "fields": {
+                "amount": 169000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "payroll",
+              "text": "Routine payroll entry, USD 169,000, reviewed at year-end."
+            }
+          ],
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_5b2d1ea4a9cc102a",
+          "document_type": "invoice",
+          "facts": [
+            {
+              "fact_id": "fact_5b2d1ea4a9cc102a",
+              "fields": {
+                "amount": 169000,
+                "contract_id": "CTR_1fb0ddf71f7e1199",
+                "customer": "Customer_1fb0ddf71f7e1199",
+                "invoice_id": "INV_1fb0ddf71f7e1199",
+                "logistics_ref": "LOG_1fb0ddf71f7e1199"
+              },
+              "kind": "invoice",
+              "text": "Invoice INV_1fb0ddf71f7e1199 names contract CTR_1fb0ddf71f7e1199, shipment reference LOG_1fb0ddf71f7e1199, customer Customer_1fb0ddf71f7e1199, and amount USD 169,000."
+            }
+          ],
+          "title": "Invoice register"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_82b4cf7775b30861",
+          "document_type": "shipment_receipt",
+          "facts": [
+            {
+              "fact_id": "fact_1cf43be32bcc933a",
+              "fields": {
+                "customer": "Customer_1fb0ddf71f7e1199",
+                "logistics_ref": "LOG_1fb0ddf71f7e1199",
+                "receipt_id": "RCPT_a15a44ac7c5cd79b"
+              },
+              "kind": "shipment",
+              "text": "Shipment reconciliation LOG_1fb0ddf71f7e1199 links customer Customer_1fb0ddf71f7e1199 to event register RCPT_a15a44ac7c5cd79b."
+            },
+            {
+              "fact_id": "fact_6782f34a25091c07",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_1fb0ddf71f7e1199",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2025-12-30",
+                "receipt_id": "RCPT_5ccfaef6e59e8fd7"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_5ccfaef6e59e8fd7: dispatch 2025-12-30; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_87217152a3345beb",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_1fb0ddf71f7e1199",
+                "customer_acceptance": "2025-12-30",
+                "dispatch": "2025-12-28",
+                "receipt_id": "RCPT_a15a44ac7c5cd79b"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_a15a44ac7c5cd79b: dispatch 2025-12-28; customer acceptance 2025-12-30; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_a84b090229f16a11",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_1fb0ddf71f7e1199",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2026-01-02",
+                "receipt_id": "RCPT_9830db442f17b24c"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_9830db442f17b24c: dispatch 2026-01-02; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            }
+          ],
+          "title": "Shipment and customer event register"
+        }
+      ],
+      "initial_facts": [
+        {
+          "fact_id": "fact_67154d96025a9c4d",
+          "fields": {
+            "credit": 169000,
+            "credit_account": "Revenue",
+            "currency": "USD",
+            "customer": "Customer_1fb0ddf71f7e1199",
+            "debit": 169000,
+            "debit_account": "Accounts receivable",
+            "invoice_id": "INV_1fb0ddf71f7e1199",
+            "period_end": "2025-12-31",
+            "recognition_date": "2025-12-31"
+          },
+          "kind": "journal",
+          "text": "At year-end, debit accounts receivable and credit revenue USD 169,000 for INV_1fb0ddf71f7e1199. The entry balances. The customer is new in Q4; receivables grew and collection occurs after year-end."
+        }
+      ],
+      "status": "synthetic_unvalidated",
+      "task": "Assess this recorded year-end revenue entry under the stated synthetic contract: control passes on its specified event. The invoice, contract, and linked delivery record must all refer to this entry. This simplification is not ASC/IFRS gold and does not establish fraud or intent. Cite acquired fact IDs and the provenance links supporting your conclusion.",
+      "version": "synthetic-evidence-budget-v0.1"
+    },
+    {
+      "allowed_conclusions": [
+        "insufficient_evidence",
+        "recognition_issue",
+        "supported_recognition",
+        "suspicious"
+      ],
+      "case_id": "case_78d7cffe6e23a2e7",
+      "catalog": [
+        {
+          "cost": 1,
+          "document_id": "doc_3b9b0d880025a5de",
+          "document_type": "shipment",
+          "title": "Shipment reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_a8dfdb56a89bfbf5",
+          "document_type": "cash",
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_fb47c083bb823039",
+          "document_type": "contract",
+          "title": "Contract extract"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_05bfb1970808f820",
+          "document_type": "invoice",
+          "title": "Invoice register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_e8f32529de8c55f8",
+          "document_type": "depreciation",
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_da26e42bf4b96371",
+          "document_type": "receipt",
+          "title": "Customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_12722774e6c3ad23",
+          "document_type": "payroll",
+          "title": "Payroll reconciliation"
+        }
+      ],
+      "company_alias": "Company_cd4c22b02d8cf73d",
+      "documents": [
+        {
+          "cost": 1,
+          "document_id": "doc_3b9b0d880025a5de",
+          "document_type": "shipment",
+          "facts": [
+            {
+              "fact_id": "fact_3b9b0d880025a5de",
+              "fields": {
+                "customer": "Customer_cd4c22b02d8cf73d",
+                "logistics_ref": "LOG_cd4c22b02d8cf73d",
+                "receipt_id": "RCPT_4b22bc59ff68788e"
+              },
+              "kind": "shipment",
+              "text": "Shipment reconciliation LOG_cd4c22b02d8cf73d links customer Customer_cd4c22b02d8cf73d to event register RCPT_4b22bc59ff68788e."
+            }
+          ],
+          "title": "Shipment reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_a8dfdb56a89bfbf5",
+          "document_type": "cash",
+          "facts": [
+            {
+              "fact_id": "fact_a8dfdb56a89bfbf5",
+              "fields": {
+                "amount": 150000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "cash",
+              "text": "Routine cash entry, USD 150,000, reviewed at year-end."
+            }
+          ],
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_fb47c083bb823039",
+          "document_type": "contract",
+          "facts": [
+            {
+              "fact_id": "fact_fb47c083bb823039",
+              "fields": {
+                "contract_id": "CTR_cd4c22b02d8cf73d",
+                "customer": "Customer_cd4c22b02d8cf73d",
+                "transfer_basis": "dispatch"
+              },
+              "kind": "contract",
+              "text": "The synthetic experimental contract CTR_cd4c22b02d8cf73d transfers control on dispatch; other events are not its transfer trigger."
+            }
+          ],
+          "title": "Contract extract"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_05bfb1970808f820",
+          "document_type": "invoice",
+          "facts": [
+            {
+              "fact_id": "fact_05bfb1970808f820",
+              "fields": {
+                "amount": 150000,
+                "contract_id": "CTR_cd4c22b02d8cf73d",
+                "customer": "Customer_cd4c22b02d8cf73d",
+                "invoice_id": "INV_cd4c22b02d8cf73d",
+                "logistics_ref": "LOG_cd4c22b02d8cf73d"
+              },
+              "kind": "invoice",
+              "text": "Invoice INV_cd4c22b02d8cf73d names contract CTR_cd4c22b02d8cf73d, shipment reference LOG_cd4c22b02d8cf73d, customer Customer_cd4c22b02d8cf73d, and amount USD 150,000."
+            }
+          ],
+          "title": "Invoice register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_e8f32529de8c55f8",
+          "document_type": "depreciation",
+          "facts": [
+            {
+              "fact_id": "fact_e8f32529de8c55f8",
+              "fields": {
+                "amount": 150000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "depreciation",
+              "text": "Routine depreciation entry, USD 150,000, reviewed at year-end."
+            }
+          ],
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_da26e42bf4b96371",
+          "document_type": "receipt",
+          "facts": [
+            {
+              "fact_id": "fact_7df7770c3ca56433",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_cd4c22b02d8cf73d",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2025-12-30",
+                "receipt_id": "RCPT_d080348bf52fe5ca"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_d080348bf52fe5ca: dispatch 2025-12-30; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_8bc81cebe650f332",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_cd4c22b02d8cf73d",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2026-01-02",
+                "receipt_id": "RCPT_4b22bc59ff68788e"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_4b22bc59ff68788e: dispatch 2026-01-02; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_bf3d72e200be166c",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_cd4c22b02d8cf73d",
+                "customer_acceptance": "2025-12-30",
+                "dispatch": "2025-12-28",
+                "receipt_id": "RCPT_b3a7d43eb340a049"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_b3a7d43eb340a049: dispatch 2025-12-28; customer acceptance 2025-12-30; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            }
+          ],
+          "title": "Customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_12722774e6c3ad23",
+          "document_type": "payroll",
+          "facts": [
+            {
+              "fact_id": "fact_12722774e6c3ad23",
+              "fields": {
+                "amount": 150000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "payroll",
+              "text": "Routine payroll entry, USD 150,000, reviewed at year-end."
+            }
+          ],
+          "title": "Payroll reconciliation"
+        }
+      ],
+      "initial_facts": [
+        {
+          "fact_id": "fact_31a41dbe19016a33",
+          "fields": {
+            "credit": 150000,
+            "credit_account": "Revenue",
+            "currency": "USD",
+            "customer": "Customer_cd4c22b02d8cf73d",
+            "debit": 150000,
+            "debit_account": "Accounts receivable",
+            "invoice_id": "INV_cd4c22b02d8cf73d",
+            "period_end": "2025-12-31",
+            "recognition_date": "2025-12-31"
+          },
+          "kind": "journal",
+          "text": "At year-end, debit accounts receivable and credit revenue USD 150,000 for INV_cd4c22b02d8cf73d. The entry balances. The customer is new in Q4; receivables grew and collection occurs after year-end."
+        }
+      ],
+      "status": "synthetic_unvalidated",
+      "task": "Assess this recorded year-end revenue entry under the stated synthetic contract: control passes on its specified event. The invoice, contract, and linked delivery record must all refer to this entry. This simplification is not ASC/IFRS gold and does not establish fraud or intent. Cite acquired fact IDs and the provenance links supporting your conclusion.",
+      "version": "synthetic-evidence-budget-v0.1"
+    },
+    {
+      "allowed_conclusions": [
+        "insufficient_evidence",
+        "recognition_issue",
+        "supported_recognition",
+        "suspicious"
+      ],
+      "case_id": "case_91dcc8853c8a7839",
+      "catalog": [
+        {
+          "cost": 1,
+          "document_id": "doc_89fac4ed112b5cfd",
+          "document_type": "cash",
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_529230da4d5397fe",
+          "document_type": "payroll",
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_a584b00db956255b",
+          "document_type": "invoice",
+          "title": "Invoice register"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_b7b82b18ce96de14",
+          "document_type": "receipt",
+          "title": "Customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_253f6f5c6edc668f",
+          "document_type": "contract",
+          "title": "Contract extract"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_61a85c25b178d963",
+          "document_type": "shipment",
+          "title": "Shipment reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_714a6fc801165669",
+          "document_type": "depreciation",
+          "title": "Depreciation schedule"
+        }
+      ],
+      "company_alias": "Company_845bada332522532",
+      "documents": [
+        {
+          "cost": 1,
+          "document_id": "doc_89fac4ed112b5cfd",
+          "document_type": "cash",
+          "facts": [
+            {
+              "fact_id": "fact_89fac4ed112b5cfd",
+              "fields": {
+                "amount": 131000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "cash",
+              "text": "Routine cash entry, USD 131,000, reviewed at year-end."
+            }
+          ],
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_529230da4d5397fe",
+          "document_type": "payroll",
+          "facts": [
+            {
+              "fact_id": "fact_529230da4d5397fe",
+              "fields": {
+                "amount": 131000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "payroll",
+              "text": "Routine payroll entry, USD 131,000, reviewed at year-end."
+            }
+          ],
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_a584b00db956255b",
+          "document_type": "invoice",
+          "facts": [
+            {
+              "fact_id": "fact_a584b00db956255b",
+              "fields": {
+                "amount": 131000,
+                "contract_id": "CTR_845bada332522532",
+                "customer": "Customer_845bada332522532",
+                "invoice_id": "INV_845bada332522532",
+                "logistics_ref": "LOG_845bada332522532"
+              },
+              "kind": "invoice",
+              "text": "Invoice INV_845bada332522532 names contract CTR_845bada332522532, shipment reference LOG_845bada332522532, customer Customer_845bada332522532, and amount USD 131,000."
+            }
+          ],
+          "title": "Invoice register"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_b7b82b18ce96de14",
+          "document_type": "receipt",
+          "facts": [
+            {
+              "fact_id": "fact_26e73ae3519b17f7",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_845bada332522532",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2026-01-02",
+                "receipt_id": "RCPT_6036b7b530408e51"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_6036b7b530408e51: dispatch 2026-01-02; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_3cc366100f4ffa9d",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_845bada332522532",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2025-12-30",
+                "receipt_id": "RCPT_ef942263e38577ca"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_ef942263e38577ca: dispatch 2025-12-30; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_b1727965d30e242b",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_845bada332522532",
+                "customer_acceptance": "2025-12-30",
+                "dispatch": "2025-12-28",
+                "receipt_id": "RCPT_9d427b9491db45c8"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_9d427b9491db45c8: dispatch 2025-12-28; customer acceptance 2025-12-30; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            }
+          ],
+          "title": "Customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_253f6f5c6edc668f",
+          "document_type": "contract",
+          "facts": [
+            {
+              "fact_id": "fact_253f6f5c6edc668f",
+              "fields": {
+                "contract_id": "CTR_845bada332522532",
+                "customer": "Customer_845bada332522532",
+                "transfer_basis": "customer_acceptance"
+              },
+              "kind": "contract",
+              "text": "The synthetic experimental contract CTR_845bada332522532 transfers control on customer_acceptance; other events are not its transfer trigger."
+            }
+          ],
+          "title": "Contract extract"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_61a85c25b178d963",
+          "document_type": "shipment",
+          "facts": [
+            {
+              "fact_id": "fact_61a85c25b178d963",
+              "fields": {
+                "customer": "Customer_845bada332522532",
+                "logistics_ref": "LOG_845bada332522532",
+                "receipt_id": "RCPT_ef942263e38577ca"
+              },
+              "kind": "shipment",
+              "text": "Shipment reconciliation LOG_845bada332522532 links customer Customer_845bada332522532 to event register RCPT_ef942263e38577ca."
+            }
+          ],
+          "title": "Shipment reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_714a6fc801165669",
+          "document_type": "depreciation",
+          "facts": [
+            {
+              "fact_id": "fact_714a6fc801165669",
+              "fields": {
+                "amount": 131000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "depreciation",
+              "text": "Routine depreciation entry, USD 131,000, reviewed at year-end."
+            }
+          ],
+          "title": "Depreciation schedule"
+        }
+      ],
+      "initial_facts": [
+        {
+          "fact_id": "fact_d225ea291457c1b6",
+          "fields": {
+            "credit": 131000,
+            "credit_account": "Revenue",
+            "currency": "USD",
+            "customer": "Customer_845bada332522532",
+            "debit": 131000,
+            "debit_account": "Accounts receivable",
+            "invoice_id": "INV_845bada332522532",
+            "period_end": "2025-12-31",
+            "recognition_date": "2025-12-31"
+          },
+          "kind": "journal",
+          "text": "At year-end, debit accounts receivable and credit revenue USD 131,000 for INV_845bada332522532. The entry balances. The customer is new in Q4; receivables grew and collection occurs after year-end."
+        }
+      ],
+      "status": "synthetic_unvalidated",
+      "task": "Assess this recorded year-end revenue entry under the stated synthetic contract: control passes on its specified event. The invoice, contract, and linked delivery record must all refer to this entry. This simplification is not ASC/IFRS gold and does not establish fraud or intent. Cite acquired fact IDs and the provenance links supporting your conclusion.",
+      "version": "synthetic-evidence-budget-v0.1"
+    },
+    {
+      "allowed_conclusions": [
+        "insufficient_evidence",
+        "recognition_issue",
+        "supported_recognition",
+        "suspicious"
+      ],
+      "case_id": "case_b5771a5006673a8a",
+      "catalog": [
+        {
+          "cost": 2,
+          "document_id": "doc_381659fa21e9857a",
+          "document_type": "shipment_receipt",
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_e0f095ec28a5652c",
+          "document_type": "depreciation",
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_aa380a43eb00e5b8",
+          "document_type": "payroll",
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_2cabec3784d915df",
+          "document_type": "cash",
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_89e42ed835878c24",
+          "document_type": "invoice",
+          "title": "Invoice register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_6e601170172db186",
+          "document_type": "contract",
+          "title": "Contract extract"
+        }
+      ],
+      "company_alias": "Company_cde373202b1b9b3b",
+      "documents": [
+        {
+          "cost": 2,
+          "document_id": "doc_381659fa21e9857a",
+          "document_type": "shipment_receipt",
+          "facts": [
+            {
+              "fact_id": "fact_f400ddf731ad1ae3",
+              "fields": {
+                "customer": "Customer_cde373202b1b9b3b",
+                "logistics_ref": "LOG_cde373202b1b9b3b",
+                "receipt_id": "RCPT_1b57d3c78ba22f63"
+              },
+              "kind": "shipment",
+              "text": "Shipment reconciliation LOG_cde373202b1b9b3b links customer Customer_cde373202b1b9b3b to event register RCPT_1b57d3c78ba22f63."
+            },
+            {
+              "fact_id": "fact_8d0033c14ede2355",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_cde373202b1b9b3b",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2025-12-30",
+                "receipt_id": "RCPT_8d86557c214aece8"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_8d86557c214aece8: dispatch 2025-12-30; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_94abd7abf81f6b50",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_cde373202b1b9b3b",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2026-01-02",
+                "receipt_id": "RCPT_1b57d3c78ba22f63"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_1b57d3c78ba22f63: dispatch 2026-01-02; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_fd3faee43265f6ac",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_cde373202b1b9b3b",
+                "customer_acceptance": "2025-12-30",
+                "dispatch": "2025-12-28",
+                "receipt_id": "RCPT_14137d3a360bdeca"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_14137d3a360bdeca: dispatch 2025-12-28; customer acceptance 2025-12-30; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            }
+          ],
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_e0f095ec28a5652c",
+          "document_type": "depreciation",
+          "facts": [
+            {
+              "fact_id": "fact_e0f095ec28a5652c",
+              "fields": {
+                "amount": 167000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "depreciation",
+              "text": "Routine depreciation entry, USD 167,000, reviewed at year-end."
+            }
+          ],
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_aa380a43eb00e5b8",
+          "document_type": "payroll",
+          "facts": [
+            {
+              "fact_id": "fact_aa380a43eb00e5b8",
+              "fields": {
+                "amount": 167000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "payroll",
+              "text": "Routine payroll entry, USD 167,000, reviewed at year-end."
+            }
+          ],
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_2cabec3784d915df",
+          "document_type": "cash",
+          "facts": [
+            {
+              "fact_id": "fact_2cabec3784d915df",
+              "fields": {
+                "amount": 167000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "cash",
+              "text": "Routine cash entry, USD 167,000, reviewed at year-end."
+            }
+          ],
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_89e42ed835878c24",
+          "document_type": "invoice",
+          "facts": [
+            {
+              "fact_id": "fact_89e42ed835878c24",
+              "fields": {
+                "amount": 167000,
+                "contract_id": "CTR_cde373202b1b9b3b",
+                "customer": "Customer_cde373202b1b9b3b",
+                "invoice_id": "INV_cde373202b1b9b3b",
+                "logistics_ref": "LOG_cde373202b1b9b3b"
+              },
+              "kind": "invoice",
+              "text": "Invoice INV_cde373202b1b9b3b names contract CTR_cde373202b1b9b3b, shipment reference LOG_cde373202b1b9b3b, customer Customer_cde373202b1b9b3b, and amount USD 167,000."
+            }
+          ],
+          "title": "Invoice register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_6e601170172db186",
+          "document_type": "contract",
+          "facts": [
+            {
+              "fact_id": "fact_6e601170172db186",
+              "fields": {
+                "contract_id": "CTR_cde373202b1b9b3b",
+                "customer": "Customer_cde373202b1b9b3b",
+                "transfer_basis": "dispatch"
+              },
+              "kind": "contract",
+              "text": "The synthetic experimental contract CTR_cde373202b1b9b3b transfers control on dispatch; other events are not its transfer trigger."
+            }
+          ],
+          "title": "Contract extract"
+        }
+      ],
+      "initial_facts": [
+        {
+          "fact_id": "fact_abb19eaca665b83f",
+          "fields": {
+            "credit": 167000,
+            "credit_account": "Revenue",
+            "currency": "USD",
+            "customer": "Customer_cde373202b1b9b3b",
+            "debit": 167000,
+            "debit_account": "Accounts receivable",
+            "invoice_id": "INV_cde373202b1b9b3b",
+            "period_end": "2025-12-31",
+            "recognition_date": "2025-12-31"
+          },
+          "kind": "journal",
+          "text": "At year-end, debit accounts receivable and credit revenue USD 167,000 for INV_cde373202b1b9b3b. The entry balances. The customer is new in Q4; receivables grew and collection occurs after year-end."
+        }
+      ],
+      "status": "synthetic_unvalidated",
+      "task": "Assess this recorded year-end revenue entry under the stated synthetic contract: control passes on its specified event. The invoice, contract, and linked delivery record must all refer to this entry. This simplification is not ASC/IFRS gold and does not establish fraud or intent. Cite acquired fact IDs and the provenance links supporting your conclusion.",
+      "version": "synthetic-evidence-budget-v0.1"
+    },
+    {
+      "allowed_conclusions": [
+        "insufficient_evidence",
+        "recognition_issue",
+        "supported_recognition",
+        "suspicious"
+      ],
+      "case_id": "case_6ca8b188de784904",
+      "catalog": [
+        {
+          "cost": 2,
+          "document_id": "doc_c6ccc46a31661867",
+          "document_type": "shipment_receipt",
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_4cf90914dedfd137",
+          "document_type": "contract",
+          "title": "Contract extract"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_2e6fd39d7b433e21",
+          "document_type": "cash",
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_60b223018e53984f",
+          "document_type": "depreciation",
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_f757403496e032da",
+          "document_type": "invoice",
+          "title": "Invoice register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_cbde66cae194f85b",
+          "document_type": "payroll",
+          "title": "Payroll reconciliation"
+        }
+      ],
+      "company_alias": "Company_22a206777322b34a",
+      "documents": [
+        {
+          "cost": 2,
+          "document_id": "doc_c6ccc46a31661867",
+          "document_type": "shipment_receipt",
+          "facts": [
+            {
+              "fact_id": "fact_f34e226e95727c9b",
+              "fields": {
+                "customer": "Customer_22a206777322b34a",
+                "logistics_ref": "LOG_22a206777322b34a",
+                "receipt_id": "RCPT_60bc563e6b448662"
+              },
+              "kind": "shipment",
+              "text": "Shipment reconciliation LOG_22a206777322b34a links customer Customer_22a206777322b34a to event register RCPT_60bc563e6b448662."
+            },
+            {
+              "fact_id": "fact_3250a683bdc391ec",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_22a206777322b34a",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2025-12-30",
+                "receipt_id": "RCPT_60bc563e6b448662"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_60bc563e6b448662: dispatch 2025-12-30; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_51658fba5e8bfca5",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_22a206777322b34a",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2026-01-02",
+                "receipt_id": "RCPT_8559db4056bb9f32"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_8559db4056bb9f32: dispatch 2026-01-02; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_9dd71f456fa0c2f8",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_22a206777322b34a",
+                "customer_acceptance": "2025-12-30",
+                "dispatch": "2025-12-28",
+                "receipt_id": "RCPT_19689c008dce8326"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_19689c008dce8326: dispatch 2025-12-28; customer acceptance 2025-12-30; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            }
+          ],
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_4cf90914dedfd137",
+          "document_type": "contract",
+          "facts": [
+            {
+              "fact_id": "fact_4cf90914dedfd137",
+              "fields": {
+                "contract_id": "CTR_22a206777322b34a",
+                "customer": "Customer_22a206777322b34a",
+                "transfer_basis": "dispatch"
+              },
+              "kind": "contract",
+              "text": "The synthetic experimental contract CTR_22a206777322b34a transfers control on dispatch; other events are not its transfer trigger."
+            }
+          ],
+          "title": "Contract extract"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_2e6fd39d7b433e21",
+          "document_type": "cash",
+          "facts": [
+            {
+              "fact_id": "fact_2e6fd39d7b433e21",
+              "fields": {
+                "amount": 136000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "cash",
+              "text": "Routine cash entry, USD 136,000, reviewed at year-end."
+            }
+          ],
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_60b223018e53984f",
+          "document_type": "depreciation",
+          "facts": [
+            {
+              "fact_id": "fact_60b223018e53984f",
+              "fields": {
+                "amount": 136000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "depreciation",
+              "text": "Routine depreciation entry, USD 136,000, reviewed at year-end."
+            }
+          ],
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_f757403496e032da",
+          "document_type": "invoice",
+          "facts": [
+            {
+              "fact_id": "fact_f757403496e032da",
+              "fields": {
+                "amount": 136000,
+                "contract_id": "CTR_22a206777322b34a",
+                "customer": "Customer_22a206777322b34a",
+                "invoice_id": "INV_22a206777322b34a",
+                "logistics_ref": "LOG_22a206777322b34a"
+              },
+              "kind": "invoice",
+              "text": "Invoice INV_22a206777322b34a names contract CTR_22a206777322b34a, shipment reference LOG_22a206777322b34a, customer Customer_22a206777322b34a, and amount USD 136,000."
+            }
+          ],
+          "title": "Invoice register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_cbde66cae194f85b",
+          "document_type": "payroll",
+          "facts": [
+            {
+              "fact_id": "fact_cbde66cae194f85b",
+              "fields": {
+                "amount": 136000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "payroll",
+              "text": "Routine payroll entry, USD 136,000, reviewed at year-end."
+            }
+          ],
+          "title": "Payroll reconciliation"
+        }
+      ],
+      "initial_facts": [
+        {
+          "fact_id": "fact_ae00d54cd9316e90",
+          "fields": {
+            "credit": 136000,
+            "credit_account": "Revenue",
+            "currency": "USD",
+            "customer": "Customer_22a206777322b34a",
+            "debit": 136000,
+            "debit_account": "Accounts receivable",
+            "invoice_id": "INV_22a206777322b34a",
+            "period_end": "2025-12-31",
+            "recognition_date": "2025-12-31"
+          },
+          "kind": "journal",
+          "text": "At year-end, debit accounts receivable and credit revenue USD 136,000 for INV_22a206777322b34a. The entry balances. The customer is new in Q4; receivables grew and collection occurs after year-end."
+        }
+      ],
+      "status": "synthetic_unvalidated",
+      "task": "Assess this recorded year-end revenue entry under the stated synthetic contract: control passes on its specified event. The invoice, contract, and linked delivery record must all refer to this entry. This simplification is not ASC/IFRS gold and does not establish fraud or intent. Cite acquired fact IDs and the provenance links supporting your conclusion.",
+      "version": "synthetic-evidence-budget-v0.1"
+    },
+    {
+      "allowed_conclusions": [
+        "insufficient_evidence",
+        "recognition_issue",
+        "supported_recognition",
+        "suspicious"
+      ],
+      "case_id": "case_997f0aa6ce2cd525",
+      "catalog": [
+        {
+          "cost": 1,
+          "document_id": "doc_bde5f7083563df6f",
+          "document_type": "payroll",
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_68dfb4ee11dd9ec3",
+          "document_type": "cash",
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_a2b40503812d6be1",
+          "document_type": "shipment_receipt",
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_9347368c65483629",
+          "document_type": "depreciation",
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_c28321e3b516a305",
+          "document_type": "invoice_contract",
+          "title": "Invoice and contract packet"
+        }
+      ],
+      "company_alias": "Company_f2188e88328f7ae8",
+      "documents": [
+        {
+          "cost": 1,
+          "document_id": "doc_bde5f7083563df6f",
+          "document_type": "payroll",
+          "facts": [
+            {
+              "fact_id": "fact_bde5f7083563df6f",
+              "fields": {
+                "amount": 115000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "payroll",
+              "text": "Routine payroll entry, USD 115,000, reviewed at year-end."
+            }
+          ],
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_68dfb4ee11dd9ec3",
+          "document_type": "cash",
+          "facts": [
+            {
+              "fact_id": "fact_68dfb4ee11dd9ec3",
+              "fields": {
+                "amount": 115000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "cash",
+              "text": "Routine cash entry, USD 115,000, reviewed at year-end."
+            }
+          ],
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_a2b40503812d6be1",
+          "document_type": "shipment_receipt",
+          "facts": [
+            {
+              "fact_id": "fact_b92a71efebb95602",
+              "fields": {
+                "customer": "Customer_f2188e88328f7ae8",
+                "logistics_ref": "LOG_f2188e88328f7ae8",
+                "receipt_id": "RCPT_5cc076e7cf750567"
+              },
+              "kind": "shipment",
+              "text": "Shipment reconciliation LOG_f2188e88328f7ae8 links customer Customer_f2188e88328f7ae8 to event register RCPT_5cc076e7cf750567."
+            },
+            {
+              "fact_id": "fact_2e7b07f176cc0e7f",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_f2188e88328f7ae8",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2025-12-30",
+                "receipt_id": "RCPT_9b3c5a211fd02f33"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_9b3c5a211fd02f33: dispatch 2025-12-30; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_8f02f872931e0297",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_f2188e88328f7ae8",
+                "customer_acceptance": "2025-12-30",
+                "dispatch": "2025-12-28",
+                "receipt_id": "RCPT_5cc076e7cf750567"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_5cc076e7cf750567: dispatch 2025-12-28; customer acceptance 2025-12-30; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_ad6d3855701a0074",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_f2188e88328f7ae8",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2026-01-02",
+                "receipt_id": "RCPT_2332810d8cf3f04d"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_2332810d8cf3f04d: dispatch 2026-01-02; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            }
+          ],
+          "title": "Shipment and customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_9347368c65483629",
+          "document_type": "depreciation",
+          "facts": [
+            {
+              "fact_id": "fact_9347368c65483629",
+              "fields": {
+                "amount": 115000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "depreciation",
+              "text": "Routine depreciation entry, USD 115,000, reviewed at year-end."
+            }
+          ],
+          "title": "Depreciation schedule"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_c28321e3b516a305",
+          "document_type": "invoice_contract",
+          "facts": [
+            {
+              "fact_id": "fact_72d0cff70f71fd17",
+              "fields": {
+                "amount": 115000,
+                "contract_id": "CTR_f2188e88328f7ae8",
+                "customer": "Customer_f2188e88328f7ae8",
+                "invoice_id": "INV_f2188e88328f7ae8",
+                "logistics_ref": "LOG_f2188e88328f7ae8"
+              },
+              "kind": "invoice",
+              "text": "Invoice INV_f2188e88328f7ae8 names contract CTR_f2188e88328f7ae8, shipment reference LOG_f2188e88328f7ae8, customer Customer_f2188e88328f7ae8, and amount USD 115,000."
+            },
+            {
+              "fact_id": "fact_9384c9310bdc4631",
+              "fields": {
+                "contract_id": "CTR_f2188e88328f7ae8",
+                "customer": "Customer_f2188e88328f7ae8",
+                "transfer_basis": "customer_acceptance"
+              },
+              "kind": "contract",
+              "text": "The synthetic experimental contract CTR_f2188e88328f7ae8 transfers control on customer_acceptance; other events are not its transfer trigger."
+            }
+          ],
+          "title": "Invoice and contract packet"
+        }
+      ],
+      "initial_facts": [
+        {
+          "fact_id": "fact_d9b76ae486a425b6",
+          "fields": {
+            "credit": 115000,
+            "credit_account": "Revenue",
+            "currency": "USD",
+            "customer": "Customer_f2188e88328f7ae8",
+            "debit": 115000,
+            "debit_account": "Accounts receivable",
+            "invoice_id": "INV_f2188e88328f7ae8",
+            "period_end": "2025-12-31",
+            "recognition_date": "2025-12-31"
+          },
+          "kind": "journal",
+          "text": "At year-end, debit accounts receivable and credit revenue USD 115,000 for INV_f2188e88328f7ae8. The entry balances. The customer is new in Q4; receivables grew and collection occurs after year-end."
+        }
+      ],
+      "status": "synthetic_unvalidated",
+      "task": "Assess this recorded year-end revenue entry under the stated synthetic contract: control passes on its specified event. The invoice, contract, and linked delivery record must all refer to this entry. This simplification is not ASC/IFRS gold and does not establish fraud or intent. Cite acquired fact IDs and the provenance links supporting your conclusion.",
+      "version": "synthetic-evidence-budget-v0.1"
+    },
+    {
+      "allowed_conclusions": [
+        "insufficient_evidence",
+        "recognition_issue",
+        "supported_recognition",
+        "suspicious"
+      ],
+      "case_id": "case_c1bc849c730c45e3",
+      "catalog": [
+        {
+          "cost": 1,
+          "document_id": "doc_19820000c8ae71cf",
+          "document_type": "payroll",
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_4d1965e6419a1924",
+          "document_type": "invoice",
+          "title": "Invoice register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_46f5d134fd08d21b",
+          "document_type": "contract",
+          "title": "Contract extract"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_70facaabadc02b03",
+          "document_type": "shipment",
+          "title": "Shipment reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_4852196be1be8914",
+          "document_type": "cash",
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_7dd49f31dd429992",
+          "document_type": "receipt",
+          "title": "Customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_c3ed535773acf9cf",
+          "document_type": "depreciation",
+          "title": "Depreciation schedule"
+        }
+      ],
+      "company_alias": "Company_cd4c22b02d8cf73d",
+      "documents": [
+        {
+          "cost": 1,
+          "document_id": "doc_19820000c8ae71cf",
+          "document_type": "payroll",
+          "facts": [
+            {
+              "fact_id": "fact_19820000c8ae71cf",
+              "fields": {
+                "amount": 150000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "payroll",
+              "text": "Routine payroll entry, USD 150,000, reviewed at year-end."
+            }
+          ],
+          "title": "Payroll reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_4d1965e6419a1924",
+          "document_type": "invoice",
+          "facts": [
+            {
+              "fact_id": "fact_4d1965e6419a1924",
+              "fields": {
+                "amount": 150000,
+                "contract_id": "CTR_cd4c22b02d8cf73d",
+                "customer": "Customer_cd4c22b02d8cf73d",
+                "invoice_id": "INV_cd4c22b02d8cf73d",
+                "logistics_ref": "LOG_cd4c22b02d8cf73d"
+              },
+              "kind": "invoice",
+              "text": "Invoice INV_cd4c22b02d8cf73d names contract CTR_cd4c22b02d8cf73d, shipment reference LOG_cd4c22b02d8cf73d, customer Customer_cd4c22b02d8cf73d, and amount USD 150,000."
+            }
+          ],
+          "title": "Invoice register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_46f5d134fd08d21b",
+          "document_type": "contract",
+          "facts": [
+            {
+              "fact_id": "fact_46f5d134fd08d21b",
+              "fields": {
+                "contract_id": "CTR_cd4c22b02d8cf73d",
+                "customer": "Customer_cd4c22b02d8cf73d",
+                "transfer_basis": "dispatch"
+              },
+              "kind": "contract",
+              "text": "The synthetic experimental contract CTR_cd4c22b02d8cf73d transfers control on dispatch; other events are not its transfer trigger."
+            }
+          ],
+          "title": "Contract extract"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_70facaabadc02b03",
+          "document_type": "shipment",
+          "facts": [
+            {
+              "fact_id": "fact_70facaabadc02b03",
+              "fields": {
+                "customer": "Customer_cd4c22b02d8cf73d",
+                "logistics_ref": "LOG_cd4c22b02d8cf73d",
+                "receipt_id": "RCPT_d080348bf52fe5ca"
+              },
+              "kind": "shipment",
+              "text": "Shipment reconciliation LOG_cd4c22b02d8cf73d links customer Customer_cd4c22b02d8cf73d to event register RCPT_d080348bf52fe5ca."
+            }
+          ],
+          "title": "Shipment reconciliation"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_4852196be1be8914",
+          "document_type": "cash",
+          "facts": [
+            {
+              "fact_id": "fact_4852196be1be8914",
+              "fields": {
+                "amount": 150000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "cash",
+              "text": "Routine cash entry, USD 150,000, reviewed at year-end."
+            }
+          ],
+          "title": "Office expenditure register"
+        },
+        {
+          "cost": 2,
+          "document_id": "doc_7dd49f31dd429992",
+          "document_type": "receipt",
+          "facts": [
+            {
+              "fact_id": "fact_74f71c0039692a46",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_cd4c22b02d8cf73d",
+                "customer_acceptance": "2025-12-30",
+                "dispatch": "2025-12-28",
+                "receipt_id": "RCPT_b3a7d43eb340a049"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_b3a7d43eb340a049: dispatch 2025-12-28; customer acceptance 2025-12-30; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_a40dff47040b2c96",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_cd4c22b02d8cf73d",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2025-12-30",
+                "receipt_id": "RCPT_d080348bf52fe5ca"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_d080348bf52fe5ca: dispatch 2025-12-30; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            },
+            {
+              "fact_id": "fact_e1f7f665350661c7",
+              "fields": {
+                "collection_date": "2026-01-15",
+                "customer": "Customer_cd4c22b02d8cf73d",
+                "customer_acceptance": "2026-01-03",
+                "dispatch": "2026-01-02",
+                "receipt_id": "RCPT_4b22bc59ff68788e"
+              },
+              "kind": "receipt_events",
+              "text": "Delivery event register RCPT_4b22bc59ff68788e: dispatch 2026-01-02; customer acceptance 2026-01-03; collection 2026-01-15. Multiple deliveries for this customer occur around year-end; join the shipment reference."
+            }
+          ],
+          "title": "Customer event register"
+        },
+        {
+          "cost": 1,
+          "document_id": "doc_c3ed535773acf9cf",
+          "document_type": "depreciation",
+          "facts": [
+            {
+              "fact_id": "fact_c3ed535773acf9cf",
+              "fields": {
+                "amount": 150000,
+                "period_end": "2025-12-31"
+              },
+              "kind": "depreciation",
+              "text": "Routine depreciation entry, USD 150,000, reviewed at year-end."
+            }
+          ],
+          "title": "Depreciation schedule"
+        }
+      ],
+      "initial_facts": [
+        {
+          "fact_id": "fact_702b798e1d2199d2",
+          "fields": {
+            "credit": 150000,
+            "credit_account": "Revenue",
+            "currency": "USD",
+            "customer": "Customer_cd4c22b02d8cf73d",
+            "debit": 150000,
+            "debit_account": "Accounts receivable",
+            "invoice_id": "INV_cd4c22b02d8cf73d",
+            "period_end": "2025-12-31",
+            "recognition_date": "2025-12-31"
+          },
+          "kind": "journal",
+          "text": "At year-end, debit accounts receivable and credit revenue USD 150,000 for INV_cd4c22b02d8cf73d. The entry balances. The customer is new in Q4; receivables grew and collection occurs after year-end."
+        }
+      ],
+      "status": "synthetic_unvalidated",
+      "task": "Assess this recorded year-end revenue entry under the stated synthetic contract: control passes on its specified event. The invoice, contract, and linked delivery record must all refer to this entry. This simplification is not ASC/IFRS gold and does not establish fraud or intent. Cite acquired fact IDs and the provenance links supporting your conclusion.",
+      "version": "synthetic-evidence-budget-v0.1"
+    }
+  ],
+  "disclaimer": "Synthetic software prototype with unvalidated contractual criteria. No real company, filing, accountant gold, fraud finding, model experiment, or verified novelty claim. Budget units are arbitrary, not API dollars.",
+  "version": "synthetic-evidence-budget-v0.1"
+}

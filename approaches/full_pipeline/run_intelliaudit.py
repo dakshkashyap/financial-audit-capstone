@@ -55,24 +55,52 @@ def _revise(table: str, record) -> str:
     if (record.error_type == "Numerical Error" and record.stated_value is not None
             and record.correct_value is not None):
         import re
+        import math
+        if not all(math.isfinite(v) for v in (record.stated_value, record.correct_value)):
+            return table
         def fmt(v):
             return str(int(v)) if abs(v - round(v)) < 1e-6 else str(v)
-        # replace the first occurrence of the stated number (comma-formatted too)
-        for cand in (f"{int(record.stated_value):,}", fmt(record.stated_value),
-                     str(record.stated_value)):
-            if cand and cand in table:
-                return table.replace(cand, fmt(record.correct_value), 1)
+        from core.stage0_common import clean_value
+        row_idx = getattr(record, "problematic_entry", None)
+        if row_idx is None:
+            return table
+        # Bind the edit to the localized row and its complete value cell. A
+        # repeated number elsewhere (including a date or row id) is not evidence
+        # that it should be changed.
+        pattern = re.compile(
+            r"(\[row\s+" + re.escape(str(row_idx)) + r"\]\s*:\s*(?:(?!\[row\s+\d+\])[^|])*\|)(.*?)(?=\[row\s+\d+\]|\Z)",
+            re.DOTALL,
+        )
+        matches = list(pattern.finditer(table))
+        if len(matches) != 1:
+            return table
+        match = matches[0]
+        cell = match.group(2)
+        value = cell.replace("[SEP]", "").strip()
+        parsed = clean_value(value)
+        if parsed is None or abs(parsed - record.stated_value) > 1e-6:
+            return table
+        start = match.start(2) + len(cell) - len(cell.lstrip())
+        end = match.start(2) + cell.find("[SEP]") if "[SEP]" in cell else match.end(2)
+        while end > start and table[end - 1].isspace():
+            end -= 1
+        return table[:start] + fmt(record.correct_value) + table[end:]
     return table
 
 
 def _deterministic_parsed(item: dict, record) -> dict:
+    applicability_verified = bool(getattr(record, "citation_applicability_verified", False))
     parsed = {"General Judgment": "Incorrect",
               "Information for error 1": {
                   "Error Identification": {
                       "Error Type": record.error_type,
                       "Problematic Entry": f"Row {record.problematic_entry}"},
                   "Error Resolution": record.detail or "",
-                  "Standards Citation": format_citation(record.citation_primary)},
+                  "Standards Citation": format_citation(record.citation_primary)
+                                        if applicability_verified and record.citation_primary else None,
+                  "Citation Candidates": [format_citation(code) for code in record.citation_candidates],
+                  "Citation Candidate Source": record.citation_source,
+                  "Citation Applicability Verified": applicability_verified},
               "Corrected Statements": _revise(item["table"], record)}
     return parsed
 
@@ -113,10 +141,9 @@ def run_split(split: str, graph: TaxonomyGraph, n: int, seed: int) -> dict:
             n_llm += 1
             if err:
                 n_err += 1
-            # Type-aware veto. A verified-consistent table refutes Numerical and
-            # Missing claims. It does not refute Redundant or Misclassification,
-            # which leave the arithmetic intact. The old blanket veto flipped 14
-            # of 15 real structural errors to Correct on the single-error split.
+            # Partial consistency does not refute a defect. The shared guard
+            # additionally requires a complete error-absence certificate, which
+            # no current deterministic checker supplies.
             parsed, vetoed = stage2_llm.apply_consistency_veto(
                 parsed,
                 verified_consistent=record.verified_consistent,

@@ -1,0 +1,20 @@
+{
+  "call_id": "acc59781647e4bef4b0dda2ee8d8b7c1",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "extract",
+  "prompt_sha256": "ee9216d5fd8613ee97f2574e84404fd2abb7aec7e9a4c9661f4d655786796dd3",
+  "reserved_usd": "0.0010855",
+  "status": "ok",
+  "content": "{\"evidence\":[{\"source\":\"statement\",\"quote\":\"Contract with customer asset gross | $433\",\"row\":4},{\"source\":\"transactions\",\"quote\":\"[Contract with customer asset gross] other credits posted to the account: +520 (increase); other charges posted to the account: −87 (decrease)\",\"row\":null},{\"source\":\"statement\",\"quote\":\"Other non-current assets | $421\",\"row\":14},{\"source\":\"transactions\",\"quote\":\"[Other non-current assets] other credits posted to the account: +551 (increase); other charges posted to the account: −130 (decrease)\",\"row\":null}],\"observations\":[\"Contract with customer asset gross increased by $433 in the period.\",\"Other non-current assets increased by $421 in the period.\",\"Net increase in contract with customer asset gross is $433.\",\"Net increase in other non-current assets is $421.\"],\"possible_faults\":[\"Contract with customer asset gross may include unearned revenue not yet recognized.\",\"Other non-current assets may include items not properly classified as non-current.\"],\"uncertainty\":\"The nature of the $433 contract with customer asset and $421 other non-current assets is unclear; no supporting detail is provided.\"}",
+  "response_id": "gen-1791001896-eHXknwLXOS5FUCd8CM3W",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 1967,
+    "completion_tokens": 264,
+    "total_tokens": 2231,
+    "cost": 0.00014567625
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 1.662
+}

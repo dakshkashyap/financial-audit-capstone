@@ -1,0 +1,21 @@
+{
+  "call_id": "f00fb4a9c30473f9e0408141eeaa5087",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":\"Missing Row\",\"evidence\":[{\"quote\":\"[row 24]: Operating lease liabilities | $36\",\"row\":24,\"source\":\"statement\"},{\"quote\":\"[row 25]: Deferred income taxes | $86\",\"row\":25,\"source\":\"statement\"},{\"quote\":\"[row 26]: Total non-current liabilities | $129\",\"row\":26,\"source\":\"statement\"},{\"quote\":\"[Other non-current liabilities] other credits posted to the account: +10 (increase); other charges posted to the account: −3 (decrease)\",\"row\":null,\"source\":\"transactions\"}],\"judgement\":\"incorrect\",\"reason\":\"The listed non-current liabilities sum to 122 (36+86), but the stated total is 129. The 7 gap matches the net Other non-current liabilities movement in the evidence (+10−3), and no row presents it. It should be inserted at index 26. All other subtotals foot. This is a presentation omission rather than a fault governed by a specific ASC paragraph, so no citation is given.\",\"row\":26}",
+  "reserved_usd": "0.060688",
+  "request_sha256": "a7ce9694f162c85715ab40771155a4e032d6a013ad7f363db39ea1277229cca9",
+  "prompt_sha256": "768b07c084ad772780d80bfa94332fdbad2fedc4fb72a3fd33ab2c0e8c35a125",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002471-qXDt5hmKtufR1oA4EozK",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 3418,
+    "completion_tokens": 562,
+    "total_tokens": 3980,
+    "cost": 0.024912
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 7.708
+}

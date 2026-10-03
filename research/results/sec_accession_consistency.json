@@ -1,0 +1,2029 @@
+{
+  "accession_inconsistency_examples": [
+    {
+      "matched_row_n": 7,
+      "period": "2016-12-31",
+      "rows": [
+        {
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "matching_accns": [
+            "0001047469-19-000624"
+          ],
+          "value": 20853
+        },
+        {
+          "concept": "us-gaap:CostOfGoodsAndServicesSold",
+          "matching_accns": [
+            "0001047469-19-000624"
+          ],
+          "value": -9094
+        },
+        {
+          "concept": "us-gaap:SellingGeneralAndAdministrativeExpense",
+          "matching_accns": [
+            "0001047469-17-000744",
+            "0001047469-18-000856"
+          ],
+          "value": -6672
+        },
+        {
+          "concept": "us-gaap:OperatingIncomeLoss",
+          "matching_accns": [
+            "0001047469-17-000744",
+            "0001047469-18-000856"
+          ],
+          "value": 3185
+        },
+        {
+          "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+          "matching_accns": [
+            "0001047469-17-000744",
+            "0001047469-18-000856",
+            "0001047469-19-000624"
+          ],
+          "value": 1413
+        },
+        {
+          "concept": "us-gaap:IncomeTaxExpenseBenefit",
+          "matching_accns": [
+            "0001047469-17-000744",
+            "0001047469-18-000856",
+            "0001047469-19-000624"
+          ],
+          "value": -350
+        },
+        {
+          "concept": "us-gaap:NetIncomeLoss",
+          "matching_accns": [
+            "0001047469-17-000744",
+            "0001047469-18-000856",
+            "0001047469-19-000624"
+          ],
+          "value": 1400
+        }
+      ],
+      "table": "1800_2016_IS.json"
+    },
+    {
+      "matched_row_n": 8,
+      "period": "2017-12-31",
+      "rows": [
+        {
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "matching_accns": [
+            "0001047469-19-000624",
+            "0001104659-20-023904"
+          ],
+          "value": 27390
+        },
+        {
+          "concept": "us-gaap:CostOfGoodsAndServicesSold",
+          "matching_accns": [
+            "0001047469-19-000624",
+            "0001104659-20-023904"
+          ],
+          "value": -12409
+        },
+        {
+          "concept": "us-gaap:ResearchAndDevelopmentExpense",
+          "matching_accns": [
+            "0001104659-20-023904"
+          ],
+          "value": -2260
+        },
+        {
+          "concept": "us-gaap:SellingGeneralAndAdministrativeExpense",
+          "matching_accns": [
+            "0001047469-18-000856"
+          ],
+          "value": -9117
+        },
+        {
+          "concept": "us-gaap:OperatingIncomeLoss",
+          "matching_accns": [
+            "0001047469-18-000856"
+          ],
+          "value": 1726
+        },
+        {
+          "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+          "matching_accns": [
+            "0001047469-18-000856",
+            "0001047469-19-000624",
+            "0001104659-20-023904"
+          ],
+          "value": 2231
+        },
+        {
+          "concept": "us-gaap:IncomeTaxExpenseBenefit",
+          "matching_accns": [
+            "0001047469-18-000856",
+            "0001047469-19-000624",
+            "0001104659-20-023904"
+          ],
+          "value": -1878
+        },
+        {
+          "concept": "us-gaap:NetIncomeLoss",
+          "matching_accns": [
+            "0001047469-18-000856",
+            "0001047469-19-000624",
+            "0001104659-20-023904"
+          ],
+          "value": 477
+        }
+      ],
+      "table": "1800_2017_IS.json"
+    },
+    {
+      "matched_row_n": 24,
+      "period": "2021-12-31",
+      "rows": [
+        {
+          "concept": "us-gaap:InventoryNet",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013"
+          ],
+          "value": 1814
+        },
+        {
+          "concept": "us-gaap:OtherAssetsCurrent",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013"
+          ],
+          "value": 132
+        },
+        {
+          "concept": "us-gaap:AssetsCurrent",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013"
+          ],
+          "value": 7096
+        },
+        {
+          "concept": "us-gaap:PropertyPlantAndEquipmentNet",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013"
+          ],
+          "value": 10441
+        },
+        {
+          "concept": "us-gaap:OperatingLeaseRightOfUseAsset",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013"
+          ],
+          "value": 365
+        },
+        {
+          "concept": "us-gaap:Goodwill",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013",
+            "0000051434-24-000024"
+          ],
+          "value": 3130
+        },
+        {
+          "concept": "us-gaap:OtherAssetsNoncurrent",
+          "matching_accns": [
+            "0000051434-22-000016"
+          ],
+          "value": 572
+        },
+        {
+          "concept": "us-gaap:Assets",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013"
+          ],
+          "value": 25243
+        },
+        {
+          "concept": "us-gaap:AccountsPayableCurrent",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013"
+          ],
+          "value": 2606
+        },
+        {
+          "concept": "us-gaap:ContractWithCustomerLiabilityCurrent",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013"
+          ],
+          "value": 27
+        },
+        {
+          "concept": "us-gaap:EmployeeRelatedLiabilitiesCurrent",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013"
+          ],
+          "value": 440
+        },
+        {
+          "concept": "us-gaap:LongTermDebtCurrent",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013"
+          ],
+          "value": 196
+        },
+        {
+          "concept": "us-gaap:OperatingLeaseLiabilityCurrent",
+          "matching_accns": [
+            "0000051434-23-000013"
+          ],
+          "value": 132
+        },
+        {
+          "concept": "us-gaap:LiabilitiesCurrent",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013"
+          ],
+          "value": 4144
+        },
+        {
+          "concept": "us-gaap:LongTermDebtNoncurrent",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013"
+          ],
+          "value": 5383
+        },
+        {
+          "concept": "us-gaap:OperatingLeaseLiabilityNoncurrent",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013"
+          ],
+          "value": 236
+        },
+        {
+          "concept": "us-gaap:DeferredIncomeTaxLiabilitiesNet",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013"
+          ],
+          "value": 2618
+        },
+        {
+          "concept": "us-gaap:OtherLiabilitiesNoncurrent",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013"
+          ],
+          "value": 1099
+        },
+        {
+          "concept": "us-gaap:RetainedEarningsAccumulatedDeficit",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013"
+          ],
+          "value": 9029
+        },
+        {
+          "concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013",
+            "0000051434-24-000024"
+          ],
+          "value": -1666
+        },
+        {
+          "concept": "us-gaap:TreasuryStockValue",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013"
+          ],
+          "value": 3398
+        },
+        {
+          "concept": "us-gaap:MinorityInterest",
+          "matching_accns": [
+            "0000051434-22-000016"
+          ],
+          "value": 0
+        },
+        {
+          "concept": "us-gaap:StockholdersEquity",
+          "matching_accns": [
+            "0000051434-22-000016"
+          ],
+          "value": 9082
+        },
+        {
+          "concept": "us-gaap:LiabilitiesAndStockholdersEquity",
+          "matching_accns": [
+            "0000051434-22-000016",
+            "0000051434-23-000013"
+          ],
+          "value": 25243
+        }
+      ],
+      "table": "51434_2021_BS.json"
+    },
+    {
+      "matched_row_n": 6,
+      "period": "2024-12-31",
+      "rows": [
+        {
+          "concept": "us-gaap:NetIncomeLoss",
+          "matching_accns": [
+            "0000051434-26-000055"
+          ],
+          "value": 557
+        },
+        {
+          "concept": "us-gaap:DepreciationDepletionAndAmortization",
+          "matching_accns": [
+            "0000051434-25-000013"
+          ],
+          "value": 1305
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+          "matching_accns": [
+            "0000051434-25-000013",
+            "0000051434-26-000055"
+          ],
+          "value": 1678
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInInvestingActivities",
+          "matching_accns": [
+            "0000051434-25-000013",
+            "0000051434-26-000055"
+          ],
+          "value": -808
+        },
+        {
+          "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+          "matching_accns": [
+            "0000051434-25-000013",
+            "0000051434-26-000055"
+          ],
+          "value": -23
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInFinancingActivities",
+          "matching_accns": [
+            "0000051434-25-000013",
+            "0000051434-26-000055"
+          ],
+          "value": -775
+        }
+      ],
+      "table": "51434_2024_CF.json"
+    },
+    {
+      "matched_row_n": 5,
+      "period": "2024-12-31",
+      "rows": [
+        {
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "matching_accns": [
+            "0000051434-25-000013"
+          ],
+          "value": 18619
+        },
+        {
+          "concept": "us-gaap:CostOfGoodsAndServicesSold",
+          "matching_accns": [
+            "0000051434-25-000013"
+          ],
+          "value": -13376
+        },
+        {
+          "concept": "us-gaap:SellingGeneralAndAdministrativeExpense",
+          "matching_accns": [
+            "0000051434-25-000013"
+          ],
+          "value": -1840
+        },
+        {
+          "concept": "us-gaap:IncomeTaxExpenseBenefit",
+          "matching_accns": [
+            "0000051434-25-000013"
+          ],
+          "value": -415
+        },
+        {
+          "concept": "us-gaap:NetIncomeLoss",
+          "matching_accns": [
+            "0000051434-26-000055"
+          ],
+          "value": 557
+        }
+      ],
+      "table": "51434_2024_IS.json"
+    },
+    {
+      "matched_row_n": 8,
+      "period": "2017-12-31",
+      "rows": [
+        {
+          "concept": "us-gaap:NetIncomeLoss",
+          "matching_accns": [
+            "0000100885-18-000048",
+            "0000100885-19-000060",
+            "0000100885-20-000065"
+          ],
+          "value": 10712
+        },
+        {
+          "concept": "us-gaap:ShareBasedCompensation",
+          "matching_accns": [
+            "0000100885-18-000048",
+            "0000100885-19-000060",
+            "0000100885-20-000065"
+          ],
+          "value": 103
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+          "matching_accns": [
+            "0000100885-20-000065"
+          ],
+          "value": 7230
+        },
+        {
+          "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+          "matching_accns": [
+            "0000100885-18-000048",
+            "0000100885-19-000060",
+            "0000100885-20-000065"
+          ],
+          "value": -3238
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInInvestingActivities",
+          "matching_accns": [
+            "0000100885-20-000065"
+          ],
+          "value": -3086
+        },
+        {
+          "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+          "matching_accns": [
+            "0000100885-18-000048",
+            "0000100885-19-000060",
+            "0000100885-20-000065"
+          ],
+          "value": -4013
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInFinancingActivities",
+          "matching_accns": [
+            "0000100885-20-000065"
+          ],
+          "value": -4146
+        },
+        {
+          "concept": "us-gaap:CashAndCashEquivalentsPeriodIncreaseDecrease",
+          "matching_accns": [
+            "0000100885-18-000048"
+          ],
+          "value": -2
+        }
+      ],
+      "table": "100885_2017_CF.json"
+    },
+    {
+      "matched_row_n": 21,
+      "period": "2023-12-31",
+      "rows": [
+        {
+          "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0000100885-26-000037",
+            "0001437749-24-003599"
+          ],
+          "value": 1055
+        },
+        {
+          "concept": "us-gaap:AccountsReceivableNetCurrent",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0001437749-24-003599"
+          ],
+          "value": 2073
+        },
+        {
+          "concept": "us-gaap:OtherAssetsCurrent",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0001437749-24-003599"
+          ],
+          "value": 261
+        },
+        {
+          "concept": "us-gaap:AssetsCurrent",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0001437749-24-003599"
+          ],
+          "value": 4148
+        },
+        {
+          "concept": "us-gaap:PropertyPlantAndEquipmentNet",
+          "matching_accns": [
+            "0001437749-24-003599"
+          ],
+          "value": 57398
+        },
+        {
+          "concept": "us-gaap:OperatingLeaseRightOfUseAsset",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0001437749-24-003599"
+          ],
+          "value": 1643
+        },
+        {
+          "concept": "us-gaap:OtherAssetsNoncurrent",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0001437749-24-003599"
+          ],
+          "value": 1338
+        },
+        {
+          "concept": "us-gaap:Assets",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0001437749-24-003599"
+          ],
+          "value": 67132
+        },
+        {
+          "concept": "us-gaap:AccountsPayableCurrent",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0001437749-24-003599"
+          ],
+          "value": 856
+        },
+        {
+          "concept": "us-gaap:CommercialPaper",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0001437749-24-003599"
+          ],
+          "value": 0
+        },
+        {
+          "concept": "us-gaap:OperatingLeaseLiabilityCurrent",
+          "matching_accns": [
+            "0000100885-25-000042"
+          ],
+          "value": 355
+        },
+        {
+          "concept": "us-gaap:LiabilitiesCurrent",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0001437749-24-003599"
+          ],
+          "value": 5106
+        },
+        {
+          "concept": "us-gaap:OperatingLeaseLiabilityNoncurrent",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0001437749-24-003599"
+          ],
+          "value": 1245
+        },
+        {
+          "concept": "us-gaap:DeferredIncomeTaxLiabilitiesNet",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0001437749-24-003599"
+          ],
+          "value": 13123
+        },
+        {
+          "concept": "us-gaap:OtherLiabilitiesNoncurrent",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0001437749-24-003599"
+          ],
+          "value": 1714
+        },
+        {
+          "concept": "us-gaap:Liabilities",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0001437749-24-003599"
+          ],
+          "value": 52344
+        },
+        {
+          "concept": "us-gaap:RetainedEarningsAccumulatedDeficit",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0001437749-24-003599"
+          ],
+          "value": 62093
+        },
+        {
+          "concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0001437749-24-003599"
+          ],
+          "value": -614
+        },
+        {
+          "concept": "us-gaap:TreasuryStockValue",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0001437749-24-003599"
+          ],
+          "value": 54666
+        },
+        {
+          "concept": "us-gaap:StockholdersEquity",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0000100885-26-000037",
+            "0001437749-24-003599"
+          ],
+          "value": 14788
+        },
+        {
+          "concept": "us-gaap:LiabilitiesAndStockholdersEquity",
+          "matching_accns": [
+            "0000100885-25-000042",
+            "0001437749-24-003599"
+          ],
+          "value": 67132
+        }
+      ],
+      "table": "100885_2023_BS.json"
+    },
+    {
+      "matched_row_n": 5,
+      "period": "2015-12-31",
+      "rows": [
+        {
+          "concept": "us-gaap:Revenues",
+          "matching_accns": [
+            "0000831259-17-000012",
+            "0000831259-18-000008"
+          ],
+          "value": 14607
+        },
+        {
+          "concept": "us-gaap:SellingGeneralAndAdministrativeExpense",
+          "matching_accns": [
+            "0000831259-16-000062"
+          ],
+          "value": -569
+        },
+        {
+          "concept": "us-gaap:OperatingIncomeLoss",
+          "matching_accns": [
+            "0000831259-16-000062"
+          ],
+          "value": -13382
+        },
+        {
+          "concept": "us-gaap:IncomeTaxExpenseBenefit",
+          "matching_accns": [
+            "0000831259-16-000062"
+          ],
+          "value": -1935
+        },
+        {
+          "concept": "us-gaap:ProfitLoss",
+          "matching_accns": [
+            "0000831259-16-000062",
+            "0000831259-17-000012",
+            "0000831259-18-000008"
+          ],
+          "value": -12089
+        }
+      ],
+      "table": "831259_2015_IS.json"
+    },
+    {
+      "matched_row_n": 7,
+      "period": "2016-12-31",
+      "rows": [
+        {
+          "concept": "us-gaap:DepreciationDepletionAndAmortization",
+          "matching_accns": [
+            "0000831259-17-000012",
+            "0000831259-18-000008",
+            "0000831259-19-000009"
+          ],
+          "value": 2610
+        },
+        {
+          "concept": "us-gaap:ShareBasedCompensation",
+          "matching_accns": [
+            "0000831259-17-000012",
+            "0000831259-18-000008",
+            "0000831259-19-000009"
+          ],
+          "value": 86
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+          "matching_accns": [
+            "0000831259-17-000012",
+            "0000831259-18-000008"
+          ],
+          "value": 3729
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInInvestingActivities",
+          "matching_accns": [
+            "0000831259-17-000012",
+            "0000831259-18-000008"
+          ],
+          "value": 3550
+        },
+        {
+          "concept": "us-gaap:PaymentsOfDividendsCommonStock",
+          "matching_accns": [
+            "0000831259-17-000012",
+            "0000831259-18-000008",
+            "0000831259-19-000009"
+          ],
+          "value": -6
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInFinancingActivities",
+          "matching_accns": [
+            "0000831259-17-000012",
+            "0000831259-18-000008",
+            "0000831259-19-000009"
+          ],
+          "value": -3166
+        },
+        {
+          "concept": "us-gaap:CashAndCashEquivalentsPeriodIncreaseDecrease",
+          "matching_accns": [
+            "0000831259-19-000009"
+          ],
+          "value": 4124
+        }
+      ],
+      "table": "831259_2016_CF.json"
+    },
+    {
+      "matched_row_n": 5,
+      "period": "2016-12-31",
+      "rows": [
+        {
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "matching_accns": [
+            "0000831259-19-000009"
+          ],
+          "value": 14564
+        },
+        {
+          "concept": "us-gaap:SellingGeneralAndAdministrativeExpense",
+          "matching_accns": [
+            "0000831259-17-000012",
+            "0000831259-18-000008"
+          ],
+          "value": -607
+        },
+        {
+          "concept": "us-gaap:OperatingIncomeLoss",
+          "matching_accns": [
+            "0000831259-17-000012",
+            "0000831259-18-000008"
+          ],
+          "value": -2792
+        },
+        {
+          "concept": "us-gaap:IncomeTaxExpenseBenefit",
+          "matching_accns": [
+            "0000831259-17-000012",
+            "0000831259-18-000008",
+            "0000831259-19-000009"
+          ],
+          "value": -371
+        },
+        {
+          "concept": "us-gaap:ProfitLoss",
+          "matching_accns": [
+            "0000831259-17-000012",
+            "0000831259-18-000008",
+            "0000831259-19-000009"
+          ],
+          "value": -4025
+        }
+      ],
+      "table": "831259_2016_IS.json"
+    },
+    {
+      "matched_row_n": 7,
+      "period": "2017-12-31",
+      "rows": [
+        {
+          "concept": "us-gaap:DepreciationDepletionAndAmortization",
+          "matching_accns": [
+            "0000831259-18-000008",
+            "0000831259-19-000009",
+            "0000831259-20-000004"
+          ],
+          "value": 1714
+        },
+        {
+          "concept": "us-gaap:ShareBasedCompensation",
+          "matching_accns": [
+            "0000831259-18-000008",
+            "0000831259-19-000009",
+            "0000831259-20-000004"
+          ],
+          "value": 71
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+          "matching_accns": [
+            "0000831259-18-000008"
+          ],
+          "value": 4682
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInInvestingActivities",
+          "matching_accns": [
+            "0000831259-18-000008"
+          ],
+          "value": -1363
+        },
+        {
+          "concept": "us-gaap:PaymentsOfDividendsCommonStock",
+          "matching_accns": [
+            "0000831259-18-000008",
+            "0000831259-19-000009",
+            "0000831259-20-000004"
+          ],
+          "value": -2
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInFinancingActivities",
+          "matching_accns": [
+            "0000831259-18-000008",
+            "0000831259-19-000009",
+            "0000831259-20-000004"
+          ],
+          "value": -3055
+        },
+        {
+          "concept": "us-gaap:CashAndCashEquivalentsPeriodIncreaseDecrease",
+          "matching_accns": [
+            "0000831259-20-000004"
+          ],
+          "value": 290
+        }
+      ],
+      "table": "831259_2017_CF.json"
+    },
+    {
+      "matched_row_n": 5,
+      "period": "2017-12-31",
+      "rows": [
+        {
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "matching_accns": [
+            "0000831259-19-000009",
+            "0000831259-20-000004"
+          ],
+          "value": 15888
+        },
+        {
+          "concept": "us-gaap:SellingGeneralAndAdministrativeExpense",
+          "matching_accns": [
+            "0000831259-18-000008"
+          ],
+          "value": -484
+        },
+        {
+          "concept": "us-gaap:OperatingIncomeLoss",
+          "matching_accns": [
+            "0000831259-18-000008"
+          ],
+          "value": 3633
+        },
+        {
+          "concept": "us-gaap:IncomeTaxExpenseBenefit",
+          "matching_accns": [
+            "0000831259-18-000008",
+            "0000831259-19-000009",
+            "0000831259-20-000004"
+          ],
+          "value": -883
+        },
+        {
+          "concept": "us-gaap:ProfitLoss",
+          "matching_accns": [
+            "0000831259-18-000008",
+            "0000831259-19-000009",
+            "0000831259-20-000004"
+          ],
+          "value": 2095
+        }
+      ],
+      "table": "831259_2017_IS.json"
+    },
+    {
+      "matched_row_n": 9,
+      "period": "2016-12-31",
+      "rows": [
+        {
+          "concept": "us-gaap:NetIncomeLoss",
+          "matching_accns": [
+            "0001193125-17-052150",
+            "0001193125-18-052024",
+            "0001193125-19-045425"
+          ],
+          "value": 87
+        },
+        {
+          "concept": "us-gaap:DepreciationDepletionAndAmortization",
+          "matching_accns": [
+            "0001193125-17-052150",
+            "0001193125-18-052024",
+            "0001193125-19-045425"
+          ],
+          "value": 50
+        },
+        {
+          "concept": "us-gaap:ShareBasedCompensation",
+          "matching_accns": [
+            "0001193125-17-052150",
+            "0001193125-18-052024",
+            "0001193125-19-045425"
+          ],
+          "value": 6
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+          "matching_accns": [
+            "0001193125-19-045425"
+          ],
+          "value": 154
+        },
+        {
+          "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+          "matching_accns": [
+            "0001193125-17-052150",
+            "0001193125-18-052024",
+            "0001193125-19-045425"
+          ],
+          "value": -50
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInInvestingActivities",
+          "matching_accns": [
+            "0001193125-19-045425"
+          ],
+          "value": -46
+        },
+        {
+          "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+          "matching_accns": [
+            "0001193125-17-052150",
+            "0001193125-18-052024",
+            "0001193125-19-045425"
+          ],
+          "value": -165
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInFinancingActivities",
+          "matching_accns": [
+            "0001193125-19-045425"
+          ],
+          "value": -111
+        },
+        {
+          "concept": "us-gaap:CashAndCashEquivalentsPeriodIncreaseDecrease",
+          "matching_accns": [
+            "0001193125-17-052150",
+            "0001193125-18-052024"
+          ],
+          "value": -3
+        }
+      ],
+      "table": "949870_2016_CF.json"
+    },
+    {
+      "matched_row_n": 9,
+      "period": "2017-12-30",
+      "rows": [
+        {
+          "concept": "us-gaap:NetIncomeLoss",
+          "matching_accns": [
+            "0001193125-18-052024",
+            "0001193125-19-045425",
+            "0001193125-20-041944"
+          ],
+          "value": 99
+        },
+        {
+          "concept": "us-gaap:DepreciationDepletionAndAmortization",
+          "matching_accns": [
+            "0001193125-18-052024",
+            "0001193125-19-045425",
+            "0001193125-20-041944"
+          ],
+          "value": 51
+        },
+        {
+          "concept": "us-gaap:ShareBasedCompensation",
+          "matching_accns": [
+            "0001193125-18-052024",
+            "0001193125-19-045425",
+            "0001193125-20-041944"
+          ],
+          "value": 6
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+          "matching_accns": [
+            "0001193125-19-045425",
+            "0001193125-20-041944"
+          ],
+          "value": 136
+        },
+        {
+          "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+          "matching_accns": [
+            "0001193125-18-052024",
+            "0001193125-19-045425",
+            "0001193125-20-041944"
+          ],
+          "value": -33
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInInvestingActivities",
+          "matching_accns": [
+            "0001193125-19-045425",
+            "0001193125-20-041944"
+          ],
+          "value": -33
+        },
+        {
+          "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+          "matching_accns": [
+            "0001193125-18-052024",
+            "0001193125-19-045425",
+            "0001193125-20-041944"
+          ],
+          "value": -145
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInFinancingActivities",
+          "matching_accns": [
+            "0001193125-19-045425",
+            "0001193125-20-041944"
+          ],
+          "value": -128
+        },
+        {
+          "concept": "us-gaap:CashAndCashEquivalentsPeriodIncreaseDecrease",
+          "matching_accns": [
+            "0001193125-18-052024"
+          ],
+          "value": -25
+        }
+      ],
+      "table": "949870_2017_CF.json"
+    },
+    {
+      "matched_row_n": 9,
+      "period": "2015-12-31",
+      "rows": [
+        {
+          "concept": "us-gaap:NetIncomeLoss",
+          "matching_accns": [
+            "0001047469-16-010591",
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 83
+        },
+        {
+          "concept": "us-gaap:DepreciationDepletionAndAmortization",
+          "matching_accns": [
+            "0001047469-16-010591",
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 36
+        },
+        {
+          "concept": "us-gaap:ShareBasedCompensation",
+          "matching_accns": [
+            "0001047469-16-010591",
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 11
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+          "matching_accns": [
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 10
+        },
+        {
+          "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+          "matching_accns": [
+            "0001047469-16-010591",
+            "0001628280-17-002068"
+          ],
+          "value": -13
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInInvestingActivities",
+          "matching_accns": [
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": -19
+        },
+        {
+          "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+          "matching_accns": [
+            "0001047469-16-010591",
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": -86
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInFinancingActivities",
+          "matching_accns": [
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": -101
+        },
+        {
+          "concept": "us-gaap:CashAndCashEquivalentsPeriodIncreaseDecrease",
+          "matching_accns": [
+            "0001047469-16-010591",
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": -124
+        }
+      ],
+      "table": "1334036_2015_CF.json"
+    },
+    {
+      "matched_row_n": 33,
+      "period": "2016-12-31",
+      "rows": [
+        {
+          "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 148
+        },
+        {
+          "concept": "us-gaap:AccountsReceivableNetCurrent",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 78
+        },
+        {
+          "concept": "us-gaap:InventoryNet",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 147
+        },
+        {
+          "concept": "us-gaap:IncomeTaxesReceivable",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 3
+        },
+        {
+          "concept": "us-gaap:AccountsAndOtherReceivablesNetCurrent",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 15
+        },
+        {
+          "concept": "us-gaap:PrepaidExpenseAndOtherAssetsCurrent",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 32
+        },
+        {
+          "concept": "us-gaap:RestrictedCashAndCashEquivalentsAtCarryingValue",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 3
+        },
+        {
+          "concept": "us-gaap:AssetsCurrent",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 425
+        },
+        {
+          "concept": "us-gaap:Goodwill",
+          "matching_accns": [
+            "0001334036-19-000012",
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 1
+        },
+        {
+          "concept": "us-gaap:PropertyPlantAndEquipmentNet",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 44
+        },
+        {
+          "concept": "us-gaap:IntangibleAssetsNetExcludingGoodwill",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 73
+        },
+        {
+          "concept": "us-gaap:DeferredTaxAssetsNetNoncurrent",
+          "matching_accns": [
+            "0001628280-17-002068"
+          ],
+          "value": 7
+        },
+        {
+          "concept": "us-gaap:OtherAssetsNoncurrent",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 13
+        },
+        {
+          "concept": "us-gaap:RestrictedCashAndCashEquivalentsNoncurrent",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 3
+        },
+        {
+          "concept": "us-gaap:Assets",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 566
+        },
+        {
+          "concept": "us-gaap:AccountsPayableCurrent",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 62
+        },
+        {
+          "concept": "us-gaap:AccruedLiabilitiesCurrent",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 78
+        },
+        {
+          "concept": "us-gaap:AccruedIncomeTaxesCurrent",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 7
+        },
+        {
+          "concept": "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 2
+        },
+        {
+          "concept": "us-gaap:LiabilitiesCurrent",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 149
+        },
+        {
+          "concept": "us-gaap:AccruedIncomeTaxesNoncurrent",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 4
+        },
+        {
+          "concept": "us-gaap:LongTermDebtAndCapitalLeaseObligations",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 0
+        },
+        {
+          "concept": "us-gaap:OtherLiabilitiesNoncurrent",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 13
+        },
+        {
+          "concept": "us-gaap:Liabilities",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 167
+        },
+        {
+          "concept": "us-gaap:TemporaryEquityCarryingAmountAttributableToParent",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 179
+        },
+        {
+          "concept": "us-gaap:PreferredStockValueOutstanding",
+          "matching_accns": [
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 0
+        },
+        {
+          "concept": "us-gaap:CommonStockValueOutstanding",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 0
+        },
+        {
+          "concept": "us-gaap:TreasuryStockValue",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": -284
+        },
+        {
+          "concept": "us-gaap:AdditionalPaidInCapitalCommonStock",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 364
+        },
+        {
+          "concept": "us-gaap:RetainedEarningsAccumulatedDeficit",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 196
+        },
+        {
+          "concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": -56
+        },
+        {
+          "concept": "us-gaap:StockholdersEquity",
+          "matching_accns": [
+            "0001334036-19-000012",
+            "0001334036-20-000010",
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 220
+        },
+        {
+          "concept": "us-gaap:LiabilitiesAndStockholdersEquity",
+          "matching_accns": [
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 566
+        }
+      ],
+      "table": "1334036_2016_BS.json"
+    },
+    {
+      "matched_row_n": 8,
+      "period": "2016-12-31",
+      "rows": [
+        {
+          "concept": "us-gaap:NetIncomeLoss",
+          "matching_accns": [
+            "0001334036-19-000012",
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 16
+        },
+        {
+          "concept": "us-gaap:DepreciationDepletionAndAmortization",
+          "matching_accns": [
+            "0001334036-19-000012",
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 34
+        },
+        {
+          "concept": "us-gaap:ShareBasedCompensation",
+          "matching_accns": [
+            "0001334036-19-000012",
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 11
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+          "matching_accns": [
+            "0001334036-19-000012",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 40
+        },
+        {
+          "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+          "matching_accns": [
+            "0001628280-17-002068"
+          ],
+          "value": -13
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInInvestingActivities",
+          "matching_accns": [
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": -19
+        },
+        {
+          "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+          "matching_accns": [
+            "0001334036-19-000012",
+            "0001628280-17-002068",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": 0
+        },
+        {
+          "concept": "us-gaap:NetCashProvidedByUsedInFinancingActivities",
+          "matching_accns": [
+            "0001334036-19-000012",
+            "0001628280-18-002437",
+            "0001628280-18-003401"
+          ],
+          "value": -16
+        }
+      ],
+      "table": "1334036_2016_CF.json"
+    },
+    {
+      "matched_row_n": 27,
+      "period": "2019-12-31",
+      "rows": [
+        {
+          "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 276
+        },
+        {
+          "concept": "us-gaap:AccountsReceivableNetCurrent",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 40
+        },
+        {
+          "concept": "us-gaap:InventoryNet",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 82
+        },
+        {
+          "concept": "us-gaap:PrepaidExpenseAndOtherAssetsCurrent",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 6
+        },
+        {
+          "concept": "us-gaap:AssetsCurrent",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 404
+        },
+        {
+          "concept": "us-gaap:OtherAssetsNoncurrent",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 1
+        },
+        {
+          "concept": "us-gaap:PropertyPlantAndEquipmentNet",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 47
+        },
+        {
+          "concept": "us-gaap:Assets",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 452
+        },
+        {
+          "concept": "us-gaap:AccountsPayableCurrent",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 27
+        },
+        {
+          "concept": "us-gaap:AccruedSalariesCurrent",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 2
+        },
+        {
+          "concept": "us-gaap:AccruedBonusesCurrent",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 4
+        },
+        {
+          "concept": "us-gaap:AccruedLiabilitiesCurrent",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 4
+        },
+        {
+          "concept": "us-gaap:LongTermDebtCurrent",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 11
+        },
+        {
+          "concept": "us-gaap:CapitalLeaseObligationsCurrent",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 0
+        },
+        {
+          "concept": "us-gaap:WarrantsAndRightsOutstanding",
+          "matching_accns": [
+            "0001628280-20-003841"
+          ],
+          "value": 0
+        },
+        {
+          "concept": "us-gaap:LiabilitiesCurrent",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 48
+        },
+        {
+          "concept": "us-gaap:LongTermLineOfCredit",
+          "matching_accns": [
+            "0001628280-20-003841"
+          ],
+          "value": 0
+        },
+        {
+          "concept": "us-gaap:LongTermLoansFromBank",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 15
+        },
+        {
+          "concept": "us-gaap:OtherLoansPayableLongTerm",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 5
+        },
+        {
+          "concept": "us-gaap:TemporaryEquityCarryingAmountAttributableToParent",
+          "matching_accns": [
+            "0001655210-21-000032",
+            "0001655210-22-000019"
+          ],
+          "value": 0
+        },
+        {
+          "concept": "us-gaap:PreferredStockValue",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 0
+        },
+        {
+          "concept": "us-gaap:CommonStockValue",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 0
+        },
+        {
+          "concept": "us-gaap:AdditionalPaidInCapital",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 526
+        },
+        {
+          "concept": "us-gaap:RetainedEarningsAccumulatedDeficit",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": -142
+        },
+        {
+          "concept": "us-gaap:StockholdersEquity",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032",
+            "0001655210-22-000019",
+            "0001655210-23-000017"
+          ],
+          "value": 384
+        },
+        {
+          "concept": "us-gaap:LiabilitiesNoncurrent",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 20
+        },
+        {
+          "concept": "us-gaap:LiabilitiesAndStockholdersEquity",
+          "matching_accns": [
+            "0001628280-20-003841",
+            "0001655210-21-000032"
+          ],
+          "value": 452
+        }
+      ],
+      "table": "1655210_2019_BS.json"
+    }
+  ],
+  "counts": {
+    "candidate_cells_without_numeric_magnitude_match": 2,
+    "cells_with_conflicting_same_period_values": 164,
+    "no_same_period_annual_candidate_cells": 160,
+    "same_period_candidate_cells": 3328,
+    "tables_with_any_matched_rows": 226,
+    "tables_with_at_least_one_common_accession": 208,
+    "tables_with_no_common_accession_for_matched_rows": 18
+  },
+  "limitations": [
+    "Magnitude-only comparison does not verify presentation signs",
+    "Derived and custom-tagged/unmatched cells are excluded from accession intersections",
+    "Flat SEC companyfacts can omit custom/dimensional facts; absence of a common accession is a flattened-source inconsistency, not proof each numeric cell is false",
+    "A common accession does not validate filing layout, intended original-versus-restated version, transactions, or standards applicability"
+  ],
+  "model_calls": 0,
+  "network_calls": 0,
+  "scope": "Selected companies' normalized clean tables matched to cached same-period annual SEC companyfacts",
+  "snapshot_hashes": [
+    {
+      "cik": "0000001800",
+      "sha256": "5d751f73769f5c0a1f9bee0de16cb39d8961cf3f1ebb5558d555bb2678afb4ff",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000001800.json"
+    },
+    {
+      "cik": "0000051434",
+      "sha256": "cf67a703e8b724e484e37109a20dac6c11705d2a7ec62c22f00ec42b5ab53107",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000051434.json"
+    },
+    {
+      "cik": "0000100885",
+      "sha256": "99d22f8aa6dd31f102b2691ce5c53ef872908bb7b50860d153e6efbc6eef2b61",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000100885.json"
+    },
+    {
+      "cik": "0000731766",
+      "sha256": "6c9dff59732b7c597542b2d5eadaae0313ca0de03defdba2c00203e693632d76",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000731766.json"
+    },
+    {
+      "cik": "0000831259",
+      "sha256": "9e88803b7e6f52764f09394cef2c020aa7f8fa50a494c551471a448c1c943d11",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000831259.json"
+    },
+    {
+      "cik": "0000949870",
+      "sha256": "b015ce24076d76ed6ecee7f288668d8fd6c640d7003121c4c2385856b925c870",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000949870.json"
+    },
+    {
+      "cik": "0001334036",
+      "sha256": "a1df742d55b2bf3f619f2e2a96a6183fd1d05d10eac013f70f23c82c20444337",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001334036.json"
+    },
+    {
+      "cik": "0001655210",
+      "sha256": "27dd177b3d08dbfc5f42f37cabf7751227abc43b8e4a344294c49b3146d836cb",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001655210.json"
+    }
+  ],
+  "value_ambiguity_examples": [
+    {
+      "accessions": [
+        "0001047469-17-000744",
+        "0001047469-18-000856",
+        "0001047469-19-000624"
+      ],
+      "concept": "us-gaap:SellingGeneralAndAdministrativeExpense",
+      "scaled_sec_alternatives": [
+        6672.0,
+        6736.0
+      ],
+      "table": "1800_2016_IS.json",
+      "value_in_table": -6672
+    },
+    {
+      "accessions": [
+        "0001047469-17-000744",
+        "0001047469-18-000856",
+        "0001047469-19-000624"
+      ],
+      "concept": "us-gaap:OperatingIncomeLoss",
+      "scaled_sec_alternatives": [
+        3026.0,
+        3185.0
+      ],
+      "table": "1800_2016_IS.json",
+      "value_in_table": 3185
+    },
+    {
+      "accessions": [
+        "0001047469-18-000856",
+        "0001047469-19-000624",
+        "0001104659-20-023904"
+      ],
+      "concept": "us-gaap:SellingGeneralAndAdministrativeExpense",
+      "scaled_sec_alternatives": [
+        9117.0,
+        9182.0
+      ],
+      "table": "1800_2017_IS.json",
+      "value_in_table": -9117
+    },
+    {
+      "accessions": [
+        "0001047469-18-000856",
+        "0001047469-19-000624",
+        "0001104659-20-023904"
+      ],
+      "concept": "us-gaap:OperatingIncomeLoss",
+      "scaled_sec_alternatives": [
+        1564.0,
+        1726.0
+      ],
+      "table": "1800_2017_IS.json",
+      "value_in_table": 1726
+    },
+    {
+      "accessions": [
+        "0001047469-19-000624",
+        "0001104659-20-023904"
+      ],
+      "concept": "us-gaap:DeferredIncomeTaxesAndOtherAssetsNoncurrent",
+      "scaled_sec_alternatives": [
+        1868.0,
+        1885.0
+      ],
+      "table": "1800_2018_BS.json",
+      "value_in_table": 1868
+    },
+    {
+      "accessions": [
+        "0000051434-16-000042",
+        "0000051434-17-000007"
+      ],
+      "concept": "us-gaap:OtherAssetsNoncurrent",
+      "scaled_sec_alternatives": [
+        1131.0,
+        1187.0
+      ],
+      "table": "51434_2015_BS.json",
+      "value_in_table": 1187
+    },
+    {
+      "accessions": [
+        "0000051434-16-000042",
+        "0000051434-17-000007"
+      ],
+      "concept": "us-gaap:Assets",
+      "scaled_sec_alternatives": [
+        30531.0,
+        30587.0
+      ],
+      "table": "51434_2015_BS.json",
+      "value_in_table": 30587
+    },
+    {
+      "accessions": [
+        "0000051434-16-000042",
+        "0000051434-17-000007"
+      ],
+      "concept": "us-gaap:LongTermDebtNoncurrent",
+      "scaled_sec_alternatives": [
+        8844.0,
+        8900.0
+      ],
+      "table": "51434_2015_BS.json",
+      "value_in_table": 8900
+    },
+    {
+      "accessions": [
+        "0000051434-16-000042",
+        "0000051434-17-000007"
+      ],
+      "concept": "us-gaap:LiabilitiesAndStockholdersEquity",
+      "scaled_sec_alternatives": [
+        30531.0,
+        30587.0
+      ],
+      "table": "51434_2015_BS.json",
+      "value_in_table": 30587
+    },
+    {
+      "accessions": [
+        "0000051434-17-000007",
+        "0000051434-18-000008"
+      ],
+      "concept": "us-gaap:DepreciationDepletionAndAmortization",
+      "scaled_sec_alternatives": [
+        1167.0,
+        1294.0
+      ],
+      "table": "51434_2015_CF.json",
+      "value_in_table": 1294
+    },
+    {
+      "accessions": [
+        "0000051434-17-000007",
+        "0000051434-18-000008"
+      ],
+      "concept": "us-gaap:AccountsNotesAndLoansReceivableNetCurrent",
+      "scaled_sec_alternatives": [
+        2852.0,
+        3001.0
+      ],
+      "table": "51434_2016_BS.json",
+      "value_in_table": 3001
+    },
+    {
+      "accessions": [
+        "0000051434-17-000007",
+        "0000051434-18-000008"
+      ],
+      "concept": "us-gaap:InventoryNet",
+      "scaled_sec_alternatives": [
+        2233.0,
+        2438.0
+      ],
+      "table": "51434_2016_BS.json",
+      "value_in_table": 2438
+    }
+  ]
+}

@@ -23,8 +23,7 @@ from typing import Optional
 
 from approaches.full_pipeline.intelliaudit_runner import (
     _make_client, _extract_json, TEMPERATURE, PROVIDERS)
-from approaches.stage1_taxonomy_citation.citation_select import snap_citation
-from core.metrics import _norm_type, extract_pred_errors
+from core.metrics import _norm_type, extract_pred_errors, citation_codes
 from core.frameworks import resolve_framework
 
 # Arithmetic claims are the only ones a verified-consistent table can refute.
@@ -62,10 +61,10 @@ _ROLE_IFRS = (
 )
 
 _WHEN_CONSISTENT = (
-    "\n\nThis statement is ARITHMETICALLY CONSISTENT. No Numerical Error and no "
-    "value-level Missing Row exists. DEFAULT TO 'Correct'. Return 'Incorrect' only "
-    "for a clearly Redundant or Misclassified row that the supporting transactions "
-    "cannot justify. Do not manufacture an error to look thorough."
+    "\n\nThe engine found no anomaly in the arithmetic checks it could perform. "
+    "This is partial evidence, not a certificate that every value or missing row "
+    "is correct. Assess unsupported rows and the remaining evidence. Return "
+    "'Incorrect' only when you can identify a specific supported defect."
 )
 
 _WHEN_ANOMALY = (
@@ -105,21 +104,25 @@ def claimed_error_types(parsed: dict | None) -> list[str]:
 
 
 def apply_consistency_veto(parsed: dict | None, *, verified_consistent: bool,
-                           original_table: str) -> tuple[dict | None, bool]:
-    """Override Incorrect → Correct only for arithmetic claims on a clean table.
+                           original_table: str,
+                           verified_error_absence: bool = False) -> tuple[dict | None, bool]:
+    """Veto only with an additional complete error-absence certificate.
 
     Returns ``(parsed, vetoed)``. A Redundant or Misclassification claim is left
     in place: those defects leave the subtotals footing, so the arithmetic
     certificate does not refute them. An Incorrect verdict with no named type
-    is treated as an unsupported arithmetic flag and is vetoed.
+    is retained. Passing some checkable identities alone does not certify all
+    cells, so legacy callers providing only verified_consistent do not veto.
     """
-    if not parsed or not verified_consistent:
+    if not parsed or not verified_consistent or not verified_error_absence:
         return parsed, False
     judgment = str(parsed.get("General Judgment",
                               parsed.get("General Judgement", ""))).strip().lower()
     if judgment != "incorrect":
         return parsed, False
     types = [t for t in claimed_error_types(parsed) if t]
+    if not types:
+        return parsed, False
     if any(t in _STRUCTURAL_TYPES for t in types):
         return parsed, False
     if types and any(t not in _ARITHMETIC_TYPES for t in types):
@@ -143,8 +146,9 @@ _OUTPUT_SPEC_IFRS = (
     '}\n'
     'If "General Judgment" is "Correct", omit the "Information for error" blocks. '
     'For multiple errors add "Information for error 2", etc. '
-    'Whenever you flag an error you MUST fill "Standards Citation" with an IAS or IFRS '
-    'standard chosen from that row\'s candidate list above (pick the best-fitting one; never leave it blank).'
+    'Cite one applicable IAS/IFRS paragraph from that row\'s candidate list. '
+    'A standard alone is not a paragraph citation. If the evidence does not '
+    'establish an applicable paragraph, set "Standards Citation" to null and explain why.'
 )
 
 _OUTPUT_SPEC = (
@@ -162,10 +166,10 @@ _OUTPUT_SPEC = (
     '}\n'
     'If "General Judgment" is "Correct", omit the "Information for error" blocks. '
     'For multiple errors add "Information for error 2", etc. '
-    'Whenever you flag an error you MUST set "Standards Citation" to one FULL '
-    'code copied from that row\'s candidate list (ASC xxx-xx-xx-x). Do not invent '
-    'a paragraph. Do not emit a topic-only citation. If nothing fits, copy the '
-    'most complete code on that row anyway.'
+    'Cite one applicable full paragraph copied from that row\'s candidate list '
+    '(ASC xxx-xx-xx-x). Reference membership alone does not establish applicability. '
+    'If nothing fits or only a topic is available, set "Standards Citation" to null '
+    'and explain why. Do not invent or guess a paragraph.'
 )
 
 
@@ -173,11 +177,10 @@ def _evidence_block(record, statement) -> str:
     lines = ["DETERMINISTIC ARITHMETIC EVIDENCE (from the Stage 0 engine):"]
     if record.verified_consistent:
         lines.append(
-            "  ✓ VERIFIED CONSISTENT: every checkable subtotal foots and every "
-            "accounting identity holds, and every transaction-described row is "
-            "present. No Numerical Error and no Missing Row exists. The statement "
-            "is very likely CORRECT — only a Redundant Row or Misclassification is "
-            "even possible, and only with clear evidence.")
+            "  The engine found no anomaly in its checkable subtotals and "
+            "identities. Checks may have incomplete coverage. This does not "
+            "prove the absence of numerical, missing-row, recognition or "
+            "measurement defects.")
     elif record.footing:
         lines.append("  ⚠ Subtotal footing mismatches the engine found "
                      "(these are real arithmetic anomalies — investigate them):")
@@ -241,33 +244,48 @@ def _citation_block(statement, framework: str = "us-gaap") -> str:
 
 
 def apply_citation_snap(parsed: dict | None, statement, error_type=None) -> dict | None:
-    """After the LLM answers, force the citation onto the grounded list (10 → 1)."""
+    """Validate each raw pick against its row; never substitute another code.
+
+    The historical function name remains for callers. Invalid or incomplete
+    picks abstain, with the raw citation and validation reason preserved.
+    Candidate membership certifies retrieval provenance only.
+    """
     if not parsed or not isinstance(parsed, dict):
         return parsed
-    info = parsed.get("Information for error 1")
-    if not isinstance(info, dict):
-        return parsed
-    eid = info.get("Error Identification") or {}
-    row_n = None
-    raw_row = eid.get("Problematic Entry")
-    if raw_row is not None:
-        import re
-        m = re.search(r"\d+", str(raw_row))
-        if m:
-            row_n = int(m.group())
-    et = error_type or eid.get("Error Type")
-    cands = []
-    if row_n is not None:
-        hit = next((r for r in statement.rows if r.row_idx == row_n), None)
-        if hit is not None:
-            cands = _row_codes(hit)
-    snapped = snap_citation(info.get("Standards Citation"), cands, et)
-    if snapped:
-        info = dict(info)
-        info["Standards Citation"] = "ASC " + snapped
-        parsed = dict(parsed)
-        parsed["Information for error 1"] = info
-    return parsed
+    import re
+    result = dict(parsed)
+    keys = [key for key in parsed if re.fullmatch(r"Information for error \d+", key)]
+    if not keys and "Error Identification" in parsed:
+        keys = [None]
+    framework = _framework_of(statement)
+    for key in keys:
+        original = parsed if key is None else parsed[key]
+        if not isinstance(original, dict):
+            continue
+        info = dict(original)
+        eid = info.get("Error Identification") or {}
+        raw = info.get("Standards Citation")
+        row_match = re.search(r"\d+", str(eid.get("Problematic Entry") or ""))
+        row_n = int(row_match.group()) if row_match else None
+        hit = next((row for row in getattr(statement, "rows", [])
+                    if row.row_idx == row_n), None)
+        candidates = _row_codes(hit) if hit is not None else []
+        allowed = {code for cand in candidates for code in citation_codes(cand, "full")}
+        picked = citation_codes(raw, "identifier")
+        expected = (lambda code: not code.startswith("ASC ")) if framework == "ifrs" else (lambda code: code.startswith("ASC "))
+        accepted = len(picked) == 1 and picked[0] in allowed and expected(picked[0])
+        reason = ("candidate_member" if accepted else "model_abstained" if not raw
+                  else "row_not_available" if hit is None
+                  else "no_paragraph_candidates" if not allowed
+                  else "citation_not_in_row_candidates")
+        info.setdefault("Raw Standards Citation", raw)
+        info["Standards Citation"] = picked[0] if accepted else None
+        info["Citation Validation"] = {"accepted": accepted, "reason": reason}
+        if key is None:
+            result.update(info)
+        else:
+            result[key] = info
+    return result
 
 
 def build_user(item: dict, record, statement) -> str:

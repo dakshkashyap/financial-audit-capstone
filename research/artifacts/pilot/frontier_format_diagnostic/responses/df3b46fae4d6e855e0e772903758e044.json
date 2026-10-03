@@ -1,0 +1,21 @@
+{
+  "call_id": "df3b46fae4d6e855e0e772903758e044",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":null,\"evidence\":[{\"quote\":\"revenue recognised on satisfied performance obligations: +15,136 (increase); returns and allowances: −1,242 (decrease)\",\"row\":0,\"source\":\"transactions\"},{\"quote\":\"Operating income (loss) | $2,437\",\"row\":4,\"source\":\"statement\"},{\"quote\":\"amount carried in contract liabilities 330\",\"row\":null,\"source\":\"transactions\"},{\"quote\":\"Net income (loss) | $865\",\"row\":9,\"source\":\"statement\"}],\"judgement\":\"correct\",\"reason\":\"The component movements reconcile to every line that has evidence: revenue 13,894, SG&A (370), other operating 568, tax (944) and other items 12. The subtotals also foot: 2,437, then 1,797, then 865. Unearned invoices of 330 are fully deferred in contract liabilities. Cost of revenue and other income have no component evidence, but nothing contradicts them. No error is identified.\",\"row\":null}",
+  "reserved_usd": "0.047420",
+  "request_sha256": "654116d18dd4a296c131eb55a92b762ee14739fb51772f0f8ee93cd62f830610",
+  "prompt_sha256": "e7909207e92b9bb3e6c8fb93a52497f92c86dcdd7b7b4334ab8f51d1b26fa6b2",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002381-p2yRUERWtgKIdKfm0N4t",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 2070,
+    "completion_tokens": 490,
+    "total_tokens": 2560,
+    "cost": 0.01808
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 6.704
+}

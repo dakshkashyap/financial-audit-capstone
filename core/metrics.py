@@ -103,6 +103,8 @@ def _fasb_ids(text: str) -> List[str]:
  
 def em_standards_topk(pred_text: str, gt_text: str, k: int = 1) -> float:
     """
+    LEGACY prefix-overlap metric; this is not paragraph exact match.
+
     Confirmed by author email (Rushi Wang, June 2026):
     - No external FASB DB. The LLM uses its own prior knowledge.
     - The model's generated Standards Citation text is compared against the
@@ -127,6 +129,59 @@ def em_standards_topk(pred_text: str, gt_text: str, k: int = 1) -> float:
     g = str(gt_text).strip().lower()
     p = str(pred_text).strip().lower()
     return float(bool(g) and bool(p) and (g[:40] in p or p[:40] in g))
+
+
+def citation_codes(text: str, level: str = "full") -> List[str]:
+    """Identifiers in appearance order, with distinct full and topic levels.
+
+    Full requires an ASC paragraph or an IAS/IFRS paragraph. Standard-only
+    identifiers never receive full credit. IFRS subparagraphs are normalized
+    to the paragraph, consistently with core.frameworks.ifrs_paragraph_of.
+    No substring or prose fallback is used. Non-citable examples must be
+    excluded by the caller rather than passed an empty gold citation.
+    """
+    from core.frameworks import _IFRS_RE
+    if level not in {"full", "topic", "identifier"}:
+        raise ValueError("citation level must be 'full', 'topic' or 'identifier'")
+    text = str(text or "").strip()
+    if re.fullmatch(r"\d{3}(?:-[A-Z]?\d+[A-Z]?){0,3}", text, re.I):
+        text = "ASC " + text
+    asc_re = re.compile(
+        r"\b(?:FASB\s+)?ASC\s+(\d{3}(?:-[A-Z]?\d+[A-Z]?){0,3})(?![A-Z0-9-])",
+        re.I,
+    )
+    found = []
+    for match in asc_re.finditer(text):
+        code = match.group(1).upper()
+        if level == "topic":
+            found.append((match.start(), "ASC " + code.split("-")[0]))
+        elif level == "identifier" or len(code.split("-")) == 4:
+            found.append((match.start(), "ASC " + code))
+    for match in _IFRS_RE.finditer(text):
+        standard = f"{match.group(1).upper()} {int(match.group(2))}"
+        if level == "topic":
+            found.append((match.start(), standard))
+        elif match.group(3):
+            found.append((match.start(), standard + "." + match.group(3).upper()))
+        elif level == "identifier":
+            found.append((match.start(), standard))
+    return list(dict.fromkeys(code for _, code in sorted(found)))
+
+
+def em_citation_exact(pred_text: str, gt_text: str, k: int = 1) -> float:
+    """Strict paragraph EM, separate from the legacy prefix-overlap score."""
+    # Incomplete predictions consume their rank; a later full code cannot
+    # silently move into the first position after filtering out a topic.
+    predicted = citation_codes(pred_text, "identifier")[:max(0, k)]
+    gold = set(citation_codes(gt_text, "full"))
+    return float(bool(gold.intersection(predicted)))
+
+
+def em_citation_topic(pred_text: str, gt_text: str, k: int = 1) -> float:
+    """ASC topic / IFRS standard EM; never labelled full citation accuracy."""
+    predicted = citation_codes(pred_text, "topic")[:max(0, k)]
+    gold = set(citation_codes(gt_text, "topic"))
+    return float(bool(gold.intersection(predicted)))
  
  
 # ── Stage 5 — Table Revision BLEU ─────────────────────────────────────────────
@@ -188,4 +243,3 @@ def extract_corrected_table(parsed: Optional[Dict]) -> str:
             return c
         i += 1
     return ""
- 

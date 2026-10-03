@@ -1,0 +1,1 @@
+{"case_id":"case_aa3bbe2b8691f78383ee","condition":"opus_direct","condition_id":"1bc609d77354cf7230e5ceff6c73538aa3b4657c976fef7e3e763301a1b00aed","error":"Invalid or truncated JSON","model":"anthropic/claude-opus-5.5","prediction":null,"status":"invalid_response","time":"2026-10-03T04:15:10.003552+00:00","trace":["784dfc4b96b90490631b1814beef6f9b"]}

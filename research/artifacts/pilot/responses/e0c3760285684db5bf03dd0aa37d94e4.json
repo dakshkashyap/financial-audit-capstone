@@ -1,0 +1,19 @@
+{
+  "call_id": "e0c3760285684db5bf03dd0aa37d94e4",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "286b6e92200534b2cf0e80142780e24e55cb86c806badc9578ee7854f5082e63",
+  "reserved_usd": "0.054176",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"incorrect\",\"error_type\":\"Redundant Row\",\"row\":20,\"citation\":null,\"citation_abstain\":true,\"evidence\":[{\"source\":\"statement\",\"quote\":\"Accrued restructuring costs | $36\",\"row\":20},{\"source\":\"statement\",\"quote\":\"Total current liabilities | $641\",\"row\":27},{\"source\":\"statement\",\"quote\":\"Total liabilities | $3,684\",\"row\":34}],\"reason\":\"Current liability rows sum to 677, but the reported total is 641, a difference of exactly 36. The 641 figure also ties to total liabilities (3,684) and to total liabilities and equity (4,502). That makes the restructuring row the likely extra line. All other rows match the transaction evidence and the lease tests support operating classification. This is a presentation fault, not one governed by a specific ASC paragraph.\"}\n```",
+  "response_id": "gen-1791001096-qBIg2HscoIYWNvf1VJCg",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 3155,
+    "completion_tokens": 699,
+    "total_tokens": 3854,
+    "cost": 0.0266
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 8.154
+}

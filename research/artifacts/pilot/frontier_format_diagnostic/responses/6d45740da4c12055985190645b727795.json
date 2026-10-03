@@ -1,0 +1,21 @@
+{
+  "call_id": "6d45740da4c12055985190645b727795",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":\"Numerical Error\",\"evidence\":[{\"quote\":\"[row 8]: Income tax (expense) benefit | ($95)\",\"row\":8,\"source\":\"statement\"},{\"quote\":\"current and deferred tax expense: −90 (decrease); tax credits and benefits: +6 (increase)\",\"row\":null,\"source\":\"transactions\"},{\"quote\":\"[row 10]: Net income (loss) | $793\",\"row\":10,\"source\":\"statement\"}],\"judgement\":\"incorrect\",\"reason\":\"The tax components net to -84 (-90 + 6), but the statement reports -95. Using -84, 876 - 84 + 1 = 793, which matches reported net income; using -95 it would be 782. Every other line ties to its components. This is an arithmetic misstatement, not a standards issue, so no ASC paragraph is cited.\",\"row\":8}",
+  "reserved_usd": "0.047628",
+  "request_sha256": "e55752f99198dbe7b5960d7e2e2f15f2a6812adcbf7bff658e7ddacd432bca85",
+  "prompt_sha256": "083f84aba138d52f7d668f216338d10cf7917ce9690a9b14bb41c2d2047e0647",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002387-lO6jQqsRC1GKeGizb4sX",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 2091,
+    "completion_tokens": 447,
+    "total_tokens": 2538,
+    "cost": 0.017304
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 6.324
+}

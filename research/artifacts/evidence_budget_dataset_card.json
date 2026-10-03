@@ -1,0 +1,27 @@
+{
+  "name": "Evidence-budget development fixtures",
+  "status": "synthetic_unvalidated_software_fixture",
+  "version": "0.1",
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "generator": "research/evidence_budget.py",
+  "records": 16,
+  "synthetic_company_clusters": 8,
+  "construction": "Matched paired recognition-issue and supported-recognition scenarios with balanced journals and distributed observable evidence",
+  "files": {
+    "public": "evidence_budget_public.json",
+    "evaluator_only_gold": "private/evidence_budget_gold.json",
+    "deterministic_policy_demonstration": "evidence_budget_demo.json"
+  },
+  "human_accounting_validation": false,
+  "llm_performance_evaluation": false,
+  "real_filing_source": false,
+  "fraudulent_intent_labels": false,
+  "standards_paragraph_gold": false,
+  "limitations": [
+    "Software development fixtures, not a validated audit benchmark",
+    "Author-defined canonical evidence graphs may omit acceptable alternative proofs",
+    "Acquisition costs are arbitrary simulated units, not measured professional fees",
+    "Public gold is intended for software reproducibility; a final blind test must use new withheld cases"
+  ]
+}

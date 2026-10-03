@@ -169,12 +169,19 @@ def load_exam(bench: Path, full: bool, n: int, seed: int):
     for e in rows:
         by[e["metadata"]["statement_type"]].append(e)
     rng = random.Random(seed)
-    per = max(1, n // 3)
+    if n < 1:
+        raise ValueError("--n must be positive")
+    per, remainder = divmod(n, 3)
     out = []
-    for st in ("BalanceSheet", "IncomeStatement", "CashFlow"):
+    remaining = []
+    for index, st in enumerate(("BalanceSheet", "IncomeStatement", "CashFlow")):
         pool = list(by[st])
         rng.shuffle(pool)
-        out.extend(pool[:per])
+        take = per + int(index < remainder)
+        out.extend(pool[:take])
+        remaining.extend(pool[take:])
+    rng.shuffle(remaining)
+    out.extend(remaining[:max(0, n - len(out))])
     rng.shuffle(out)
     return out
 
@@ -312,11 +319,17 @@ def parse_stage2(raw):
 def score_preds(preds, key, bench: Path, t: T, det_title=None, cite_title=None):
     sys.path.insert(0, str(bench / "src"))
     from scorer import score_citation, score_detection
+    from core.metrics import _norm_type
 
     n = len(preds)
-    det_fired = [p for p in preds if p.get("stage0_fired") or p.get("predicted_error_type")]
-    hit = {"topic": 0, "subtopic": 0, "full": 0, "etype": 0, "row": 0}
+    def judgment(p):
+        return p.get("predicted_judgment") or ("Incorrect" if p.get("stage0_fired") or p.get("predicted_error_type") else "Unverified")
+
+    det_fired = [p for p in preds if judgment(p).strip().lower() == "incorrect"]
+    hit = {"topic": 0, "subtopic": 0, "full": 0, "etype": 0, "row": 0, "joint": 0, "judgment": 0}
     cite_fired = 0
+    n_citable = 0
+    citation_abstains = noncitable_n = noncitable_citations = 0
     by_type = defaultdict(lambda: {"n": 0, "fire": 0})
     pairs = []
     for p in preds:
@@ -324,27 +337,34 @@ def score_preds(preds, key, bench: Path, t: T, det_title=None, cite_title=None):
         et = k["error_type"]
         by_type[et]["n"] += 1
         det = {
-            "General Judgment": "Incorrect" if (p.get("stage0_fired") or p.get("predicted_error_type")) else "Correct",
-            "error_type": p.get("predicted_error_type") or "",
+            "General Judgment": judgment(p),
+            "error_type": _norm_type(p.get("predicted_error_type") or ""),
             "problematic_entry": p.get("predicted_row"),
         }
         sd = score_detection(det, k)
-        if p.get("stage0_fired") or p.get("predicted_error_type"):
+        hit["judgment"] += sd["em_general_judgment"]
+        if judgment(p).strip().lower() == "incorrect":
             by_type[et]["fire"] += 1
             if sd["em_error_type"]:
                 hit["etype"] += 1
             if sd["em_error_entry"]:
                 hit["row"] += 1
+            hit["joint"] += int(bool(sd["em_general_judgment"] and sd["em_error_type"] and sd["em_error_entry"]))
         gt = k["ground_truth_citations"]
         sc = score_citation(p.get("predicted_asc") or "", gt, credit_linkbase_set=False)
         if sc is None:
+            noncitable_n += 1
+            noncitable_citations += int(bool(p.get("predicted_asc")))
             continue
+        n_citable += 1
         if p.get("predicted_asc"):
             cite_fired += 1
             hit["topic"] += sc["em_topic"]
             hit["subtopic"] += sc["em_subtopic"]
             hit["full"] += sc["em_full"]
             pairs.append((et, gt.get("asc_full"), p["predicted_asc"], sc))
+        else:
+            citation_abstains += 1
 
     nf = len(det_fired)
     print()
@@ -370,11 +390,12 @@ def score_preds(preds, key, bench: Path, t: T, det_title=None, cite_title=None):
     print(f"  {'metric':<16} {'precision (of cited)':>22} {'recall (of this run)':>22}")
     for lab, keyn in (("ASC topic", "topic"), ("ASC subtopic", "subtopic"), ("ASC full", "full")):
         p_ = 100 * hit[keyn] / cf if cf else 0
-        r_ = 100 * hit[keyn] / n if n else 0
+        r_ = 100 * hit[keyn] / n_citable if n_citable else 0
         print(f"  {lab:<16} {t.pct_color(p_):>22} {t.pct_color(r_):>22}")
     print()
     print(t.dim("  Precision = correct WHEN Stage 1 printed an ASC."))
-    print(t.dim("  Recall    = correct over every exam item in THIS run (abstains count as misses)."))
+    print(t.dim(f"  Recall = correct / {n_citable} citable items (citation abstains count as misses)."))
+    print(t.dim(f"  Non-citable items = {noncitable_n}; unsupported citations on these = {noncitable_citations}."))
     print(t.dim("  Full ASC is strict (210-10-45-1). Topic is loose (210)."))
 
     misses = [x for x in pairs if not x[3]["em_full"]]
@@ -389,13 +410,18 @@ def score_preds(preds, key, bench: Path, t: T, det_title=None, cite_title=None):
             print(t.green("  none — every cited ASC matched at full paragraph"))
 
     return {
-        "n": n, "fired": nf, "cited": cf,
+        "n": n, "fired": nf, "cited": cf, "citable_n": n_citable,
+        "citation_abstains": citation_abstains,
+        "noncitable_n": noncitable_n, "noncitable_citations": noncitable_citations,
+        "judgment_em": 100 * hit["judgment"] / n if n else 0,
+        "joint_detection_em": 100 * hit["joint"] / n if n else 0,
         "type_p": 100 * hit["etype"] / nf if nf else 0,
         "row_p": 100 * hit["row"] / nf if nf else 0,
         "topic_p": 100 * hit["topic"] / cf if cf else 0,
-        "topic_r": 100 * hit["topic"] / n if n else 0,
+        "topic_r": 100 * hit["topic"] / n_citable if n_citable else 0,
         "full_p": 100 * hit["full"] / cf if cf else 0,
-        "full_r": 100 * hit["full"] / n if n else 0,
+        "full_r": 100 * hit["full"] / n_citable if n_citable else 0,
+        "citation_metric": "strict_governing_paragraph_em_citable_only",
     }
 
 
@@ -488,7 +514,12 @@ def main():
         preds.append({
             "sample_id": e["sample_id"],
             "stage0_fired": fired,
-            "predicted_asc": fmt_asc(rec.citation_primary) if fired else None,
+            "predicted_judgment": rec.judgment if fired else "Unverified",
+            "predicted_asc": fmt_asc(rec.citation_primary)
+                             if fired and rec.citation_applicability_verified else None,
+            "citation_candidate_primary": fmt_asc(rec.citation_primary) if fired else None,
+            "citation_candidates": rec.citation_candidates if fired else [],
+            "citation_applicability_verified": rec.citation_applicability_verified,
             "predicted_error_type": rec.error_type if fired else None,
             "predicted_row": rec.problematic_entry if fired else None,
             "stage1_source": rec.citation_source if fired else None,
@@ -522,6 +553,7 @@ def main():
                     model=s2_model,
                 )
                 if err:
+                    p["stage2_error"] = err
                     n_err += 1
                     print(t.red(f"  [{i}/{len(abst)}] {err}"))
                     low = err.lower()
@@ -530,6 +562,7 @@ def main():
                         break
                     continue
                 blob = parse_stage2_obj(raw)
+                p["stage2_raw_text"] = raw
                 vetoed = False
                 if isinstance(blob, dict):
                     blob, vetoed = stage2_llm.apply_consistency_veto(
@@ -557,6 +590,7 @@ def main():
                         fake = stage2_llm.apply_citation_snap(fake, stmt, et)
                         gj, et, row_n, asc = parse_stage2(json.dumps(fake))
                 n_ok += 1
+                p["predicted_judgment"] = gj or "Unverified"
                 if (gj or "").strip().lower() == "incorrect":
                     n_flag += 1
                     p["predicted_asc"] = asc

@@ -28,6 +28,7 @@ Reuses `parser.parse_table` / `parser.parse_numeric_value`.
 from __future__ import annotations
 
 import re
+from decimal import Decimal, InvalidOperation
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional
 
@@ -228,11 +229,16 @@ class TxEntry:
     core: str
     value: Optional[float]
     is_subtotal: bool
+    provenance: str = "legacy_explanation_or_inline"
+    component_count: int = 0
 
 
 @dataclass
 class Transactions:
     entries: List[TxEntry]
+    evidence_format: str = "legacy"
+    rejected_labels: List[str] = field(default_factory=list)
+    supporting_facts_present: bool = False
 
     def __post_init__(self):
         self.by_index: Dict[int, TxEntry] = {}
@@ -278,6 +284,81 @@ _IAB_MOVE_RE = re.compile(
     re.IGNORECASE,
 )
 
+_LABEL_COMPONENT_RE = re.compile(r"^\[([^\[\]\r\n]+)\]\s+(.+)$")
+_COMPONENT_NUMBER = r"(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?"
+_LABEL_MOVE_RE = re.compile(
+    r"([^:;\[\]\r\n]+):\s*("
+    r"[+\-\u2212\u2013]\s*\$?\s*" + _COMPONENT_NUMBER
+    + r"|\(\s*\$?\s*" + _COMPONENT_NUMBER + r"\s*\))"
+    r"\s*\((increase|decrease)\)\s*",
+    re.I,
+)
+
+
+def entry_values_match(entry: TxEntry, reported: Optional[float]) -> bool:
+    """Signed equality for explicit components; legacy narration stays unchanged.
+
+    Synthetic component movements explicitly define presentation signs and
+    decimal amounts. Their comparison must not silently discard a negative sign
+    or tolerate a 0.5% fabricated numeric difference.
+    """
+    if entry.provenance == "synthetic_signed_components":
+        return (reported is not None and entry.value is not None
+                and abs(reported - entry.value) <= 1e-8)
+    return values_match(reported, entry.value)
+
+
+def _label_component_entries(tx_str: str) -> Transactions:
+    """Strictly sum labelled synthetic movements, never reviewer prose.
+
+    A label line must consist entirely of description/signed-amount/direction
+    components. Unknown signs, sign/direction contradictions, extra colon
+    clauses, malformed numbers and partial parses reject the entire label line.
+    These are partial synthetic supporting records, not double-entry books or
+    evidence of recognition/measurement compliance. Totals are not leaf evidence.
+    """
+    entries, rejected = [], []
+    supporting_facts = False
+    for order, line in enumerate(tx_str.splitlines()):
+        stripped = line.strip()
+        if stripped.lower().startswith("supporting facts"):
+            supporting_facts = True
+            break
+        match = _LABEL_COMPONENT_RE.fullmatch(stripped)
+        if not match:
+            continue
+        label, body = match.groups()
+        label = label.strip()
+        nlab = norm_label(label)
+        if (re.fullmatch(r"row\s+\d+", label, re.I)
+                or nlab in {"time", "tab", "explanation", "supporting facts"}
+                or ":" in label or _is_subtotal_label(nlab)):
+            continue
+        pieces = body.split(";")
+        amounts = []
+        for piece in pieces:
+            move = _LABEL_MOVE_RE.fullmatch(piece.strip())
+            if move is None:
+                break
+            amount, direction = move.group(2), move.group(3).lower()
+            negative = amount.startswith(("-", "\u2212", "\u2013", "("))
+            if negative != (direction == "decrease"):
+                break
+            digits = re.sub(r"[+\-\u2212\u2013$(),\s]", "", amount)
+            try:
+                number = Decimal(digits)
+            except InvalidOperation:
+                break
+            amounts.append(-number if negative else number)
+        if len(amounts) != len(pieces) or not amounts:
+            rejected.append(label)
+            continue
+        total = float(sum(amounts, Decimal(0)))
+        entries.append(TxEntry(order, None, label, nlab, core_label(nlab), total, False,
+                               provenance="synthetic_signed_components", component_count=len(amounts)))
+    return Transactions(entries, evidence_format="synthetic_signed_components",
+                        rejected_labels=rejected, supporting_facts_present=supporting_facts)
+
 
 def _first_index(token: str) -> Optional[int]:
     m = _FIRST_INT_RE.search(token)
@@ -322,6 +403,11 @@ def build_transactions(tx_str: str) -> Transactions:
     movements; those are summed here.
     """
     tx_str = tx_str or ""
+    # Current upstream uses opaque label brackets rather than original row IDs.
+    # Preserve the two legacy formats when their explicit markers are present.
+    if not _CONTRIB_RE.search(tx_str) and not _IAB_MARK_RE.search(tx_str):
+        if any(_LABEL_COMPONENT_RE.fullmatch(line.strip()) for line in tx_str.splitlines()):
+            return _label_component_entries(tx_str)
     if _IAB_MARK_RE.search(tx_str) and not _CONTRIB_RE.search(tx_str):
         return Transactions(_iab_component_entries(tx_str))
     marks = list(_CONTRIB_RE.finditer(tx_str))

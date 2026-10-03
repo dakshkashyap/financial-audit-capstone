@@ -1,0 +1,82 @@
+{
+  "review_date_pacific": "2026-10-02",
+  "sources": [
+    {
+      "repository": "https://github.com/dakshkashyap/financial-audit-capstone",
+      "requested_branch": "daksh/ifrs-pipeline",
+      "commit": "4a622e0bd39e19c3a0d6fe6033e14854b107d983",
+      "input_files": [
+        {
+          "path": "data/intelliaudit/exam.jsonl",
+          "sha256": "f436c683378e4fa08294f515ba502af455411466f4096024f2d5974b6781d27e",
+          "bytes": 4611061,
+          "records": 1202
+        },
+        {
+          "path": "data/intelliaudit/answer_key.jsonl",
+          "sha256": "6c08c836c901362e710c4dbf9ee7682962b472e49914791d3d00d02e3766caf2",
+          "bytes": 3226521,
+          "records": 1202
+        }
+      ],
+      "declared_license": null
+    },
+    {
+      "repository": "https://github.com/dakshkashyap/financial-audit-capstone",
+      "requested_branch": "irvin/citation-full-asc",
+      "commit": "159ae080dcddedf4a9cee9c5f831bb624d113782",
+      "input_files": [
+        {
+          "path": "data/intelliaudit/exam.jsonl",
+          "sha256": "f436c683378e4fa08294f515ba502af455411466f4096024f2d5974b6781d27e",
+          "bytes": 4611061,
+          "records": 1202
+        },
+        {
+          "path": "data/intelliaudit/answer_key.jsonl",
+          "sha256": "6c08c836c901362e710c4dbf9ee7682962b472e49914791d3d00d02e3766caf2",
+          "bytes": 3226521,
+          "records": 1202
+        }
+      ],
+      "declared_license": null
+    },
+    {
+      "repository": "https://github.com/manmad-web/IntelliAudit",
+      "requested_branch": "codex/accountant-review-dashboard",
+      "commit": "72da89a9e6400bfd1da9041a742f9cdeb00470bc",
+      "input_files": [
+        {
+          "path": "data/benchmark/exam.jsonl",
+          "sha256": "83f44363450ffa4b53ca7744e6728cd0d75bacb25a7032869b27f4011f2658ce",
+          "bytes": 58700944,
+          "records": 14963
+        },
+        {
+          "path": "data/benchmark/answer_key.jsonl",
+          "sha256": "a00a4057184bda6a5c80d6091453b5ff586a956dec9b52871c3a91eafe9a3c23",
+          "bytes": 40389212,
+          "records": 14963
+        },
+        {
+          "path": "data/ifrs/benchmark/exam.jsonl",
+          "sha256": "890f578c39c2469bb2ec53af6bd012986ce8c03eebe330548cf4083a217e50dc",
+          "bytes": 8754250,
+          "records": 1382
+        },
+        {
+          "path": "data/ifrs/benchmark/answer_key.jsonl",
+          "sha256": "4c3e2eb9b25614ba35d484c8ea532346a53e79acfb724e43f116a2fa424a1ee9",
+          "bytes": 4907340,
+          "records": 1382
+        }
+      ],
+      "declared_license": null
+    }
+  ],
+  "notes": [
+    "Prior ChatGPT conversation contents unavailable behind login; not used as evidence",
+    "Both capstone snapshots are historical versions, not current upstream benchmark",
+    "Source commits merged with original ancestry retained"
+  ]
+}

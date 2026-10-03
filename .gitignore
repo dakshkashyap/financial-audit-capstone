@@ -29,3 +29,10 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Research private caches and local process files
+research/.cache/
+research/artifacts/*.lock
+research/artifacts/**/*.lock
+*.key
+*.pem

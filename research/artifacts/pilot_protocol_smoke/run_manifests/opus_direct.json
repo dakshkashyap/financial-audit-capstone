@@ -1,0 +1,23 @@
+{
+  "condition": "opus_direct",
+  "condition_id": "1bc609d77354cf7230e5ceff6c73538aa3b4657c976fef7e3e763301a1b00aed",
+  "model": "anthropic/claude-opus-5.5",
+  "canonical_slug": "anthropic/claude-opus-5.5-20260921",
+  "method": "direct",
+  "prompt_version": "diagnostic-evidence-v1",
+  "temperature": 0,
+  "max_completion_tokens": 900,
+  "catalog_sha256": "ccb48d7307b80bf65bf41b1239caf807c02c4cc502d589dae850664699dee4e4",
+  "catalog_prices_per_token": {
+    "prompt": "0.000004",
+    "completion": "0.00002",
+    "web_search": "0.01",
+    "input_cache_read": "0.0000002",
+    "input_cache_write": "0.000005",
+    "input_cache_write_1h": "0.000008"
+  },
+  "source_commit": "72da89a9e6400bfd1da9041a742f9cdeb00470bc",
+  "public_input_sha256": "5b07b65a8427ca4615339d1dfc240b02ad08ece654872c1c72ea94c8efaf71b9",
+  "ledger": "/workspace/financial-audit-capstone/research/artifacts/api_ledger.jsonl",
+  "budget_usd": "5.00"
+}

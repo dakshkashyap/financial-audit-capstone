@@ -1,0 +1,20 @@
+{
+  "call_id": "a05436a3dfc965c2361fc2e04e865c5b",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "extract",
+  "prompt_sha256": "cd30b0a1d1cddc18b5ede9cd4876d1a16e6c3c9634d5cdeaaf06c9d63b2d3c84",
+  "reserved_usd": "0.0006456",
+  "status": "ok",
+  "content": "{\"evidence\":[{\"source\":\"statement_text\",\"quote\":\"Revenue | $2,227\",\"row\":0},{\"source\":\"transaction_data\",\"quote\":\"revenue recognised on satisfied performance obligations: +2,476 (increase); returns and allowances: −249 (decrease)\",\"row\":null},{\"source\":\"transaction_data\",\"quote\":\"consideration billed or received during the period for performance obligations not yet satisfied at period-end 244; of which recorded as contract liabilities (deferred revenue) 30\",\"row\":null},{\"source\":\"statement_text\",\"quote\":\"Income tax (expense) benefit | ($28)\",\"row\":7}],\"observations\":[\"Revenue reported as $2,227 million.\",\"Transaction data shows $2,476 million in revenue recognized from satisfied performance obligations.\",\"$249 million in returns and allowances reduced revenue.\",\"$244 million in consideration received for unsatisfied performance obligations, with $30 million deferred as contract liabilities.\"],\"possible_faults\":[\"Revenue may be overstated if $244 million in unsatisfied performance obligations were improperly recognized.\",\"Contract liabilities of $30 million may not fully reflect unearned revenue.\",\"Tax expense benefit of $28 million may not align with $30 million in tax expense recorded in transactions.\",\"Discrepancy between $2,476 million recognized revenue and $2,227 million reported revenue.\"],\"uncertainty\":\"The $249 million in returns and allowances may not be fully reflected in the reported revenue. The treatment of $244 million in unsatisfied performance obligations and the $30 million deferred liability requires further verification.\"}",
+  "response_id": "gen-1791001903-1jcDBLlWsJAeBfYSMDY3",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 693,
+    "completion_tokens": 341,
+    "total_tokens": 1034,
+    "cost": 9.9198e-05
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 1.999
+}

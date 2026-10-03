@@ -1,0 +1,21 @@
+{
+  "call_id": "43495c77886781f7d0fc33f28318ba95",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":\"ASC 230-10-45-15\",\"citation_abstain\":false,\"error_type\":\"Misclassification\",\"evidence\":[{\"quote\":\"[row 3]: Dividends paid | ($6,761) [SEP]\",\"row\":3,\"source\":\"statement\"},{\"quote\":\"[Dividends paid] dividends paid to shareholders: −7,896 (decrease); dividend payable reversal: +1,135 (increase)\",\"row\":null,\"source\":\"transactions\"},{\"quote\":\"[row 13]: Net cash from financing activities | ($4,768) [SEP]\",\"row\":13,\"source\":\"statement\"}],\"judgement\":\"incorrect\",\"reason\":\"The dividends-paid amount of ($6,761) agrees with the components (−7,896 + 1,135). The fault is placement: the line sits in operating activities. Payments of dividends to owners are financing cash outflows under ASC 230-10-45-15, so this is a misclassification. The cash-flow subtotals reflect that placement.\",\"row\":3}",
+  "reserved_usd": "0.048636",
+  "request_sha256": "b7ffc67f456d97419c5369791911ac94fc3f7fe887b103759fb48e38bdb0e219",
+  "prompt_sha256": "44e631f464234b272a00df6fb26a78f8684d4fba86cddef6e36ca87568585026",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002452-fdnXeB2V4fAuPp0wGNZP",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 2211,
+    "completion_tokens": 331,
+    "total_tokens": 2542,
+    "cost": 0.015464
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 5.466
+}

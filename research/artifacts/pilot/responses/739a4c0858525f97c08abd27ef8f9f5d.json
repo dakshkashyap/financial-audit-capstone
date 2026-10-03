@@ -1,0 +1,20 @@
+{
+  "call_id": "739a4c0858525f97c08abd27ef8f9f5d",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "extract",
+  "prompt_sha256": "1f430799445859296219b7d2cdd319e10199190e9d078585e0c0b9c69857c0f5",
+  "reserved_usd": "0.0009914",
+  "status": "ok",
+  "content": "{\"evidence\":[{\"source\":\"statement_text\",\"quote\":\"Operating lease right-of-use assets | $36\",\"row\":9},{\"source\":\"statement_text\",\"quote\":\"Operating lease liabilities | $9\",\"row\":20},{\"source\":\"transaction_data\",\"quote\":\"right-of-use assets for new leases: +41 (increase)\",\"row\":null},{\"source\":\"transaction_data\",\"quote\":\"lease liabilities for new leases: +39 (increase)\",\"row\":null}],\"observations\":[\"Right-of-use assets increased by $41 during the period\",\"Lease liabilities for new leases increased by $39\",\"Current lease liabilities are $9, non-current are $36\",\"Lease liabilities total $45, but right-of-use assets are only $36\"],\"possible_faults\":[\"Discrepancy between total lease liabilities and right-of-use assets\",\"Potential misclassification of lease liabilities or assets\"],\"uncertainty\":\"The $9 difference between total lease liabilities ($45) and right-of-use assets ($36) cannot be explained by the provided data.\"}",
+  "response_id": "gen-1791001921-CoEKHnivJNUTEYM8z4Qo",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 1643,
+    "completion_tokens": 215,
+    "total_tokens": 1858,
+    "cost": 0.0001206162
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 1.415
+}

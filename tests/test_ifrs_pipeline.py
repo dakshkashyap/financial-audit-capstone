@@ -156,7 +156,8 @@ class ScoringAndPrompts(unittest.TestCase):
         self.assertIn("IAS 2", text)
         self.assertNotIn("ASC <topic", text)
         self.assertIn("Do not apply US GAAP", system_for(Rec(), "ifrs"))
-        self.assertIn("candidate ASC topics", system_for(Rec(), "us-gaap"))
+        self.assertIn("candidate ASC", system_for(Rec(), "us-gaap"))
+        self.assertNotIn("Do not apply US GAAP", system_for(Rec(), "us-gaap"))
 
 
 class Rulebook(unittest.TestCase):

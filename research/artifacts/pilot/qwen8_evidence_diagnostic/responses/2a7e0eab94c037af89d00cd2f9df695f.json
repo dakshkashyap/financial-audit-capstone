@@ -1,0 +1,20 @@
+{
+  "call_id": "2a7e0eab94c037af89d00cd2f9df695f",
+  "model": "qwen/qwen3-8b",
+  "stage": "extract",
+  "prompt_sha256": "cfb18837f29c1adf2af7407c81180af814dbd82943352796ee41c81256a83650",
+  "reserved_usd": "0.001221597",
+  "status": "ok",
+  "content": "{\n  \"evidence\": [\n    {\"source\": \"statement\", \"quote\": \"Inventory raw materials and supplies, net of reserves | $2,382\", \"row\": 4},\n    {\"source\": \"statement\", \"quote\": \"Inventory, non-current | $1,225\", \"row\": 11},\n    {\"source\": \"transaction_data\", \"quote\": \"[Inventory raw materials and supplies, net of reserves] other credits posted to the account: +3,532 (increase); other charges posted to the account: −1,150 (decrease)\"},\n    {\"source\": \"transaction_data\", \"quote\": \"[Inventory, non-current] other credits posted to the account: +1,418 (increase); other charges posted to the account: −193 (decrease)\"}\n  ],\n  \"observations\": [\n    \"Inventory is split into current and non-current categories.\",\n    \"There are movements in inventory accounts during the period.\",\n    \"The balance sheet shows a total inventory value of $3,607.\",\n    \"The transaction data indicates changes in both current and non-current inventory.\"\n  ],\n  \"possible_faults\": [\n    \"The inventory classification may not be accurate based on the timing of transactions.\",\n    \"The reported inventory values may not reflect the actual physical inventory count.\",\n    \"The movement in inventory could indicate potential misstatements or errors in recording.\",\n    \"The difference between the reported inventory and the transaction data might suggest inconsistencies.\"\n  ],\n  \"uncertainty\": \"The exact nature of the inventory changes and their impact on the financial statements cannot be fully resolved without additional evidence.\"\n}",
+  "response_id": "gen-1791048092-jbJ226NL5DlWdYwoURvI",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 1727,
+    "completion_tokens": 342,
+    "total_tokens": 2069,
+    "cost": 0.000357669
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 5.564
+}

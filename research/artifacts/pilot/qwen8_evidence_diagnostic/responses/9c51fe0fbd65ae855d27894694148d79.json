@@ -1,0 +1,20 @@
+{
+  "call_id": "9c51fe0fbd65ae855d27894694148d79",
+  "model": "qwen/qwen3-8b",
+  "stage": "extract",
+  "prompt_sha256": "d449eaf52385d05ce90c7f41bc9bd4043c5a0acf87a5534f9b72d4ad4878c5c5",
+  "reserved_usd": "0.000858546",
+  "status": "ok",
+  "content": "{\n  \"evidence\": [\n    {\"source\": \"statement_text\", \"quote\": \"$23,032\", \"row\": 0},\n    {\"source\": \"statement_text\", \"quote\": \"($14,373)\", \"row\": 1},\n    {\"source\": \"statement_text\", \"quote\": \"($1,520)\", \"row\": 2},\n    {\"source\": \"statement_text\", \"quote\": \"($4,037)\", \"row\": 3}\n  ],\n  \"observations\": [\n    \"Revenue is reported as $23,032 million.\",\n    \"Cost of revenue is recorded as ($14,373) million.\",\n    \"Selling, general and administrative expenses are ($1,520) million.\",\n    \"Other operating expenses, net are ($4,037) million.\"\n  ],\n  \"possible_faults\": [\n    \"Revenue recognition may not align with performance obligations.\",\n    \"Cost of revenue could be misstated due to inventory adjustments.\",\n    \"Expenses might not reflect accurate cost recovery or reclass out.\",\n    \"Other operating expenses may include non-operational items.\"\n  ],\n  \"uncertainty\": \"The exact nature of the transactions affecting the income statement is unclear. The provided data does not fully explain the components of the figures.\"\n}",
+  "response_id": "gen-1791048117-DIdeaESveeXklrtumRuu",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 740,
+    "completion_tokens": 281,
+    "total_tokens": 1021,
+    "cost": 0.000214435
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 4.882
+}

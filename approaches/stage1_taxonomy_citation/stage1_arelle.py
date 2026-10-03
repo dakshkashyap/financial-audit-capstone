@@ -323,18 +323,23 @@ def _enrich_ifrs(mapped_stmt: MappedStatement, graph) -> Stage1Result:
         if available and row.concept:
             tax_codes = list(graph.citations(bare_concept(row.concept)) or [])
         tax_standards = [s for s in (ifrs_standard_of(c) for c in tax_codes) if s]
-        primary = best_topic(
+        fallback_primary = best_topic(
             row.concept, mapped_stmt.statement_type, row.section,
             taxonomy_best=(tax_codes[0] if tax_codes else None),
             framework="ifrs",
         )
+        # Preserve actual linkbase paragraph identifiers. A subject standard
+        # such as IAS 2 must not overwrite a retrieved IAS 2.36 paragraph.
+        # This provenance establishes membership, not defect applicability.
+        primary = tax_codes[0] if tax_codes else fallback_primary
         if primary:
             row.asc_primary = primary
-            row.asc_refs = list(dict.fromkeys([primary, *tax_standards]))
-        row.asc_candidates = candidate_topics(
+            row.asc_refs = list(dict.fromkeys([primary, *tax_codes, *tax_standards]))
+        topic_candidates = candidate_topics(
             row.concept, mapped_stmt.statement_type, row.section,
             taxonomy_topics=tax_standards, framework="ifrs",
         )
+        row.asc_candidates = list(dict.fromkeys([*tax_codes, *topic_candidates]))
         subj = subject_topic(row.concept, framework="ifrs") if row.concept else None
         if not row.concept:
             if primary:
@@ -343,12 +348,12 @@ def _enrich_ifrs(mapped_stmt: MappedStatement, graph) -> Stage1Result:
             else:
                 result.n_unmapped += 1
                 result.citation_sources[row.row_idx] = SOURCE_NONE
-        elif subj:
-            result.n_subject_rules += 1
-            result.citation_sources[row.row_idx] = "subject_rule"
         elif tax_codes:
             result.n_taxonomy_hits += 1
             result.citation_sources[row.row_idx] = SOURCE_TAXONOMY
+        elif subj:
+            result.n_subject_rules += 1
+            result.citation_sources[row.row_idx] = "subject_rule"
         elif primary:
             result.n_section_fallback += 1
             result.citation_sources[row.row_idx] = SOURCE_SECTION_FALLBACK

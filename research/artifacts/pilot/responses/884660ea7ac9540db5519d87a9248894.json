@@ -1,0 +1,20 @@
+{
+  "call_id": "884660ea7ac9540db5519d87a9248894",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "decision",
+  "prompt_sha256": "08ac899e6de58710dd76264c629e74613df3877c9ae9d5df9766674d05e18f11",
+  "reserved_usd": "0.0012610",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Misclassification\",\n  \"row\": 33,\n  \"citation\": \"ASC 470-10-45-10\",\n  \"citation_abstain\": false,\n  \"evidence\": [\n    {\n      \"source\": \"statement\",\n      \"quote\": \"Long-term debt | $17,296\",\n      \"row\": 33\n    },\n    {\n      \"source\": \"transactions\",\n      \"quote\": \"at period-end the entity breached the minimum interest-cover covenant\",\n      \"row\": null\n    },\n    {\n      \"source\": \"transactions\",\n      \"quote\": \"the lenders waived their right to demand repayment for six months from the balance-sheet date only\",\n      \"row\": null\n    },\n    {\n      \"source\": \"transactions\",\n      \"quote\": \"Under the credit agreement a covenant breach entitles the lenders to demand repayment\",\n      \"row\": null\n    }\n  ],\n  \"reason\": \"ASC 470-10-45-10 requires reclassification of long-term debt to current if a covenant breach exists and the lender can demand repayment. The waiver is only for six months, which is less than the typical operating cycle. The breach persists beyond the waiver period, so the debt should be classified as current. The statement incorrectly classifies $17,296 million as non-current.\"\n}",
+  "response_id": "gen-1791001906-8hby26QBU35dEnpBsxyh",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 2449,
+    "completion_tokens": 303,
+    "total_tokens": 2752,
+    "cost": 0.0001764135
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 3.8
+}

@@ -1,0 +1,20 @@
+{
+  "call_id": "9bd5d304302642511f9fb276f652b0ff",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "extract",
+  "prompt_sha256": "5fe4660b467775d852c9cc70bc4d5ea748f22a101cba061ae8f803a5aac2ab3d",
+  "reserved_usd": "0.0006577",
+  "status": "ok",
+  "content": "{\"evidence\":[{\"source\":\"statement_text\",\"quote\":\"Net cash from operating activities | ($108)\",\"row\":5},{\"source\":\"statement_text\",\"quote\":\"Other operating activities, net | ($523)\",\"row\":4},{\"source\":\"transaction_data\",\"quote\":\"depreciation and amortisation add-back: +53 (increase); disposal-related reversal: −5 (decrease)\",\"row\":null},{\"source\":\"transaction_data\",\"quote\":\"share-based compensation add-back: +32 (increase); forfeiture reversal: −3 (decrease)\",\"row\":null}],\"observations\":[\"Net cash from operating activities is reported as ($108) million.\",\"Other operating activities, net is ($523) million, a large negative component.\",\"Depreciation and amortization add-back totals $48 million, matching the statement.\",\"Share-based compensation add-back totals $29 million, matching the statement.\"],\"possible_faults\":[\"Discrepancy between reported ($523) and transaction-derived net operating adjustments.\",\"Unexplained $523 million net negative in 'Other operating activities, net' not reconciled to transaction data.\",\"Missing reconciliation of 'Other operating activities, net' to underlying components.\"],\"uncertainty\":\"The source of the $523 million net negative in 'Other operating activities, net' is unclear; transaction data does not explain this amount.\"}",
+  "response_id": "gen-1791001892-mTO7y9ceQg5hMNDXenoq",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 728,
+    "completion_tokens": 282,
+    "total_tokens": 1010,
+    "cost": 8.94933e-05
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 2.587
+}

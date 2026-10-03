@@ -1,0 +1,20 @@
+{
+  "call_id": "6cf2a7b85dd557b4d010a5084d32623d",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "decision",
+  "prompt_sha256": "b0cd72bffb5c7a836fa0613084a0bc3b1f63ca9261274b5ac8cede930f904cad",
+  "reserved_usd": "0.0009818",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Numerical Error\",\n  \"row\": 19,\n  \"citation\": \"ASC 842-20-25-1\",\n  \"citation_abstain\": false,\n  \"evidence\": [\n    {\n      \"source\": \"statement\",\n      \"quote\": \"Total current liabilities | $21\",\n      \"row\": 19\n    },\n    {\n      \"source\": \"transactions\",\n      \"quote\": \"reclassified to current portion: −12 (decrease)\",\n      \"row\": null\n    },\n    {\n      \"source\": \"transactions\",\n      \"quote\": \"Operating lease liabilities | $4\",\n      \"row\": 18\n    },\n    {\n      \"source\": \"supporting facts\",\n      \"quote\": \"PV of payments / fair value: 75%\",\n      \"row\": null\n    }\n  ],\n  \"reason\": \"The current operating lease liability ($4) is understated. Transaction data shows $12 reclassified from non-current to current, but the current liability is only $4. ASC 842-20-25-1 requires lease liabilities to be classified based on timing of payments. The $12 reclassification implies a $12 current portion, not $4. The $4 figure is inconsistent with transaction data and lease classification criteria.\"\n}",
+  "response_id": "gen-1791001848-PTbJQl2e8XpIAhjOzPly",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 1614,
+    "completion_tokens": 295,
+    "total_tokens": 1909,
+    "cost": 0.00013466385
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 1.788
+}

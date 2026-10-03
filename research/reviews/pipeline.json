@@ -1,0 +1,1075 @@
+{
+  "status": "verified_code_audit",
+  "date": "2026-10-02",
+  "source_revisions": {
+    "asc": "159ae080dcddedf4a9cee9c5f831bb624d113782",
+    "ifrs": "4a622e0bd39e19c3a0d6fe6033e14854b107d983"
+  },
+  "findings": [
+    {
+      "id": "P01",
+      "severity": "critical",
+      "title": "Legacy citation scoring is prefix overlap, not paragraph EM",
+      "evidence": [
+        {
+          "source_branch": "asc",
+          "path": "core/metrics.py",
+          "line": 119,
+          "detail": "ASC 210 receives credit against ASC 210-10-45-1; no full-ID equality is required."
+        },
+        {
+          "source_branch": "ifrs",
+          "path": "core/metrics.py",
+          "line": 123,
+          "detail": "Different IAS 36 paragraphs receive shared-standard credit."
+        }
+      ],
+      "status": "fixed_with_separate_metric",
+      "repair": "New em_citation_exact and em_citation_topic; legacy helper retained and explicitly labelled."
+    },
+    {
+      "id": "P02",
+      "severity": "critical",
+      "title": "Oracle error/concept information makes the axis diagnostic perfect",
+      "evidence": [
+        {
+          "source_branch": "asc",
+          "path": "approaches/stage2_llm_audit/axis_stage2.py",
+          "line": 148,
+          "detail": "load_joined reads error_type and affected_xbrl_concept from the answer key."
+        },
+        {
+          "source_branch": "asc",
+          "path": "approaches/stage2_llm_audit/axis_stage2.py",
+          "line": 304,
+          "detail": "principle_topic feeds those gold fields into axis_decision."
+        }
+      ],
+      "status": "diagnostic_only",
+      "repair": "Report 100% as an oracle upper bound; deployable stage0_principle_full uses predicted type and mapped concept (1034\u20131041)."
+    },
+    {
+      "id": "P03",
+      "severity": "high",
+      "title": "Citation recall includes non-citable items in its denominator",
+      "evidence": [
+        {
+          "source_branch": "asc",
+          "path": "approaches/full_pipeline/run_iab_exam.py",
+          "line": 339,
+          "detail": "Scorer returns None for non-citable items but recall still divides by every item at 373/398."
+        }
+      ],
+      "status": "fixed",
+      "repair": "Count citable_n separately and report unsupported citations on non-citable items."
+    },
+    {
+      "id": "P04",
+      "severity": "high",
+      "title": "Postprocessing replaces invalid picks with unrelated candidate citations",
+      "evidence": [
+        {
+          "source_branch": "asc",
+          "path": "approaches/stage1_taxonomy_citation/citation_select.py",
+          "line": 138,
+          "detail": "No matching topic still returns a heuristic primary candidate."
+        },
+        {
+          "source_branch": "asc",
+          "path": "approaches/stage2_llm_audit/stage2_llm.py",
+          "line": 215,
+          "detail": "apply_citation_snap applied replacement only to the first error and left invalid picks intact on rows without candidates."
+        }
+      ],
+      "status": "fixed_in_stage2",
+      "repair": "Validate all errors; preserve raw pick and reject to null, without candidate substitution."
+    },
+    {
+      "id": "P05",
+      "severity": "high",
+      "title": "Prompt forces citations even when no paragraph applies",
+      "evidence": [
+        {
+          "source_branch": "asc",
+          "path": "approaches/stage2_llm_audit/stage2_llm.py",
+          "line": 133,
+          "detail": "If nothing fits, copy the most complete code anyway."
+        },
+        {
+          "source_branch": "ifrs",
+          "path": "approaches/stage2_llm_audit/stage2_llm.py",
+          "line": 144,
+          "detail": "The IFRS prompt likewise requires never leaving citation blank."
+        }
+      ],
+      "status": "fixed",
+      "repair": "Allow null citation, require evidence of applicability, distinguish reference membership from governing authority."
+    },
+    {
+      "id": "P06",
+      "severity": "high",
+      "title": "Numeric revision can alter the wrong row",
+      "evidence": [
+        {
+          "source_branch": "asc",
+          "path": "approaches/full_pipeline/run_intelliaudit.py",
+          "line": 63,
+          "detail": "Global replace changes the first repeated number and ignores problematic_entry."
+        }
+      ],
+      "status": "fixed",
+      "repair": "Bind the edit to the unique localized row and verify its whole existing numeric cell."
+    },
+    {
+      "id": "P07",
+      "severity": "high",
+      "title": "IFRS retrieval discards exact paragraph information",
+      "evidence": [
+        {
+          "source_branch": "ifrs",
+          "path": "approaches/stage1_taxonomy_citation/stage1_arelle.py",
+          "line": 307,
+          "detail": "tax_codes collapse to tax_standards before setting candidates, and best_topic prefers subject standard."
+        }
+      ],
+      "status": "fixed",
+      "repair": "Retain exact tax_codes and label source as taxonomy; bypass the ASC-only candidate normalizer in merged IFRS pipeline."
+    },
+    {
+      "id": "P08",
+      "severity": "high",
+      "title": "Partial arithmetic consistency is used as an error-absence certificate",
+      "evidence": [
+        {
+          "source_branch": "asc",
+          "path": "approaches/full_pipeline/pipeline.py",
+          "line": 114,
+          "detail": "Only two checkable identities/subtotals and no detected anomaly are needed."
+        },
+        {
+          "source_branch": "asc",
+          "path": "approaches/stage2_llm_audit/stage2_llm.py",
+          "line": 50,
+          "detail": "Prompt declares no Numerical Error or Missing Row exists and veto can erase those findings."
+        }
+      ],
+      "status": "fixed_default",
+      "repair": "Soften evidence wording; a hard veto additionally requires explicit verified_error_absence, absent from legacy callers."
+    },
+    {
+      "id": "P09",
+      "severity": "high",
+      "title": "Checked-in benchmark and upstream benchmark are different versions",
+      "evidence": [
+        {
+          "source_branch": "both",
+          "path": "data/intelliaudit/answer_key.jsonl",
+          "line": 1,
+          "detail": "Both capstone branches have 1202 cases/492 citable; upstream snapshot has 14963/6388."
+        }
+      ],
+      "status": "requires_version_pinning",
+      "repair": "Freeze code, generator, exam, key, rubric, and source hashes before comparing systems."
+    },
+    {
+      "id": "P10",
+      "severity": "medium",
+      "title": "GT row/type is available to citation-only diagnostic evaluators",
+      "evidence": [
+        {
+          "source_branch": "asc",
+          "path": "approaches/stage1_taxonomy_citation/stage1_citation_eval.py",
+          "line": 200,
+          "detail": "Lookup selects the gold broken row; this isolates retrieval and cannot be called end-to-end accuracy."
+        },
+        {
+          "source_branch": "asc",
+          "path": "approaches/citation_mcp_agent/eval_agent.py",
+          "line": 131,
+          "detail": "Agent receives gold error type; its explicitly named oracle mode additionally consumes gold topic."
+        }
+      ],
+      "status": "diagnostic_only",
+      "repair": "Keep separate oracle-localization and blind end-to-end tracks with whitelisted model inputs."
+    },
+    {
+      "id": "P11",
+      "severity": "medium",
+      "title": "Result reuse ignores transactions, model, prompt and taxonomy changes",
+      "evidence": [
+        {
+          "source_branch": "asc",
+          "path": "approaches/full_pipeline/intelliaudit_runner.py",
+          "line": 212,
+          "detail": "Resume identity hashes only the table, using 12 MD5 characters."
+        },
+        {
+          "source_branch": "asc",
+          "path": "approaches/full_pipeline/run_intelliaudit.py",
+          "line": 93,
+          "detail": "Prior record can be reused after architecture/prompt change when table matches."
+        }
+      ],
+      "status": "use_new_harness",
+      "repair": "Cache with full prompt/model/config/dataset hashes and isolated run manifests; avoid interpreting old resumed files as new experiments."
+    },
+    {
+      "id": "P12",
+      "severity": "medium",
+      "title": "General taxonomy references are treated as governing authority",
+      "evidence": [
+        {
+          "source_branch": "asc",
+          "path": "core/taxonomy_graph.py",
+          "line": 308,
+          "detail": "All general topics outrank industry standards, regardless of company; name truncation at 344 is not a real taxonomy ancestry relation."
+        },
+        {
+          "source_branch": "asc",
+          "path": "approaches/stage1_taxonomy_citation/citation_select.py",
+          "line": 102,
+          "detail": "A specificity/lexicographic maximum decides between paragraphs without evidence or rule text."
+        }
+      ],
+      "status": "research_limitation",
+      "repair": "Use accounting applicability labels and evidence-backed selection; evaluate list membership separately from semantic validity."
+    },
+    {
+      "id": "P13",
+      "severity": "medium",
+      "title": "Historical success rate does not require citation success",
+      "evidence": [
+        {
+          "source_branch": "asc",
+          "path": "core/metrics.py",
+          "line": 139,
+          "detail": "success_rate thresholds judgment, type, row, BERTScore and BLEU but never citation."
+        }
+      ],
+      "status": "legacy_metric_only",
+      "repair": "Publish separate joint detection/localization/citation/evidence outcomes and label historical SR's actual definition."
+    },
+    {
+      "id": "P14",
+      "severity": "high",
+      "title": "Legacy row-index transaction parser cannot consume current label evidence",
+      "evidence": [
+        {
+          "source_branch": "asc",
+          "path": "core/stage0_common.py",
+          "line": 275,
+          "detail": "Component parser requires [row n] markers; current upstream uses [Label] movement lines."
+        },
+        {
+          "source_branch": "asc",
+          "path": "approaches/stage0_deterministic_gate/stage0a.py",
+          "line": 65,
+          "detail": "Leaf reconciliation requires original row index; current label evidence carries none."
+        }
+      ],
+      "status": "fixed_with_partial_evidence_scope",
+      "repair": "Strict signed-component label parser with exact signed/decimal comparison and unique-label reconciliation; reviewers' facts and totals are excluded. No complete-clean certificate from partial evidence."
+    },
+    {
+      "id": "P15",
+      "severity": "high",
+      "title": "Deterministic arithmetic output promotes a reference hint to a governing citation",
+      "evidence": [
+        {
+          "source_branch": "asc",
+          "path": "approaches/full_pipeline/run_intelliaudit.py",
+          "line": 74,
+          "detail": "Deterministic output directly copies citation_primary without an applicability decision."
+        },
+        {
+          "source_branch": "asc",
+          "path": "approaches/full_pipeline/run_iab_exam.py",
+          "line": 491,
+          "detail": "Stage 0 firing is sufficient to emit the primary taxonomy reference as predicted_asc."
+        }
+      ],
+      "status": "fixed_with_explicit_applicability_gate",
+      "repair": "Actual citation output requires citation_applicability_verified, false by default and never set true by the current deterministic checkers. Preserve candidates and provenance separately; no claim that an automatic applicability verifier exists."
+    },
+    {
+      "id": "P16",
+      "severity": "high",
+      "title": "Historical ablation replay coerces abstention and silently truncates evaluation",
+      "evidence": [
+        {
+          "source_branch": "asc",
+          "path": "approaches/full_pipeline/pipeline_eval.py",
+          "line": 93,
+          "detail": "Stage 0 abstention is treated as Correct; partial consistency also unconditionally vetoes Incorrect model outputs."
+        },
+        {
+          "source_branch": "asc",
+          "path": "approaches/full_pipeline/pipeline_eval.py",
+          "line": 66,
+          "detail": "Prediction arrays align by order and the denominator is shortened to the smaller file."
+        }
+      ],
+      "status": "fixed",
+      "repair": "Retain unverified outcomes and every selected case, require item-index/table-hash agreement, count missing/failed/misaligned records as failures, and route vetoes through the shared complete-certificate guard."
+    }
+  ],
+  "archived_metrics": [
+    {
+      "artifact": "results/claude-opus-4-6_correct_predictions.json",
+      "split": "correct",
+      "system": "claude-opus-4-6",
+      "n": 150,
+      "model_ids": [
+        "claude-opus-4-6"
+      ],
+      "counts": {
+        "judgment_correct": 75.0,
+        "error_type_score_sum": 150.0,
+        "row_score_sum": 150.0,
+        "legacy_prefix_top1_correct": 0.0,
+        "deterministic_routes": 0,
+        "api_error_records": 0
+      },
+      "rates": {
+        "judgment_correct": 0.5,
+        "error_type_score_sum": 1.0,
+        "row_score_sum": 1.0,
+        "legacy_prefix_top1_correct": 0.0,
+        "deterministic_routes": 0.0,
+        "api_error_records": 0.0
+      },
+      "full_gold_samples": 0,
+      "strict_full_hits": 0,
+      "strict_full_rate_on_available_full_gold": null,
+      "status": "legacy_unvalidated_gold",
+      "sha256": "4f2fd614788fbe1f6c2eaea11103e8f464b8dab2aa46d4cc78ddbc72a152b7e5"
+    },
+    {
+      "artifact": "results/claude-opus-4-6_multi_error_predictions.json",
+      "split": "multi_error",
+      "system": "claude-opus-4-6",
+      "n": 150,
+      "model_ids": [
+        "claude-opus-4-6"
+      ],
+      "counts": {
+        "judgment_correct": 149.0,
+        "error_type_score_sum": 103.0,
+        "row_score_sum": 101.5,
+        "legacy_prefix_top1_correct": 77.0,
+        "deterministic_routes": 0,
+        "api_error_records": 0
+      },
+      "rates": {
+        "judgment_correct": 0.9933333333333333,
+        "error_type_score_sum": 0.6866666666666666,
+        "row_score_sum": 0.6766666666666666,
+        "legacy_prefix_top1_correct": 0.5133333333333333,
+        "deterministic_routes": 0.0,
+        "api_error_records": 0.0
+      },
+      "full_gold_samples": 51,
+      "strict_full_hits": 1,
+      "strict_full_rate_on_available_full_gold": 0.0196078431372549,
+      "status": "legacy_unvalidated_gold",
+      "sha256": "ee27df1ba558ca0e3206b7f229ee580561be3697858357a6b8efb83b3fa77f8e"
+    },
+    {
+      "artifact": "results/claude-opus-4-6_single_error_predictions.json",
+      "split": "single_error",
+      "system": "claude-opus-4-6",
+      "n": 150,
+      "model_ids": [
+        "claude-opus-4-6"
+      ],
+      "counts": {
+        "judgment_correct": 146.0,
+        "error_type_score_sum": 138.0,
+        "row_score_sum": 123.0,
+        "legacy_prefix_top1_correct": 50.0,
+        "deterministic_routes": 0,
+        "api_error_records": 0
+      },
+      "rates": {
+        "judgment_correct": 0.9733333333333334,
+        "error_type_score_sum": 0.92,
+        "row_score_sum": 0.82,
+        "legacy_prefix_top1_correct": 0.3333333333333333,
+        "deterministic_routes": 0.0,
+        "api_error_records": 0.0
+      },
+      "full_gold_samples": 32,
+      "strict_full_hits": 1,
+      "strict_full_rate_on_available_full_gold": 0.03125,
+      "status": "legacy_unvalidated_gold",
+      "sha256": "9f22db044e1f7b82f4c2ad75bebc7cec65d688515fa2df68cd68b67ca3ced671"
+    },
+    {
+      "artifact": "results/intelliaudit_correct_predictions.json",
+      "split": "correct",
+      "system": "intelliaudit",
+      "n": 150,
+      "model_ids": [
+        "claude-opus-4-6"
+      ],
+      "counts": {
+        "judgment_correct": 112.0,
+        "error_type_score_sum": 150.0,
+        "row_score_sum": 150.0,
+        "legacy_prefix_top1_correct": 0.0,
+        "deterministic_routes": 0,
+        "api_error_records": 0
+      },
+      "rates": {
+        "judgment_correct": 0.7466666666666667,
+        "error_type_score_sum": 1.0,
+        "row_score_sum": 1.0,
+        "legacy_prefix_top1_correct": 0.0,
+        "deterministic_routes": 0.0,
+        "api_error_records": 0.0
+      },
+      "full_gold_samples": 0,
+      "strict_full_hits": 0,
+      "strict_full_rate_on_available_full_gold": null,
+      "status": "legacy_unvalidated_gold",
+      "sha256": "0e69dff8032f58c0d4e724a56382f0f5cb55ce8c16b8d9dbb7b3ba9026ec246b"
+    },
+    {
+      "artifact": "results/intelliaudit_single_error_predictions.json",
+      "split": "single_error",
+      "system": "intelliaudit",
+      "n": 150,
+      "model_ids": [
+        "claude-opus-4-6"
+      ],
+      "counts": {
+        "judgment_correct": 127.0,
+        "error_type_score_sum": 117.0,
+        "row_score_sum": 109.0,
+        "legacy_prefix_top1_correct": 32.0,
+        "deterministic_routes": 57,
+        "api_error_records": 0
+      },
+      "rates": {
+        "judgment_correct": 0.8466666666666667,
+        "error_type_score_sum": 0.78,
+        "row_score_sum": 0.7266666666666667,
+        "legacy_prefix_top1_correct": 0.21333333333333335,
+        "deterministic_routes": 0.38,
+        "api_error_records": 0.0
+      },
+      "full_gold_samples": 32,
+      "strict_full_hits": 0,
+      "strict_full_rate_on_available_full_gold": 0.0,
+      "status": "legacy_unvalidated_gold",
+      "sha256": "95d7dc114aeb9be37066000cad852b126b4369e2842af3ea5403d190353801e9"
+    }
+  ],
+  "claimed_12_percent": {
+    "reproduced": false,
+    "reason": "No corresponding frozen run artifact was present in either provided capstone branch.",
+    "possible_denominator_issue": "run_iab_exam originally divides strict hits by all items, including non-citable cases. This hypothesis is not a reconstruction of the team's 12% run."
+  },
+  "verification": {
+    "model_api_calls": 0,
+    "new_paid_model_results": false,
+    "tests_passed": 92,
+    "test_command": "python -m unittest discover -s tests -p 'test_*.py'",
+    "test_files": [
+      "tests/test_component_evidence.py",
+      "tests/test_evidence_budget.py",
+      "tests/test_frontier_format_diagnostic.py",
+      "tests/test_ifrs_pipeline.py",
+      "tests/test_legacy_boundaries.py",
+      "tests/test_qwen8_evidence_diagnostic.py",
+      "tests/test_raw_output_diagnostics.py",
+      "tests/test_research_harness.py"
+    ]
+  },
+  "dataset_versions": [
+    {
+      "source": "/workspace/source-asc",
+      "path": "data/intelliaudit/answer_key.jsonl",
+      "n": 1202,
+      "citable_n": 492,
+      "noncitable_n": 710,
+      "sha256": "6c08c836c901362e710c4dbf9ee7682962b472e49914791d3d00d02e3766caf2"
+    },
+    {
+      "source": "/workspace/source-ifrs",
+      "path": "data/intelliaudit/answer_key.jsonl",
+      "n": 1202,
+      "citable_n": 492,
+      "noncitable_n": 710,
+      "sha256": "6c08c836c901362e710c4dbf9ee7682962b472e49914791d3d00d02e3766caf2"
+    },
+    {
+      "source": "/workspace/IntelliAudit",
+      "path": "data/benchmark/answer_key.jsonl",
+      "n": 14963,
+      "citable_n": 6388,
+      "noncitable_n": 8575,
+      "sha256": "a00a4057184bda6a5c80d6091453b5ff586a956dec9b52871c3a91eafe9a3c23"
+    }
+  ],
+  "oracle_axis_diagnostic": {
+    "n_records": 1202,
+    "n_citable": 492,
+    "n_ungoverned": 710,
+    "candidate_coverage": 1.0,
+    "cells": {
+      "Misclassification | BalanceSheet": {
+        "n": 201,
+        "majority_topic": "210",
+        "majority_share": 0.647
+      },
+      "Numerical Error | BalanceSheet": {
+        "n": 164,
+        "majority_topic": "350",
+        "majority_share": 0.354
+      },
+      "Misclassification | CashFlow": {
+        "n": 70,
+        "majority_topic": "230",
+        "majority_share": 1.0
+      },
+      "Numerical Error | IncomeStatement": {
+        "n": 57,
+        "majority_topic": "606",
+        "majority_share": 1.0
+      }
+    },
+    "statement_majority": {
+      "n": 492,
+      "citable_n": 492,
+      "topic_accuracy": 0.5223577235772358,
+      "topic_wilson95": [
+        0.47821785655114196,
+        0.5661511516159824
+      ],
+      "ungoverned_n": 0,
+      "abstain_accuracy": null,
+      "false_citation_rate": null,
+      "by_rule_topic": {
+        "R01": 1.0,
+        "R02": 1.0,
+        "R03": 0.0,
+        "R08": 1.0,
+        "R09": 1.0,
+        "R10": 0.0,
+        "R11": 0.0,
+        "R14": 0.0,
+        "R15": 0.0
+      },
+      "by_rule_abstain": {}
+    },
+    "error_x_statement_majority": {
+      "n": 492,
+      "citable_n": 492,
+      "topic_accuracy": 0.6402439024390244,
+      "topic_wilson95": [
+        0.596899725912231,
+        0.6814149616815489
+      ],
+      "ungoverned_n": 0,
+      "abstain_accuracy": null,
+      "false_citation_rate": null,
+      "by_rule_topic": {
+        "R01": 1.0,
+        "R02": 1.0,
+        "R03": 0.0,
+        "R08": 1.0,
+        "R09": 1.0,
+        "R10": 0.0,
+        "R11": 0.0,
+        "R14": 1.0,
+        "R15": 0.0
+      },
+      "by_rule_abstain": {}
+    },
+    "subject_first_selector": {
+      "n": 1202,
+      "citable_n": 492,
+      "topic_accuracy": 0.7804878048780488,
+      "topic_wilson95": [
+        0.7418167640127199,
+        0.81481261117484
+      ],
+      "ungoverned_n": 710,
+      "abstain_accuracy": 0.0,
+      "false_citation_rate": 1.0,
+      "by_rule_topic": {
+        "R01": 0.477,
+        "R02": 0.938,
+        "R03": 1.0,
+        "R08": 0.0,
+        "R09": 1.0,
+        "R10": 1.0,
+        "R11": 1.0,
+        "R14": 1.0,
+        "R15": 1.0
+      },
+      "by_rule_abstain": {
+        "R04": 0.0,
+        "R05": 0.0,
+        "R06": 0.0,
+        "R07": 0.0,
+        "R12": 0.0
+      }
+    },
+    "axis_principle": {
+      "n": 1202,
+      "citable_n": 492,
+      "topic_accuracy": 1.0,
+      "topic_wilson95": [
+        0.9922523644647806,
+        0.9999999999999999
+      ],
+      "ungoverned_n": 710,
+      "abstain_accuracy": 0.928169014084507,
+      "false_citation_rate": 0.07183098591549297,
+      "by_rule_topic": {
+        "R01": 1.0,
+        "R02": 1.0,
+        "R03": 1.0,
+        "R08": 1.0,
+        "R09": 1.0,
+        "R10": 1.0,
+        "R11": 1.0,
+        "R14": 1.0,
+        "R15": 1.0
+      },
+      "by_rule_abstain": {
+        "R04": 1.0,
+        "R05": 0.886,
+        "R06": 1.0,
+        "R07": 1.0,
+        "R12": 0.6
+      }
+    },
+    "status": "gold_error_type_and_concept_available_not_deployable"
+  },
+  "local_transfer_diagnostic": {
+    "artifact": "research/artifacts/pilot/legacy_local_offline_metrics.json",
+    "n_cases": 48,
+    "metrics": {
+      "citation_abstention_rate": {
+        "value": 1.0,
+        "numerator": 48,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "clean_specificity": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 16,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "decision_abstention_rate": {
+        "value": 1.0,
+        "numerator": 48,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "detection_sensitivity": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "error_type_accuracy": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "failure_rate": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "joint_detection_type_row": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "joint_detection_type_row_full_citation": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 16,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "judgement_accuracy": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "noncitable_citation_abstention": {
+        "value": 1.0,
+        "numerator": 32,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "row_accuracy": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "unvalidated_full_citation_agreement": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 16,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "unvalidated_topic_agreement": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 16,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "verified_quote_rate": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "scope": "offline_legacy_parser_transfer_not_full_stage2",
+    "model_api_calls": 0,
+    "limitations": [
+      "Abstention is retained when no error is proven; arithmetic consistency alone is not called a clean statement.",
+      "New transaction evidence differs from the legacy Explanation/row-index narrative syntax. Transfer failure can reflect parser incompatibility.",
+      "Static reference-map full paragraphs are candidates, not independently validated governing standards.",
+      "No taxonomy download occurred; this is not the full Stage 0/1/2 paid pipeline."
+    ]
+  },
+  "adapted_local_transfer_diagnostic": {
+    "artifact": "research/artifacts/pilot/legacy_local_adapted_metrics.json",
+    "n_cases": 48,
+    "metrics": {
+      "citation_abstention_rate": {
+        "value": 0.9791666666666666,
+        "numerator": 47,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          0.9375,
+          1.0
+        ]
+      },
+      "clean_specificity": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 16,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "decision_abstention_rate": {
+        "value": 0.875,
+        "numerator": 42,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          0.8333333333333334,
+          0.9375
+        ]
+      },
+      "detection_sensitivity": {
+        "value": 0.1875,
+        "numerator": 6,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.09375,
+          0.25
+        ]
+      },
+      "error_type_accuracy": {
+        "value": 0.1875,
+        "numerator": 6,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.09375,
+          0.25
+        ]
+      },
+      "failure_rate": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "joint_detection_type_row": {
+        "value": 0.125,
+        "numerator": 4,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.03125,
+          0.21875
+        ]
+      },
+      "joint_detection_type_row_full_citation": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 16,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "judgement_accuracy": {
+        "value": 0.125,
+        "numerator": 6,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          0.0625,
+          0.16666666666666666
+        ]
+      },
+      "noncitable_citation_abstention": {
+        "value": 0.96875,
+        "numerator": 31,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.90625,
+          1.0
+        ]
+      },
+      "row_accuracy": {
+        "value": 0.125,
+        "numerator": 4,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.03125,
+          0.21875
+        ]
+      },
+      "unvalidated_full_citation_agreement": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 16,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "unvalidated_topic_agreement": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 16,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "verified_quote_rate": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "scope": "signed_label_parser_transfer_not_accounting_correctness",
+    "model_api_calls": 0,
+    "limitations": [
+      "Abstention is retained when no error is proven; arithmetic consistency alone is not called a clean statement.",
+      "Labelled component movement sums are partial synthetic evidence; amount reconstruction may make numeric detection easy and does not establish accounting realism.",
+      "Supporting recognition/measurement review facts are excluded from the numeric parser. Covered arithmetic does not prove those facts satisfy a standard.",
+      "Static reference-map full paragraphs are candidates, not independently validated governing standards.",
+      "No taxonomy download occurred; this is not the full Stage 0/1/2 paid pipeline."
+    ]
+  },
+  "applicability_guard_local_diagnostic": {
+    "artifact": "research/artifacts/pilot/legacy_local_adapted_verified_citation_metrics.json",
+    "n_cases": 48,
+    "metrics": {
+      "citation_abstention_rate": {
+        "value": 1.0,
+        "numerator": 48,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "clean_specificity": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 16,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "decision_abstention_rate": {
+        "value": 0.875,
+        "numerator": 42,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          0.8333333333333334,
+          0.9375
+        ]
+      },
+      "detection_sensitivity": {
+        "value": 0.1875,
+        "numerator": 6,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.09375,
+          0.25
+        ]
+      },
+      "error_type_accuracy": {
+        "value": 0.1875,
+        "numerator": 6,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.09375,
+          0.25
+        ]
+      },
+      "failure_rate": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "joint_detection_type_row": {
+        "value": 0.125,
+        "numerator": 4,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.03125,
+          0.21875
+        ]
+      },
+      "joint_detection_type_row_full_citation": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 16,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "judgement_accuracy": {
+        "value": 0.125,
+        "numerator": 6,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          0.0625,
+          0.16666666666666666
+        ]
+      },
+      "noncitable_citation_abstention": {
+        "value": 1.0,
+        "numerator": 32,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "row_accuracy": {
+        "value": 0.125,
+        "numerator": 4,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.03125,
+          0.21875
+        ]
+      },
+      "unvalidated_full_citation_agreement": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 16,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "unvalidated_topic_agreement": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 16,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "verified_quote_rate": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "scope": "citation_output_abstention_gate_no_automatic_applicability_verifier",
+    "model_api_calls": 0,
+    "limitations": [
+      "Abstention is retained when no error is proven; arithmetic consistency alone is not called a clean statement.",
+      "Labelled component movement sums are partial synthetic evidence; amount reconstruction may make numeric detection easy and does not establish accounting realism.",
+      "Supporting recognition/measurement review facts are excluded from the numeric parser. Covered arithmetic does not prove those facts satisfy a standard.",
+      "Static reference-map full paragraphs are candidates, not independently validated governing standards.",
+      "The deterministic citation output abstains unless applicability is separately verified; no current automatic checker verifies applicability.",
+      "No taxonomy download occurred; this is not the full Stage 0/1/2 paid pipeline."
+    ]
+  }
+}

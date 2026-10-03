@@ -1,0 +1,21 @@
+{
+  "call_id": "fe0ce0e2a33ef10bb7aef689400c937f",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":null,\"evidence\":[{\"quote\":\"Total assets | $23,261\",\"row\":16,\"source\":\"statement\"},{\"quote\":\"Total liabilities and stockholders' equity | $23,261\",\"row\":39,\"source\":\"statement\"},{\"quote\":\"capital expenditure on equipment: +12,665 (increase); depreciation expense: −2,515 (decrease)\",\"row\":null,\"source\":\"transactions\"},{\"quote\":\"carrying amount of the reporting unit including goodwill 4,757; fair value of the reporting unit 6,419\",\"row\":null,\"source\":\"transactions\"}],\"judgement\":\"correct\",\"reason\":\"All subtotals and totals foot, and assets equal liabilities plus equity. Each line with transaction evidence nets to its reported amount. Undiscounted cash flows exceed the PP&E carrying amount, so no impairment applies. Goodwill fair value exceeds carrying amount. The lease tests (62% of economic life, 42% of fair value) support operating classification. No error was identified.\",\"row\":null}",
+  "reserved_usd": "0.064452",
+  "request_sha256": "cd01b738f43eb416b28cb57513241d81907b81d828ab1a22a725a09d96eeb670",
+  "prompt_sha256": "d287d324295f748f272e004fcf04b4355340e5fb85fd728060bccb4b8af8ca63",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002416-740DKCVEJb5KQ1W6LSG0",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 3777,
+    "completion_tokens": 817,
+    "total_tokens": 4594,
+    "cost": 0.031448
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 9.056
+}

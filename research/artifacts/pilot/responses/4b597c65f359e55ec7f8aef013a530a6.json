@@ -1,0 +1,19 @@
+{
+  "call_id": "4b597c65f359e55ec7f8aef013a530a6",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "e7909207e92b9bb3e6c8fb93a52497f92c86dcdd7b7b4334ab8f51d1b26fa6b2",
+  "reserved_usd": "0.036460",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"correct\",\"error_type\":null,\"row\":null,\"citation\":null,\"citation_abstain\":true,\"evidence\":[{\"source\":\"transactions\",\"quote\":\"revenue recognised on satisfied performance obligations: +15,136 (increase); returns and allowances: −1,242 (decrease)\",\"row\":0},{\"source\":\"transactions\",\"quote\":\"amounts invoiced for goods and services not yet transferred to customers 330; amount carried in contract liabilities 330\",\"row\":null},{\"source\":\"statement\",\"quote\":\"[row 4]: Operating income (loss) | $2,437\",\"row\":4},{\"source\":\"statement\",\"quote\":\"[row 9]: Net income (loss) | $865\",\"row\":9}]}\n```\n\nEvery line that has component evidence nets to its reported amount: revenue 13,894, SG&A −370, other operating 568, tax −944, other items 12. The subtotals foot to 2,437, 1,797 and 865. All 330 of unearned invoicing sits in contract liabilities, so none of it inflates revenue. Cost of revenue and other income have no component evidence, but the subtotals are consistent with them. No error is supported, so no ASC citation applies.",
+  "response_id": "gen-1791001266-afxJtYisDa31kI7hz2oG",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 1353,
+    "completion_tokens": 637,
+    "total_tokens": 1990,
+    "cost": 0.018152
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 8.053
+}
