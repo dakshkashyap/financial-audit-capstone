@@ -328,7 +328,7 @@ class MappedRow:
     concept: Optional[str]  = None   # us-gaap:ConceptName
     asc_primary: Optional[str] = None  # e.g. "210-10-45-1"
     asc_refs: List[str]     = field(default_factory=list)  # all relevant ASC sections
-    asc_candidates: List[str] = field(default_factory=list)  # union topic candidate set for Stage 2
+    asc_candidates: List[str] = field(default_factory=list)  # full paragraph codes for Stage 2 to pick 1
     asc_title: Optional[str] = None  # human-readable topic title
     section: Optional[str]  = None   # e.g. "current_assets"
     strategy: str           = "none" # "exact" | "stem_exact" | "fuzzy" | "none"

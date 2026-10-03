@@ -23,6 +23,7 @@ from typing import Optional
 
 from approaches.full_pipeline.intelliaudit_runner import (
     _make_client, _extract_json, TEMPERATURE, PROVIDERS)
+from approaches.stage1_taxonomy_citation.citation_select import snap_citation
 from core.metrics import _norm_type, extract_pred_errors
 from core.frameworks import resolve_framework
 
@@ -41,8 +42,9 @@ _ROLE = (
     "  - Misclassification: a real row was placed in the wrong section.\n\n"
     "A deterministic arithmetic engine has ALREADY recomputed the totals and checked "
     "the accounting identities. TRUST that evidence. Do not re-derive the math. "
-    "When you flag a row, cite its standard ONLY from the candidate ASC topics "
-    "given for that row."
+    "When you flag a row, cite its standard ONLY from the candidate ASC "
+    "paragraphs given for that row. Prefer the full paragraph "
+    "(ASC 230-10-45-13) over a vague topic (ASC 230)."
 )
 
 _ROLE_IFRS = (
@@ -153,14 +155,17 @@ _OUTPUT_SPEC = (
     '    "Error Identification": {"Error Type": "<one of the four types>", '
     '"Problematic Entry": "Row <n>"},\n'
     '    "Error Resolution": "<one or two sentences>",\n'
-    '    "Standards Citation": "ASC <topic from the candidates for that row>"\n'
+    '    "Standards Citation": "ASC <full paragraph from that row\'s list, '
+    'e.g. ASC 230-10-45-13 — never a topic-only code like ASC 230>"\n'
     '  },\n'
     '  "Corrected Statements": "<the full corrected table, or the original if Correct>"\n'
     '}\n'
     'If "General Judgment" is "Correct", omit the "Information for error" blocks. '
     'For multiple errors add "Information for error 2", etc. '
-    'Whenever you flag an error you MUST fill "Standards Citation" with "ASC <topic>" '
-    'chosen from that row\'s candidate list above (pick the best-fitting one; never leave it blank).'
+    'Whenever you flag an error you MUST set "Standards Citation" to one FULL '
+    'code copied from that row\'s candidate list (ASC xxx-xx-xx-x). Do not invent '
+    'a paragraph. Do not emit a topic-only citation. If nothing fits, copy the '
+    'most complete code on that row anyway.'
 )
 
 
@@ -202,21 +207,67 @@ def _framework_of(statement, item: Optional[dict] = None) -> str:
     return "us-gaap"
 
 
+def _row_codes(row) -> list:
+    codes = list(getattr(row, "asc_candidates", None) or [])
+    if getattr(row, "asc_primary", None):
+        codes = [row.asc_primary] + codes
+    # already unique-ish; keep order, cap display
+    seen, out = set(), []
+    for c in codes:
+        key = str(c).replace("ASC ", "").strip()
+        if key and key not in seen:
+            seen.add(key)
+            out.append(key)
+        if len(out) >= 8:
+            break
+    return out
+
+
 def _citation_block(statement, framework: str = "us-gaap") -> str:
-    rows = [r for r in statement.rows if r.value is not None and r.asc_candidates]
+    rows = [r for r in statement.rows if r.value is not None and _row_codes(r)]
     if not rows:
-        return "GROUNDED CITATIONS: none available."
+        return "CITATION CANDIDATES: none available."
     if framework == "ifrs":
-        lines = ["GROUNDED CITATIONS — if you flag a row, cite ONLY from its IAS/IFRS candidates:"]
+        lines = ["IAS/IFRS reference candidates (reference membership alone does not prove applicability):"]
         for r in rows[:40]:
-            lines.append(f"  Row {r.row_idx} ({r.label[:38]}): "
-                         f"{', '.join(r.asc_candidates)}")
+            lines.append(f"  Row {r.row_idx} ({r.label[:38]}): {', '.join(_row_codes(r))}")
         return "\n".join(lines)
-    lines = ["GROUNDED CITATIONS — if you flag a row, cite ONLY from its candidates:"]
+    lines = ["ASC reference candidates (reference membership alone does not prove applicability):"]
+
     for r in rows[:40]:
-        lines.append(f"  Row {r.row_idx} ({r.label[:38]}): "
-                     f"ASC {', '.join(r.asc_candidates)}")
+        codes = ", ".join("ASC " + c for c in _row_codes(r))
+        lines.append(f"  Row {r.row_idx} ({r.label[:38]}): {codes}")
     return "\n".join(lines)
+
+
+def apply_citation_snap(parsed: dict | None, statement, error_type=None) -> dict | None:
+    """After the LLM answers, force the citation onto the grounded list (10 → 1)."""
+    if not parsed or not isinstance(parsed, dict):
+        return parsed
+    info = parsed.get("Information for error 1")
+    if not isinstance(info, dict):
+        return parsed
+    eid = info.get("Error Identification") or {}
+    row_n = None
+    raw_row = eid.get("Problematic Entry")
+    if raw_row is not None:
+        import re
+        m = re.search(r"\d+", str(raw_row))
+        if m:
+            row_n = int(m.group())
+    et = error_type or eid.get("Error Type")
+    cands = []
+    if row_n is not None:
+        hit = next((r for r in statement.rows if r.row_idx == row_n), None)
+        if hit is not None:
+            cands = _row_codes(hit)
+    snapped = snap_citation(info.get("Standards Citation"), cands, et)
+    if snapped:
+        info = dict(info)
+        info["Standards Citation"] = "ASC " + snapped
+        parsed = dict(parsed)
+        parsed["Information for error 1"] = info
+    return parsed
 
 
 def build_user(item: dict, record, statement) -> str:
@@ -248,6 +299,8 @@ def audit_item(item: dict, record, statement, model: str = "claude-opus-4-6",
     try:
         resp = client.chat.completions.create(**kwargs)
         raw = resp.choices[0].message.content or ""
-        return {"raw_text": raw, "parsed": _extract_json(raw), "error": None}
+        parsed = apply_citation_snap(_extract_json(raw), statement,
+                                    getattr(record, "error_type", None))
+        return {"raw_text": raw, "parsed": parsed, "error": None}
     except Exception as e:
         return {"raw_text": "", "parsed": None, "error": str(e)}

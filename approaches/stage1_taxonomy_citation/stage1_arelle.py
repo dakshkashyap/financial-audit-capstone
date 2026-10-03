@@ -61,6 +61,7 @@ from typing import Dict, List, Optional
 pass  # repo root already on sys.path when run with -m
 
 from approaches.stage1_concept_mapping.edgar_mapper import MappedRow, MappedStatement, map_statement
+from approaches.stage1_taxonomy_citation.citation_select import uniq_full
 from core.taxonomy_graph import TaxonomyGraph
 
 # Shared singleton — callers may pass their own; run_stage1 falls back to this.
@@ -187,6 +188,19 @@ class Stage1Result:
 
 # ── core enrichment logic ─────────────────────────────────────────────────────
 
+def _attach_candidates(row: MappedRow, graph: TaxonomyGraph, concept_bare: str) -> None:
+    """Fill row.asc_candidates with full paragraph codes (not just topic 230)."""
+    bag = []
+    if row.asc_primary:
+        bag.append(row.asc_primary)
+    bag.extend(row.asc_refs or [])
+    if graph.available and concept_bare:
+        for item in graph.get_candidate_citations(concept_bare):
+            if item.get("asc"):
+                bag.append(item["asc"])
+    row.asc_candidates = uniq_full(bag, limit=8)
+
+
 def enrich_with_taxonomy(
     mapped_stmt: MappedStatement,
     graph: TaxonomyGraph,
@@ -221,6 +235,7 @@ def enrich_with_taxonomy(
             return False
         row.asc_primary = asc
         row.asc_refs    = [asc]
+        _attach_candidates(row, graph, "")
         result.n_section_fallback += 1
         result.citation_sources[row.row_idx] = SOURCE_SECTION_FALLBACK
         return True
@@ -256,6 +271,7 @@ def enrich_with_taxonomy(
                 # Upgrade the row's citation fields
                 row.asc_primary = detail["asc_primary"]
                 row.asc_refs    = detail["asc_refs"]
+                _attach_candidates(row, graph, concept_bare)
                 # asc_title remains from static map (human-readable topic name)
 
                 if src == SOURCE_TAXONOMY:
@@ -274,12 +290,14 @@ def enrich_with_taxonomy(
             # Keep the static-map citation irvin already provided
             result.n_static_kept += 1
             result.citation_sources[row.row_idx] = SOURCE_STATIC_MAP
+            _attach_candidates(row, graph, concept_bare)
         elif _try_section_fallback(row):
             # Mapped concept but no ASC anywhere → section presentation topic
             pass
         else:
             result.n_no_citation += 1
             result.citation_sources[row.row_idx] = SOURCE_NONE
+            _attach_candidates(row, graph, concept_bare)
 
     return result
 
