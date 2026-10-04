@@ -1,8 +1,13 @@
 # Financial audit research: verified development branch
 
-This branch integrates the IFRS and ASC pipelines and adds an independently
-audited, reproducible research workspace. **It is not a validated benchmark
+This branch integrates the IFRS and ASC pipelines and adds a reproducible research workspace with code and source audits. **It is not a validated benchmark
 release, and it does not establish that a cheap model beats Opus.**
+
+**Current priority: benchmark first.** Start with [team handoff](research/TEAM_HANDOFF.md).
+Paid experiments are paused while one accountant completes the blind pilot in
+[IntelliAudit](https://github.com/manmad-web/IntelliAudit/tree/codex/accountant-review-dashboard).
+That repository owns annotation and release gates; this one owns method evaluation
+and the manuscript. Twenty review candidates are prepared; no expert review is claimed.
 
 Start with `research/`: the source audits, isolated experiment harness, results
 dashboard, evidence-acquisition prototype, manuscript draft, and December plan.

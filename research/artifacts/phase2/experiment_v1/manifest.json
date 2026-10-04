@@ -1,0 +1,129 @@
+{
+  "schema_version": 2,
+  "seed": "20261003-phase2-v1",
+  "source_commit": "72da89a9e6400bfd1da9041a742f9cdeb00470bc",
+  "source_files": {
+    "exam.jsonl": "83f44363450ffa4b53ca7744e6728cd0d75bacb25a7032869b27f4011f2658ce",
+    "answer_key.jsonl": "a00a4057184bda6a5c80d6091453b5ff586a956dec9b52871c3a91eafe9a3c23"
+  },
+  "n_cases": 36,
+  "n_companies": 10,
+  "original_companies": [
+    "0000001800",
+    "0000051434",
+    "0000100885",
+    "0000731766",
+    "0000831259",
+    "0000949870",
+    "0001334036",
+    "0001655210"
+  ],
+  "new_companies": [
+    "0001318605",
+    "0000104169"
+  ],
+  "case_ids": [
+    "phase2_723ace1a10af96554461",
+    "phase2_9587e2da66169f0ff983",
+    "phase2_7acf29639761f40b2e01",
+    "phase2_11222996ffddd58a2fc7",
+    "phase2_5380002f6b89037fe2da",
+    "phase2_079e79bc8c2f6c8c2334",
+    "phase2_3375d498011c9cf4cd85",
+    "phase2_173b10c887690b7a5fb7",
+    "phase2_89687afe11a0eac359f9",
+    "phase2_f79578d7e847fb10dffc",
+    "phase2_47863b0fe9afc67f48b5",
+    "phase2_28805dd4f3cf24328417",
+    "phase2_980bbb4d1b2266e2fda3",
+    "phase2_14b681bea7b2dbe6190a",
+    "phase2_6fa61f6c4dbe7b3e6c50",
+    "phase2_74b74dc6563bed38dfc5",
+    "phase2_3e7122f4c6bd928f3e05",
+    "phase2_5eebb7893e705460dc15",
+    "phase2_d2dfddd89a29f8eae0de",
+    "phase2_88383a704b1d9e70fa4d",
+    "phase2_97aebf22a456075db972",
+    "phase2_bdf9e5a0cb8afa9c5bf5",
+    "phase2_d29204507f69f3f86558",
+    "phase2_f95b63058b38f11e496c",
+    "phase2_798b4028cd1463374c56",
+    "phase2_7f64e297dca3945b50d8",
+    "phase2_6ac317c2899ee4c06d03",
+    "phase2_882fac070667d9b77fc1",
+    "phase2_85669de911429dfdb61e",
+    "phase2_190830fe86e148430678",
+    "phase2_11dcfdad0b14ee8d044e",
+    "phase2_2720fc7f77044173a04d",
+    "phase2_36b3dd5fef942f3370d0",
+    "phase2_cc864f2e5cf5e0955073",
+    "phase2_d44b349ac1582f086070",
+    "phase2_47114b04f9ffdd839eba"
+  ],
+  "case_groups": {
+    "phase2_723ace1a10af96554461": "inspected_development",
+    "phase2_9587e2da66169f0ff983": "inspected_development",
+    "phase2_7acf29639761f40b2e01": "inspected_development",
+    "phase2_11222996ffddd58a2fc7": "inspected_development",
+    "phase2_5380002f6b89037fe2da": "inspected_development",
+    "phase2_079e79bc8c2f6c8c2334": "inspected_development",
+    "phase2_3375d498011c9cf4cd85": "inspected_development",
+    "phase2_173b10c887690b7a5fb7": "inspected_development",
+    "phase2_89687afe11a0eac359f9": "inspected_development",
+    "phase2_f79578d7e847fb10dffc": "inspected_development",
+    "phase2_47863b0fe9afc67f48b5": "inspected_development",
+    "phase2_28805dd4f3cf24328417": "inspected_development",
+    "phase2_980bbb4d1b2266e2fda3": "inspected_development",
+    "phase2_14b681bea7b2dbe6190a": "inspected_development",
+    "phase2_6fa61f6c4dbe7b3e6c50": "inspected_development",
+    "phase2_74b74dc6563bed38dfc5": "inspected_development",
+    "phase2_3e7122f4c6bd928f3e05": "inspected_development",
+    "phase2_5eebb7893e705460dc15": "inspected_development",
+    "phase2_d2dfddd89a29f8eae0de": "inspected_development",
+    "phase2_88383a704b1d9e70fa4d": "inspected_development",
+    "phase2_97aebf22a456075db972": "inspected_development",
+    "phase2_bdf9e5a0cb8afa9c5bf5": "inspected_development",
+    "phase2_d29204507f69f3f86558": "inspected_development",
+    "phase2_f95b63058b38f11e496c": "inspected_development",
+    "phase2_798b4028cd1463374c56": "new_company_replication",
+    "phase2_7f64e297dca3945b50d8": "new_company_replication",
+    "phase2_6ac317c2899ee4c06d03": "new_company_replication",
+    "phase2_882fac070667d9b77fc1": "new_company_replication",
+    "phase2_85669de911429dfdb61e": "new_company_replication",
+    "phase2_190830fe86e148430678": "new_company_replication",
+    "phase2_11dcfdad0b14ee8d044e": "new_company_replication",
+    "phase2_2720fc7f77044173a04d": "new_company_replication",
+    "phase2_36b3dd5fef942f3370d0": "new_company_replication",
+    "phase2_cc864f2e5cf5e0955073": "new_company_replication",
+    "phase2_d44b349ac1582f086070": "new_company_replication",
+    "phase2_47114b04f9ffdd839eba": "new_company_replication"
+  },
+  "selection": {
+    "inspected_development": "8 prior companies x 1 case per stratum = 24",
+    "new_company_replication": "2 new companies x 2 cases per stratum = 12",
+    "fiscal_years": [
+      2020,
+      2024
+    ]
+  },
+  "strata_by_group": {
+    "inspected_development": {
+      "control": 8,
+      "citable": 8,
+      "detection_only": 8
+    },
+    "new_company_replication": {
+      "control": 4,
+      "detection_only": 4,
+      "citable": 4
+    }
+  },
+  "public_input_sha256": "e01f327fe9818fa0d2bcaf6ba67cbaee87ad7d537dfc73bd1599c7183eb057b1",
+  "scoring_key_sha256": "4afc96fd4d4f49a4d3b5aa411299740c395e9a015a5c33044c40069eaab24cf8",
+  "limitations": [
+    "Development subset was selected from already inspected cases; it is not a new test.",
+    "Replication has only two new companies and uses the same synthetic generator; no significance, population, new-rule, or gold-standard claim.",
+    "All labels remain provisional until the named single-accountant review is actually completed.",
+    "Stratification used the key during preparation; inference receives only the whitelisted public case."
+  ]
+}

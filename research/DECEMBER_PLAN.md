@@ -11,16 +11,16 @@ already available data; it should not displace validation of the main work.
 | Dates | Concrete deliverable | Exit criterion |
 |---|---|---|
 | October 2–9 | Source audit, clean integration, 8-company pilot, professor briefing | No leaked label inputs; exact metrics; reproducible traces and costs |
-| October 10–23 | One narrow task specification: sufficient evidence for revenue-recognition/cutoff judgments, with explicit citation applicability | Two accountants agree on scope, rules, effective dates and control definitions |
+| October 10–23 | One narrow task specification: sufficient evidence for revenue-recognition/cutoff judgments, with explicit citation applicability | One accountant reviews scope, rules, effective dates and control definitions; single-reviewer limitation disclosed |
 | October 24–November 6 | 5–10 company-derived engagements, paired controls, typed acquisitions with costs | Original documents, provenance and balanced ledgers; source motifs alone cannot reveal answers |
-| November 7–20 | Double independent annotations and adjudication; hidden proof graphs | Disagreements reported; ambiguous/unidentifiable items marked or excluded prospectively |
+| November 7–20 | Single-accountant blind review, reconciliation and delayed repeats; hidden proof graphs | Disagreements reported; ambiguous/unidentifiable items marked or excluded prospectively |
 | November 21–December 4 | Freeze test split; one frontier and cheap-model evaluation | All conditions use the same observable inputs; budget and errors included; no test-driven tuning |
 | December 5–15 | Ablations, artifact check, paper and preprint | Matched comparisons, company-level uncertainty, licenses and limitations completed |
 | December 16–31 | Reproduction by teammate and submission buffer | Independent reproduction from tagged release; venue-specific compliance |
 
-Assign owners at the next meeting: accounting/gold (qualified reviewers),
+Assign owners at the next meeting: accounting/gold (one qualified accountant),
 data/provenance, method/harness, and analysis/artifact. A student review is useful,
-but it is not a substitute for the independent accounting adjudication claimed
+but it is not a substitute for the documented single-expert accounting review claimed
 in a dataset card.
 
 Preserve most of the $30–40 model budget for a frozen experiment. This work uses

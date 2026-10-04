@@ -1,0 +1,1425 @@
+{
+  "scope": "reference coverage against UNVALIDATED labels; oracle rows used only after blind cache was saved",
+  "manifest": {
+    "public_input_sha256": "5b07b65a8427ca4615339d1dfc240b02ad08ece654872c1c72ea94c8efaf71b9",
+    "candidate_cache_sha256": "b171f988833fb716faf0e97df19a086b19a6037d48aa2f41da169d4add0a2e95",
+    "taxonomy_inventory_sha256": "f3d220bbc66fcd092b2153467e7c9b61565798568cfedba17d01d1db05843970",
+    "taxonomy_xml_sha256": "3a6346572663374276e992552b0be1406561a484c44d5f531ad3f2b5cf6688ba",
+    "taxonomy_source": {
+      "url": "https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-ref-2023.xml",
+      "accessed_at_utc": "2026-10-03T23:03:02.363628+00:00",
+      "sha256": "3a6346572663374276e992552b0be1406561a484c44d5f531ad3f2b5cf6688ba",
+      "bytes": 11232453,
+      "redistribution": "XML stays in ignored local cache; identifier metadata only in report"
+    },
+    "case_count": 48,
+    "model_calls": 0,
+    "network_calls_in_script": 0,
+    "scoring_key_opened_during_prepare": false,
+    "source_sha256": {
+      "core/taxonomy_graph.py": "c7c32461980b174b2983006f170112d2bd3bf8ba7ccf54f95492b74382c45c57",
+      "core/metrics.py": "b4bc35ff2e5fbc77225491ffd529171bf3ef1a0a6d55e705417cfed519ff0ec4",
+      "core/stage0_common.py": "f798ce6253eb4f49057155c5bde4fc2c2cdde4237f0e8dffe7cd6d8e7219a6a8",
+      "approaches/stage1_concept_mapping/edgar_mapper.py": "cb1bd10e4d43c259990566ab23dcf6fb79cff2d5b47c580851aee0573f5808c9",
+      "approaches/stage1_concept_mapping/xbrl_concept_map.json": "6fdf8e405a9400e75a3c196b1aa261d48488b6cbea7a69c29bdbfcd93306bcbc",
+      "approaches/stage1_taxonomy_citation/stage1_arelle.py": "9505fb290143f8a5a06416d66216da7fc252933b999e0534a8f7fb6d36de3c3f",
+      "approaches/stage1_taxonomy_citation/citation_select.py": "bb3d99ba13b4a692bef1fa7fc0701a3b184297730d1ee9805979c00c02c9ceaf",
+      "approaches/stage2_llm_audit/stage2_llm.py": "82c7fac589fa4c3b0d0cd348ff15cb95ada36581b4e6df9f9ec977912a47a3f5",
+      "research/phase2/audit_candidates.py": "20c718959341ba59717e16b8f721a76c945941a1af843c1fc2e43d781a87048d"
+    }
+  },
+  "scoring_key_sha256": "ddc4e618cff3de2ee3c9604e8ae5528c80349859b85c54d7a1ac8819786f5183",
+  "counts": {
+    "cases": 48,
+    "citable_cases": 16,
+    "noncitable_cases_with_candidates": 32,
+    "public_union_displayed": 3,
+    "public_union_unbounded": 3,
+    "public_union_full_reference": 3,
+    "anywhere_in_taxonomy": 6,
+    "oracle_gold_row_exists": 16,
+    "oracle_gold_row_displayed": 16,
+    "oracle_gold_row_top8": 2,
+    "oracle_gold_row_top1": 2,
+    "oracle_gold_row_unbounded": 2,
+    "oracle_gold_row_full_reference": 2,
+    "oracle_gold_row_static": 1
+  },
+  "coverage": {
+    "public_union_displayed": {
+      "hits": 3,
+      "denominator": 16,
+      "rate": 0.1875
+    },
+    "public_union_unbounded": {
+      "hits": 3,
+      "denominator": 16,
+      "rate": 0.1875
+    },
+    "public_union_full_reference": {
+      "hits": 3,
+      "denominator": 16,
+      "rate": 0.1875
+    },
+    "anywhere_in_taxonomy": {
+      "hits": 6,
+      "denominator": 16,
+      "rate": 0.375
+    },
+    "oracle_gold_row_exists": {
+      "hits": 16,
+      "denominator": 16,
+      "rate": 1.0
+    },
+    "oracle_gold_row_displayed": {
+      "hits": 16,
+      "denominator": 16,
+      "rate": 1.0
+    },
+    "oracle_gold_row_top8": {
+      "hits": 2,
+      "denominator": 16,
+      "rate": 0.125
+    },
+    "oracle_gold_row_top1": {
+      "hits": 2,
+      "denominator": 16,
+      "rate": 0.125
+    },
+    "oracle_gold_row_unbounded": {
+      "hits": 2,
+      "denominator": 16,
+      "rate": 0.125
+    },
+    "oracle_gold_row_full_reference": {
+      "hits": 2,
+      "denominator": 16,
+      "rate": 0.125
+    },
+    "oracle_gold_row_static": {
+      "hits": 1,
+      "denominator": 16,
+      "rate": 0.0625
+    }
+  },
+  "row_diagnostics": {
+    "row_count": 1113,
+    "provenance_counts": {
+      "taxonomy": 978,
+      "section_fallback": 113,
+      "none": 2,
+      "parent_fallback": 17,
+      "static_map": 3
+    },
+    "arc_role_counts": {
+      "commonPracticeRef": 753,
+      "disclosureRef": 4167,
+      "exampleRef": 554,
+      "legacyRef": 1000
+    },
+    "rows_with_camel_fallback": 17,
+    "rows_with_duplicate_citation_arcs": 299,
+    "rows_with_same_citation_multiple_roles": 173,
+    "rows_with_general_and_industry_competition": 316,
+    "rows_with_more_than_8_unbounded_candidates": 216,
+    "valued_rows_hidden_by_40_row_cap": 0,
+    "rows_with_equal_specificity_lexicographic_ties": 575
+  },
+  "mechanical_ranking_diagnostics": {
+    "rows_graph_primary_differs_from_lexicographic_first": 525,
+    "rows_selector_primary_differs_from_graph_primary": 494,
+    "rows_taxonomy_ranked_order_changed_by_lexicographic_sort": 568,
+    "rows_800_to_899_candidates_compete_with_below_800": 403,
+    "rows_presentation_topic_primary_with_nonpresentation_alternative": 323,
+    "deduplicated_candidates_that_lost_higher_priority_role": 49
+  },
+  "taxonomy_inventory_summary": {
+    "roles": {
+      "legacyRef": 1885,
+      "disclosureRef": 2387,
+      "commonPracticeRef": 933,
+      "exampleRef": 245,
+      "recommendedDisclosureRef": 37,
+      "otherTransitionRef": 253
+    },
+    "reference_element_count": 5837,
+    "usable_reference_element_count": 5740,
+    "concept_locator_count": 11765,
+    "independent_xml_parser_check": "reference count and exact paragraph-identifier universe agree"
+  },
+  "cases": [
+    {
+      "case_id": "case_aa3bbe2b8691f78383ee",
+      "citable": false,
+      "label_validation": "no-error",
+      "provisional_full_label": null,
+      "oracle_gold_row": null,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [],
+      "oracle_full_reference_candidates": []
+    },
+    {
+      "case_id": "case_f41742b3a4e2fb83f231",
+      "citable": false,
+      "label_validation": "no-error",
+      "provisional_full_label": null,
+      "oracle_gold_row": null,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [],
+      "oracle_full_reference_candidates": []
+    },
+    {
+      "case_id": "case_96f80313236e44ee8109",
+      "citable": false,
+      "label_validation": "no-governing-paragraph",
+      "provisional_full_label": null,
+      "oracle_gold_row": 20,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "210-10-45"
+      ],
+      "oracle_full_reference_candidates": []
+    },
+    {
+      "case_id": "case_261ab15629baec708d83",
+      "citable": false,
+      "label_validation": "no-error",
+      "provisional_full_label": null,
+      "oracle_gold_row": null,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [],
+      "oracle_full_reference_candidates": []
+    },
+    {
+      "case_id": "case_960cfd9a4bba0b5c553a",
+      "citable": true,
+      "label_validation": "expert-authored-UNVALIDATED",
+      "provisional_full_label": "ASC 360-10-35-17",
+      "oracle_gold_row": 10,
+      "oracle_gold_row_concept": "us-gaap:PropertyPlantAndEquipmentNet",
+      "coverage": {
+        "public_union_displayed": false,
+        "public_union_unbounded": false,
+        "public_union_full_reference": false,
+        "anywhere_in_taxonomy": true,
+        "oracle_gold_row_exists": true,
+        "oracle_gold_row_displayed": true,
+        "oracle_gold_row_top8": false,
+        "oracle_gold_row_top1": false,
+        "oracle_gold_row_unbounded": false,
+        "oracle_gold_row_full_reference": false,
+        "oracle_gold_row_static": false
+      },
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": "No mapped-row reference contains this provisional paragraph",
+      "oracle_displayed_candidates": [
+        "852-10-55-10",
+        "942-360-50-1",
+        "360-10-50-1",
+        "944-210-S99-1",
+        "852-10-55"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 360-10-50-1",
+        "ASC 852-10-55-10",
+        "ASC 944-210-S99-1",
+        "ASC 942-360-50-1"
+      ]
+    },
+    {
+      "case_id": "case_fd2292c43951c99d1f6f",
+      "citable": true,
+      "label_validation": "expert-authored-UNVALIDATED",
+      "provisional_full_label": "ASC 606-10-25-23",
+      "oracle_gold_row": 0,
+      "oracle_gold_row_concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+      "coverage": {
+        "public_union_displayed": false,
+        "public_union_unbounded": false,
+        "public_union_full_reference": false,
+        "anywhere_in_taxonomy": false,
+        "oracle_gold_row_exists": true,
+        "oracle_gold_row_displayed": true,
+        "oracle_gold_row_top8": false,
+        "oracle_gold_row_top1": false,
+        "oracle_gold_row_unbounded": false,
+        "oracle_gold_row_full_reference": false,
+        "oracle_gold_row_static": false
+      },
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": "No mapped-row reference contains this provisional paragraph",
+      "oracle_displayed_candidates": [
+        "280-10-50-30",
+        "606-10-50-5",
+        "606-10-50-4",
+        "280-10-50-42",
+        "280-10-50-41",
+        "280-10-50-40",
+        "280-10-50-32",
+        "280-10-50-22"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 924-10-S99-1",
+        "ASC 606-10-50-5",
+        "ASC 280-10-50-30",
+        "ASC 280-10-50-42",
+        "ASC 280-10-50-22",
+        "ASC 280-10-50-32",
+        "ASC 280-10-50-40",
+        "ASC 280-10-50-41",
+        "ASC 606-10-50-4"
+      ]
+    },
+    {
+      "case_id": "case_5c79057c6748c1d2e605",
+      "citable": false,
+      "label_validation": "no-governing-paragraph",
+      "provisional_full_label": null,
+      "oracle_gold_row": 1,
+      "oracle_gold_row_concept": "us-gaap:DepreciationDepletionAndAmortization",
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "280-10-50-22",
+        "230-10-45-28",
+        "280-10-50"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 230-10-45-28",
+        "ASC 280-10-50-22"
+      ]
+    },
+    {
+      "case_id": "case_d60dcac90c192ebcd31c",
+      "citable": false,
+      "label_validation": "no-governing-paragraph",
+      "provisional_full_label": null,
+      "oracle_gold_row": 11,
+      "oracle_gold_row_concept": "us-gaap:ProceedsFromPaymentsForOtherFinancingActivities",
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "230-10-45-14",
+        "230-10-45-15",
+        "230-10-45"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 230-10-45-14",
+        "ASC 230-10-45-15"
+      ]
+    },
+    {
+      "case_id": "case_41b26ea05925032aacc7",
+      "citable": false,
+      "label_validation": "no-error",
+      "provisional_full_label": null,
+      "oracle_gold_row": null,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [],
+      "oracle_full_reference_candidates": []
+    },
+    {
+      "case_id": "case_de455b4d36c07315719f",
+      "citable": false,
+      "label_validation": "no-governing-paragraph",
+      "provisional_full_label": null,
+      "oracle_gold_row": 18,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "210-10-45"
+      ],
+      "oracle_full_reference_candidates": []
+    },
+    {
+      "case_id": "case_fa6f056afdf85662f601",
+      "citable": false,
+      "label_validation": "no-governing-paragraph",
+      "provisional_full_label": null,
+      "oracle_gold_row": 28,
+      "oracle_gold_row_concept": "us-gaap:MinorityInterest",
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "235-10-S99-1",
+        "825-10-50-28",
+        "323-10-50-3",
+        "946-210-S99-1",
+        "944-210-S99-1",
+        "942-210-S99-1",
+        "470-10-S99-1B",
+        "470-10-S99-1A"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 235-10-S99-1",
+        "ASC 323-10-50-3",
+        "ASC 825-10-50-28",
+        "ASC 944-210-S99-1",
+        "ASC 946-210-S99-1",
+        "ASC 470-10-S99-1A",
+        "ASC 470-10-S99-1B",
+        "ASC 942-210-S99-1",
+        "ASC 210-10-S99-1"
+      ]
+    },
+    {
+      "case_id": "case_e4307b9e73aca174e281",
+      "citable": false,
+      "label_validation": "no-error",
+      "provisional_full_label": null,
+      "oracle_gold_row": null,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [],
+      "oracle_full_reference_candidates": []
+    },
+    {
+      "case_id": "case_8e1b05d28ced388202e7",
+      "citable": false,
+      "label_validation": "no-governing-paragraph",
+      "provisional_full_label": null,
+      "oracle_gold_row": 1,
+      "oracle_gold_row_concept": "us-gaap:AccountsReceivableNetCurrent",
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "310-10-45-2",
+        "310-10-45-9",
+        "310-10-45"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 310-10-45-2",
+        "ASC 310-10-45-9"
+      ]
+    },
+    {
+      "case_id": "case_309148c5c9877a2e82da",
+      "citable": false,
+      "label_validation": "no-error",
+      "provisional_full_label": null,
+      "oracle_gold_row": null,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [],
+      "oracle_full_reference_candidates": []
+    },
+    {
+      "case_id": "case_2edbf676d94e573cdd4e",
+      "citable": true,
+      "label_validation": "expert-authored-UNVALIDATED",
+      "provisional_full_label": "ASC 730-10-25-1",
+      "oracle_gold_row": 2,
+      "oracle_gold_row_concept": "us-gaap:ResearchAndDevelopmentExpense",
+      "coverage": {
+        "public_union_displayed": false,
+        "public_union_unbounded": false,
+        "public_union_full_reference": false,
+        "anywhere_in_taxonomy": false,
+        "oracle_gold_row_exists": true,
+        "oracle_gold_row_displayed": true,
+        "oracle_gold_row_top8": false,
+        "oracle_gold_row_top1": false,
+        "oracle_gold_row_unbounded": false,
+        "oracle_gold_row_full_reference": false,
+        "oracle_gold_row_static": false
+      },
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": "No mapped-row reference contains this provisional paragraph",
+      "oracle_displayed_candidates": [
+        "730-10-50-1",
+        "985-20-50-1",
+        "912-730-25-1",
+        "730-10-50"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 730-10-50-1",
+        "ASC 912-730-25-1",
+        "ASC 985-20-50-1"
+      ]
+    },
+    {
+      "case_id": "case_7dad7285f6966525d3b0",
+      "citable": true,
+      "label_validation": "expert-authored-UNVALIDATED",
+      "provisional_full_label": "ASC 842-10-25-2",
+      "oracle_gold_row": 8,
+      "oracle_gold_row_concept": "us-gaap:OperatingLeaseRightOfUseAsset",
+      "coverage": {
+        "public_union_displayed": false,
+        "public_union_unbounded": false,
+        "public_union_full_reference": false,
+        "anywhere_in_taxonomy": false,
+        "oracle_gold_row_exists": true,
+        "oracle_gold_row_displayed": true,
+        "oracle_gold_row_top8": false,
+        "oracle_gold_row_top1": false,
+        "oracle_gold_row_unbounded": false,
+        "oracle_gold_row_full_reference": false,
+        "oracle_gold_row_static": false
+      },
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": "No mapped-row reference contains this provisional paragraph",
+      "oracle_displayed_candidates": [
+        "842-20-45-1",
+        "842-20-45"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 842-20-45-1"
+      ]
+    },
+    {
+      "case_id": "case_6c6c786e0d9a5a2bcff8",
+      "citable": true,
+      "label_validation": "expert-authored-UNVALIDATED",
+      "provisional_full_label": "ASC 606-10-25-23",
+      "oracle_gold_row": 0,
+      "oracle_gold_row_concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+      "coverage": {
+        "public_union_displayed": false,
+        "public_union_unbounded": false,
+        "public_union_full_reference": false,
+        "anywhere_in_taxonomy": false,
+        "oracle_gold_row_exists": true,
+        "oracle_gold_row_displayed": true,
+        "oracle_gold_row_top8": false,
+        "oracle_gold_row_top1": false,
+        "oracle_gold_row_unbounded": false,
+        "oracle_gold_row_full_reference": false,
+        "oracle_gold_row_static": false
+      },
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": "No mapped-row reference contains this provisional paragraph",
+      "oracle_displayed_candidates": [
+        "280-10-50-30",
+        "606-10-50-5",
+        "606-10-50-4",
+        "280-10-50-42",
+        "280-10-50-41",
+        "280-10-50-40",
+        "280-10-50-32",
+        "280-10-50-22"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 924-10-S99-1",
+        "ASC 606-10-50-5",
+        "ASC 280-10-50-30",
+        "ASC 280-10-50-42",
+        "ASC 280-10-50-22",
+        "ASC 280-10-50-32",
+        "ASC 280-10-50-40",
+        "ASC 280-10-50-41",
+        "ASC 606-10-50-4"
+      ]
+    },
+    {
+      "case_id": "case_8494e9109ff8044d5892",
+      "citable": false,
+      "label_validation": "no-governing-paragraph",
+      "provisional_full_label": null,
+      "oracle_gold_row": 8,
+      "oracle_gold_row_concept": "us-gaap:IncomeTaxExpenseBenefit",
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "235-10-S99-1",
+        "740-20-45-2",
+        "740-10-50-10",
+        "280-10-50-22",
+        "250-10-50-9",
+        "250-10-50-8",
+        "944-220-S99-1",
+        "740-10-S99-1"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 250-10-50-8",
+        "ASC 250-10-50-9",
+        "ASC 740-10-50-10",
+        "ASC 740-10-S99-1",
+        "ASC 280-10-50-22",
+        "ASC 944-220-S99-1",
+        "ASC 740-20-45-2",
+        "ASC 235-10-S99-1"
+      ]
+    },
+    {
+      "case_id": "case_064d3c06171fde95dda0",
+      "citable": true,
+      "label_validation": "linkbase-verified",
+      "provisional_full_label": "ASC 230-10-45-15",
+      "oracle_gold_row": 2,
+      "oracle_gold_row_concept": "us-gaap:PaymentsOfDividends",
+      "coverage": {
+        "public_union_displayed": true,
+        "public_union_unbounded": true,
+        "public_union_full_reference": true,
+        "anywhere_in_taxonomy": true,
+        "oracle_gold_row_exists": true,
+        "oracle_gold_row_displayed": true,
+        "oracle_gold_row_top8": true,
+        "oracle_gold_row_top1": true,
+        "oracle_gold_row_unbounded": true,
+        "oracle_gold_row_full_reference": true,
+        "oracle_gold_row_static": false
+      },
+      "positive_reference_provenance": [
+        {
+          "row": 2,
+          "concept": "us-gaap:PaymentsOfDividends",
+          "source": "taxonomy",
+          "role": "legacyRef",
+          "reference_label": "ref_4327"
+        },
+        {
+          "row": 10,
+          "concept": "us-gaap:ProceedsFromPaymentsForOtherFinancingActivities",
+          "source": "taxonomy",
+          "role": "commonPracticeRef",
+          "reference_label": "ref_5105"
+        },
+        {
+          "row": 11,
+          "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+          "source": "taxonomy",
+          "role": "legacyRef",
+          "reference_label": "ref_4327"
+        },
+        {
+          "row": 12,
+          "concept": "us-gaap:ProceedsFromPaymentsForOtherFinancingActivities",
+          "source": "taxonomy",
+          "role": "commonPracticeRef",
+          "reference_label": "ref_5105"
+        }
+      ],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "230-10-45-15",
+        "230-10-45"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 230-10-45-15"
+      ]
+    },
+    {
+      "case_id": "case_6673862ac8567253d89d",
+      "citable": false,
+      "label_validation": "no-error",
+      "provisional_full_label": null,
+      "oracle_gold_row": null,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [],
+      "oracle_full_reference_candidates": []
+    },
+    {
+      "case_id": "case_c73a5097fb378ca9cd5e",
+      "citable": true,
+      "label_validation": "expert-authored-UNVALIDATED",
+      "provisional_full_label": "ASC 210-10-45-1",
+      "oracle_gold_row": 9,
+      "oracle_gold_row_concept": "us-gaap:AccountsReceivableNetCurrent",
+      "coverage": {
+        "public_union_displayed": true,
+        "public_union_unbounded": true,
+        "public_union_full_reference": true,
+        "anywhere_in_taxonomy": true,
+        "oracle_gold_row_exists": true,
+        "oracle_gold_row_displayed": true,
+        "oracle_gold_row_top8": false,
+        "oracle_gold_row_top1": false,
+        "oracle_gold_row_unbounded": false,
+        "oracle_gold_row_full_reference": false,
+        "oracle_gold_row_static": true
+      },
+      "positive_reference_provenance": [
+        {
+          "row": 1,
+          "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+          "source": "taxonomy",
+          "role": "exampleRef",
+          "reference_label": "ref_1664"
+        },
+        {
+          "row": 6,
+          "concept": "us-gaap:AssetsCurrent",
+          "source": "taxonomy",
+          "role": "disclosureRef",
+          "reference_label": "ref_1662"
+        }
+      ],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "310-10-45-2",
+        "310-10-45-9",
+        "310-10-45"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 310-10-45-2",
+        "ASC 310-10-45-9"
+      ]
+    },
+    {
+      "case_id": "case_fbf75a377151757a382c",
+      "citable": false,
+      "label_validation": "no-error",
+      "provisional_full_label": null,
+      "oracle_gold_row": null,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [],
+      "oracle_full_reference_candidates": []
+    },
+    {
+      "case_id": "case_a1ab4bba46145526d2f3",
+      "citable": false,
+      "label_validation": "no-error",
+      "provisional_full_label": null,
+      "oracle_gold_row": null,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [],
+      "oracle_full_reference_candidates": []
+    },
+    {
+      "case_id": "case_384a04f2789ffeca1a92",
+      "citable": false,
+      "label_validation": "no-governing-paragraph",
+      "provisional_full_label": null,
+      "oracle_gold_row": 8,
+      "oracle_gold_row_concept": "us-gaap:IncomeTaxExpenseBenefit",
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "235-10-S99-1",
+        "740-20-45-2",
+        "740-10-50-10",
+        "280-10-50-22",
+        "250-10-50-9",
+        "250-10-50-8",
+        "944-220-S99-1",
+        "740-10-S99-1"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 250-10-50-8",
+        "ASC 250-10-50-9",
+        "ASC 740-10-50-10",
+        "ASC 740-10-S99-1",
+        "ASC 280-10-50-22",
+        "ASC 944-220-S99-1",
+        "ASC 740-20-45-2",
+        "ASC 235-10-S99-1"
+      ]
+    },
+    {
+      "case_id": "case_bbeb1ea42c647058570f",
+      "citable": false,
+      "label_validation": "no-error",
+      "provisional_full_label": null,
+      "oracle_gold_row": null,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [],
+      "oracle_full_reference_candidates": []
+    },
+    {
+      "case_id": "case_1978e5c21aefe1e4b8a7",
+      "citable": false,
+      "label_validation": "no-error",
+      "provisional_full_label": null,
+      "oracle_gold_row": null,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [],
+      "oracle_full_reference_candidates": []
+    },
+    {
+      "case_id": "case_bfd3b5245a1bc700cbd6",
+      "citable": false,
+      "label_validation": "no-error",
+      "provisional_full_label": null,
+      "oracle_gold_row": null,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [],
+      "oracle_full_reference_candidates": []
+    },
+    {
+      "case_id": "case_b17319f49dec56baf12b",
+      "citable": false,
+      "label_validation": "no-error",
+      "provisional_full_label": null,
+      "oracle_gold_row": null,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [],
+      "oracle_full_reference_candidates": []
+    },
+    {
+      "case_id": "case_a5dff52701c61f618d5d",
+      "citable": false,
+      "label_validation": "no-governing-paragraph",
+      "provisional_full_label": null,
+      "oracle_gold_row": 3,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "220-10"
+      ],
+      "oracle_full_reference_candidates": []
+    },
+    {
+      "case_id": "case_d1efe0af0cfd3eaa909d",
+      "citable": true,
+      "label_validation": "expert-authored-UNVALIDATED",
+      "provisional_full_label": "ASC 606-10-25-23",
+      "oracle_gold_row": 0,
+      "oracle_gold_row_concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+      "coverage": {
+        "public_union_displayed": false,
+        "public_union_unbounded": false,
+        "public_union_full_reference": false,
+        "anywhere_in_taxonomy": false,
+        "oracle_gold_row_exists": true,
+        "oracle_gold_row_displayed": true,
+        "oracle_gold_row_top8": false,
+        "oracle_gold_row_top1": false,
+        "oracle_gold_row_unbounded": false,
+        "oracle_gold_row_full_reference": false,
+        "oracle_gold_row_static": false
+      },
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": "No mapped-row reference contains this provisional paragraph",
+      "oracle_displayed_candidates": [
+        "280-10-50-30",
+        "606-10-50-5",
+        "606-10-50-4",
+        "280-10-50-42",
+        "280-10-50-41",
+        "280-10-50-40",
+        "280-10-50-32",
+        "280-10-50-22"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 924-10-S99-1",
+        "ASC 606-10-50-5",
+        "ASC 280-10-50-30",
+        "ASC 280-10-50-42",
+        "ASC 280-10-50-22",
+        "ASC 280-10-50-32",
+        "ASC 280-10-50-40",
+        "ASC 280-10-50-41",
+        "ASC 606-10-50-4"
+      ]
+    },
+    {
+      "case_id": "case_33a5c50b437c422eb1e1",
+      "citable": true,
+      "label_validation": "expert-authored-UNVALIDATED",
+      "provisional_full_label": "ASC 470-10-45-11",
+      "oracle_gold_row": 33,
+      "oracle_gold_row_concept": "us-gaap:LongTermDebtNoncurrent",
+      "coverage": {
+        "public_union_displayed": false,
+        "public_union_unbounded": false,
+        "public_union_full_reference": false,
+        "anywhere_in_taxonomy": false,
+        "oracle_gold_row_exists": true,
+        "oracle_gold_row_displayed": true,
+        "oracle_gold_row_top8": false,
+        "oracle_gold_row_top1": false,
+        "oracle_gold_row_unbounded": false,
+        "oracle_gold_row_full_reference": false,
+        "oracle_gold_row_static": false
+      },
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": "No mapped-row reference contains this provisional paragraph",
+      "oracle_displayed_candidates": [
+        "210-10-S99-1",
+        "210-10-S99"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 210-10-S99-1"
+      ]
+    },
+    {
+      "case_id": "case_cc180e9e3a6186422bac",
+      "citable": true,
+      "label_validation": "expert-authored-UNVALIDATED",
+      "provisional_full_label": "ASC 326-20-30-1",
+      "oracle_gold_row": 2,
+      "oracle_gold_row_concept": "us-gaap:AccountsReceivableNetCurrent",
+      "coverage": {
+        "public_union_displayed": false,
+        "public_union_unbounded": false,
+        "public_union_full_reference": false,
+        "anywhere_in_taxonomy": false,
+        "oracle_gold_row_exists": true,
+        "oracle_gold_row_displayed": true,
+        "oracle_gold_row_top8": false,
+        "oracle_gold_row_top1": false,
+        "oracle_gold_row_unbounded": false,
+        "oracle_gold_row_full_reference": false,
+        "oracle_gold_row_static": false
+      },
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": "No mapped-row reference contains this provisional paragraph",
+      "oracle_displayed_candidates": [
+        "310-10-45-2",
+        "310-10-45-9",
+        "310-10-45"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 310-10-45-2",
+        "ASC 310-10-45-9"
+      ]
+    },
+    {
+      "case_id": "case_3a65c485abbe1984ae27",
+      "citable": true,
+      "label_validation": "linkbase-verified",
+      "provisional_full_label": "ASC 230-10-45-15",
+      "oracle_gold_row": 3,
+      "oracle_gold_row_concept": "us-gaap:PaymentsOfDividends",
+      "coverage": {
+        "public_union_displayed": true,
+        "public_union_unbounded": true,
+        "public_union_full_reference": true,
+        "anywhere_in_taxonomy": true,
+        "oracle_gold_row_exists": true,
+        "oracle_gold_row_displayed": true,
+        "oracle_gold_row_top8": true,
+        "oracle_gold_row_top1": true,
+        "oracle_gold_row_unbounded": true,
+        "oracle_gold_row_full_reference": true,
+        "oracle_gold_row_static": false
+      },
+      "positive_reference_provenance": [
+        {
+          "row": 3,
+          "concept": "us-gaap:PaymentsOfDividends",
+          "source": "taxonomy",
+          "role": "legacyRef",
+          "reference_label": "ref_4327"
+        },
+        {
+          "row": 10,
+          "concept": "us-gaap:ProceedsFromPaymentsForOtherFinancingActivities",
+          "source": "taxonomy",
+          "role": "commonPracticeRef",
+          "reference_label": "ref_5105"
+        },
+        {
+          "row": 11,
+          "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+          "source": "taxonomy",
+          "role": "legacyRef",
+          "reference_label": "ref_4327"
+        },
+        {
+          "row": 12,
+          "concept": "us-gaap:ProceedsFromPaymentsForOtherFinancingActivities",
+          "source": "taxonomy",
+          "role": "commonPracticeRef",
+          "reference_label": "ref_5105"
+        }
+      ],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "230-10-45-15",
+        "230-10-45"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 230-10-45-15"
+      ]
+    },
+    {
+      "case_id": "case_87c726f7a2504ed0d85a",
+      "citable": false,
+      "label_validation": "no-governing-paragraph",
+      "provisional_full_label": null,
+      "oracle_gold_row": 0,
+      "oracle_gold_row_concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "280-10-50-30",
+        "606-10-50-5",
+        "606-10-50-4",
+        "280-10-50-42",
+        "280-10-50-41",
+        "280-10-50-40",
+        "280-10-50-32",
+        "280-10-50-22"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 924-10-S99-1",
+        "ASC 606-10-50-5",
+        "ASC 280-10-50-30",
+        "ASC 280-10-50-42",
+        "ASC 280-10-50-22",
+        "ASC 280-10-50-32",
+        "ASC 280-10-50-40",
+        "ASC 280-10-50-41",
+        "ASC 606-10-50-4"
+      ]
+    },
+    {
+      "case_id": "case_616f2d2146f23bd81607",
+      "citable": true,
+      "label_validation": "expert-authored-UNVALIDATED",
+      "provisional_full_label": "ASC 360-10-35-17",
+      "oracle_gold_row": 10,
+      "oracle_gold_row_concept": "us-gaap:PropertyPlantAndEquipmentNet",
+      "coverage": {
+        "public_union_displayed": false,
+        "public_union_unbounded": false,
+        "public_union_full_reference": false,
+        "anywhere_in_taxonomy": true,
+        "oracle_gold_row_exists": true,
+        "oracle_gold_row_displayed": true,
+        "oracle_gold_row_top8": false,
+        "oracle_gold_row_top1": false,
+        "oracle_gold_row_unbounded": false,
+        "oracle_gold_row_full_reference": false,
+        "oracle_gold_row_static": false
+      },
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": "No mapped-row reference contains this provisional paragraph",
+      "oracle_displayed_candidates": [
+        "852-10-55-10",
+        "942-360-50-1",
+        "360-10-50-1",
+        "944-210-S99-1",
+        "852-10-55"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 360-10-50-1",
+        "ASC 852-10-55-10",
+        "ASC 944-210-S99-1",
+        "ASC 942-360-50-1"
+      ]
+    },
+    {
+      "case_id": "case_2dc2afcc1d91f372810e",
+      "citable": false,
+      "label_validation": "no-governing-paragraph",
+      "provisional_full_label": null,
+      "oracle_gold_row": 26,
+      "oracle_gold_row_concept": "us-gaap:LiabilitiesCurrent",
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "210-10-45-5",
+        "852-10-55-10",
+        "852-10-50-7",
+        "825-10-50-28",
+        "810-10-50-3",
+        "810-10-45-25",
+        "323-10-50-3",
+        "470-10-S99-1B"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 810-10-50-3",
+        "ASC 810-10-45-25",
+        "ASC 235-10-S99-1",
+        "ASC 323-10-50-3",
+        "ASC 825-10-50-28",
+        "ASC 852-10-55-10",
+        "ASC 210-10-45-5",
+        "ASC 470-10-S99-1A",
+        "ASC 470-10-S99-1B",
+        "ASC 852-10-50-7",
+        "ASC 210-10-S99-1"
+      ]
+    },
+    {
+      "case_id": "case_dfe914ba62936e8a096f",
+      "citable": false,
+      "label_validation": "no-governing-paragraph",
+      "provisional_full_label": null,
+      "oracle_gold_row": 2,
+      "oracle_gold_row_concept": "us-gaap:AccountsReceivableNetCurrent",
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "310-10-45-2",
+        "310-10-45-9",
+        "310-10-45"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 310-10-45-2",
+        "ASC 310-10-45-9"
+      ]
+    },
+    {
+      "case_id": "case_72959fb5d53dade7a524",
+      "citable": false,
+      "label_validation": "no-governing-paragraph",
+      "provisional_full_label": null,
+      "oracle_gold_row": 0,
+      "oracle_gold_row_concept": "us-gaap:CostOfRevenue",
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "235-10-S99-1",
+        "825-10-50-28",
+        "323-10-50-3",
+        "470-10-S99-1B",
+        "470-10-S99-1A",
+        "220-10-S99-2",
+        "235-10-S99"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 235-10-S99-1",
+        "ASC 323-10-50-3",
+        "ASC 825-10-50-28",
+        "ASC 470-10-S99-1A",
+        "ASC 470-10-S99-1B",
+        "ASC 220-10-S99-2"
+      ]
+    },
+    {
+      "case_id": "case_197844f25e4b4b75fbe9",
+      "citable": true,
+      "label_validation": "expert-authored-UNVALIDATED",
+      "provisional_full_label": "ASC 606-10-25-23",
+      "oracle_gold_row": 0,
+      "oracle_gold_row_concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+      "coverage": {
+        "public_union_displayed": false,
+        "public_union_unbounded": false,
+        "public_union_full_reference": false,
+        "anywhere_in_taxonomy": false,
+        "oracle_gold_row_exists": true,
+        "oracle_gold_row_displayed": true,
+        "oracle_gold_row_top8": false,
+        "oracle_gold_row_top1": false,
+        "oracle_gold_row_unbounded": false,
+        "oracle_gold_row_full_reference": false,
+        "oracle_gold_row_static": false
+      },
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": "No mapped-row reference contains this provisional paragraph",
+      "oracle_displayed_candidates": [
+        "280-10-50-30",
+        "606-10-50-5",
+        "606-10-50-4",
+        "280-10-50-42",
+        "280-10-50-41",
+        "280-10-50-40",
+        "280-10-50-32",
+        "280-10-50-22"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 924-10-S99-1",
+        "ASC 606-10-50-5",
+        "ASC 280-10-50-30",
+        "ASC 280-10-50-42",
+        "ASC 280-10-50-22",
+        "ASC 280-10-50-32",
+        "ASC 280-10-50-40",
+        "ASC 280-10-50-41",
+        "ASC 606-10-50-4"
+      ]
+    },
+    {
+      "case_id": "case_b200b8872e8d3b0e2d0b",
+      "citable": false,
+      "label_validation": "no-governing-paragraph",
+      "provisional_full_label": null,
+      "oracle_gold_row": 1,
+      "oracle_gold_row_concept": "us-gaap:NetIncomeLoss",
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "205-20-50-7",
+        "946-830-55-10",
+        "946-220-45-7",
+        "825-10-50-28",
+        "815-40-65-1",
+        "323-10-50-3",
+        "280-10-50-32",
+        "280-10-50-31"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 235-10-S99-1",
+        "ASC 323-10-50-3",
+        "ASC 825-10-50-28",
+        "ASC 220-10-50-6",
+        "ASC 250-10-50-3",
+        "ASC 250-10-50-1",
+        "ASC 815-40-65-1",
+        "ASC 250-10-50-8",
+        "ASC 250-10-50-9",
+        "ASC 250-10-50-11",
+        "ASC 250-10-50-4",
+        "ASC 946-830-55-10",
+        "ASC 946-220-45-7",
+        "ASC 944-220-S99-1",
+        "ASC 280-10-50-22",
+        "ASC 946-220-S99-1",
+        "ASC 946-220-S99-3",
+        "ASC 470-10-S99-1A",
+        "ASC 470-10-S99-1B",
+        "ASC 280-10-50-30",
+        "ASC 280-10-50-32",
+        "ASC 260-10-45-60B",
+        "ASC 280-10-50-31",
+        "ASC 205-20-50-7",
+        "ASC 230-10-45-28",
+        "ASC 220-10-45-1A",
+        "ASC 220-10-45-1B",
+        "ASC 220-10-S99-2",
+        "ASC 942-220-S99-1"
+      ]
+    },
+    {
+      "case_id": "case_aa698b1e854dd37de14f",
+      "citable": false,
+      "label_validation": "no-error",
+      "provisional_full_label": null,
+      "oracle_gold_row": null,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [],
+      "oracle_full_reference_candidates": []
+    },
+    {
+      "case_id": "case_a2f22d9fc55ca36d8411",
+      "citable": true,
+      "label_validation": "expert-authored-UNVALIDATED",
+      "provisional_full_label": "ASC 330-10-35-1B",
+      "oracle_gold_row": 5,
+      "oracle_gold_row_concept": "us-gaap:InventoryNet",
+      "coverage": {
+        "public_union_displayed": false,
+        "public_union_unbounded": false,
+        "public_union_full_reference": false,
+        "anywhere_in_taxonomy": false,
+        "oracle_gold_row_exists": true,
+        "oracle_gold_row_displayed": true,
+        "oracle_gold_row_top8": false,
+        "oracle_gold_row_top1": false,
+        "oracle_gold_row_unbounded": false,
+        "oracle_gold_row_full_reference": false,
+        "oracle_gold_row_static": false
+      },
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": "No mapped-row reference contains this provisional paragraph",
+      "oracle_displayed_candidates": [
+        "210-10-S99-1",
+        "852-10-55-10",
+        "210-10-45-1",
+        "210-10-S99"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 852-10-55-10",
+        "ASC 210-10-45-1",
+        "ASC 210-10-S99-1"
+      ]
+    },
+    {
+      "case_id": "case_1bed53ac07435b3f7ade",
+      "citable": true,
+      "label_validation": "expert-authored-UNVALIDATED",
+      "provisional_full_label": "ASC 210-10-45-8",
+      "oracle_gold_row": 22,
+      "oracle_gold_row_concept": "us-gaap:AccountsPayableCurrent",
+      "coverage": {
+        "public_union_displayed": false,
+        "public_union_unbounded": false,
+        "public_union_full_reference": false,
+        "anywhere_in_taxonomy": true,
+        "oracle_gold_row_exists": true,
+        "oracle_gold_row_displayed": true,
+        "oracle_gold_row_top8": false,
+        "oracle_gold_row_top1": false,
+        "oracle_gold_row_unbounded": false,
+        "oracle_gold_row_full_reference": false,
+        "oracle_gold_row_static": false
+      },
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": "No mapped-row reference contains this provisional paragraph",
+      "oracle_displayed_candidates": [
+        "852-10-55-10",
+        "210-10-S99-1",
+        "852-10-55"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 852-10-55-10",
+        "ASC 210-10-S99-1"
+      ]
+    },
+    {
+      "case_id": "case_2f3e27bae3c9eb501d70",
+      "citable": false,
+      "label_validation": "no-governing-paragraph",
+      "provisional_full_label": null,
+      "oracle_gold_row": 4,
+      "oracle_gold_row_concept": "us-gaap:AccountsReceivableNetCurrent",
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "310-10-45-2",
+        "310-10-45-9",
+        "310-10-45"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 310-10-45-2",
+        "ASC 310-10-45-9"
+      ]
+    },
+    {
+      "case_id": "case_87b8b6091e9cf2644c6e",
+      "citable": true,
+      "label_validation": "expert-authored-UNVALIDATED",
+      "provisional_full_label": "ASC 606-10-25-23",
+      "oracle_gold_row": 0,
+      "oracle_gold_row_concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+      "coverage": {
+        "public_union_displayed": false,
+        "public_union_unbounded": false,
+        "public_union_full_reference": false,
+        "anywhere_in_taxonomy": false,
+        "oracle_gold_row_exists": true,
+        "oracle_gold_row_displayed": true,
+        "oracle_gold_row_top8": false,
+        "oracle_gold_row_top1": false,
+        "oracle_gold_row_unbounded": false,
+        "oracle_gold_row_full_reference": false,
+        "oracle_gold_row_static": false
+      },
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": "No mapped-row reference contains this provisional paragraph",
+      "oracle_displayed_candidates": [
+        "280-10-50-30",
+        "606-10-50-5",
+        "606-10-50-4",
+        "280-10-50-42",
+        "280-10-50-41",
+        "280-10-50-40",
+        "280-10-50-32",
+        "280-10-50-22"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 924-10-S99-1",
+        "ASC 606-10-50-5",
+        "ASC 280-10-50-30",
+        "ASC 280-10-50-42",
+        "ASC 280-10-50-22",
+        "ASC 280-10-50-32",
+        "ASC 280-10-50-40",
+        "ASC 280-10-50-41",
+        "ASC 606-10-50-4"
+      ]
+    },
+    {
+      "case_id": "case_273b51b8ce3b6bbf2ae3",
+      "citable": false,
+      "label_validation": "no-governing-paragraph",
+      "provisional_full_label": null,
+      "oracle_gold_row": 1,
+      "oracle_gold_row_concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [
+        "210-10-S99-1",
+        "230-10-45-4",
+        "210-10-45-1",
+        "210-10-S99"
+      ],
+      "oracle_full_reference_candidates": [
+        "ASC 210-10-S99-1",
+        "ASC 210-10-45-1",
+        "ASC 230-10-45-4"
+      ]
+    },
+    {
+      "case_id": "case_75ac978357bec09b7be4",
+      "citable": false,
+      "label_validation": "no-error",
+      "provisional_full_label": null,
+      "oracle_gold_row": null,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [],
+      "oracle_full_reference_candidates": []
+    },
+    {
+      "case_id": "case_41544387f1642428ca32",
+      "citable": false,
+      "label_validation": "no-error",
+      "provisional_full_label": null,
+      "oracle_gold_row": null,
+      "oracle_gold_row_concept": null,
+      "coverage": null,
+      "positive_reference_provenance": [],
+      "negative_reference_provenance": null,
+      "oracle_displayed_candidates": [],
+      "oracle_full_reference_candidates": []
+    }
+  ],
+  "limitations": [
+    "Reference membership is neither paragraph applicability nor independent label validation.",
+    "Full taxonomy means this 2023 reference linkbase, not the full Codification or a historical effective-date corpus.",
+    "Gold-row coverage is an oracle diagnostic; the deployed system does not receive that row.",
+    "CamelCase truncation is a name heuristic, not a verified taxonomy hierarchy.",
+    "Counts include repeated company/statement rows across this 48-case development pilot.",
+    "Absence means no explicit exact paragraph identifier in the reference metadata, not that the Codification lacks or rejects that paragraph.",
+    "Taxonomy ranking prefers topics below 900, while the separate selector prefers below 800; neither threshold establishes case-specific applicability."
+  ]
+}

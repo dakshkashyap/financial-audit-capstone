@@ -1,3 +1,11 @@
+# Current decision: review before further paid experiments
+
+Follow `TEAM_HANDOFF.md` and the canonical IntelliAudit annotation protocol. The
+twenty-case blind pilot is the immediate task. The earlier phase-two method plan
+is paused; its 36-case selection is preparation, not an executed or validated
+experiment. No phase-two requests have run. Use one accountant and explicitly
+report that limitation. The recommendations below remain prospective.
+
 # Recommended next experiment
 
 The current results do not show a cheap-model citation gain. Do not optimize
@@ -13,10 +21,12 @@ insufficient-evidence cases from documented events. Keep the same suspicious
 surface features in both members of each pair. A large revenue increase alone
 must not determine the label.
 
-Have two qualified accounting reviewers independently label evidence sufficiency,
-the applicable paragraph and acceptable alternatives, using the version effective
-for the reporting period. Record disagreements and adjudication. Begin with
-20 cases to test the annotation specification before expanding. Reviewer
+Have the available qualified accountant label evidence sufficiency, the applicable
+paragraph and acceptable alternatives using period-effective authority, blinded
+to proposals and model outputs. Preserve the first pass, a delayed 10–20% repeat,
+and separate reconciliation. Disclose the single-expert limitation; report
+intra-rater stability, not inter-rater agreement. Begin with the prepared twenty
+cases before expanding. Reviewer
 qualification and time are real project requirements; the model budget does not
 pay for or replace this work.
 

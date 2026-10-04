@@ -13,11 +13,15 @@ under explicit licenses; never redistribute proprietary ASC/IFRS paragraph text
 without the relevant rights. Public SEC filings do not authenticate synthetic
 transaction narratives. FinReflectKG is CC BY-NC 4.0, not an unrestricted source.
 
-A final citation item needs two independent qualified reviewers, adjudication,
+A final citation item needs one qualified accountant performing a blind first pass and documented reconciliation,
 the governing standard's effective date, accounting framework, applicable
 conditions, and the exact facts making the paragraph applicable. Store
 acceptable alternatives and justified `no_governing_paragraph` decisions.
-Reference-linkbase membership establishes a reference relation only.
+Reference-linkbase membership establishes a reference relation only. The canonical
+IntelliAudit annotation protocol requires a delayed 10–20% repeat subset. Report
+single-expert coverage and intra-rater stability; do not claim inter-rater
+validation. Operational dashboard records must be curated into publication records
+and pass the release gate; saving a review alone does not validate a case.
 
 Keep full gold, evidence graphs and source-company split assignments outside the
 inference interface. Log the inputs actually shown to each model. Hash and freeze

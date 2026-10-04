@@ -22,7 +22,7 @@ New research software has a bounded MIT grant under `research/LICENSING.md`. Onl
 
 Before calling the work a publication-ready benchmark:
 
-1. Independently annotate cases with two qualified accounting reviewers and adjudicate disagreements; record scope, authoritative version/effective date, evidence sufficiency and acceptable citation sets.
+1. Record one qualified accountant’s blind judgments and subsequent reconciliation, disclose independence and the single-reviewer limitation; record scope, authoritative version/effective date, evidence sufficiency and acceptable citation sets.
 2. Reconcile source mismatches and derived rows against original filings; distinguish synthetic supporting evidence and arbitrary acquisition units.
 3. Freeze fresh company/filing/event-disjoint test inputs, withheld proof state and a preregistered scoring/margin rule.
 4. Run one frontier family and cheap alternatives under matched observable evidence, tools and budgets; report actual cost, failures, abstentions and uncertainty with all per-company results.
@@ -34,3 +34,12 @@ The December objective is a validated release and preprint/submission; venue acc
 Compilation status: **unverified**. The built-in compiler failed with `Unable to find standard directories for platform`, an environment/platform error. The source has been preserved and the editor-open request queued. No local TeX or plugin installation was attempted. The readable `draft.md` mirrors the manuscript content and remains usable while compilation is unavailable. The requested approximately 6–8-page shape cannot be verified without a rendered PDF and may need adjustment once a rendering environment becomes available; all current measured results are already inserted.
 
 Static source checks after the final results update: all 11 bibliography citation keys are defined, LaTeX environments are balanced, and the cohort statement mix is read from the manifest (21 balance sheets, 16 income statements, 11 cash-flow statements). These checks do not substitute for native PDF compilation.
+
+Update, 4 October 2026: the paper now records the offline candidate-reference coverage
+(2/16 gold-row top-eight, 3/16 all-row union, 6/16 complete reference-linkbase
+membership) and the twenty-case/five-company single-accountant review workflow.
+The readiness gate blocks all twenty unreviewed cases. No new paid model results
+are asserted. Canonical annotation tooling is maintained in IntelliAudit; the
+unfinished phase-two paid runner is archived as design text.
+
+After the 4 October changes, native compilation again failed with the same platform-directory error. Static citation-key and environment-balance checks passed; they do not verify PDF compilation.

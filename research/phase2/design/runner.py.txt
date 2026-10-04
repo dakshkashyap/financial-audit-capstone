@@ -1,0 +1,511 @@
+"""Frozen phase-two execution, explicit retries, and cumulative budget accounting.
+
+Default ``plan`` performs no network calls. ``execute`` never opens scoring keys.
+The existing pilot harness and its original $5 protocol remain unchanged; this
+separately registered phase has a $12 cumulative ceiling on the SAME ledger.
+"""
+import argparse
+import importlib
+import json
+import os
+import socket
+import sys
+import time
+import urllib.error
+import urllib.request
+from decimal import Decimal
+from pathlib import Path
+
+from research.harness import (BASE, BudgetError, Ledger, ResponseError, append_jsonl,
+                              atomic_json, inference_inputs, load_key, utc_now,
+                              verify_evidence)
+from research.metrics import canonical_citation, paired_cluster_difference, score_conditions
+from research.select_pilot import digest, json_dump, read_jsonl
+
+FRONTIER = "anthropic/claude-opus-5.5"
+CHEAP = "qwen/qwen3.5-9b"
+ALLOWED_MODELS = {FRONTIER, CHEAP}
+CUMULATIVE_CAP = Decimal("12.00")
+CANONICAL_LEDGER = BASE / "artifacts/api_ledger.jsonl"
+DEFAULT_CONFIG = BASE / "phase2/config.json"
+ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
+CONDITIONS = {
+    "qwen_direct": {"model": CHEAP, "method": "direct"},
+    "qwen_row_metadata": {"model": CHEAP, "method": "row_metadata"},
+    "qwen_issue_retrieval": {"model": CHEAP, "method": "issue_retrieval"},
+    "qwen_proof": {"model": CHEAP, "method": "proof", "cache_from": "qwen_issue_retrieval"},
+    "opus_direct": {"model": FRONTIER, "method": "direct"},
+    "opus_issue_retrieval": {"model": FRONTIER, "method": "issue_retrieval"},
+}
+
+
+def method_module():
+    return importlib.import_module("research.phase2.method")
+
+
+class Phase2Ledger(Ledger):
+    """Reuse durable reservation/lock semantics without changing the old cap."""
+    def __init__(self):
+        self.path = Path(CANONICAL_LEDGER)
+        self.budget = CUMULATIVE_CAP
+        self.lock = None
+
+    def __enter__(self):
+        super().__enter__()
+        try:
+            events = self.events()
+            if any(event.get("event") == "budget_anomaly" for event in events):
+                raise BudgetError("Persistent provider-cost anomaly blocks paid execution")
+            if self.reserved() > self.budget:
+                raise BudgetError("Existing reservations exceed the phase-two cumulative cap")
+            if not any(event.get("event") == "phase_registration" and event.get("phase") == "phase2" for event in events):
+                append_jsonl(self.path, {"event": "phase_registration", "phase": "phase2",
+                             "cumulative_cap_usd": str(self.budget), "time": utc_now(),
+                             "prior_reservations_retained": True,
+                             "authorization": "User requested continued research within the original $30–40 allocation; internal phase-two cap $12 cumulative."})
+        except Exception:
+            self.__exit__()
+            raise
+        return self
+
+    def finish(self, call_id, **metadata):
+        if self.lock is None or not self.reservation(call_id):
+            raise RuntimeError("Completion requires a locked, existing reservation")
+        if any(e.get("event") == "completion" and e["call_id"] == call_id for e in self.events()):
+            raise RuntimeError("Duplicate completion refused")
+        super().finish(call_id, **metadata)
+        actual = metadata.get("reported_actual_usd")
+        if actual is not None:
+            try:
+                amount = Decimal(str(actual))
+                valid = amount.is_finite() and amount >= 0 and amount <= Decimal(self.reservation(call_id)["reserved_usd"])
+            except Exception:
+                valid = False
+            if not valid:
+                append_jsonl(self.path, {"event": "budget_anomaly", "call_id": call_id,
+                                         "time": utc_now(), "reason": "Provider cost invalid or above reserved bound"})
+                raise BudgetError("Provider cost exceeded or invalidated reservation; persistent halt")
+
+
+def validate_config(config):
+    if config.get("conditions") != CONDITIONS:
+        raise ValueError("Phase two permits only the registered conditions and exact models")
+    expected = {"protocol_version": "phase2-issue-proof-v1", "n_cases": 36,
+                "max_completion_tokens": 1000, "temperature": 0, "max_retries": 1,
+                "retry_delay_seconds": 5, "stop_after_consecutive_provider_failures": 3}
+    if any(config.get(key) != value for key, value in expected.items()):
+        raise ValueError("Frozen phase-two protocol settings do not match registration")
+    if Decimal(str(config.get("cumulative_budget_usd"))) != CUMULATIVE_CAP:
+        raise ValueError("Phase two requires the cumulative $12 cap on the canonical ledger")
+    if not 10 <= config.get("timeout_seconds", 0) <= 180:
+        raise ValueError("Timeout must be between 10 and 180 seconds")
+
+
+def load_catalog(path, model):
+    if model not in ALLOWED_MODELS:
+        raise ValueError("Unregistered model; no replacement or extra frontier allowed")
+    catalog = json.loads(Path(path).read_text(encoding="utf-8"))
+    entries = [entry for entry in catalog["data"] if entry["id"] == model]
+    if len(entries) != 1:
+        raise ValueError("Exact model must be uniquely present in frozen catalog")
+    entry = entries[0]
+    required = {"max_tokens", "temperature", "reasoning", "response_format", "structured_outputs"}
+    if not required.issubset(entry.get("supported_parameters") or []):
+        raise ValueError("Catalog lacks a required structured-output parameter")
+    if model == FRONTIER and "low" not in entry.get("reasoning", {}).get("supported_efforts", []):
+        raise ValueError("Exact frontier must support explicit low reasoning")
+    for key in ("prompt", "completion"):
+        price = Decimal(str(entry["pricing"][key]))
+        if not price.is_finite() or price <= 0:
+            raise ValueError("Reservation requires finite positive catalog prices")
+    if entry["pricing"].get("overrides"):
+        raise ValueError("Tiered prices require a separate registered estimator")
+    for fee in ("request", "per_request", "request_fee", "per_request_fee"):
+        if Decimal(str(entry["pricing"].get(fee, 0))) != 0:
+            raise ValueError("Per-request fees are not covered by this estimator")
+    return entry
+
+
+def load_public(prepared, config):
+    cases, manifest = inference_inputs(prepared)
+    if len(cases) != config["n_cases"]:
+        raise ValueError("The whole frozen 36-case cohort is required")
+    path = Path(prepared) / "method_packets.jsonl"
+    packet_rows = list(read_jsonl(path))
+    packets = {row["case_id"]: row["packet"] for row in packet_rows}
+    if len(packets) != len(packet_rows) or set(packets) != {case["case_id"] for case in cases}:
+        raise ValueError("Method packet identities must match public cohort exactly")
+    packet_hash = digest(path.read_bytes())
+    if manifest.get("method_packets_sha256", packet_hash) != packet_hash:
+        raise ValueError("Frozen method packet hash mismatch")
+    return cases, manifest, packets, packet_hash
+
+
+def request_body(case, condition, packet, config, entry, method=None):
+    method = method or method_module()
+    model = config["conditions"][condition]["model"]
+    if model != entry["id"] or model not in ALLOWED_MODELS:
+        raise ValueError("Request model and priced catalog entry disagree")
+    messages = method.build_messages(case, condition, packet)
+    if not isinstance(messages, list) or not messages or any(m.get("role") not in {"system", "user", "assistant"} or not isinstance(m.get("content"), str) for m in messages):
+        raise ValueError("Method must return text-only chat messages")
+    return {"model": model, "messages": messages, "temperature": 0,
+            "max_tokens": config["max_completion_tokens"],
+            "reasoning": {"effort": "low"} if model == FRONTIER else {"enabled": False},
+            "response_format": {"type": "json_schema", "json_schema": {
+                "name": "audit_decision", "strict": True, "schema": method.response_schema()}},
+            "provider": {"allow_fallbacks": False, "require_parameters": True,
+                         "max_price": {"prompt": float(Decimal(entry["pricing"]["prompt"]) * 1000000),
+                                       "completion": float(Decimal(entry["pricing"]["completion"]) * 1000000)}}}
+
+
+def request_reservation(body, entry):
+    prompt_upper = len(json_dump(body).encode("utf-8")) + 1024
+    if prompt_upper + body["max_tokens"] > entry["context_length"]:
+        raise ValueError("Conservative full-request bound exceeds model context")
+    amount = Decimal(prompt_upper) * Decimal(entry["pricing"]["prompt"]) + Decimal(body["max_tokens"]) * Decimal(entry["pricing"]["completion"])
+    return amount, prompt_upper
+
+
+def source_files(method):
+    paths = {"runner.py": Path(__file__), "method.py": Path(method.__file__),
+             "metrics.py": BASE / "metrics.py", "select_pilot.py": BASE / "select_pilot.py"}
+    return {name: path.read_bytes() for name, path in paths.items()}
+
+
+def condition_identity(condition, config, manifest, packet_hash, method, catalog_hash):
+    sources = source_files(method)
+    identity = {"condition": condition, "config": config,
+                "public_input_sha256": manifest["public_input_sha256"],
+                "method_packets_sha256": packet_hash, "catalog_sha256": catalog_hash,
+                "schema": method.response_schema(),
+                "implementation_files_sha256": {name: digest(value) for name, value in sources.items()}}
+    return digest(json_dump(identity)), identity, sources
+
+
+def cost_summary():
+    events = list(read_jsonl(CANONICAL_LEDGER)) if Path(CANONICAL_LEDGER).exists() else []
+    reservations = [e for e in events if e.get("event") == "reservation"]
+    completions = [e for e in events if e.get("event") == "completion"]
+    return {"cumulative_cap_usd": str(CUMULATIVE_CAP),
+            "reserved_upper_bound_usd": str(sum((Decimal(e["reserved_usd"]) for e in reservations), Decimal(0))),
+            "reported_actual_usd": str(sum((Decimal(e["reported_actual_usd"]) for e in completions if e.get("reported_actual_usd") is not None), Decimal(0))),
+            "unpriced_response_count": sum(e.get("reported_actual_usd") is None for e in completions),
+            "unresolved_reservation_count": len({e["call_id"] for e in reservations} - {e["call_id"] for e in completions}),
+            "accounting_note": "Cumulative original plus phase-two ledger. All reservations, including each retry and unknown charge, remain spent against $12; none refunded."}
+
+
+def target_dir(prepared, condition):
+    return Path(prepared) / "runs" / condition
+
+
+def existing_predictions(target, identity, condition, model, ids):
+    path = Path(target) / "predictions.jsonl"
+    rows = list(read_jsonl(path)) if path.exists() else []
+    if len({r["case_id"] for r in rows}) != len(rows):
+        raise ValueError("Duplicate predictions cannot be silently replaced")
+    if any(r.get("condition_id") != identity or r.get("condition") != condition or r.get("model") != model or r["case_id"] not in ids for r in rows):
+        raise ValueError("Predictions disagree with immutable condition identity")
+    return rows
+
+
+def plan(prepared, condition, config, catalog, reserve_other_usd="0"):
+    validate_config(config)
+    if condition not in CONDITIONS:
+        raise ValueError("Unknown registered condition")
+    cases, manifest, packets, packet_hash = load_public(prepared, config)
+    method = method_module()
+    entry = load_catalog(catalog, CONDITIONS[condition]["model"])
+    catalog_hash = digest(Path(catalog).read_bytes())
+    identity, identity_data, sources = condition_identity(condition, config, manifest, packet_hash, method, catalog_hash)
+    previous = existing_predictions(target_dir(prepared, condition), identity, condition, entry["id"], manifest["case_ids"])
+    completed = {r["case_id"] for r in previous}
+    events = list(read_jsonl(CANONICAL_LEDGER)) if Path(CANONICAL_LEDGER).exists() else []
+    reserved_ids = {e["call_id"] for e in events if e.get("event") == "reservation"}
+    estimates = []
+    if condition != "qwen_proof":
+        for case in cases:
+            body = request_body(case, condition, packets[case["case_id"]], config, entry, method)
+            amount, prompt_upper = request_reservation(body, entry)
+            attempts = [{"attempt": number, "call_id": digest(identity + ":" + case["case_id"] + ":" + str(number) + ":" + digest(json_dump(body)))[:32],
+                         "reserved_upper_bound_usd": str(amount), "prompt_token_upper_bound": prompt_upper}
+                        for number in range(config["max_retries"] + 1)]
+            estimates.append({"case_id": case["case_id"], "request_sha256": digest(json_dump(body)), "attempts": attempts})
+    total = sum((Decimal(a["reserved_upper_bound_usd"]) for e in estimates for a in e["attempts"]), Decimal(0))
+    additional = sum((Decimal(a["reserved_upper_bound_usd"]) for e in estimates if e["case_id"] not in completed for a in e["attempts"] if a["call_id"] not in reserved_ids), Decimal(0))
+    global_reserved = Decimal(cost_summary()["reserved_upper_bound_usd"])
+    others = Decimal(str(reserve_other_usd))
+    if not others.is_finite() or others < 0:
+        raise ValueError("Other-arm reserve must be finite and nonnegative")
+    result = {"condition": condition, "condition_id": identity, "n_cases": len(cases),
+              "public_input_sha256": manifest["public_input_sha256"], "method_packets_sha256": packet_hash,
+              "paid_calls_performed": False, "max_attempts_per_case": config["max_retries"] + 1,
+              "full_cohort_retry_upper_bound_usd": str(total),
+              "additional_unreserved_upper_bound_usd": str(additional),
+              "global_reserved_usd": str(global_reserved), "reserve_other_conditions_usd": str(others),
+              "projected_global_including_other_conditions_usd": str(global_reserved + additional + others),
+              "whole_cohort_fits_cap": global_reserved + additional + others <= CUMULATIVE_CAP,
+              "reservations": estimates, "identity": identity_data,
+              "cache_source": CONDITIONS[condition].get("cache_from")}
+    return result, cases, manifest, packets, entry, method, sources
+
+
+def paid_call(body, estimate, specification, case, entry, config, key, ledger, target):
+    call_id = estimate["call_id"]
+    response_path = Path(target) / "responses" / (call_id + ".json")
+    if ledger.reservation(call_id):
+        if response_path.exists():
+            cached = json.loads(response_path.read_text(encoding="utf-8"))
+            if cached.get("request_sha256") != digest(json_dump(body)):
+                raise ResponseError("Cached request identity mismatch")
+            return cached
+        raise ResponseError("Reserved request has unknown outcome; automatic retry prohibited")
+    ledger.reserve(call_id, estimate["reserved_upper_bound_usd"], phase="phase2",
+                   condition=specification["condition"], condition_id=specification["condition_id"],
+                   model=body["model"], case_id=case["case_id"], attempt=estimate["attempt"],
+                   request_sha256=digest(json_dump(body)), prompt_sha256=digest(json_dump(body["messages"])),
+                   prompt_token_upper_bound=estimate["prompt_token_upper_bound"],
+                   completion_token_limit=config["max_completion_tokens"],
+                   catalog_prompt_price=entry["pricing"]["prompt"], catalog_completion_price=entry["pricing"]["completion"])
+    request = urllib.request.Request(ENDPOINT, data=json_dump(body).encode("utf-8"), method="POST",
+                                     headers={"Authorization": "Bearer " + key, "Content-Type": "application/json"})
+    started = time.monotonic()
+    result = {"call_id": call_id, "model": body["model"], "status": "api_error",
+              "attempt": estimate["attempt"], "retryable": False, "content": None,
+              "request_sha256": digest(json_dump(body)), "reserved_usd": estimate["reserved_upper_bound_usd"]}
+    try:
+        with urllib.request.urlopen(request, timeout=config["timeout_seconds"]) as response:
+            data = json.loads(response.read().decode("utf-8"))
+        result["returned_model"] = data.get("model")
+        result["response_id"] = data.get("id")
+        result["provider"] = data.get("provider") if isinstance(data.get("provider"), str) else None
+        usage = data.get("usage") or {}
+        result["usage"] = {k: usage[k] for k in ("prompt_tokens", "completion_tokens", "total_tokens", "cost", "completion_tokens_details", "prompt_tokens_details") if k in usage}
+        if data.get("model") != body["model"]:
+            result.update(status="model_mismatch", error="Returned model differs; replacement prohibited")
+        elif data.get("error"):
+            result["error"] = "Provider returned an API error envelope"
+        else:
+            choices = data.get("choices") or []
+            if len(choices) != 1:
+                raise ResponseError("Expected exactly one completion choice")
+            result["content"] = choices[0].get("message", {}).get("content")
+            result["finish_reason"] = choices[0].get("finish_reason")
+            result["status"] = "ok" if isinstance(result["content"], str) and result["content"].strip() else "empty_content"
+    except urllib.error.HTTPError as error:
+        result.update(http_status=error.code, error="HTTP " + str(error.code), retryable=error.code in {429, 503})
+    except (TimeoutError, socket.timeout):
+        result.update(error="Timeout; outcome may already be billed", retryable=True)
+    except urllib.error.URLError as error:
+        result.update(error="URLError; outcome may already be billed", retryable=isinstance(error.reason, (TimeoutError, socket.timeout)))
+    except OSError:
+        result["error"] = "OSError; outcome may already be billed"
+    except (ValueError, ResponseError, KeyError, TypeError):
+        result["error"] = "Invalid provider response envelope"
+    result["elapsed_seconds"] = round(time.monotonic() - started, 3)
+    atomic_json(response_path, result)
+    actual = (result.get("usage") or {}).get("cost")
+    ledger.finish(call_id, phase="phase2", condition=specification["condition"], status=result["status"],
+                  reported_actual_usd=str(actual) if actual is not None else None,
+                  elapsed_seconds=result["elapsed_seconds"])
+    return result
+
+
+def save_manifest(target, specification, sources, config, manifest):
+    path = Path(target) / "manifest.json"
+    if path.exists():
+        old = json.loads(path.read_text(encoding="utf-8"))
+        if old["condition_id"] != specification["condition_id"]:
+            raise ValueError("Run manifest is immutable; use a separately registered experiment")
+        return
+    for name, content in sources.items():
+        source_path = Path(target) / "protocol_snapshot" / name
+        source_path.parent.mkdir(parents=True, exist_ok=True)
+        source_path.write_bytes(content)
+    atomic_json(Path(target) / "protocol_snapshot/config.json", config)
+    atomic_json(path, {**specification, "created_at": utc_now(), "python_version": sys.version,
+                       "source_commit": manifest.get("source_commit"), "ledger": str(CANONICAL_LEDGER.resolve()),
+                       "cumulative_budget_usd": str(CUMULATIVE_CAP)})
+
+
+def parsed_prediction(raw, case, packet, method):
+    value = method.parse_answer(raw, case, packet)
+    if not isinstance(value, dict):
+        raise ResponseError("Method parser must return a canonical prediction object")
+    diagnostics = value.pop("_diagnostics", {})
+    verification, _ = verify_evidence(value.get("evidence"), case)
+    return value, verification, diagnostics
+
+
+def execute(args, config):
+    if args.condition == "qwen_proof":
+        return execute_proof(args, config)
+    target = target_dir(args.prepared, args.condition)
+    if (target / "halted.json").exists():
+        raise RuntimeError("This arm halted; no automatic continuation or selective retries")
+    with Phase2Ledger() as ledger:
+        specification, cases, manifest, packets, entry, method, sources = plan(args.prepared, args.condition, config, args.catalog, args.reserve_other_usd)
+        if not specification["whole_cohort_fits_cap"]:
+            raise BudgetError("Whole remaining cohort including retry bounds and other arms exceeds cumulative $12; no calls started")
+        atomic_json(target / "plan.json", specification)
+        save_manifest(target, specification, sources, config, manifest)
+        previous = existing_predictions(target, specification["condition_id"], args.condition, entry["id"], manifest["case_ids"])
+        completed = {r["case_id"] for r in previous}
+        estimates = {e["case_id"]: e for e in specification["reservations"]}
+        key = load_key(args.key_file)
+        failures = 0
+        for old in reversed(previous):
+            if old.get("provider_failure"):
+                failures += 1
+            else:
+                break
+        attempted = 0
+        for case in cases:
+            cid = case["case_id"]
+            if cid in completed:
+                continue
+            if args.limit is not None and attempted >= args.limit:
+                break
+            attempted += 1
+            result = {"case_id": cid, "condition": args.condition, "condition_id": specification["condition_id"],
+                      "model": entry["id"], "status": "invalid_response", "prediction": None,
+                      "trace": [], "time": utc_now(), "provider_failure": False}
+            fatal = False
+            try:
+                body = request_body(case, args.condition, packets[cid], config, entry, method)
+                for estimate in estimates[cid]["attempts"]:
+                    if estimate["attempt"]:
+                        time.sleep(config["retry_delay_seconds"])
+                    result["trace"].append(estimate["call_id"])
+                    response = paid_call(body, estimate, specification, case, entry, config, key, ledger, target)
+                    if not response.get("retryable") or estimate["attempt"] == config["max_retries"]:
+                        break
+                if response["status"] != "ok":
+                    result.update(status=response["status"], error=response.get("error", "Provider returned no usable content"),
+                                  provider_failure=response["status"] in {"api_error", "model_mismatch"})
+                    fatal = response["status"] == "model_mismatch"
+                else:
+                    prediction, verification, diagnostics = parsed_prediction(response["content"], case, packets[cid], method)
+                    result.update(status="ok", prediction=prediction, evidence_verification=verification, method_diagnostics=diagnostics)
+            except BudgetError as error:
+                result.update(status="budget_blocked", error=str(error))
+                fatal = True
+            except (ResponseError, ValueError, KeyError, TypeError) as error:
+                result["error"] = str(error)
+            append_jsonl(target / "predictions.jsonl", result)
+            failures = failures + 1 if result["provider_failure"] else 0
+            print(json_dump({"condition": args.condition, "case_id": cid, "status": result["status"],
+                             "attempted": attempted, "global_reserved_usd": str(ledger.reserved())}), flush=True)
+            if fatal or failures >= config["stop_after_consecutive_provider_failures"]:
+                atomic_json(target / "halted.json", {"time": utc_now(), "last_case_id": cid,
+                            "reason": result.get("error"), "consecutive_provider_failures": failures,
+                            "remaining_cases_not_requested": True})
+                break
+    return {"condition": args.condition, "attempted": attempted, "cost": cost_summary()}
+
+
+def execute_proof(args, config):
+    specification, cases, manifest, packets, entry, method, sources = plan(args.prepared, args.condition, config, args.catalog)
+    if not hasattr(method, "apply_proof"):
+        raise ValueError("Method must expose apply_proof(prediction, case, packet) for the cached proof arm")
+    source = target_dir(args.prepared, CONDITIONS[args.condition]["cache_from"])
+    source_spec, *_ = plan(args.prepared, "qwen_issue_retrieval", config, args.catalog)
+    cached = existing_predictions(source, source_spec["condition_id"], "qwen_issue_retrieval", CHEAP, manifest["case_ids"])
+    source_rows = {r["case_id"]: r for r in cached}
+    if not source_rows:
+        raise ValueError("Run issue retrieval first; proof uses the exact existing raw predictions and no paid calls")
+    target = target_dir(args.prepared, args.condition)
+    save_manifest(target, specification, sources, config, manifest)
+    completed = {r["case_id"] for r in existing_predictions(target, specification["condition_id"], args.condition, CHEAP, manifest["case_ids"])}
+    attempted = 0
+    for case in cases:
+        cid = case["case_id"]
+        if cid in completed or cid not in source_rows:
+            continue
+        parent = source_rows[cid]
+        result = {**parent, "condition": args.condition, "condition_id": specification["condition_id"],
+                  "time": utc_now(), "cached_from_condition": "qwen_issue_retrieval",
+                  "cached_prediction_sha256": digest(json_dump(parent)), "incremental_api_cost_usd": "0"}
+        if parent["status"] == "ok":
+            prediction = method.apply_proof(json.loads(json_dump(parent["prediction"])), case, packets[cid])
+            if not isinstance(prediction, dict):
+                raise ValueError("Proof method must return a canonical prediction object")
+            diagnostics = prediction.pop("_diagnostics", {})
+            verification, _ = verify_evidence(prediction.get("evidence"), case)
+            result.update(prediction=prediction, evidence_verification=verification, proof_diagnostics=diagnostics)
+        append_jsonl(target / "predictions.jsonl", result)
+        attempted += 1
+    return {"condition": args.condition, "attempted": attempted, "paid_calls_performed": False}
+
+
+def score(args, config):
+    validate_config(config)
+    cases, manifest, packets, _ = load_public(args.prepared, config)
+    # Only the separate local score command opens this key; predictions already
+    # exist on disk and their immutable condition identities are checked below.
+    key_path = Path(args.prepared) / "scoring_only.jsonl"
+    if digest(key_path.read_bytes()) != manifest["scoring_key_sha256"]:
+        raise ValueError("Scoring key hash mismatch")
+    gold = {row["case_id"]: row["gold"] for row in read_jsonl(key_path)}
+    if set(gold) != set(manifest["case_ids"]):
+        raise ValueError("Scoring key identities mismatch")
+    predictions = {}
+    for condition in CONDITIONS:
+        target = target_dir(args.prepared, condition)
+        if not (target / "predictions.jsonl").exists():
+            continue
+        specification, *_ = plan(args.prepared, condition, config, args.catalog)
+        rows = existing_predictions(target, specification["condition_id"], condition, CONDITIONS[condition]["model"], manifest["case_ids"])
+        predictions[condition] = {row["case_id"]: row for row in rows}
+    report = score_conditions(cases, gold, predictions, draws=args.bootstrap_draws)
+    report["evaluation_label"] = "Phase-two development and fresh-company diagnostic; agreement with provisional labels, not independently adjudicated accounting correctness"
+    report["caveat"] = "Ten purposively limited companies and provisional labels. Report inspected development and fresh-company subsets separately. No gold-standard, population, or confirmed superiority claim."
+    report["provenance"] = manifest
+    report["cost_summary"] = cost_summary()
+    report["created_at"] = utc_now()
+    for condition, values in report["conditions"].items():
+        eligible = [row for row in values["cases"] if row["gold_citable"]]
+        correct = sum(row["status"] == "ok" and canonical_citation((row["prediction"] or {}).get("citation")) is not None and "-".join(canonical_citation((row["prediction"] or {})["citation"]).split("-")[:2]) == "-".join((canonical_citation(row["gold_citation"]) or "").split("-")[:2]) for row in eligible)
+        values["metrics"]["unvalidated_subtopic_agreement"] = {"numerator": correct, "denominator": len(eligible), "value": correct / len(eligible) if eligible else None}
+    for left, right in (("qwen_row_metadata", "qwen_direct"), ("qwen_issue_retrieval", "qwen_direct"), ("qwen_proof", "qwen_issue_retrieval"), ("qwen_proof", "opus_issue_retrieval"), ("opus_issue_retrieval", "opus_direct")):
+        if left in report["conditions"] and right in report["conditions"]:
+            report["paired_differences"][left + "_minus_" + right] = paired_cluster_difference(report["conditions"][left]["cases"], report["conditions"][right]["cases"], draws=args.bootstrap_draws)
+    atomic_json(Path(args.prepared) / "report.json", report)
+    return {"report": str((Path(args.prepared) / "report.json").resolve()), "conditions": list(predictions), "cost": report["cost_summary"]}
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("command", choices=["plan", "execute", "score"])
+    parser.add_argument("--prepared", required=True)
+    parser.add_argument("--catalog", default=str(BASE / "artifacts/model_catalog.json"))
+    parser.add_argument("--config", default=str(DEFAULT_CONFIG))
+    parser.add_argument("--condition", choices=list(CONDITIONS) + ["all"], default="all")
+    parser.add_argument("--reserve-other-usd", default="0")
+    parser.add_argument("--key-file")
+    parser.add_argument("--limit", type=int)
+    parser.add_argument("--bootstrap-draws", type=int, default=2000)
+    args = parser.parse_args(argv)
+    config = json.loads(Path(args.config).read_text(encoding="utf-8"))
+    validate_config(config)
+    if args.limit is not None and args.limit < 0:
+        parser.error("--limit must be nonnegative")
+    if args.command == "execute":
+        if args.condition == "all":
+            parser.error("Execute one explicit condition after inspecting the whole-arm plan")
+        result = execute(args, config)
+    elif args.command == "score":
+        result = score(args, config)
+    else:
+        conditions = list(CONDITIONS) if args.condition == "all" else [args.condition]
+        plans = [plan(args.prepared, name, config, args.catalog, args.reserve_other_usd)[0] for name in conditions]
+        additional = sum((Decimal(p["additional_unreserved_upper_bound_usd"]) for p in plans), Decimal(0))
+        reserved = Decimal(cost_summary()["reserved_upper_bound_usd"])
+        result = {"conditions": plans, "additional_all_arms_retry_upper_bound_usd": str(additional),
+                  "global_reserved_usd": str(reserved), "projected_all_arms_usd": str(reserved + additional),
+                  "all_selected_arms_fit_cumulative_cap": reserved + additional <= CUMULATIVE_CAP}
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+
+
+if __name__ == "__main__":
+    main()

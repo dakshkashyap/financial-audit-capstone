@@ -73,3 +73,14 @@ To inspect the exact implementation differences, run from the repository root:
 git diff 4a622e0bd39e19c3a0d6fe6033e14854b107d983 -- core approaches tests research
 git diff 159ae080dcddedf4a9cee9c5f831bb624d113782 -- core approaches tests research
 ```
+
+## Benchmark-first continuation (4 October 2026)
+
+The latest continuation adds a public-input-first reference coverage audit, preserves
+the unfinished paid method plan as inactive design material, and moves the canonical
+annotation schema/checks to IntelliAudit. Both team handoffs and the paper now use
+the actual one-accountant constraint. The twenty-case/five-company blind review
+pilot and append-only local review workflow are prepared; zero expert reviews are
+claimed. No additional API calls or improved model scores are asserted. The final
+candidate audit records only 6/16 provisional labels anywhere in the downloaded
+2023 reference metadata, distinguishing retrieval coverage from accounting validity.
