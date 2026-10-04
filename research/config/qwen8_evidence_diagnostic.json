@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "selection": {
+    "seed": 20261002,
+    "n_companies": 8,
+    "min_fiscal_year": 2020,
+    "max_fiscal_year": 2024,
+    "per_company": {"control": 2, "detection_only": 2, "citable": 2}
+  },
+  "budget_usd": "5.00",
+  "max_completion_tokens": 900,
+  "temperature": 0,
+  "timeout_seconds": 90,
+  "conditions": {
+    "qwen8_evidence_diagnostic": {
+      "model": "qwen/qwen3-8b",
+      "method": "evidence_then_decision",
+      "reasoning_enabled": false,
+      "analysis_transport": "user_data",
+      "max_prior_analysis_extra_utf8_bytes": 6000,
+      "inter_call_delay_seconds": 1
+    }
+  }
+}

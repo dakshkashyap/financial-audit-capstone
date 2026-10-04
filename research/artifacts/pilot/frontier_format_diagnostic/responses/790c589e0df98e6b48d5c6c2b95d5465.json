@@ -1,0 +1,21 @@
+{
+  "call_id": "790c589e0df98e6b48d5c6c2b95d5465",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":null,\"evidence\":[{\"quote\":\"returns and allowances: −63 (decrease)\",\"row\":0,\"source\":\"transactions\"},{\"quote\":\"cost recovery / reclass out: +37 (increase)\",\"row\":3,\"source\":\"transactions\"},{\"quote\":\"Operating income (loss) | ($156)\",\"row\":5,\"source\":\"statement\"},{\"quote\":\"Net income (loss) | ($160)\",\"row\":9,\"source\":\"statement\"}],\"judgement\":\"correct\",\"reason\":\"Every line ties to the evidence: revenue 389−63=326, SG&A −207+37=−170, other operating +6−5=1, other income +2−6=−4, and R&D expensed 28. Subtotals foot: 326−285−28−170+1=−156; −156−4=−160; tax 0 gives net −160. Cost of revenue has no component evidence, but it is consistent with the subtotal. No error was identified.\",\"row\":null}",
+  "reserved_usd": "0.046712",
+  "request_sha256": "4dd03997fe4534576e562816a28662acbe4cc0c1fa5b5ee3a6d210697e40211c",
+  "prompt_sha256": "c0e86479be32843f327468aea36e727373b3a7061d19f43dc16923d4d8005d2a",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002410-freIp6t8RuVl9j0UO0XS",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 1995,
+    "completion_tokens": 415,
+    "total_tokens": 2410,
+    "cost": 0.01628
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 5.811
+}

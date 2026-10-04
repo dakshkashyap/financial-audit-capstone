@@ -1,0 +1,21 @@
+{
+  "call_id": "068fe6c0cabe15cafe1a710395a7d2f6",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":\"Missing Row\",\"evidence\":[{\"quote\":\"[Net income] net income for the period: +537 (increase); loss components of the period: −55 (decrease)\",\"row\":null,\"source\":\"transactions\"},{\"quote\":\"Net cash from operating activities | $3,063\",\"row\":3,\"source\":\"statement\"},{\"quote\":\"Depreciation and amortization | $1,287\",\"row\":1,\"source\":\"statement\"}],\"judgement\":\"incorrect\",\"reason\":\"Net income components net to 482, but the statement has no net income row. The operating rows sum to 1,287 + 1,294 = 2,581. Adding 482 gives 3,063, which matches the reported operating total. The net income line belongs at index 1, before depreciation. Other sections tie: investing -269, financing -2,700, and the overall total 3,063 - 269 - 2,700 - 10 = 84. No specific ASC paragraph is cited with confidence.\",\"row\":1}",
+  "reserved_usd": "0.047484",
+  "request_sha256": "6c98cfcbd2f2d50bbcf66a721f979904ce8528e6076f90ed2d75a7e9d383b026",
+  "prompt_sha256": "815de182afb9a93e1849277a6e3e1fbfcf672215183698556c30b3d6a1ba3165",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002249-8JeKcymp1MwWHTJ1rKyv",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 2084,
+    "completion_tokens": 326,
+    "total_tokens": 2410,
+    "cost": 0.014856
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 5.214
+}

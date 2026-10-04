@@ -1,0 +1,20 @@
+{
+  "call_id": "9272a831d3d7fa2ceb92eda2d94e22d8",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "extract",
+  "prompt_sha256": "4519c5a9254791e4fc8e782ce75743fd9b900aca433c688a5a4fe6621030ba50",
+  "reserved_usd": "0.0010330",
+  "status": "ok",
+  "content": "{\"evidence\":[{\"source\":\"statement\",\"quote\":\"Restricted cash | $39\",\"row\":2},{\"source\":\"transactions\",\"quote\":\"[Restricted cash] other credits posted to the account: +52\",\"row\":null},{\"source\":\"transactions\",\"quote\":\"[Restricted cash] other charges posted to the account: −13\",\"row\":null},{\"source\":\"statement\",\"quote\":\"Total current assets | $345\",\"row\":8}],\"observations\":[\"Restricted cash increased by $52 and decreased by $13 during the period.\",\"The ending balance of restricted cash is $39, consistent with net change of +39.\",\"Total current assets include restricted cash as a component.\",\"The reported $39 restricted cash aligns with transaction movements.\"],\"possible_faults\":[\"Restricted cash may not be properly classified if it is not legally restricted or not used for specific purposes.\"],\"uncertainty\":\"The nature and restrictions on the $39 restricted cash are not described, so its classification and appropriateness cannot be confirmed.\"}",
+  "response_id": "gen-1791001917-RSLJeGkRMq5CYhnSVo1t",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 1757,
+    "completion_tokens": 210,
+    "total_tokens": 1967,
+    "cost": 0.00012514005
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 1.381
+}

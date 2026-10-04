@@ -1,0 +1,20 @@
+{
+  "call_id": "602f49f5a863563cac01012c9be13ecf",
+  "model": "qwen/qwen3-8b",
+  "stage": "decision",
+  "prompt_sha256": "083f84aba138d52f7d668f216338d10cf7917ce9690a9b14bb41c2d2047e0647",
+  "reserved_usd": "0.000955539",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Numerical Error\",\n  \"row\": 0,\n  \"citation\": null,\n  \"citation_abstain\": true,\n  \"evidence\": [\n    {\"source\": \"statement\", \"quote\": \"Revenue | $3,962\", \"row\": 0},\n    {\"source\": \"transactions\", \"quote\": \"revenue recognised on satisfied performance obligations: +4,119 (increase); returns and allowances: −157 (decrease)\", \"row\": null},\n    {\"source\": \"transactions\", \"quote\": \"cut-off review — consideration billed or received during the period for performance obligations not yet satisfied at period-end 98; of which recorded as contract liabilities (deferred revenue) 98.\", \"row\": null},\n    {\"source\": \"statement\", \"quote\": \"Other operating expenses, net | $12\", \"row\": 4}\n  ],\n  \"reason\": \"The reported revenue of $3,962 million does not align with the transaction evidence showing a net increase in revenue of $3,962 million (4,119 - 157). This discrepancy suggests a numerical error in the statement.\"\n}",
+  "response_id": "gen-1791001661-ZOjbKtzvAR7Hi519sYFf",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 940,
+    "completion_tokens": 262,
+    "total_tokens": 1202,
+    "cost": 0.00022919
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 4.23
+}

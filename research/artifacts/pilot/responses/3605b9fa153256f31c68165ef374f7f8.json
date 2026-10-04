@@ -1,0 +1,20 @@
+{
+  "call_id": "3605b9fa153256f31c68165ef374f7f8",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "decision",
+  "prompt_sha256": "ebc05304bd8262ef14bd91c9ab8ab77d88a909cae6f62db68b2d328c8c8b3d08",
+  "reserved_usd": "0.0007268",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Numerical Error\",\n  \"row\": 5,\n  \"citation\": \"ASC 230-10-45-1\",\n  \"citation_abstain\": false,\n  \"evidence\": [\n    {\n      \"source\": \"statement\",\n      \"quote\": \"Net cash from operating activities | ($99)\",\n      \"row\": 5\n    },\n    {\n      \"source\": \"transactions\",\n      \"quote\": \"[Net income] net income for the period: +188 (increase); loss components of the period: −28 (decrease)\",\n      \"row\": null\n    },\n    {\n      \"source\": \"transactions\",\n      \"quote\": \"[Share-based compensation] share-based compensation add-back: +26 (increase); forfeiture reversal: −2 (decrease)\",\n      \"row\": null\n    },\n    {\n      \"source\": \"transactions\",\n      \"quote\": \"[Other operating activities, net] other credits posted to the account: +55 (increase); other charges posted to the account: −361 (decrease)\",\n      \"row\": null\n    }\n  ],\n  \"reason\": \"The operating cash flow line (row 5) is incorrectly calculated. Net income is $188 - $28 = $160. Add back depreciation/amortization ($23), share-based comp ($26 - $2 = $24), and other operating net ($55 - $361 = -$306). Total: $160 + $23 + $24 - $306 = -$99. The calculation is correct, but the statement's net income is $182, not $160. The $182 figure contradicts the transaction data showing $188 net income minus $28 loss components. Thus, the error is in the reported net income, not the derived cash flow. The cash flow total is mathematically consistent with the stated inputs, but the inputs themselves are inconsistent with the transaction evidence.\"\n}",
+  "response_id": "gen-1791001832-fGoATFKzLOSQquUz6rB9",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 905,
+    "completion_tokens": 443,
+    "total_tokens": 1348,
+    "cost": 0.0001290969
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 5.123
+}

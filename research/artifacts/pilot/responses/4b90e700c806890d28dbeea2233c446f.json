@@ -1,0 +1,20 @@
+{
+  "call_id": "4b90e700c806890d28dbeea2233c446f",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "extract",
+  "prompt_sha256": "a35373834b22e59a10c842ca99f9a84c7c875a480909d04d129dc0e78563e0df",
+  "reserved_usd": "0.0006901",
+  "status": "ok",
+  "content": "{\"evidence\":[{\"source\":\"statement_text\",\"quote\":\"Other operating activities, net | $5,628\",\"row\":4},{\"source\":\"transaction_data\",\"quote\":\"[Other operating activities, net] other credits posted to the account: +7,258 (increase); other charges posted to the account: −1,630 (decrease)\",\"row\":null},{\"source\":\"statement_text\",\"quote\":\"Dividends paid | ($6,761)\",\"row\":3},{\"source\":\"transaction_data\",\"quote\":\"[Dividends paid] dividends paid to shareholders: −7,896 (decrease); dividend payable reversal: +1,135 (increase)\",\"row\":null}],\"observations\":[\"Net cash from operating activities is reported as $5,628 for 'Other operating activities, net'.\",\"The transaction data shows $7,258 in credits and $1,630 in charges, summing to $5,628.\",\"Dividends paid is reported as ($6,761) in the statement.\",\"Transaction data shows $7,896 paid and $1,135 reversal, totaling ($6,761).\"],\"possible_faults\":[\"Discrepancy in dividend treatment if reversal is not properly classified.\",\"Potential misstatement in 'Other operating activities' if components are not fully reconciled.\"],\"uncertainty\":\"The classification of the dividend payable reversal and its impact on operating vs. financing activities cannot be confirmed without additional context.\"}",
+  "response_id": "gen-1791001912-QCGqMjxG7VYXzpWo8t2V",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 862,
+    "completion_tokens": 315,
+    "total_tokens": 1177,
+    "cost": 0.00010231605
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 3.428
+}

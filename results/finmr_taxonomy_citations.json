@@ -1,0 +1,1406 @@
+{
+  "total_concepts": 100,
+  "coverage": {
+    "with_citation": 89,
+    "direct": 85,
+    "parent_fallback": 4,
+    "no_citation": 11
+  },
+  "topic_counts": {
+    "230": 20,
+    "210": 11,
+    "220": 9,
+    "235": 5,
+    "715": 4,
+    "280": 4,
+    "505": 4,
+    "842": 4,
+    "718": 4,
+    "932": 3,
+    "470": 3,
+    "740": 3,
+    "205": 3,
+    "942": 2,
+    "310": 2,
+    "852": 2,
+    "326": 2,
+    "320": 1,
+    "250": 1,
+    "946": 1,
+    "260": 1
+  },
+  "topic_by_rule": {
+    "DQC_US_0117": {
+      "210": 3,
+      "942": 2,
+      "310": 2,
+      "852": 2,
+      "220": 2,
+      "280": 2,
+      "505": 1,
+      "230": 1,
+      "470": 1,
+      "235": 1
+    },
+    "DQC_US_0015": {
+      "230": 13,
+      "210": 5,
+      "715": 4,
+      "842": 4,
+      "718": 4,
+      "932": 3,
+      "740": 3,
+      "505": 3,
+      "220": 3,
+      "470": 2,
+      "326": 2,
+      "320": 1,
+      "280": 1,
+      "946": 1
+    },
+    "DQC_US_0126": {
+      "230": 6,
+      "235": 4,
+      "220": 4,
+      "210": 3,
+      "205": 3,
+      "250": 1,
+      "260": 1,
+      "280": 1
+    }
+  },
+  "concepts": [
+    {
+      "concept": "AccountsPayableAndAccruedLiabilitiesCurrent",
+      "dqc_rule": "DQC_US_0117",
+      "asc": "210-10-S99-1",
+      "topic": "210",
+      "source": "taxonomy",
+      "matched_concept": "AccountsPayableAndAccruedLiabilitiesCurrent",
+      "record_ids": [
+        167,
+        168
+      ]
+    },
+    {
+      "concept": "AccountsPayableAndAccruedLiabilitiesCurrentAndNoncurrent",
+      "dqc_rule": "DQC_US_0117",
+      "asc": "942-210-S99-1",
+      "topic": "942",
+      "source": "taxonomy",
+      "matched_concept": "AccountsPayableAndAccruedLiabilitiesCurrentAndNoncurrent",
+      "record_ids": [
+        182
+      ]
+    },
+    {
+      "concept": "AccountsReceivableGrossCurrent",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "210-10-S99-1",
+      "topic": "210",
+      "source": "taxonomy",
+      "matched_concept": "AccountsReceivableGrossCurrent",
+      "record_ids": [
+        84
+      ]
+    },
+    {
+      "concept": "AdjustmentsRelatedToTaxWithholdingForShareBasedCompensation",
+      "dqc_rule": "DQC_US_0015",
+      "asc": null,
+      "topic": null,
+      "source": "none",
+      "matched_concept": null,
+      "record_ids": [
+        78,
+        79,
+        80
+      ]
+    },
+    {
+      "concept": "AdjustmentsToReconcileNetIncomeLossToCashProvidedByUsedInOperatingActivities",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "230-10-45-28",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "AdjustmentsToReconcileNetIncomeLossToCashProvidedByUsedInOperatingActivities",
+      "record_ids": [
+        311,
+        329
+      ]
+    },
+    {
+      "concept": "AllowanceForDoubtfulAccountsPremiumsAndOtherReceivables",
+      "dqc_rule": "DQC_US_0117",
+      "asc": "310-10-50-4",
+      "topic": "310",
+      "source": "taxonomy",
+      "matched_concept": "AllowanceForDoubtfulAccountsPremiumsAndOtherReceivables",
+      "record_ids": [
+        112
+      ]
+    },
+    {
+      "concept": "Assets",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "210-10-S99-1",
+      "topic": "210",
+      "source": "taxonomy",
+      "matched_concept": "Assets",
+      "record_ids": [
+        72,
+        73
+      ]
+    },
+    {
+      "concept": "AssetsCurrent",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "210-10-45-1",
+      "topic": "210",
+      "source": "taxonomy",
+      "matched_concept": "AssetsCurrent",
+      "record_ids": [
+        265,
+        283
+      ]
+    },
+    {
+      "concept": "AssetsNoncurrent",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "235-10-S99-1",
+      "topic": "235",
+      "source": "taxonomy",
+      "matched_concept": "AssetsNoncurrent",
+      "record_ids": [
+        266
+      ]
+    },
+    {
+      "concept": "AvailableForSaleSecuritiesDebtSecurities",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "320-10-50-2",
+      "topic": "320",
+      "source": "taxonomy",
+      "matched_concept": "AvailableForSaleSecuritiesDebtSecurities",
+      "record_ids": [
+        100
+      ]
+    },
+    {
+      "concept": "CapitalExpendituresIncurredButNotYetPaid",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "230-10-50-4",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "CapitalExpendituresIncurredButNotYetPaid",
+      "record_ids": [
+        26,
+        27
+      ]
+    },
+    {
+      "concept": "CashAndCashEquivalentsPeriodIncreaseDecrease",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "210-10-S99-1",
+      "topic": "210",
+      "source": "parent_fallback",
+      "matched_concept": "Cash",
+      "record_ids": [
+        232
+      ]
+    },
+    {
+      "concept": "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseExcludingExchangeRateEffect",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "230-10-45-24",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseExcludingExchangeRateEffect",
+      "record_ids": [
+        253
+      ]
+    },
+    {
+      "concept": "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "230-10-45-24",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect",
+      "record_ids": [
+        259,
+        274,
+        318
+      ]
+    },
+    {
+      "concept": "CommonStockValue",
+      "dqc_rule": "DQC_US_0117",
+      "asc": "852-10-55-10",
+      "topic": "852",
+      "source": "taxonomy",
+      "matched_concept": "CommonStockValue",
+      "record_ids": [
+        156,
+        157,
+        158,
+        159,
+        163,
+        164,
+        196,
+        197
+      ]
+    },
+    {
+      "concept": "CostOfGoodsAndServicesSold",
+      "dqc_rule": "DQC_US_0117",
+      "asc": "220-10-S99-2",
+      "topic": "220",
+      "source": "taxonomy",
+      "matched_concept": "CostOfGoodsAndServicesSold",
+      "record_ids": [
+        132,
+        133
+      ]
+    },
+    {
+      "concept": "CostsIncurredAcquisitionOfOilAndGasPropertiesWithProvedReserves",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "932-235-50-19",
+      "topic": "932",
+      "source": "taxonomy",
+      "matched_concept": "CostsIncurredAcquisitionOfOilAndGasPropertiesWithProvedReserves",
+      "record_ids": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "concept": "CostsIncurredDevelopmentCosts",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "932-235-50-18",
+      "topic": "932",
+      "source": "taxonomy",
+      "matched_concept": "CostsIncurredDevelopmentCosts",
+      "record_ids": [
+        8
+      ]
+    },
+    {
+      "concept": "CostsIncurredOilAndGasPropertyAcquisitionExplorationAndDevelopmentActivities",
+      "dqc_rule": "DQC_US_0015",
+      "asc": null,
+      "topic": null,
+      "source": "none",
+      "matched_concept": null,
+      "record_ids": [
+        7
+      ]
+    },
+    {
+      "concept": "DebtInstrumentUnamortizedDiscount",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "470-20-50-1D",
+      "topic": "470",
+      "source": "taxonomy",
+      "matched_concept": "DebtInstrumentUnamortizedDiscount",
+      "record_ids": [
+        95,
+        96
+      ]
+    },
+    {
+      "concept": "DeferredTaxLiabilities",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "740-10-50-2",
+      "topic": "740",
+      "source": "taxonomy",
+      "matched_concept": "DeferredTaxLiabilities",
+      "record_ids": [
+        48,
+        76
+      ]
+    },
+    {
+      "concept": "DefinedBenefitPlanAssumptionsUsedCalculatingBenefitObligationDiscountRate",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "715-20-50-1",
+      "topic": "715",
+      "source": "taxonomy",
+      "matched_concept": "DefinedBenefitPlanAssumptionsUsedCalculatingBenefitObligationDiscountRate",
+      "record_ids": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ]
+    },
+    {
+      "concept": "DefinedBenefitPlanAssumptionsUsedCalculatingNetPeriodicBenefitCostDiscountRate",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "715-20-50-1",
+      "topic": "715",
+      "source": "taxonomy",
+      "matched_concept": "DefinedBenefitPlanAssumptionsUsedCalculatingNetPeriodicBenefitCostDiscountRate",
+      "record_ids": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41
+      ]
+    },
+    {
+      "concept": "DefinedBenefitPlanBenefitObligationBenefitsPaid",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "715-60-50-4",
+      "topic": "715",
+      "source": "taxonomy",
+      "matched_concept": "DefinedBenefitPlanBenefitObligationBenefitsPaid",
+      "record_ids": [
+        49,
+        50,
+        51,
+        52
+      ]
+    },
+    {
+      "concept": "DefinedBenefitPlanPlanAssetsBenefitsPaid",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "715-20-50-1",
+      "topic": "715",
+      "source": "taxonomy",
+      "matched_concept": "DefinedBenefitPlanPlanAssetsBenefitsPaid",
+      "record_ids": [
+        53,
+        54,
+        55,
+        56
+      ]
+    },
+    {
+      "concept": "DepreciationAndAmortization",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "230-10-45-28",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "DepreciationAndAmortization",
+      "record_ids": [
+        85,
+        137,
+        138,
+        139,
+        142,
+        143
+      ]
+    },
+    {
+      "concept": "DepreciationDepletionAndAmortization",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "280-10-50-22",
+      "topic": "280",
+      "source": "taxonomy",
+      "matched_concept": "DepreciationDepletionAndAmortization",
+      "record_ids": [
+        14
+      ]
+    },
+    {
+      "concept": "DerivativeAssetCollateralObligationToReturnCashOffset",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "210-20-50-3",
+      "topic": "210",
+      "source": "taxonomy",
+      "matched_concept": "DerivativeAssetCollateralObligationToReturnCashOffset",
+      "record_ids": [
+        58
+      ]
+    },
+    {
+      "concept": "DerivativeAverageForwardPrice",
+      "dqc_rule": "DQC_US_0015",
+      "asc": null,
+      "topic": null,
+      "source": "none",
+      "matched_concept": null,
+      "record_ids": [
+        2
+      ]
+    },
+    {
+      "concept": "DerivativeNonmonetaryNotionalAmount",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "470-20-50-1I",
+      "topic": "470",
+      "source": "taxonomy",
+      "matched_concept": "DerivativeNonmonetaryNotionalAmount",
+      "record_ids": [
+        59,
+        60,
+        61,
+        64
+      ]
+    },
+    {
+      "concept": "DividendsCash",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "505-10-S99-1",
+      "topic": "505",
+      "source": "taxonomy",
+      "matched_concept": "DividendsCash",
+      "record_ids": [
+        63,
+        86
+      ]
+    },
+    {
+      "concept": "DividendsCommonStock",
+      "dqc_rule": "DQC_US_0117",
+      "asc": "505-10-S99-1",
+      "topic": "505",
+      "source": "taxonomy",
+      "matched_concept": "DividendsCommonStock",
+      "record_ids": [
+        172,
+        173
+      ]
+    },
+    {
+      "concept": "DividendsPreferredStock",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "505-10-S99-1",
+      "topic": "505",
+      "source": "taxonomy",
+      "matched_concept": "DividendsPreferredStock",
+      "record_ids": [
+        97,
+        98
+      ]
+    },
+    {
+      "concept": "EquityMethodInvestmentDividendsOrDistributions",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "220-10-S99-2",
+      "topic": "220",
+      "source": "taxonomy",
+      "matched_concept": "EquityMethodInvestmentDividendsOrDistributions",
+      "record_ids": [
+        68
+      ]
+    },
+    {
+      "concept": "FinanceLeasePrincipalPayments",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "842-20-50-4",
+      "topic": "842",
+      "source": "taxonomy",
+      "matched_concept": "FinanceLeasePrincipalPayments",
+      "record_ids": [
+        88
+      ]
+    },
+    {
+      "concept": "FinancialLiabilitiesFairValueDisclosure",
+      "dqc_rule": "DQC_US_0015",
+      "asc": null,
+      "topic": null,
+      "source": "none",
+      "matched_concept": null,
+      "record_ids": [
+        69,
+        70,
+        71
+      ]
+    },
+    {
+      "concept": "FinancingReceivableAllowanceForCreditLossExcludingAccruedInterest",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "326-20-45-1",
+      "topic": "326",
+      "source": "taxonomy",
+      "matched_concept": "FinancingReceivableAllowanceForCreditLossExcludingAccruedInterest",
+      "record_ids": [
+        101,
+        102,
+        103
+      ]
+    },
+    {
+      "concept": "FinancingReceivableYearFourOriginatedThreeYearsBeforeCurrentFiscalYearWriteoff",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "326-20-50-6",
+      "topic": "326",
+      "source": "taxonomy",
+      "matched_concept": "FinancingReceivableYearFourOriginatedThreeYearsBeforeCurrentFiscalYearWriteoff",
+      "record_ids": [
+        105
+      ]
+    },
+    {
+      "concept": "GainsLossesOnExtinguishmentOfDebt",
+      "dqc_rule": "DQC_US_0117",
+      "asc": "230-10-45-28",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "GainsLossesOnExtinguishmentOfDebt",
+      "record_ids": [
+        160,
+        161,
+        183,
+        184
+      ]
+    },
+    {
+      "concept": "GeneralAndAdministrativeExpense",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "220-10-S99-2",
+      "topic": "220",
+      "source": "taxonomy",
+      "matched_concept": "GeneralAndAdministrativeExpense",
+      "record_ids": [
+        87
+      ]
+    },
+    {
+      "concept": "HeldToMaturitySecurities",
+      "dqc_rule": "DQC_US_0117",
+      "asc": "310-10-50-7A",
+      "topic": "310",
+      "source": "taxonomy",
+      "matched_concept": "HeldToMaturitySecurities",
+      "record_ids": [
+        136
+      ]
+    },
+    {
+      "concept": "IncomeLossFromContinuingOperationsIncludingNoncontrollingInterestBeforeIncomeTaxesExtraordinaryItems",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "250-10-50-3",
+      "topic": "250",
+      "source": "parent_fallback",
+      "matched_concept": "IncomeLossFromContinuingOperations",
+      "record_ids": [
+        252
+      ]
+    },
+    {
+      "concept": "IncomeLossFromContinuingOperationsIncludingPortionAttributableToNoncontrollingInterest",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "235-10-S99-1",
+      "topic": "235",
+      "source": "taxonomy",
+      "matched_concept": "IncomeLossFromContinuingOperationsIncludingPortionAttributableToNoncontrollingInterest",
+      "record_ids": [
+        258
+      ]
+    },
+    {
+      "concept": "IncomeTaxReconciliationTaxCredits",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "740-10-50-12",
+      "topic": "740",
+      "source": "taxonomy",
+      "matched_concept": "IncomeTaxReconciliationTaxCredits",
+      "record_ids": [
+        1
+      ]
+    },
+    {
+      "concept": "IncomeTaxesPaid",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "230-10-50-2",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "IncomeTaxesPaid",
+      "record_ids": [
+        89,
+        90
+      ]
+    },
+    {
+      "concept": "InterestAndDividendIncomeSecurities",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "946-220-S99-1",
+      "topic": "946",
+      "source": "taxonomy",
+      "matched_concept": "InterestAndDividendIncomeSecurities",
+      "record_ids": [
+        99
+      ]
+    },
+    {
+      "concept": "LesseeOperatingLeaseLiabilityUndiscountedExcessAmount",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "842-20-50-6",
+      "topic": "842",
+      "source": "taxonomy",
+      "matched_concept": "LesseeOperatingLeaseLiabilityUndiscountedExcessAmount",
+      "record_ids": [
+        57
+      ]
+    },
+    {
+      "concept": "LettersOfCreditOutstandingAmount",
+      "dqc_rule": "DQC_US_0015",
+      "asc": null,
+      "topic": null,
+      "source": "none",
+      "matched_concept": null,
+      "record_ids": [
+        83
+      ]
+    },
+    {
+      "concept": "LiabilitiesAndStockholdersEquity",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "235-10-S99-1",
+      "topic": "235",
+      "source": "taxonomy",
+      "matched_concept": "LiabilitiesAndStockholdersEquity",
+      "record_ids": [
+        243,
+        316
+      ]
+    },
+    {
+      "concept": "LiabilitiesCurrent",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "210-10-45-5",
+      "topic": "210",
+      "source": "taxonomy",
+      "matched_concept": "LiabilitiesCurrent",
+      "record_ids": [
+        262,
+        268,
+        319
+      ]
+    },
+    {
+      "concept": "LiabilitiesNoncurrent",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "235-10-S99-1",
+      "topic": "235",
+      "source": "taxonomy",
+      "matched_concept": "LiabilitiesNoncurrent",
+      "record_ids": [
+        263
+      ]
+    },
+    {
+      "concept": "LongTermDebt",
+      "dqc_rule": "DQC_US_0117",
+      "asc": "470-20-50-1D",
+      "topic": "470",
+      "source": "taxonomy",
+      "matched_concept": "LongTermDebt",
+      "record_ids": [
+        225
+      ]
+    },
+    {
+      "concept": "LongTermDebtNoncurrent",
+      "dqc_rule": "DQC_US_0117",
+      "asc": "210-10-S99-1",
+      "topic": "210",
+      "source": "taxonomy",
+      "matched_concept": "LongTermDebtNoncurrent",
+      "record_ids": [
+        207,
+        222
+      ]
+    },
+    {
+      "concept": "NetCashProvidedByUsedInFinancingActivities",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "230-10-45-24",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "NetCashProvidedByUsedInFinancingActivities",
+      "record_ids": [
+        233,
+        238,
+        246,
+        261,
+        292,
+        293,
+        312,
+        323
+      ]
+    },
+    {
+      "concept": "NetCashProvidedByUsedInInvestingActivities",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "230-10-45-24",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "NetCashProvidedByUsedInInvestingActivities",
+      "record_ids": [
+        234,
+        247,
+        249,
+        280,
+        294,
+        303
+      ]
+    },
+    {
+      "concept": "NetCashProvidedByUsedInOperatingActivities",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "230-10-45-28",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "NetCashProvidedByUsedInOperatingActivities",
+      "record_ids": [
+        230,
+        236,
+        237,
+        239,
+        240,
+        248,
+        250,
+        251,
+        254,
+        256,
+        257,
+        267,
+        270,
+        271,
+        272,
+        276,
+        279,
+        281,
+        282,
+        285,
+        286,
+        288,
+        291,
+        295,
+        296,
+        298,
+        300,
+        301,
+        302,
+        304,
+        305,
+        306,
+        309,
+        310,
+        313,
+        314,
+        315,
+        317,
+        320,
+        321,
+        324,
+        328,
+        330,
+        331
+      ]
+    },
+    {
+      "concept": "NetIncomeLoss",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "205-20-50-7",
+      "topic": "205",
+      "source": "taxonomy",
+      "matched_concept": "NetIncomeLoss",
+      "record_ids": [
+        255,
+        264,
+        275,
+        289
+      ]
+    },
+    {
+      "concept": "NetIncomeLossAfterAdjustmentsForNonCashAndNonoperatingItems",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "205-20-50-7",
+      "topic": "205",
+      "source": "parent_fallback",
+      "matched_concept": "NetIncomeLoss",
+      "record_ids": [
+        241
+      ]
+    },
+    {
+      "concept": "NetIncomeLossAvailableToCommonStockholdersBasic",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "220-10-S99-5",
+      "topic": "220",
+      "source": "taxonomy",
+      "matched_concept": "NetIncomeLossAvailableToCommonStockholdersBasic",
+      "record_ids": [
+        277
+      ]
+    },
+    {
+      "concept": "NetIncomeLossFromContinuingOperationsAvailableToCommonShareholdersBasic",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "260-10-50-1",
+      "topic": "260",
+      "source": "taxonomy",
+      "matched_concept": "NetIncomeLossFromContinuingOperationsAvailableToCommonShareholdersBasic",
+      "record_ids": [
+        297
+      ]
+    },
+    {
+      "concept": "NoncontrollingInterestIncreaseFromSubsidiaryEquityIssuance",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "505-10-S99-1",
+      "topic": "505",
+      "source": "taxonomy",
+      "matched_concept": "NoncontrollingInterestIncreaseFromSubsidiaryEquityIssuance",
+      "record_ids": [
+        75,
+        104
+      ]
+    },
+    {
+      "concept": "NoninterestIncomeOther",
+      "dqc_rule": "DQC_US_0117",
+      "asc": "942-220-S99-1",
+      "topic": "942",
+      "source": "taxonomy",
+      "matched_concept": "NoninterestIncomeOther",
+      "record_ids": [
+        130,
+        131
+      ]
+    },
+    {
+      "concept": "NonoperatingIncomeExpense",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "220-10-S99-2",
+      "topic": "220",
+      "source": "taxonomy",
+      "matched_concept": "NonoperatingIncomeExpense",
+      "record_ids": [
+        245,
+        278,
+        299,
+        327
+      ]
+    },
+    {
+      "concept": "NotesPayableCurrent",
+      "dqc_rule": "DQC_US_0117",
+      "asc": "210-10-S99-1",
+      "topic": "210",
+      "source": "taxonomy",
+      "matched_concept": "NotesPayableCurrent",
+      "record_ids": [
+        200,
+        208,
+        209,
+        220,
+        221
+      ]
+    },
+    {
+      "concept": "OperatingExpenses",
+      "dqc_rule": "DQC_US_0126",
+      "asc": null,
+      "topic": null,
+      "source": "none",
+      "matched_concept": null,
+      "record_ids": [
+        231,
+        235,
+        290,
+        325
+      ]
+    },
+    {
+      "concept": "OperatingIncomeLoss",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "280-10-50-22",
+      "topic": "280",
+      "source": "taxonomy",
+      "matched_concept": "OperatingIncomeLoss",
+      "record_ids": [
+        326
+      ]
+    },
+    {
+      "concept": "OtherAssetImpairmentCharges",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "230-10-45-28",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "OtherAssetImpairmentCharges",
+      "record_ids": [
+        74,
+        77
+      ]
+    },
+    {
+      "concept": "OtherExpenses",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "220-10-S99-2",
+      "topic": "220",
+      "source": "taxonomy",
+      "matched_concept": "OtherExpenses",
+      "record_ids": [
+        12
+      ]
+    },
+    {
+      "concept": "OtherNonoperatingIncomeExpense",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "220-10-S99-2",
+      "topic": "220",
+      "source": "taxonomy",
+      "matched_concept": "OtherNonoperatingIncomeExpense",
+      "record_ids": [
+        287,
+        307,
+        322
+      ]
+    },
+    {
+      "concept": "OtherOperatingIncomeExpenseNet",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "220-10-S99-2",
+      "topic": "220",
+      "source": "parent_fallback",
+      "matched_concept": "OtherOperatingIncome",
+      "record_ids": [
+        269,
+        273
+      ]
+    },
+    {
+      "concept": "OtherReceivables",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "210-10-S99-1",
+      "topic": "210",
+      "source": "taxonomy",
+      "matched_concept": "OtherReceivables",
+      "record_ids": [
+        28
+      ]
+    },
+    {
+      "concept": "PaymentsToAcquireOtherProductiveAssets",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "230-10-45-13",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "PaymentsToAcquireOtherProductiveAssets",
+      "record_ids": [
+        94
+      ]
+    },
+    {
+      "concept": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "230-10-45-13",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "record_ids": [
+        0
+      ]
+    },
+    {
+      "concept": "PreferredStockValue",
+      "dqc_rule": "DQC_US_0117",
+      "asc": "852-10-55-10",
+      "topic": "852",
+      "source": "taxonomy",
+      "matched_concept": "PreferredStockValue",
+      "record_ids": [
+        144,
+        145,
+        146,
+        147,
+        174,
+        175,
+        188,
+        189,
+        190,
+        191,
+        198,
+        199,
+        210,
+        211,
+        223,
+        224,
+        226,
+        227,
+        228,
+        229
+      ]
+    },
+    {
+      "concept": "ProceedsFromContributedCapital",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "230-10-45-14",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "ProceedsFromContributedCapital",
+      "record_ids": [
+        11
+      ]
+    },
+    {
+      "concept": "ProceedsFromContributionInAidOfConstruction",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "230-10-45-12",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "ProceedsFromContributionInAidOfConstruction",
+      "record_ids": [
+        65
+      ]
+    },
+    {
+      "concept": "ProceedsFromIntegrationAndOtherEncumberedTheaterPaymentsMadeByAffiliates",
+      "dqc_rule": "DQC_US_0117",
+      "asc": null,
+      "topic": null,
+      "source": "none",
+      "matched_concept": null,
+      "record_ids": [
+        149,
+        153
+      ]
+    },
+    {
+      "concept": "ProceedsFromSaleOfProductiveAssets",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "230-10-45-12",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "ProceedsFromSaleOfProductiveAssets",
+      "record_ids": [
+        62,
+        66,
+        67,
+        82
+      ]
+    },
+    {
+      "concept": "ProceedsFromSaleOfPropertyPlantAndEquipment",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "230-10-45-12",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "ProceedsFromSaleOfPropertyPlantAndEquipment",
+      "record_ids": [
+        18
+      ]
+    },
+    {
+      "concept": "ProfitLoss",
+      "dqc_rule": "DQC_US_0126",
+      "asc": "205-20-50-7",
+      "topic": "205",
+      "source": "taxonomy",
+      "matched_concept": "ProfitLoss",
+      "record_ids": [
+        260
+      ]
+    },
+    {
+      "concept": "RepaymentsOfConvertibleDebt",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "230-10-45-15",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "RepaymentsOfConvertibleDebt",
+      "record_ids": [
+        92,
+        93
+      ]
+    },
+    {
+      "concept": "RepaymentsOfRelatedPartyDebt",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "230-10-45-15",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "RepaymentsOfRelatedPartyDebt",
+      "record_ids": [
+        91
+      ]
+    },
+    {
+      "concept": "RestrictedStockExpense",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "230-10-45-28",
+      "topic": "230",
+      "source": "taxonomy",
+      "matched_concept": "RestrictedStockExpense",
+      "record_ids": [
+        106,
+        107
+      ]
+    },
+    {
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "dqc_rule": "DQC_US_0117",
+      "asc": "280-10-50-30",
+      "topic": "280",
+      "source": "taxonomy",
+      "matched_concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "record_ids": [
+        148,
+        151
+      ]
+    },
+    {
+      "concept": "RevenueFromContractWithCustomerIncludingAssessedTax",
+      "dqc_rule": "DQC_US_0117",
+      "asc": "280-10-50-30",
+      "topic": "280",
+      "source": "taxonomy",
+      "matched_concept": "RevenueFromContractWithCustomerIncludingAssessedTax",
+      "record_ids": [
+        110,
+        111,
+        162,
+        165,
+        166
+      ]
+    },
+    {
+      "concept": "Revenues",
+      "dqc_rule": "DQC_US_0117",
+      "asc": "220-10-S99-2",
+      "topic": "220",
+      "source": "taxonomy",
+      "matched_concept": "Revenues",
+      "record_ids": [
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        134,
+        135,
+        140,
+        141
+      ]
+    },
+    {
+      "concept": "SellingAndMarketingExpense",
+      "dqc_rule": "DQC_US_0015",
+      "asc": null,
+      "topic": null,
+      "source": "none",
+      "matched_concept": null,
+      "record_ids": [
+        109,
+        152,
+        155
+      ]
+    },
+    {
+      "concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsForfeitedInPeriod",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "718-10-50-2",
+      "topic": "718",
+      "source": "taxonomy",
+      "matched_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsForfeitedInPeriod",
+      "record_ids": [
+        30,
+        31,
+        32
+      ]
+    },
+    {
+      "concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriod",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "718-10-50-2",
+      "topic": "718",
+      "source": "taxonomy",
+      "matched_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriod",
+      "record_ids": [
+        19,
+        20,
+        21,
+        33,
+        34,
+        35,
+        108
+      ]
+    },
+    {
+      "concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsForfeituresAndExpirationsInPeriod",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "718-10-50-2",
+      "topic": "718",
+      "source": "taxonomy",
+      "matched_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsForfeituresAndExpirationsInPeriod",
+      "record_ids": [
+        22,
+        23,
+        24,
+        25
+      ]
+    },
+    {
+      "concept": "ShortTermLeaseCost",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "842-20-50-4",
+      "topic": "842",
+      "source": "taxonomy",
+      "matched_concept": "ShortTermLeaseCost",
+      "record_ids": [
+        17
+      ]
+    },
+    {
+      "concept": "StandardizedMeasureOfDiscountedFutureNetCashFlowRelatingToProvedOilAndGasReservesAccretionOfDiscount",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "932-235-50-35A",
+      "topic": "932",
+      "source": "taxonomy",
+      "matched_concept": "StandardizedMeasureOfDiscountedFutureNetCashFlowRelatingToProvedOilAndGasReservesAccretionOfDiscount",
+      "record_ids": [
+        9,
+        10
+      ]
+    },
+    {
+      "concept": "StockIssuedDuringPeriodSharesStockOptionsExercised",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "718-10-50-2",
+      "topic": "718",
+      "source": "taxonomy",
+      "matched_concept": "StockIssuedDuringPeriodSharesStockOptionsExercised",
+      "record_ids": [
+        29
+      ]
+    },
+    {
+      "concept": "StockIssuedDuringPeriodValueAcquisitions",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "210-10-S99-1",
+      "topic": "210",
+      "source": "taxonomy",
+      "matched_concept": "StockIssuedDuringPeriodValueAcquisitions",
+      "record_ids": [
+        13
+      ]
+    },
+    {
+      "concept": "StockholdersEquity",
+      "dqc_rule": "DQC_US_0117",
+      "asc": "235-10-S99-1",
+      "topic": "235",
+      "source": "taxonomy",
+      "matched_concept": "StockholdersEquity",
+      "record_ids": [
+        169,
+        170,
+        171,
+        176,
+        177,
+        178,
+        179,
+        185,
+        186,
+        187,
+        192,
+        193,
+        194,
+        195,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        242,
+        244,
+        284
+      ]
+    },
+    {
+      "concept": "SubleaseIncome",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "842-20-50-4",
+      "topic": "842",
+      "source": "taxonomy",
+      "matched_concept": "SubleaseIncome",
+      "record_ids": [
+        15,
+        16
+      ]
+    },
+    {
+      "concept": "TheaterAccessFees",
+      "dqc_rule": "DQC_US_0117",
+      "asc": null,
+      "topic": null,
+      "source": "none",
+      "matched_concept": null,
+      "record_ids": [
+        180,
+        181
+      ]
+    },
+    {
+      "concept": "TheaterAccessFeesAndRevenueShare",
+      "dqc_rule": "DQC_US_0117",
+      "asc": null,
+      "topic": null,
+      "source": "none",
+      "matched_concept": null,
+      "record_ids": [
+        150,
+        154
+      ]
+    },
+    {
+      "concept": "TotalOperatingAndOtherExpenses",
+      "dqc_rule": "DQC_US_0126",
+      "asc": null,
+      "topic": null,
+      "source": "none",
+      "matched_concept": null,
+      "record_ids": [
+        308
+      ]
+    },
+    {
+      "concept": "UnrecognizedTaxBenefitsDecreasesResultingFromPriorPeriodTaxPositions",
+      "dqc_rule": "DQC_US_0015",
+      "asc": "740-10-50-15A",
+      "topic": "740",
+      "source": "taxonomy",
+      "matched_concept": "UnrecognizedTaxBenefitsDecreasesResultingFromPriorPeriodTaxPositions",
+      "record_ids": [
+        81
+      ]
+    }
+  ]
+}

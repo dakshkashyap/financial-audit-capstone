@@ -1,0 +1,19 @@
+{
+  "call_id": "5c027eec3da68437d82af39ada2f1f48",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "8647269580030f5e42e15843cd5cbc9e895f974f26be5e6d2c9140c0745a2801",
+  "reserved_usd": "0.045364",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"incorrect\",\"error_type\":\"Missing Row\",\"row\":1,\"citation\":null,\"citation_abstain\":true,\"evidence\":[{\"source\":\"transactions\",\"quote\":\"[Cash and cash equivalents] cash collected from customers: +356 (increase); operating cash disbursements: −46 (decrease)\",\"row\":null},{\"source\":\"statement\",\"quote\":\"[row 6]: Total current assets | $606\",\"row\":6},{\"source\":\"statement\",\"quote\":\"[row 1]: Inventories | $236\",\"row\":1}],\"reason\":\"Current asset rows sum to 296, but the total is 606. The gap of 310 equals the cash movements (356−46), so the Cash and cash equivalents row is missing. Its usual position is first among current assets (index 1). Total assets, liabilities and equity otherwise reconcile. This is an omission fault; no specific ASC paragraph is confidently applicable.\"}\n```",
+  "response_id": "gen-1791001435-9H44lGpHKe14HyQvhYtM",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 2302,
+    "completion_tokens": 594,
+    "total_tokens": 2896,
+    "cost": 0.021088
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 7.951
+}

@@ -1,0 +1,20 @@
+{
+  "call_id": "c580c6257b87cdb928ca2ddc7a384896",
+  "model": "qwen/qwen3-8b",
+  "stage": "extract",
+  "prompt_sha256": "9fe52daae13d09e054fd05bed0e71e8ef10e08effb6b5fd3e003fe03f84ee6d8",
+  "reserved_usd": "0.000867672",
+  "status": "ok",
+  "content": "{\n  \"evidence\": [\n    {\"source\": \"statement\", \"quote\": \"Net income | $6,379\", \"row\": 1},\n    {\"source\": \"statement\", \"quote\": \"Purchases of property, plant and equipment | ($3,606)\", \"row\": 6},\n    {\"source\": \"transaction_data\", \"quote\": \"[Purchases of property, plant and equipment] purchases of productive assets: −4,342 (decrease); proceeds reclassed against capex: +736 (increase)\"},\n    {\"source\": \"transaction_data\", \"quote\": \"[Repurchases of common stock] common stock repurchased: −866 (decrease); settlement / retire-share adjustment: +161 (increase)\"}\n  ],\n  \"observations\": [\n    \"Net income is reported as $6,379 million.\",\n    \"Purchases of property, plant, and equipment are reported as a negative $3,606 million.\",\n    \"Transaction data indicates purchases of productive assets were $4,342 million less than the reported line.\",\n    \"Repurchases of common stock are reported as a negative $705 million.\"\n  ],\n  \"possible_faults\": [\n    \"The reported purchases may not reflect all capital expenditures.\",\n    \"There could be discrepancies between the transaction data and the statement figures.\",\n    \"The net cash from financing activities might not fully represent the actual cash flows.\"\n  ],\n  \"uncertainty\": \"The discrepancy between the transaction data and the statement's purchases of property, plant, and equipment suggests potential inconsistencies in reporting. The exact nature of the adjustments and their impact on the cash flow statement remains unclear.\"\n}",
+  "response_id": "gen-1791048075-cBTQGGsuh5NjniCi7HlI",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 780,
+    "completion_tokens": 352,
+    "total_tokens": 1132,
+    "cost": 0.00025142
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 5.364
+}

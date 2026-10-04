@@ -1,0 +1,19 @@
+{
+  "call_id": "92e4895d591fb2ccd1c194f97e47c4cf",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "41430f21986b6d2a58aae03103f8619d25ebfe111ca6977e0e3cd4c173d0271d",
+  "reserved_usd": "0.047148",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"incorrect\",\"error_type\":\"Numerical Error\",\"row\":2,\"citation\":null,\"citation_abstain\":true,\"evidence\":[{\"source\":\"statement\",\"quote\":\"[row 2]: Accounts receivable, net | $2,586\",\"row\":2},{\"source\":\"transactions\",\"quote\":\"invoiced customer sales on credit: +2,289 (increase); write-off of uncollectible accounts: −216 (decrease)\",\"row\":null},{\"source\":\"statement\",\"quote\":\"[row 5]: Total current assets | $4,148\",\"row\":5}],\"reason\":\"The receivable movements net to 2,073 (2,289 − 216), not the 2,586 reported. The current-asset rows sum to 4,661, which disagrees with the 4,148 total; using 2,073 reconciles it. Other rows match their movements, and the lease and impairment facts are consistent. This is an arithmetic fault, so no ASC paragraph is cited.\"}\n```",
+  "response_id": "gen-1791001383-Fk9a8GN6m4pTvtD2hKc1",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 2492,
+    "completion_tokens": 660,
+    "total_tokens": 3152,
+    "cost": 0.023168
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 7.34
+}

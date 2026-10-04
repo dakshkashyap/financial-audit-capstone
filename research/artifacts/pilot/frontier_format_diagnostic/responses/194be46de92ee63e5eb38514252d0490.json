@@ -1,0 +1,21 @@
+{
+  "call_id": "194be46de92ee63e5eb38514252d0490",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":\"ASC 210-10-45-1\",\"citation_abstain\":false,\"error_type\":\"Misclassification\",\"evidence\":[{\"quote\":\"[row 9]: Accounts receivable, net | $1,168\",\"row\":9,\"source\":\"statement\"},{\"quote\":\"[Accounts receivable, net] invoiced customer sales on credit: +1,349 (increase); write-off of uncollectible accounts: −181 (decrease)\",\"row\":null,\"source\":\"transactions\"}],\"judgement\":\"incorrect\",\"reason\":\"All subtotals foot. However, trade accounts receivable of 1,168, arising from customer credit sales, is presented under non-current assets. Trade receivables collectible within the operating cycle are current assets under ASC 210-10-45-1. The inferred fault is that the receivable was moved out of current assets with the totals adjusted to match. The exact original layout is uncertain.\",\"row\":9}",
+  "reserved_usd": "0.059852",
+  "request_sha256": "20fc1f86fcc63ca04c5439ce4929f6d8e8ed99db97a919949351cc456f8af9dd",
+  "prompt_sha256": "bf71037ae7b0582fd5098df839d2231ebdae8a7a7f9b31192dd2b89b4e6db367",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002363-lycEBuYJ1fi1Sjvn3mO4",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 3384,
+    "completion_tokens": 818,
+    "total_tokens": 4202,
+    "cost": 0.029896
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 10.692
+}

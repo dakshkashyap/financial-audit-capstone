@@ -1,0 +1,20 @@
+{
+  "call_id": "679ca0f7aa82de7a80e637916054b2d0",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "decision",
+  "prompt_sha256": "8647269580030f5e42e15843cd5cbc9e895f974f26be5e6d2c9140c0745a2801",
+  "reserved_usd": "0.0009541",
+  "status": "ok",
+  "content": "{\"judgement\":\"incorrect\",\"error_type\":\"Numerical Error\",\"row\":6,\"citation\":\"ASC 235-10-45-1\",\"citation_abstain\":false,\"evidence\":[{\"source\":\"statement_text\",\"quote\":\"[row 6]: Total current assets | $606\",\"row\":6},{\"source\":\"transaction_data\",\"quote\":\"[Inventories] production transferred to finished goods: +264 (increase); cost of goods sold relief: −28 (decrease)\",\"row\":null},{\"source\":\"transaction_data\",\"quote\":\"[Accounts receivable, net] invoiced customer sales on credit: +41 (increase); write-off of uncollectible accounts: −7 (decrease)\",\"row\":null},{\"source\":\"supporting facts\",\"quote\":\"Accounts receivable, net: credit-loss review — gross receivables 35; lifetime expected credit losses estimated at period-end 1; allowance for credit losses recorded 1.\",\"row\":null}],\"reason\":\"The reported $606 total current assets is incorrect. Summing the components: Inventories ($236) + Assets held for sale ($6) + Prepaid expenses ($21) + Accounts receivable, net ($34) + Other current assets ($-1) = $296. The $606 total implies unaccounted additions. The supporting facts confirm accounts receivable net is $34 (gross $35, allowance $1), but the transaction data shows a $41 increase from invoicing and $7 write-off, suggesting a net increase of $34, consistent with the line item. However, the sum of the line items is $296, not $606. The error is numerical and unsupported by the transaction data.\"}",
+  "response_id": "gen-1791001850-kSOJ7jINA6QGCUhO6ere",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 1559,
+    "completion_tokens": 372,
+    "total_tokens": 1931,
+    "cost": 0.00014688045
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 2.803
+}

@@ -1,0 +1,597 @@
+{
+  "title": "Financial audit \u2014 measured development results",
+  "date": "2026-10-03",
+  "columns": [
+    [
+      "model",
+      "Model"
+    ],
+    [
+      "setup",
+      "Setup"
+    ],
+    [
+      "general",
+      "General"
+    ],
+    [
+      "error_type",
+      "Error Type"
+    ],
+    [
+      "error_entry",
+      "Error Entry"
+    ],
+    [
+      "topic",
+      "Topic"
+    ],
+    [
+      "subtopic",
+      "Subtopic"
+    ],
+    [
+      "full_citation",
+      "Full Citation"
+    ],
+    [
+      "input_tokens",
+      "Input Tokens"
+    ],
+    [
+      "output_tokens",
+      "Output Tokens"
+    ],
+    [
+      "latency",
+      "Latency"
+    ]
+  ],
+  "primary_rows": [
+    {
+      "condition": "opus_direct",
+      "model": "Claude Opus 5.5",
+      "setup": "Direct \u00b7 29/48 valid",
+      "general": "60.4%",
+      "error_type": "78.1%",
+      "error_entry": "75.0%",
+      "topic": "68.8%",
+      "full_citation": "68.8%",
+      "subtopic": "68.8%",
+      "statuses": {
+        "ok": 29,
+        "invalid_response": 18,
+        "empty_content": 1
+      },
+      "counts": {
+        "general": {
+          "numerator": 29,
+          "denominator": 48
+        },
+        "error_type": {
+          "numerator": 25,
+          "denominator": 32
+        },
+        "error_entry": {
+          "numerator": 24,
+          "denominator": 32
+        },
+        "topic": {
+          "numerator": 11,
+          "denominator": 16
+        },
+        "full_citation": {
+          "numerator": 11,
+          "denominator": 16
+        },
+        "subtopic": {
+          "numerator": 11,
+          "denominator": 16,
+          "value": 0.6875
+        }
+      },
+      "resources": {
+        "attempted_cases": 48,
+        "calls": 48,
+        "input_tokens": {
+          "mean": 1985.1666666666667,
+          "n_cases_with_complete_measurement": 48
+        },
+        "output_tokens": {
+          "mean": 712.1458333333334,
+          "n_cases_with_complete_measurement": 48
+        },
+        "latency": {
+          "mean": 8.308104166666666,
+          "n_cases_with_complete_measurement": 48
+        }
+      },
+      "input_tokens": "1,985 (n=48)",
+      "output_tokens": "712 (n=48)",
+      "latency": "8.3s (n=48)"
+    },
+    {
+      "condition": "qwen8_direct",
+      "model": "Qwen3-8B",
+      "setup": "Direct \u00b7 47/48 valid",
+      "general": "64.6%",
+      "error_type": "50.0%",
+      "error_entry": "15.6%",
+      "topic": "0.0%",
+      "full_citation": "0.0%",
+      "subtopic": "0.0%",
+      "statuses": {
+        "ok": 47,
+        "invalid_response": 1
+      },
+      "counts": {
+        "general": {
+          "numerator": 31,
+          "denominator": 48
+        },
+        "error_type": {
+          "numerator": 16,
+          "denominator": 32
+        },
+        "error_entry": {
+          "numerator": 5,
+          "denominator": 32
+        },
+        "topic": {
+          "numerator": 0,
+          "denominator": 16
+        },
+        "full_citation": {
+          "numerator": 0,
+          "denominator": 16
+        },
+        "subtopic": {
+          "numerator": 0,
+          "denominator": 16,
+          "value": 0.0
+        }
+      },
+      "resources": {
+        "attempted_cases": 48,
+        "calls": 48,
+        "input_tokens": {
+          "mean": 1384.5833333333333,
+          "n_cases_with_complete_measurement": 48
+        },
+        "output_tokens": {
+          "mean": 260.0208333333333,
+          "n_cases_with_complete_measurement": 48
+        },
+        "latency": {
+          "mean": 4.717041666666667,
+          "n_cases_with_complete_measurement": 48
+        }
+      },
+      "input_tokens": "1,385 (n=48)",
+      "output_tokens": "260 (n=48)",
+      "latency": "4.7s (n=48)"
+    },
+    {
+      "condition": "qwen30_direct",
+      "model": "Qwen3-30B-A3B",
+      "setup": "Direct \u00b7 16/48 valid",
+      "general": "22.9%",
+      "error_type": "21.9%",
+      "error_entry": "6.2%",
+      "topic": "18.8%",
+      "full_citation": "18.8%",
+      "subtopic": "18.8%",
+      "statuses": {
+        "ok": 16,
+        "api_error": 31,
+        "invalid_response": 1
+      },
+      "counts": {
+        "general": {
+          "numerator": 11,
+          "denominator": 48
+        },
+        "error_type": {
+          "numerator": 7,
+          "denominator": 32
+        },
+        "error_entry": {
+          "numerator": 2,
+          "denominator": 32
+        },
+        "topic": {
+          "numerator": 3,
+          "denominator": 16
+        },
+        "full_citation": {
+          "numerator": 3,
+          "denominator": 16
+        },
+        "subtopic": {
+          "numerator": 3,
+          "denominator": 16,
+          "value": 0.1875
+        }
+      },
+      "resources": {
+        "attempted_cases": 48,
+        "calls": 48,
+        "input_tokens": {
+          "mean": 1391.235294117647,
+          "n_cases_with_complete_measurement": 17
+        },
+        "output_tokens": {
+          "mean": 447.4117647058824,
+          "n_cases_with_complete_measurement": 17
+        },
+        "latency": {
+          "mean": 1.7804791666666666,
+          "n_cases_with_complete_measurement": 48
+        }
+      },
+      "input_tokens": "1,391 (n=17)",
+      "output_tokens": "447 (n=17)",
+      "latency": "1.8s (n=48)"
+    },
+    {
+      "condition": "qwen30_evidence",
+      "model": "Qwen3-30B-A3B",
+      "setup": "Evidence \u2192 decision \u00b7 3/48 valid",
+      "general": "2.1%",
+      "error_type": "3.1%",
+      "error_entry": "3.1%",
+      "topic": "6.2%",
+      "full_citation": "0.0%",
+      "subtopic": "6.2%",
+      "statuses": {
+        "api_error": 33,
+        "invalid_response": 12,
+        "ok": 3
+      },
+      "counts": {
+        "general": {
+          "numerator": 1,
+          "denominator": 48
+        },
+        "error_type": {
+          "numerator": 1,
+          "denominator": 32
+        },
+        "error_entry": {
+          "numerator": 1,
+          "denominator": 32
+        },
+        "topic": {
+          "numerator": 1,
+          "denominator": 16
+        },
+        "full_citation": {
+          "numerator": 0,
+          "denominator": 16
+        },
+        "subtopic": {
+          "numerator": 1,
+          "denominator": 16,
+          "value": 0.0625
+        }
+      },
+      "resources": {
+        "attempted_cases": 48,
+        "calls": 51,
+        "input_tokens": {
+          "mean": 1636.7333333333333,
+          "n_cases_with_complete_measurement": 15
+        },
+        "output_tokens": {
+          "mean": 329.46666666666664,
+          "n_cases_with_complete_measurement": 15
+        },
+        "latency": {
+          "mean": 1.325625,
+          "n_cases_with_complete_measurement": 48
+        }
+      },
+      "input_tokens": "1,637 (n=15)",
+      "output_tokens": "329 (n=15)",
+      "latency": "1.3s (n=48)"
+    }
+  ],
+  "posthoc_rows": [
+    {
+      "condition": "opus_format_diagnostic",
+      "model": "Claude Opus 5.5",
+      "setup": "Schema + low reasoning; stopped \u00b7 35/48 valid",
+      "general": "70.8%",
+      "error_type": "65.6%",
+      "error_entry": "65.6%",
+      "topic": "68.8%",
+      "full_citation": "68.8%",
+      "subtopic": "68.8%",
+      "statuses": {
+        "ok": 35,
+        "invalid_response": 1,
+        "api_error": 1,
+        "missing": 11
+      },
+      "counts": {
+        "general": {
+          "numerator": 34,
+          "denominator": 48
+        },
+        "error_type": {
+          "numerator": 21,
+          "denominator": 32
+        },
+        "error_entry": {
+          "numerator": 21,
+          "denominator": 32
+        },
+        "topic": {
+          "numerator": 11,
+          "denominator": 16
+        },
+        "full_citation": {
+          "numerator": 11,
+          "denominator": 16
+        },
+        "subtopic": {
+          "numerator": 11,
+          "denominator": 16,
+          "value": 0.6875
+        }
+      },
+      "resources": {
+        "attempted_cases": 37,
+        "calls": 37,
+        "input_tokens": {
+          "mean": 2706.5,
+          "n_cases_with_complete_measurement": 36
+        },
+        "output_tokens": {
+          "mean": 581.6388888888889,
+          "n_cases_with_complete_measurement": 36
+        },
+        "latency": {
+          "mean": 7.734054054054055,
+          "n_cases_with_complete_measurement": 37
+        }
+      },
+      "input_tokens": "2,706 (n=36)",
+      "output_tokens": "582 (n=36)",
+      "latency": "7.7s (n=37)"
+    },
+    {
+      "condition": "qwen8_evidence_diagnostic",
+      "model": "Qwen3-8B",
+      "setup": "Evidence \u2192 decision; stopped \u00b7 7/48 valid",
+      "general": "8.3%",
+      "error_type": "3.1%",
+      "error_entry": "3.1%",
+      "topic": "0.0%",
+      "full_citation": "0.0%",
+      "subtopic": "0.0%",
+      "statuses": {
+        "ok": 7,
+        "invalid_response": 3,
+        "api_error": 1,
+        "missing": 37
+      },
+      "counts": {
+        "general": {
+          "numerator": 4,
+          "denominator": 48
+        },
+        "error_type": {
+          "numerator": 1,
+          "denominator": 32
+        },
+        "error_entry": {
+          "numerator": 1,
+          "denominator": 32
+        },
+        "topic": {
+          "numerator": 0,
+          "denominator": 16
+        },
+        "full_citation": {
+          "numerator": 0,
+          "denominator": 16
+        },
+        "subtopic": {
+          "numerator": 0,
+          "denominator": 16,
+          "value": 0.0
+        }
+      },
+      "resources": {
+        "attempted_cases": 11,
+        "calls": 18,
+        "input_tokens": {
+          "mean": 2547.1,
+          "n_cases_with_complete_measurement": 10
+        },
+        "output_tokens": {
+          "mean": 502.2,
+          "n_cases_with_complete_measurement": 10
+        },
+        "latency": {
+          "mean": 8.427,
+          "n_cases_with_complete_measurement": 11
+        }
+      },
+      "input_tokens": "2,547 (n=10)",
+      "output_tokens": "502 (n=10)",
+      "latency": "8.4s (n=11)"
+    }
+  ],
+  "offline_rows": [
+    {
+      "condition": "legacy_local_offline",
+      "setup": "Original interface",
+      "detection_sensitivity": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "joint_detection_type_row": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "unvalidated_full_citation_agreement": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 16,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "decision_abstention_rate": {
+        "value": 1.0,
+        "numerator": 48,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "citation_abstention_rate": {
+        "value": 1.0,
+        "numerator": 48,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "api_cost_usd": 0
+    },
+    {
+      "condition": "legacy_local_adapted",
+      "setup": "Signed component parser",
+      "detection_sensitivity": {
+        "value": 0.1875,
+        "numerator": 6,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.09375,
+          0.25
+        ]
+      },
+      "joint_detection_type_row": {
+        "value": 0.125,
+        "numerator": 4,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.03125,
+          0.21875
+        ]
+      },
+      "unvalidated_full_citation_agreement": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 16,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "decision_abstention_rate": {
+        "value": 0.875,
+        "numerator": 42,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          0.8333333333333334,
+          0.9375
+        ]
+      },
+      "citation_abstention_rate": {
+        "value": 0.9791666666666666,
+        "numerator": 47,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          0.9375,
+          1.0
+        ]
+      },
+      "api_cost_usd": 0
+    },
+    {
+      "condition": "legacy_local_adapted_verified_citation",
+      "setup": "Parser + citation applicability gate",
+      "detection_sensitivity": {
+        "value": 0.1875,
+        "numerator": 6,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.09375,
+          0.25
+        ]
+      },
+      "joint_detection_type_row": {
+        "value": 0.125,
+        "numerator": 4,
+        "denominator": 32,
+        "company_cluster_ci95": [
+          0.03125,
+          0.21875
+        ]
+      },
+      "unvalidated_full_citation_agreement": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 16,
+        "company_cluster_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "decision_abstention_rate": {
+        "value": 0.875,
+        "numerator": 42,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          0.8333333333333334,
+          0.9375
+        ]
+      },
+      "citation_abstention_rate": {
+        "value": 1.0,
+        "numerator": 48,
+        "denominator": 48,
+        "company_cluster_ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "api_cost_usd": 0
+    }
+  ],
+  "notes": [
+    "Frozen primary development cohort: 48 cases / 8 companies, FY2020\u20132024; 16 clean, 16 detection-only, 16 nominally citable. These results are not comparable to the user-provided historical screenshot without its exact data, predictions and protocol.",
+    "General denominator=48; Error Type and Error Entry=32 injected cases; Topic, Subtopic and Full Citation=16 citable cases. Row agreement is evaluated separately from type agreement. Failures and missing predictions receive zero credit; abstentions are never clean decisions.",
+    "Citation scores require a schema-valid response and one syntactically valid full ASC code, then compare its topic, subtopic or full paragraph to the provisional key. They do not establish accounting applicability. Subtopic is a newly derived reporting statistic; primary scores and predictions are unchanged.",
+    "Token means sum all requested stages per case, including format-invalid responses, and include only cases with complete provider usage. Each n is the number of cases with the required measurement. Missing usage is excluded, never imputed as zero.",
+    "Latency is mean summed measured API request time per attempted case, including failed requests. It excludes local processing and the post-hoc wrapper's pacing, so it is not end-to-end wall time. Heavy rate-limit failures make speed comparisons unreliable.",
+    "Post-hoc conditions retain all 48 eligible cases but stopped at the first provider failure: Opus 37 attempted / 11 unrequested (HTTP 503); Qwen8 11 attempted / 37 unrequested (HTTP 429). They cannot replace the frozen baseline or establish a ranking. Opus also changes schema/reasoning/output budget.",
+    "The local before/after diagnostic measures parser transfer on synthetic component evidence, with no Stage 2 LLM and forced-offline taxonomy. It is not a complete baseline-versus-pipeline model comparison or evidence of realistic audit efficacy.",
+    "Only one frontier family was used. No new GPT-4o, Llama 70B or DeepSeek results were generated. No measured cheap-model superiority is supported."
+  ],
+  "source_report_sha256": {
+    "artifacts/pilot/report.json": "ee6b2cbf212570a6afe58418ab9b98aad58bfbd3bea423603f84ef89f521c175",
+    "artifacts/pilot/frontier_format_diagnostic/report.json": "f52d1d9f0a0372245e3725ee21b55cc50b5107999347e2533bc79c495b0d99c4",
+    "artifacts/pilot/qwen8_evidence_diagnostic/report.json": "d5b45937360d6c542928c90bcf7277a2420b49d9724150dbfbdfac2123143798",
+    "artifacts/pilot/legacy_local_offline_metrics.json": "45ffa7e09837c672d7882d804c4b9b58104a3fc57c659d840863f0e96c5cc323",
+    "artifacts/pilot/legacy_local_adapted_metrics.json": "0360d4656e6b982bdfcebfc6e541ead522636832f99ccd9e8c919007301038f5",
+    "artifacts/pilot/legacy_local_adapted_verified_citation_metrics.json": "d47e5f7c22c0ce33675e5e1a48e80649938db997f786df51dca403ad654f229f"
+  }
+}

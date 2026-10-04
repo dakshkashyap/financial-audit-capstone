@@ -1,0 +1,1 @@
+{"case_id":"case_aa3bbe2b8691f78383ee","condition":"qwen30_direct","condition_id":"da16853ef465cf60267f1339281778aa2c937d18f00bf80f69c5513f1f477426","error":"Decision request failed","model":"qwen/qwen3-30b-a3b-instruct-2507","prediction":null,"status":"api_error","time":"2026-10-03T04:13:16.144695+00:00","trace":["089a5fc2aff1cdeb71c273ee5390ca15"]}

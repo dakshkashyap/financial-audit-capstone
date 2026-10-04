@@ -1,0 +1,19 @@
+{
+  "call_id": "483f2858255b212cc93931227e6612cd",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "322cedb3def2d778c08916d6c2024b856ac7a6024df4975a723c692bd431369a",
+  "reserved_usd": "0.034908",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"incorrect\",\"error_type\":\"Numerical Error\",\"row\":0,\"citation\":\"ASC 606-10-25-23\",\"citation_abstain\":false,\"evidence\":[{\"source\":\"statement\",\"quote\":\"Revenue | $28,211\",\"row\":0},{\"source\":\"transactions\",\"quote\":\"consideration billed or received during the period for performance obligations not yet satisfied at period-end 4,099; of which recorded as contract liabilities (deferred revenue) 138\",\"row\":null}],\"reason\":\"Revenue ties to its components (34,178 − 5,967 = 28,211), and the downstream rows foot. The cut-off review, however, shows 4,099 billed for performance obligations not yet satisfied, of which only 138 was deferred. That leaves 3,961 recognized before satisfaction, so revenue appears overstated, likely 24,250. ASC 606-10-25-23 requires recognition only when a performance obligation is satisfied.\"}\n```",
+  "response_id": "gen-1791001443-SZuE3kNfLMleoUl7vbC4",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 1199,
+    "completion_tokens": 687,
+    "total_tokens": 1886,
+    "cost": 0.018536
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 8.188
+}

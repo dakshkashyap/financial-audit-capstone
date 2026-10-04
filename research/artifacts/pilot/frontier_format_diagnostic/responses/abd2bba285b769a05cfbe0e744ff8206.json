@@ -1,0 +1,21 @@
+{
+  "call_id": "abd2bba285b769a05cfbe0e744ff8206",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":null,\"evidence\":[{\"quote\":\"Net cash from operating activities | $22,343\",\"row\":4,\"source\":\"statement\"},{\"quote\":\"Net cash from financing activities | ($7,455)\",\"row\":13,\"source\":\"statement\"},{\"quote\":\"Net increase (decrease) in cash | $4,454\",\"row\":15,\"source\":\"statement\"},{\"quote\":\"purchases of productive assets: −2,705 (decrease); proceeds reclassed against capex: +251 (increase)\",\"row\":null,\"source\":\"transactions\"}],\"judgement\":\"correct\",\"reason\":\"All subtotals foot: 17,285+800+4,258=22,343; −2,454−7,918=−10,372; −5,280−5,000+2,825=−7,455; total 4,454. Each line with transaction evidence nets to its reported amount, e.g., share-based compensation 990−190=800 and dividends −5,872+592=−5,280. Classifications appear appropriate. Repurchases has no component evidence but is consistent with the footing. No error identified, so no ASC paragraph applies.\",\"row\":null}",
+  "reserved_usd": "0.048572",
+  "request_sha256": "a230491ec7fd714d4f5d6a277e55fe3a5eaf63a7c2e09856be3ae34aa956ca41",
+  "prompt_sha256": "71cc820c35f634d10cac6bddb26e0dc13786f82125f7dfefdc7cb42395ec4c17",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002053-02umzrKdNWln8xG2ubM6",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 2204,
+    "completion_tokens": 662,
+    "total_tokens": 2866,
+    "cost": 0.022056
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 9.805
+}

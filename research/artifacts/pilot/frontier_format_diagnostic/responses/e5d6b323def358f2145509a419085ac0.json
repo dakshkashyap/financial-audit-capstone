@@ -1,0 +1,21 @@
+{
+  "call_id": "e5d6b323def358f2145509a419085ac0",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":\"ASC 326-20-30-1\",\"citation_abstain\":false,\"error_type\":\"Numerical Error\",\"evidence\":[{\"quote\":\"gross receivables 161; lifetime expected credit losses estimated at period-end 11; allowance for credit losses recorded 1.\",\"row\":null,\"source\":\"transactions\"},{\"quote\":\"Accounts receivable, net | $160\",\"row\":2,\"source\":\"statement\"}],\"judgement\":\"incorrect\",\"reason\":\"Under CECL, the allowance must reflect lifetime expected credit losses (11), but only 1 was recorded. Net receivables should therefore be 150, not 160. The other reviewed items appear consistent: inventory carrying amount is below NRV, both leases are operating, and the debt covenants were met. Note that correcting this row would also change the totals, so this is the single primary fault.\",\"row\":2}",
+  "reserved_usd": "0.063316",
+  "request_sha256": "4ef9cc437d07f05f356314d97f6ef7521c0c4b062d520cc2b93a2a4035d9b0dd",
+  "prompt_sha256": "be692c853b011ff2621492d2afffa8ce31f032b8d2fa474755614471a83da001",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002447-ulq378QkYNdYD2ZVwPzt",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 3699,
+    "completion_tokens": 284,
+    "total_tokens": 3983,
+    "cost": 0.020476
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 4.76
+}

@@ -1,0 +1,20 @@
+{
+  "purpose": "Pin current review tooling separately from the immutable historical experiment source",
+  "repository": "https://github.com/manmad-web/IntelliAudit",
+  "branch": "codex/accountant-review-dashboard",
+  "commit": "99d2fa2514eac1f1d17f7a7b58ad36f7e7e7cb08",
+  "status": "EXPERT_REVIEW_PENDING",
+  "case_count": 20,
+  "company_count": 5,
+  "accountant_reviews_completed": 0,
+  "files": {
+    "data/review_pilot/manifest.json": "31e8e9673025881fbb2aa2cdcdec2840464ee5a869bd0beaae56fdd2015afb7a",
+    "data/review_pilot/public_cases.jsonl": "df1481e18267d0d008d7d68a124f62ea3f2e73fec1508d12e745aae3a549ff6f",
+    "review/annotation.schema.json": "7fb479be5a6f947647fd1ede99cb442738b0eef18a0e0d489476a3406df39e04",
+    "scripts/validate_annotations.py": "3d4ac1873524d5c0cc960fc9468c6a0bb4ccd422bd117ea64db00a3045b2e11b",
+    "scripts/check_release_readiness.py": "55bcc7d04bc3f6a3eef031bf80bc27b14e8446e2a02fc46434ba7aca07acb539"
+  },
+  "historical_model_experiment_source_commit": "72da89a9e6400bfd1da9041a742f9cdeb00470bc",
+  "publication_status": "Remote branch verified at this exact commit through the connected GitHub API on 2026-10-04; earlier shell push failures are historical. Bundle retained as an archival fallback.",
+  "bundle_sha256": "84f210ede7d86d94246193ec35e2adad98be63bd224b3a52d7b99dc175484225"
+}

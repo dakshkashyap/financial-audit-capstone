@@ -1,0 +1,19 @@
+{
+  "call_id": "0c12c009907296cb01f67fea2f6c9c33",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "f56af65915de0106921d755e0f177ecdbd31db7378c4c3dd257785d62d22c55f",
+  "reserved_usd": "0.052524",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"correct\",\"error_type\":null,\"row\":null,\"citation\":null,\"citation_abstain\":true,\"evidence\":[{\"source\":\"statement\",\"quote\":\"Total assets | $72,548\",\"row\":22},{\"source\":\"statement\",\"quote\":\"Total liabilities and stockholders' equity | $72,548\",\"row\":43},{\"source\":\"transactions\",\"quote\":\"goodwill recognised on acquisition: +26,474 (increase); impairment / disposal of a reporting unit: −2,730 (decrease)\",\"row\":null},{\"source\":\"transactions\",\"quote\":\"reporting unit fair value 105,154; reporting unit carrying amount 90,036\",\"row\":null}]}\n```\n\nThe reason, in under 80 words: every line ties to its transaction net movement. Subtotals foot,",
+  "response_id": "gen-1791001239-6fur7FeRnhplrDB4iI90",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 3030,
+    "completion_tokens": 900,
+    "total_tokens": 3930,
+    "cost": 0.03012
+  },
+  "finish_reason": "length",
+  "elapsed_seconds": 9.128
+}

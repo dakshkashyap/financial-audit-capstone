@@ -1,0 +1,237 @@
+{
+  "dataset": "TheFinAI/FinMR",
+  "n": 332,
+  "elapsed_sec": 3.5,
+  "date": "2026-09-10",
+  "applicability": [
+    {
+      "approach": "finmr_benchmark",
+      "applies": true,
+      "role": "DETECT / VERIFY",
+      "why": "Native FinMR verifier \u2014 Joint ACC against DQC ground truth"
+    },
+    {
+      "approach": "audit_patch_repair",
+      "applies": true,
+      "role": "LOCALIZE \u2192 REPAIR \u2192 REVALIDATE \u2192 CITE \u2192 CERTIFY",
+      "why": "Native FinMR repair pipeline with certificates"
+    },
+    {
+      "approach": "stage1_taxonomy_citation",
+      "applies": true,
+      "role": "CITE (lookup)",
+      "why": "FinMR already has us-gaap concepts; taxonomy lookup applies directly"
+    },
+    {
+      "approach": "citation_mcp_agent",
+      "applies": true,
+      "role": "CITE (tool-locked pick + validate)",
+      "why": "TaxonomyTools run on FinMR concepts (no LLM needed for heuristic pick)"
+    },
+    {
+      "approach": "full_pipeline",
+      "applies": true,
+      "role": "DETECT + CITE (unified)",
+      "why": "run_audit(..., source='finmr') detect+cite path"
+    },
+    {
+      "approach": "stage0_deterministic_gate",
+      "applies": false,
+      "role": "DETECT (AuditBench tables)",
+      "why": "Expects AuditBench text tables; FinMR detect is handled by finmr_benchmark"
+    },
+    {
+      "approach": "stage1_concept_mapping",
+      "applies": false,
+      "role": "label \u2192 concept",
+      "why": "FinMR facts are already tagged with us-gaap concepts by the filer"
+    },
+    {
+      "approach": "baseline_auditbench",
+      "applies": false,
+      "role": "end-to-end LLM audit",
+      "why": "AuditBench prompt + text tables; different input format and metrics"
+    },
+    {
+      "approach": "stage2_llm_audit",
+      "applies": false,
+      "role": "focused LLM on abstain",
+      "why": "Built for AuditBench evidence packets; no FinMR Stage-2 adapter yet"
+    }
+  ],
+  "stages": {
+    "1_PARSE": {
+      "n": 332,
+      "passed": 332,
+      "failed": 0,
+      "skipped": 0,
+      "pass_rate_among_scored": 1.0,
+      "notes": {
+        "ok": 332
+      }
+    },
+    "2_DETECT": {
+      "n": 332,
+      "passed": 147,
+      "failed": 185,
+      "skipped": 0,
+      "pass_rate_among_scored": 0.4427710843373494,
+      "notes": {
+        "A": 147,
+        "E": 138,
+        "C": 47
+      }
+    },
+    "3_CONCEPT_READY": {
+      "n": 332,
+      "passed": 332,
+      "failed": 0,
+      "skipped": 0,
+      "pass_rate_among_scored": 1.0,
+      "notes": {
+        "already_tagged": 332
+      }
+    },
+    "4_CITE_LOOKUP": {
+      "n": 332,
+      "passed": 309,
+      "failed": 23,
+      "skipped": 0,
+      "pass_rate_among_scored": 0.9307228915662651,
+      "notes": {
+        "n=1": 86,
+        "no_candidates": 23,
+        "n=2": 47,
+        "n=3": 85,
+        "n=4": 6,
+        "n=5": 4,
+        "n=17": 2,
+        "n=9": 8,
+        "n=13": 22,
+        "n=10": 31,
+        "n=7": 4,
+        "n=29": 6,
+        "n=8": 2,
+        "n=11": 5,
+        "n=12": 1
+      }
+    },
+    "5_CITE_VALIDATE": {
+      "n": 332,
+      "passed": 309,
+      "failed": 0,
+      "skipped": 23,
+      "pass_rate_among_scored": 1.0,
+      "notes": {
+        "validated": 309,
+        "no_candidates": 23
+      }
+    },
+    "6_REPAIR": {
+      "n": 332,
+      "passed": 178,
+      "failed": 0,
+      "skipped": 154,
+      "pass_rate_among_scored": 1.0,
+      "notes": {
+        "proposed": 178,
+        "abstain": 147,
+        "already_consistent": 7
+      }
+    },
+    "7_REVALIDATE": {
+      "n": 332,
+      "passed": 178,
+      "failed": 0,
+      "skipped": 154,
+      "pass_rate_among_scored": 1.0,
+      "notes": {
+        "cleared": 178,
+        "abstain": 147,
+        "already_consistent": 7
+      }
+    },
+    "8_UNIFIED_AUDIT": {
+      "n": 332,
+      "passed": 154,
+      "failed": 178,
+      "skipped": 0,
+      "pass_rate_among_scored": 0.463855421686747,
+      "notes": {
+        "ok": 154,
+        "detection_mismatch": 178
+      }
+    }
+  },
+  "approach_metrics": {
+    "finmr_benchmark": {
+      "n": 332,
+      "Joint_ACC_%": 44.28,
+      "SER_%": 0.0,
+      "EER_%": 41.57,
+      "CER_%": 14.16,
+      "counts": {
+        "A": 147,
+        "S": 0,
+        "E": 138,
+        "C": 47
+      },
+      "by_rule": {
+        "DQC_US_0015": {
+          "n": 110,
+          "A": 50,
+          "E": 60,
+          "C": 0,
+          "S": 0
+        },
+        "DQC_US_0117": {
+          "n": 120,
+          "A": 14,
+          "E": 62,
+          "C": 44,
+          "S": 0
+        },
+        "DQC_US_0126": {
+          "n": 102,
+          "A": 83,
+          "E": 16,
+          "C": 3,
+          "S": 0
+        }
+      }
+    },
+    "audit_patch_repair": {
+      "n": 332,
+      "gt_violations": 332,
+      "detection_agreement_pct": 53.61,
+      "patches_proposed": 178,
+      "exact_patch_match": 145,
+      "exact_patch_match_pct_of_patched": 81.46,
+      "no_regression_pct_of_patched": 100.0,
+      "citations_grounded": 166,
+      "citation_grounded_pct_of_patched": 93.26,
+      "status_counts": {
+        "accepted": 178,
+        "rejected": 0,
+        "abstain": 147,
+        "consistent": 7
+      }
+    },
+    "stage1_taxonomy_citation": {
+      "n": 332,
+      "candidate_coverage_pct": 93.07
+    },
+    "citation_mcp_agent": {
+      "n": 332,
+      "validated_pick_pct_when_candidates": 100.0,
+      "invented_citations_accepted": 0
+    },
+    "full_pipeline": {
+      "n": 332,
+      "error_detected_pct": 46.39,
+      "has_citation_pct": 93.07,
+      "detection_agree_with_gt_pct": 46.39
+    }
+  },
+  "errors": []
+}

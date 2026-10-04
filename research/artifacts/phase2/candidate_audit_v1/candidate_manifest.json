@@ -1,0 +1,28 @@
+{
+  "public_input_sha256": "5b07b65a8427ca4615339d1dfc240b02ad08ece654872c1c72ea94c8efaf71b9",
+  "candidate_cache_sha256": "b171f988833fb716faf0e97df19a086b19a6037d48aa2f41da169d4add0a2e95",
+  "taxonomy_inventory_sha256": "29d02493b4d3f1660321d77ff66f54c1d49f0a418989939fd6978dec7809812a",
+  "taxonomy_xml_sha256": "3a6346572663374276e992552b0be1406561a484c44d5f531ad3f2b5cf6688ba",
+  "taxonomy_source": {
+    "url": "https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-ref-2023.xml",
+    "accessed_at_utc": "2026-10-03T23:03:02.363628+00:00",
+    "sha256": "3a6346572663374276e992552b0be1406561a484c44d5f531ad3f2b5cf6688ba",
+    "bytes": 11232453,
+    "redistribution": "XML stays in ignored local cache; identifier metadata only in report"
+  },
+  "case_count": 48,
+  "model_calls": 0,
+  "network_calls_in_script": 0,
+  "scoring_key_opened_during_prepare": false,
+  "source_sha256": {
+    "core/taxonomy_graph.py": "c7c32461980b174b2983006f170112d2bd3bf8ba7ccf54f95492b74382c45c57",
+    "core/metrics.py": "b4bc35ff2e5fbc77225491ffd529171bf3ef1a0a6d55e705417cfed519ff0ec4",
+    "core/stage0_common.py": "f798ce6253eb4f49057155c5bde4fc2c2cdde4237f0e8dffe7cd6d8e7219a6a8",
+    "approaches/stage1_concept_mapping/edgar_mapper.py": "cb1bd10e4d43c259990566ab23dcf6fb79cff2d5b47c580851aee0573f5808c9",
+    "approaches/stage1_concept_mapping/xbrl_concept_map.json": "6fdf8e405a9400e75a3c196b1aa261d48488b6cbea7a69c29bdbfcd93306bcbc",
+    "approaches/stage1_taxonomy_citation/stage1_arelle.py": "9505fb290143f8a5a06416d66216da7fc252933b999e0534a8f7fb6d36de3c3f",
+    "approaches/stage1_taxonomy_citation/citation_select.py": "bb3d99ba13b4a692bef1fa7fc0701a3b184297730d1ee9805979c00c02c9ceaf",
+    "approaches/stage2_llm_audit/stage2_llm.py": "82c7fac589fa4c3b0d0cd348ff15cb95ada36581b4e6df9f9ec977912a47a3f5",
+    "research/phase2/audit_candidates.py": "33f4262455a270d7900817c4a97591d5935cff44bad6286ea0dca3be58ab342a"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "mode": "oracle",
+  "model": null,
+  "n_records": 42,
+  "A_graph_single_pick": {
+    "topic_em": 0.1905,
+    "hits": 8
+  },
+  "C_citation_agent": {
+    "topic_em": 0.2619,
+    "hits": 11,
+    "validated_rate": 0.6667,
+    "hallucinated_attempts_total": 0,
+    "avg_iterations": 0.667,
+    "improved_vs_A": 3,
+    "regressed_vs_A": 0
+  },
+  "candidate_recall_ceiling": {
+    "topic_em": 0.2619,
+    "hits": 11
+  },
+  "paper_baseline_gpt4": 0.262,
+  "delta_C_minus_A": 0.0714,
+  "sample_improvements": [
+    {
+      "label": "Total liabilities and stockholders' equity",
+      "concept": "LiabilitiesAndStockholdersEquity",
+      "gt_topic": "210",
+      "a_topic": "235",
+      "c_topic": "210",
+      "c_citation": "210-10-S99-1",
+      "rationale": "oracle_gt=210"
+    },
+    {
+      "label": "Depreciation and amortization",
+      "concept": "DepreciationAndAmortization",
+      "gt_topic": "360",
+      "a_topic": "230",
+      "c_topic": "360",
+      "c_citation": "360-10-50-1",
+      "rationale": "oracle_gt=360"
+    },
+    {
+      "label": "Property and equipment, net",
+      "concept": "PropertyPlantAndEquipmentNet",
+      "gt_topic": "360",
+      "a_topic": "852",
+      "c_topic": "360",
+      "c_citation": "360-10-50-1",
+      "rationale": "oracle_gt=360"
+    }
+  ]
+}

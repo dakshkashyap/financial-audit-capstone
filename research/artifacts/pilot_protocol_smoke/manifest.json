@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "cohort": "frozen exploration/development; not a final or untouched test",
+  "selection": {
+    "seed": 20261002,
+    "n_companies": 8,
+    "min_fiscal_year": 2020,
+    "max_fiscal_year": 2024,
+    "per_company": {
+      "control": 2,
+      "detection_only": 2,
+      "citable": 2
+    }
+  },
+  "source_commit": "72da89a9e6400bfd1da9041a742f9cdeb00470bc",
+  "source_files": {
+    "exam.jsonl": "83f44363450ffa4b53ca7744e6728cd0d75bacb25a7032869b27f4011f2658ce",
+    "answer_key.jsonl": "a00a4057184bda6a5c80d6091453b5ff586a956dec9b52871c3a91eafe9a3c23"
+  },
+  "n_source_cases": 14963,
+  "n_eligible_companies": 70,
+  "n_cases": 48,
+  "companies": [
+    {
+      "cik": "0000731766",
+      "company": "UnitedHealth Group Incorporated"
+    },
+    {
+      "cik": "0001334036",
+      "company": "CROCS,\u00a0INC."
+    },
+    {
+      "cik": "0001655210",
+      "company": "BEYOND MEAT, INC."
+    },
+    {
+      "cik": "0000100885",
+      "company": "UNION PACIFIC CORP"
+    },
+    {
+      "cik": "0000001800",
+      "company": "ABBOTT LABORATORIES"
+    },
+    {
+      "cik": "0000949870",
+      "company": "THE BOSTON BEER COMPANY, INC."
+    },
+    {
+      "cik": "0000051434",
+      "company": "INTERNATIONAL PAPER COMPANY"
+    },
+    {
+      "cik": "0000831259",
+      "company": "Freeport-McMoRan Inc."
+    }
+  ],
+  "strata": {
+    "control": 16,
+    "detection_only": 16,
+    "citable": 16
+  },
+  "statement_types": {
+    "CashFlow": 11,
+    "BalanceSheet": 21,
+    "IncomeStatement": 16
+  },
+  "public_input_sha256": "5b07b65a8427ca4615339d1dfc240b02ad08ece654872c1c72ea94c8efaf71b9",
+  "scoring_key_sha256": "ddc4e618cff3de2ee3c9604e8ae5528c80349859b85c54d7a1ac8819786f5183",
+  "case_ids": [
+    "case_aa3bbe2b8691f78383ee",
+    "case_f41742b3a4e2fb83f231",
+    "case_96f80313236e44ee8109",
+    "case_261ab15629baec708d83",
+    "case_960cfd9a4bba0b5c553a",
+    "case_fd2292c43951c99d1f6f",
+    "case_5c79057c6748c1d2e605",
+    "case_d60dcac90c192ebcd31c",
+    "case_41b26ea05925032aacc7",
+    "case_de455b4d36c07315719f",
+    "case_fa6f056afdf85662f601",
+    "case_e4307b9e73aca174e281",
+    "case_8e1b05d28ced388202e7",
+    "case_309148c5c9877a2e82da",
+    "case_2edbf676d94e573cdd4e",
+    "case_7dad7285f6966525d3b0",
+    "case_6c6c786e0d9a5a2bcff8",
+    "case_8494e9109ff8044d5892",
+    "case_064d3c06171fde95dda0",
+    "case_6673862ac8567253d89d",
+    "case_c73a5097fb378ca9cd5e",
+    "case_fbf75a377151757a382c",
+    "case_a1ab4bba46145526d2f3",
+    "case_384a04f2789ffeca1a92",
+    "case_bbeb1ea42c647058570f",
+    "case_1978e5c21aefe1e4b8a7",
+    "case_bfd3b5245a1bc700cbd6",
+    "case_b17319f49dec56baf12b",
+    "case_a5dff52701c61f618d5d",
+    "case_d1efe0af0cfd3eaa909d",
+    "case_33a5c50b437c422eb1e1",
+    "case_cc180e9e3a6186422bac",
+    "case_3a65c485abbe1984ae27",
+    "case_87c726f7a2504ed0d85a",
+    "case_616f2d2146f23bd81607",
+    "case_2dc2afcc1d91f372810e",
+    "case_dfe914ba62936e8a096f",
+    "case_72959fb5d53dade7a524",
+    "case_197844f25e4b4b75fbe9",
+    "case_b200b8872e8d3b0e2d0b",
+    "case_aa698b1e854dd37de14f",
+    "case_a2f22d9fc55ca36d8411",
+    "case_1bed53ac07435b3f7ade",
+    "case_2f3e27bae3c9eb501d70",
+    "case_87b8b6091e9cf2644c6e",
+    "case_273b51b8ce3b6bbf2ae3",
+    "case_75ac978357bec09b7be4",
+    "case_41544387f1642428ca32"
+  ],
+  "limitations": [
+    "Original synthetic transaction evidence remains in this diagnostic pilot and may leak clean values.",
+    "Gold paragraphs are unvalidated; label agreement cannot establish accounting correctness.",
+    "No claim of population representativeness or company-disjoint generalization."
+  ]
+}

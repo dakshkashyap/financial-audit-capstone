@@ -1,0 +1,20 @@
+{
+  "call_id": "535083610f3f3a2ddcd89719bd81c6fc",
+  "model": "qwen/qwen3-8b",
+  "stage": "extract",
+  "prompt_sha256": "c1c13d77230b2f5ad75c5d1065f4163c4cabb3f68fb6bd9984f78b84c1d4104a",
+  "reserved_usd": "0.000867321",
+  "status": "ok",
+  "content": "{\n  \"evidence\": [\n    {\"source\": \"statement\", \"quote\": \"Depreciation and amortization | $1,287\", \"row\": 1},\n    {\"source\": \"statement\", \"quote\": \"Other operating activities, net | $1,294\", \"row\": 2},\n    {\"source\": \"transaction_data\", \"quote\": \"[Depreciation and amortization] depreciation and amortisation add-back: +1,453 (increase); disposal-related reversal: −166 (decrease)\"},\n    {\"source\": \"transaction_data\", \"quote\": \"[Other financing activities, net] other credits posted to the account: +643 (increase); other charges posted to the account: −2,495 (decrease)\"}\n  ],\n  \"observations\": [\n    \"Depreciation and amortization is reported as $1,287.\",\n    \"Other operating activities are reported as $1,294.\",\n    \"Depreciation and amortization add-back is $1,453 with a disposal-related reversal of $166.\",\n    \"Other financing activities include credits of $643 and charges of $2,495.\"\n  ],\n  \"possible_faults\": [\n    \"Disposal-related reversal may affect the accuracy of depreciation and amortization figures.\",\n    \"The discrepancy between the reported depreciation and the add-back could indicate potential misclassification.\",\n    \"The large charge in other financing activities might suggest significant off-balance-sheet transactions.\",\n    \"The transaction data may not fully align with the statement totals.\"\n  ],\n  \"uncertainty\": \"The reconciliation between the statement and transaction data is unclear. The add-back and reversal for depreciation may not be fully explained, and the large charge in financing activities raises questions about its nature and impact on cash flows.\"\n}",
+  "response_id": "gen-1791048123-qz7iC10fuJ5cbvYOoA66",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 766,
+    "completion_tokens": 382,
+    "total_tokens": 1148,
+    "cost": 0.000263432
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 8.569
+}

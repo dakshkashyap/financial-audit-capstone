@@ -1,0 +1,19 @@
+{
+  "call_id": "241f195b950032b0b59a88ab90b091c9",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "60423f58d8f4e0f727f4b519cd052ff5288e569a6cdea792da0af742479643f6",
+  "reserved_usd": "0.047744",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"incorrect\",\"error_type\":\"Misclassification\",\"row\":8,\"citation\":\"ASC 842-10-25-2\",\"citation_abstain\":false,\"evidence\":[{\"source\":\"statement\",\"quote\":\"Finance lease right-of-use assets | $1,787\",\"row\":8},{\"source\":\"transactions\",\"quote\":\"ownership transfers to the lessee: no; purchase option reasonably certain to be exercised: no; lease term as % of remaining economic life: 44%\",\"row\":null},{\"source\":\"transactions\",\"quote\":\"present value of lease payments as % of fair value of the underlying assets: 49%; asset of a specialized nature: no.\",\"row\":null",
+  "response_id": "gen-1791001207-LVIp1eKkNUbhhPThxBBs",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 2518,
+    "completion_tokens": 900,
+    "total_tokens": 3418,
+    "cost": 0.028072
+  },
+  "finish_reason": "length",
+  "elapsed_seconds": 9.669
+}

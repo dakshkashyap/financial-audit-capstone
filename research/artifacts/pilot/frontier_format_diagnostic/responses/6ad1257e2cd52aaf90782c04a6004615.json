@@ -1,0 +1,21 @@
+{
+  "call_id": "6ad1257e2cd52aaf90782c04a6004615",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":\"Redundant Row\",\"evidence\":[{\"quote\":\"[row 20]: Accrued restructuring costs | $36 [SEP]\",\"row\":20,\"source\":\"statement\"},{\"quote\":\"[row 27]: Total current liabilities | $641 [SEP]\",\"row\":27,\"source\":\"statement\"},{\"quote\":\"[row 24]: Accrued liabilities | $239 [SEP]\",\"row\":24,\"source\":\"statement\"}],\"judgement\":\"incorrect\",\"reason\":\"Current liability rows sum to 677, but the reported total is 641, a gap of exactly 36. That matches accrued restructuring costs, which is likely already within accrued liabilities, so row 20 appears redundant. All other totals reconcile, and the transaction-supported balances tie. No ASC paragraph clearly governs this duplication, so no citation is given.\",\"row\":20}",
+  "reserved_usd": "0.065136",
+  "request_sha256": "eb821d2b293f634a8efec8f5ce04c7256c00c52cb0a9b5bb6fb8f4d01d271857",
+  "prompt_sha256": "286b6e92200534b2cf0e80142780e24e55cb86c806badc9578ee7854f5082e63",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002215-IeQoguvnLwrRK8kG7ZO8",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 3872,
+    "completion_tokens": 725,
+    "total_tokens": 4597,
+    "cost": 0.029988
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 9.544
+}

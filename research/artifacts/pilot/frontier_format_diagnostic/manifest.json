@@ -1,0 +1,371 @@
+{
+  "label": "Post-hoc formatting and reasoning-budget diagnostic, not a replacement for the frozen 900-token protocol",
+  "paid_calls_performed": false,
+  "condition": "opus_format_diagnostic",
+  "condition_id": "7db866db03dae4e4c987cb4374bbf1609a92aace378da32db852d60b57e7312e",
+  "n_cases": 48,
+  "case_ids": [
+    "case_aa3bbe2b8691f78383ee",
+    "case_f41742b3a4e2fb83f231",
+    "case_96f80313236e44ee8109",
+    "case_261ab15629baec708d83",
+    "case_960cfd9a4bba0b5c553a",
+    "case_fd2292c43951c99d1f6f",
+    "case_5c79057c6748c1d2e605",
+    "case_d60dcac90c192ebcd31c",
+    "case_41b26ea05925032aacc7",
+    "case_de455b4d36c07315719f",
+    "case_fa6f056afdf85662f601",
+    "case_e4307b9e73aca174e281",
+    "case_8e1b05d28ced388202e7",
+    "case_309148c5c9877a2e82da",
+    "case_2edbf676d94e573cdd4e",
+    "case_7dad7285f6966525d3b0",
+    "case_6c6c786e0d9a5a2bcff8",
+    "case_8494e9109ff8044d5892",
+    "case_064d3c06171fde95dda0",
+    "case_6673862ac8567253d89d",
+    "case_c73a5097fb378ca9cd5e",
+    "case_fbf75a377151757a382c",
+    "case_a1ab4bba46145526d2f3",
+    "case_384a04f2789ffeca1a92",
+    "case_bbeb1ea42c647058570f",
+    "case_1978e5c21aefe1e4b8a7",
+    "case_bfd3b5245a1bc700cbd6",
+    "case_b17319f49dec56baf12b",
+    "case_a5dff52701c61f618d5d",
+    "case_d1efe0af0cfd3eaa909d",
+    "case_33a5c50b437c422eb1e1",
+    "case_cc180e9e3a6186422bac",
+    "case_3a65c485abbe1984ae27",
+    "case_87c726f7a2504ed0d85a",
+    "case_616f2d2146f23bd81607",
+    "case_2dc2afcc1d91f372810e",
+    "case_dfe914ba62936e8a096f",
+    "case_72959fb5d53dade7a524",
+    "case_197844f25e4b4b75fbe9",
+    "case_b200b8872e8d3b0e2d0b",
+    "case_aa698b1e854dd37de14f",
+    "case_a2f22d9fc55ca36d8411",
+    "case_1bed53ac07435b3f7ade",
+    "case_2f3e27bae3c9eb501d70",
+    "case_87b8b6091e9cf2644c6e",
+    "case_273b51b8ce3b6bbf2ae3",
+    "case_75ac978357bec09b7be4",
+    "case_41544387f1642428ca32"
+  ],
+  "public_input_sha256": "5b07b65a8427ca4615339d1dfc240b02ad08ece654872c1c72ea94c8efaf71b9",
+  "reservations": [
+    {
+      "case_id": "case_aa3bbe2b8691f78383ee",
+      "call_id": "abd2bba285b769a05cfbe0e744ff8206",
+      "reserved_upper_bound_usd": "0.048572",
+      "prompt_token_upper_bound": 6143
+    },
+    {
+      "case_id": "case_f41742b3a4e2fb83f231",
+      "call_id": "0b6b86df418c2165ba7fe407482edfec",
+      "reserved_upper_bound_usd": "0.047496",
+      "prompt_token_upper_bound": 5874
+    },
+    {
+      "case_id": "case_96f80313236e44ee8109",
+      "call_id": "6ad1257e2cd52aaf90782c04a6004615",
+      "reserved_upper_bound_usd": "0.065136",
+      "prompt_token_upper_bound": 10284
+    },
+    {
+      "case_id": "case_261ab15629baec708d83",
+      "call_id": "7e8e0eb9cd1826c1ea1469c4c00c7546",
+      "reserved_upper_bound_usd": "0.059596",
+      "prompt_token_upper_bound": 8899
+    },
+    {
+      "case_id": "case_960cfd9a4bba0b5c553a",
+      "call_id": "a2b87e3d0692d638a4b8e003bd6ac6c9",
+      "reserved_upper_bound_usd": "0.060900",
+      "prompt_token_upper_bound": 9225
+    },
+    {
+      "case_id": "case_fd2292c43951c99d1f6f",
+      "call_id": "de54c1e7442bfd2fbe78b806390b8db2",
+      "reserved_upper_bound_usd": "0.047184",
+      "prompt_token_upper_bound": 5796
+    },
+    {
+      "case_id": "case_5c79057c6748c1d2e605",
+      "call_id": "068fe6c0cabe15cafe1a710395a7d2f6",
+      "reserved_upper_bound_usd": "0.047484",
+      "prompt_token_upper_bound": 5871
+    },
+    {
+      "case_id": "case_d60dcac90c192ebcd31c",
+      "call_id": "e7723751e0df8ce29c76895c0129ef40",
+      "reserved_upper_bound_usd": "0.047288",
+      "prompt_token_upper_bound": 5822
+    },
+    {
+      "case_id": "case_41b26ea05925032aacc7",
+      "call_id": "0e4e9a0523987e4a98d1b1b9a000bfa4",
+      "reserved_upper_bound_usd": "0.064876",
+      "prompt_token_upper_bound": 10219
+    },
+    {
+      "case_id": "case_de455b4d36c07315719f",
+      "call_id": "393d87578cbfd1e95d5b7fa5a49298e6",
+      "reserved_upper_bound_usd": "0.066884",
+      "prompt_token_upper_bound": 10721
+    },
+    {
+      "case_id": "case_fa6f056afdf85662f601",
+      "call_id": "3b2f235718821f3f9525d5dca16be16a",
+      "reserved_upper_bound_usd": "0.061384",
+      "prompt_token_upper_bound": 9346
+    },
+    {
+      "case_id": "case_e4307b9e73aca174e281",
+      "call_id": "83746e35a14cc8382af87fc41eb63196",
+      "reserved_upper_bound_usd": "0.047480",
+      "prompt_token_upper_bound": 5870
+    },
+    {
+      "case_id": "case_8e1b05d28ced388202e7",
+      "call_id": "086595a8d5bda18a17755e7b59a284de",
+      "reserved_upper_bound_usd": "0.053572",
+      "prompt_token_upper_bound": 7393
+    },
+    {
+      "case_id": "case_309148c5c9877a2e82da",
+      "call_id": "04e21d5867f3afb2f4d283f3e80a399f",
+      "reserved_upper_bound_usd": "0.048372",
+      "prompt_token_upper_bound": 6093
+    },
+    {
+      "case_id": "case_2edbf676d94e573cdd4e",
+      "call_id": "00e0a5a38224b2676c7eedd4f9f279b7",
+      "reserved_upper_bound_usd": "0.048092",
+      "prompt_token_upper_bound": 6023
+    },
+    {
+      "case_id": "case_7dad7285f6966525d3b0",
+      "call_id": "5fbadea72b32430d12feb5acf5c4e5b3",
+      "reserved_upper_bound_usd": "0.058704",
+      "prompt_token_upper_bound": 8676
+    },
+    {
+      "case_id": "case_6c6c786e0d9a5a2bcff8",
+      "call_id": "b9259667ff60965e7439dcb0f31ea54b",
+      "reserved_upper_bound_usd": "0.048136",
+      "prompt_token_upper_bound": 6034
+    },
+    {
+      "case_id": "case_8494e9109ff8044d5892",
+      "call_id": "640747c97aa5cdbe05a1d3e6e62b72a2",
+      "reserved_upper_bound_usd": "0.048556",
+      "prompt_token_upper_bound": 6139
+    },
+    {
+      "case_id": "case_064d3c06171fde95dda0",
+      "call_id": "8d917bffa20527e70634ac1bc3cd15ec",
+      "reserved_upper_bound_usd": "0.047476",
+      "prompt_token_upper_bound": 5869
+    },
+    {
+      "case_id": "case_6673862ac8567253d89d",
+      "call_id": "68ef92428fb4fec5b49ed22a4a1e913b",
+      "reserved_upper_bound_usd": "0.063484",
+      "prompt_token_upper_bound": 9871
+    },
+    {
+      "case_id": "case_c73a5097fb378ca9cd5e",
+      "call_id": "194be46de92ee63e5eb38514252d0490",
+      "reserved_upper_bound_usd": "0.059852",
+      "prompt_token_upper_bound": 8963
+    },
+    {
+      "case_id": "case_fbf75a377151757a382c",
+      "call_id": "8140d117b1c1bf59ed593b5a72eb2d8c",
+      "reserved_upper_bound_usd": "0.047840",
+      "prompt_token_upper_bound": 5960
+    },
+    {
+      "case_id": "case_a1ab4bba46145526d2f3",
+      "call_id": "df3b46fae4d6e855e0e772903758e044",
+      "reserved_upper_bound_usd": "0.047420",
+      "prompt_token_upper_bound": 5855
+    },
+    {
+      "case_id": "case_384a04f2789ffeca1a92",
+      "call_id": "6d45740da4c12055985190645b727795",
+      "reserved_upper_bound_usd": "0.047628",
+      "prompt_token_upper_bound": 5907
+    },
+    {
+      "case_id": "case_bbeb1ea42c647058570f",
+      "call_id": "8acd2b3a0975d5aeb4b351f66aaa353d",
+      "reserved_upper_bound_usd": "0.047440",
+      "prompt_token_upper_bound": 5860
+    },
+    {
+      "case_id": "case_1978e5c21aefe1e4b8a7",
+      "call_id": "191da3e5dc179a2c4a8d08ae925dad97",
+      "reserved_upper_bound_usd": "0.047340",
+      "prompt_token_upper_bound": 5835
+    },
+    {
+      "case_id": "case_bfd3b5245a1bc700cbd6",
+      "call_id": "790c589e0df98e6b48d5c6c2b95d5465",
+      "reserved_upper_bound_usd": "0.046712",
+      "prompt_token_upper_bound": 5678
+    },
+    {
+      "case_id": "case_b17319f49dec56baf12b",
+      "call_id": "fe0ce0e2a33ef10bb7aef689400c937f",
+      "reserved_upper_bound_usd": "0.064452",
+      "prompt_token_upper_bound": 10113
+    },
+    {
+      "case_id": "case_a5dff52701c61f618d5d",
+      "call_id": "b55959419e7d5c4d40268d2377f01f52",
+      "reserved_upper_bound_usd": "0.047748",
+      "prompt_token_upper_bound": 5937
+    },
+    {
+      "case_id": "case_d1efe0af0cfd3eaa909d",
+      "call_id": "4c022ff29db98439ae19f35d5c2e53ef",
+      "reserved_upper_bound_usd": "0.046856",
+      "prompt_token_upper_bound": 5714
+    },
+    {
+      "case_id": "case_33a5c50b437c422eb1e1",
+      "call_id": "018c9a4f8f1c42008c79219af58e4e15",
+      "reserved_upper_bound_usd": "0.063504",
+      "prompt_token_upper_bound": 9876
+    },
+    {
+      "case_id": "case_cc180e9e3a6186422bac",
+      "call_id": "e5d6b323def358f2145509a419085ac0",
+      "reserved_upper_bound_usd": "0.063316",
+      "prompt_token_upper_bound": 9829
+    },
+    {
+      "case_id": "case_3a65c485abbe1984ae27",
+      "call_id": "43495c77886781f7d0fc33f28318ba95",
+      "reserved_upper_bound_usd": "0.048636",
+      "prompt_token_upper_bound": 6159
+    },
+    {
+      "case_id": "case_87c726f7a2504ed0d85a",
+      "call_id": "4f2474c6d2e4f491bfc410321fbbe73c",
+      "reserved_upper_bound_usd": "0.046520",
+      "prompt_token_upper_bound": 5630
+    },
+    {
+      "case_id": "case_616f2d2146f23bd81607",
+      "call_id": "407a0807cd590ec49eb1c39c3759e2e6",
+      "reserved_upper_bound_usd": "0.062352",
+      "prompt_token_upper_bound": 9588
+    },
+    {
+      "case_id": "case_2dc2afcc1d91f372810e",
+      "call_id": "f00fb4a9c30473f9e0408141eeaa5087",
+      "reserved_upper_bound_usd": "0.060688",
+      "prompt_token_upper_bound": 9172
+    },
+    {
+      "case_id": "case_dfe914ba62936e8a096f",
+      "call_id": "73ee214e3071ed2837c8e578b44628dd",
+      "reserved_upper_bound_usd": "0.058108",
+      "prompt_token_upper_bound": 8527
+    },
+    {
+      "case_id": "case_72959fb5d53dade7a524",
+      "call_id": "7bfd443e5e861662cdf73a3574bcd737",
+      "reserved_upper_bound_usd": "0.046604",
+      "prompt_token_upper_bound": 5651
+    },
+    {
+      "case_id": "case_197844f25e4b4b75fbe9",
+      "call_id": "2483a7e522d135cd46493da657375193",
+      "reserved_upper_bound_usd": "0.048340",
+      "prompt_token_upper_bound": 6085
+    },
+    {
+      "case_id": "case_b200b8872e8d3b0e2d0b",
+      "call_id": "21f7fe8932afd7862b2c31deaa26a4c5",
+      "reserved_upper_bound_usd": "0.047232",
+      "prompt_token_upper_bound": 5808
+    },
+    {
+      "case_id": "case_aa698b1e854dd37de14f",
+      "call_id": "af056044601c59d52203750092c8d33a",
+      "reserved_upper_bound_usd": "0.048396",
+      "prompt_token_upper_bound": 6099
+    },
+    {
+      "case_id": "case_a2f22d9fc55ca36d8411",
+      "call_id": "f730318580350a7cf353545032a932ea",
+      "reserved_upper_bound_usd": "0.063364",
+      "prompt_token_upper_bound": 9841
+    },
+    {
+      "case_id": "case_1bed53ac07435b3f7ade",
+      "call_id": "54ad8dca5ceb9ccb3c00f35ac1581084",
+      "reserved_upper_bound_usd": "0.057432",
+      "prompt_token_upper_bound": 8358
+    },
+    {
+      "case_id": "case_2f3e27bae3c9eb501d70",
+      "call_id": "275bcb0d95d60a65714c0efe25300d7a",
+      "reserved_upper_bound_usd": "0.056324",
+      "prompt_token_upper_bound": 8081
+    },
+    {
+      "case_id": "case_87b8b6091e9cf2644c6e",
+      "call_id": "ca0212a6e1ae00898f5119f2fb2b8763",
+      "reserved_upper_bound_usd": "0.045868",
+      "prompt_token_upper_bound": 5467
+    },
+    {
+      "case_id": "case_273b51b8ce3b6bbf2ae3",
+      "call_id": "4e19f89455ffadf3b8d57e9e46e0415a",
+      "reserved_upper_bound_usd": "0.063764",
+      "prompt_token_upper_bound": 9941
+    },
+    {
+      "case_id": "case_75ac978357bec09b7be4",
+      "call_id": "47b92f230a131c10284e2ea58629885f",
+      "reserved_upper_bound_usd": "0.057704",
+      "prompt_token_upper_bound": 8426
+    },
+    {
+      "case_id": "case_41544387f1642428ca32",
+      "call_id": "862b499cf839eb6d38fc0b2b45846734",
+      "reserved_upper_bound_usd": "0.047592",
+      "prompt_token_upper_bound": 5898
+    }
+  ],
+  "full_cohort_upper_bound_usd": "2.569704",
+  "additional_unreserved_upper_bound_usd": "2.521132",
+  "global_reserved_usd": "2.270491034",
+  "reserve_other_conditions_usd": "0.20",
+  "projected_global_including_other_conditions_usd": "4.991623034",
+  "whole_cohort_fits_5_usd_cap": true,
+  "settings": {
+    "condition": "opus_format_diagnostic",
+    "model": "anthropic/claude-opus-5.5",
+    "max_completion_tokens": 1200,
+    "temperature": 0,
+    "reasoning_effort": "low",
+    "budget_usd": "5.00",
+    "reserve_other_conditions_usd": "0.20",
+    "timeout_seconds": 90,
+    "label": "Post-hoc formatting and reasoning-budget diagnostic, not a replacement for the frozen 900-token protocol"
+  },
+  "interpretation": "Separate post-hoc condition: JSON schema, low reasoning effort, and 1200 versus 900 completion tokens. Cannot replace primary scores or prove superiority on unvalidated labels.",
+  "runtime_python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "implementation_sha256": "a47696caf11e9bac6f7163d6f168d9b51d2b45d38957436cf6d978ff68f2b6d7",
+  "schema_sha256": "2c42b3cd28015c4ea43d9a135dc34cd76422d013ea733818c7364d1021985de2",
+  "catalog_sha256": "ccb48d7307b80bf65bf41b1239caf807c02c4cc502d589dae850664699dee4e4",
+  "source_commit": "72da89a9e6400bfd1da9041a742f9cdeb00470bc"
+}

@@ -1,0 +1,280 @@
+{
+  "single_error": [
+    {
+      "index": 0,
+      "error_type": "Missing Row",
+      "problematic_entry": 6,
+      "standards_citation_original": "According to the FASB ASC 210-10-45, current assets must be sequenced prominently and completely to provide a clear representation of a company's liquidity and current asset posture, which includes receivables, inventories, and cash or cash equivalents.",
+      "gt_topic": "210",
+      "error_resolution_original": "The 'Other current assets' row has been mistakenly omitted from the financial statement, resulting in incorrect totals for both current assets and total assets. 'Other current assets' should total $14,695 and originally contributes to the 'Total current assets' value of $143,566. To correct this error, the 'Other current assets' row should be reinstated under 'Current assets', and the calculations for 'Total current assets' and 'Total assets' should be updated accordingly to include this value."
+    },
+    {
+      "index": 1,
+      "error_type": "Numerical Error",
+      "problematic_entry": 3,
+      "standards_citation_original": "According to FASB ASC 310-10-35, entities should recognize accounts receivable correctly, taking into account their receivables and impairments. The appropriate adjustments ensure fair presentation under U.S. GAAP.",
+      "gt_topic": "310",
+      "error_resolution_original": "The 'Accounts receivable, net' entry was incorrectly modified to $35,000. The correct amount should be $29,508, calculated from billed income of $32,500 minus write-offs of $2,992. To resolve this error, change 'Accounts receivable, net' back to $29,508 and update 'Total current assets' to reflect this accurate value, thereby also correcting 'Total assets' at the end."
+    },
+    {
+      "index": 2,
+      "error_type": "Redundant Row",
+      "problematic_entry": 12,
+      "standards_citation_original": "According to FASB Accounting Standards Codification (ASC) Section 210-10-50-1, entities should disclose only the assets that they have actually recognized, and avoid redundant disclosures unless they are necessary and have a relevant basis for presentation in the general purpose financial statements.",
+      "gt_topic": "210",
+      "error_resolution_original": "The redundant row of 'Deferred tax assets' has been incorrectly added to the non-current assets section with an amount of $25,000. This entry does not exist in the original financial statement, artificially inflating the total non-current assets reported as $234,017. To correct this error, remove the redundant row 'Deferred tax assets' and adjust the total non-current assets to reflect the accurate figure of $209,017."
+    },
+    {
+      "index": 3,
+      "error_type": "Misclassification",
+      "problematic_entry": 8,
+      "standards_citation_original": "According to FASB ASC 210-10, current assets include items that are expected to be converted into cash or consumed within one year.",
+      "gt_topic": "210",
+      "error_resolution_original": "In the modified financial statement, 'Accounts receivable, net' was incorrectly classified under Non-current assets, whereas it should appear under Current assets since they are expected to be realized in cash within a year. To correct this error, move 'Accounts receivable, net' back to the Current assets category and remove it from Non-current assets. Recompute the 'Total current assets', which now correctly includes 'Accounts receivable, net', and adjust 'Total non-current assets' accordingly."
+    },
+    {
+      "index": 4,
+      "error_type": "Missing Row",
+      "problematic_entry": 7,
+      "standards_citation_original": "As per FASB ASC 205-10-45, financial statements should provide complete and accurate depiction of all necessary performance figures, including critical components such as cost of sales, which impact income calculation.",
+      "gt_topic": "205",
+      "error_resolution_original": "The 'Total cost of sales' row, which amounted to $214,137, was erroneously deleted from the statement. This removal affects the calculation of Gross Margin, as Total cost of sales is a crucial factor in determining Gross Margin. To resolve this, reintroduce the 'Total cost of sales' row with its correct value of $214,137 between the 'Cost of sales: Services' and 'Gross margin' entries. Once restored, recalibrate the Gross Margin using the formula: Gross Margin = Total Net Sales - Total Cost of Sales."
+    },
+    {
+      "index": 5,
+      "error_type": "Numerical Error",
+      "problematic_entry": 5,
+      "standards_citation_original": "According to FASB guidance under the Accounting Standards Codification (ASC) 330-10-30, Inventory should be measured correctly at the cost that reflects incurred manufacturing costs. Any error here misrepresents the true expenses and profits of the entity.",
+      "gt_topic": "330",
+      "error_resolution_original": "The financial statement reflects an erroneous cost of sales for products figure of $180,000 instead of the correct $189,282, leading to misstatements across several financial metrics. The cost of sales for products should be corrected to reflect $189,282, based on the accurate recording of iPhone, iPad, and Mac manufacturing costs. Once corrected, the Total cost of sales, Gross margin, Operating income, Income before provision for income taxes, and Net income need to be recalculated accordingly, along with earnings per share."
+    },
+    {
+      "index": 6,
+      "error_type": "Redundant Row",
+      "problematic_entry": 13,
+      "standards_citation_original": "FASB ASC 250-10, Accounting Changes and Error Corrections, outlines requirements for removing prior period errors, including material misstatements or omissions such as the redundancy created by erroneous additional entries.",
+      "gt_topic": "250",
+      "error_resolution_original": "A redundant row for 'Depreciation' was added in the financial statement, under Operating Expenses, but doesn't contribute to any specific category of the financial statement. It leads to double counting or inclusion of an irrelevant item that could misstate operating income if improperly accounted in calculations. The correct statement would either need its removal or proper fitting into relevant expenses as part of cost of sales or operating expenses, ensuring all prices and summaries remain consistent with their respective subtotals."
+    },
+    {
+      "index": 7,
+      "error_type": "Misclassification",
+      "problematic_entry": 1,
+      "standards_citation_original": "According to the FASB Codification, financial statements should follow a systemic organization and presentation of line items. ASC 205-10-45-2 (Comprehensive Income - Presentation of Financial Statements) articulates this organizational alignment preference for clarity and comprehensive understanding.",
+      "gt_topic": "205",
+      "error_resolution_original": "The financial statement mistakenly categorized 'Services' revenue under 'Net sales' as the first item instead of 'Products'. The 'Products' revenue should be listed before 'Services' under 'Net sales' to maintain the correct order and classification. This is crucial for a clear and logical presentation of revenue streams in line with the standard financial reporting formats. Correcting this would involve reordering the rows such that 'Products' is shown first, followed by 'Services'."
+    },
+    {
+      "index": 8,
+      "error_type": "Missing Row",
+      "problematic_entry": 8,
+      "standards_citation_original": "According to the FASB Concepts Statement No. 8, the income statement should report financial performance using terms like 'gross margin' to provide clarity on how revenues and cost components contribute to net income.",
+      "gt_topic": null,
+      "error_resolution_original": "The financial statement is missing the 'Gross margin' row, which is critical for showing the company\u2019s profitability after all costs of goods sold are subtracted from net sales. Gross margin should have been presented between the 'Total cost of sales' and 'Operating expenses'. To resolve this issue, reinsert the 'Gross margin' row with the value $170,782, calculated as Total Net Sales minus Total Cost of Sales (i.e., $394,328 - $223,546)."
+    },
+    {
+      "index": 9,
+      "error_type": "Numerical Error",
+      "problematic_entry": 5,
+      "standards_citation_original": "According to FASB ASC 330-10-35, Inventory (including the cost of goods sold) must be accurately reflected in financial statements to ensure financial accuracy and compliance.",
+      "gt_topic": "330",
+      "error_resolution_original": "The 'Products' cost of sales entry has been increased to $210,000 instead of the correct amount of $201,471. This error inflates the total cost of sales, gross margin, operating income, income before taxes, and net income by the difference ($8,529). Correcting this involves adjusting the 'Products' cost of sales back to $201,471, recalculating Total Cost of sales, Gross Margin, Operating income, Income before taxes, and Net income based on the corrected figure."
+    },
+    {
+      "index": 10,
+      "error_type": "Redundant Row",
+      "problematic_entry": 12,
+      "standards_citation_original": "According to FASB ASC 225-10-45-3, a detailed breakdown of operating expenses should not include fabricated or redundant cost entries that misrepresent accounting figures within financial statements.",
+      "gt_topic": "225",
+      "error_resolution_original": "A redundant row titled 'Environmental compliance costs' with an amount of $1,500 was incorrectly added under 'Operating expenses'. This causes a distortion in total operating expenses and consequently affects the calculated values for operating income, income before provision for income taxes, net income, and earnings per share figures. To correct this error, the redundant row labeled 'Environmental compliance costs' should be removed, and the calculations for the subsequent totals should be revised to their original state as follows: 'Total operating expenses' should be $51,345, 'Operating income' should be $119,437, 'Income before provision for income taxes' should be $119,103, 'Net income' should be $99,803, and the earnings per share calculations should be adjusted as per original figures based on correct net income."
+    },
+    {
+      "index": 11,
+      "error_type": "Misclassification",
+      "problematic_entry": 5,
+      "standards_citation_original": "Refer to FASB ASC 605-10-25, which addresses the classification of revenue and costs related to sales, requiring logical order and consistent presentation that accurately reflects the nature of revenues and associated costs.",
+      "gt_topic": "605",
+      "error_resolution_original": "The financial statement has a misclassification error where the 'Cost of sales - Services' was listed before 'Cost of sales - Products'. This misclassification disrupts the proper sequence required in financial statements, where 'Products' typically precedes 'Services' under 'Cost of sales'. To resolve this error, reclassify 'Cost of sales - Products' to come before 'Cost of sales - Services' and ensure that the total calculation remains accurate."
+    },
+    {
+      "index": 12,
+      "error_type": "Missing Row",
+      "problematic_entry": 6,
+      "standards_citation_original": "According to FASB ASC 605-10-05-1, revenue should be recognized as gross of all expenses directly associated with the cost of the sales, including service costs. Therefore, omissions of cost-related lines violate the principles of accurate financial presentation.",
+      "gt_topic": "605",
+      "error_resolution_original": "The 'Cost of sales: Services' row was incorrectly deleted, leading to an erroneous calculation of Total Cost of Sales, Gross Margin, Operating Income, and subsequently, Net Income. This omission incorrectly inflated the Gross Margin and affected the downstream calculations. To correct this error, the 'Cost of sales: Services' line item with its accurate value of $20,715 should be re-added to the financial statement at the appropriate position under Cost of Sales. Recalculate the Total Cost of Sales as $212,981, the Gross Margin as $152,836, the Operating Income as $108,949, and the Net Income as $94,680 using the correct calculations."
+    },
+    {
+      "index": 13,
+      "error_type": "Numerical Error",
+      "problematic_entry": 5,
+      "standards_citation_original": "According to ASC 606-10-32-2, revenue recognized is reported net of estimated returns and allowances, which aligns proper costing against actual sales and requires accurate cost reporting to reflect true profitability.",
+      "gt_topic": "606",
+      "error_resolution_original": "In the Cost of Sales section, the 'Products' line item was incorrectly increased from its correct value of $192,266 to $202,266, which subsequently inflated the Total Cost of Sales to $222,981 and altered subsequent relevant calculations. This numerical error led to incorrect values for Gross Margin, Operating Income, Income Before Provision for Income Taxes, and ultimately the Net Income and Earnings Per Share figures. The correct value for 'Cost of Sales: Products' should be $192,266, adjusting the Total Cost of Sales back to $212,981, resulting in the correct Gross Margin of $152,836. Following these corrections, ensure the Operating Income recalculates to $108,949, Income Before Provision for Income Taxes to $109,207, and Net Income to $94,680."
+    },
+    {
+      "index": 14,
+      "error_type": "Redundant Row",
+      "problematic_entry": 12,
+      "standards_citation_original": "According to FASB ASC 220, financial statement presentation requires faithful representation of expenses, which includes avoiding duplication or addition of expenses that are not backed by business transactions.",
+      "gt_topic": "220",
+      "error_resolution_original": "A new row 'Advertising and Promotions' with an amount of $5,000 was added as an additional operating expense without a valid basis from the company's records. Its inclusion erroneously inflated the 'Total operating expenses' to $48,887 and decreased 'Operating income' to $103,949, which subsequently affected 'Income before provision for income taxes' and 'Net income'. To resolve this, the 'Advertising and Promotions' row should be removed, reducing the total operating expenses back to $43,887, and recalibrating other impacted figures accordingly."
+    },
+    {
+      "index": 15,
+      "error_type": "Misclassification",
+      "problematic_entry": 10,
+      "standards_citation_original": "According to FASB, operating expenses include costs incurred as part of a company\u2019s primary business activities, which includes SG&A. These should not be confused with revenue items or net sales. (Refer to ASC 720-35 for classification of costs).",
+      "gt_topic": "720",
+      "error_resolution_original": "The financial statement incorrectly classified 'Selling, general and administrative' expenses as part of 'Net sales'. This is an error because SG&A expenses should not be recorded under sales, as they are costs that fall under operating expenses. The statement should be corrected by moving 'Selling, general and administrative' back to the 'Operating expenses' section and recalculating the total net sales and other affected totals such as 'Gross margin'."
+    },
+    {
+      "index": 16,
+      "error_type": "Missing Row",
+      "problematic_entry": 8,
+      "standards_citation_original": "According to FASB ASC 230-10-45, all significant items that are an integral part of operating activities must be reported as either cash inflows or outflows from operating activities. Vendor non-trade receivables, as part of working capital adjustments, should be included in the reconciliation of net income to net cash provided by operating activities.",
+      "gt_topic": "230",
+      "error_resolution_original": "The row for 'Vendor non-trade receivables' was erroneously deleted from the 'Operating activities' section of the financial statement. This row represents a decrease of $7,520 in the vendor non-trade receivables, which is a significant component when calculating the changes in operating assets and liabilities. To correct this error, reinstate the row at index 8 with the value '($7,520)' to accurately reflect the decrease in vendor non-trade receivables during the period."
+    },
+    {
+      "index": 17,
+      "error_type": "Numerical Error",
+      "problematic_entry": 12,
+      "standards_citation_original": "According to FASB ASC 210-10-20, liabilities should be accurately classified and reported in financial statements to reflect true financial positions and results of operations. Proper adjustments must be ensured for accurate reporting.",
+      "gt_topic": "210",
+      "error_resolution_original": "The error identified is in row 12, 'Other current and non-current liabilities.' The correct amount according to the transaction data should be $6,110, but it has been incorrectly listed as $15,000. This incorrect amount could mislead stakeholders about the company's liabilities, potentially affecting decision-making. To correct this error, the entry should be revised to match the transactional backup, reflecting an accurate increase in other liabilities to $6,110."
+    },
+    {
+      "index": 18,
+      "error_type": "Redundant Row",
+      "problematic_entry": 13,
+      "standards_citation_original": "FASB Conceptual Framework mentions the need for the financial information to be complete, neutral, and free from error to provide accurate representation. Redundant entries violate this principle by implying inaccurate or double-counted financial events.",
+      "gt_topic": null,
+      "error_resolution_original": "A redundant row 'Redundant Adjustment | $500' was added erroneously. This extra row does not belong under 'Changes in operating assets and liabilities', and it provides no meaningful accounting adjustment or reconciliation related to the operating activities. To correct this error, remove this redundant entry entirely to ensure the document accurately reflects the true financial state without non-existent items."
+    },
+    {
+      "index": 19,
+      "error_type": "Misclassification",
+      "problematic_entry": 7,
+      "standards_citation_original": "According to ASC 230-10-45-16 of the FASB Accounting Standards Codification, operating activities generally involve producing and delivering goods and providing services. Changes in operating assets and liabilities such as accounts receivable should be classified under operating activities.",
+      "gt_topic": "230",
+      "error_resolution_original": "The 'Accounts receivable, net' item was misclassified under 'Investing activities'. This classification is incorrect because changes in 'Accounts receivable, net' relate to 'Operating activities', as they represent adjustments to cash flow from operations by considering cash not yet received from revenue recognized. To correct this error, the 'Accounts receivable, net' line item should be moved back to 'Operating activities'."
+    }
+  ],
+  "multi_error": [
+    {
+      "index": 0,
+      "errors": [
+        {
+          "key": "Information for error 1",
+          "error_type": "Numerical Error",
+          "problematic_entry": 3,
+          "standards_citation_original": "FASB ASC 310 prescribes the standards for accounting receivables, requiring that they be reported at their net realizable value, accounting for possible uncollectibles.",
+          "gt_topic": "310"
+        },
+        {
+          "key": "Information for error 2",
+          "error_type": "Redundant Row",
+          "problematic_entry": 11,
+          "standards_citation_original": "FASB ASC 350 covers accounting for intangible assets and requires that internally developed intangible assets are expensed rather than capitalized unless specific criteria are met.",
+          "gt_topic": "350"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "errors": [
+        {
+          "key": "Information for error 1",
+          "error_type": "Numerical Error",
+          "problematic_entry": 3,
+          "standards_citation_original": "According to FASB ASC Section 310-10, accurate reporting of Accounts Receivable is crucial for reflecting the accurate liquidity position of the entity.",
+          "gt_topic": "310"
+        },
+        {
+          "key": "Information for error 2",
+          "error_type": "Misclassification",
+          "problematic_entry": 11,
+          "standards_citation_original": "FASB Conceptual Framework SFAC No. 6, Paragraph 25, identifies 'Liabilities' as probable future sacrifices of economic benefits arising from present obligations.",
+          "gt_topic": null
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "errors": [
+        {
+          "key": "Information for error 1",
+          "error_type": "Misclassification",
+          "problematic_entry": 8,
+          "standards_citation_original": "According to ASC 730-10-25, research and development costs should be classified as operating expenses, and specifically, according to ASC 730-10-45, these costs should not be included in cost of sales.",
+          "gt_topic": "730"
+        },
+        {
+          "key": "Information for error 2",
+          "error_type": "Missing Row",
+          "problematic_entry": 10,
+          "standards_citation_original": "Financial statement presentation and disclosure requirements for research and development are governed by ASC 730. Costs should be properly classified under their respective headings to ensure accuracy in financial reporting per guidance from ASC 730-30-25.",
+          "gt_topic": "730"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "errors": [
+        {
+          "key": "Information for error 1",
+          "error_type": "Misclassification",
+          "problematic_entry": 14,
+          "standards_citation_original": "According to FASB ASC 220-10-45, an entity shall report as a component of income from continuing operations, unusual or infrequent items, proportionally related to continuing operations.",
+          "gt_topic": "220"
+        },
+        {
+          "key": "Information for error 2",
+          "error_type": "Redundant Row",
+          "problematic_entry": 24,
+          "standards_citation_original": "According to FASB ASC 720-35, advertising costs should be reported as part of SG&A expenses and not separately as non-operating expenses.",
+          "gt_topic": "720"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "errors": [
+        {
+          "key": "Information for error 1",
+          "error_type": "Misclassification",
+          "problematic_entry": 13,
+          "standards_citation_original": "FASB ASC 220-10-45 requires such non-operating items to be reported below operating income to highlight performance from core business operations.",
+          "gt_topic": "220"
+        },
+        {
+          "key": "Information for error 2",
+          "error_type": "Redundant Row",
+          "problematic_entry": 21,
+          "standards_citation_original": "According to the FASB ASC 720-35, entertainment or similar expenses should be recorded as part of selling, general and administrative expenses, unless distinctly categorized for a specific purpose.",
+          "gt_topic": "720"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "errors": [
+        {
+          "key": "Information for error 1",
+          "error_type": "Missing Row",
+          "problematic_entry": 25,
+          "standards_citation_original": "FASB ASC 230-10-45-13 (Classification of Cash Flows) requires that such cash inflows from issuance of debt should be classified appropriately in the financing activities section.",
+          "gt_topic": "230"
+        },
+        {
+          "key": "Information for error 2",
+          "error_type": "Redundant Row",
+          "problematic_entry": 31,
+          "standards_citation_original": "FASB ASC 230-10-45-15 emphasizes the importance of accurately representing cash transactions in cash flow statements without redundant or fictitious entries.",
+          "gt_topic": "230"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1255 @@
+{
+  "seed": 42,
+  "n": 20,
+  "splits": {
+    "correct": {
+      "split": "correct",
+      "n_items": 8,
+      "total_valued_rows": 192,
+      "total_mapped_rows": 170,
+      "coverage": 0.8854,
+      "ticker_lookup_rate": 1.0,
+      "period_parse_rate": 1.0,
+      "strategy_breakdown": {
+        "exact": 142,
+        "none": 22,
+        "fuzzy": 26,
+        "stem_exact": 2
+      },
+      "by_statement_type": {
+        "balance_sheet": {
+          "n_items": 2,
+          "valued_rows": 54,
+          "mapped_rows": 50,
+          "coverage": 0.9259
+        },
+        "income_statement": {
+          "n_items": 6,
+          "valued_rows": 138,
+          "mapped_rows": 120,
+          "coverage": 0.8696
+        }
+      },
+      "top_unmapped_labels": [
+        {
+          "label": "vendor non trade receivables",
+          "count": 5
+        },
+        {
+          "label": "payments for acquisition of property plant and equipment",
+          "count": 3
+        },
+        {
+          "label": "payments for taxes related to net share settlement of equity awards",
+          "count": 3
+        },
+        {
+          "label": "payments for dividends and dividend equivalents",
+          "count": 3
+        },
+        {
+          "label": "proceeds from issuance of term debt net",
+          "count": 3
+        },
+        {
+          "label": "proceeds from repayments of commercial paper net",
+          "count": 3
+        },
+        {
+          "label": "commercial paper",
+          "count": 2
+        }
+      ],
+      "samples": [
+        {
+          "company": "Apple",
+          "ticker": "AAPL",
+          "statement_type": "balance_sheet",
+          "period": "2022-09-24",
+          "coverage": 0.9259,
+          "rows": [
+            {
+              "row_idx": 1,
+              "label": "Cash and cash equivalents",
+              "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+              "asc_primary": "210-10-45-1",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 2,
+              "label": "Marketable securities",
+              "concept": "us-gaap:MarketableSecuritiesCurrent",
+              "asc_primary": "210-10-45-1",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 3,
+              "label": "Accounts receivable, net",
+              "concept": "us-gaap:AccountsReceivableNetCurrent",
+              "asc_primary": "210-10-45-1",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 4,
+              "label": "Vendor non-trade receivables",
+              "concept": null,
+              "asc_primary": null,
+              "strategy": "none",
+              "confidence": 0.0,
+              "mapped": false
+            },
+            {
+              "row_idx": 5,
+              "label": "Inventories",
+              "concept": "us-gaap:InventoryNet",
+              "asc_primary": "210-10-45-1",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 6,
+              "label": "Other current assets",
+              "concept": "us-gaap:OtherAssetsCurrent",
+              "asc_primary": "210-10-45-1",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 7,
+              "label": "Total current assets",
+              "concept": "us-gaap:AssetsCurrent",
+              "asc_primary": "210-10-45-1",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 9,
+              "label": "Marketable securities",
+              "concept": "us-gaap:MarketableSecuritiesCurrent",
+              "asc_primary": "210-10-45-1",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 10,
+              "label": "Property, plant and equipment, net",
+              "concept": "us-gaap:PropertyPlantAndEquipmentNet",
+              "asc_primary": "360-10-35",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 11,
+              "label": "Other non-current assets",
+              "concept": "us-gaap:OtherAssetsNoncurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 12,
+              "label": "Total non-current assets",
+              "concept": "us-gaap:AssetsCurrent",
+              "asc_primary": "210-10-45-1",
+              "strategy": "fuzzy",
+              "confidence": 0.909,
+              "mapped": true
+            },
+            {
+              "row_idx": 13,
+              "label": "Total assets",
+              "concept": "us-gaap:Assets",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 15,
+              "label": "Accounts payable",
+              "concept": "us-gaap:AccountsPayableCurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 16,
+              "label": "Other current liabilities",
+              "concept": "us-gaap:OtherLiabilitiesCurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 17,
+              "label": "Deferred revenue",
+              "concept": "us-gaap:DeferredRevenueCurrent",
+              "asc_primary": "606-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 18,
+              "label": "Commercial paper",
+              "concept": null,
+              "asc_primary": null,
+              "strategy": "none",
+              "confidence": 0.0,
+              "mapped": false
+            },
+            {
+              "row_idx": 19,
+              "label": "Term debt",
+              "concept": "us-gaap:LongTermDebtNoncurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "fuzzy",
+              "confidence": 0.783,
+              "mapped": true
+            },
+            {
+              "row_idx": 20,
+              "label": "Total current liabilities",
+              "concept": "us-gaap:LiabilitiesCurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 22,
+              "label": "Term debt",
+              "concept": "us-gaap:LongTermDebtNoncurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "fuzzy",
+              "confidence": 0.783,
+              "mapped": true
+            },
+            {
+              "row_idx": 23,
+              "label": "Other non-current liabilities",
+              "concept": "us-gaap:OtherLiabilitiesNoncurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 24,
+              "label": "Total non-current liabilities",
+              "concept": "us-gaap:LiabilitiesCurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "fuzzy",
+              "confidence": 0.926,
+              "mapped": true
+            },
+            {
+              "row_idx": 25,
+              "label": "Total liabilities",
+              "concept": "us-gaap:Liabilities",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 28,
+              "label": "Common stock and additional paid-in capital",
+              "concept": "us-gaap:CommonStockValue",
+              "asc_primary": "505-10-45",
+              "strategy": "stem_exact",
+              "confidence": 0.9,
+              "mapped": true
+            },
+            {
+              "row_idx": 29,
+              "label": "Accumulated deficit",
+              "concept": "us-gaap:RetainedEarningsAccumulatedDeficit",
+              "asc_primary": "505-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 30,
+              "label": "Accumulated other comprehensive loss",
+              "concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+              "asc_primary": "220-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 31,
+              "label": "Total shareholders' equity",
+              "concept": "us-gaap:StockholdersEquity",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 32,
+              "label": "Total liabilities and shareholders' equity",
+              "concept": "us-gaap:LiabilitiesAndStockholdersEquity",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            }
+          ]
+        },
+        {
+          "company": "Apple",
+          "ticker": "AAPL",
+          "statement_type": "balance_sheet",
+          "period": "2023-09-30",
+          "coverage": 0.9259,
+          "rows": [
+            {
+              "row_idx": 1,
+              "label": "Cash and cash equivalents",
+              "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+              "asc_primary": "210-10-45-1",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 2,
+              "label": "Marketable securities",
+              "concept": "us-gaap:MarketableSecuritiesCurrent",
+              "asc_primary": "210-10-45-1",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 3,
+              "label": "Accounts receivable, net",
+              "concept": "us-gaap:AccountsReceivableNetCurrent",
+              "asc_primary": "210-10-45-1",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 4,
+              "label": "Vendor non-trade receivables",
+              "concept": null,
+              "asc_primary": null,
+              "strategy": "none",
+              "confidence": 0.0,
+              "mapped": false
+            },
+            {
+              "row_idx": 5,
+              "label": "Inventories",
+              "concept": "us-gaap:InventoryNet",
+              "asc_primary": "210-10-45-1",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 6,
+              "label": "Other current assets",
+              "concept": "us-gaap:OtherAssetsCurrent",
+              "asc_primary": "210-10-45-1",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 7,
+              "label": "Total current assets",
+              "concept": "us-gaap:AssetsCurrent",
+              "asc_primary": "210-10-45-1",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 9,
+              "label": "Marketable securities",
+              "concept": "us-gaap:MarketableSecuritiesCurrent",
+              "asc_primary": "210-10-45-1",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 10,
+              "label": "Property, plant and equipment, net",
+              "concept": "us-gaap:PropertyPlantAndEquipmentNet",
+              "asc_primary": "360-10-35",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 11,
+              "label": "Other non-current assets",
+              "concept": "us-gaap:OtherAssetsNoncurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 12,
+              "label": "Total non-current assets",
+              "concept": "us-gaap:AssetsCurrent",
+              "asc_primary": "210-10-45-1",
+              "strategy": "fuzzy",
+              "confidence": 0.909,
+              "mapped": true
+            },
+            {
+              "row_idx": 13,
+              "label": "Total assets",
+              "concept": "us-gaap:Assets",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 15,
+              "label": "Accounts payable",
+              "concept": "us-gaap:AccountsPayableCurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 16,
+              "label": "Other current liabilities",
+              "concept": "us-gaap:OtherLiabilitiesCurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 17,
+              "label": "Deferred revenue",
+              "concept": "us-gaap:DeferredRevenueCurrent",
+              "asc_primary": "606-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 18,
+              "label": "Commercial paper",
+              "concept": null,
+              "asc_primary": null,
+              "strategy": "none",
+              "confidence": 0.0,
+              "mapped": false
+            },
+            {
+              "row_idx": 19,
+              "label": "Term debt",
+              "concept": "us-gaap:LongTermDebtNoncurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "fuzzy",
+              "confidence": 0.783,
+              "mapped": true
+            },
+            {
+              "row_idx": 20,
+              "label": "Total current liabilities",
+              "concept": "us-gaap:LiabilitiesCurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 22,
+              "label": "Term debt",
+              "concept": "us-gaap:LongTermDebtNoncurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "fuzzy",
+              "confidence": 0.783,
+              "mapped": true
+            },
+            {
+              "row_idx": 23,
+              "label": "Other non-current liabilities",
+              "concept": "us-gaap:OtherLiabilitiesNoncurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 24,
+              "label": "Total non-current liabilities",
+              "concept": "us-gaap:LiabilitiesCurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "fuzzy",
+              "confidence": 0.926,
+              "mapped": true
+            },
+            {
+              "row_idx": 25,
+              "label": "Total liabilities",
+              "concept": "us-gaap:Liabilities",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 28,
+              "label": "Common stock and additional paid-in capital",
+              "concept": "us-gaap:CommonStockValue",
+              "asc_primary": "505-10-45",
+              "strategy": "stem_exact",
+              "confidence": 0.9,
+              "mapped": true
+            },
+            {
+              "row_idx": 29,
+              "label": "Accumulated deficit",
+              "concept": "us-gaap:RetainedEarningsAccumulatedDeficit",
+              "asc_primary": "505-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 30,
+              "label": "Accumulated other comprehensive loss",
+              "concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+              "asc_primary": "220-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 31,
+              "label": "Total shareholders' equity",
+              "concept": "us-gaap:StockholdersEquity",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 32,
+              "label": "Total liabilities and shareholders' equity",
+              "concept": "us-gaap:LiabilitiesAndStockholdersEquity",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            }
+          ]
+        },
+        {
+          "company": "Apple",
+          "ticker": "AAPL",
+          "statement_type": "income_statement",
+          "period": "2023-09-30",
+          "coverage": 0.7778,
+          "rows": [
+            {
+              "row_idx": 1,
+              "label": "Net income",
+              "concept": "us-gaap:NetIncomeLoss",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 3,
+              "label": "Depreciation and amortization",
+              "concept": "us-gaap:DepreciationAndAmortization",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 4,
+              "label": "Share-based compensation expense",
+              "concept": "us-gaap:ShareBasedCompensation",
+              "asc_primary": "230-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 5,
+              "label": "Other",
+              "concept": "us-gaap:OtherOperatingIncomeExpenseNet",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 7,
+              "label": "Accounts receivable, net",
+              "concept": "us-gaap:AccountsReceivableNetCurrent",
+              "asc_primary": "210-10-45-1",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 8,
+              "label": "Vendor non-trade receivables",
+              "concept": null,
+              "asc_primary": null,
+              "strategy": "none",
+              "confidence": 0.0,
+              "mapped": false
+            },
+            {
+              "row_idx": 9,
+              "label": "Inventories",
+              "concept": "us-gaap:InventoryNet",
+              "asc_primary": "210-10-45-1",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 10,
+              "label": "Other current and non-current assets",
+              "concept": "us-gaap:OtherAssetsNoncurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "fuzzy",
+              "confidence": 0.8,
+              "mapped": true
+            },
+            {
+              "row_idx": 11,
+              "label": "Accounts payable",
+              "concept": "us-gaap:AccountsPayableCurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 12,
+              "label": "Other current and non-current liabilities",
+              "concept": "us-gaap:OtherLiabilitiesNoncurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "fuzzy",
+              "confidence": 0.829,
+              "mapped": true
+            },
+            {
+              "row_idx": 13,
+              "label": "Cash generated by operating activities",
+              "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+              "asc_primary": "230-10-45-16",
+              "strategy": "fuzzy",
+              "confidence": 0.81,
+              "mapped": true
+            },
+            {
+              "row_idx": 15,
+              "label": "Purchases of marketable securities",
+              "concept": "us-gaap:PaymentsToAcquireMarketableSecurities",
+              "asc_primary": "230-10-45-12",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 16,
+              "label": "Proceeds from maturities of marketable securities",
+              "concept": "us-gaap:ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities",
+              "asc_primary": "230-10-45-12",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 17,
+              "label": "Proceeds from sales of marketable securities",
+              "concept": "us-gaap:ProceedsFromSaleOfAvailableForSaleSecurities",
+              "asc_primary": "230-10-45-12",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 18,
+              "label": "Payments for acquisition of property, plant and eq",
+              "concept": null,
+              "asc_primary": null,
+              "strategy": "none",
+              "confidence": 0.0,
+              "mapped": false
+            },
+            {
+              "row_idx": 19,
+              "label": "Other",
+              "concept": "us-gaap:OtherOperatingIncomeExpenseNet",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 20,
+              "label": "Cash generated by (used in) investing activities",
+              "concept": "us-gaap:NetCashProvidedByUsedInInvestingActivities",
+              "asc_primary": "230-10-45-12",
+              "strategy": "fuzzy",
+              "confidence": 0.842,
+              "mapped": true
+            },
+            {
+              "row_idx": 22,
+              "label": "Payments for taxes related to net share settlement",
+              "concept": null,
+              "asc_primary": null,
+              "strategy": "none",
+              "confidence": 0.0,
+              "mapped": false
+            },
+            {
+              "row_idx": 23,
+              "label": "Payments for dividends and dividend equivalents",
+              "concept": null,
+              "asc_primary": null,
+              "strategy": "none",
+              "confidence": 0.0,
+              "mapped": false
+            },
+            {
+              "row_idx": 24,
+              "label": "Repurchases of common stock",
+              "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+              "asc_primary": "230-10-45-25",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 25,
+              "label": "Proceeds from issuance of term debt, net",
+              "concept": null,
+              "asc_primary": null,
+              "strategy": "none",
+              "confidence": 0.0,
+              "mapped": false
+            },
+            {
+              "row_idx": 26,
+              "label": "Repayments of term debt",
+              "concept": "us-gaap:RepaymentsOfLongTermDebt",
+              "asc_primary": "230-10-45-25",
+              "strategy": "fuzzy",
+              "confidence": 0.902,
+              "mapped": true
+            },
+            {
+              "row_idx": 27,
+              "label": "Proceeds from/(Repayments of) commercial paper, ne",
+              "concept": null,
+              "asc_primary": null,
+              "strategy": "none",
+              "confidence": 0.0,
+              "mapped": false
+            },
+            {
+              "row_idx": 28,
+              "label": "Other",
+              "concept": "us-gaap:OtherOperatingIncomeExpenseNet",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 29,
+              "label": "Cash used in financing activities",
+              "concept": "us-gaap:NetCashProvidedByUsedInFinancingActivities",
+              "asc_primary": "230-10-45-25",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 30,
+              "label": "Increase/(Decrease) in cash, cash equivalents and ",
+              "concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect",
+              "asc_primary": "230-10-45-28",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 31,
+              "label": "Cash, cash equivalents and restricted cash, ending",
+              "concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents",
+              "asc_primary": "230-10-45-28",
+              "strategy": "fuzzy",
+              "confidence": 0.831,
+              "mapped": true
+            }
+          ]
+        },
+        {
+          "company": "Apple",
+          "ticker": "AAPL",
+          "statement_type": "income_statement",
+          "period": "2023-09-30",
+          "coverage": 1.0,
+          "rows": [
+            {
+              "row_idx": 1,
+              "label": "Products",
+              "concept": "us-gaap:SalesRevenueGoodsNet",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 2,
+              "label": "Services",
+              "concept": "us-gaap:SalesRevenueServicesNet",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 3,
+              "label": "Total net sales",
+              "concept": "us-gaap:SalesRevenueNet",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 5,
+              "label": "Products",
+              "concept": "us-gaap:SalesRevenueGoodsNet",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 6,
+              "label": "Services",
+              "concept": "us-gaap:SalesRevenueServicesNet",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 7,
+              "label": "Total cost of sales",
+              "concept": "us-gaap:CostOfGoodsAndServicesSold",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 8,
+              "label": "Gross margin",
+              "concept": "us-gaap:GrossProfit",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 10,
+              "label": "Research and development",
+              "concept": "us-gaap:ResearchAndDevelopmentExpense",
+              "asc_primary": "730-10-25",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 11,
+              "label": "Selling, general and administrative",
+              "concept": "us-gaap:SellingGeneralAndAdministrativeExpense",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 12,
+              "label": "Total operating expenses",
+              "concept": "us-gaap:OperatingExpenses",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 13,
+              "label": "Operating income",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 14,
+              "label": "Other income/(expense), net",
+              "concept": "us-gaap:NonoperatingIncomeExpense",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 15,
+              "label": "Income before provision for income taxes",
+              "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 16,
+              "label": "Provision for income taxes",
+              "concept": "us-gaap:IncomeTaxExpenseBenefit",
+              "asc_primary": "740-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 17,
+              "label": "Net income",
+              "concept": "us-gaap:NetIncomeLoss",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 19,
+              "label": "Basic",
+              "concept": "us-gaap:EarningsPerShareBasic",
+              "asc_primary": "260-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 20,
+              "label": "Diluted",
+              "concept": "us-gaap:EarningsPerShareDiluted",
+              "asc_primary": "260-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 22,
+              "label": "Basic",
+              "concept": "us-gaap:EarningsPerShareBasic",
+              "asc_primary": "260-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 23,
+              "label": "Diluted",
+              "concept": "us-gaap:EarningsPerShareDiluted",
+              "asc_primary": "260-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            }
+          ]
+        },
+        {
+          "company": "Apple",
+          "ticker": "AAPL",
+          "statement_type": "income_statement",
+          "period": "2021-09-25",
+          "coverage": 0.7778,
+          "rows": [
+            {
+              "row_idx": 1,
+              "label": "Net income",
+              "concept": "us-gaap:NetIncomeLoss",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 3,
+              "label": "Depreciation and amortization",
+              "concept": "us-gaap:DepreciationAndAmortization",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 4,
+              "label": "Share-based compensation expense",
+              "concept": "us-gaap:ShareBasedCompensation",
+              "asc_primary": "230-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 5,
+              "label": "Other",
+              "concept": "us-gaap:OtherOperatingIncomeExpenseNet",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 7,
+              "label": "Accounts receivable, net",
+              "concept": "us-gaap:AccountsReceivableNetCurrent",
+              "asc_primary": "210-10-45-1",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 8,
+              "label": "Vendor non-trade receivables",
+              "concept": null,
+              "asc_primary": null,
+              "strategy": "none",
+              "confidence": 0.0,
+              "mapped": false
+            },
+            {
+              "row_idx": 9,
+              "label": "Inventories",
+              "concept": "us-gaap:InventoryNet",
+              "asc_primary": "210-10-45-1",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 10,
+              "label": "Other current and non-current assets",
+              "concept": "us-gaap:OtherAssetsNoncurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "fuzzy",
+              "confidence": 0.8,
+              "mapped": true
+            },
+            {
+              "row_idx": 11,
+              "label": "Accounts payable",
+              "concept": "us-gaap:AccountsPayableCurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 12,
+              "label": "Other current and non-current liabilities",
+              "concept": "us-gaap:OtherLiabilitiesNoncurrent",
+              "asc_primary": "210-10-45",
+              "strategy": "fuzzy",
+              "confidence": 0.829,
+              "mapped": true
+            },
+            {
+              "row_idx": 13,
+              "label": "Cash generated by operating activities",
+              "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+              "asc_primary": "230-10-45-16",
+              "strategy": "fuzzy",
+              "confidence": 0.81,
+              "mapped": true
+            },
+            {
+              "row_idx": 15,
+              "label": "Purchases of marketable securities",
+              "concept": "us-gaap:PaymentsToAcquireMarketableSecurities",
+              "asc_primary": "230-10-45-12",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 16,
+              "label": "Proceeds from maturities of marketable securities",
+              "concept": "us-gaap:ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities",
+              "asc_primary": "230-10-45-12",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 17,
+              "label": "Proceeds from sales of marketable securities",
+              "concept": "us-gaap:ProceedsFromSaleOfAvailableForSaleSecurities",
+              "asc_primary": "230-10-45-12",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 18,
+              "label": "Payments for acquisition of property, plant and eq",
+              "concept": null,
+              "asc_primary": null,
+              "strategy": "none",
+              "confidence": 0.0,
+              "mapped": false
+            },
+            {
+              "row_idx": 19,
+              "label": "Other",
+              "concept": "us-gaap:OtherOperatingIncomeExpenseNet",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 20,
+              "label": "Cash generated by (used in) investing activities",
+              "concept": "us-gaap:NetCashProvidedByUsedInInvestingActivities",
+              "asc_primary": "230-10-45-12",
+              "strategy": "fuzzy",
+              "confidence": 0.842,
+              "mapped": true
+            },
+            {
+              "row_idx": 22,
+              "label": "Payments for taxes related to net share settlement",
+              "concept": null,
+              "asc_primary": null,
+              "strategy": "none",
+              "confidence": 0.0,
+              "mapped": false
+            },
+            {
+              "row_idx": 23,
+              "label": "Payments for dividends and dividend equivalents",
+              "concept": null,
+              "asc_primary": null,
+              "strategy": "none",
+              "confidence": 0.0,
+              "mapped": false
+            },
+            {
+              "row_idx": 24,
+              "label": "Repurchases of common stock",
+              "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+              "asc_primary": "230-10-45-25",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 25,
+              "label": "Proceeds from issuance of term debt, net",
+              "concept": null,
+              "asc_primary": null,
+              "strategy": "none",
+              "confidence": 0.0,
+              "mapped": false
+            },
+            {
+              "row_idx": 26,
+              "label": "Repayments of term debt",
+              "concept": "us-gaap:RepaymentsOfLongTermDebt",
+              "asc_primary": "230-10-45-25",
+              "strategy": "fuzzy",
+              "confidence": 0.902,
+              "mapped": true
+            },
+            {
+              "row_idx": 27,
+              "label": "Proceeds from/(Repayments of) commercial paper, ne",
+              "concept": null,
+              "asc_primary": null,
+              "strategy": "none",
+              "confidence": 0.0,
+              "mapped": false
+            },
+            {
+              "row_idx": 28,
+              "label": "Other",
+              "concept": "us-gaap:OtherOperatingIncomeExpenseNet",
+              "asc_primary": "225-10-45",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 29,
+              "label": "Cash used in financing activities",
+              "concept": "us-gaap:NetCashProvidedByUsedInFinancingActivities",
+              "asc_primary": "230-10-45-25",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 30,
+              "label": "Increase/(Decrease) in cash, cash equivalents and ",
+              "concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect",
+              "asc_primary": "230-10-45-28",
+              "strategy": "exact",
+              "confidence": 1.0,
+              "mapped": true
+            },
+            {
+              "row_idx": 31,
+              "label": "Cash, cash equivalents and restricted cash, ending",
+              "concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents",
+              "asc_primary": "230-10-45-28",
+              "strategy": "fuzzy",
+              "confidence": 0.831,
+              "mapped": true
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

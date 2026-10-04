@@ -1,0 +1,19 @@
+{
+  "call_id": "5a8778073743bf868e6ce3307c3305be",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "b6afb5575f3657c8aac4eff148c6d5d4037d6b7a65d654dcebf8ceb179596c53",
+  "reserved_usd": "0.036536",
+  "status": "ok",
+  "content": "```json\n{\"judgement\":\"correct\",\"error_type\":null,\"row\":null,\"citation\":null,\"citation_abstain\":true,\"evidence\":[{\"source\":\"statement\",\"quote\":\"Net cash from operating activities | $8,379\",\"row\":4},{\"source\":\"statement\",\"quote\":\"Net increase (decrease) in cash | $87\",\"row\":14},{\"source\":\"transactions\",\"quote\":\"purchases of productive assets: −4,342 (decrease); proceeds reclassed against capex: +736 (increase)\",\"row\":null},{\"source\":\"transactions\",\"quote\":\"common stock repurchased: −866 (decrease); settlement / retire-share adjustment: +161 (increase)\",\"row\":null}]}\n```\n\nAll subtotals and the net change foot: 8,379 − 3,667 − 4,625 = 87. Each line with transaction evidence nets to its reported amount: net income 6,379, share-based compensation 107, capex −3,606, other investing −61, repurchases −705. The \"proceeds reclassed against capex\" component could suggest netting, but the evidence is too thin to call it a presentation error. No supported fault was found.",
+  "response_id": "gen-1791001087-GSjAhFqNpztmMXFwM7ez",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 1384,
+    "completion_tokens": 719,
+    "total_tokens": 2103,
+    "cost": 0.019916
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 8.575
+}

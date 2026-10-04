@@ -1,0 +1,694 @@
+{
+  "schema_version": 1,
+  "study_status": "Frozen inspected development cohort; provisional labels; no publication test certification.",
+  "n_cases": 48,
+  "n_company_clusters": 8,
+  "provenance": {
+    "public_input_sha256": "5b07b65a8427ca4615339d1dfc240b02ad08ece654872c1c72ea94c8efaf71b9",
+    "scoring_key_sha256": "ddc4e618cff3de2ee3c9604e8ae5528c80349859b85c54d7a1ac8819786f5183",
+    "manifest_sha256": "136191a795f74fd2a252514404d1db17ab4b92dfc6debdccbb87a08d5c934a84",
+    "recorded_source_commit": "72da89a9e6400bfd1da9041a742f9cdeb00470bc",
+    "recorded_source_file_hashes": {
+      "exam.jsonl": "83f44363450ffa4b53ca7744e6728cd0d75bacb25a7032869b27f4011f2658ce",
+      "answer_key.jsonl": "a00a4057184bda6a5c80d6091453b5ff586a956dec9b52871c3a91eafe9a3c23"
+    },
+    "errors": [],
+    "passed": true
+  },
+  "public_payload": {
+    "passed": true,
+    "n_records": 48,
+    "duplicate_case_ids": [],
+    "errors": [],
+    "scope": "Structural whitelist and obvious label-marker checks only; semantic leakage is not certified absent."
+  },
+  "partition_manifest_provided": false,
+  "partition_validation": {
+    "passed": false,
+    "n_records": 48,
+    "split_counts": {
+      "development": 48
+    },
+    "n_connected_components": 8,
+    "errors": [
+      {
+        "case_id": "case_aa3bbe2b8691f78383ee",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_aa3bbe2b8691f78383ee",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_aa3bbe2b8691f78383ee",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_f41742b3a4e2fb83f231",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_f41742b3a4e2fb83f231",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_f41742b3a4e2fb83f231",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_96f80313236e44ee8109",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_96f80313236e44ee8109",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_96f80313236e44ee8109",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_261ab15629baec708d83",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_261ab15629baec708d83",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_261ab15629baec708d83",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_960cfd9a4bba0b5c553a",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_960cfd9a4bba0b5c553a",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_960cfd9a4bba0b5c553a",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_fd2292c43951c99d1f6f",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_fd2292c43951c99d1f6f",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_fd2292c43951c99d1f6f",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_5c79057c6748c1d2e605",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_5c79057c6748c1d2e605",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_5c79057c6748c1d2e605",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_d60dcac90c192ebcd31c",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_d60dcac90c192ebcd31c",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_d60dcac90c192ebcd31c",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_41b26ea05925032aacc7",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_41b26ea05925032aacc7",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_41b26ea05925032aacc7",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_de455b4d36c07315719f",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_de455b4d36c07315719f",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_de455b4d36c07315719f",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_fa6f056afdf85662f601",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_fa6f056afdf85662f601",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_fa6f056afdf85662f601",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_e4307b9e73aca174e281",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_e4307b9e73aca174e281",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_e4307b9e73aca174e281",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_8e1b05d28ced388202e7",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_8e1b05d28ced388202e7",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_8e1b05d28ced388202e7",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_309148c5c9877a2e82da",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_309148c5c9877a2e82da",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_309148c5c9877a2e82da",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_2edbf676d94e573cdd4e",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_2edbf676d94e573cdd4e",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_2edbf676d94e573cdd4e",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_7dad7285f6966525d3b0",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_7dad7285f6966525d3b0",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_7dad7285f6966525d3b0",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_6c6c786e0d9a5a2bcff8",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_6c6c786e0d9a5a2bcff8",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_6c6c786e0d9a5a2bcff8",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_8494e9109ff8044d5892",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_8494e9109ff8044d5892",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_8494e9109ff8044d5892",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_064d3c06171fde95dda0",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_064d3c06171fde95dda0",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_064d3c06171fde95dda0",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_6673862ac8567253d89d",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_6673862ac8567253d89d",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_6673862ac8567253d89d",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_c73a5097fb378ca9cd5e",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_c73a5097fb378ca9cd5e",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_c73a5097fb378ca9cd5e",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_fbf75a377151757a382c",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_fbf75a377151757a382c",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_fbf75a377151757a382c",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_a1ab4bba46145526d2f3",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_a1ab4bba46145526d2f3",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_a1ab4bba46145526d2f3",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_384a04f2789ffeca1a92",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_384a04f2789ffeca1a92",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_384a04f2789ffeca1a92",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_bbeb1ea42c647058570f",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_bbeb1ea42c647058570f",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_bbeb1ea42c647058570f",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_1978e5c21aefe1e4b8a7",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_1978e5c21aefe1e4b8a7",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_1978e5c21aefe1e4b8a7",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_bfd3b5245a1bc700cbd6",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_bfd3b5245a1bc700cbd6",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_bfd3b5245a1bc700cbd6",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_b17319f49dec56baf12b",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_b17319f49dec56baf12b",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_b17319f49dec56baf12b",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_a5dff52701c61f618d5d",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_a5dff52701c61f618d5d",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_a5dff52701c61f618d5d",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_d1efe0af0cfd3eaa909d",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_d1efe0af0cfd3eaa909d",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_d1efe0af0cfd3eaa909d",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_33a5c50b437c422eb1e1",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_33a5c50b437c422eb1e1",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_33a5c50b437c422eb1e1",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_cc180e9e3a6186422bac",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_cc180e9e3a6186422bac",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_cc180e9e3a6186422bac",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_3a65c485abbe1984ae27",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_3a65c485abbe1984ae27",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_3a65c485abbe1984ae27",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_87c726f7a2504ed0d85a",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_87c726f7a2504ed0d85a",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_87c726f7a2504ed0d85a",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_616f2d2146f23bd81607",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_616f2d2146f23bd81607",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_616f2d2146f23bd81607",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_2dc2afcc1d91f372810e",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_2dc2afcc1d91f372810e",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_2dc2afcc1d91f372810e",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_dfe914ba62936e8a096f",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_dfe914ba62936e8a096f",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_dfe914ba62936e8a096f",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_72959fb5d53dade7a524",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_72959fb5d53dade7a524",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_72959fb5d53dade7a524",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_197844f25e4b4b75fbe9",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_197844f25e4b4b75fbe9",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_197844f25e4b4b75fbe9",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_b200b8872e8d3b0e2d0b",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_b200b8872e8d3b0e2d0b",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_b200b8872e8d3b0e2d0b",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_aa698b1e854dd37de14f",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_aa698b1e854dd37de14f",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_aa698b1e854dd37de14f",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_a2f22d9fc55ca36d8411",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_a2f22d9fc55ca36d8411",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_a2f22d9fc55ca36d8411",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_1bed53ac07435b3f7ade",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_1bed53ac07435b3f7ade",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_1bed53ac07435b3f7ade",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_2f3e27bae3c9eb501d70",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_2f3e27bae3c9eb501d70",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_2f3e27bae3c9eb501d70",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_87b8b6091e9cf2644c6e",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_87b8b6091e9cf2644c6e",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_87b8b6091e9cf2644c6e",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_273b51b8ce3b6bbf2ae3",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_273b51b8ce3b6bbf2ae3",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_273b51b8ce3b6bbf2ae3",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_75ac978357bec09b7be4",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_75ac978357bec09b7be4",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_75ac978357bec09b7be4",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "case_id": "case_41544387f1642428ca32",
+        "error": "missing or invalid filing_ids"
+      },
+      {
+        "case_id": "case_41544387f1642428ca32",
+        "error": "missing or invalid event_ids"
+      },
+      {
+        "case_id": "case_41544387f1642428ca32",
+        "error": "missing or invalid variant_group_ids"
+      },
+      {
+        "error": "release partition requires test and at least one non-test split"
+      }
+    ],
+    "overlapping_identities": [],
+    "mixed_components": [],
+    "scope": "Identity disjointness only; supplied IDs and source relationships still require provenance verification."
+  },
+  "development_history": {
+    "passed": false,
+    "known_inspected_cohort": true,
+    "reason": "Inspected public cohort cannot be relabelled as a fresh test"
+  },
+  "integrity_release_gate_passed": false,
+  "duplicate_source_exam_ids": [],
+  "identical_observable_statement_and_evidence": [],
+  "shared_company_period_statement_groups": [
+    {
+      "identity": "0000001800:2020-12-31:BalanceSheet",
+      "case_ids": [
+        "case_6673862ac8567253d89d",
+        "case_273b51b8ce3b6bbf2ae3"
+      ]
+    },
+    {
+      "identity": "0000051434:2023-12-31:BalanceSheet",
+      "case_ids": [
+        "case_b17319f49dec56baf12b",
+        "case_a2f22d9fc55ca36d8411"
+      ]
+    },
+    {
+      "identity": "0000100885:2023-12-31:CashFlow",
+      "case_ids": [
+        "case_f41742b3a4e2fb83f231",
+        "case_d60dcac90c192ebcd31c"
+      ]
+    },
+    {
+      "identity": "0001655210:2022-12-31:BalanceSheet",
+      "case_ids": [
+        "case_1bed53ac07435b3f7ade",
+        "case_2f3e27bae3c9eb501d70"
+      ]
+    }
+  ],
+  "shared_clean_statement_hashes": [
+    {
+      "identity": "41c863f61945b408a63ff4ac5ee638e03c2ed245257a423ba79a189d02016748",
+      "case_ids": [
+        "case_6673862ac8567253d89d",
+        "case_273b51b8ce3b6bbf2ae3"
+      ]
+    },
+    {
+      "identity": "74ac276f8a39f43e76fe99ac22711a8f5e6b677464dcb6cea8277175e282d436",
+      "case_ids": [
+        "case_1bed53ac07435b3f7ade",
+        "case_2f3e27bae3c9eb501d70"
+      ]
+    },
+    {
+      "identity": "7d8117f5b17c309a2fc7806ac6d1f11b7f9e6733798b6b01c8f33c1db26c13ca",
+      "case_ids": [
+        "case_f41742b3a4e2fb83f231",
+        "case_d60dcac90c192ebcd31c"
+      ]
+    },
+    {
+      "identity": "e32fe9bb870762a931fc888b0596bdc9ce7d81684ab7e236f296943a9d1f0f81",
+      "case_ids": [
+        "case_b17319f49dec56baf12b",
+        "case_a2f22d9fc55ca36d8411"
+      ]
+    }
+  ],
+  "limitations": [
+    "Structural payload checks do not rule out semantic leakage through synthetic transaction evidence.",
+    "Company/period/statement matches are coarse source-reuse diagnostics, not verified filing/event IDs.",
+    "Missing filing, underlying-event and variant-family identities block disjointness certification; no IDs were invented.",
+    "The already inspected 48 cases remain development data even if a later partition file passes identity checks.",
+    "Eight selected companies and unvalidated citation labels do not support population generalization or accounting-correctness claims.",
+    "Source file hashes are those recorded at original selection; this command does not download or re-audit SEC filings."
+  ]
+}

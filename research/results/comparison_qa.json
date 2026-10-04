@@ -1,0 +1,25 @@
+{
+  "checked_at_utc": "2026-10-03T22:33:02+00:00",
+  "browser": "system Chromium via Playwright; offline set_content rendering",
+  "screenshot_size": {
+    "width": 1800,
+    "height": 1200
+  },
+  "checks": {
+    "all_primary_and_posthoc_display_cells_match_source_json": true,
+    "all_eleven_requested_columns_present": true,
+    "offline_three_stage_repair_separate": true,
+    "full_metric_definitions_available": true,
+    "mobile_table_scroll_does_not_overflow_page": true,
+    "javascript_errors_zero": true,
+    "network_requests_zero": true
+  },
+  "javascript_errors": [],
+  "network_requests": [],
+  "artifact_sha256": {
+    "research/results/comparison_table.json": "7d83ed694f50a448930614961a328dbfa09184e05a29799df3d9082921897607",
+    "research/results/comparison.html": "c819ecbc9333058821ffbb957d29225992e8d1e527199bb593e0d2538d790160",
+    "research/results/comparison.png": "be9807eb58c15c67d1f68fc2d339db83b7b9e87d43b95587e6ef41cab0ac6436"
+  },
+  "scope": "Rendering and faithful display of the recorded comparison JSON only; does not establish accounting applicability or superiority."
+}

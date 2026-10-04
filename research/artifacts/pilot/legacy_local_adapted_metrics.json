@@ -1,0 +1,1805 @@
+{
+  "evaluation_label": "Exploratory development pilot; agreement with unvalidated labels, not accounting correctness",
+  "caveat": "Eight purposively limited companies; company-cluster bootstrap is unstable at n=8. No final-test, representative-population, or superiority claim.",
+  "n_companies": 8,
+  "n_cases": 48,
+  "conditions": {
+    "legacy_local_adapted": {
+      "metrics": {
+        "citation_abstention_rate": {
+          "value": 0.9791666666666666,
+          "numerator": 47,
+          "denominator": 48,
+          "company_cluster_ci95": [
+            0.9375,
+            1.0
+          ]
+        },
+        "clean_specificity": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 16,
+          "company_cluster_ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        "decision_abstention_rate": {
+          "value": 0.875,
+          "numerator": 42,
+          "denominator": 48,
+          "company_cluster_ci95": [
+            0.8333333333333334,
+            0.9375
+          ]
+        },
+        "detection_sensitivity": {
+          "value": 0.1875,
+          "numerator": 6,
+          "denominator": 32,
+          "company_cluster_ci95": [
+            0.09375,
+            0.25
+          ]
+        },
+        "error_type_accuracy": {
+          "value": 0.1875,
+          "numerator": 6,
+          "denominator": 32,
+          "company_cluster_ci95": [
+            0.09375,
+            0.25
+          ]
+        },
+        "failure_rate": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 48,
+          "company_cluster_ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        "joint_detection_type_row": {
+          "value": 0.125,
+          "numerator": 4,
+          "denominator": 32,
+          "company_cluster_ci95": [
+            0.03125,
+            0.21875
+          ]
+        },
+        "joint_detection_type_row_full_citation": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 16,
+          "company_cluster_ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        "judgement_accuracy": {
+          "value": 0.125,
+          "numerator": 6,
+          "denominator": 48,
+          "company_cluster_ci95": [
+            0.0625,
+            0.16666666666666666
+          ]
+        },
+        "noncitable_citation_abstention": {
+          "value": 0.96875,
+          "numerator": 31,
+          "denominator": 32,
+          "company_cluster_ci95": [
+            0.90625,
+            1.0
+          ]
+        },
+        "row_accuracy": {
+          "value": 0.125,
+          "numerator": 4,
+          "denominator": 32,
+          "company_cluster_ci95": [
+            0.03125,
+            0.21875
+          ]
+        },
+        "unvalidated_full_citation_agreement": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 16,
+          "company_cluster_ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        "unvalidated_topic_agreement": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 16,
+          "company_cluster_ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        "verified_quote_rate": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 48,
+          "company_cluster_ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "statuses": {
+        "ok": 48
+      },
+      "cases": [
+        {
+          "case_id": "case_aa3bbe2b8691f78383ee",
+          "company": "UnitedHealth Group Incorporated",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": 0,
+            "detection_sensitivity": null,
+            "error_type_accuracy": null,
+            "row_accuracy": null,
+            "joint_detection_type_row": null,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Correct",
+          "gold_error_type": null,
+          "gold_row": null,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_f41742b3a4e2fb83f231",
+          "company": "UNION PACIFIC CORP",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": 0,
+            "detection_sensitivity": null,
+            "error_type_accuracy": null,
+            "row_accuracy": null,
+            "joint_detection_type_row": null,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Correct",
+          "gold_error_type": null,
+          "gold_row": null,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_96f80313236e44ee8109",
+          "company": "CROCS,\u00a0INC.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Redundant Row",
+          "gold_row": 20,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_261ab15629baec708d83",
+          "company": "Freeport-McMoRan Inc.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": 0,
+            "detection_sensitivity": null,
+            "error_type_accuracy": null,
+            "row_accuracy": null,
+            "joint_detection_type_row": null,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Correct",
+          "gold_error_type": null,
+          "gold_row": null,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_960cfd9a4bba0b5c553a",
+          "company": "UnitedHealth Group Incorporated",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": 0,
+            "unvalidated_topic_agreement": 0,
+            "joint_detection_type_row_full_citation": 0,
+            "noncitable_citation_abstention": null,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Numerical Error",
+          "gold_row": 10,
+          "gold_citation": "ASC 360-10-35-17",
+          "gold_citable": true,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_fd2292c43951c99d1f6f",
+          "company": "INTERNATIONAL PAPER COMPANY",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": 0,
+            "unvalidated_topic_agreement": 0,
+            "joint_detection_type_row_full_citation": 0,
+            "noncitable_citation_abstention": null,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Numerical Error",
+          "gold_row": 0,
+          "gold_citation": "ASC 606-10-25-23",
+          "gold_citable": true,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_5c79057c6748c1d2e605",
+          "company": "INTERNATIONAL PAPER COMPANY",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Missing Row",
+          "gold_row": 1,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_d60dcac90c192ebcd31c",
+          "company": "UNION PACIFIC CORP",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Missing Row",
+          "gold_row": 11,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_41b26ea05925032aacc7",
+          "company": "CROCS,\u00a0INC.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": 0,
+            "detection_sensitivity": null,
+            "error_type_accuracy": null,
+            "row_accuracy": null,
+            "joint_detection_type_row": null,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Correct",
+          "gold_error_type": null,
+          "gold_row": null,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_de455b4d36c07315719f",
+          "company": "INTERNATIONAL PAPER COMPANY",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Redundant Row",
+          "gold_row": 18,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_fa6f056afdf85662f601",
+          "company": "UnitedHealth Group Incorporated",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Numerical Error",
+          "gold_row": 28,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_e4307b9e73aca174e281",
+          "company": "INTERNATIONAL PAPER COMPANY",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": 0,
+            "detection_sensitivity": null,
+            "error_type_accuracy": null,
+            "row_accuracy": null,
+            "joint_detection_type_row": null,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Correct",
+          "gold_error_type": null,
+          "gold_row": null,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_8e1b05d28ced388202e7",
+          "company": "Freeport-McMoRan Inc.",
+          "outcomes": {
+            "judgement_accuracy": 1,
+            "clean_specificity": null,
+            "detection_sensitivity": 1,
+            "error_type_accuracy": 1,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 0,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "incorrect",
+            "error_type": "Missing Row",
+            "row": 2,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Missing Row",
+          "gold_row": 1,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_309148c5c9877a2e82da",
+          "company": "ABBOTT LABORATORIES",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": 0,
+            "detection_sensitivity": null,
+            "error_type_accuracy": null,
+            "row_accuracy": null,
+            "joint_detection_type_row": null,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Correct",
+          "gold_error_type": null,
+          "gold_row": null,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_2edbf676d94e573cdd4e",
+          "company": "BEYOND MEAT, INC.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": 0,
+            "unvalidated_topic_agreement": 0,
+            "joint_detection_type_row_full_citation": 0,
+            "noncitable_citation_abstention": null,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Numerical Error",
+          "gold_row": 2,
+          "gold_citation": "ASC 730-10-25-1",
+          "gold_citable": true,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_7dad7285f6966525d3b0",
+          "company": "UNION PACIFIC CORP",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": 0,
+            "unvalidated_topic_agreement": 0,
+            "joint_detection_type_row_full_citation": 0,
+            "noncitable_citation_abstention": null,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Misclassification",
+          "gold_row": 8,
+          "gold_citation": "ASC 842-10-25-2",
+          "gold_citable": true,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_6c6c786e0d9a5a2bcff8",
+          "company": "CROCS,\u00a0INC.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": 0,
+            "unvalidated_topic_agreement": 0,
+            "joint_detection_type_row_full_citation": 0,
+            "noncitable_citation_abstention": null,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Numerical Error",
+          "gold_row": 0,
+          "gold_citation": "ASC 606-10-25-23",
+          "gold_citable": true,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_8494e9109ff8044d5892",
+          "company": "ABBOTT LABORATORIES",
+          "outcomes": {
+            "judgement_accuracy": 1,
+            "clean_specificity": null,
+            "detection_sensitivity": 1,
+            "error_type_accuracy": 1,
+            "row_accuracy": 1,
+            "joint_detection_type_row": 1,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 0,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "incorrect",
+            "error_type": "Numerical Error",
+            "row": 8,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Numerical Error",
+          "gold_row": 8,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_064d3c06171fde95dda0",
+          "company": "Freeport-McMoRan Inc.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": 0,
+            "unvalidated_topic_agreement": 0,
+            "joint_detection_type_row_full_citation": 0,
+            "noncitable_citation_abstention": null,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Misclassification",
+          "gold_row": 2,
+          "gold_citation": "ASC 230-10-45-15",
+          "gold_citable": true,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_6673862ac8567253d89d",
+          "company": "ABBOTT LABORATORIES",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": 0,
+            "detection_sensitivity": null,
+            "error_type_accuracy": null,
+            "row_accuracy": null,
+            "joint_detection_type_row": null,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Correct",
+          "gold_error_type": null,
+          "gold_row": null,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_c73a5097fb378ca9cd5e",
+          "company": "Freeport-McMoRan Inc.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": 0,
+            "unvalidated_topic_agreement": 0,
+            "joint_detection_type_row_full_citation": 0,
+            "noncitable_citation_abstention": null,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Misclassification",
+          "gold_row": 9,
+          "gold_citation": "ASC 210-10-45-1",
+          "gold_citable": true,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_fbf75a377151757a382c",
+          "company": "UnitedHealth Group Incorporated",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": 0,
+            "detection_sensitivity": null,
+            "error_type_accuracy": null,
+            "row_accuracy": null,
+            "joint_detection_type_row": null,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Correct",
+          "gold_error_type": null,
+          "gold_row": null,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_a1ab4bba46145526d2f3",
+          "company": "Freeport-McMoRan Inc.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": 0,
+            "detection_sensitivity": null,
+            "error_type_accuracy": null,
+            "row_accuracy": null,
+            "joint_detection_type_row": null,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Correct",
+          "gold_error_type": null,
+          "gold_row": null,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_384a04f2789ffeca1a92",
+          "company": "CROCS,\u00a0INC.",
+          "outcomes": {
+            "judgement_accuracy": 1,
+            "clean_specificity": null,
+            "detection_sensitivity": 1,
+            "error_type_accuracy": 1,
+            "row_accuracy": 1,
+            "joint_detection_type_row": 1,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 0,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "incorrect",
+            "error_type": "Numerical Error",
+            "row": 8,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Numerical Error",
+          "gold_row": 8,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_bbeb1ea42c647058570f",
+          "company": "THE BOSTON BEER COMPANY, INC.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": 0,
+            "detection_sensitivity": null,
+            "error_type_accuracy": null,
+            "row_accuracy": null,
+            "joint_detection_type_row": null,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Correct",
+          "gold_error_type": null,
+          "gold_row": null,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_1978e5c21aefe1e4b8a7",
+          "company": "BEYOND MEAT, INC.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": 0,
+            "detection_sensitivity": null,
+            "error_type_accuracy": null,
+            "row_accuracy": null,
+            "joint_detection_type_row": null,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Correct",
+          "gold_error_type": null,
+          "gold_row": null,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_bfd3b5245a1bc700cbd6",
+          "company": "BEYOND MEAT, INC.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": 0,
+            "detection_sensitivity": null,
+            "error_type_accuracy": null,
+            "row_accuracy": null,
+            "joint_detection_type_row": null,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Correct",
+          "gold_error_type": null,
+          "gold_row": null,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_b17319f49dec56baf12b",
+          "company": "INTERNATIONAL PAPER COMPANY",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": 0,
+            "detection_sensitivity": null,
+            "error_type_accuracy": null,
+            "row_accuracy": null,
+            "joint_detection_type_row": null,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Correct",
+          "gold_error_type": null,
+          "gold_row": null,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_a5dff52701c61f618d5d",
+          "company": "Freeport-McMoRan Inc.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Redundant Row",
+          "gold_row": 3,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_d1efe0af0cfd3eaa909d",
+          "company": "THE BOSTON BEER COMPANY, INC.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": 0,
+            "unvalidated_topic_agreement": 0,
+            "joint_detection_type_row_full_citation": 0,
+            "noncitable_citation_abstention": null,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Numerical Error",
+          "gold_row": 0,
+          "gold_citation": "ASC 606-10-25-23",
+          "gold_citable": true,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_33a5c50b437c422eb1e1",
+          "company": "ABBOTT LABORATORIES",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": 0,
+            "unvalidated_topic_agreement": 0,
+            "joint_detection_type_row_full_citation": 0,
+            "noncitable_citation_abstention": null,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Misclassification",
+          "gold_row": 33,
+          "gold_citation": "ASC 470-10-45-11",
+          "gold_citable": true,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_cc180e9e3a6186422bac",
+          "company": "CROCS,\u00a0INC.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": 0,
+            "unvalidated_topic_agreement": 0,
+            "joint_detection_type_row_full_citation": 0,
+            "noncitable_citation_abstention": null,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Numerical Error",
+          "gold_row": 2,
+          "gold_citation": "ASC 326-20-30-1",
+          "gold_citable": true,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_3a65c485abbe1984ae27",
+          "company": "UnitedHealth Group Incorporated",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": 0,
+            "unvalidated_topic_agreement": 0,
+            "joint_detection_type_row_full_citation": 0,
+            "noncitable_citation_abstention": null,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Misclassification",
+          "gold_row": 3,
+          "gold_citation": "ASC 230-10-45-15",
+          "gold_citable": true,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_87c726f7a2504ed0d85a",
+          "company": "THE BOSTON BEER COMPANY, INC.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Numerical Error",
+          "gold_row": 0,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_616f2d2146f23bd81607",
+          "company": "THE BOSTON BEER COMPANY, INC.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": 0,
+            "unvalidated_topic_agreement": 0,
+            "joint_detection_type_row_full_citation": 0,
+            "noncitable_citation_abstention": null,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Numerical Error",
+          "gold_row": 10,
+          "gold_citation": "ASC 360-10-35-17",
+          "gold_citable": true,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_2dc2afcc1d91f372810e",
+          "company": "THE BOSTON BEER COMPANY, INC.",
+          "outcomes": {
+            "judgement_accuracy": 1,
+            "clean_specificity": null,
+            "detection_sensitivity": 1,
+            "error_type_accuracy": 1,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 0,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "incorrect",
+            "error_type": "Missing Row",
+            "row": 29,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Missing Row",
+          "gold_row": 26,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_dfe914ba62936e8a096f",
+          "company": "UNION PACIFIC CORP",
+          "outcomes": {
+            "judgement_accuracy": 1,
+            "clean_specificity": null,
+            "detection_sensitivity": 1,
+            "error_type_accuracy": 1,
+            "row_accuracy": 1,
+            "joint_detection_type_row": 1,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 0,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "incorrect",
+            "error_type": "Numerical Error",
+            "row": 2,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Numerical Error",
+          "gold_row": 2,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_72959fb5d53dade7a524",
+          "company": "UnitedHealth Group Incorporated",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Missing Row",
+          "gold_row": 0,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_197844f25e4b4b75fbe9",
+          "company": "ABBOTT LABORATORIES",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": 0,
+            "unvalidated_topic_agreement": 0,
+            "joint_detection_type_row_full_citation": 0,
+            "noncitable_citation_abstention": null,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Numerical Error",
+          "gold_row": 0,
+          "gold_citation": "ASC 606-10-25-23",
+          "gold_citable": true,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_b200b8872e8d3b0e2d0b",
+          "company": "BEYOND MEAT, INC.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Numerical Error",
+          "gold_row": 1,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_aa698b1e854dd37de14f",
+          "company": "THE BOSTON BEER COMPANY, INC.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": 0,
+            "detection_sensitivity": null,
+            "error_type_accuracy": null,
+            "row_accuracy": null,
+            "joint_detection_type_row": null,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Correct",
+          "gold_error_type": null,
+          "gold_row": null,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_a2f22d9fc55ca36d8411",
+          "company": "INTERNATIONAL PAPER COMPANY",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": 0,
+            "unvalidated_topic_agreement": 0,
+            "joint_detection_type_row_full_citation": 0,
+            "noncitable_citation_abstention": null,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Numerical Error",
+          "gold_row": 5,
+          "gold_citation": "ASC 330-10-35-1B",
+          "gold_citable": true,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_1bed53ac07435b3f7ade",
+          "company": "BEYOND MEAT, INC.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": 0,
+            "unvalidated_topic_agreement": 0,
+            "joint_detection_type_row_full_citation": 0,
+            "noncitable_citation_abstention": null,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Misclassification",
+          "gold_row": 22,
+          "gold_citation": "ASC 210-10-45-8",
+          "gold_citable": true,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_2f3e27bae3c9eb501d70",
+          "company": "BEYOND MEAT, INC.",
+          "outcomes": {
+            "judgement_accuracy": 1,
+            "clean_specificity": null,
+            "detection_sensitivity": 1,
+            "error_type_accuracy": 1,
+            "row_accuracy": 1,
+            "joint_detection_type_row": 1,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 0,
+            "decision_abstention_rate": 0,
+            "citation_abstention_rate": 0,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "incorrect",
+            "error_type": "Missing Row",
+            "row": 4,
+            "citation": "ASC 210-10-45-1",
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Missing Row",
+          "gold_row": 4,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_87b8b6091e9cf2644c6e",
+          "company": "UNION PACIFIC CORP",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": 0,
+            "unvalidated_topic_agreement": 0,
+            "joint_detection_type_row_full_citation": 0,
+            "noncitable_citation_abstention": null,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Numerical Error",
+          "gold_row": 0,
+          "gold_citation": "ASC 606-10-25-23",
+          "gold_citable": true,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_273b51b8ce3b6bbf2ae3",
+          "company": "ABBOTT LABORATORIES",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": null,
+            "detection_sensitivity": 0,
+            "error_type_accuracy": 0,
+            "row_accuracy": 0,
+            "joint_detection_type_row": 0,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Incorrect",
+          "gold_error_type": "Numerical Error",
+          "gold_row": 1,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_75ac978357bec09b7be4",
+          "company": "UNION PACIFIC CORP",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": 0,
+            "detection_sensitivity": null,
+            "error_type_accuracy": null,
+            "row_accuracy": null,
+            "joint_detection_type_row": null,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Correct",
+          "gold_error_type": null,
+          "gold_row": null,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        },
+        {
+          "case_id": "case_41544387f1642428ca32",
+          "company": "CROCS,\u00a0INC.",
+          "outcomes": {
+            "judgement_accuracy": 0,
+            "clean_specificity": 0,
+            "detection_sensitivity": null,
+            "error_type_accuracy": null,
+            "row_accuracy": null,
+            "joint_detection_type_row": null,
+            "unvalidated_full_citation_agreement": null,
+            "unvalidated_topic_agreement": null,
+            "joint_detection_type_row_full_citation": null,
+            "noncitable_citation_abstention": 1,
+            "decision_abstention_rate": 1,
+            "citation_abstention_rate": 1,
+            "failure_rate": 0,
+            "verified_quote_rate": 0
+          },
+          "status": "ok",
+          "prediction": {
+            "judgement": "abstain",
+            "error_type": null,
+            "row": null,
+            "citation": null,
+            "evidence": []
+          },
+          "gold_judgement": "Correct",
+          "gold_error_type": null,
+          "gold_row": null,
+          "gold_citation": null,
+          "gold_citable": false,
+          "evidence_verification": null
+        }
+      ]
+    }
+  },
+  "paired_differences": {},
+  "provenance": {
+    "condition": "legacy_local_adapted",
+    "taxonomy_mode": "forced_offline_static_map",
+    "model_calls": 0,
+    "api_cost_usd": 0,
+    "input_sha256": "5b07b65a8427ca4615339d1dfc240b02ad08ece654872c1c72ea94c8efaf71b9",
+    "key_sha256": "ddc4e618cff3de2ee3c9604e8ae5528c80349859b85c54d7a1ac8819786f5183",
+    "predictions_sha256": "8b14790c0c43b27bb0fe81aecf9a8c5c2eda4314e192ecb41fa344955b128d98",
+    "source_sha256": {
+      "core/stage0_common.py": "f798ce6253eb4f49057155c5bde4fc2c2cdde4237f0e8dffe7cd6d8e7219a6a8",
+      "core/parser.py": "1390ce84594b97a77223470fbc5c299c0511326a808c664f8e04f1129657f50f",
+      "core/taxonomy_graph.py": "c7c32461980b174b2983006f170112d2bd3bf8ba7ccf54f95492b74382c45c57",
+      "approaches/full_pipeline/pipeline.py": "8038970df3baa33afd0b70fb67bd17897cf7ffe7ffd8441118195c3c967d0819",
+      "approaches/stage0_deterministic_gate/stage0a.py": "ae5fa55999fd743f738cbd50bc5075d9466386430728666696c3a07800eeab51",
+      "approaches/stage0_deterministic_gate/stage0b.py": "cc24d0878fd5910f7add37456464b6f1eccb32d5a127b99d48d32c975f6a1fe9",
+      "approaches/stage1_concept_mapping/edgar_mapper.py": "cb1bd10e4d43c259990566ab23dcf6fb79cff2d5b47c580851aee0573f5808c9",
+      "approaches/stage1_concept_mapping/xbrl_concept_map.json": "6fdf8e405a9400e75a3c196b1aa261d48488b6cbea7a69c29bdbfcd93306bcbc",
+      "approaches/stage1_taxonomy_citation/stage1_arelle.py": "9505fb290143f8a5a06416d66216da7fc252933b999e0534a8f7fb6d36de3c3f",
+      "approaches/stage1_taxonomy_citation/citation_select.py": "bb3d99ba13b4a692bef1fa7fc0701a3b184297730d1ee9805979c00c02c9ceaf",
+      "research/eval_local_pipeline.py": "e9904637ed1a8647f8b53f13fd040bb35d8c6441db22071fc69dae2f17c10e5e"
+    }
+  },
+  "diagnostic_limits": [
+    "Abstention is retained when no error is proven; arithmetic consistency alone is not called a clean statement.",
+    "Labelled component movement sums are partial synthetic evidence; amount reconstruction may make numeric detection easy and does not establish accounting realism.",
+    "Supporting recognition/measurement review facts are excluded from the numeric parser. Covered arithmetic does not prove those facts satisfy a standard.",
+    "Static reference-map full paragraphs are candidates, not independently validated governing standards.",
+    "No taxonomy download occurred; this is not the full Stage 0/1/2 paid pipeline."
+  ]
+}

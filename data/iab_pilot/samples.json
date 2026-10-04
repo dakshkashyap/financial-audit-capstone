@@ -1,0 +1,430 @@
+[
+  {
+    "sample_id": "IAB-2024-0001",
+    "metadata": {
+      "company": "Apple Inc.",
+      "ticker": "AAPL",
+      "cik": "0000320193",
+      "industry": "Technology",
+      "sector": "Consumer Electronics",
+      "fiscal_year": "2023",
+      "fiscal_period_end": "September 30, 2023",
+      "filing_type": "10-K",
+      "statement_type": "balance_sheet"
+    },
+    "gt_table": "[Time]: September 30, 2023 [SEP]\n[row 0]: Current assets: [SEP]\n[row 1]: Cash and cash equivalents | $29,965 [SEP]\n[row 2]: Marketable securities | $31,590 [SEP]\n[row 3]: Accounts receivable, net | $29,508 [SEP]\n[row 4]: Vendor non-trade receivables | $31,477 [SEP]\n[row 5]: Inventories | $6,331 [SEP]\n[row 6]: Other current assets | $14,695 [SEP]\n[row 7]: Total current assets | $143,566 [SEP]\n[row 8]: Non-current assets: [SEP]\n[row 9]: Marketable securities | $100,544 [SEP]\n[row 10]: Property, plant and equipment, net | $43,715 [SEP]\n[row 11]: Other non-current assets | $64,758 [SEP]\n[row 12]: Total non-current assets | $209,017 [SEP]\n[row 13]: Total assets | $352,583 [SEP]\n[row 14]: Current liabilities: [SEP]\n[row 15]: Accounts payable | $62,611 [SEP]\n[row 16]: Other current liabilities | $58,829 [SEP]\n[row 17]: Deferred revenue | $8,061 [SEP]\n[row 18]: Commercial paper | $5,985 [SEP]\n[row 19]: Term debt | $9,822 [SEP]\n[row 20]: Total current liabilities | $145,308 [SEP]\n[row 21]: Non-current liabilities: [SEP]\n[row 22]: Term debt | $95,281 [SEP]\n[row 23]: Other non-current liabilities | $49,848 [SEP]\n[row 24]: Total non-current liabilities | $145,129 [SEP]\n[row 25]: Total liabilities | $290,437 [SEP]\n[row 26]: Commitments and contingencies | [SEP]\n[row 27]: Shareholders' equity: [SEP]\n[row 28]: Common stock and additional paid-in capital | $73,812 [SEP]\n[row 29]: Accumulated deficit | $(214) [SEP]\n[row 30]: Accumulated other comprehensive loss | $(11,452) [SEP]\n[row 31]: Total shareholders' equity | $62,146 [SEP]\n[row 32]: Total liabilities and shareholders' equity | $352,583 [SEP]",
+    "gt_transaction_data": "Transactions for 2023:\n[contributing to row 1]: Cash and cash equivalents | $29,965 [SEP]\n1. Apple launched a new iPhone model, generating revenue of $18,000, with direct cash payment by the customers.\n2. The sale of short-term investments resulted in a cash income of $15,000.\n3. Vendor payments and operational expenses resulted in a cash outflow of $3,035.\n[Explanation: $29,965 = $18,000 + $15,000 - $3,035]\n[contributing to row 2]: Marketable securities | $31,590 [SEP]\n4. The company purchased various securities totaling $31,590.\n[Explanation: $31,590 = $31,590]\n[contributing to row 3]: Accounts receivable, net | $29,508 [SEP]\n5. Income from iPhone sales yet to be received, billed at $32,500.\n6. A write-off of uncollectible accounts was done, amounting to $2,992.\n[Explanation: $29,508 = $32,500 - $2,992]\n[contributing to row 4]: Vendor non-trade receivables | $31,477 [SEP]\n7. Receivables from partners such as app developers on the App Store, totaling $31,477.\n[Explanation: $31,477 = $31,477]\n[contributing to row 5]: Inventories | $6,331 [SEP]\n8. Production of new iPhone and Mac computers added $6,331 to inventories.\n[Explanation: $6,331 = $6,331]\n[contributing to row 6]: Other current assets | $14,695 [SEP]\n9. Other current assets for the company, consisting of prepaid expenses and advances, totaling $14,695.\n[Explanation: $14,695 = $14,695]\n[contributing to row 7]: Total current assets\n[Explanation: $143,566 = $29,965 + $31,590 + $29,508 + $31,477 + $6,331 + $14,695]",
+    "modified_statement": "[Time]: September 30, 2023 [SEP]\n[row 0]: Current assets: [SEP]\n[row 1]: Cash and cash equivalents | $29,965 [SEP]\n[row 2]: Marketable securities | $31,590 [SEP]\n[row 3]: Accounts receivable, net | $29,508 [SEP]\n[row 4]: Vendor non-trade receivables | $31,477 [SEP]\n[row 5]: Inventories | $6,331 [SEP]\n[row 6]: Total current assets | $128,871 [SEP]\n[row 7]: Non-current assets: [SEP]\n[row 8]: Marketable securities | $100,544 [SEP]\n[row 9]: Property, plant and equipment, net | $43,715 [SEP]\n[row 10]: Other non-current assets | $64,758 [SEP]\n[row 11]: Total non-current assets | $209,017 [SEP]\n[row 12]: Total assets | $337,888 [SEP]\n[row 13]: Current liabilities: [SEP]\n[row 14]: Accounts payable | $62,611 [SEP]\n[row 15]: Other current liabilities | $58,829 [SEP]\n[row 16]: Deferred revenue | $8,061 [SEP]\n[row 17]: Commercial paper | $5,985 [SEP]\n[row 18]: Term debt | $9,822 [SEP]\n[row 19]: Total current liabilities | $145,308 [SEP]\n[row 20]: Non-current liabilities: [SEP]\n[row 21]: Term debt | $95,281 [SEP]\n[row 22]: Other non-current liabilities | $49,848 [SEP]\n[row 23]: Total non-current liabilities | $145,129 [SEP]\n[row 24]: Total liabilities | $290,437 [SEP]\n[row 25]: Commitments and contingencies | [SEP]\n[row 26]: Shareholders' equity: [SEP]\n[row 27]: Common stock and additional paid-in capital | $73,812 [SEP]\n[row 28]: Accumulated deficit | $(214) [SEP]\n[row 29]: Accumulated other comprehensive loss | $(11,452) [SEP]\n[row 30]: Total shareholders' equity | $62,146 [SEP]\n[row 31]: Total liabilities and shareholders' equity | $352,583 [SEP]",
+    "general_judgement": "Incorrect",
+    "error_identification": {
+      "error_type": "Missing Row",
+      "error_category": "omitted_line_item",
+      "problematic_entry": 6,
+      "affected_row_label": "Other current assets",
+      "affected_xbrl_concept": "us-gaap:OtherAssetsCurrent",
+      "original_value": 14695,
+      "erroneous_value": null,
+      "severity": "material",
+      "difficulty": "easy",
+      "statement_section": "current_assets"
+    },
+    "error_resolution": "The 'Other current assets' row ($14,695) has been omitted from current assets. This causes Total current assets to be understated by $14,695 (showing $128,871 instead of $143,566) and Total assets to be understated accordingly ($337,888 instead of $352,583). The row should be reinstated between Inventories and Total current assets, and all affected subtotals recalculated.",
+    "ground_truth_citations": {
+      "primary_asc_codes": ["FASB ASC 210-10-45-1"],
+      "secondary_asc_codes": ["FASB ASC 210-10-45-4", "FASB ASC 210-10-S99-1"],
+      "all_candidate_topics": ["210", "310", "320"],
+      "dqc_rules": ["DQC_0043"],
+      "citation_source": "us-gaap-ref-2023.xml",
+      "taxonomy_path": "us-gaap:OtherAssetsCurrent → referenceArc → FASB ASC 210-10-45-1",
+      "citation_rationale": "ASC 210-10-45 governs balance sheet presentation and requires current assets to be presented completely and in proper sequence."
+    },
+    "xbrl_context": {
+      "row_xbrl_tags": {
+        "1": {"concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue", "balance": "debit", "period": "instant"},
+        "2": {"concept": "us-gaap:MarketableSecuritiesCurrent", "balance": "debit", "period": "instant"},
+        "3": {"concept": "us-gaap:AccountsReceivableNetCurrent", "balance": "debit", "period": "instant"},
+        "4": {"concept": "us-gaap:NontradeReceivablesCurrent", "balance": "debit", "period": "instant"},
+        "5": {"concept": "us-gaap:InventoryNet", "balance": "debit", "period": "instant"},
+        "6": {"concept": "us-gaap:OtherAssetsCurrent", "balance": "debit", "period": "instant"},
+        "7": {"concept": "us-gaap:AssetsCurrent", "balance": "debit", "period": "instant"}
+      },
+      "calculation_tree": {
+        "us-gaap:AssetsCurrent": {
+          "children": [
+            {"tag": "us-gaap:CashAndCashEquivalentsAtCarryingValue", "weight": 1.0},
+            {"tag": "us-gaap:MarketableSecuritiesCurrent", "weight": 1.0},
+            {"tag": "us-gaap:AccountsReceivableNetCurrent", "weight": 1.0},
+            {"tag": "us-gaap:NontradeReceivablesCurrent", "weight": 1.0},
+            {"tag": "us-gaap:InventoryNet", "weight": 1.0},
+            {"tag": "us-gaap:OtherAssetsCurrent", "weight": 1.0}
+          ]
+        }
+      },
+      "affected_linkbase_relations": ["calculationArc", "referenceArc", "presentationArc"]
+    }
+  },
+  {
+    "sample_id": "IAB-2024-0002",
+    "metadata": {
+      "company": "Apple Inc.",
+      "ticker": "AAPL",
+      "cik": "0000320193",
+      "industry": "Technology",
+      "sector": "Consumer Electronics",
+      "fiscal_year": "2023",
+      "fiscal_period_end": "September 30, 2023",
+      "filing_type": "10-K",
+      "statement_type": "balance_sheet"
+    },
+    "gt_table": "[Time]: September 30, 2023 [SEP]\n[row 0]: Current assets: [SEP]\n[row 1]: Cash and cash equivalents | $29,965 [SEP]\n[row 2]: Marketable securities | $31,590 [SEP]\n[row 3]: Accounts receivable, net | $29,508 [SEP]\n[row 4]: Vendor non-trade receivables | $31,477 [SEP]\n[row 5]: Inventories | $6,331 [SEP]\n[row 6]: Other current assets | $14,695 [SEP]\n[row 7]: Total current assets | $143,566 [SEP]\n[row 8]: Non-current assets: [SEP]\n[row 9]: Marketable securities | $100,544 [SEP]\n[row 10]: Property, plant and equipment, net | $43,715 [SEP]\n[row 11]: Other non-current assets | $64,758 [SEP]\n[row 12]: Total non-current assets | $209,017 [SEP]\n[row 13]: Total assets | $352,583 [SEP]\n[row 14]: Current liabilities: [SEP]\n[row 15]: Accounts payable | $62,611 [SEP]\n[row 16]: Other current liabilities | $58,829 [SEP]\n[row 17]: Deferred revenue | $8,061 [SEP]\n[row 18]: Commercial paper | $5,985 [SEP]\n[row 19]: Term debt | $9,822 [SEP]\n[row 20]: Total current liabilities | $145,308 [SEP]\n[row 21]: Non-current liabilities: [SEP]\n[row 22]: Term debt | $95,281 [SEP]\n[row 23]: Other non-current liabilities | $49,848 [SEP]\n[row 24]: Total non-current liabilities | $145,129 [SEP]\n[row 25]: Total liabilities | $290,437 [SEP]\n[row 26]: Commitments and contingencies | [SEP]\n[row 27]: Shareholders' equity: [SEP]\n[row 28]: Common stock and additional paid-in capital | $73,812 [SEP]\n[row 29]: Accumulated deficit | $(214) [SEP]\n[row 30]: Accumulated other comprehensive loss | $(11,452) [SEP]\n[row 31]: Total shareholders' equity | $62,146 [SEP]\n[row 32]: Total liabilities and shareholders' equity | $352,583 [SEP]",
+    "gt_transaction_data": "Transactions for 2023:\n[contributing to row 3]: Accounts receivable, net | $29,508 [SEP]\n5. Income from iPhone sales yet to be received, billed at $32,500.\n6. A write-off of uncollectible accounts was done, amounting to $2,992.\n[Explanation: $29,508 = $32,500 - $2,992]",
+    "modified_statement": "[Time]: September 30, 2023 [SEP]\n[row 0]: Current assets: [SEP]\n[row 1]: Cash and cash equivalents | $29,965 [SEP]\n[row 2]: Marketable securities | $31,590 [SEP]\n[row 3]: Accounts receivable, net | $35,000 [SEP]\n[row 4]: Vendor non-trade receivables | $31,477 [SEP]\n[row 5]: Inventories | $6,331 [SEP]\n[row 6]: Other current assets | $14,695 [SEP]\n[row 7]: Total current assets | $149,058 [SEP]\n[row 8]: Non-current assets: [SEP]\n[row 9]: Marketable securities | $100,544 [SEP]\n[row 10]: Property, plant and equipment, net | $43,715 [SEP]\n[row 11]: Other non-current assets | $64,758 [SEP]\n[row 12]: Total non-current assets | $209,017 [SEP]\n[row 13]: Total assets | $358,075 [SEP]\n[row 14]: Current liabilities: [SEP]\n[row 15]: Accounts payable | $62,611 [SEP]\n[row 16]: Other current liabilities | $58,829 [SEP]\n[row 17]: Deferred revenue | $8,061 [SEP]\n[row 18]: Commercial paper | $5,985 [SEP]\n[row 19]: Term debt | $9,822 [SEP]\n[row 20]: Total current liabilities | $145,308 [SEP]\n[row 21]: Non-current liabilities: [SEP]\n[row 22]: Term debt | $95,281 [SEP]\n[row 23]: Other non-current liabilities | $49,848 [SEP]\n[row 24]: Total non-current liabilities | $145,129 [SEP]\n[row 25]: Total liabilities | $290,437 [SEP]\n[row 26]: Commitments and contingencies | [SEP]\n[row 27]: Shareholders' equity: [SEP]\n[row 28]: Common stock and additional paid-in capital | $73,812 [SEP]\n[row 29]: Accumulated deficit | $(214) [SEP]\n[row 30]: Accumulated other comprehensive loss | $(11,452) [SEP]\n[row 31]: Total shareholders' equity | $62,146 [SEP]\n[row 32]: Total liabilities and shareholders' equity | $352,583 [SEP]",
+    "general_judgement": "Incorrect",
+    "error_identification": {
+      "error_type": "Numerical Error",
+      "error_category": "overstated_asset",
+      "problematic_entry": 3,
+      "affected_row_label": "Accounts receivable, net",
+      "affected_xbrl_concept": "us-gaap:AccountsReceivableNetCurrent",
+      "original_value": 29508,
+      "erroneous_value": 35000,
+      "severity": "material",
+      "difficulty": "easy",
+      "statement_section": "current_assets"
+    },
+    "error_resolution": "Accounts receivable, net was overstated from $29,508 to $35,000, an overstatement of $5,492. Based on transaction data, income from iPhone sales billed at $32,500 minus write-off of $2,992 equals $29,508. The correct value is $29,508. Total current assets and total assets must also be corrected.",
+    "ground_truth_citations": {
+      "primary_asc_codes": ["FASB ASC 310-10-45-1"],
+      "secondary_asc_codes": ["FASB ASC 210-10-45-1", "FASB ASC 310-10-35-47"],
+      "all_candidate_topics": ["310", "210", "326"],
+      "dqc_rules": ["DQC_0043", "DQC_0015"],
+      "citation_source": "us-gaap-ref-2023.xml",
+      "taxonomy_path": "us-gaap:AccountsReceivableNetCurrent → referenceArc → FASB ASC 310-10-45-1",
+      "citation_rationale": "ASC 310 (Receivables) governs the recognition, measurement, and presentation of trade receivables. The numerical error overstates the net receivable balance."
+    },
+    "xbrl_context": {
+      "row_xbrl_tags": {
+        "3": {"concept": "us-gaap:AccountsReceivableNetCurrent", "balance": "debit", "period": "instant"}
+      },
+      "calculation_tree": {
+        "us-gaap:AssetsCurrent": {
+          "children": [
+            {"tag": "us-gaap:AccountsReceivableNetCurrent", "weight": 1.0}
+          ]
+        }
+      },
+      "affected_linkbase_relations": ["calculationArc", "referenceArc"]
+    }
+  },
+  {
+    "sample_id": "IAB-2024-0003",
+    "metadata": {
+      "company": "Apple Inc.",
+      "ticker": "AAPL",
+      "cik": "0000320193",
+      "industry": "Technology",
+      "sector": "Consumer Electronics",
+      "fiscal_year": "2023",
+      "fiscal_period_end": "September 30, 2023",
+      "filing_type": "10-K",
+      "statement_type": "balance_sheet"
+    },
+    "gt_table": "[Time]: September 30, 2023 [SEP]\n[row 0]: Current assets: [SEP]\n[row 1]: Cash and cash equivalents | $29,965 [SEP]\n[row 2]: Marketable securities | $31,590 [SEP]\n[row 3]: Accounts receivable, net | $29,508 [SEP]\n[row 4]: Vendor non-trade receivables | $31,477 [SEP]\n[row 5]: Inventories | $6,331 [SEP]\n[row 6]: Other current assets | $14,695 [SEP]\n[row 7]: Total current assets | $143,566 [SEP]\n[row 8]: Non-current assets: [SEP]\n[row 9]: Marketable securities | $100,544 [SEP]\n[row 10]: Property, plant and equipment, net | $43,715 [SEP]\n[row 11]: Other non-current assets | $64,758 [SEP]\n[row 12]: Total non-current assets | $209,017 [SEP]\n[row 13]: Total assets | $352,583 [SEP]\n[row 14]: Current liabilities: [SEP]\n[row 15]: Accounts payable | $62,611 [SEP]\n[row 16]: Other current liabilities | $58,829 [SEP]\n[row 17]: Deferred revenue | $8,061 [SEP]\n[row 18]: Commercial paper | $5,985 [SEP]\n[row 19]: Term debt | $9,822 [SEP]\n[row 20]: Total current liabilities | $145,308 [SEP]\n[row 21]: Non-current liabilities: [SEP]\n[row 22]: Term debt | $95,281 [SEP]\n[row 23]: Other non-current liabilities | $49,848 [SEP]\n[row 24]: Total non-current liabilities | $145,129 [SEP]\n[row 25]: Total liabilities | $290,437 [SEP]\n[row 26]: Commitments and contingencies | [SEP]\n[row 27]: Shareholders' equity: [SEP]\n[row 28]: Common stock and additional paid-in capital | $73,812 [SEP]\n[row 29]: Accumulated deficit | $(214) [SEP]\n[row 30]: Accumulated other comprehensive loss | $(11,452) [SEP]\n[row 31]: Total shareholders' equity | $62,146 [SEP]\n[row 32]: Total liabilities and shareholders' equity | $352,583 [SEP]",
+    "gt_transaction_data": "Transactions for 2023:\n[contributing to row 15]: Accounts payable | $62,611 [SEP]\n13. Payments to vendors reduced accounts payable by $12,000.\n14. New purchases on credit added $74,611 to accounts payable.\n[Explanation: $62,611 = $74,611 - $12,000]",
+    "modified_statement": "[Time]: September 30, 2023 [SEP]\n[row 0]: Current assets: [SEP]\n[row 1]: Cash and cash equivalents | $29,965 [SEP]\n[row 2]: Marketable securities | $31,590 [SEP]\n[row 3]: Accounts receivable, net | $29,508 [SEP]\n[row 4]: Vendor non-trade receivables | $31,477 [SEP]\n[row 5]: Inventories | $6,331 [SEP]\n[row 6]: Other current assets | $14,695 [SEP]\n[row 7]: Accounts payable | $62,611 [SEP]\n[row 8]: Total current assets | $206,177 [SEP]\n[row 9]: Non-current assets: [SEP]\n[row 10]: Marketable securities | $100,544 [SEP]\n[row 11]: Property, plant and equipment, net | $43,715 [SEP]\n[row 12]: Other non-current assets | $64,758 [SEP]\n[row 13]: Total non-current assets | $209,017 [SEP]\n[row 14]: Total assets | $415,194 [SEP]\n[row 15]: Current liabilities: [SEP]\n[row 16]: Other current liabilities | $58,829 [SEP]\n[row 17]: Deferred revenue | $8,061 [SEP]\n[row 18]: Commercial paper | $5,985 [SEP]\n[row 19]: Term debt | $9,822 [SEP]\n[row 20]: Total current liabilities | $82,697 [SEP]\n[row 21]: Non-current liabilities: [SEP]\n[row 22]: Term debt | $95,281 [SEP]\n[row 23]: Other non-current liabilities | $49,848 [SEP]\n[row 24]: Total non-current liabilities | $145,129 [SEP]\n[row 25]: Total liabilities | $227,826 [SEP]\n[row 26]: Commitments and contingencies | [SEP]\n[row 27]: Shareholders' equity: [SEP]\n[row 28]: Common stock and additional paid-in capital | $73,812 [SEP]\n[row 29]: Accumulated deficit | $(214) [SEP]\n[row 30]: Accumulated other comprehensive loss | $(11,452) [SEP]\n[row 31]: Total shareholders' equity | $62,146 [SEP]\n[row 32]: Total liabilities and shareholders' equity | $352,583 [SEP]",
+    "general_judgement": "Incorrect",
+    "error_identification": {
+      "error_type": "Misclassification",
+      "error_category": "liability_as_asset",
+      "problematic_entry": 7,
+      "affected_row_label": "Accounts payable",
+      "affected_xbrl_concept": "us-gaap:AccountsPayableCurrent",
+      "original_value": 62611,
+      "erroneous_value": 62611,
+      "severity": "material",
+      "difficulty": "medium",
+      "statement_section": "current_assets"
+    },
+    "error_resolution": "Accounts payable ($62,611) is a current liability that has been misclassified under Current assets. Accounts payable should be moved back to Current liabilities. Total current assets should be $143,566, Total current liabilities should be $145,308, and all affected subtotals must be recalculated.",
+    "ground_truth_citations": {
+      "primary_asc_codes": ["FASB ASC 210-10-45-1"],
+      "secondary_asc_codes": ["FASB ASC 210-10-45-4", "FASB ASC 210-10-45-6"],
+      "all_candidate_topics": ["210", "405"],
+      "dqc_rules": ["DQC_0015", "DQC_0044"],
+      "citation_source": "us-gaap-ref-2023.xml",
+      "taxonomy_path": "us-gaap:AccountsPayableCurrent → referenceArc → FASB ASC 210-10-45-1",
+      "citation_rationale": "ASC 210-10-45 requires proper classification of current liabilities separately from current assets. Accounts payable is a credit-balance obligation and cannot appear as a debit-balance asset."
+    },
+    "xbrl_context": {
+      "row_xbrl_tags": {
+        "15": {"concept": "us-gaap:AccountsPayableCurrent", "balance": "credit", "period": "instant"}
+      },
+      "calculation_tree": {
+        "us-gaap:LiabilitiesCurrent": {
+          "children": [
+            {"tag": "us-gaap:AccountsPayableCurrent", "weight": 1.0}
+          ]
+        }
+      },
+      "affected_linkbase_relations": ["calculationArc", "referenceArc", "presentationArc"]
+    }
+  },
+  {
+    "sample_id": "IAB-2024-0004",
+    "metadata": {
+      "company": "Apple Inc.",
+      "ticker": "AAPL",
+      "cik": "0000320193",
+      "industry": "Technology",
+      "sector": "Consumer Electronics",
+      "fiscal_year": "2023",
+      "fiscal_period_end": "September 30, 2023",
+      "filing_type": "10-K",
+      "statement_type": "balance_sheet"
+    },
+    "gt_table": "[Time]: September 30, 2023 [SEP]\n[row 0]: Current assets: [SEP]\n[row 1]: Cash and cash equivalents | $29,965 [SEP]\n[row 2]: Marketable securities | $31,590 [SEP]\n[row 3]: Accounts receivable, net | $29,508 [SEP]\n[row 4]: Vendor non-trade receivables | $31,477 [SEP]\n[row 5]: Inventories | $6,331 [SEP]\n[row 6]: Other current assets | $14,695 [SEP]\n[row 7]: Total current assets | $143,566 [SEP]\n[row 8]: Non-current assets: [SEP]\n[row 9]: Marketable securities | $100,544 [SEP]\n[row 10]: Property, plant and equipment, net | $43,715 [SEP]\n[row 11]: Other non-current assets | $64,758 [SEP]\n[row 12]: Total non-current assets | $209,017 [SEP]\n[row 13]: Total assets | $352,583 [SEP]\n[row 14]: Current liabilities: [SEP]\n[row 15]: Accounts payable | $62,611 [SEP]\n[row 16]: Other current liabilities | $58,829 [SEP]\n[row 17]: Deferred revenue | $8,061 [SEP]\n[row 18]: Commercial paper | $5,985 [SEP]\n[row 19]: Term debt | $9,822 [SEP]\n[row 20]: Total current liabilities | $145,308 [SEP]\n[row 21]: Non-current liabilities: [SEP]\n[row 22]: Term debt | $95,281 [SEP]\n[row 23]: Other non-current liabilities | $49,848 [SEP]\n[row 24]: Total non-current liabilities | $145,129 [SEP]\n[row 25]: Total liabilities | $290,437 [SEP]\n[row 26]: Commitments and contingencies | [SEP]\n[row 27]: Shareholders' equity: [SEP]\n[row 28]: Common stock and additional paid-in capital | $73,812 [SEP]\n[row 29]: Accumulated deficit | $(214) [SEP]\n[row 30]: Accumulated other comprehensive loss | $(11,452) [SEP]\n[row 31]: Total shareholders' equity | $62,146 [SEP]\n[row 32]: Total liabilities and shareholders' equity | $352,583 [SEP]",
+    "gt_transaction_data": "",
+    "modified_statement": "[Time]: September 30, 2023 [SEP]\n[row 0]: Current assets: [SEP]\n[row 1]: Cash and cash equivalents | $29,965 [SEP]\n[row 2]: Marketable securities | $31,590 [SEP]\n[row 3]: Accounts receivable, net | $29,508 [SEP]\n[row 4]: Vendor non-trade receivables | $31,477 [SEP]\n[row 5]: Inventories | $6,331 [SEP]\n[row 6]: Other current assets | $14,695 [SEP]\n[row 7]: Software licenses | $8,200 [SEP]\n[row 8]: Total current assets | $151,766 [SEP]\n[row 9]: Non-current assets: [SEP]\n[row 10]: Marketable securities | $100,544 [SEP]\n[row 11]: Property, plant and equipment, net | $43,715 [SEP]\n[row 12]: Other non-current assets | $64,758 [SEP]\n[row 13]: Total non-current assets | $209,017 [SEP]\n[row 14]: Total assets | $360,783 [SEP]\n[row 15]: Current liabilities: [SEP]\n[row 16]: Accounts payable | $62,611 [SEP]\n[row 17]: Other current liabilities | $58,829 [SEP]\n[row 18]: Deferred revenue | $8,061 [SEP]\n[row 19]: Commercial paper | $5,985 [SEP]\n[row 20]: Term debt | $9,822 [SEP]\n[row 21]: Total current liabilities | $145,308 [SEP]\n[row 22]: Non-current liabilities: [SEP]\n[row 23]: Term debt | $95,281 [SEP]\n[row 24]: Other non-current liabilities | $49,848 [SEP]\n[row 25]: Total non-current liabilities | $145,129 [SEP]\n[row 26]: Total liabilities | $290,437 [SEP]\n[row 27]: Commitments and contingencies | [SEP]\n[row 28]: Shareholders' equity: [SEP]\n[row 29]: Common stock and additional paid-in capital | $73,812 [SEP]\n[row 30]: Accumulated deficit | $(214) [SEP]\n[row 31]: Accumulated other comprehensive loss | $(11,452) [SEP]\n[row 32]: Total shareholders' equity | $62,146 [SEP]\n[row 33]: Total liabilities and shareholders' equity | $352,583 [SEP]",
+    "general_judgement": "Incorrect",
+    "error_identification": {
+      "error_type": "Redundant Row",
+      "error_category": "fabricated_line_item",
+      "problematic_entry": 7,
+      "affected_row_label": "Software licenses",
+      "affected_xbrl_concept": null,
+      "original_value": null,
+      "erroneous_value": 8200,
+      "severity": "material",
+      "difficulty": "medium",
+      "statement_section": "current_assets"
+    },
+    "error_resolution": "A fabricated 'Software licenses' row ($8,200) was inserted under current assets. This line item does not exist in Apple's actual financial statements and has no supporting transaction data. It inflates Total current assets from $143,566 to $151,766 and Total assets from $352,583 to $360,783. The row should be removed entirely.",
+    "ground_truth_citations": {
+      "primary_asc_codes": ["FASB ASC 210-10-45-1"],
+      "secondary_asc_codes": ["FASB ASC 205-10-45-2", "FASB ASC 350-40-25-1"],
+      "all_candidate_topics": ["210", "205", "350"],
+      "dqc_rules": ["DQC_0044"],
+      "citation_source": "us-gaap-ref-2023.xml",
+      "taxonomy_path": "N/A (fabricated concept, no taxonomy match)",
+      "citation_rationale": "ASC 210-10-45 governs what must appear on the balance sheet. Software licenses, if they existed, would need to be properly classified per ASC 350-40 (Internal-Use Software). The fabricated item has no authoritative basis."
+    },
+    "xbrl_context": {
+      "row_xbrl_tags": {},
+      "calculation_tree": {},
+      "affected_linkbase_relations": ["presentationArc"]
+    }
+  },
+  {
+    "sample_id": "IAB-2024-0005",
+    "metadata": {
+      "company": "Meta Platforms Inc.",
+      "ticker": "META",
+      "cik": "0001326801",
+      "industry": "Technology",
+      "sector": "Social Media / Advertising",
+      "fiscal_year": "2023",
+      "fiscal_period_end": "December 31, 2023",
+      "filing_type": "10-K",
+      "statement_type": "balance_sheet"
+    },
+    "gt_table": "[Time]: December 31, 2023 [SEP]\n[row 0]: Assets [SEP]\n[row 1]: Cash and cash equivalents | $41,862 [SEP]\n[row 2]: Marketable securities | $23,541 [SEP]\n[row 3]: Accounts receivable, net | $16,169 [SEP]\n[row 4]: Prepaid expenses and other current assets | $3,793 [SEP]\n[row 5]: Total current assets | $85,365 [SEP]\n[row 6]: Non-marketable equity securities | $6,141 [SEP]\n[row 7]: Property and equipment, net | $96,587 [SEP]\n[row 8]: Operating lease right-of-use assets | $13,294 [SEP]\n[row 9]: Intangible assets, net | $788 [SEP]\n[row 10]: Goodwill | $20,654 [SEP]\n[row 11]: Other assets | $6,794 [SEP]\n[row 12]: Total assets | $229,623 [SEP]\n[row 13]: Liabilities and stockholders' equity [SEP]\n[row 14]: Accounts payable | $4,849 [SEP]\n[row 15]: Partners payable | $863 [SEP]\n[row 16]: Operating lease liabilities, current | $1,623 [SEP]\n[row 17]: Accrued expenses and other current liabilities | $24,625 [SEP]\n[row 18]: Total current liabilities | $31,960 [SEP]\n[row 19]: Operating lease liabilities, non-current | $17,226 [SEP]\n[row 20]: Long-term debt | $18,385 [SEP]\n[row 21]: Other liabilities | $8,884 [SEP]\n[row 22]: Total liabilities | $76,455 [SEP]\n[row 23]: Stockholders' equity [SEP]\n[row 24]: Additional paid-in capital | $73,253 [SEP]\n[row 25]: Accumulated other comprehensive loss | $(2,155) [SEP]\n[row 26]: Retained earnings | $82,070 [SEP]\n[row 27]: Total stockholders' equity | $153,168 [SEP]\n[row 28]: Total liabilities and stockholders' equity | $229,623 [SEP]",
+    "gt_transaction_data": "Transactions for 2023:\n[contributing to row 1]: Cash and cash equivalents | $41,862 [SEP]\n1. Advertising revenue of $22,000 was collected from clients, with direct cash payment.\n2. The sale of short-term investments generated $22,862 in cash income.\n3. Employee wages resulted in a cash outflow of $3,000.\n[Explanation: $41,862 = $22,000 + $22,862 - $3,000]\n[contributing to row 7]: Property and equipment, net | $96,587 [SEP]\n10. Capital expenditure on new data centers and office equipment totaled $95,000.\n11. Brought property this year for $1,587.\n[Explanation: $96,587 = $95,000 + $1,587]\n[contributing to row 10]: Goodwill | $20,654 [SEP]\n15. Acquisition of a small tech firm increased goodwill to $20,654.\n[Explanation: $20,654 = $20,654]",
+    "modified_statement": "[Time]: December 31, 2023 [SEP]\n[row 0]: Assets [SEP]\n[row 1]: Cash and cash equivalents | $41,862 [SEP]\n[row 2]: Marketable securities | $23,541 [SEP]\n[row 3]: Accounts receivable, net | $16,169 [SEP]\n[row 4]: Prepaid expenses and other current assets | $3,793 [SEP]\n[row 5]: Total current assets | $85,365 [SEP]\n[row 6]: Non-marketable equity securities | $6,141 [SEP]\n[row 7]: Property and equipment, net | $96,587 [SEP]\n[row 8]: Operating lease right-of-use assets | $13,294 [SEP]\n[row 9]: Intangible assets, net | $788 [SEP]\n[row 10]: Goodwill | $20,654 [SEP]\n[row 11]: Other assets | $6,794 [SEP]\n[row 12]: Total assets | $229,623 [SEP]\n[row 13]: Liabilities and stockholders' equity [SEP]\n[row 14]: Accounts payable | $4,849 [SEP]\n[row 15]: Partners payable | $863 [SEP]\n[row 16]: Operating lease liabilities, current | $1,623 [SEP]\n[row 17]: Accrued expenses and other current liabilities | $24,625 [SEP]\n[row 18]: Total current liabilities | $31,960 [SEP]\n[row 19]: Operating lease liabilities, non-current | $17,226 [SEP]\n[row 20]: Long-term debt | $4,500 [SEP]\n[row 21]: Current portion of long-term debt | $13,885 [SEP]\n[row 22]: Other liabilities | $8,884 [SEP]\n[row 23]: Total liabilities | $76,455 [SEP]\n[row 24]: Stockholders' equity [SEP]\n[row 25]: Additional paid-in capital | $73,253 [SEP]\n[row 26]: Accumulated other comprehensive loss | $(2,155) [SEP]\n[row 27]: Retained earnings | $82,070 [SEP]\n[row 28]: Total stockholders' equity | $153,168 [SEP]\n[row 29]: Total liabilities and stockholders' equity | $229,623 [SEP]",
+    "general_judgement": "Incorrect",
+    "error_identification": {
+      "error_type": "Misclassification",
+      "error_category": "debt_classification",
+      "problematic_entry": 21,
+      "affected_row_label": "Current portion of long-term debt",
+      "affected_xbrl_concept": "us-gaap:LongTermDebtCurrent",
+      "original_value": 18385,
+      "erroneous_value": 4500,
+      "severity": "material",
+      "difficulty": "hard",
+      "statement_section": "noncurrent_liabilities"
+    },
+    "error_resolution": "Long-term debt ($18,385) was split: $4,500 kept as long-term and $13,885 reclassified as 'Current portion of long-term debt' placed under non-current liabilities. This is incorrect — the current portion should be under Current liabilities per ASC 470-10-45. Additionally, the total remains $18,385 ($4,500 + $13,885) but the classification violates GAAP presentation requirements.",
+    "ground_truth_citations": {
+      "primary_asc_codes": ["FASB ASC 470-10-45-1"],
+      "secondary_asc_codes": ["FASB ASC 210-10-45-6", "FASB ASC 470-10-45-11"],
+      "all_candidate_topics": ["470", "210"],
+      "dqc_rules": ["DQC_0008", "DQC_0015"],
+      "citation_source": "us-gaap-ref-2023.xml",
+      "taxonomy_path": "us-gaap:LongTermDebtCurrent → referenceArc → FASB ASC 470-10-45-1",
+      "citation_rationale": "ASC 470-10-45 requires that the current portion of long-term debt maturing within one year be classified as a current liability, not under non-current liabilities."
+    },
+    "xbrl_context": {
+      "row_xbrl_tags": {
+        "20": {"concept": "us-gaap:LongTermDebtNoncurrent", "balance": "credit", "period": "instant"},
+        "21": {"concept": "us-gaap:LongTermDebtCurrent", "balance": "credit", "period": "instant"}
+      },
+      "calculation_tree": {
+        "us-gaap:LongTermDebt": {
+          "children": [
+            {"tag": "us-gaap:LongTermDebtNoncurrent", "weight": 1.0},
+            {"tag": "us-gaap:LongTermDebtCurrent", "weight": 1.0}
+          ]
+        }
+      },
+      "affected_linkbase_relations": ["calculationArc", "referenceArc", "presentationArc"]
+    }
+  },
+  {
+    "sample_id": "IAB-2024-0006",
+    "metadata": {
+      "company": "Microsoft Corporation",
+      "ticker": "MSFT",
+      "cik": "0000789019",
+      "industry": "Technology",
+      "sector": "Software & Cloud",
+      "fiscal_year": "2023",
+      "fiscal_period_end": "June 30, 2023",
+      "filing_type": "10-K",
+      "statement_type": "balance_sheet"
+    },
+    "gt_table": "[Time]: June 30, 2023 [SEP]\n[row 0]: Assets [SEP]\n[row 1]: Cash and cash equivalents | $34,704 [SEP]\n[row 2]: Short-term investments | $76,558 [SEP]\n[row 3]: Total cash, cash equivalents, and short-term investments | $111,262 [SEP]\n[row 4]: Accounts receivable, net | $48,688 [SEP]\n[row 5]: Inventories | $2,500 [SEP]\n[row 6]: Other current assets | $21,807 [SEP]\n[row 7]: Total current assets | $184,257 [SEP]\n[row 8]: Property and equipment, net | $95,641 [SEP]\n[row 9]: Operating lease right-of-use assets | $14,346 [SEP]\n[row 10]: Equity investments | $9,879 [SEP]\n[row 11]: Goodwill | $67,886 [SEP]\n[row 12]: Intangible assets, net | $9,366 [SEP]\n[row 13]: Other long-term assets | $26,030 [SEP]\n[row 14]: Total assets | $411,976 [SEP]\n[row 15]: Liabilities and stockholders' equity [SEP]\n[row 16]: Accounts payable | $18,095 [SEP]\n[row 17]: Current portion of long-term debt | $5,247 [SEP]\n[row 18]: Accrued compensation | $11,009 [SEP]\n[row 19]: Short-term income taxes | $4,152 [SEP]\n[row 20]: Short-term unearned revenue | $50,901 [SEP]\n[row 21]: Other current liabilities | $14,745 [SEP]\n[row 22]: Total current liabilities | $104,149 [SEP]\n[row 23]: Long-term debt | $41,990 [SEP]\n[row 24]: Operating lease liabilities | $12,728 [SEP]\n[row 25]: Long-term income taxes | $26,069 [SEP]\n[row 26]: Long-term unearned revenue | $2,912 [SEP]\n[row 27]: Deferred income taxes | $433 [SEP]\n[row 28]: Other long-term liabilities | $17,981 [SEP]\n[row 29]: Total liabilities | $205,753 [SEP]\n[row 30]: Stockholders' equity [SEP]\n[row 31]: Common stock and paid-in capital | $93,718 [SEP]\n[row 32]: Retained earnings | $118,848 [SEP]\n[row 33]: Accumulated other comprehensive loss | $(6,343) [SEP]\n[row 34]: Total stockholders' equity | $206,223 [SEP]\n[row 35]: Total liabilities and stockholders' equity | $411,976 [SEP]",
+    "gt_transaction_data": "Transactions for FY2023:\n[contributing to row 11]: Goodwill | $67,886 [SEP]\n1. Goodwill from Activision Blizzard acquisition added $56,000.\n2. Pre-existing goodwill from prior acquisitions $11,886.\n[Explanation: $67,886 = $56,000 + $11,886]\n[contributing to row 12]: Intangible assets, net | $9,366 [SEP]\n3. Amortization of acquired technology reduced intangibles by $3,500.\n4. New intangible assets from Activision acquisition valued at $12,866.\n[Explanation: $9,366 = $12,866 - $3,500]",
+    "modified_statement": "[Time]: June 30, 2023 [SEP]\n[row 0]: Assets [SEP]\n[row 1]: Cash and cash equivalents | $34,704 [SEP]\n[row 2]: Short-term investments | $76,558 [SEP]\n[row 3]: Total cash, cash equivalents, and short-term investments | $111,262 [SEP]\n[row 4]: Accounts receivable, net | $48,688 [SEP]\n[row 5]: Inventories | $2,500 [SEP]\n[row 6]: Other current assets | $21,807 [SEP]\n[row 7]: Total current assets | $184,257 [SEP]\n[row 8]: Property and equipment, net | $95,641 [SEP]\n[row 9]: Operating lease right-of-use assets | $14,346 [SEP]\n[row 10]: Equity investments | $9,879 [SEP]\n[row 11]: Goodwill | $67,886 [SEP]\n[row 12]: Other long-term assets | $26,030 [SEP]\n[row 13]: Total assets | $402,610 [SEP]\n[row 14]: Liabilities and stockholders' equity [SEP]\n[row 15]: Accounts payable | $18,095 [SEP]\n[row 16]: Current portion of long-term debt | $5,247 [SEP]\n[row 17]: Accrued compensation | $11,009 [SEP]\n[row 18]: Short-term income taxes | $4,152 [SEP]\n[row 19]: Short-term unearned revenue | $50,901 [SEP]\n[row 20]: Other current liabilities | $14,745 [SEP]\n[row 21]: Total current liabilities | $104,149 [SEP]\n[row 22]: Long-term debt | $41,990 [SEP]\n[row 23]: Operating lease liabilities | $12,728 [SEP]\n[row 24]: Long-term income taxes | $26,069 [SEP]\n[row 25]: Long-term unearned revenue | $2,912 [SEP]\n[row 26]: Deferred income taxes | $433 [SEP]\n[row 27]: Other long-term liabilities | $17,981 [SEP]\n[row 28]: Total liabilities | $205,753 [SEP]\n[row 29]: Stockholders' equity [SEP]\n[row 30]: Common stock and paid-in capital | $93,718 [SEP]\n[row 31]: Retained earnings | $118,848 [SEP]\n[row 32]: Accumulated other comprehensive loss | $(6,343) [SEP]\n[row 33]: Total stockholders' equity | $206,223 [SEP]\n[row 34]: Total liabilities and stockholders' equity | $411,976 [SEP]",
+    "general_judgement": "Incorrect",
+    "error_identification": {
+      "error_type": "Missing Row",
+      "error_category": "omitted_intangible_assets",
+      "problematic_entry": 12,
+      "affected_row_label": "Intangible assets, net",
+      "affected_xbrl_concept": "us-gaap:IntangibleAssetsNetExcludingGoodwill",
+      "original_value": 9366,
+      "erroneous_value": null,
+      "severity": "material",
+      "difficulty": "medium",
+      "statement_section": "noncurrent_assets"
+    },
+    "error_resolution": "The 'Intangible assets, net' row ($9,366) has been omitted from non-current assets. This item represents amortizable technology, trademarks, and customer relationships, primarily from the Activision Blizzard acquisition. Total assets are understated by $9,366 ($402,610 vs. $411,976). The row should be reinstated.",
+    "ground_truth_citations": {
+      "primary_asc_codes": ["FASB ASC 350-30-45-1"],
+      "secondary_asc_codes": ["FASB ASC 350-30-50-1", "FASB ASC 210-10-45-1"],
+      "all_candidate_topics": ["350", "210", "805"],
+      "dqc_rules": ["DQC_0043"],
+      "citation_source": "us-gaap-ref-2023.xml",
+      "taxonomy_path": "us-gaap:IntangibleAssetsNetExcludingGoodwill → referenceArc → FASB ASC 350-30-45-1",
+      "citation_rationale": "ASC 350-30 (General Intangibles Other Than Goodwill) governs the recognition and presentation of intangible assets. Their omission violates presentation completeness."
+    },
+    "xbrl_context": {
+      "row_xbrl_tags": {
+        "12": {"concept": "us-gaap:IntangibleAssetsNetExcludingGoodwill", "balance": "debit", "period": "instant"},
+        "11": {"concept": "us-gaap:Goodwill", "balance": "debit", "period": "instant"}
+      },
+      "calculation_tree": {
+        "us-gaap:Assets": {
+          "children": [
+            {"tag": "us-gaap:AssetsCurrent", "weight": 1.0},
+            {"tag": "us-gaap:PropertyPlantAndEquipmentNet", "weight": 1.0},
+            {"tag": "us-gaap:Goodwill", "weight": 1.0},
+            {"tag": "us-gaap:IntangibleAssetsNetExcludingGoodwill", "weight": 1.0}
+          ]
+        }
+      },
+      "affected_linkbase_relations": ["calculationArc", "referenceArc", "presentationArc"]
+    }
+  },
+  {
+    "sample_id": "IAB-2024-0007",
+    "metadata": {
+      "company": "Amazon.com Inc.",
+      "ticker": "AMZN",
+      "cik": "0001018724",
+      "industry": "Technology",
+      "sector": "E-Commerce / Cloud",
+      "fiscal_year": "2023",
+      "fiscal_period_end": "December 31, 2023",
+      "filing_type": "10-K",
+      "statement_type": "balance_sheet"
+    },
+    "gt_table": "[Time]: December 31, 2023 [SEP]\n[row 0]: Assets [SEP]\n[row 1]: Cash and cash equivalents | $73,387 [SEP]\n[row 2]: Marketable securities | $5,867 [SEP]\n[row 3]: Inventories | $33,318 [SEP]\n[row 4]: Accounts receivable, net and other | $52,253 [SEP]\n[row 5]: Total current assets | $164,825 [SEP]\n[row 6]: Property and equipment, net | $204,177 [SEP]\n[row 7]: Operating leases | $72,513 [SEP]\n[row 8]: Goodwill | $22,749 [SEP]\n[row 9]: Other assets | $63,240 [SEP]\n[row 10]: Total assets | $527,854 [SEP]\n[row 11]: Liabilities [SEP]\n[row 12]: Accounts payable | $87,812 [SEP]\n[row 13]: Accrued expenses and other | $68,950 [SEP]\n[row 14]: Unearned revenue | $14,052 [SEP]\n[row 15]: Total current liabilities | $170,814 [SEP]\n[row 16]: Long-term lease liabilities | $77,642 [SEP]\n[row 17]: Long-term debt | $58,314 [SEP]\n[row 18]: Other long-term liabilities | $25,451 [SEP]\n[row 19]: Total liabilities | $332,221 [SEP]\n[row 20]: Stockholders' equity [SEP]\n[row 21]: Common stock | $108,657 [SEP]\n[row 22]: Treasury stock | $(7,837) [SEP]\n[row 23]: Accumulated other comprehensive income (loss) | $(3,040) [SEP]\n[row 24]: Retained earnings | $97,853 [SEP]\n[row 25]: Total stockholders' equity | $195,633 [SEP]\n[row 26]: Total liabilities and stockholders' equity | $527,854 [SEP]",
+    "gt_transaction_data": "Transactions for 2023:\n[contributing to row 3]: Inventories | $33,318 [SEP]\n1. Purchased merchandise inventory for fulfillment centers totaling $28,000.\n2. Additional inventory from acquired businesses $7,818.\n3. Inventory write-downs for obsolescence of $2,500.\n[Explanation: $33,318 = $28,000 + $7,818 - $2,500]",
+    "modified_statement": "[Time]: December 31, 2023 [SEP]\n[row 0]: Assets [SEP]\n[row 1]: Cash and cash equivalents | $73,387 [SEP]\n[row 2]: Marketable securities | $5,867 [SEP]\n[row 3]: Inventories | $38,500 [SEP]\n[row 4]: Accounts receivable, net and other | $52,253 [SEP]\n[row 5]: Total current assets | $170,007 [SEP]\n[row 6]: Property and equipment, net | $204,177 [SEP]\n[row 7]: Operating leases | $72,513 [SEP]\n[row 8]: Goodwill | $22,749 [SEP]\n[row 9]: Other assets | $63,240 [SEP]\n[row 10]: Total assets | $533,036 [SEP]\n[row 11]: Liabilities [SEP]\n[row 12]: Accounts payable | $87,812 [SEP]\n[row 13]: Accrued expenses and other | $68,950 [SEP]\n[row 14]: Unearned revenue | $14,052 [SEP]\n[row 15]: Total current liabilities | $170,814 [SEP]\n[row 16]: Long-term lease liabilities | $77,642 [SEP]\n[row 17]: Long-term debt | $58,314 [SEP]\n[row 18]: Other long-term liabilities | $25,451 [SEP]\n[row 19]: Total liabilities | $332,221 [SEP]\n[row 20]: Stockholders' equity [SEP]\n[row 21]: Common stock | $108,657 [SEP]\n[row 22]: Treasury stock | $(7,837) [SEP]\n[row 23]: Accumulated other comprehensive income (loss) | $(3,040) [SEP]\n[row 24]: Retained earnings | $97,853 [SEP]\n[row 25]: Total stockholders' equity | $195,633 [SEP]\n[row 26]: Total liabilities and stockholders' equity | $527,854 [SEP]",
+    "general_judgement": "Incorrect",
+    "error_identification": {
+      "error_type": "Numerical Error",
+      "error_category": "inventory_overstatement",
+      "problematic_entry": 3,
+      "affected_row_label": "Inventories",
+      "affected_xbrl_concept": "us-gaap:InventoryNet",
+      "original_value": 33318,
+      "erroneous_value": 38500,
+      "severity": "material",
+      "difficulty": "medium",
+      "statement_section": "current_assets"
+    },
+    "error_resolution": "Inventories were overstated from $33,318 to $38,500 ($5,182 overstatement). Per transaction data, purchased inventory ($28,000) plus acquisitions ($7,818) minus write-downs ($2,500) equals $33,318. The overstatement may indicate failure to record the $2,500 obsolescence write-down and additional unrecorded adjustments. Total current assets and total assets are also overstated.",
+    "ground_truth_citations": {
+      "primary_asc_codes": ["FASB ASC 330-10-35-1"],
+      "secondary_asc_codes": ["FASB ASC 330-10-35-8", "FASB ASC 330-10-S99-1"],
+      "all_candidate_topics": ["330", "210"],
+      "dqc_rules": ["DQC_0001", "DQC_0043"],
+      "citation_source": "us-gaap-ref-2023.xml",
+      "taxonomy_path": "us-gaap:InventoryNet → referenceArc → FASB ASC 330-10-35-1",
+      "citation_rationale": "ASC 330-10-35 requires inventory to be measured at the lower of cost and net realizable value (NRV). Failure to write down obsolete inventory violates this measurement principle."
+    },
+    "xbrl_context": {
+      "row_xbrl_tags": {
+        "3": {"concept": "us-gaap:InventoryNet", "balance": "debit", "period": "instant"}
+      },
+      "calculation_tree": {
+        "us-gaap:AssetsCurrent": {
+          "children": [
+            {"tag": "us-gaap:InventoryNet", "weight": 1.0}
+          ]
+        }
+      },
+      "affected_linkbase_relations": ["calculationArc", "referenceArc"]
+    }
+  },
+  {
+    "sample_id": "IAB-2024-0008",
+    "metadata": {
+      "company": "NVIDIA Corporation",
+      "ticker": "NVDA",
+      "cik": "0001045810",
+      "industry": "Technology",
+      "sector": "Semiconductors",
+      "fiscal_year": "2024",
+      "fiscal_period_end": "January 28, 2024",
+      "filing_type": "10-K",
+      "statement_type": "balance_sheet"
+    },
+    "gt_table": "[Time]: January 28, 2024 [SEP]\n[row 0]: Assets [SEP]\n[row 1]: Cash and cash equivalents | $7,280 [SEP]\n[row 2]: Short-term investments | $18,704 [SEP]\n[row 3]: Accounts receivable, net | $9,999 [SEP]\n[row 4]: Inventories | $5,282 [SEP]\n[row 5]: Prepaid expenses and other current assets | $3,080 [SEP]\n[row 6]: Total current assets | $44,345 [SEP]\n[row 7]: Property and equipment, net | $3,914 [SEP]\n[row 8]: Operating lease right-of-use assets | $1,346 [SEP]\n[row 9]: Goodwill | $4,430 [SEP]\n[row 10]: Intangible assets, net | $1,112 [SEP]\n[row 11]: Deferred income tax assets | $6,081 [SEP]\n[row 12]: Other assets | $4,500 [SEP]\n[row 13]: Total assets | $65,728 [SEP]\n[row 14]: Liabilities [SEP]\n[row 15]: Accounts payable | $2,699 [SEP]\n[row 16]: Accrued and other current liabilities | $6,682 [SEP]\n[row 17]: Short-term debt | $1,250 [SEP]\n[row 18]: Total current liabilities | $10,631 [SEP]\n[row 19]: Long-term debt | $8,459 [SEP]\n[row 20]: Long-term operating lease liabilities | $1,119 [SEP]\n[row 21]: Other long-term liabilities | $2,541 [SEP]\n[row 22]: Total liabilities | $22,750 [SEP]\n[row 23]: Stockholders' equity [SEP]\n[row 24]: Common stock | $25,898 [SEP]\n[row 25]: Accumulated other comprehensive income (loss) | $(109) [SEP]\n[row 26]: Retained earnings | $17,189 [SEP]\n[row 27]: Total stockholders' equity | $42,978 [SEP]\n[row 28]: Total liabilities and stockholders' equity | $65,728 [SEP]",
+    "gt_transaction_data": "Transactions for FY2024:\n[contributing to row 8]: Operating lease right-of-use assets | $1,346 [SEP]\n1. New office leases in Santa Clara recognized as ROU assets $900.\n2. Amortization of existing leases reduced ROU by $554.\n3. New data center lease recognized at $1,000.\n[Explanation: $1,346 = $900 + $1,000 - $554]",
+    "modified_statement": "[Time]: January 28, 2024 [SEP]\n[row 0]: Assets [SEP]\n[row 1]: Cash and cash equivalents | $7,280 [SEP]\n[row 2]: Short-term investments | $18,704 [SEP]\n[row 3]: Accounts receivable, net | $9,999 [SEP]\n[row 4]: Inventories | $5,282 [SEP]\n[row 5]: Prepaid expenses and other current assets | $3,080 [SEP]\n[row 6]: Total current assets | $44,345 [SEP]\n[row 7]: Property and equipment, net | $5,260 [SEP]\n[row 8]: Operating lease right-of-use assets | $0 [SEP]\n[row 9]: Goodwill | $4,430 [SEP]\n[row 10]: Intangible assets, net | $1,112 [SEP]\n[row 11]: Deferred income tax assets | $6,081 [SEP]\n[row 12]: Other assets | $4,500 [SEP]\n[row 13]: Total assets | $65,728 [SEP]\n[row 14]: Liabilities [SEP]\n[row 15]: Accounts payable | $2,699 [SEP]\n[row 16]: Accrued and other current liabilities | $6,682 [SEP]\n[row 17]: Short-term debt | $1,250 [SEP]\n[row 18]: Total current liabilities | $10,631 [SEP]\n[row 19]: Long-term debt | $8,459 [SEP]\n[row 20]: Long-term operating lease liabilities | $1,119 [SEP]\n[row 21]: Other long-term liabilities | $2,541 [SEP]\n[row 22]: Total liabilities | $22,750 [SEP]\n[row 23]: Stockholders' equity [SEP]\n[row 24]: Common stock | $25,898 [SEP]\n[row 25]: Accumulated other comprehensive income (loss) | $(109) [SEP]\n[row 26]: Retained earnings | $17,189 [SEP]\n[row 27]: Total stockholders' equity | $42,978 [SEP]\n[row 28]: Total liabilities and stockholders' equity | $65,728 [SEP]",
+    "general_judgement": "Incorrect",
+    "error_identification": {
+      "error_type": "Misclassification",
+      "error_category": "lease_misclassification",
+      "problematic_entry": 8,
+      "affected_row_label": "Operating lease right-of-use assets",
+      "affected_xbrl_concept": "us-gaap:OperatingLeaseRightOfUseAsset",
+      "original_value": 1346,
+      "erroneous_value": 0,
+      "severity": "material",
+      "difficulty": "hard",
+      "statement_section": "noncurrent_assets"
+    },
+    "error_resolution": "Operating lease right-of-use assets ($1,346) were zeroed out and the amount was absorbed into Property and equipment, net ($3,914 → $5,260). This misclassifies operating lease ROU assets as owned property. Under ASC 842, lessees must present ROU assets from operating leases separately or disclose them distinctly from owned PP&E. The total assets remain the same but the classification violates GAAP.",
+    "ground_truth_citations": {
+      "primary_asc_codes": ["FASB ASC 842-20-45-1"],
+      "secondary_asc_codes": ["FASB ASC 842-20-25-1", "FASB ASC 842-10-25-2"],
+      "all_candidate_topics": ["842", "360", "210"],
+      "dqc_rules": ["DQC_0041", "DQC_0044"],
+      "citation_source": "us-gaap-ref-2023.xml",
+      "taxonomy_path": "us-gaap:OperatingLeaseRightOfUseAsset → referenceArc → FASB ASC 842-20-45-1",
+      "citation_rationale": "ASC 842-20-45 requires lessees to present operating lease ROU assets either separately on the balance sheet or to disclose the line items that include them. Merging them into PP&E without disclosure violates this requirement."
+    },
+    "xbrl_context": {
+      "row_xbrl_tags": {
+        "7": {"concept": "us-gaap:PropertyPlantAndEquipmentNet", "balance": "debit", "period": "instant"},
+        "8": {"concept": "us-gaap:OperatingLeaseRightOfUseAsset", "balance": "debit", "period": "instant"}
+      },
+      "calculation_tree": {},
+      "affected_linkbase_relations": ["referenceArc", "presentationArc"]
+    }
+  }
+]

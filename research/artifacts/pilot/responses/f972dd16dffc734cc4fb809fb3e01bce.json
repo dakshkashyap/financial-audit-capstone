@@ -1,0 +1,20 @@
+{
+  "call_id": "f972dd16dffc734cc4fb809fb3e01bce",
+  "model": "qwen/qwen3-8b",
+  "stage": "decision",
+  "prompt_sha256": "090b4c1e891e9545348ff48279fe1f99c8d0f3fe2ed704e962876599b92c8875",
+  "reserved_usd": "0.000976365",
+  "status": "ok",
+  "content": "{\n  \"judgement\": \"incorrect\",\n  \"error_type\": \"Numerical Error\",\n  \"row\": 0,\n  \"citation\": null,\n  \"citation_abstain\": true,\n  \"evidence\": [\n    {\"source\": \"statement\", \"quote\": \"Revenue | $47,090\", \"row\": 0},\n    {\"source\": \"transactions\", \"quote\": \"revenue recognised on satisfied performance obligations: +57,721 (increase); returns and allowances: −10,631 (decrease)\"},\n    {\"source\": \"transactions\", \"quote\": \"cut-off review — consideration billed or received during the period for performance obligations not yet satisfied at period-end 4,853; of which recorded as contract liabilities (deferred revenue) 838.\"},\n    {\"source\": \"transactions\", \"quote\": \"Research and development: research and development costs incurred in the period 2,742; expensed 2,742; capitalized to the balance sheet as development costs 0.\"}\n  ],\n  \"reason\": \"The reported revenue of $47,090 does not align with the transaction data showing revenue recognized on satisfied performance obligations of +57,721 and returns/allowances of −10,631. The discrepancy suggests a numerical error in the statement.\"\n}",
+  "response_id": "gen-1791001738-aUSgOxcLYffcAb5TDI1y",
+  "returned_model": "qwen/qwen3-8b",
+  "provider": "Alibaba",
+  "usage": {
+    "prompt_tokens": 1005,
+    "completion_tokens": 288,
+    "total_tokens": 1293,
+    "cost": 0.000248625
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 4.432
+}

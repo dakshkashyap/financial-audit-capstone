@@ -1,0 +1,20 @@
+{
+  "call_id": "2a718bc973f49299779e33fc5ecbdf9f",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "extract",
+  "prompt_sha256": "e7ed513fe3eb94b74af6c9e31ce91697c09b07bd8a5df22625b2c28d81e784b0",
+  "reserved_usd": "0.0010571",
+  "status": "ok",
+  "content": "{\"evidence\":[{\"source\":\"statement_text\",\"quote\":\"Accounts receivable, net | $160\",\"row\":2},{\"source\":\"statement_text\",\"quote\":\"Inventories | $175\",\"row\":3},{\"source\":\"transaction_data\",\"quote\":\"cost of goods sold relief: −43 (decrease)\",\"row\":null},{\"source\":\"supporting facts\",\"quote\":\"carrying amount 175; estimated net realizable value 198\",\"row\":null}],\"observations\":[\"Accounts receivable net is $160, with a $1 allowance for credit losses.\",\"Inventories are reported at $175, above estimated net realizable value.\",\"Cost of goods sold relief of $43 is consistent with inventory movement.\",\"Inventories exceed net realizable value, suggesting potential overstatement.\"],\"possible_faults\":[\"Inventories may be overstated if net realizable value is not properly reflected.\",\"Allowance for credit losses may be insufficient given gross receivables of $161 and expected losses of $11.\"],\"uncertainty\":\"The allowance for credit losses is $1, but expected losses are $11; the basis for the $1 amount is unclear. Inventory valuation may not reflect conservative principles.\"}",
+  "response_id": "gen-1791001910-Y4iaz5fpxEnk4FbUiTC5",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 1838,
+    "completion_tokens": 258,
+    "total_tokens": 2096,
+    "cost": 0.0001383066
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 1.653
+}

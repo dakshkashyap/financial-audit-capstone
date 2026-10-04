@@ -1,0 +1,13 @@
+{
+  "call_id": "73ee214e3071ed2837c8e578b44628dd",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "api_error",
+  "content": null,
+  "reserved_usd": "0.058108",
+  "request_sha256": "29d4799ef06025fdbaafd7677e869e36051a65f7ad31f6fc2477c02bece1cc3f",
+  "prompt_sha256": "41430f21986b6d2a58aae03103f8619d25ebfe111ca6977e0e3cd4c173d0271d",
+  "error": "HTTP 503; diagnostic stops, no retry",
+  "http_status": 503,
+  "elapsed_seconds": 3.219
+}

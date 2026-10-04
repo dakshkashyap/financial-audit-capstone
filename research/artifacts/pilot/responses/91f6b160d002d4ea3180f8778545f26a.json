@@ -1,0 +1,20 @@
+{
+  "call_id": "91f6b160d002d4ea3180f8778545f26a",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "extract",
+  "prompt_sha256": "76f7beb8ec5ff45e11f914a15b76d42221012f5d7f756dae7870b02bf4dbc0e8",
+  "reserved_usd": "0.0006372",
+  "status": "ok",
+  "content": "{\"evidence\":[{\"source\":\"statement_text\",\"quote\":\"Operating income (loss) | $100\",\"row\":4},{\"source\":\"statement_text\",\"quote\":\"Other operating expenses, net | ($578)\",\"row\":3},{\"source\":\"transaction_data\",\"quote\":\"other charges posted to the account: −763 (decrease)\",\"row\":null},{\"source\":\"transaction_data\",\"quote\":\"other credits posted to the account: +185 (increase)\",\"row\":null}],\"observations\":[\"Operating income is reported as $100 million.\",\"Other operating expenses, net are reported as ($578) million.\",\"Net charges to Other operating expenses, net total ($578) million.\",\"Transaction data shows a net decrease of $578 million from charges and credits.\"],\"possible_faults\":[\"Discrepancy between reported net and transaction-derived net for Other operating expenses, net.\"],\"uncertainty\":\"The source of the $578 million net figure cannot be confirmed without reconciliation of all components.\"}",
+  "response_id": "gen-1791001915-ZnTeVQUCm6wrdEnYkZpV",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 695,
+    "completion_tokens": 210,
+    "total_tokens": 905,
+    "cost": 7.400475e-05
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 1.847
+}

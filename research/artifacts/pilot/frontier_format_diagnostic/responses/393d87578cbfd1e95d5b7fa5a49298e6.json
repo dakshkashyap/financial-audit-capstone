@@ -1,0 +1,21 @@
+{
+  "call_id": "393d87578cbfd1e95d5b7fa5a49298e6",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":\"Redundant Row\",\"evidence\":[{\"quote\":\"[row 18]: Derivative liabilities | $465\",\"row\":18,\"source\":\"statement\"},{\"quote\":\"[row 25]: Total current liabilities | $8,284\",\"row\":25,\"source\":\"statement\"},{\"quote\":\"[row 44]: Total liabilities and stockholders' equity | $31,718\",\"row\":44,\"source\":\"statement\"}],\"judgement\":\"incorrect\",\"reason\":\"The current liability rows sum to 8,749, but the reported total is 8,284, a difference of exactly 465. Total liabilities and equity of 31,718, less equity of 7,868, other liabilities and equity of 2,092, and non-current liabilities of 13,474, leaves 8,284, so the subtotal is consistent. That points to the unsupported derivative liabilities row as redundant. This is a presentation fault that no specific ASC paragraph clearly governs, so no citation is given.\",\"row\":18}",
+  "reserved_usd": "0.066884",
+  "request_sha256": "56bd3025f9b19f03a4dc7bdb14285a31bdf61e8e096b9a8707bc208d31075c0c",
+  "prompt_sha256": "80d52770c3e03d4d44ca3c990d63d679d820c538999057e9136cf77a47298cb9",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002270-abi6Ccrc1YbyxkTqDWNk",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 4008,
+    "completion_tokens": 851,
+    "total_tokens": 4859,
+    "cost": 0.033052
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 10.692
+}

@@ -1,0 +1,240 @@
+# Evidence-Supported and Cost-Constrained Financial Reporting Verification
+
+## A Benchmark Validity Audit and Study Protocol
+
+Research team — author list and affiliations pending.
+
+**Research draft, 3 October 2026.** Development evidence; not a completed accountant-validated benchmark.
+
+This readable manuscript mirrors `main.tex`. Native PDF compilation is currently unverified: the compiler returned “Unable to find standard directories for platform.” The source is preserved and the editor-open request queued; no local TeX installation was attempted. The primary 48-case results and both separately named, service-interrupted follow-up diagnostics are populated. All attempted calls and observed failures are preserved.
+
+## Abstract
+
+Low agreement with accounting-standard citations can reflect model limitations, retrieval failures, invalid labels, or benchmark shortcuts. We audit executable artifacts from two financial-auditing branches and their current upstream generator. The embedded branches contain identical 1,202-case packages, expose rule names in every exam identifier, and contain no clean exam controls. Updated upstream data repairs direct leakage and adds controls; nevertheless, 5,025 of 6,388 citable US-GAAP cases explicitly remain unvalidated. An eight-company source check finds 2,929 signed matches among 4,092 normalized numeric rows, with unresolved provenance limitations. On 48 frozen development cases with a 900-token completion cap, Opus 5.5 attains 11/16 strict full-citation agreements versus 0/16 for Qwen3-8B; Qwen3-30B conditions are heavily affected by provider failures. A post-hoc complete-JSON analysis raises Opus agreement to 13/16 without replacing primary scores. We provide a reproducible harness and a synthetic acquisition prototype, and specify expert-reviewed sufficient-proof sets and dated standards applicability. These results concern provisional-key agreement and system reliability; they do not establish accounting correctness, novel benchmark coverage, or cheap-model superiority.
+
+## Motivation and research question
+
+Financial reporting verification requires more than detecting an unusual value. A conclusion must identify the relevant assertion, recover adequate evidence, account for context and exceptions, and cite authority governing the specific issue. A citation associated with a financial concept is not necessarily the paragraph that explains an observed misstatement. When arithmetic, presentation, recognition, and measurement errors share a table, evaluating all of them against a single paragraph lookup can confound these distinctions.
+
+The motivating project reported approximately 12% full-citation agreement, while an earlier external review alleged answer leakage and inconsistent citation supervision. Neither percentage can be reproduced from a prose report alone: predictions, dataset revision, denominators, prompts and evaluation code determine its meaning. Our first step is therefore to examine the artifacts rather than interpret low agreement as evidence of deficient accounting knowledge. We distinguish original feedback, reproducible measurements of current files, and hypotheses for future experiments.
+
+The intended research question is: *Can a cheap model obtain an evidence-supported financial reporting conclusion and applicable citation under a constrained evidence budget as reliably as one frontier comparator?* This question permits a useful contribution even if the cheap model does not win. A validated benchmark, a reproducible comparison, and an analysis of retrieval versus applicability errors can expose when external structure compensates for limited model capacity.
+
+The contribution currently supported is an executable validity audit and an open study scaffold. The intended benchmark contribution remains conditional on qualified independent annotation and a broader novelty review. Our initial scope is financial reporting verification and citation applicability. We do not equate a synthetic injected mistake with intentional fraud or claim that public statement totals supply the source documents necessary for a real audit.
+
+## Related work and overlap
+
+**Financial reasoning with evidence.**
+
+FinQA supplies 8,281 expert-written questions over 2,789 report *pages*, with executable programs and supporting facts ([Chen et al., 2021](https://aclanthology.org/2021.emnlp-main.300/)). ConvFinQA extends this family to 3,892 conversations and 14,115 questions ([Chen et al., 2022](https://aclanthology.org/2022.emnlp-main.421/)). MultiHiertt adds multiple hierarchical tables, text, and fine-grained reasoning annotations across 10,440 examples ([Zhao et al., 2022](https://aclanthology.org/2022.acl-long.454/)). FinanceBench provides company financial questions with answer evidence; its original open evaluation subset comprises 150 cases from a claimed 10,231-question suite ([Islam et al., 2023](https://arxiv.org/abs/2311.11944)). These precedents motivate separate evaluation of answers and support, but their QA labels do not establish accounting-standard applicability.
+
+**Auditing benchmarks and structured verification.**
+
+*Automating Financial Statement Audits with Large Language Models* introduces AuditBench ([Wang et al., 2025](https://arxiv.org/abs/2506.17282)); these are one baseline, not two separate papers. Its 371 source statements produce synthetic transaction evidence and error variants. Its GPT-4 citation Top-1 result of 26.2% is a retriever-based metric, not directly comparable to paragraph exact match. FinAuditing defines semantic matching, relation extraction and mathematical reasoning over real XBRL, with 1,102 instances including 332 FinMR cases ([Wang et al., FinAuditing](https://arxiv.org/abs/2510.08886)). The v3 paper describes deterministic DQC-derived supervision and LLM-assisted parsing; its numerical task uses an LLM judge.
+
+AuditFlow already separates adaptive search from deterministic verification using a taxonomy graph, a filing graph, typed tools, junior/senior agents and fixed step budgets ([Wang et al., AuditFlow](https://arxiv.org/abs/2606.03031)). It reports 82.09% joint accuracy on 67 FinMR-derived cases under GPT-5.5 and 73.13% under Qwen3.6-27B; removing deterministic checks yields 17.91%. These are source-reported results on a different task, not evidence for our own model comparison. Evidence graphs, multi-agent roles and numerical checkers cannot independently support a novelty claim.
+
+**Realistic financial judgments.**
+
+EDINET-Bench, verified in ICLR 2026 proceedings, evaluates fraud, earnings and industry tasks over Japanese annual reports and includes classical-model controls ([Sugiura et al., 2026](https://proceedings.iclr.cc/paper_files/paper/2026/hash/0e22eef358cd1d2bdb227e6b832cc775-Abstract-Conference.html)). AuditFraudBench grounds three tasks in filings, restatements and SEC enforcement records ([Liu et al., 2026](https://arxiv.org/abs/2606.08345)). Its paper explicitly states that all Task 1 attribution cases and all Task 2 narratives are positive; several models achieve perfect Task 1 classification. This motivates balanced controls and evidence-quality evaluation rather than label accuracy alone.
+
+FinancialAuditBench provides 90 workpaper tasks across six synthetic engagements, averaging 179 files, and more than 1,100 auditor development/review hours ([Huang et al., 2026](https://arxiv.org/abs/2609.32835)). Its computational graph generates consistent documents, and CPA-designed rubrics evaluate completion/review. We therefore do not claim the first internally consistent audit evidence generator. FinReflectKG is a possible retrieval resource, but its extracted triples and model-based quality checks are not accountant-adjudicated ground truth ([Arun et al., 2025](https://arxiv.org/abs/2508.17906)).
+
+The candidate distinction is controlled incomplete evidence with heterogeneous acquisition costs, acceptable sufficient-proof alternatives, dated paragraph applicability, and a cheap-model cost/quality frontier under a common harness. Whether this combination is novel remains a hypothesis requiring a systematic literature review.
+
+## Audit of current artifacts
+
+### Versioned scope and reproducibility
+
+We inspect the capstone branches at commits `159ae080` (ASC) and `4a622e0b` (IFRS) and the requested IntelliAudit upstream at `72da89a9`. Source manifests retain full commit IDs and SHA-256 hashes. The two embedded `data/intelliaudit` packages are byte-identical for their exam, answer-key and clean-statement files; an IFRS branch name does not make that copied package IFRS data. The separate upstream IFRS package is IFRS-labelled and currently balance-sheet only. Table 1 reports measurements from the offline audit script; it does not assess normative standards content.
+
+| Measured property | Embedded | US GAAP upstream | IFRS upstream |
+|---|---:|---:|---:|
+| Exam cases | 1,202 | 14,963 | 1,382 |
+| Companies | 8 | 70 | 31 |
+| Base statements | 220 | 1,989 | 161 |
+| Clean exam controls | 0 | 1,989 | 161 |
+| Marked citable | 492 | 6,388 | 648 |
+| Explicitly unvalidated citable | 479 | 5,025 | 648 |
+| Strict linkbase flags | 13 | 1,363 | 0 |
+| Rule-name exposure in exam | 1,202 | 0 | 0 |
+| Citable section-only codes | 112 | 0 | 0 |
+
+*Table 1. Current-file audit, not the historical 1,089-case review. “Embedded” applies to both identical branch packages. Linkbase membership is mechanical association, not a finding that the paragraph governs the error.*
+
+### Leakage, controls and citation supervision
+
+Every embedded exam identifier contains an injected rule name, and always predicting “incorrect” attains perfect judgment accuracy because no clean controls are present. The updated upstream removes direct rule tokens and citation codes from exam text, adds controls and moves hidden fields to the key. These are material repairs, although controls are still a minority of the entire generated source. Our diagnostic pilot deliberately balances clean, noncitable and citable strata.
+
+To measure shortcuts, we fit metadata-to-citation majority mappings on other companies and evaluate the held-out company, restricted to citable cases. Statement type alone yields 192/492 (39.0%) agreement on the embedded package, 1,889/6,388 (29.6%) on current US GAAP and 149/648 (23.0%) on IFRS. Adding *gold* error type produces 46.5%, 38.3% and 34.9%; this is an oracle diagnostic, not a deployed baseline. Gold rule ID produces 100% on both US-GAAP versions and 99.85% on IFRS. In the embedded package that ID is directly exposed; upstream it is evaluator-only. These results identify a narrow rule-to-label ontology without establishing that models can infer its rules from evidence.
+
+The current key contains no reviewer/adjudication or standards-version fields. This does not prove that nobody reviewed a case elsewhere, but it prevents verification of completed independent adjudication from the release. The upstream labels explicitly mark most citable cases unvalidated. Therefore full-code agreement is agreement with a provisional author key, not established accounting correctness.
+
+### Pipeline scoring and inference boundaries
+
+Executable review identifies legacy prefix-overlap citation scoring, an exam recall denominator that includes noncitable items, and citation-only evaluators supplied with gold localization or error type. Re-running the axis analysis yields 492/492 topic matches when gold error type and affected concept are provided: this is an oracle diagnostic, not blind paragraph accuracy. The main exam prediction boundary does not itself branch on the injected rule ID. Archived Opus 4.6 single-error predictions have 1/32 strict paragraph hits among eligible full-code labels, versus 0/32 for its pipeline condition; those historical unvalidated artifacts do not measure Opus 5.5.
+
+The cleaned integration separates exact paragraph and topic metrics, counts citable denominators, permits abstention, rejects invalid candidate picks while preserving raw output, retains IFRS paragraph codes, targets numerical edits to a localized row, and removes a default hard veto based only on partial arithmetic consistency. These repairs are engineering correctness changes; they do not supply missing accounting applicability annotations or establish model-quality gains.
+
+### Evidence realism and source matching
+
+In the embedded package, signed synthetic components reconstruct the pre-injection target value in 259 of 571 numeric cases. Current US GAAP reconstructs it in 2,144 of 6,496 numeric cases; these occur in noncitable arithmetic/sign families. Current recognition/measurement variants instead construct their target ledger from the as-booked statement and include supporting facts. This repairs the old recognition-case reconstruction cue, but random account-level decompositions still lack the dated postings, balanced account pairs and original source documents needed for authentic bookkeeping.
+
+Current cash-flow normalization retains a substantial residual component: absolute residual line mass is 33.43% across non-total cash-flow lines under the audit's explicit metric. This is not the earlier review's percentage-of-assets metric. Recognition claims must distinguish observed filing facts, derived reconciliations and synthetic supplements rather than treat normalized statements as complete real engagements.
+
+An independent companyfacts check for the eight selected pilot firms covers 226 clean tables and 4,092 numeric rows: 2,929 signed matches, 397 magnitude-only matches, 604 derived/unmapped rows, 160 without a same-period fact and two value mismatches. The latter involve Crocs cash-flow rows and require reconciliation before a faithful-source claim. Current companyfacts can contain restated comparatives; a numeric match does not establish original-accession fidelity, sign correctness, or the governing authority. We preserve hashes and candidate accessions and do not conclude that every financial value is verified.
+
+A second flattened-source consistency check finds that 18 of 226 tables lack a common accession supporting all individually magnitude-matched mapped rows, and 164 of 3,328 same-period candidate cells have conflicting values across accessions. This can reflect mixed comparative/restated versions or incomplete companyfacts mappings; it is not proof that every row in an affected table is wrong. Within the 2020–2024 development cohort, 44 distinct base tables contribute to 48 cases; two tables and two cases are implicated by the accession-consistency diagnostic. Original filing reconstruction is required before these records support archival-fidelity claims. Derived/custom-tagged rows are excluded from the accession intersections, and a common accession does not validate layout, transactions or standards applicability.
+
+### Reference candidate coverage
+
+A further offline audit freezes candidates from public inputs before joining provisional keys. On the 16 citable development cases, the top-eight candidates for the gold row contain two target labels; the displayed union across all rows contains three. Even the complete downloaded 2023 FASB reference linkbase contains only six of the sixteen exact target labels. Expanding candidate-list limits does not improve this particular overlap. Gold-row retrieval is an oracle diagnostic. Absence from this reference metadata does not imply absence from the Codification or invalidity of a paragraph; presence does not establish applicability. This finding motivates issue-conditioned authority retrieval, but it does not demonstrate an effective replacement corpus or method.
+
+## Intended benchmark specification
+
+### Case state and permitted conclusions
+
+A case should encode a dated reporting assertion, initial public observations $O_0$, an acquisition catalog $D$, and evaluator-only labels. Each document $d\in D$ carries provenance, a version, a nonnegative acquisition cost $c(d)$ and typed facts. The investigator chooses an action sequence $\pi=(a_1,\ldots,a_T)$ satisfying
+$$
+ \sum_{t=1}^T c(a_t)\leq B.
+$$
+The visible state contains only acquired observations and public metadata. It excludes injected rule names, hidden proof edges, original corrected values and answer-key citations. The tool service must own document state; placing a hidden key next to public JSON is not a security boundary.
+
+The intended conclusions distinguish supported misstatement, supported compliance, suspicious evidence requiring further work, and insufficient evidence. A definitive error should not follow from the mere presence of a supporting-facts section or an unusual customer. Recognition/cutoff cases require the relevant contractual condition and a linked event. Public enforcement outcomes may guide case construction, but later restatements and AAER narratives stay evaluator-only when the task asks what was identifiable at an earlier investigation date.
+
+### Evidence and authority gold
+
+One available qualified accountant will specify the allegation and assertion, required facts, scope and exceptions, dated authority, acceptable paragraph alternatives, and whether a definitive conclusion is identifiable. Initial judgments are collected without author proposals or model outputs, followed by a delayed repeated subset and separate reconciliation. Qualifications, prior exposure, revisions and unresolved items must be recorded. This supports single-expert review, not independent multi-expert adjudication or inter-rater reliability. A taxonomy reference is a candidate-retrieval signal, not sufficient gold.
+
+For each conclusion we record a family of acceptable sufficient proof sets $\mathcal{S}_i=\{S_{i1},\ldots,S_{ik}\}$, potentially represented by linked fact graphs. Support is satisfied when at least one independently reviewed proof set is recovered without contradiction. Alternative valid paths remain acceptable. The evaluator should assess source joins and factual support, not demand a single prescribed investigation order. Examples with no uniquely supported authority are marked ambiguous or excluded prospectively from exact-paragraph denominators.
+
+We keep jurisdiction/version explicit. For US GAAP, presentation authorities and subject-specific recognition/measurement authorities can both be relevant but govern different assertions. For IFRS, standard versions and effective dates must be recorded independently; mechanical ASC-to-IFRS mapping is not authoritative equivalence. The initial release should prioritize one narrow assertion family rather than promise coverage of all accounting standards.
+
+### Blind single-accountant review pilot
+
+The companion IntelliAudit branch now provides a deterministic 20-case annotation-feasibility packet from five companies. It contains ten matched-source clean/fault revenue-cutoff cases and ten versions with one cutoff fact withheld. Source evidence differs across some clean/fault pairs beyond the intended intervention, and residual evidence may still decide withheld cases. These are unreviewed candidates, not certified minimal counterfactuals or accounting ground truth.
+
+The default local dashboard excludes proposed answers and answer-based filters. It preserves an initial submission before an explicit reveal and stores reconciliation separately in an append-only local event store. A whole-pilot embargo on proposal reveals, including a delayed 10–20% repeat subset, is an operational protocol; per-case submission-before-reveal is enforced by the software. Reviewer IDs provide attribution, not authentication. Repository access still permits deliberate inspection of source keys, so only public packets should be distributed during blind review.
+
+Canonical annotation and release checks reside in IntelliAudit. Operational dashboard records do not automatically qualify as publication annotations: source/version fidelity, authority dates and applicability, accepted proofs, refutations and final resolution require explicit curation and actual review. The current gate correctly reports zero completed annotations and blocks release. No phase-two model requests have run; the unfinished method runner is archived as a design pending review and a new protocol freeze.
+
+### Current software prototype
+
+The evidence-budget module generates paired synthetic recognition/control fixtures with balanced journal entries, linked invoices, simplified contract triggers, shipment joins and event registers. Initial observations are matched across each pair; relevant packets and distractors have differing costs. The simulator rejects acquisitions beyond the budget and separates observable records from evaluator proof state.
+
+This is a deterministic software demonstration with *unvalidated contractual criteria*, synthetic company aliases and arbitrary cost units. It is neither an accountant-validated dataset nor an LLM experiment. A dispatch/acceptance trigger supplied by an experimental contract does not by itself constitute full ASC 606 or IFRS 15 analysis. Published deterministic seeds also permit reconstruction; a final hidden evaluation needs independently frozen withheld cases. Prototype scores establish API and evaluator behavior, not financial auditing ability.
+
+The implemented post-run scorer consumes evaluator-owned annotations after the canonical release gate, public predictions and independently logged acquisition traces. It accepts any annotated sufficient proof alternative, checks source joins and required refutations, and enforces source availability, budget and dated applicability predicates. Two changed but incorrect counterfactual answers receive no paired-success credit. A response may warrant abstention because sufficient evidence was not acquired while receiving no correct-diagnosis credit on a resolvable case. Decision coverage and supported success must therefore accompany abstention rates. These structural checks do not establish free-text entailment, source authenticity or genuine human review; their unit examples are fictional software tests.
+
+## Pipeline and controlled comparisons
+
+The proposed pipeline separates five operations. First, parse financial facts and context with provenance-preserving deterministic tooling. Second, run explicit numerical consistency checks and identify candidate assertions; valid arithmetic does not imply correct recognition. Third, retrieve broad authority candidates using concept associations and issue text. Fourth, a cheap model checks candidate applicability against the observed allegation, required facts and exceptions. Fifth, acquire missing evidence or abstain, producing a structured conclusion, citation and supporting spans.
+
+Candidate selection should use the actual observed issue rather than an injected rule ID. Add subject-specific and presentation candidates together, record their provenance, and expose when the applicable paragraph is absent from the corpus. Retrieval coverage, rank/selection accuracy and supported applicability are measured separately. A deterministic numerical verifier handles calculations; it cannot certify normative accounting interpretation merely because a lookup matches.
+
+The planned validated study compares direct prompting, retrieval without applicability checking, applicability-conditioned selection, and budgeted acquisition under the same observations and scorer. These retrieval and acquisition conditions have not been evaluated in the current model pilot. Controls include constant judgments; statement-type-only citation prediction; deterministic arithmetic; random/uniform acquisition; and oracle evidence, explicitly labelled an upper bound. Same-model direct versus structured prompting isolates scaffolding from model scale. AuditFlow-inspired verification is a closest-method control, with its graph/checker functions reproduced where feasible; its literature percentage is not imported as our baseline result.
+
+## Development pilot and evaluation protocol
+
+### Frozen diagnostic cohort
+
+The current manifest selects 48 upstream US-GAAP development cases from eight firms, six per company: two clean, two detection-only and two citable. The cases cover fiscal years 2020–2024 and comprise 21 balance sheets, 16 income statements and 11 cash-flow statements. This date filter reduces obvious historical applicability conflicts but does not establish company-specific adoption dates or valid authority. It retains source hashes, a fixed selection seed, public inputs and a separate scoring key. Opaque case identifiers remove direct rule-name exposure. Synthetic transaction evidence and unvalidated citation labels remain, so this is an *exploration/development* cohort, not an untouched final test.
+
+On this selected cohort, a separate leave-one-company-out diagnostic predicts citations from other companies' labels using observable metadata alone. A statement-type majority prior achieves 7/16 (43.75%) provisional paragraph agreement; global and statement-type-plus-year priors each achieve 5/16 (31.25%). These conditional citable-only diagnostics use neither gold error type nor held-out labels at inference and do not measure whole-case auditing success. They concern a different cohort from the full-dataset priors above. Their substantial agreement motivates explicit shortcut controls in the final study.
+
+The comparison uses one frontier family, Claude Opus 5.5, plus Qwen3-8B and Qwen3-30B-A3B. The latter has direct and evidence-then-decision conditions. This pilot uses closed-book standards reasoning: each model receives the supplied statement and supporting evidence but no external standards retrieval or investigation tools. Each call has a 900-completion-token cap and temperature zero. This constrained comparison does not measure an unrestricted frontier model's auditing capability, and caps can interact with reasoning-token use and truncation. Run manifests preserve exact provider slugs, the common `diagnostic-evidence-v2` prompt version, prices and input hashes. The development configuration has an explicit \$5 ceiling to preserve most of the approximately \$30–40 total budget for a frozen study. Preflight calls, truncations and provider failures are recorded separately from completed evaluation predictions, with expenditures retained in the ledger.
+
+<!-- PILOT_RESULT_TABLE_START -->
+
+| Condition | Judgment | Citation | Clean | Failures | USD |
+|---|---:|---:|---:|---:|---:|
+| Opus 5.5 direct | 29/48 | 11/16 | 4/16 | 19/48 | \$1.064812 |
+| Qwen-8B direct | 31/48 | 0/16 | 0/16 | 1/48 | \$0.013455 |
+| Qwen-30B-A3B direct | 11/48 | 3/16 | 0/16 | 32/48 | \$0.002607 † |
+| Qwen-30B-A3B evidence-first | 1/48 | 0/16 | 0/16 | 45/48 | \$0.002136 † |
+
+*Table 2. Primary strict evaluation on the same 48 development cases. Citation is full-paragraph agreement with 16 unvalidated citable labels; Clean is specificity on 16 controls. Failures remain in all applicable denominators. USD is the reported cost of final prediction traces, including evidence-stage calls. †: 31 direct and 33 evidence-first trace calls lack provider cost, so those totals are incomplete.*
+
+<!-- PILOT_RESULT_TABLE_END -->
+
+### Observed reliability and provisional agreement
+
+The primary report covers the same 48 cases for all four conditions. Opus has 29 valid predictions, 18 invalid responses and one empty response; Qwen-8B has 47 valid predictions and one invalid response. Qwen-30B direct has 31 HTTP 429 provider failures and one invalid response; its evidence-first condition has 33 provider failures, 12 format/extraction failures and only three valid predictions. Their low measured accuracy reflects service and protocol failures as well as returned answers. It is not an estimate of intrinsic accounting competence, nor a valid reason to conclude evidence-first reasoning is inferior.
+
+Qwen-8B's 31/48 overall judgment agreements slightly exceed Opus's strict 29/48, but it fails all 16 clean controls and achieves zero citable paragraph agreements. High sensitivity accompanied by systematic false alarms cannot support a cheap-model win. Opus's strict full-citation agreement is 68.75%, with an exploratory company-cluster 95% interval of [50.0, 87.5]%. The paired Qwen-8B-minus-Opus full-citation difference is $-68.75$ percentage points [ $-87.5$, $-50.0$ ]; its judgment difference is $+4.17$ points [$-8.33$, $14.58$]. The Qwen-30B-direct-minus-Opus citation difference is $-50.0$ points [$-81.25$, $-18.75$], but severe nonrandom provider missingness prevents interpretation as model-quality separation. With eight companies these intervals are unstable and conditional on this development cohort.
+
+Final-trace reported costs in Table 2 exclude unrelated preflights. The primary experiment ledger snapshot, including smoke/preflight calls, reports \$1.10700745, with 65 unpriced completions and a conservative reservation total of \$2.221919034. This is an incomplete reported cost, not an exact debit from the account; error reservations remain charged against the \$5 ceiling.
+
+Including both separately attributed follow-ups, the final ledger contains 253 attempted API calls, \$1.92078856970 in reported charges, 67 unpriced responses and a conservative reservation total of \$4.230397654, below the \$5 ceiling. Every reservation has a completion record. Unpriced failures prevent interpreting the reported subtotal as an exact account debit; the bound is retained without refunding failed-call reservations.
+
+### Response-format and legacy-transfer diagnostics
+
+A post-hoc audit accepts fields only from complete single JSON objects, without repairing truncated JSON or inventing absent answers. Opus returns 39 complete objects, including ten rejected by the primary schema for a missing explanation field. Seven responses are truncated, one is invalid JSON and one is unavailable/empty. Field-level analysis gives 39/48 judgment agreement, 12/16 clean specificity and 13/16 paragraph agreement; its latter interval is [62.5, 93.75]%. Qwen-8B remains at 31/48, 0/16 and 0/16. The apparent primary judgment ranking consequently reverses, exposing schema-sensitive evaluation. This analysis is secondary and non-confirmatory; the primary report and denominators are unchanged. JSON completeness or an exact quotation does not establish adequate reasoning.
+
+The local deterministic legacy pipeline initially abstains on all 48 cases when presented with the new synthetic component format. A format adapter increases detection from 0/32 to 6/32 and joint error-type/row agreement to 4/32 at zero API cost. Its initial adapted trace emits one unvalidated default citation and attains 0/16 paragraph agreement. A separately recorded repair requires explicit applicability verification before a deterministic shortcut emits a governing citation: it retains the same detection/localization scores and abstains on citations for all 48 cases. All 16 clean decisions also remain abstentions, so they receive no specificity credit. These diagnostics isolate parser transfer and unsafe candidate promotion; they do not validate synthetic components as double-entry accounting or supply missing authoritative labels.
+
+A separate same-frontier follow-up requests native JSON-schema output, explicit low reasoning and a 1,200-token cap. Its predefined stop rule halts on an HTTP 503 response at the 37th request: 35 predictions are valid, one is invalid, one has a provider error, and 11 cases are not requested. Counting all 48 intended cases, it achieves 34/48 judgment agreement, 13/16 clean specificity and 11/16 paragraph agreement. Reported cost is \$0.808516, with one unpriced request. Fewer format failures on the attempted prefix suggest that output protocol matters, but the changed token/reasoning settings and incomplete ordered cohort preclude a matched model-quality comparison. This diagnostic does not overwrite the primary experiment.
+
+The Qwen-8B evidence-first follow-up separately halts on HTTP 429 during its 11th case, after 18 stage calls: seven predictions are valid, three are invalid, one has a provider error and 37 cases are not requested. Keeping all intended cases gives 4/48 judgment agreement, 0/16 clean specificity and 0/16 paragraph agreement. Its reported cost is \$0.005265117 with one unpriced request. This service-limited prefix does not determine whether staged reasoning helps or hurts Qwen-8B. A general frontier comparison still requires expert-reviewed labels with disclosed review limitations, fresh blinded cases and a preregistered decision rule.
+
+### Metrics and denominators
+
+For the diagnostic pilot we report clean specificity, detection sensitivity, error-type/row agreement, strict full-paragraph agreement on explicitly citable cases, topic agreement, citation abstention on noncitable cases, malformed/missing-output rate and verified quotations. Missing and failed outputs remain in every applicable denominator; partial formatting must not silently remove difficult cases. A quoted substring proves source presence, not entailment or sufficient support.
+
+For the validated study the primary joint score should require a correct conclusion, sufficient acquired proof and applicable authority, rather than average these components into a high number. Let $J_i$, $E_i$ and $A_i$ indicate these requirements. Then
+$$
+ \operatorname{SupportedSuccess}=\frac1N\sum_{i=1}^N J_i E_i A_i,
+$$
+with authority eligibility and acceptable abstention defined prospectively. Report each component and its eligible denominator as well. Coverage and selective risk distinguish calibrated abstention from indiscriminate refusal. Proof-set recovery, missed contradictions, acquisition cost, wasted requests and quality-versus-budget curves diagnose process behavior. Simulation cost units and actual API dollars are separate quantities.
+
+### Uncertainty and stop rules
+
+Split by company and filing/event family before augmentation. No variants of a base statement, related restatements, or FinQA-derived examples should appear across training and final evaluation. The planned main experiment samples company clusters for paired method differences and reports each company's outcome. With five to ten firms, bootstrap intervals are unstable and population coverage narrow; thousands of generated cases cannot compensate for few independent clusters.
+
+The implemented integrity checker rejects hidden fields in public payloads and unions shared company, filing, underlying-event and variant identities into connected components before checking split separation. It certifies only supplied identities, not their provenance. The current 48-case artifact passes structural public-input checks but fails final split certification: all cases were inspected during development and complete filing/event/variant identities are absent. No split names or reconstructed group IDs are invented to bypass this limitation. The prospective evaluation contract retains explicit missing corpus, model, prompt, split and budget values until a new protocol freeze.
+
+Preregister a primary metric, maximum calls, budget ceiling, inclusion/exclusion criteria, and a practically meaningful margin before viewing final outputs. A noninferiority claim requires the paired difference interval to exceed a chosen negative margin; overlapping separate intervals or a nonsignificant test is insufficient. If budget or provider failures truncate a condition, report the actual aligned cohort and failure mechanism instead of treating missing predictions as completed independent comparisons.
+
+## Release, feasibility and limitations
+
+The release comprises permitted code, manifests, original annotations, evidence pointers, scoring contracts and reproducible traces. Newly authored research software is MIT-licensed under an explicitly bounded grant; the 16 original pure-synthetic acquisition fixtures are CC-BY-4.0. Inherited code, upstream-derived pilot evidence/keys and source documents remain outside those grants. FinMR is CC-BY-4.0; the checked FinancialAuditBench code/card use MIT; FinanceBench's public subset and FinReflectKG are CC-BY-NC-4.0. These licenses cannot be replaced by a new blanket code license. Complete ASC/IFRS text must not be redistributed without established rights. Failed upstream license lookups remain unresolved rather than evidence of permission. Secret API keys and private conversations are excluded from release artifacts.
+
+The controlling constraint is annotation validity, not model sophistication. SEC numeric anchoring does not validate synthetic transactions, contractual assumptions or paragraph applicability. One qualified accountant will provide a blind first pass and separate proposal reconciliation. Report qualifications, independence, coverage and unresolved cases; do not claim inter-rater validation. A delayed repeated subset estimates intra-rater consistency only. Expanded source-company counts do not make a restricted eight-company pilot representative, and no fraudulent-intent inference is supported by our fixtures.
+
+The December target is a validated pilot, public artifacts where rights permit, and a submission-ready preprint. Acceptance is controlled by venues. The official FinReason Cup schedule lists solutions due 15 October and Working Notes due 23 October 2026 (AoE), with a December conference; publication is conditional. FinNLP 2026 and ICLR 2027 main-paper submission deadlines have passed. ARR October submissions are due 12 October, with December meta-reviews and later venue commitment, not guaranteed December publication. A later 2027 route is preferable to asserting validity before review is complete.
+
+This draft has primary-source bibliographic checks, measured file-level defects, matched development outcomes and a runnable study scaffold. It lacks completed accountant adjudication, a validated hidden acquisition corpus, a final blinded model study, established novelty and independent artifact reproduction. These are explicit completion criteria for the intended paper, not properties to infer from a successful software build. No primary or secondary result establishes a cheap-model frontier win.
+
+## References
+
+- R. Wang, J. Liu, W. Zhao, S. Li, and D. Zhang. *Automating Financial Statement Audits with Large Language Models*. arXiv:2506.17282, 2025. [Source](https://arxiv.org/abs/2506.17282).
+
+- Y. Wang, K. Wang, S. Yang, et al. *FinAuditing: A Financial Taxonomy-Structured Multi-Document Benchmark for Evaluating LLMs*. arXiv:2510.08886v3, 2026; authors state SIGIR 2026 Resource Track acceptance. [Source](https://arxiv.org/abs/2510.08886).
+
+- Y. Wang, X. Ai, J. Patel, et al. *AUDITFLOW: Executable Symbolic Environments for Structured Financial Reporting Verification*. arXiv:2606.03031, 2026. [Source](https://arxiv.org/abs/2606.03031).
+
+- Z. Liu, Y. He, Q. Ou, T. Zhu, X. Guo, X. Peng, and S. Ananiadou. *AuditFraudBench: Benchmarking Audit Judgment in Detecting Fraudulent Misstatements*. arXiv:2606.08345, 2026, work in progress. [Source](https://arxiv.org/abs/2606.08345).
+
+- J. Huang, S. Babu, M. Van Buren, A. Wang, P. Pillai, A. Jain, J. P. Burton, and J. Hockenmaier. *FinancialAuditBench: Benchmark Construction under Differential Privacy Using Real-World Priors*. arXiv:2609.32835, 2026. [Source](https://arxiv.org/abs/2609.32835).
+
+- I. Sugiura, T. Ishida, T. Makino, C. Tazuke, T. Nakagawa, K. Nakago, and D. Ha. *EDINET-Bench: Evaluating LLMs on Complex Financial Tasks using Japanese Financial Statements*. ICLR, 2026. [Source](https://proceedings.iclr.cc/paper_files/paper/2026/hash/0e22eef358cd1d2bdb227e6b832cc775-Abstract-Conference.html).
+
+- Z. Chen, W. Chen, C. Smiley, et al. *FinQA: A Dataset of Numerical Reasoning over Financial Data*. EMNLP, pp. 3697–3711, 2021. [Source](https://aclanthology.org/2021.emnlp-main.300/).
+
+- Z. Chen, S. Li, C. Smiley, Z. Ma, S. Shah, and W. Y. Wang. *ConvFinQA: Exploring the Chain of Numerical Reasoning in Conversational Finance Question Answering*. EMNLP, pp. 6279–6292, 2022. [Source](https://aclanthology.org/2022.emnlp-main.421/).
+
+- Y. Zhao, Y. Li, C. Li, and R. Zhang. *MultiHiertt: Numerical Reasoning over Multi Hierarchical Tabular and Textual Data*. ACL, pp. 6588–6600, 2022. [Source](https://aclanthology.org/2022.acl-long.454/).
+
+- P. Islam, A. Kannappan, D. Kiela, R. Qian, N. Scherrer, and B. Vidgen. *FinanceBench: A New Benchmark for Financial Question Answering*. arXiv:2311.11944, 2023. [Source](https://arxiv.org/abs/2311.11944).
+
+- A. Arun, F. Dimino, T. P. Agarwal, B. Sarmah, and S. Pasquali. *FinReflectKG: Agentic Construction and Evaluation of Financial Knowledge Graphs*. arXiv:2508.17906v2, 2025. [Source](https://arxiv.org/abs/2508.17906).
+
+## Appendix
+
+## Artifact map and completion gates
+
+The review is reconstructed from `research/results/dataset_audit.json`, `research/results/sec_pilot_companies.json`, `research/results/sec_accession_consistency.json` and `research/related_work.json`. Cohort hashes and strata are in `research/artifacts/pilot/manifest.json`; executable diagnostic scoring and the synthetic acquisition prototype are separate modules. Source manifests record full upstream commits and file hashes. This manuscript deliberately does not include hidden keys or downloaded standards text.
+
+Table 2 is reconstructed from the primary `report.json` and the exact prediction trace IDs in `api_ledger.jsonl`; post-hoc response analysis is in `raw_output_diagnostics.json`. The two paid follow-ups are recorded separately in `frontier_format_diagnostic/report.json` and `qwen8_evidence_diagnostic/report.json` beneath the pilot artifact directory. The repaired deterministic output is in `legacy_local_adapted_verified_citation_metrics.json`. Pipeline findings are recorded in `research/reviews/pipeline.json`. Both follow-up reports retain their original primary scores and explicitly document incomplete execution. Before a final submission, reconcile source mismatches; complete documented single-expert annotation and reconciliation; freeze a new test cohort; document remaining source rights; and obtain a teammate reproduction from a tagged release. Retain unvalidated labels as development-only. Private ChatGPT links returned unauthenticated login pages and were not available to this review. No statement in the paper assumes their contents.
+
+The read-only command `python -m research.reproduce` verifies the four primary conditions against raw valid outputs, request identities, parsed predictions, quote checks, metric denominators, resource summaries and the cumulative cost ledger. It checks 212 recorded source hashes and rebuilds the sixteen-case synthetic fixture byte-identically without network access or model credentials. Automated artifact checks are configured for branch pushes and relevant pull requests; their actual run status is reported separately. Author replay and CI do not substitute for independent teammate reproduction or original-filing reconstruction. Additional artifact commands, scoring boundaries and remaining non-review work are documented in `REPRODUCIBILITY.md`, `EVIDENCE_METRICS.md` and `PUBLICATION_PLAN.md`.

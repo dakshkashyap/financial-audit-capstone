@@ -1,0 +1,19 @@
+{
+  "call_id": "93ac7244721ba8135893eca3d6a3b97a",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "prompt_sha256": "66f93e19f267178b335b3498d52ebb81c9f4edb45de4164a24f18f48c134c18e",
+  "reserved_usd": "0.037176",
+  "status": "ok",
+  "content": "{\"judgement\":\"incorrect\",\"error_type\":\"Numerical Error\",\"row\":0,\"citation\":\"ASC 606-10-25-23\",\"citation_abstain\":false,\"evidence\":[{\"source\":\"statement\",\"quote\":\"Revenue | $2,562\",\"row\":0},{\"source\":\"transactions\",\"quote\":\"consideration billed or received during the period for performance obligations not yet satisfied at period-end 285; of which recorded as contract liabilities (deferred revenue) 36\",\"row\":null}],\"reason\":\"The cut-off review shows 285 billed for obligations not yet satisfied, but only 36 was deferred. That implies about 249 was recognised as revenue before the obligations were satisfied. Corrected revenue would be about 2,313. The subtotals tie arithmetically, so the fault is premature revenue recognition. ASC 606-10-25-23 governs this, since revenue is recognised only as performance obligations are satisfied.\"}",
+  "response_id": "gen-1791001217-YZlGM7UO1O9tHoTBWClk",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "usage": {
+    "prompt_tokens": 1407,
+    "completion_tokens": 760,
+    "total_tokens": 2167,
+    "cost": 0.020828
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 8.529
+}

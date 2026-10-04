@@ -1,0 +1,20 @@
+{
+  "call_id": "56946aa898964ee57f3ad35b01d4a56d",
+  "model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "stage": "extract",
+  "prompt_sha256": "ceb31aa348ad6784d0a00674e4ca5ba484e4ac9ef02a712107198674649e0d7c",
+  "reserved_usd": "0.0006597",
+  "status": "ok",
+  "content": "{\"evidence\":[{\"source\":\"statement_text\",\"quote\":\"Revenue | $13,894\",\"row\":0},{\"source\":\"statement_text\",\"quote\":\"Other operating expenses, net | $568\",\"row\":3},{\"source\":\"transaction_data\",\"quote\":\"revenue recognised on satisfied performance obligations: +15,136 (increase)\",\"row\":null},{\"source\":\"transaction_data\",\"quote\":\"other credits posted to the account: +835 (increase)\",\"row\":null}],\"observations\":[\"Revenue reported as $13,894 million.\",\"Other operating expenses, net reported as $568 million.\",\"Revenue recognition includes $15,136 million from satisfied performance obligations.\",\"$835 million in credits contributed to Other operating expenses, net.\"],\"possible_faults\":[\"Revenue recognition may be overstated if unsatisfied performance obligations were not properly deferred.\",\"Other operating expenses may include non-recurring credits not reflective of ongoing operations.\"],\"uncertainty\":\"The $330 million in untransferred goods/services may affect revenue timing, but no reconciliation is provided between reported revenue and recognized amounts.\"}",
+  "response_id": "gen-1791001887-QKcTYfzJAhsHkL2adUQJ",
+  "returned_model": "qwen/qwen3-30b-a3b-instruct-2507",
+  "provider": "StreamLake",
+  "usage": {
+    "prompt_tokens": 750,
+    "completion_tokens": 231,
+    "total_tokens": 981,
+    "cost": 8.070705e-05
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 1.458
+}

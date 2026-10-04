@@ -1,0 +1,38 @@
+{
+  "protocol_version": "phase2-issue-proof-v1",
+  "n_cases": 36,
+  "cumulative_budget_usd": "12.00",
+  "max_completion_tokens": 1000,
+  "temperature": 0,
+  "max_retries": 1,
+  "retry_delay_seconds": 5,
+  "stop_after_consecutive_provider_failures": 3,
+  "timeout_seconds": 120,
+  "conditions": {
+    "qwen_direct": {
+      "model": "qwen/qwen3.5-9b",
+      "method": "direct"
+    },
+    "qwen_row_metadata": {
+      "model": "qwen/qwen3.5-9b",
+      "method": "row_metadata"
+    },
+    "qwen_issue_retrieval": {
+      "model": "qwen/qwen3.5-9b",
+      "method": "issue_retrieval"
+    },
+    "qwen_proof": {
+      "model": "qwen/qwen3.5-9b",
+      "method": "proof",
+      "cache_from": "qwen_issue_retrieval"
+    },
+    "opus_direct": {
+      "model": "anthropic/claude-opus-5.5",
+      "method": "direct"
+    },
+    "opus_issue_retrieval": {
+      "model": "anthropic/claude-opus-5.5",
+      "method": "issue_retrieval"
+    }
+  }
+}

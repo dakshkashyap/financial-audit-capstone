@@ -1,0 +1,21 @@
+{
+  "call_id": "191da3e5dc179a2c4a8d08ae925dad97",
+  "model": "anthropic/claude-opus-5.5",
+  "stage": "decision",
+  "status": "ok",
+  "content": "{\"citation\":null,\"citation_abstain\":true,\"error_type\":null,\"evidence\":[{\"quote\":\"Net cash from operating activities | ($108)\",\"row\":5,\"source\":\"statement\"},{\"quote\":\"Net cash from investing activities | ($9)\",\"row\":9,\"source\":\"statement\"},{\"quote\":\"Net increase (decrease) in cash | ($118)\",\"row\":13,\"source\":\"statement\"},{\"quote\":\"depreciation and amortisation add-back: +53 (increase); disposal-related reversal: −5 (decrease)\",\"row\":null,\"source\":\"transactions\"}],\"judgement\":\"correct\",\"reason\":\"The transaction components net to the reported lines: D&A 53−5=48, SBC 32−3=29, capex −14+3=−11, other investing 5−3=2, financing 3−4=−1. Operating (338+48+29−523=−108), investing (−9) and the net change (−118) all foot. The positive net income sign is unverified, since no transaction evidence covers it. I found no supported error.\",\"row\":null}",
+  "reserved_usd": "0.047340",
+  "request_sha256": "1416a5b31528540948873d8ba05bcb0ed2e45759c89491d757c8e1103b3b5fc3",
+  "prompt_sha256": "bd3c5137ef401de42fbe94536020df0d7ad5f8daac9e49ab03fdbe5f85fb6181",
+  "returned_model": "anthropic/claude-opus-5.5",
+  "response_id": "gen-1791002401-L8bUs71F84cA57cwvuz8",
+  "provider": "Azure",
+  "usage": {
+    "prompt_tokens": 2075,
+    "completion_tokens": 695,
+    "total_tokens": 2770,
+    "cost": 0.0222
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 9.467
+}
