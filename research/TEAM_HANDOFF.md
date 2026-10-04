@@ -1,3 +1,9 @@
+> **Delivery status:** the IntelliAudit changes are committed locally at `99d2fa2`.
+> GitHub denied the current account write access to that repository. Until an
+> authorized teammate applies the bundle, the remote branch does not contain this
+> update. [Bundle installation instructions](handoff/README.md) preserve the exact
+> commit and requested branch. The capstone changes are pushed normally.
+
 # Team handoff: benchmark-first research
 
 Status: 4 October 2026 (Pacific). Continue on `research/evidence-audit-2026`.

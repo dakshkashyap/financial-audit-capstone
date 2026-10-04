@@ -6,6 +6,8 @@ release, and it does not establish that a cheap model beats Opus.**
 **Current priority: benchmark first.** Start with [team handoff](research/TEAM_HANDOFF.md).
 Paid experiments are paused while one accountant completes the blind pilot in
 [IntelliAudit](https://github.com/manmad-web/IntelliAudit/tree/codex/accountant-review-dashboard).
+The review implementation is committed locally; its push was blocked by GitHub
+permissions. An authorized teammate can apply the [portable update](research/handoff/README.md).
 That repository owns annotation and release gates; this one owns method evaluation
 and the manuscript. Twenty review candidates are prepared; no expert review is claimed.
 
