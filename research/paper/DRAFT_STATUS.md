@@ -43,3 +43,20 @@ are asserted. Canonical annotation tooling is maintained in IntelliAudit; the
 unfinished phase-two paid runner is archived as design text.
 
 After the 4 October changes, native compilation again failed with the same platform-directory error. Static citation-key and environment-balance checks passed; they do not verify PDF compilation.
+
+Publication-tooling continuation: both manuscript sources now describe the offline
+artifact replay, company-held-out development shortcut diagnostic (7/16 statement
+type; 5/16 global and statement type/year), connected split checks and the structural
+alternative-proof scorer. The new replay regenerates every primary stage prompt from
+public cases and raw intermediate outputs, and verifies all 212 recorded source hashes.
+The full local suite passes 120 tests. The current integrity gate still blocks release;
+known inspected cases cannot be renamed as fresh tests, and group company identities
+must agree with public CIKs. `.github/workflows/research.yml` configures credential-free
+artifact CI; check its actual run status separately. No new model calls or efficacy
+results were produced. `../PUBLICATION_PLAN.md` lists owners, remaining non-review
+tasks and concrete closing evidence. `../evaluation_contract.json` is explicitly
+prospective and incomplete, not a preregistered final experiment.
+
+The compile attempt after these manuscript edits again returned `Unable to find
+standard directories for platform`. The existing editor and source are preserved;
+PDF rendering and page count remain unverified.

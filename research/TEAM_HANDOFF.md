@@ -23,6 +23,15 @@ schema and release gates. This repository owns methods, evaluation, results and 
   This is reference coverage, not authoritative validity. See `artifacts/phase2/candidate_audit_v3/`.
 - IntelliAudit now has a twenty-case/five-company review pilot, default blind dashboard,
   preserved initial judgments, explicit reveal/reconciliation and an annotation release gate.
+- Offline replay verifies primary raw answers, request identities, metrics/resources,
+  ledger accounting and 212 source hashes. The full local suite passes 120 tests.
+- Public-input and connected-group checks prevent hidden fields and related cases
+  crossing splits; issuer groups must match public CIKs. Known inspected inputs
+  cannot be relabelled as fresh tests. Missing final provenance groups block certification.
+- Alternative-proof scoring replays acquired evidence, dates and cost. It gives two
+  wrong counterfactual answers no pair credit. No new model efficacy run is claimed.
+- A company-held-out metadata diagnostic matches 7/16 provisional citations using
+  statement type alone. This is further evidence that a citation score needs controls.
 
 ## What is not completed
 
@@ -52,6 +61,11 @@ cost envelope. Only one frontier family is allowed; other model arms must be che
 
 ## Next work, in order
 
+Use [PUBLICATION_PLAN.md](PUBLICATION_PLAN.md) for owners and concrete completion
+evidence beyond accountant scheduling. [REPRODUCIBILITY.md](REPRODUCIBILITY.md)
+provides the fresh-checkout commands. The prospective `evaluation_contract.json`
+is explicitly incomplete; fill and freeze it before final scored requests.
+
 1. Dataset custodian and accountant execute the IntelliAudit blind pilot. Lock all
    initial judgments before any proposal reveal; preserve revisions and ambiguity.
 2. Data owner resolves accession/units/periods and evidence realism. Annotation owner
@@ -69,6 +83,7 @@ keep work affordable but cannot establish broad accounting generalization.
 ## Team reading order
 
 `README.md` → this handoff → upstream `docs/ANNOTATION_PROTOCOL.md` →
+`PUBLICATION_PLAN.md` → `REPRODUCIBILITY.md` → `EVIDENCE_METRICS.md` →
 `NEXT_EXPERIMENT.md` → `DECEMBER_PLAN.md` → `RELEASE_POLICY.md` →
 `paper/draft.md`. Use `results/comparison_table.md` / `comparison.png` for measured
 results and `CHANGES_FROM_SOURCE_BRANCHES.md` for code changes. Historical source

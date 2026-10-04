@@ -8,6 +8,15 @@ report that limitation. The recommendations below remain prospective.
 
 # Recommended next experiment
 
+The implementation checklist and ownership are now in `PUBLICATION_PLAN.md`.
+`evaluation_contract.json` is a prospective draft with explicit missing model,
+corpus, split, prompt and budget values; it is not an executable frozen study.
+`evidence_metrics.py` implements post-run structural proof/applicability checks
+against release-validated annotations. It does not supply an authority corpus,
+verify human review, or score free-text entailment. Use the canonical IntelliAudit
+gate before admitting annotations. `integrity.py` requires connected company,
+filing, event and variant identities for final split certification.
+
 The current results do not show a cheap-model citation gain. Do not optimize
 against the displayed 12.2% until its predictions, eligible cases and scorer are
 available. The source snapshots do not contain the runs behind that screenshot.

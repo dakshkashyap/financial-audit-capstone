@@ -1,0 +1,605 @@
+{
+  "schema_version": 1,
+  "study_status": "Inspected developmental sample; provisional labels",
+  "cases": 48,
+  "companies": 8,
+  "source_sha256": {
+    "public_inputs.jsonl": "5b07b65a8427ca4615339d1dfc240b02ad08ece654872c1c72ea94c8efaf71b9",
+    "scoring_only.jsonl": "ddc4e618cff3de2ee3c9604e8ae5528c80349859b85c54d7a1ac8819786f5183"
+  },
+  "judgement_baselines": {
+    "always_incorrect": {
+      "general_hits": 32,
+      "general_denominator": 48,
+      "general_agreement": 0.6666666666666666,
+      "clean_hits": 0,
+      "clean_denominator": 16,
+      "detection_hits": 32,
+      "detection_denominator": 32
+    },
+    "always_correct": {
+      "general_hits": 16,
+      "general_denominator": 48,
+      "general_agreement": 0.3333333333333333,
+      "clean_hits": 16,
+      "clean_denominator": 16,
+      "detection_hits": 0,
+      "detection_denominator": 32
+    }
+  },
+  "citation_baselines": {
+    "global_prior": {
+      "features": [],
+      "hits": 5,
+      "denominator": 16,
+      "agreement": 0.3125,
+      "per_company": [
+        {
+          "company": "0000001800",
+          "training_companies": 7,
+          "hits": 1,
+          "cases": 2
+        },
+        {
+          "company": "0000051434",
+          "training_companies": 7,
+          "hits": 1,
+          "cases": 2
+        },
+        {
+          "company": "0000100885",
+          "training_companies": 7,
+          "hits": 1,
+          "cases": 2
+        },
+        {
+          "company": "0000731766",
+          "training_companies": 7,
+          "hits": 0,
+          "cases": 2
+        },
+        {
+          "company": "0000831259",
+          "training_companies": 7,
+          "hits": 0,
+          "cases": 2
+        },
+        {
+          "company": "0000949870",
+          "training_companies": 7,
+          "hits": 1,
+          "cases": 2
+        },
+        {
+          "company": "0001334036",
+          "training_companies": 7,
+          "hits": 1,
+          "cases": 2
+        },
+        {
+          "company": "0001655210",
+          "training_companies": 7,
+          "hits": 0,
+          "cases": 2
+        }
+      ],
+      "decisions": [
+        {
+          "case_id": "case_33a5c50b437c422eb1e1",
+          "company": "0000001800",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 470-10-45-11",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_197844f25e4b4b75fbe9",
+          "company": "0000001800",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 606-10-25-23",
+          "agreement": true,
+          "fallback": false
+        },
+        {
+          "case_id": "case_fd2292c43951c99d1f6f",
+          "company": "0000051434",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 606-10-25-23",
+          "agreement": true,
+          "fallback": false
+        },
+        {
+          "case_id": "case_a2f22d9fc55ca36d8411",
+          "company": "0000051434",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 330-10-35-1B",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_7dad7285f6966525d3b0",
+          "company": "0000100885",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 842-10-25-2",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_87b8b6091e9cf2644c6e",
+          "company": "0000100885",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 606-10-25-23",
+          "agreement": true,
+          "fallback": false
+        },
+        {
+          "case_id": "case_960cfd9a4bba0b5c553a",
+          "company": "0000731766",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 360-10-35-17",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_3a65c485abbe1984ae27",
+          "company": "0000731766",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 230-10-45-15",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_064d3c06171fde95dda0",
+          "company": "0000831259",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 230-10-45-15",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_c73a5097fb378ca9cd5e",
+          "company": "0000831259",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 210-10-45-1",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_d1efe0af0cfd3eaa909d",
+          "company": "0000949870",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 606-10-25-23",
+          "agreement": true,
+          "fallback": false
+        },
+        {
+          "case_id": "case_616f2d2146f23bd81607",
+          "company": "0000949870",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 360-10-35-17",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_6c6c786e0d9a5a2bcff8",
+          "company": "0001334036",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 606-10-25-23",
+          "agreement": true,
+          "fallback": false
+        },
+        {
+          "case_id": "case_cc180e9e3a6186422bac",
+          "company": "0001334036",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 326-20-30-1",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_2edbf676d94e573cdd4e",
+          "company": "0001655210",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 730-10-25-1",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_1bed53ac07435b3f7ade",
+          "company": "0001655210",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 210-10-45-8",
+          "agreement": false,
+          "fallback": false
+        }
+      ],
+      "information_boundary": "Citation-only conditional diagnostic: evaluator restricts scoring to citable items. Model inference uses metadata only, no gold error/type/row/rule. Not joint auditing accuracy."
+    },
+    "statement_type": {
+      "features": [
+        "statement_type"
+      ],
+      "hits": 7,
+      "denominator": 16,
+      "agreement": 0.4375,
+      "per_company": [
+        {
+          "company": "0000001800",
+          "training_companies": 7,
+          "hits": 1,
+          "cases": 2
+        },
+        {
+          "company": "0000051434",
+          "training_companies": 7,
+          "hits": 1,
+          "cases": 2
+        },
+        {
+          "company": "0000100885",
+          "training_companies": 7,
+          "hits": 1,
+          "cases": 2
+        },
+        {
+          "company": "0000731766",
+          "training_companies": 7,
+          "hits": 1,
+          "cases": 2
+        },
+        {
+          "company": "0000831259",
+          "training_companies": 7,
+          "hits": 1,
+          "cases": 2
+        },
+        {
+          "company": "0000949870",
+          "training_companies": 7,
+          "hits": 1,
+          "cases": 2
+        },
+        {
+          "company": "0001334036",
+          "training_companies": 7,
+          "hits": 1,
+          "cases": 2
+        },
+        {
+          "company": "0001655210",
+          "training_companies": 7,
+          "hits": 0,
+          "cases": 2
+        }
+      ],
+      "decisions": [
+        {
+          "case_id": "case_33a5c50b437c422eb1e1",
+          "company": "0000001800",
+          "predicted_citation": "ASC 360-10-35-17",
+          "provisional_target": "ASC 470-10-45-11",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_197844f25e4b4b75fbe9",
+          "company": "0000001800",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 606-10-25-23",
+          "agreement": true,
+          "fallback": false
+        },
+        {
+          "case_id": "case_fd2292c43951c99d1f6f",
+          "company": "0000051434",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 606-10-25-23",
+          "agreement": true,
+          "fallback": false
+        },
+        {
+          "case_id": "case_a2f22d9fc55ca36d8411",
+          "company": "0000051434",
+          "predicted_citation": "ASC 360-10-35-17",
+          "provisional_target": "ASC 330-10-35-1B",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_7dad7285f6966525d3b0",
+          "company": "0000100885",
+          "predicted_citation": "ASC 360-10-35-17",
+          "provisional_target": "ASC 842-10-25-2",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_87b8b6091e9cf2644c6e",
+          "company": "0000100885",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 606-10-25-23",
+          "agreement": true,
+          "fallback": false
+        },
+        {
+          "case_id": "case_960cfd9a4bba0b5c553a",
+          "company": "0000731766",
+          "predicted_citation": "ASC 210-10-45-1",
+          "provisional_target": "ASC 360-10-35-17",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_3a65c485abbe1984ae27",
+          "company": "0000731766",
+          "predicted_citation": "ASC 230-10-45-15",
+          "provisional_target": "ASC 230-10-45-15",
+          "agreement": true,
+          "fallback": false
+        },
+        {
+          "case_id": "case_064d3c06171fde95dda0",
+          "company": "0000831259",
+          "predicted_citation": "ASC 230-10-45-15",
+          "provisional_target": "ASC 230-10-45-15",
+          "agreement": true,
+          "fallback": false
+        },
+        {
+          "case_id": "case_c73a5097fb378ca9cd5e",
+          "company": "0000831259",
+          "predicted_citation": "ASC 360-10-35-17",
+          "provisional_target": "ASC 210-10-45-1",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_d1efe0af0cfd3eaa909d",
+          "company": "0000949870",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 606-10-25-23",
+          "agreement": true,
+          "fallback": false
+        },
+        {
+          "case_id": "case_616f2d2146f23bd81607",
+          "company": "0000949870",
+          "predicted_citation": "ASC 210-10-45-1",
+          "provisional_target": "ASC 360-10-35-17",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_6c6c786e0d9a5a2bcff8",
+          "company": "0001334036",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 606-10-25-23",
+          "agreement": true,
+          "fallback": false
+        },
+        {
+          "case_id": "case_cc180e9e3a6186422bac",
+          "company": "0001334036",
+          "predicted_citation": "ASC 360-10-35-17",
+          "provisional_target": "ASC 326-20-30-1",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_2edbf676d94e573cdd4e",
+          "company": "0001655210",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 730-10-25-1",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_1bed53ac07435b3f7ade",
+          "company": "0001655210",
+          "predicted_citation": "ASC 360-10-35-17",
+          "provisional_target": "ASC 210-10-45-8",
+          "agreement": false,
+          "fallback": false
+        }
+      ],
+      "information_boundary": "Citation-only conditional diagnostic: evaluator restricts scoring to citable items. Model inference uses metadata only, no gold error/type/row/rule. Not joint auditing accuracy."
+    },
+    "statement_type_year": {
+      "features": [
+        "statement_type",
+        "fiscal_year"
+      ],
+      "hits": 5,
+      "denominator": 16,
+      "agreement": 0.3125,
+      "per_company": [
+        {
+          "company": "0000001800",
+          "training_companies": 7,
+          "hits": 1,
+          "cases": 2
+        },
+        {
+          "company": "0000051434",
+          "training_companies": 7,
+          "hits": 1,
+          "cases": 2
+        },
+        {
+          "company": "0000100885",
+          "training_companies": 7,
+          "hits": 1,
+          "cases": 2
+        },
+        {
+          "company": "0000731766",
+          "training_companies": 7,
+          "hits": 0,
+          "cases": 2
+        },
+        {
+          "company": "0000831259",
+          "training_companies": 7,
+          "hits": 0,
+          "cases": 2
+        },
+        {
+          "company": "0000949870",
+          "training_companies": 7,
+          "hits": 1,
+          "cases": 2
+        },
+        {
+          "company": "0001334036",
+          "training_companies": 7,
+          "hits": 1,
+          "cases": 2
+        },
+        {
+          "company": "0001655210",
+          "training_companies": 7,
+          "hits": 0,
+          "cases": 2
+        }
+      ],
+      "decisions": [
+        {
+          "case_id": "case_33a5c50b437c422eb1e1",
+          "company": "0000001800",
+          "predicted_citation": "ASC 210-10-45-1",
+          "provisional_target": "ASC 470-10-45-11",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_197844f25e4b4b75fbe9",
+          "company": "0000001800",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 606-10-25-23",
+          "agreement": true,
+          "fallback": false
+        },
+        {
+          "case_id": "case_fd2292c43951c99d1f6f",
+          "company": "0000051434",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 606-10-25-23",
+          "agreement": true,
+          "fallback": true
+        },
+        {
+          "case_id": "case_a2f22d9fc55ca36d8411",
+          "company": "0000051434",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 330-10-35-1B",
+          "agreement": false,
+          "fallback": true
+        },
+        {
+          "case_id": "case_7dad7285f6966525d3b0",
+          "company": "0000100885",
+          "predicted_citation": "ASC 210-10-45-1",
+          "provisional_target": "ASC 842-10-25-2",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_87b8b6091e9cf2644c6e",
+          "company": "0000100885",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 606-10-25-23",
+          "agreement": true,
+          "fallback": false
+        },
+        {
+          "case_id": "case_960cfd9a4bba0b5c553a",
+          "company": "0000731766",
+          "predicted_citation": "ASC 326-20-30-1",
+          "provisional_target": "ASC 360-10-35-17",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_3a65c485abbe1984ae27",
+          "company": "0000731766",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 230-10-45-15",
+          "agreement": false,
+          "fallback": true
+        },
+        {
+          "case_id": "case_064d3c06171fde95dda0",
+          "company": "0000831259",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 230-10-45-15",
+          "agreement": false,
+          "fallback": true
+        },
+        {
+          "case_id": "case_c73a5097fb378ca9cd5e",
+          "company": "0000831259",
+          "predicted_citation": "ASC 360-10-35-17",
+          "provisional_target": "ASC 210-10-45-1",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_d1efe0af0cfd3eaa909d",
+          "company": "0000949870",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 606-10-25-23",
+          "agreement": true,
+          "fallback": false
+        },
+        {
+          "case_id": "case_616f2d2146f23bd81607",
+          "company": "0000949870",
+          "predicted_citation": "ASC 210-10-45-1",
+          "provisional_target": "ASC 360-10-35-17",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_6c6c786e0d9a5a2bcff8",
+          "company": "0001334036",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 606-10-25-23",
+          "agreement": true,
+          "fallback": false
+        },
+        {
+          "case_id": "case_cc180e9e3a6186422bac",
+          "company": "0001334036",
+          "predicted_citation": "ASC 360-10-35-17",
+          "provisional_target": "ASC 326-20-30-1",
+          "agreement": false,
+          "fallback": false
+        },
+        {
+          "case_id": "case_2edbf676d94e573cdd4e",
+          "company": "0001655210",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 730-10-25-1",
+          "agreement": false,
+          "fallback": true
+        },
+        {
+          "case_id": "case_1bed53ac07435b3f7ade",
+          "company": "0001655210",
+          "predicted_citation": "ASC 606-10-25-23",
+          "provisional_target": "ASC 210-10-45-8",
+          "agreement": false,
+          "fallback": true
+        }
+      ],
+      "information_boundary": "Citation-only conditional diagnostic: evaluator restricts scoring to citable items. Model inference uses metadata only, no gold error/type/row/rule. Not joint auditing accuracy."
+    }
+  },
+  "limitations": [
+    "Only eight selected companies and sixteen provisional citation targets; fold estimates are unstable.",
+    "Synthetic text/format shortcuts are not tested by these metadata baselines.",
+    "Citable-only evaluation uses an evaluator restriction, not a deployed citable detector.",
+    "No baseline reads the held-out company labels while predicting its citations.",
+    "No paid model calls or new empirical accounting labels."
+  ]
+}

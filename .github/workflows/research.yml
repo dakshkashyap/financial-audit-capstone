@@ -1,0 +1,46 @@
+name: Research artifact checks
+on:
+  push:
+    branches: [research/evidence-audit-2026]
+  pull_request:
+    paths:
+      - 'research/**'
+      - 'tests/**'
+      - 'core/**'
+      - 'approaches/**'
+      - '.github/workflows/research.yml'
+permissions:
+  contents: read
+jobs:
+  offline-artifacts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify recorded artifacts (standard library; no model credentials)
+        run: python -m research.reproduce --output /tmp/reproduction.json
+      - name: Test acquisition, split, and scoring boundaries
+        run: |
+          python -m unittest discover -s tests -p test_research_harness.py -v
+          python -m unittest discover -s tests -p test_evidence_budget.py -v
+          python -m unittest discover -s tests -p test_research_integrity.py -v
+          python -m unittest discover -s tests -p test_evidence_metrics.py -v
+          python -m unittest discover -s tests -p test_reproduction.py -v
+          python -m unittest discover -s tests -p test_raw_output_diagnostics.py -v
+          python -m unittest discover -s tests -p test_comparison_table.py -v
+      - name: Generate shortcut and integrity diagnostics
+        run: |
+          python -m research.integrity --out /tmp/integrity.json
+          python -m research.shortcut_baselines --output /tmp/shortcut_baselines.json
+      - name: Archive diagnostic reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: offline-research-reports
+          path: |
+            /tmp/reproduction.json
+            /tmp/integrity.json
+            /tmp/shortcut_baselines.json
+            /tmp/shortcut_baselines.md

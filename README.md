@@ -21,6 +21,14 @@ For the professor meeting, use the [verified briefing and talk track](research/r
 and [shareable results table](research/results/professor_brief/table.png). Its builder
 rechecks every primary metric count from saved predictions and makes no model calls.
 
+For the team's next work, follow the [publication plan](research/PUBLICATION_PLAN.md).
+The [offline replay](research/REPRODUCIBILITY.md) checks saved responses, requests,
+metrics, resources, ledger accounting and 212 source hashes without API calls.
+New [evidence scoring](research/EVIDENCE_METRICS.md) accepts alternative sufficient
+proofs and rejects unsupported evidence. These are engineering improvements;
+the measured model scores remain unchanged. On the development sample, a
+company-held-out statement-type prior alone matches 7/16 provisional citations.
+
 Review the [measured comparison table](research/results/comparison_table.md),
 [paper draft](research/paper/draft.md), and
 [changes from both source branches](research/CHANGES_FROM_SOURCE_BRANCHES.md).
@@ -37,6 +45,21 @@ pipeline uses the separate dependencies in `requirements.txt`.
 git clone https://github.com/dakshkashyap/financial-audit-capstone.git
 cd financial-audit-capstone
 git switch research/evidence-audit-2026
+python -m research.reproduce --output /tmp/audit-reproduction.json
+python -m research.integrity --out /tmp/audit-integrity.json
+python -m research.shortcut_baselines --output /tmp/audit-shortcuts.json
+```
+
+Those commands use only the standard library and refuse to overwrite reports.
+The current integrity report passes public-payload checks and deliberately blocks
+final split certification: all 48 inspected cases are development data, and a
+complete filing/event/variant group manifest is still missing. Automated artifact
+checks are configured in `.github/workflows/research.yml`.
+
+To run the full inherited suite and rebuild other reports, install the inherited
+dependencies first:
+
+```bash
 python -m unittest discover -s tests -v
 python -m research.harness score --prepared research/artifacts/pilot
 python -m research.run_frontier_format_diagnostic --prepared research/artifacts/pilot --score

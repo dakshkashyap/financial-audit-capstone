@@ -63,7 +63,11 @@ The citation percentages are arithmetically compatible with **41 citable cases**
 
 ## Verification
 
-The final full repository suite passed **95 tests** with `/workspace/.auditbench/venv/bin/python -m unittest discover -s tests -v`; `git diff --check` passed. Verification involved no additional model calls. These tests establish software behavior, not accounting validity, novelty, or frontier-model superiority.
+The earlier integration suite passed **95 tests**. After the publication-tooling
+continuation, the full repository suite passes **120 tests** with
+`/workspace/.auditbench/venv/bin/python -m unittest discover -s tests -v`.
+Verification involves no additional model calls. These tests establish software
+behavior, not accounting validity, novelty, or frontier-model superiority.
 
 Changed implementation entry points: [citation metrics](../core/metrics.py), [component parser](../core/stage0_common.py), [pipeline](../approaches/full_pipeline/pipeline.py), [Stage 2 validation](../approaches/stage2_llm_audit/stage2_llm.py), [exam scorer](../approaches/full_pipeline/run_iab_exam.py), [historical replay](../approaches/full_pipeline/pipeline_eval.py), and [boundary tests](../tests/test_legacy_boundaries.py).
 
@@ -84,3 +88,14 @@ pilot and append-only local review workflow are prepared; zero expert reviews ar
 claimed. No additional API calls or improved model scores are asserted. The final
 candidate audit records only 6/16 provisional labels anywhere in the downloaded
 2023 reference metadata, distinguishing retrieval coverage from accounting validity.
+
+The publication-tooling continuation adds an offline replay that regenerates all
+195 primary stage prompts from public inputs and raw intermediate extractions,
+checks 212 source hashes and rechecks counts/resources/ledger accounting. New
+split checks bind issuer groups to known CIKs, connect filing/event/variant families,
+and prevent the inspected pilot being renamed as a fresh test. Post-run evidence
+scoring accepts alternative proofs, rejects unacquired evidence, enforces citation
+abstention for non-governing dispositions and denies pair credit for wrong flips.
+The company-held-out statement-type shortcut matches 7/16 provisional citations.
+All model results remain unchanged; no new API calls were made. Team tasks and
+closing evidence are in `PUBLICATION_PLAN.md`.

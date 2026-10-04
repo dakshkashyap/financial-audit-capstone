@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "reproduction_passed": true,
+  "python": "3.12.14",
+  "scope": "Frozen development artifact consistency; no accountant validation or new model experiment",
+  "network_calls": 0,
+  "primary": {
+    "cases": 48,
+    "companies": 8,
+    "regenerated_primary_stage_prompts": 195,
+    "conditions": [
+      {
+        "condition": "opus_direct",
+        "attempted_cases": 48,
+        "valid": 29,
+        "all_metric_counts_match": true,
+        "raw_valid_responses_match": true,
+        "regenerated_prompts_match": true,
+        "table_and_resources_match": true
+      },
+      {
+        "condition": "qwen8_direct",
+        "attempted_cases": 48,
+        "valid": 47,
+        "all_metric_counts_match": true,
+        "raw_valid_responses_match": true,
+        "regenerated_prompts_match": true,
+        "table_and_resources_match": true
+      },
+      {
+        "condition": "qwen30_direct",
+        "attempted_cases": 48,
+        "valid": 16,
+        "all_metric_counts_match": true,
+        "raw_valid_responses_match": true,
+        "regenerated_prompts_match": true,
+        "table_and_resources_match": true
+      },
+      {
+        "condition": "qwen30_evidence",
+        "attempted_cases": 48,
+        "valid": 3,
+        "all_metric_counts_match": true,
+        "raw_valid_responses_match": true,
+        "regenerated_prompts_match": true,
+        "table_and_resources_match": true
+      }
+    ],
+    "cost": {
+      "reserved_upper_bound_usd": "4.230397654",
+      "reported_actual_usd": "1.92078856970",
+      "unpriced_response_count": 67,
+      "unresolved_reservation_count": 0,
+      "calls_by_condition": {
+        "qwen30_direct": 49,
+        "qwen8_direct": 49,
+        "opus_direct": 49,
+        "qwen30_evidence": 51,
+        "opus_format_diagnostic": 37,
+        "qwen8_evidence_diagnostic": 18
+      },
+      "accounting_note": "Reported actual is incomplete when usage.cost is absent. All reservations remain spent against $5; errors/timeouts are never refunded."
+    }
+  },
+  "professor_source_receipt": {
+    "source_files_checked": 212,
+    "all_hashes_match": true,
+    "limitation": "Hashes establish consistency with a committed receipt, not authorship or semantic validity."
+  },
+  "synthetic_fixture": {
+    "cases": 16,
+    "byte_identical": [
+      "evidence_budget_public.json",
+      "private/evidence_budget_gold.json",
+      "evidence_budget_demo.json"
+    ],
+    "scientific_status": "synthetic_unvalidated_software_demonstration"
+  },
+  "candidate_audit": {
+    "reference_metadata_hashes_match": true,
+    "scope": "reference coverage against UNVALIDATED labels; oracle rows used only after blind cache was saved",
+    "coverage": {
+      "public_union_displayed": {
+        "hits": 3,
+        "denominator": 16,
+        "rate": 0.1875
+      },
+      "public_union_unbounded": {
+        "hits": 3,
+        "denominator": 16,
+        "rate": 0.1875
+      },
+      "public_union_full_reference": {
+        "hits": 3,
+        "denominator": 16,
+        "rate": 0.1875
+      },
+      "anywhere_in_taxonomy": {
+        "hits": 6,
+        "denominator": 16,
+        "rate": 0.375
+      },
+      "oracle_gold_row_exists": {
+        "hits": 16,
+        "denominator": 16,
+        "rate": 1.0
+      },
+      "oracle_gold_row_displayed": {
+        "hits": 16,
+        "denominator": 16,
+        "rate": 1.0
+      },
+      "oracle_gold_row_top8": {
+        "hits": 2,
+        "denominator": 16,
+        "rate": 0.125
+      },
+      "oracle_gold_row_top1": {
+        "hits": 2,
+        "denominator": 16,
+        "rate": 0.125
+      },
+      "oracle_gold_row_unbounded": {
+        "hits": 2,
+        "denominator": 16,
+        "rate": 0.125
+      },
+      "oracle_gold_row_full_reference": {
+        "hits": 2,
+        "denominator": 16,
+        "rate": 0.125
+      },
+      "oracle_gold_row_static": {
+        "hits": 1,
+        "denominator": 16,
+        "rate": 0.0625
+      }
+    }
+  }
+}
