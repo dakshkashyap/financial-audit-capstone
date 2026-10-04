@@ -1,18 +1,20 @@
-# Apply the completed IntelliAudit review update
+# IntelliAudit review update: delivery verified
 
 The implementation is complete at IntelliAudit commit
-`99d2fa2514eac1f1d17f7a7b58ad36f7e7e7cb08` on the requested local branch
-`codex/accountant-review-dashboard`. GitHub returned HTTP 403 when the authenticated
-account `dakshkashyap` attempted to push to `manmad-web/IntelliAudit`.
-This is a repository write-permission failure, not a test failure or pending review.
-No replacement branch or fork was created.
+`99d2fa2514eac1f1d17f7a7b58ad36f7e7e7cb08` on the requested branch
+`codex/accountant-review-dashboard`. On 4 October 2026, the connected GitHub API
+confirmed that the remote branch points to this exact commit and its tree matches
+the tested local files. Earlier shell pushes returned HTTP 403; those failures
+did not prove the account lacked a repository role. Delivery is now verified.
+No replacement branch or fork was created; the bundle below is an archival fallback.
 
 `intelliaudit-review-update.bundle` preserves the exact commit, including the blind
 UI/server, twenty-case pilot, annotation schema/gates, tests, README and team docs.
 Its SHA-256 is recorded in `../REVIEW_WORKFLOW_SOURCE.json`. It requires the existing
 upstream commit `72da89a9e6400bfd1da9041a742f9cdeb00470bc`.
 
-A teammate with write access can use sibling checkouts:
+A teammate can normally fetch the remote branch and start the dashboard. The
+following bundle procedure is needed only if that commit is unavailable remotely:
 
 ```bash
 # First update financial-audit-capstone/research/evidence-audit-2026 to obtain the bundle.
@@ -35,7 +37,6 @@ commit passed 85 tests and a full live-browser review/export/import sequence.
 No real accountant annotations, local review database, model credentials or new
 model calls are included. The release gate intentionally remains blocked.
 
-Until this update is pushed upstream, read the local IntelliAudit documentation
-or fetch the bundle into a checkout to see the new team materials. The companion
-capstone paper records this as an implemented, unreviewed development workflow,
-not a completed gold-standard benchmark.
+The IntelliAudit documentation is available on the remote review branch. The
+companion capstone paper records this as an implemented, unreviewed development
+workflow, not a completed gold-standard benchmark.

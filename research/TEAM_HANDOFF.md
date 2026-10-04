@@ -1,8 +1,8 @@
-> **Delivery status:** the IntelliAudit changes are committed locally at `99d2fa2`.
-> GitHub denied the current account write access to that repository. Until an
-> authorized teammate applies the bundle, the remote branch does not contain this
-> update. [Bundle installation instructions](handoff/README.md) preserve the exact
-> commit and requested branch. The capstone changes are pushed normally.
+> **Delivery status:** the IntelliAudit remote branch is verified at `99d2fa2`.
+> The capstone publication tools are also published on the requested branch.
+> Earlier shell credential failures do not reflect the current remote content.
+> The [bundle](handoff/README.md) remains an archival fallback; reinstallation is
+> unnecessary when the remote already contains this commit.
 
 # Team handoff: benchmark-first research
 

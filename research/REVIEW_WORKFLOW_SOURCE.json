@@ -15,6 +15,6 @@
     "scripts/check_release_readiness.py": "55bcc7d04bc3f6a3eef031bf80bc27b14e8446e2a02fc46434ba7aca07acb539"
   },
   "historical_model_experiment_source_commit": "72da89a9e6400bfd1da9041a742f9cdeb00470bc",
-  "publication_status": "Local commit preserved in research/handoff/intelliaudit-review-update.bundle; direct push rejected by GitHub with HTTP403 for dakshkashyap.",
+  "publication_status": "Remote branch verified at this exact commit through the connected GitHub API on 2026-10-04; earlier shell push failures are historical. Bundle retained as an archival fallback.",
   "bundle_sha256": "84f210ede7d86d94246193ec35e2adad98be63bd224b3a52d7b99dc175484225"
 }
