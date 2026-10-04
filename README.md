@@ -17,6 +17,10 @@ All measurements distinguish detection, strict paragraph label agreement,
 abstention, clean controls, API failures and cost. Current gold labels are not
 equivalent to accountant-verified applicability.
 
+For the professor meeting, use the [verified briefing and talk track](research/results/professor_brief/brief.md)
+and [shareable results table](research/results/professor_brief/table.png). Its builder
+rechecks every primary metric count from saved predictions and makes no model calls.
+
 Review the [measured comparison table](research/results/comparison_table.md),
 [paper draft](research/paper/draft.md), and
 [changes from both source branches](research/CHANGES_FROM_SOURCE_BRANCHES.md).
